@@ -1,0 +1,1 @@
+# swt-drk-stockManagement
