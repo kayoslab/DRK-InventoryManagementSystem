@@ -59,4 +59,4 @@ ER-Model: ![ER-Model][ER-Model]
 Bisher unterliegt dieses Projekt uneingeschränkt dem Copyright. Nach Rücksprache kann dies unter Umständen geändert werden.
 
 
-[ER-Model]: ./modellierung/ER/ER-Model.svg "Erster Entwurf, noch nicht bestätigt"
+[ER-Model]: https://github.com/kayoslab/swt-drk-stockManagement/blob/master/modellierung/ER/ER-Model.svg "Erster Entwurf, noch nicht bestätigt"
