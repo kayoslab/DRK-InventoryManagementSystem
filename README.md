@@ -20,9 +20,9 @@ Mit dem Auftraggeber zu klären ist ferner, inwieweit Bewegungsdaten im System 
 
 # Auftrag
 
-a. FührenSieeinGesprächmitdemAuftraggeber,protokollierenSiedieses und dokumentieren Sie die erhobenen funktionalen und nicht funktionalen Anforderungen an ihr System systematisch.
+a. Führen Sie ein Gespräch mit dem Auftraggeber, protokollieren Sie dieses und dokumentieren Sie die erhobenen funktionalen und nicht funktionalen Anforderungen an ihr System systematisch.
 
-b. ErarbeitenSieeinDatenbankschema,dasderunter1.beschriebenen Aufgabenstellung gerecht wird, implementieren Sie dieses Schema in Form einer relationalen Datenbank und füllen Sie diese mit geeigneten Testdaten.
+b. Erarbeiten Sie ein Datenbankschema, das der unter 1. beschriebenen Aufgabenstellung gerecht wird, implementieren Sie dieses Schema in Form einer relationalen Datenbank und füllen Sie diese mit geeigneten Testdaten.
 
 c. Erstellen Sie ein Softwaresystem, mit dem alle unter 1. aufgeführten Anwendungsfälle unterstützt werden.
 
