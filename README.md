@@ -1,20 +1,28 @@
-# Anwendungsbereich
-Zu erstellen ist ein Softwaresystem zur Verwaltung von medizinischen Geräten sowie der Bestände von Sanitätsmaterialien in einem DRK-Ortsverein (Auftraggeber). Die Software soll eine bestehende, EXCEL-basierte Lösung ablösen. Ausdrucke der aktuell genutzten EXCEL-Arbeitsblätter finden sich im ILIAS-Lernraum des Programmierprojektes. Im Dialog mit dem Auftraggeber ist zu klären, ob darüber hinaus auch die Verwaltung von Materialien für die Betreuung unverletzter betroffener Personen in Krisensituationen im Rahmen des Programmierprojektes realisiert werden kann.
+# Meetings
+1. (13.10.2016)[./logbook/01-meeting-13-10-2016.md]
 
+
+# Anwendungsbereich
+
+Zu erstellen ist ein Softwaresystem zur Verwaltung von medizinischen Geräten sowie der Bestände von Sanitätsmaterialien in einem DRK-Ortsverein (Auftraggeber). Die Software soll eine bestehende, EXCEL-basierte Lösung ablösen. Ausdrucke der aktuell genutzten EXCEL-Arbeitsblätter finden sich im ILIAS-Lernraum des Programmierprojektes. Im Dialog mit dem Auftraggeber ist zu klären, ob darüber hinaus auch die Verwaltung von Materialien für die Betreuung unverletzter betroffener Personen in Krisensituationen im Rahmen des Programmierprojektes realisiert werden kann.
 
 Die Software soll die nachfolgenden Anwendungsfälle unterstützen:
 
 ## Administration der benötigten Stammdaten
+
 Geräte, Materialarten, (gegebenenfalls Lager- bzw. Standorte von Materialien und Geräten), Benutzer des Softwaresystems, Benutzerrollen und Benutzerrechte
 
 ## Pflege der Bestandsdaten
+
 Verbuchen von Einlagerungen und Entnahmen von Material, Protokollierung vorgenommener Geräteprüfungen
 Benachrichtigungsfunktionen
 
 ## Rechtzeitige Benachrichtigung
+
 bei Unterschreiten von Mindestbeständen, Erreichen von Mindesthaltbarkeitsdaten bei Materialien sowie von Prüfterminen bei Geräten und Generierung von Bestelllisten
 
 ## Erstellen von Inventarlisten für Geräte und Materialien
+
 Mit dem Auftraggeber zu klären ist ferner, inwieweit Bewegungsdaten im System vorzuhalten sind und eine Protokollierung (wer, wann?) der im System vorgenommenen Buchungen erfolgen soll.
 
 
