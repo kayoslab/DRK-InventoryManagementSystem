@@ -48,7 +48,7 @@ e. ein Testbericht enthalten ist.
 Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher Autor für welchen Abschnitt verantwortlich ist. Erstellen Sie dazu eine tabellarische Übersicht und lassen diese in Ihrer Einleitung mit einfließen.
 
 
-# Meetings
+# Logbuch
 1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 
 # Entwurf
