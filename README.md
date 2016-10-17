@@ -1,7 +1,3 @@
-# Meetings
-1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
-
-
 # Anwendungsbereich
 
 Zu erstellen ist ein Softwaresystem zur Verwaltung von medizinischen Geräten sowie der Bestände von Sanitätsmaterialien in einem DRK-Ortsverein (Auftraggeber). Die Software soll eine bestehende, EXCEL-basierte Lösung ablösen. Ausdrucke der aktuell genutzten EXCEL-Arbeitsblätter finden sich im ILIAS-Lernraum des Programmierprojektes. Im Dialog mit dem Auftraggeber ist zu klären, ob darüber hinaus auch die Verwaltung von Materialien für die Betreuung unverletzter betroffener Personen in Krisensituationen im Rahmen des Programmierprojektes realisiert werden kann.
@@ -50,6 +46,13 @@ d. für Nutzer die Installation der Software und die wesentlichen Programmfunkt
 e. ein Testbericht enthalten ist.
 
 Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher Autor für welchen Abschnitt verantwortlich ist. Erstellen Sie dazu eine tabellarische Übersicht und lassen diese in Ihrer Einleitung mit einfließen.
+
+
+# Meetings
+1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
+
+# Entwurf
+ER-Model: ![ER-Model][./modellierung/ER/ER-Model.svg "Erster Entwurf, noch nicht bestätigt"]
 
 # Lizenz
 
