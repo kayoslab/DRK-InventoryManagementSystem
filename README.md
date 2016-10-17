@@ -1,5 +1,5 @@
 # Meetings
-1. (13.10.2016)[./logbook/01-meeting-13-10-2016.md]
+1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 
 
 # Anwendungsbereich
