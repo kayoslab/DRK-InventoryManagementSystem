@@ -52,11 +52,9 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 
 # 5. Entwurf
-ER-Model: ![ER-Model][ER-Model]
+- [Anforderungen](./modellierung/requirements.md)
+- [ER-Model](./modellierung/ER/ER-Model.svg)
 
 # 6. Lizenz
 
 Bisher unterliegt dieses Projekt uneingeschränkt dem Copyright. Nach Rücksprache kann dies unter Umständen geändert werden.
-
-
-[ER-Model]: ./modellierung/ER/ER-Model.png "Erster Entwurf, noch nicht bestätigt"
