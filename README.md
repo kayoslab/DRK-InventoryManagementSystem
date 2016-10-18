@@ -24,26 +24,26 @@ Mit dem Auftraggeber zu klären ist ferner, inwieweit Bewegungsdaten im System 
 
 # 2. Auftrag
 
-    a. Führen Sie ein Gespräch mit dem Auftraggeber, protokollieren Sie dieses und dokumentieren Sie die erhobenen funktionalen und nicht funktionalen Anforderungen an ihr System systematisch.
+a. Führen Sie ein Gespräch mit dem Auftraggeber, protokollieren Sie dieses und dokumentieren Sie die erhobenen funktionalen und nicht funktionalen Anforderungen an ihr System systematisch.
 
-    b. Erarbeiten Sie ein Datenbankschema, das der unter **1.** beschriebenen Aufgabenstellung gerecht wird, implementieren Sie dieses Schema in Form einer relationalen Datenbank und füllen Sie diese mit geeigneten Testdaten.
+b. Erarbeiten Sie ein Datenbankschema, das der unter **1.** beschriebenen Aufgabenstellung gerecht wird, implementieren Sie dieses Schema in Form einer relationalen Datenbank und füllen Sie diese mit geeigneten Testdaten.
 
-    c. Erstellen Sie ein Softwaresystem, mit dem alle unter **1.** aufgeführten Anwendungsfälle unterstützt werden.
+c. Erstellen Sie ein Softwaresystem, mit dem alle unter **1.** aufgeführten Anwendungsfälle unterstützt werden.
 
 
 # 3. Weitere Arbeitsergebnisse
 
 Neben der Software müssen Sie eine Dokumentation abgeben, in der
 
-    a. die mit Auftraggeber und Betreuer geführten Gespräche protokolliert sind
+a. die mit Auftraggeber und Betreuer geführten Gespräche protokolliert sind
 
-    b. die wesentlichen Aspekte Ihres Softwareentwurfs erläutert werden.
+b. die wesentlichen Aspekte Ihres Softwareentwurfs erläutert werden.
 
-    c. der Quellcode beschrieben ist (Dokumentation im Quellcode reicht aus. Sorgen Sie dafür, dass im Quellcode erkenntlich ist, welche(r) Programmiere(in) für die jeweilige Klasse/ Methode verantwortlich ist).
+c. der Quellcode beschrieben ist (Dokumentation im Quellcode reicht aus. Sorgen Sie dafür, dass im Quellcode erkenntlich ist, welche(r) Programmiere(in) für die jeweilige Klasse/ Methode verantwortlich ist).
 
-    d. für Nutzer die Installation der Software und die wesentlichen Programmfunktionen erläutert werden (Nutzerhandbuch bzw. Quickguide)
+d. für Nutzer die Installation der Software und die wesentlichen Programmfunktionen erläutert werden (Nutzerhandbuch bzw. Quickguide)
 
-    e. ein Testbericht enthalten ist.
+e. ein Testbericht enthalten ist.
 
 Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher Autor für welchen Abschnitt verantwortlich ist. Erstellen Sie dazu eine tabellarische Übersicht und lassen diese in Ihrer Einleitung mit einfließen.
 
