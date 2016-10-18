@@ -54,7 +54,3 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 # 5. Entwurf
 - [Anforderungen](./modellierung/requirements.md)
 - [ER-Model](./modellierung/ER/ER-Model.svg)
-
-# 6. Lizenz
-
-Bisher unterliegt dieses Projekt uneingeschränkt dem Copyright. Nach Rücksprache kann dies unter Umständen geändert werden.
