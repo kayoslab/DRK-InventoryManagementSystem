@@ -1,4 +1,4 @@
-# Anwendungsbereich
+# 1. Anwendungsbereich
 
 Zu erstellen ist ein Softwaresystem zur Verwaltung von medizinischen Geräten sowie der Bestände von Sanitätsmaterialien in einem DRK-Ortsverein (Auftraggeber). Die Software soll eine bestehende, EXCEL-basierte Lösung ablösen. Ausdrucke der aktuell genutzten EXCEL-Arbeitsblätter finden sich im ILIAS-Lernraum des Programmierprojektes. Im Dialog mit dem Auftraggeber ist zu klären, ob darüber hinaus auch die Verwaltung von Materialien für die Betreuung unverletzter betroffener Personen in Krisensituationen im Rahmen des Programmierprojektes realisiert werden kann.
 
@@ -22,39 +22,33 @@ bei Unterschreiten von Mindestbeständen, Erreichen von Mindesthaltbarkeitsdate
 Mit dem Auftraggeber zu klären ist ferner, inwieweit Bewegungsdaten im System vorzuhalten sind und eine Protokollierung (wer, wann?) der im System vorgenommenen Buchungen erfolgen soll.
 
 
-# Auftrag
+# 2. Auftrag
 
 a. Führen Sie ein Gespräch mit dem Auftraggeber, protokollieren Sie dieses und dokumentieren Sie die erhobenen funktionalen und nicht funktionalen Anforderungen an ihr System systematisch.
-
-b. Erarbeiten Sie ein Datenbankschema, das der unter 1. beschriebenen Aufgabenstellung gerecht wird, implementieren Sie dieses Schema in Form einer relationalen Datenbank und füllen Sie diese mit geeigneten Testdaten.
-
-c. Erstellen Sie ein Softwaresystem, mit dem alle unter 1. aufgeführten Anwendungsfälle unterstützt werden.
+b. Erarbeiten Sie ein Datenbankschema, das der unter **1.** beschriebenen Aufgabenstellung gerecht wird, implementieren Sie dieses Schema in Form einer relationalen Datenbank und füllen Sie diese mit geeigneten Testdaten.
+c. Erstellen Sie ein Softwaresystem, mit dem alle unter **1.** aufgeführten Anwendungsfälle unterstützt werden.
 
 
-# Weitere Arbeitsergebnisse
+# 3. Weitere Arbeitsergebnisse
 
 Neben der Software müssen Sie eine Dokumentation abgeben, in der
 
 a. die mit Auftraggeber und Betreuer geführten Gespräche protokolliert sind
-
 b. die wesentlichen Aspekte Ihres Softwareentwurfs erläutert werden.
-
 c. der Quellcode beschrieben ist (Dokumentation im Quellcode reicht aus. Sorgen Sie dafür, dass im Quellcode erkenntlich ist, welche(r) Programmiere(in) für die jeweilige Klasse/ Methode verantwortlich ist).
-
 d. für Nutzer die Installation der Software und die wesentlichen Programmfunktionen erläutert werden (Nutzerhandbuch bzw. Quickguide)
-
 e. ein Testbericht enthalten ist.
 
 Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher Autor für welchen Abschnitt verantwortlich ist. Erstellen Sie dazu eine tabellarische Übersicht und lassen diese in Ihrer Einleitung mit einfließen.
 
 
-# Logbuch
+# 4. Logbuch
 1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 
-# Entwurf
+# 5. Entwurf
 ER-Model: ![ER-Model][ER-Model]
 
-# Lizenz
+# 6. Lizenz
 
 Bisher unterliegt dieses Projekt uneingeschränkt dem Copyright. Nach Rücksprache kann dies unter Umständen geändert werden.
 
