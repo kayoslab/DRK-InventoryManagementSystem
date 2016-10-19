@@ -4,17 +4,10 @@ Zunächst wird für das Projekt die Collation `latin1_german2_ci` verwendet, da 
 
 Für die Implementierung der `BOOLEAN` Werte wie passwordChanged und silenceWarning wird auf den Datentyp `TINYINT(1)` zurückgegriffen. Zum Thema BOOLEAN sagt die Dokumentation von MySQL folgendes:
 
-```
-Bool, Boolean: These types are synonyms for TINYINT(1). A value of zero is considered false. Non-zero values are considered true.
+- Bool, Boolean: These types are synonyms for TINYINT(1). A value of zero is considered false. Non-zero values are considered true.
+- As of MySQL 5.0.3, the BIT data type is used to store bit-field values. A type of BIT(M) enables storage of M-bit values. M can range from 1 to 64.
+- We intend to implement full boolean type handling, in accordance with standard SQL, in a future MySQL release.
 
-[...]
-
-As of MySQL 5.0.3, the BIT data type is used to store bit-field values. A type of BIT(M) enables storage of M-bit values. M can range from 1 to 64.
-
-[...]
-
-We intend to implement full boolean type handling, in accordance with standard SQL, in a future MySQL release.
-```
 
 ## Group has Rights
 
