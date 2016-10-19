@@ -49,9 +49,17 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 
 
 # 4. Logbuch
-1. [13.10.2016](./logbook/01-meeting-13-10-2016.md)
+
+- [13.10.2016](./logbook/01-meeting-13-10-2016.md)
+- 20.10.2016 
+- 25.10.2016 **(Kick-Off Meeting)**
 
 # 5. Entwurf
+
 - [Anforderungen](./modellierung/requirements.md)
+- Use-Case-Diagram **(TODO)**
 - [ER-Model](./modellierung/ER/ER-Model.svg) **(RFC)**
 - [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
+- Klassendiagram **(TODO)**
+- UI-Entwurf **(TODO)**
+- Interface Guidelines **(TODO)**
