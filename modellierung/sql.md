@@ -1,8 +1,24 @@
 # SQL-Aufruf
 
+Zunächst wird für das Projekt die Collation `latin1_german2_ci` verwendet, da diese am ehesten der "Telefonbuchsortierung" im deutschen entspricht. Alternativ wäre es auch denkbar gewesen `utf8_general_ci` zu verwenden, diese kann jedoch zu unerwarteten Sortierungen beim Aufkommen von Umlauten führen.
+
+Für die Implementierung der `BOOLEAN` Werte wie passwordChanged und silenceWarning wird auf den Datentyp `TINYINT(1)` zurückgegriffen. Zum Thema BOOLEAN sagt die Dokumentation von MySQL folgendes:
+
+```
+Bool, Boolean: These types are synonyms for TINYINT(1). A value of zero is considered false. Non-zero values are considered true.
+
+[...]
+
+As of MySQL 5.0.3, the BIT data type is used to store bit-field values. A type of BIT(M) enables storage of M-bit values. M can range from 1 to 64.
+
+[...]
+
+We intend to implement full boolean type handling, in accordance with standard SQL, in a future MySQL release.
+```
+
 ## Group has Rights
 
-Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen Group und GroupRight.
+Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `Group` und `GroupRight`.
 
 ```sql
 CREATE TABLE `GroupRight` (
@@ -29,7 +45,7 @@ CONSTRAINT `Constr_RightHasGroups`
 ```
 ## User is Member of Group
 
-Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen User und Group.
+Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `User` und `Group`.
 
 ```sql
 CREATE TABLE `User` (
@@ -56,7 +72,7 @@ CONSTRAINT `Constr_GroupHasUser`
 
 ## Material
 
-Beinhaltet verschiedene **To-One Relationships** zwischen der Material Tabelle und den Location, Message und Type Tabellen.
+Beinhaltet verschiedene **To-One Relationships** zwischen der `Material` Tabelle und den `Location`, `Message` und `Type` Tabellen.
 
 ```sql
 CREATE TABLE `Location` (
@@ -99,7 +115,7 @@ CREATE TABLE `Material` (
 
 ## Logbook
 
-Beinhaltet verschiedene **To-One Relationships** zwischen der Logbook Tabelle und den Material und Operation Tabellen.
+Beinhaltet verschiedene **To-One Relationships** zwischen der `Logbook` Tabelle und den `Material` und `Operation` Tabellen.
 
 ```sql
 CREATE TABLE `Operation` (
