@@ -1,4 +1,7 @@
+# ER-Model
+
 ![ER-Model](./ER/ER-Model.png)
+Vorläufiger Entwurf des ER-Models, **request-for-comments**.
 
 # SQL-Aufruf
 
