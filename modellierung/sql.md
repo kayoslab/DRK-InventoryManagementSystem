@@ -25,6 +25,7 @@ CREATE TABLE `Group` (
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
+
 CREATE TABLE `GroupHasRights` (
     `group` int(10) unsigned NOT NULL,
     `right` int(10) unsigned NOT NULL,
@@ -119,8 +120,66 @@ CREATE TABLE `Operation` (
 CREATE TABLE `Logbook` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `material_id` int(10) unsigned NOT NULL,
+    `material_id` int(10) unsigned NULL,
     `operation_id` int(10) unsigned NOT NULL,
     `user_id` int(10) unsigned NOT NULL
 ) COLLATE 'latin1_german2_ci';
+```
+
+
+## Insert
+
+```sql
+INSERT INTO `Operation` (title)
+VALUES
+('create-user'),
+('delete-user'),
+('modifie-user'),
+('create-userRight'),
+('delete-userRight'),
+('modifie-userRight'),
+('create-material'),
+('delete-material'),
+('modifie-material'),
+('material-increase'),
+('material-decrese'),
+('material-correction');
+
+INSERT INTO `Group` (title)
+VALUES ('admin'), ('user');
+
+/* pw = md5(test) */
+INSERT INTO `User` (username, firstname, name, password, passwordChanged)
+VALUES ('root', 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', 0);
+
+INSERT INTO `UserIsMemberOfGroup` VALUES (1,1);
+
+INSERT INTO `Logbook` (title, material_id, operation_id, user_id)
+VALUES ('Initialisation', NULL, 6, 1);
+```
+
+## Select
+
+Alle User die der Gruppe ``admin`` angehören:
+
+```sql
+SELECT
+    `User`.*
+FROM
+    `User`
+    JOIN `UserIsMemberOfGroup` ON `User`.`id` = `UserIsMemberOfGroup`.`user`
+WHERE
+    `UserIsMemberOfGroup`.`group` = 1
+```
+
+Alle Gruppen in denen der Nutzer ``root`` ist:
+
+```sql
+SELECT
+    `Group`.*
+FROM
+    `Group`
+    JOIN `UserIsMemberOfGroup` ON `Group`.`id` = `UserIsMemberOfGroup`.`group`
+WHERE
+    `UserIsMemberOfGroup`.`user` = 1
 ```
