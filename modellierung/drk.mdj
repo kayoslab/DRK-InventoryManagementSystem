@@ -3133,7 +3133,7 @@
 								"reference": {
 									"$ref": "AAAAAAFXviCrOBhLUSQ="
 								},
-								"cardinality": "1"
+								"cardinality": "0..*"
 							},
 							"end2": {
 								"_type": "ERDRelationshipEnd",
