@@ -22,7 +22,6 @@ Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `Gro
 CREATE TABLE `GroupRight` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `groups` int(10) unsigned NOT NULL
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Group` (
@@ -139,19 +138,48 @@ INSERT INTO `Operation` (title)
 VALUES
 ('create-user'),
 ('delete-user'),
-('modifie-user'),
+('modify-user'),
 ('create-userRight'),
 ('delete-userRight'),
-('modifie-userRight'),
+('modify-userRight'),
 ('create-material'),
 ('delete-material'),
-('modifie-material'),
+('modify-material'),
 ('material-increase'),
-('material-decrese'),
+('material-decrease'),
+('material-correction');
+
+INSERT INTO `GroupRight` (title)
+VALUES
+('create-user'),
+('delete-user'),
+('modify-user'),
+('create-userRight'),
+('delete-userRight'),
+('modify-userRight'),
+('create-material'),
+('delete-material'),
+('modify-material'),
+('material-increase'),
+('material-decrease'),
 ('material-correction');
 
 INSERT INTO `Group` (title)
 VALUES ('admin'), ('user');
+
+INSERT INTO `GroupHasRights`
+VALUES (1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,7),
+(1,8),
+(1,9),
+(1,10),
+(1,11),
+(1,12);
 
 /* pw = md5(test) */
 INSERT INTO `User` (username, firstname, name, password, passwordChanged)
@@ -164,6 +192,31 @@ VALUES ('Initialisation', NULL, 6, 1);
 ```
 
 ## Select
+
+Alle Rechte, welche der Gruppe ``admin`` gewährt wurden:
+
+```sql
+SELECT
+    `GroupRight`.*
+FROM
+    `GroupRight`
+    JOIN `GroupHasRights` ON `GroupRight`.`id` = `GroupHasRights`.`right`
+WHERE
+    `GroupHasRights`.`group` = 1
+```
+
+Alle User die das Recht haben neue Benutzer anzulegen:
+```sql
+SELECT
+    `Group`.*
+FROM
+    `Group`
+    JOIN `GroupHasRights` ON `Group`.`id` = `GroupHasRights`.`group`
+WHERE
+    `GroupHasRights`.`right` = 1
+```
+
+
 
 Alle User die der Gruppe ``admin`` angehören:
 
