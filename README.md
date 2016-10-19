@@ -53,4 +53,5 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 
 # 5. Entwurf
 - [Anforderungen](./modellierung/requirements.md)
-- [ER-Model](./modellierung/ER/ER-Model.svg)
+- [ER-Model](./modellierung/ER/ER-Model.svg) **RFC**
+- [SQL-Aufruf](./modellierung/sql.md) **RFC**
