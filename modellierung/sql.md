@@ -81,7 +81,8 @@ CREATE TABLE `Location` (
 CREATE TABLE `Message` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `escalation` int(10) unsigned NOT NULL UNIQUE
+    `escalation` int(10) unsigned NOT NULL UNIQUE,
+    `checked` tinyint(1) unsigned NOT NULL
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Type` (
