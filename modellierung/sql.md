@@ -21,7 +21,7 @@ Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `Gro
 ```sql
 CREATE TABLE `GroupRight` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
+    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Group` (
