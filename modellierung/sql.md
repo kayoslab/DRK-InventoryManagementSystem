@@ -205,7 +205,7 @@ WHERE
     `GroupHasRights`.`group` = 1
 ```
 
-Alle User die das Recht haben neue Benutzer anzulegen:
+Alle User, die das Recht haben neue Benutzer anzulegen:
 ```sql
 SELECT
     `Group`.*
@@ -218,7 +218,7 @@ WHERE
 
 
 
-Alle User die der Gruppe ``admin`` angehören:
+Alle User, die der Gruppe ``admin`` angehören:
 
 ```sql
 SELECT
@@ -230,7 +230,7 @@ WHERE
     `UserIsMemberOfGroup`.`group` = 1
 ```
 
-Alle Gruppen in denen der Nutzer ``root`` ist:
+Alle Gruppen, in denen der Nutzer ``root`` ist:
 
 ```sql
 SELECT
