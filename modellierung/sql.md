@@ -13,6 +13,7 @@ Für die Implementierung der `BOOLEAN` Werte wie passwordChanged und silenceWarn
 - As of MySQL 5.0.3, the BIT data type is used to store bit-field values. A type of BIT(M) enables storage of M-bit values. M can range from 1 to 64.
 - We intend to implement full boolean type handling, in accordance with standard SQL, in a future MySQL release.
 
+Die Constraints der Tabellen `GroupHasRights` und `UserIsMemberOfGroup` müssen bezüglich ihrer `ON DELETE` und `ON UPDATE` Funktionen geprüft und besprochen werden. CASCADE gilt daher nur als Platzhalter für ein sinnvolles Verhalten, welches in den Anforderungen festgehalten werden sollte.
 
 ## Group has Rights
 
