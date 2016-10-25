@@ -82,8 +82,7 @@ CREATE TABLE `Location` (
 CREATE TABLE `Message` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `escalation` int(10) unsigned NOT NULL UNIQUE,
-    `checked` tinyint(1) unsigned NOT NULL
+    `escalation` int(10) unsigned NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Type` (
@@ -97,16 +96,24 @@ CREATE TABLE `Material` (
    `minimumStock` int(10) unsigned NULL,
    `currentStock` int(10) unsigned NULL,
    `batchSize` int(10) unsigned NULL,
-   `date` date NULL,
-   `mtk` date NULL,
-   `stk` date NULL,
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
    `creation` timestamp NOT NULL,
+   `silenceWarning` tinyint(1) unsigned NOT NULL
+) COLLATE 'latin1_german2_ci';
+
+CREATE TABLE `Stock` (
+   `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `volume` int(10) unsigned NOT NULL,
+   `date` date NULL,
+   `mtk` date NULL,
+   `stk` date NULL,
    `inventarNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `serialNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `silenceWarning` tinyint(1) unsigned NOT NULL,
+   `creation` timestamp NOT NULL,
+   `escalationAck` int(10) unsigned NOT NULL,
+   `material_id` int(10) unsigned NOT NULL,
    `location_id` int(10) unsigned NOT NULL,
    `type_id` int(10) unsigned NOT NULL,
    `message_id` int(10) unsigned NULL
