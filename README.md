@@ -53,6 +53,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 - [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 - [20.10.2016](./logbook/02-meeting-20-10-2016.md)
 - [25.10.2016](./logbook/03-meeting-25-10-2016.md) **(Kick-Off Meeting)**
+- [28.10.2016](./logbook/04-meeting-28-10-2016.md)
 
 # 5. Entwurf
 

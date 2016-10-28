@@ -12,6 +12,7 @@ Da es sich um ein umfangreiches Softwareprojekt handeln wird, werden die funktio
 - Zuweisung von Benutzern zu Gruppen
 - Festlegen/Ändern von Gruppenrichtlinien
 - Anlegen/Löschen von Materialien und Geräten
+- Anlegen/Löschen von Lagerorten
 - Festlegen/Ändern von Mindestbeständen
 
 ### Login

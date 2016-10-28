@@ -150,6 +150,8 @@ VALUES
 ('create-user'),
 ('delete-user'),
 ('modify-user'),
+('user-login'),
+('user-logout'),
 ('create-userRight'),
 ('delete-userRight'),
 ('modify-userRight'),
