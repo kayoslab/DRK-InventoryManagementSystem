@@ -4,7 +4,12 @@ Nachfolgend soll ein grober Überblick über die industriell gängigen Architekt
 
 - Model View Controller(MVC)
 - Model View Presenter(MVP)
-- Three-tier architecture (auch Schichtenmodell)
+- Three-tier architecture
+
+Die nachfolgenden Archtiekturen wurden nachträglich aus der Liste entfernt, da diese für die Implementierung des Projekts entweder nicht angemessen oder zu komplex erscheinen.
+
+- Model View ViewModel
+- Reactive Programming
 
 ## Model View Controller
 
@@ -36,7 +41,7 @@ Die von Martin Fowler vorgenommene Unterscheidung in **Supervising Controller** 
 
 ## Three-tier architecture
 
-
+Die **Three-tier architecture** (engl. Drei-Schichten-Architektur) unterteilt eine Software in die drei Einheiten **client tier** (engl. Präsentationsschicht), **application-server tier** (engl. Logikschicht) und **data-server tier** (engl. Datenhaltungsschicht).
 
 # Projektarchitektur
 
