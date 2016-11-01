@@ -41,7 +41,7 @@ Die von Martin Fowler vorgenommene Unterscheidung in **Supervising Controller** 
 
 ## 3. Three-tier architecture
 
-Die **Three-tier architecture** (engl. Drei-Schichten-Architektur) unterteilt eine Software in die drei Einheiten **client tier** (engl. Präsentationsschicht), **application-server tier** (engl. Logikschicht) und **data-server tier** (engl. Datenhaltungsschicht). Die erlaubten Beziehungen zwischen den einzelnen Schichten werden dahingehend eingeschränkt, dass Klassen einer höher gelegenen Schicht nur tiefer gelege Schichten verwenden dürfen.
+Die **Three-tier architecture** (engl. Drei-Schichten-Architektur) unterteilt eine Software in die drei Einheiten **Client Tier** (engl. Präsentationsschicht), **Application-Server Tier** (engl. Logikschicht) und **Data-Server Tier** (engl. Datenhaltungsschicht). Die erlaubten Beziehungen zwischen den einzelnen Schichten werden dahingehend eingeschränkt, dass Klassen einer höher gelegenen Schicht nur tiefer gelege Schichten verwenden dürfen.
 
 Die häufigste Anwendung findet die **Three-tier architecture** in verteilten Systemen wie Client-Server Systemen, welche die Datenhaltung auf einem separaten Datenbankserver durchführen. Innerhalb eines Software-Systems ist die **Three-tier architecture** jedoch das Mindestmaß an architektonischer Struktur, welche verwendet werden sollte, sofern keine zwingenden Gründe für eine *echte* Architektur gegeben sind.
 
@@ -59,7 +59,9 @@ Die **Data-Server Tier** enthält die Datenbank bzw. kümmert sich im Falle eine
 
 # Projektarchitektur
 
+Zur Implementierung des Projekts wird die Anwendung einer **MVC** oder **MVP** Architektur empfohlen. Dadurch können die unterschiedlichen Abschnitte sauber von einander getrennt und in kleineren Teams gleichzeitig entwickelt werden. Für die Kommunikation zwischen den einzelnen Einheiten wird ein *Delegation-Pattern* empfohlen, da dieses auf den ersten Blick intuitiver und weniger überladen ist. Das *Observer-Pattern* wird dennoch innerhalb der *View*-Implementierung Anwendung finden, da Java-Swing mit diesem Muster arbeitet.
 
+Von der Verwendung der **Three-tier architecture** für die Implementierung wird abgeraten, da diese eher in Verteilten Systemen zum Einsatz kommt. Da es sich bei der Anwendung jedoch in erster Linie um ein lokal ausgeführtes System handelt, ergibt dieses Architekturmuster im Kontext des Projekts keinen Sinn.
 
 # Quellen
 1. MVC, http://wiki.c2.com/?ModelViewController

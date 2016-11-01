@@ -61,7 +61,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 - Use-Case-Diagram **(TODO)**
 - [ER-Model](./modellierung/ER/ER-Model.svg) **(ACK)**
 - [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
-- [Architekturmuster](./modellierung/CLASS/architecture.md) **(DOING)**
+- [Architekturmuster](./modellierung/CLASS/architecture.md) **(RFC)**
 - [Class-Model](./modellierung/CLASS/Class-Model.svg) **(DOING)**
 - UI-Entwurf **(TODO)**
 - Interface Guidelines **(TODO)**
