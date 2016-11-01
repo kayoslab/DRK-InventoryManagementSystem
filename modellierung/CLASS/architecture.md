@@ -41,7 +41,21 @@ Die von Martin Fowler vorgenommene Unterscheidung in **Supervising Controller** 
 
 ## Three-tier architecture
 
-Die **Three-tier architecture** (engl. Drei-Schichten-Architektur) unterteilt eine Software in die drei Einheiten **client tier** (engl. Präsentationsschicht), **application-server tier** (engl. Logikschicht) und **data-server tier** (engl. Datenhaltungsschicht).
+Die **Three-tier architecture** (engl. Drei-Schichten-Architektur) unterteilt eine Software in die drei Einheiten **client tier** (engl. Präsentationsschicht), **application-server tier** (engl. Logikschicht) und **data-server tier** (engl. Datenhaltungsschicht). Die erlaubten Beziehungen zwischen den einzelnen Schichten werden dahingehend eingeschränkt, dass Klassen einer höher gelegenen Schicht nur tiefer gelege Schichten verwenden dürfen.
+
+Die häufigste Anwendung findet die **Three-tier architecture** in verteilten Systemen wie Client-Server Systemen, welche die Datenhaltung auf einem separaten Datenbankserver durchführen. Innerhalb eines Software-Systems ist die **Three-tier architecture** jedoch das Mindestmaß an architektonischer Struktur, welche verwendet werden sollte, sofern keine zwingenden Gründe für eine *echte* Architektur gegeben sind.
+
+### client tier
+
+Die **client tier** ist für die korrekt formatierte Ein- und Ausgabe der Daten verantwortlich. Sie kümmert sich um die Korrekte Anzeige und das Layout des *User Interfaces*. Darüber hinaus ist sie für Benutzereingaben und Benutzerschnittstellen zuständig.
+
+### application-server tier
+
+Die **application-server tier** ist für die Anwendungslogik selbst zuständig. Sie beinhaltet Verarbeitungsmechanismen zur Vorbereitung von Daten (für Darstellung oder Speicherung). Eine Validierung und Überprüfung von Ein- und Ausgabe-Daten findet in dieser Schicht statt.
+
+### data-server tier
+
+Die **data-server tier** enthält die Datenbank bzw. kümmert sich im Falle eines Software-Systems um die Datenbank-Kommunikation oder die allgemeine Datenhaltung. Diese Schicht ist ausschließlich verantwortlich für das Laden und Speichern von Daten und Dateien, so wie für die Konvertierung von Datenbank-Feldtypen, um so für die *application-server tier* eine gleichbleibende Sicht auf den Datenbestand zu gewährleisten. Diese Schicht ist speziell auf die Datenbank zugeschnitten und muss im Falle eines Umzugs auf ein abweichendes Datenbank-Management-System (DBMS) neu entworfen werden.
 
 # Projektarchitektur
 
@@ -50,3 +64,6 @@ Die **Three-tier architecture** (engl. Drei-Schichten-Architektur) unterteilt ei
 # Quellen
 1. MVC, http://wiki.c2.com/?ModelViewController
 2. MVC/MVP, http://martinfowler.com/eaaDev/uiArchs.html
+3. 3-Tier, http://www.dfpug.de/konf/konf_1998/09_tier/d_tier/d_tier.htm
+4. MVVM, https://www.norberteder.com/model-view-viewmodel-die-serie/
+5. Reactive, http://reactivemanifesto.org
