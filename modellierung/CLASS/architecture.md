@@ -4,7 +4,7 @@ Nachfolgend soll ein grober Überblick über die industriell gängigen Architekt
 
 - Model View Controller(MVC)
 - Model View Presenter(MVP)
-- Reactive Programming
+- Three-tier architecture (auch Schichtenmodell)
 
 ## Model View Controller
 
@@ -34,7 +34,8 @@ Zur Implementierung des **MVP-Pattern** werden für *Model* und *View* jeweils I
 
 Die von Martin Fowler vorgenommene Unterscheidung in **Supervising Controller** und **Passive View** soll soweit außer Acht gelassen werden, da diese für die Impelemtierung des Projekts voraussichtlich nicht von Interesse sein wird. Weitere Informationen dazu können in der Quelle [2.] nachgelesen werden.
 
-## Reactive Programming
+## Three-tier architecture
+
 
 
 # Projektarchitektur
