@@ -57,11 +57,16 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 
 # 5. Entwurf
 
+## 5.1 Hintergrund
 - [Anforderungen](./modellierung/requirements.md) **(DOING)**
 - Use-Case-Diagram **(TODO)**
+
+## 5.2 Softwarearchitektur
 - [ER-Model](./modellierung/ER/ER-Model.svg) **(ACK)**
 - [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
 - [Architekturmuster](./modellierung/CLASS/architecture.md) **(RFC)**
 - [Class-Model](./modellierung/CLASS/Class-Model.svg) **(DOING)**
-- UI-Entwurf **(TODO)**
+
+## 5.3 User Interface
+- UI-Entwurf **(DOING)**
 - Interface Guidelines **(TODO)**
