@@ -59,7 +59,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 
 - [Anforderungen](./modellierung/requirements.md) **(DOING)**
 - Use-Case-Diagram **(TODO)**
-- [ER-Model](./modellierung/ER/ER-Model.svg)
+- [ER-Model](./modellierung/ER/ER-Model.svg) **(ACK)**
 - [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
 - [Architekturmuster](./modellierung/CLASS/architecture.md) **(DOING)**
 - [Class-Model](./modellierung/CLASS/Class-Model.svg) **(DOING)**
