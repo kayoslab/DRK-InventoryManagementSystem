@@ -47,26 +47,24 @@ e. ein Testbericht enthalten ist.
 
 Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher Autor für welchen Abschnitt verantwortlich ist. Erstellen Sie dazu eine tabellarische Übersicht und lassen diese in Ihrer Einleitung mit einfließen.
 
+# 4. Entwurf
 
-# 4. Logbuch
-
+## 4.1 Logbuch
 - [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 - [20.10.2016](./logbook/02-meeting-20-10-2016.md)
 - [25.10.2016](./logbook/03-meeting-25-10-2016.md) **(Kick-Off Meeting)**
 - [28.10.2016](./logbook/04-meeting-28-10-2016.md)
 
-# 5. Entwurf
-
-## 5.1 Hintergrund
+## 4.2 Hintergrund
 - [Anforderungen](./modellierung/requirements.md) **(DOING)**
 - Use-Case-Diagram **(TODO)**
 
-## 5.2 Softwarearchitektur
+## 4.3 Softwarearchitektur
 - [ER-Model](./modellierung/ER/ER-Model.svg) **(ACK)**
 - [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
 - [Architekturmuster](./modellierung/CLASS/architecture.md) **(RFC)**
 - [Class-Model](./modellierung/CLASS/Class-Model.svg) **(DOING)**
 
-## 5.3 User Interface
+## 4.4 User Interface
 - UI-Entwurf **(DOING)**
 - Interface Guidelines **(TODO)**
