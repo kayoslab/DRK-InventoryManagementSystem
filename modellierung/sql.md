@@ -93,6 +93,7 @@ CREATE TABLE `Type` (
 CREATE TABLE `Material` (
    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
+   `description` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `minimumStock` int(10) unsigned NULL,
    `quotaStock` int(10) unsigned NULL,
    `currentStock` int(10) unsigned NULL,
@@ -175,7 +176,10 @@ VALUES
 ('modify-material'),
 ('material-increase'),
 ('material-decrease'),
-('material-correction');
+('material-correction'),
+('consumable-material'),
+('medical-material'),
+('devices');
 
 INSERT INTO `Group` (title)
 VALUES ('admin'), ('user');
@@ -218,7 +222,9 @@ WHERE
     `GroupHasRights`.`group` = 1
 ```
 
+
 Alle User, die das Recht haben neue Benutzer anzulegen:
+
 ```sql
 SELECT
     `Group`.*
@@ -228,7 +234,6 @@ FROM
 WHERE
     `GroupHasRights`.`right` = 1
 ```
-
 
 
 Alle User, die der Gruppe ``admin`` angehören:
@@ -242,6 +247,7 @@ FROM
 WHERE
     `UserIsMemberOfGroup`.`group` = 1
 ```
+
 
 Alle Gruppen, in denen der Nutzer ``root`` ist:
 
