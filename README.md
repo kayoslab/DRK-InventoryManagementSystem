@@ -57,7 +57,8 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 
 ## 4.2 Hintergrund
 - [Anforderungen](./modellierung/requirements.md) **(DOING)**
-- [Use-Case-Diagram](./modellierung/usecases.md) **(DOING)**
+- [Use-Case-Beschreibung](./modellierung/usecases.md) **(DOING)**
+- Use-Case-Diagramme
 
 ## 4.3 Softwarearchitektur
 - [ER-Model](./modellierung/ER/ER-Model.svg) **(ACK)**
