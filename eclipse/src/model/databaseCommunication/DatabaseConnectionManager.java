@@ -1,7 +1,7 @@
 package model.databaseCommunication;
 import java.sql.*;
 
-public class DatabaseConnectionManager {
+class DatabaseConnectionManager {
 	private static DatabaseConnectionManager sharedInstance;
 	private final String databaseUsername;
 	private final String databasePassword;
@@ -22,7 +22,7 @@ public class DatabaseConnectionManager {
 	/**
 	 * Singleton
 	 */
-	public static DatabaseConnectionManager getSharedInstance() {
+	static DatabaseConnectionManager getSharedInstance() {
 		if (DatabaseConnectionManager.sharedInstance == null) {
 			DatabaseConnectionManager.sharedInstance = new DatabaseConnectionManager();
 		}
