@@ -1,5 +1,5 @@
 package model.data;
 
-public class Material {
-
+public class Material extends Manteldaten {
+		
 }
