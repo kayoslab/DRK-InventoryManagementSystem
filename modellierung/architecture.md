@@ -1,3 +1,6 @@
+![Klassendiagramm](./UML/Class/Class-Model.png)
+Vorläufiger Entwurf des Klassendiagramms, **request-for-comments**.
+
 # Architekturmuster
 
 Nachfolgend soll ein grober Überblick über die industriell gängigen Architekturmuster gegeben werden um die Erstellung der Projektarchitektur vorzubereiten.
