@@ -69,10 +69,7 @@ class DatabaseConnectionManager {
 		}
 	}
 	
-	
-	
 	/********************* Public Accessory ****************************/
-	
 	
 	/**
 	 * Getter for existing Database Connections

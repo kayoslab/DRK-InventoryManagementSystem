@@ -47,5 +47,4 @@ public class DatabaseValueManager {
 		this.manager.releaseDatabaseConnection();
 		return result;
 	}
-	
 }
