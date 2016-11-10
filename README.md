@@ -62,7 +62,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 
 ## 4.3 Softwarearchitektur
 - [ER-Model](./modellierung/UML/ER/ER-Model.jpg) **(ACK)**
-- [SQL-Aufruf](./modellierung/sql.md) **(DOING)**
+- [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
 - [Architekturmuster](./modellierung/architecture.md) **(ACK)**
 - [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(DOING)**
 
