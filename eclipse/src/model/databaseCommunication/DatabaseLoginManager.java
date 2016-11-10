@@ -13,7 +13,7 @@ public class DatabaseLoginManager {
 	private String databaseUsername;
 	private String databasePassword;
 	private String databaseURL;
-	private String configLocation = System.getProperty("user.home") + File.separator + ".stockMngmt" + File.separator + "config";
+	public String configLocation = System.getProperty("user.home") + File.separator + ".DRKstockMngmt" + File.separator + "config";
 	/**
 	 * Constructor
 	 */
@@ -91,7 +91,7 @@ public class DatabaseLoginManager {
 	 */
 	public Boolean testDatabaseConnection() {
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
-			// TODO: do connection test
+			// TODO: Implement connection test
 			return true;
 		}
 		return false;
@@ -101,7 +101,6 @@ public class DatabaseLoginManager {
 	 * Store the given Credentials into local file
 	 */
 	private void storeDatabaseLoginCredentials() {
-		// TODO: Store Credentials into File.
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
 			File filePathInstance = new File(configLocation);
 			if (filePathInstance.getParentFile().exists()) {
@@ -144,21 +143,23 @@ public class DatabaseLoginManager {
 					// iterate over loaded commands
 					for (String command : configCommands) {
 						// execute command
-						String[] syntax = command.split("=", 2);
-						String variable = syntax[0];
-						String content = syntax[1];
-						
-						switch (variable) {
-						case "databaseUsername":
-							this.databaseUsername = content;
-							break;
-						case "databasePassword":
-							this.databasePassword = content;
-							break;
-						case "databaseURL":
-							this.databaseURL = content;
-							break;
-						}
+						String[] syntax = command.split(":", 2);
+						if (syntax.length == 2) {
+							String variable = syntax[0];
+							String content = syntax[1];
+							
+							switch (variable) {
+							case "databaseUsername":
+								this.databaseUsername = content;
+								break;
+							case "databasePassword":
+								this.databasePassword = content;
+								break;
+							case "databaseURL":
+								this.databaseURL = content;
+								break;
+							}
+						}						
 					}
 				} catch (IOException exception) {
 					// can't read a Line in the configuration File, throws IOException
@@ -185,19 +186,17 @@ public class DatabaseLoginManager {
 				FileOutputStream outputStream = new FileOutputStream(this.configLocation);
 				OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "utf-8");
 				try (BufferedWriter writer = new BufferedWriter(outputStreamWriter)) {
-					writer.write("########################################");
+					writer.write("#######################################");
 					writer.newLine();
-					writer.write("########################################");
+					writer.write("#######################################");
 					writer.newLine();
-					writer.write("########################################");
+					writer.write("### DRK Stock Management Configfile ###");
 					writer.newLine();
-					writer.write("### DRK Stock Management Configfile ####");
+					writer.write("###           Version 1.0           ###");
 					writer.newLine();
-					writer.write("###           Version 1.0           ####");
+					writer.write("#######################################");
 					writer.newLine();
-					writer.write("########################################");
-					writer.newLine();
-					writer.write("########################################");
+					writer.write("#######################################");
 					writer.newLine();
 					writer.newLine();
 					writer.newLine();
@@ -208,7 +207,8 @@ public class DatabaseLoginManager {
 					writer.write("databaseURL:"+this.databaseURL);
 					writer.newLine();
 					writer.newLine();
-					writer.write("########################################");
+					writer.write("#######################################");
+					writer.newLine();
 				}
 				// catch exception below
 			} else {
