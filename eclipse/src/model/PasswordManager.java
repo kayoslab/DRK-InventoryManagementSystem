@@ -1,5 +1,7 @@
 package model;
-import java.security.*;
+// Import for MD5 Hash
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class PasswordManager {
 	/**
@@ -19,7 +21,7 @@ public class PasswordManager {
 			if (this.generatePasswordHash(password) == databasePasswordHash) {
 				return true;
 			}
-		} catch (java.security.NoSuchAlgorithmException exception) {
+		} catch (NoSuchAlgorithmException exception) {
 			// maybe do anything with the exception for missing md5 hash function
 			// on the current Operating System.
 		}
@@ -38,7 +40,7 @@ public class PasswordManager {
 					// Store this newPasswordHash into the database
 					// if completed proceed.
 					// return true;
-				} catch (java.security.NoSuchAlgorithmException exception) {
+				} catch (NoSuchAlgorithmException exception) {
 					// maybe do anything with the exception for missing md5 hash function
 					// on the current Operating System.
 				}
@@ -59,9 +61,9 @@ public class PasswordManager {
 	 * @param String password
 	 * @return String
 	 */
-	private String generatePasswordHash(String password) throws java.security.NoSuchAlgorithmException {
+	private String generatePasswordHash(String password) throws NoSuchAlgorithmException {
 		// Create Instance of MessageDigest with MD5 Hash Initializer
-		java.security.MessageDigest messageDigest = java.security.MessageDigest.getInstance("MD5");
+		MessageDigest messageDigest = MessageDigest.getInstance("MD5");
         // Cast String to md5 Byte Array
 		byte[] byteArray = messageDigest.digest(password.getBytes());
         return this.toHexString(byteArray);
