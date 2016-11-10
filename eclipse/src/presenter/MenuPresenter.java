@@ -4,8 +4,6 @@ import javax.swing.JFrame;
 
 public class MenuPresenter extends Presenter {
 
-	private JFrame frame;
-
 	/**
 	 * Launch the application.
 	 */

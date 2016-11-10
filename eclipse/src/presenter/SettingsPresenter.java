@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 public class SettingsPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
 	private DatabaseWriteManager writeManager = new DatabaseWriteManager();
-	private JFrame frame;
 
 	/**
 	 * Launch the application.

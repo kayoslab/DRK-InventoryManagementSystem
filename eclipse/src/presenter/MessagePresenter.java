@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 
 public class MessagePresenter extends Presenter {
 
-	private JFrame frame;
-
 	/**
 	 * Launch the application.
 	 */

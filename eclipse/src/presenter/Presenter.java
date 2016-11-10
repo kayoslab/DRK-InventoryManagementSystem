@@ -1,9 +1,12 @@
 package presenter;
+import javax.swing.JFrame;
+
 import model.DatabaseReadManager;
 
 public abstract class Presenter {
 	Presenter previousPresenter;
 	DatabaseReadManager readManager;
+	JFrame frame;
 	
 	public Presenter() {
 		this.readManager = new DatabaseReadManager();

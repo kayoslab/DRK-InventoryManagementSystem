@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 
 public class LoginPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
-	private JFrame frame;
 
 	/**
 	 * Launch the application.
