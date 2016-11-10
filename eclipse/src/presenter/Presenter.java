@@ -2,8 +2,8 @@ package presenter;
 import model.DatabaseReadManager;
 
 public abstract class Presenter {
-	public Presenter previousPresenter;
-	public DatabaseReadManager readManager;
+	Presenter previousPresenter;
+	DatabaseReadManager readManager;
 	
 	public Presenter() {
 		this.readManager = new DatabaseReadManager();
