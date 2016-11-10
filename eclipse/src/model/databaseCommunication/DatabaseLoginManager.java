@@ -78,28 +78,28 @@ public class DatabaseLoginManager {
 	}
 	
 	/**
+	 * Test credentials for Login
+	 */
+	public Boolean testDatabaseConnection() {
+		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
+			// TODO: do connection test
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Store the given Credentials into local file
 	 */
 	private void storeDatabaseLoginCredentials() {
-		// Store Credentials into File.
+		// TODO: Store Credentials into File.
 	}
 	
 	/**
 	 * Read the Credentials from a local file
 	 */
 	private void loadDatabaseLoginCredentials() {
-		// Load Credentials from File.
-	}
-	
-	/**
-	 * Test credentials for Login
-	 */
-	private Boolean testDatabaseConnection() {
-		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
-			// do connection test
-			return true;
-		}
-		return false;
+		// TODO: Load Credentials from File.
 	}
 	
 }

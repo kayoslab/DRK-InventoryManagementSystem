@@ -1,5 +1,7 @@
 package presenter;
 import model.PasswordManager;
+import model.databaseCommunication.DatabaseLoginManager;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
@@ -10,16 +12,21 @@ public class LoginPresenter extends Presenter {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginPresenter window = new LoginPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+		DatabaseLoginManager loginManager = new DatabaseLoginManager();
+		if (loginManager.testDatabaseConnection()) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						LoginPresenter window = new LoginPresenter();
+						window.frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-			}
-		});
+			});
+		} else {
+			// TODO: Show SetupPresenter
+		}
 	}
 
 	/**

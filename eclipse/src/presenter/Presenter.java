@@ -1,6 +1,5 @@
 package presenter;
 import javax.swing.JFrame;
-
 import model.DatabaseReadManager;
 
 public abstract class Presenter {
