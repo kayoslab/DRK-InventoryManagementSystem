@@ -3,7 +3,7 @@ import java.sql.*;
 
 
 public class DatabaseValueManager {
-	public DatabaseConnectionManager manager;
+	private DatabaseConnectionManager manager;
 	
 	/**
 	 * Constructor

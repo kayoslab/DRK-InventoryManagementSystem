@@ -13,6 +13,7 @@ class DatabaseConnectionManager {
 	 * Private Constructor
 	 */
 	private DatabaseConnectionManager() {
+		DatabaseLoginManager loginManager = new DatabaseLoginManager();
 		databaseUsername = "";
 		databasePassword = "";
 		databaseURL = "";
