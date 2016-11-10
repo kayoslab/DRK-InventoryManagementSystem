@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class InventoryPresenter extends Presenter {
-
+	private JFrame frame;
 	/**
 	 * Launch the application.
 	 */

@@ -3,7 +3,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class DataPresenter extends Presenter {
-
+	private JFrame frame;
 	/**
 	 * Launch the application.
 	 */

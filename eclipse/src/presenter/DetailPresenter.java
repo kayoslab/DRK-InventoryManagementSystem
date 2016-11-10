@@ -1,12 +1,10 @@
 package presenter;
-import model.DatabaseWriteManager;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 
 public class DetailPresenter extends Presenter {
-	private DatabaseWriteManager writeManager = new DatabaseWriteManager();
-
+	private JFrame frame;
 	/**
 	 * Launch the application.
 	 */

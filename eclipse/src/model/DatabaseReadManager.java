@@ -1,10 +1,17 @@
 package model;
 import model.databaseCommunication.DatabaseValueManager;
 
-public class DatabaseReadManager {
-	private DatabaseValueManager valueManager;
+public final class DatabaseReadManager {
 	
-	public DatabaseReadManager() {
-		 this.valueManager = new DatabaseValueManager();
+	private DatabaseReadManager() {
+		// Do nothing here -> Static implementation
+	}
+	
+	private static DatabaseValueManager getValueManager() {
+		return new DatabaseValueManager();
+	}
+	
+	public static void func() {
+		DatabaseValueManager valueManager = DatabaseReadManager.getValueManager();
 	}
 }

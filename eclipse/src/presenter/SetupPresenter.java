@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 public class SetupPresenter extends Presenter {
 	private DatabaseLoginManager loginManager = new DatabaseLoginManager();
+	private JFrame frame;
 	/**
 	 * Launch the application.
 	 */

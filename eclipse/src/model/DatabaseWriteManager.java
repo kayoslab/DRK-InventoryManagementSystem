@@ -1,10 +1,13 @@
 package model;
 import model.databaseCommunication.DatabaseValueManager;
 
-public class DatabaseWriteManager {
-	private DatabaseValueManager valueManager;
+public final class DatabaseWriteManager {
 	
-	public DatabaseWriteManager() {
-		 this.valueManager = new DatabaseValueManager();
+	private DatabaseWriteManager() {
+		// Do nothing here -> Static implementation
+	}
+
+	private static DatabaseValueManager getValueManager() {
+		return new DatabaseValueManager();
 	}
 }

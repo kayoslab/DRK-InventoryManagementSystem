@@ -14,9 +14,16 @@ class DatabaseConnectionManager {
 	 */
 	private DatabaseConnectionManager() {
 		DatabaseLoginManager loginManager = new DatabaseLoginManager();
-		databaseUsername = "";
-		databasePassword = "";
-		databaseURL = "";
+		databaseUsername = loginManager.getUsername();
+		databasePassword = loginManager.getPassword();
+		databaseURL = loginManager.getURL();
+		connectionCounter = 0;
+	}
+	
+	private DatabaseConnectionManager(DatabaseLoginManager loginManager) {
+		databaseUsername = loginManager.getUsername();
+		databasePassword = loginManager.getPassword();
+		databaseURL = loginManager.getURL();
 		connectionCounter = 0;
 	}
 	
@@ -26,6 +33,14 @@ class DatabaseConnectionManager {
 	static DatabaseConnectionManager getSharedInstance() {
 		if (DatabaseConnectionManager.sharedInstance == null) {
 			DatabaseConnectionManager.sharedInstance = new DatabaseConnectionManager();
+		}
+		
+		return DatabaseConnectionManager.sharedInstance;
+	}
+	
+	static DatabaseConnectionManager getSharedInstance(DatabaseLoginManager loginManager) {
+		if (DatabaseConnectionManager.sharedInstance == null) {
+			DatabaseConnectionManager.sharedInstance = new DatabaseConnectionManager(loginManager);
 		}
 		
 		return DatabaseConnectionManager.sharedInstance;

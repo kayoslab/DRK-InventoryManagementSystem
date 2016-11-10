@@ -1,5 +1,4 @@
 package presenter;
-import model.DatabaseWriteManager;
 import model.PasswordManager;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -7,8 +6,7 @@ import javax.swing.JFrame;
 
 public class SettingsPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
-	private DatabaseWriteManager writeManager = new DatabaseWriteManager();
-
+	private JFrame frame;
 	/**
 	 * Launch the application.
 	 */

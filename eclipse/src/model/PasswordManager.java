@@ -4,9 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class PasswordManager {
-	private DatabaseReadManager readManager = new DatabaseReadManager();
-	private DatabaseWriteManager writeManager = new DatabaseWriteManager();
-	
+
 	/**
 	 * Constructor
 	 */

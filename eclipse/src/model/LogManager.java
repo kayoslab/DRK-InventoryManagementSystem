@@ -1,10 +1,13 @@
 package model;
 import model.databaseCommunication.DatabaseValueManager;
 
-public class LogManager {
-	private DatabaseValueManager valueManager;
+public final class LogManager {
 	
-	public LogManager() {
-		this.valueManager = new DatabaseValueManager();
+	private LogManager() {
+		// Do nothing here -> Static implementation
+	}
+
+	private static DatabaseValueManager getValueManager() {
+		return new DatabaseValueManager();
 	}
 }
