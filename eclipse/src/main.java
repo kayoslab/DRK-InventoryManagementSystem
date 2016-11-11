@@ -6,11 +6,13 @@ public class main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		DatabaseLoginManager dblogin = new DatabaseLoginManager("Hallo","Welt","https://baum.wald/");
-		System.out.println(dblogin.getUsername());
-		System.out.println(dblogin.getPassword());
-		System.out.println(dblogin.getURL());
+		DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
+		if (dbloginManager.testDatabaseConnection()) {
+			// TODO: Show LoginPresenter
+			System.out.println("Database-Connection established.");
+		} else {
+			// TODO: Show SetupPresenter
+			System.out.println("Can't connect to database using the given credentials.");
+		}
 	}
-
 }

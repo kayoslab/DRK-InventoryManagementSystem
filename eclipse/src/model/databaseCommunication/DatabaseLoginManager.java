@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.sql.*;
 
 public class DatabaseLoginManager {
 	private String databaseUsername;
@@ -26,6 +27,11 @@ public class DatabaseLoginManager {
 	 * @return Boolean
 	 */
 	public DatabaseLoginManager(String username, String password, String url) {
+		File filePathInstance = new File(configLocation);
+		if (filePathInstance.exists()) {
+		    // File already exists
+			filePathInstance.delete();
+		}
 		this.databaseUsername = username;
 		this.databasePassword = password;
 		this.databaseURL = url;
@@ -91,8 +97,14 @@ public class DatabaseLoginManager {
 	 */
 	public Boolean testDatabaseConnection() {
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
-			// TODO: Implement connection test
-			return true;
+			try {
+				Connection connection = DriverManager.getConnection(this.databaseURL, this.databaseUsername, this.databasePassword);
+				if(!connection.isClosed() && connection != null){
+		            return true;
+		        }
+			} catch (SQLException exception) {
+				return false;
+			}
 		}
 		return false;
 	}
