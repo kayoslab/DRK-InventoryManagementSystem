@@ -2,6 +2,7 @@ package model;
 // Import for MD5 Hash
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import model.databaseObjects.*;
 
 public class PasswordManager {
 
@@ -17,7 +18,7 @@ public class PasswordManager {
 	 * @return Boolean
 	 */
 	public Boolean tryLogin(String username, String password) {
-		String databasePasswordHash = DatabaseReadManager.getPasswordFromDatabase(username);
+		String databasePasswordHash = DatabaseReadManager.getUser(username).passwordHash;
 		try {
 			if (this.generatePasswordHash(password) == databasePasswordHash) {
 				return true;
@@ -30,17 +31,19 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param String username, String currentPassword, String newPassword, Boolean initialize
+	 * @param String username, String currentPassword, String newPassword
 	 * @return Boolean
 	 */
-	public Boolean setNewPassword(String username, String currentPassword, String newPassword, Boolean initialized) {
+	public Boolean setNewPassword(String username, String currentPassword, String newPassword) {
 		if (this.validatePassword(newPassword)) {
 			if (this.tryLogin(username, currentPassword)) {
 				try {
 					String newPasswordHash = this.generatePasswordHash(newPassword);
+					User user = DatabaseReadManager.getUser(username);
+					user.passwordHash = newPasswordHash;
 					// Store this newPasswordHash into the database
 					// if completed proceed.
-					Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(username, newPasswordHash, initialized);
+					Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(user);
 					return passwordSuccesfullyChanged;
 				} catch (NoSuchAlgorithmException exception) {
 					// maybe do anything with the exception for missing md5 hash function
@@ -52,16 +55,19 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param String username, String newPassword, Boolean initialize
+	 * @param String username, String newPassword
 	 * @return Boolean
 	 */
-	public Boolean overrideCurrentPassword(String username, String newPassword, Boolean initialized) {
+	public Boolean overrideCurrentPassword(String username, String newPassword) {
 		if (this.validatePassword(newPassword)) {
 			try {
 				String newPasswordHash = this.generatePasswordHash(newPassword);
+				User user = DatabaseReadManager.getUser(username);
+				user.passwordHash = newPasswordHash;
+				user.passwordChanged = false;
 				// Store this newPasswordHash into the database
 				// if completed proceed.
-				Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(username, newPasswordHash, initialized);
+				Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(user);
 				return passwordSuccesfullyChanged;
 			} catch (NoSuchAlgorithmException exception) {
 				// maybe do anything with the exception for missing md5 hash function

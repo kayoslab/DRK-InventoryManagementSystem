@@ -16,13 +16,26 @@ public final class DatabaseReadManager {
 	
 	/**
 	 * @param String username
-	 * @return String
+	 * @return User
 	 */
-	public static String getPasswordFromDatabase(String username) {
+	public static User getUser(int id) {
 		DatabaseValueManager valueManager = DatabaseReadManager.getValueManager();
-		// get current password hash from Database and return for username
+		// get User from Database and return for id
 		String sqlStatement = "";
-		return "";
+		// fill with reasonable Data
+		return new User(id, "", "", "", "", false);
+	}
+	
+	/**
+	 * @param String username
+	 * @return User
+	 */
+	public static User getUser(String username) {
+		DatabaseValueManager valueManager = DatabaseReadManager.getValueManager();
+		// get User from Database and return for username
+		String sqlStatement = "";
+		// fill with reasonable Data
+		return new User(0, username, "", "", "", false);
 	}
 	
 	/**

@@ -19,14 +19,16 @@ public final class DatabaseWriteManager {
 	//================================================================================
 	
 	/**
-	 * @param String firstname, String name, String username, String password
+	 * @param User user
 	 * @return Boolean
 	 * 
-	 * Try to create a new User with given userdata and initial password.
+	 * Try to create a new User with a given User Struct.
+	 * The user.id will be 0 and should be ignored. 
+	 * The id field in the User Table is auto incremented.
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createUser(String firstname, String name, String username, String password) {
+	public static Boolean createUser(User user) {
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
 		try {
@@ -46,7 +48,34 @@ public final class DatabaseWriteManager {
 	}
 	
 	/**
-	 * @param String username, String password, Boolean initialized
+	 * @param String username
+	 * @return Boolean
+	 * 
+	 * Try to delete an existing User with given User Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean deleteUser(User user) {
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param User user
 	 * @return Boolean
 	 * 
 	 * Try to set a new Password into the Users DB Entry.
@@ -56,7 +85,65 @@ public final class DatabaseWriteManager {
 	 * his password on the next login or not.
 	 * 
 	 */
-	public static Boolean setPassword(String username, String password, Boolean initialized) {
+	public static Boolean setPassword(User user) {
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param User user
+	 * @return Boolean
+	 * 
+	 * Try to edit Data for an existing User with given User struct.
+	 * Change the data for user with user.id, because the username could be changed.
+	 * Returns a boolean Value, which indicates the outcome.
+	 *
+	 */
+	public static Boolean editUser(User user) {
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param User user, Group[] groups 
+	 * @return Boolean
+	 * 
+	 * Try to set Groups for an existing User with a User Struct.
+	 * This function iterates over a given Group Array and adds them to the User. 
+	 * It should also remove all existing Groups before adding them.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean setGroupsForUser(User user, Group[] groups) {
+		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
 		try {
@@ -76,19 +163,19 @@ public final class DatabaseWriteManager {
 	}
 	
 	//================================================================================
-	// endregion
+	// endregion User Management
 	// region Group Management
 	//================================================================================
 	
 	/**
-	 * @param String groupname
+	 * @param Group group
 	 * @return Boolean
 	 * 
-	 * Try to create a new Group with a given name.
+	 * Try to create a new Group with a given Group Struct.
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createGroup(String groupname) {
+	public static Boolean createGroup(Group group) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -109,14 +196,14 @@ public final class DatabaseWriteManager {
 	}
 	
 	/**
-	 * @param String groupname
+	 * @param Group group
 	 * @return Boolean
 	 * 
-	 * Try to delete an existing Group with a given name.
+	 * Try to delete an existing Group with a given Group Struct.
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean deleteGroup(String groupname) {
+	public static Boolean deleteGroup(Group group) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -137,14 +224,15 @@ public final class DatabaseWriteManager {
 	}
 	
 	/**
-	 * @param String groupname, String newGroupname
+	 * @param Group group
 	 * @return Boolean
 	 * 
-	 * Try to rename an existing Group with a given name.
+	 * Try to edit an existing Group with a given name.
+	 * Fetch the Group by its group.id because the groupname could be changed
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean editGroup(String groupname, String newGroupname) {
+	public static Boolean editGroup(Group group) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -165,43 +253,16 @@ public final class DatabaseWriteManager {
 	}
 	
 	/**
-	 * @param String groupname, Boolean isActive
+	 * @param Group group, GroupRight[] groupRights 
 	 * @return Boolean
 	 * 
-	 * Try to change the isActive state for an existing Group with a given name.
+	 * Try to set GroupRights for an existing Group with a given Group Struct.
+	 * This function iterates over a given GroupRight Array and adds them to the Group.
+	 * It should also remove all existing Group rights before adding them.
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean editGroup(String groupname, Boolean isActive) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
-		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
-	}
-	
-	/**
-	 * @param String groupname, GroupRight[] groupRights 
-	 * @return Boolean
-	 * 
-	 * Try to set GroupRights for an existing Group with a given name.
-	 * This function iterates over a given GroupRight Array and appends them to the Group. 
-	 * Returns a boolean Value, which indicates the outcome.
-	 * 
-	 */
-	public static Boolean setGroupRights(String groupname, GroupRight[] groupRights) {
+	public static Boolean setGroupRights(Group group, GroupRight[] groupRights) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -222,7 +283,7 @@ public final class DatabaseWriteManager {
 	}
 	
 	//================================================================================
-	// endregion
-	//
+	// endregion Group Management
+	// region 
 	//================================================================================
 }
