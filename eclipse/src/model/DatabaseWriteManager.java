@@ -130,5 +130,35 @@ public final class DatabaseWriteManager {
 		return false;
 	}
 	
+	/**
+	 * @param String groupname, String newGroupname
+	 * @return Boolean
+	 * 
+	 * Try to rename an existing Group with a given name.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean editGroup(String groupname, String newGroupname) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	
+	
 	
 }
