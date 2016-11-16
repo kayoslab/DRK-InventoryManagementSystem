@@ -16,8 +16,8 @@ public class PasswordManager {
 	 * @param int userid, String password
 	 * @return Boolean
 	 */
-	public Boolean tryLogin(int userid, String password) {
-		String databasePasswordHash = this.getPasswordHashFromDatabase(userid);
+	public Boolean tryLogin(String username, String password) {
+		String databasePasswordHash = DatabaseReadManager.getPasswordFromDatabase(username);
 		try {
 			if (this.generatePasswordHash(password) == databasePasswordHash) {
 				return true;
@@ -30,21 +30,42 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param int userid, String currentPassword, String newPassword
+	 * @param String username, String currentPassword, String newPassword, Boolean initialize
 	 * @return Boolean
 	 */
-	public Boolean setNewPassword(int userid, String currentPassword, String newPassword) {
+	public Boolean setNewPassword(String username, String currentPassword, String newPassword, Boolean initialized) {
 		if (this.validatePassword(newPassword)) {
-			if (this.tryLogin(userid, currentPassword)) {
+			if (this.tryLogin(username, currentPassword)) {
 				try {
 					String newPasswordHash = this.generatePasswordHash(newPassword);
 					// Store this newPasswordHash into the database
 					// if completed proceed.
-					// return true;
+					Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(username, newPasswordHash, initialized);
+					return passwordSuccesfullyChanged;
 				} catch (NoSuchAlgorithmException exception) {
 					// maybe do anything with the exception for missing md5 hash function
 					// on the current Operating System.
 				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * @param String username, String newPassword, Boolean initialize
+	 * @return Boolean
+	 */
+	public Boolean overrideCurrentPassword(String username, String newPassword, Boolean initialized) {
+		if (this.validatePassword(newPassword)) {
+			try {
+				String newPasswordHash = this.generatePasswordHash(newPassword);
+				// Store this newPasswordHash into the database
+				// if completed proceed.
+				Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(username, newPasswordHash, initialized);
+				return passwordSuccesfullyChanged;
+			} catch (NoSuchAlgorithmException exception) {
+				// maybe do anything with the exception for missing md5 hash function
+				// on the current Operating System.
 			}
 		}
 		return false;
@@ -88,15 +109,6 @@ public class PasswordManager {
 	        hexString.append(hex);
 	    }
 	    return hexString.toString();
-	}
-	
-	/**
-	 * @param int userid
-	 * @return String
-	 */
-	private String getPasswordHashFromDatabase(int userid) {
-		// get current password hash from Database and return for userid
-		return "";
 	}
 	
 }
