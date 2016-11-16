@@ -2,6 +2,7 @@ package model;
 import java.sql.SQLException;
 
 import model.databaseCommunication.DatabaseValueManager;
+import model.databaseObjects.*;
 
 public final class DatabaseWriteManager {
 	
@@ -13,8 +14,10 @@ public final class DatabaseWriteManager {
 		return new DatabaseValueManager();
 	}
 	
-	// MARK: - User Management
-
+	//================================================================================
+	// region User Management
+	//================================================================================
+	
 	/**
 	 * @param String firstname, String name, String username, String password
 	 * @return Boolean
@@ -72,7 +75,10 @@ public final class DatabaseWriteManager {
 		return false;
 	}
 	
-	// MARK: - Group Management
+	//================================================================================
+	// endregion
+	// region Group Management
+	//================================================================================
 	
 	/**
 	 * @param String groupname
@@ -158,7 +164,65 @@ public final class DatabaseWriteManager {
 		return false;
 	}
 	
+	/**
+	 * @param String groupname, Boolean isActive
+	 * @return Boolean
+	 * 
+	 * Try to change the isActive state for an existing Group with a given name.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean editGroup(String groupname, Boolean isActive) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
 	
+	/**
+	 * @param String groupname, GroupRight[] groupRights 
+	 * @return Boolean
+	 * 
+	 * Try to set GroupRights for an existing Group with a given name.
+	 * This function iterates over a given GroupRight Array and appends them to the Group. 
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean setGroupRights(String groupname, GroupRight[] groupRights) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
 	
-	
+	//================================================================================
+	// endregion
+	//
+	//================================================================================
 }

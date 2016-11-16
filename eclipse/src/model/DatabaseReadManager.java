@@ -1,5 +1,6 @@
 package model;
 import model.databaseCommunication.DatabaseValueManager;
+import model.databaseObjects.*;
 
 public final class DatabaseReadManager {
 	

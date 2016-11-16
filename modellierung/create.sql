@@ -68,7 +68,10 @@ CREATE TABLE `Material` (
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
    `creation` timestamp NOT NULL,
-   `silenceWarning` tinyint(1) unsigned NOT NULL
+   `silenceWarning` tinyint(1) unsigned NOT NULL,
+   CONSTRAINT `Constr_Stock_Type`
+       FOREIGN KEY `type_fk` (`type_id`) REFERENCES `Type` (`id`)
+       ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Stock` (
@@ -95,9 +98,6 @@ CREATE TABLE `Stock` (
        ON DELETE CASCADE ON UPDATE CASCADE,
    CONSTRAINT `Constr_Stock_Message`
        FOREIGN KEY `message_fk` (`message_id`) REFERENCES `Message` (`id`)
-       ON DELETE CASCADE ON UPDATE CASCADE,
-   CONSTRAINT `Constr_Stock_Type`
-       FOREIGN KEY `type_fk` (`type_id`) REFERENCES `Type` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';
 
