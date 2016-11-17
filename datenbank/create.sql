@@ -68,6 +68,7 @@ CREATE TABLE `StockObject` (
    `stkIntervall` int(10) unsigned NULL,
    `creation` timestamp NOT NULL,
    `silenceWarning` tinyint(1) unsigned NOT NULL,
+   `type_id` int(10) unsigned NOT NULL ,
    CONSTRAINT `Constr_Stock_Type`
        FOREIGN KEY `type_fk` (`type_id`) REFERENCES `Type` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE
@@ -85,12 +86,11 @@ CREATE TABLE `Stock` (
    `batchNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `creation` timestamp NOT NULL,
    `escalationAck` int(10) unsigned NOT NULL,
-   `material_id` int(10) unsigned NOT NULL,
+   `stockObject_id` int(10) unsigned NOT NULL,
    `location_id` int(10) unsigned NOT NULL,
-   `type_id` int(10) unsigned NOT NULL,
-   `message_id` int(10) unsigned NULL
-   CONSTRAINT `Constr_Stock_Material`
-       FOREIGN KEY `material_fk` (`material_id`) REFERENCES `Material` (`id`)
+   `message_id` int(10) unsigned NOT NULL,
+   CONSTRAINT `Constr_Stock_StockObject`
+       FOREIGN KEY `stockObject_fk` (`stockObject_id`) REFERENCES `StockObject` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE,
    CONSTRAINT `Constr_Stock_Location`
        FOREIGN KEY `location_fk` (`location_id`) REFERENCES `Location` (`id`)
@@ -109,14 +109,14 @@ CREATE TABLE `Logbook` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
     `date` TIMESTAMP NOT NULL,
-    `material_id` int(10) unsigned NULL,
-    `operation_id` int(10) unsigned NOT NULL,
-    `user_id` int(10) unsigned NOT NULL
+    `user_id` int(10) unsigned NOT NULL,
+    `stockObject_id` int(10) unsigned NOT NULL,
+    `operation_id` int(10) unsigned NULL,
     CONSTRAINT `Constr_Logbook_User`
         FOREIGN KEY `user_fk` (`user_id`) REFERENCES `User` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `Constr_Logbook_Material`
-        FOREIGN KEY `material_fk` (`material_id`) REFERENCES `Material` (`id`)
+    CONSTRAINT `Constr_Logbook_StockObject`
+        FOREIGN KEY `stockObject_fk` (`stockObject_id`) REFERENCES `StockObject` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT `Constr_Logbook_Operation`
         FOREIGN KEY `operation_fk` (`operation_id`) REFERENCES `Operation` (`id`)
