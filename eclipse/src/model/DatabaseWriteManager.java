@@ -284,6 +284,48 @@ public final class DatabaseWriteManager {
 	
 	//================================================================================
 	// endregion Group Management
+	// region StockObject
+	//================================================================================
+	
+	/**
+	 * @param StockObject stockObject
+	 * @return Boolean
+	 * 
+	 * Try to create a new StockObject with a given extended StockObject Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean createStockObject(StockObject stockObject) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement;
+		// Switch between different extended StockObject Types
+		if (stockObject.getClass() == Device.class) {
+			sqlStatement = "";
+		} else if (stockObject.getClass() == Material.class) {
+			sqlStatement = "";
+		} else {
+			return false;
+		}
+		
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	//================================================================================
+	// endregion StockObject
 	// region 
 	//================================================================================
 }
