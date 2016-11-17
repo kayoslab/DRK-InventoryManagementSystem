@@ -1,7 +1,6 @@
 package model.databaseObjects;
 /*
  * Struct-like object Class for Users
- *  
  */
 public class User {
 	public final int id;

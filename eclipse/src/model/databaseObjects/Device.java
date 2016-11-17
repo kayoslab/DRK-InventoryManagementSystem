@@ -2,7 +2,6 @@ package model.databaseObjects;
 /*
  * Struct-like object Class for StockObjects 
  * Extends Abstract Class StockObject
- *  
  */
 public class Device extends StockObject {
 	public final String serailNumber;

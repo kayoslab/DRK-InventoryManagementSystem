@@ -284,6 +284,96 @@ public final class DatabaseWriteManager {
 	
 	//================================================================================
 	// endregion Group Management
+	// region Location
+	//================================================================================
+	
+	/**
+	 * @param Location location
+	 * @return Boolean
+	 * 
+	 * Try to create a new Location with a given Location Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean createLocation(Location location) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param Location location
+	 * @return Boolean
+	 * 
+	 * Try to delete an existing Location with a given Location Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean deleteLocation(Location location) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param Location location
+	 * @return Boolean
+	 * 
+	 * Try to edit an existing Location with a given Location Struct.
+	 * Fetch the Location by its location.id because the locationname could be changed
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean editLocation(Location location) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	//================================================================================
+	// endregion Location
 	// region StockObject
 	//================================================================================
 	
@@ -365,8 +455,54 @@ public final class DatabaseWriteManager {
 		return false;
 	}
 	
+	/**
+	 * @param StockObject stockObject
+	 * @return Boolean
+	 * 
+	 * Try to edit an existing StockObject with a given extended StockObject Struct.
+	 * Fetch the StockObject by its stockObject.id because the objectname could be changed
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean editStockObject(StockObject stockObject) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement;
+		// Switch between different extended StockObject Types
+		if (stockObject.getClass() == Device.class) {
+			sqlStatement = "";
+		} else if (stockObject.getClass() == MedicalMaterial.class) {
+			sqlStatement = "";
+		} else if (stockObject.getClass() == ConsumableMaterial.class) {
+			sqlStatement = "";
+		} else {
+			return false;
+		}
+		
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
 	//================================================================================
 	// endregion StockObject
-	// region 
+	// region Stock
+	//================================================================================
+	
+	
+	
+	//================================================================================
+	// endregion Stock
 	//================================================================================
 }

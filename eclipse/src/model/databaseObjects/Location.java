@@ -1,13 +1,12 @@
 package model.databaseObjects;
-/*
- * Struct-like object Class for Group Rights
- */
-public class GroupRight {
+
+public class Location {
 	public final int id;
 	public final String title;
 	
-	GroupRight(int id, String title) {
+	Location(int id, String title) {
 		this.id = id;
 		this.title = title;
 	}
+
 }

@@ -1,7 +1,6 @@
 package model.databaseObjects;
 /*
  * Abstract Struct-like object Class for StockObjects
- *  
  */
 public abstract class StockObject {
 	public enum Type {
