@@ -500,12 +500,128 @@ public final class DatabaseWriteManager {
 	
 	//================================================================================
 	// endregion StockObject
-	// region Stock
+	// region StockValue
 	//================================================================================
 	
+	/**
+	 * @param StockObjectValue stockObjectValue
+	 * @return Boolean
+	 * 
+	 * Try to create a new StockObjectValue with a given extended StockObjectValue Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean createStockObjectValue(StockObjectValue stockObjectValue) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement;
+		// Switch between different extended StockObject Types
+		if (stockObjectValue.getClass() == DeviceValue.class) {
+			sqlStatement = "";
+		} else if (stockObjectValue.getClass() == MedicalMaterialValue.class) {
+			sqlStatement = "";
+		} else if (stockObjectValue.getClass() == ConsumableMaterialValue.class) {
+			sqlStatement = "";
+		} else {
+			return false;
+		}
+		
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
 	
+	/**
+	 * @param StockObjectValue stockObjectValue
+	 * @return Boolean
+	 * 
+	 * Try to delete a StockObjectValue with a given extended StockObjectValue Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean deleteStockObjectValue(StockObjectValue stockObjectValue) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement;
+		// Switch between different extended StockObject Types
+		if (stockObjectValue.getClass() == DeviceValue.class) {
+			sqlStatement = "";
+		} else if (stockObjectValue.getClass() == MedicalMaterialValue.class) {
+			sqlStatement = "";
+		} else if (stockObjectValue.getClass() == ConsumableMaterialValue.class) {
+			sqlStatement = "";
+		} else {
+			return false;
+		}
+		
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param StockObjectValue stockObjectValue
+	 * @return Boolean
+	 * 
+	 * Try to edit an existing StockObjectValue with a given extended StockObjectValue Struct.
+	 * Fetch the StockObjectValue by its stockObjectValue.id
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement;
+		// Switch between different extended StockObject Types
+		if (stockObjectValue.getClass() == DeviceValue.class) {
+			sqlStatement = "";
+		} else if (stockObjectValue.getClass() == MedicalMaterialValue.class) {
+			sqlStatement = "";
+		} else if (stockObjectValue.getClass() == ConsumableMaterialValue.class) {
+			sqlStatement = "";
+		} else {
+			return false;
+		}
+		
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
 	
 	//================================================================================
-	// endregion Stock
+	// endregion StockValue
 	//================================================================================
 }
