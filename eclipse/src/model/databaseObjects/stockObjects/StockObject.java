@@ -9,12 +9,14 @@ public abstract class StockObject extends DatabaseObject {
 	public final String description;
 	public final Boolean silencedWarnings;
 	public final DatabaseObject.StockObjectType type;
+	public final int totalVolume;
 
-	public StockObject(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type) {
+	public StockObject(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume) {
 		super(id);
 		this.title = title;
 		this.description = description;
 		this.silencedWarnings = silencedWarnings;
 		this.type = type;
+		this.totalVolume = totalVolume;
 	}
 }

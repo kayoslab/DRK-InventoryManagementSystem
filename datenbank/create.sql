@@ -64,6 +64,7 @@ CREATE TABLE `StockObject` (
    `minimumStock` int(10) unsigned NULL,
    `quotaStock` int(10) unsigned NULL,
    `batchSize` int(10) unsigned NULL,
+   `totalVolume` int(10) unsigned NULL,
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
    `creation` timestamp NOT NULL,

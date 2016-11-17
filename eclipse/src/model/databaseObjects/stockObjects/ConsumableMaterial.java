@@ -6,8 +6,8 @@ import model.databaseObjects.DatabaseObject;
  */
 public class ConsumableMaterial extends Material {
 	
-	public ConsumableMaterial(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int batchSize, int minimumStock, int quotaStock) {
-		super(id, title, description, silencedWarnings, type, batchSize, minimumStock, quotaStock);
+	public ConsumableMaterial(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume, int batchSize, int minimumStock, int quotaStock) {
+		super(id, title, description, silencedWarnings, type, totalVolume, batchSize, minimumStock, quotaStock);
 	}
 
 }

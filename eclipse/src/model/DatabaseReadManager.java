@@ -1,7 +1,7 @@
 package model;
 import model.databaseCommunication.DatabaseValueManager;
 import model.databaseObjects.accessControl.*;
-// import model.databaseObjects.stockObjects.*;
+import model.databaseObjects.stockObjects.*;
 // import model.databaseObjects.stockValues.*;
 
 public final class DatabaseReadManager {
@@ -54,4 +54,17 @@ public final class DatabaseReadManager {
 		return false;
 	}
 	
+	/**
+	 * @param 
+	 * @return Boolean
+	 * 
+	 * Check if a user has already changed his password since
+	 * it was modifies by an admin
+	 */
+	public static StockObject[] generateInventory() {
+		DatabaseValueManager valueManager = DatabaseReadManager.getValueManager();
+		// get current password hash from Database and return for username
+		String sqlStatement = "";
+		return new StockObject[0];
+	}
 }
