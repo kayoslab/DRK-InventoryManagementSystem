@@ -1,7 +1,6 @@
 package model.databaseObjects;
 /*
  * Struct-like object Class for Groups
- *  
  */
 public class Group {
 	public final int id;

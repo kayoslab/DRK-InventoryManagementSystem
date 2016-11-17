@@ -63,7 +63,6 @@ CREATE TABLE `StockObject` (
    `description` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `minimumStock` int(10) unsigned NULL,
    `quotaStock` int(10) unsigned NULL,
-   `currentStock` int(10) unsigned NULL,
    `batchSize` int(10) unsigned NULL,
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
