@@ -1,8 +1,11 @@
 package model;
 import java.sql.SQLException;
-
 import model.databaseCommunication.DatabaseValueManager;
 import model.databaseObjects.*;
+import model.databaseObjects.accessControl.*;
+import model.databaseObjects.environment.*;
+import model.databaseObjects.stockObjects.*;
+import model.databaseObjects.stockValues.*;
 
 public final class DatabaseWriteManager {
 	

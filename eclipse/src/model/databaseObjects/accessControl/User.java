@@ -1,9 +1,10 @@
-package model.databaseObjects;
+package model.databaseObjects.accessControl;
+import model.databaseObjects.DatabaseObject;
+
 /*
  * Struct-like object Class for Users
  */
-public class User {
-	public final int id;
+public class User extends DatabaseObject {
 	public final String username;
 	public final String firstName;
 	public final String name;
@@ -11,7 +12,7 @@ public class User {
 	public Boolean passwordChanged;
 	
 	public User(int id, String username, String firstname, String name, String passwordHash, Boolean passwordChanged) {
-		this.id = id;
+		super(id);
 		this.username = username;
 		this.firstName = firstname;
 		this.name = name;

@@ -2,7 +2,7 @@ package model;
 // Import for MD5 Hash
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import model.databaseObjects.*;
+import model.databaseObjects.accessControl.*;
 
 public class PasswordManager {
 

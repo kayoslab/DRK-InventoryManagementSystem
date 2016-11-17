@@ -1,4 +1,4 @@
-package model.databaseObjects;
+package model.databaseObjects.stockObjects;
 /*
  * Struct-like object Class for StockObjects 
  * Extends Abstract Class StockObject
