@@ -1,6 +1,6 @@
 # ER-Model
 
-![ER-Model](./UML/ER/ER-Model.png)
+![ER-Model](./../modellierung/UML/ER/ER-Model.png)
 Vorläufiger Entwurf des ER-Models, **request-for-comments**.
 
 # SQL-Aufruf

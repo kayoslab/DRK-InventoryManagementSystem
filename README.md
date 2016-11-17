@@ -54,14 +54,18 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 - [20.10.2016](./logbook/02-meeting-20-10-2016.md)
 - [25.10.2016](./logbook/03-meeting-25-10-2016.md) **(Kick-Off Meeting)**
 - [28.10.2016](./logbook/04-meeting-28-10-2016.md)
+- 15.11.2016 **(1. Meilenstein Meeting)**
+- 29.11.2016 **(2. Meilenstein Meeting)**
+- 20.12.2016 **(3. Meilenstein Meeting)**
 
 ## 4.2 Hintergrund
-- [Anforderungen](./modellierung/requirements.md) **(DOING)**
+- [Anforderungen](./modellierung/requirements.md) **(RFC)**
 - [Use-Case-Beschreibung](./modellierung/usecases.md) **(DOING)**
 - Use-Case-Diagramme
+- [Sequenzdiagramme](./modellierung/UML/Sequenz) **(RFC)**
 
 ## 4.3 Softwarearchitektur
-- [SQL-Aufruf](./modellierung/sql.md) **(RFC)**
+- [SQL-Aufruf](./datenbank/sql.md) **(DOING)**
 - [ER-Model](./modellierung/UML/ER/ER-Model.jpg) **(ACK)**
 - [Architekturmuster](./modellierung/architecture.md) **(ACK)**
 - [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(DOING)**
