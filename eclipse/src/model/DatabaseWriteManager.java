@@ -17,6 +17,75 @@ public final class DatabaseWriteManager {
 		return new DatabaseValueManager();
 	}
 	
+	/**
+	 * @param DatabaseObject object
+	 * @return Boolean
+	 * 
+	 * Try to create a new Database Entry with a given DatabaseObject Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean createObject(DatabaseObject object) {
+		if (object instanceof User) {
+			return DatabaseWriteManager.createUser((User) object);
+		} else if (object instanceof Group) {
+			return DatabaseWriteManager.createGroup((Group) object);
+		} else if (object  instanceof Location) {
+			return DatabaseWriteManager.createLocation((Location) object);
+		} else if (object instanceof StockObject) {
+			return DatabaseWriteManager.createStockObject((StockObject) object);
+		} else if (object instanceof StockObjectValue) {
+			return DatabaseWriteManager.createStockObjectValue((StockObjectValue) object);
+		}
+		return false;
+	}
+	
+	/**
+	 * @param DatabaseObject object
+	 * @return Boolean
+	 * 
+	 * Try to delete an existing Database Entry with a given DatabaseObject Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean deleteObject(DatabaseObject object) {
+		if (object instanceof User) {
+			return DatabaseWriteManager.deleteUser((User) object);
+		} else if (object instanceof Group) {
+			return DatabaseWriteManager.deleteGroup((Group) object);
+		} else if (object  instanceof Location) {
+			return DatabaseWriteManager.deleteLocation((Location) object);
+		} else if (object instanceof StockObject) {
+			return DatabaseWriteManager.deleteStockObject((StockObject) object);
+		} else if (object instanceof StockObjectValue) {
+			return DatabaseWriteManager.deleteStockObjectValue((StockObjectValue) object);
+		}
+		return false;
+	}
+	
+	/**
+	 * @param DatabaseObject object
+	 * @return Boolean
+	 * 
+	 * Try to update an existing Database Entry with a given DatabaseObject Struct.
+	 * Returns a boolean Value, which indicates the outcome.
+	 * 
+	 */
+	public static Boolean editObject(DatabaseObject object) {
+		if (object instanceof User) {
+			return DatabaseWriteManager.editUser((User) object);
+		} else if (object instanceof Group) {
+			return DatabaseWriteManager.editGroup((Group) object);
+		} else if (object  instanceof Location) {
+			return DatabaseWriteManager.editLocation((Location) object);
+		} else if (object instanceof StockObject) {
+			return DatabaseWriteManager.editStockObject((StockObject) object);
+		} else if (object instanceof StockObjectValue) {
+			return DatabaseWriteManager.editStockObjectValue((StockObjectValue) object);
+		}
+		return false;
+	}
+	
 	//================================================================================
 	// region User Management
 	//================================================================================
@@ -31,7 +100,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createUser(User user) {
+	private static Boolean createUser(User user) {
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
 		try {
@@ -58,7 +127,35 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean deleteUser(User user) {
+	private static Boolean deleteUser(User user) {
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
+		String sqlStatement = "";
+		try {
+			// execute Database Update
+			int updateResult = valueManager.executeUpdate(sqlStatement);
+			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// or 0 for SQL statements that return nothing.
+			if (updateResult > 0) {
+				return true;
+			}
+		} catch (SQLException exception) {
+			// uncomment for debugging SQL-Statements
+			// System.out.println(exception.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param User user
+	 * @return Boolean
+	 * 
+	 * Try to edit Data for an existing User with given User struct.
+	 * Change the data for user with user.id, because the username could be changed.
+	 * Returns a boolean Value, which indicates the outcome.
+	 *
+	 */
+	private static Boolean editUser(User user) {
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
 		try {
@@ -89,34 +186,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setPassword(User user) {
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
-		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
-	}
-	
-	/**
-	 * @param User user
-	 * @return Boolean
-	 * 
-	 * Try to edit Data for an existing User with given User struct.
-	 * Change the data for user with user.id, because the username could be changed.
-	 * Returns a boolean Value, which indicates the outcome.
-	 *
-	 */
-	public static Boolean editUser(User user) {
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
 		try {
@@ -178,7 +247,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createGroup(Group group) {
+	private static Boolean createGroup(Group group) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -206,7 +275,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean deleteGroup(Group group) {
+	private static Boolean deleteGroup(Group group) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -235,7 +304,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean editGroup(Group group) {
+	private static Boolean editGroup(Group group) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -298,7 +367,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createLocation(Location location) {
+	private static Boolean createLocation(Location location) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -326,7 +395,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean deleteLocation(Location location) {
+	private static Boolean deleteLocation(Location location) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -355,7 +424,7 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean editLocation(Location location) {
+	private static Boolean editLocation(Location location) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
@@ -388,17 +457,21 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createStockObject(StockObject stockObject) {
+	private static Boolean createStockObject(StockObject stockObject) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObject Types
-		if (stockObject.getClass() == Device.class) {
+		if (stockObject instanceof Device) {
 			sqlStatement = "";
-		} else if (stockObject.getClass() == MedicalMaterial.class) {
-			sqlStatement = "";
-		} else if (stockObject.getClass() == ConsumableMaterial.class) {
-			sqlStatement = "";
+		} else if (stockObject instanceof Material) {
+			if (stockObject instanceof MedicalMaterial) {
+				sqlStatement = "";
+			} else if (stockObject instanceof ConsumableMaterial) {
+				sqlStatement = "";
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -427,17 +500,21 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean deleteStockObject(StockObject stockObject) {
+	private static Boolean deleteStockObject(StockObject stockObject) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObject Types
-		if (stockObject.getClass() == Device.class) {
+		if (stockObject instanceof Device) {
 			sqlStatement = "";
-		} else if (stockObject.getClass() == MedicalMaterial.class) {
-			sqlStatement = "";
-		} else if (stockObject.getClass() == ConsumableMaterial.class) {
-			sqlStatement = "";
+		} else if (stockObject instanceof Material) {
+			if (stockObject instanceof MedicalMaterial) {
+				sqlStatement = "";
+			} else if (stockObject instanceof ConsumableMaterial) {
+				sqlStatement = "";
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -467,17 +544,21 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean editStockObject(StockObject stockObject) {
+	private static Boolean editStockObject(StockObject stockObject) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObject Types
-		if (stockObject.getClass() == Device.class) {
+		if (stockObject instanceof Device) {
 			sqlStatement = "";
-		} else if (stockObject.getClass() == MedicalMaterial.class) {
-			sqlStatement = "";
-		} else if (stockObject.getClass() == ConsumableMaterial.class) {
-			sqlStatement = "";
+		} else if (stockObject instanceof Material) {
+			if (stockObject instanceof MedicalMaterial) {
+				sqlStatement = "";
+			} else if (stockObject instanceof ConsumableMaterial) {
+				sqlStatement = "";
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -511,17 +592,21 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean createStockObjectValue(StockObjectValue stockObjectValue) {
+	private static Boolean createStockObjectValue(StockObjectValue stockObjectValue) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
-		// Switch between different extended StockObject Types
-		if (stockObjectValue.getClass() == DeviceValue.class) {
+		// Switch between different extended StockObjectValue Types
+		if (stockObjectValue instanceof DeviceValue) {
 			sqlStatement = "";
-		} else if (stockObjectValue.getClass() == MedicalMaterialValue.class) {
-			sqlStatement = "";
-		} else if (stockObjectValue.getClass() == ConsumableMaterialValue.class) {
-			sqlStatement = "";
+		} else if (stockObjectValue instanceof MaterialValue) {
+			if (stockObjectValue instanceof MedicalMaterialValue) {
+				sqlStatement = "";
+			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+				sqlStatement = "";
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -550,17 +635,21 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean deleteStockObjectValue(StockObjectValue stockObjectValue) {
+	private static Boolean deleteStockObjectValue(StockObjectValue stockObjectValue) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
-		// Switch between different extended StockObject Types
-		if (stockObjectValue.getClass() == DeviceValue.class) {
+		// Switch between different extended StockObjectValue Types
+		if (stockObjectValue instanceof DeviceValue) {
 			sqlStatement = "";
-		} else if (stockObjectValue.getClass() == MedicalMaterialValue.class) {
-			sqlStatement = "";
-		} else if (stockObjectValue.getClass() == ConsumableMaterialValue.class) {
-			sqlStatement = "";
+		} else if (stockObjectValue instanceof MaterialValue) {
+			if (stockObjectValue instanceof MedicalMaterialValue) {
+				sqlStatement = "";
+			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+				sqlStatement = "";
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -590,17 +679,21 @@ public final class DatabaseWriteManager {
 	 * Returns a boolean Value, which indicates the outcome.
 	 * 
 	 */
-	public static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
+	private static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
-		// Switch between different extended StockObject Types
-		if (stockObjectValue.getClass() == DeviceValue.class) {
+		// Switch between different extended StockObjectValue Types
+		if (stockObjectValue instanceof DeviceValue) {
 			sqlStatement = "";
-		} else if (stockObjectValue.getClass() == MedicalMaterialValue.class) {
-			sqlStatement = "";
-		} else if (stockObjectValue.getClass() == ConsumableMaterialValue.class) {
-			sqlStatement = "";
+		} else if (stockObjectValue instanceof MaterialValue) {
+			if (stockObjectValue instanceof MedicalMaterialValue) {
+				sqlStatement = "";
+			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+				sqlStatement = "";
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
