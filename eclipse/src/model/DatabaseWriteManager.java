@@ -18,7 +18,7 @@ public final class DatabaseWriteManager {
 	}
 	
 	/**
-	 * @param DatabaseObject object
+	 * @param databaseObjects.DatabaseObject object
 	 * @return Boolean
 	 * 
 	 * Try to create a new Database Entry with a given DatabaseObject Struct.
@@ -101,22 +101,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createUser(User user) {
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -128,22 +115,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteUser(User user) {
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -156,22 +130,9 @@ public final class DatabaseWriteManager {
 	 *
 	 */
 	private static Boolean editUser(User user) {
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -186,22 +147,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setPassword(User user) {
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -215,23 +163,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setGroupsForUser(User user, Group[] groups) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	//================================================================================
@@ -248,23 +182,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createGroup(Group group) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -276,23 +196,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteGroup(Group group) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -305,23 +211,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editGroup(Group group) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -335,23 +227,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setGroupRights(Group group, GroupRight[] groupRights) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	//================================================================================
@@ -368,23 +246,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createLocation(Location location) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -396,23 +260,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteLocation(Location location) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -425,23 +274,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editLocation(Location location) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement = "";
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	//================================================================================
@@ -458,8 +292,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createStockObject(StockObject stockObject) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
@@ -475,21 +307,8 @@ public final class DatabaseWriteManager {
 		} else {
 			return false;
 		}
-		
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -501,8 +320,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteStockObject(StockObject stockObject) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
@@ -518,21 +335,8 @@ public final class DatabaseWriteManager {
 		} else {
 			return false;
 		}
-		
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -545,8 +349,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editStockObject(StockObject stockObject) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
@@ -562,21 +364,8 @@ public final class DatabaseWriteManager {
 		} else {
 			return false;
 		}
-		
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	//================================================================================
@@ -593,8 +382,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createStockObjectValue(StockObjectValue stockObjectValue) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
@@ -610,21 +397,8 @@ public final class DatabaseWriteManager {
 		} else {
 			return false;
 		}
-		
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -636,8 +410,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteStockObjectValue(StockObjectValue stockObjectValue) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
@@ -653,21 +425,8 @@ public final class DatabaseWriteManager {
 		} else {
 			return false;
 		}
-		
-		try {
-			// execute Database Update
-			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
-			// or 0 for SQL statements that return nothing.
-			if (updateResult > 0) {
-				return true;
-			}
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return false;
-		}
-		return false;
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
 	/**
@@ -680,8 +439,6 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
-		// Get a shared Instance of the DatabaseValueManager
-		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		String sqlStatement;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
@@ -697,11 +454,29 @@ public final class DatabaseWriteManager {
 		} else {
 			return false;
 		}
-		
+
+		return DatabaseWriteManager.executeUpdate(sqlStatement);
+	}
+	
+	//================================================================================
+	// endregion StockValue
+	//================================================================================
+
+	/**
+	 * @param String sqlStatement
+	 * @return Boolean
+	 *
+	 * try to execute Update on DatabaseValueManager
+	 * Returns a boolean Value, which indicates the outcome.
+	 *
+	 */
+	private static Boolean executeUpdate(String sqlStatement) {
+		// Get a shared Instance of the DatabaseValueManager
+		DatabaseValueManager valueManager = DatabaseWriteManager.getValueManager();
 		try {
 			// execute Database Update
 			int updateResult = valueManager.executeUpdate(sqlStatement);
-			// returns either the row count for SQL Data Manipulation Language (DML) statements 
+			// returns either the row count for SQL Data Manipulation Language (DML) statements
 			// or 0 for SQL statements that return nothing.
 			if (updateResult > 0) {
 				return true;
@@ -713,8 +488,4 @@ public final class DatabaseWriteManager {
 		}
 		return false;
 	}
-	
-	//================================================================================
-	// endregion StockValue
-	//================================================================================
 }
