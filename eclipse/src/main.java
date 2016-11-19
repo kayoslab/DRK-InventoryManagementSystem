@@ -11,7 +11,7 @@ public class main {
 			// TODO: Show LoginPresenter
 			System.out.println("Database-Connection established.");
 		} else {
-			// TODO: Show SetupPresenter
+			// TODO: Show SetupPresenter baehm
 			System.out.println("Can't connect to database using the given credentials.");
 		}
 	}
