@@ -376,12 +376,15 @@ public final class DatabaseWriteManager {
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
-			sqlStatement = "";
+			sqlStatement = "DELETE FROM `StockObject` WHERE `id` = "
+					+ stockObject.id + ";";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
-				sqlStatement = "";
+				sqlStatement = "DELETE FROM `StockObject` WHERE `id` = "
+						+ stockObject.id + ";";
 			} else if (stockObject instanceof ConsumableMaterial) {
-				sqlStatement = "";
+				sqlStatement = "DELETE FROM `StockObject` WHERE `id` = "
+						+ stockObject.id + ";";
 			} else {
 				return false;
 			}
@@ -405,12 +408,34 @@ public final class DatabaseWriteManager {
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
-			sqlStatement = "";
+			Device device = (Device) stockObject;
+			//Type ID 1 = Device
+			sqlStatement = "UPDATE `StockObject` SET `title` = '" + device.title 
+					+ "', `description` = '" + device.description + "', `mtkIntervall` = " 
+					+ device.mtkIntervall + ", `stkIntervall` = " + device.stkIntervall 
+					+ ", silenceWarning = "	+ device.silencedWarnings + " WHERE `id` = " 
+					+ stockObject.id + ";";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
-				sqlStatement = "";
+				MedicalMaterial medmat = (MedicalMaterial) stockObject;
+				//Type ID 2 = MedicalMaterial
+				sqlStatement = "UPDATE `StockObject` SET `title` = '" + medmat.title 
+						+ "', `description` = '" + medmat.description + "', `minimumStock` = " 
+						+ medmat.minimumStock + ", `quotaStock` = " + medmat.quotaStock
+						+ ", `batchSize` = " + medmat.batchSize
+						+ ", `totalVolume` = " + medmat.totalVolume
+						+ ", silenceWarning = "	+ medmat.silencedWarnings + " WHERE `id` = " 
+						+ stockObject.id + ";";
 			} else if (stockObject instanceof ConsumableMaterial) {
-				sqlStatement = "";
+				ConsumableMaterial consmat = (ConsumableMaterial) stockObject;
+				//Type ID 3 = ConsumableMaterial
+				sqlStatement = "UPDATE `StockObject` SET `title` = '" + consmat.title 
+						+ "', `description` = '" + consmat.description + "', `minimumStock` = " 
+						+ consmat.minimumStock + ", `quotaStock` = " + consmat.quotaStock
+						+ ", `batchSize` = " + consmat.batchSize
+						+ ", `totalVolume` = " + consmat.totalVolume
+						+ ", silenceWarning = "	+ consmat.silencedWarnings + " WHERE `id` = " 
+						+ stockObject.id + ";";
 			} else {
 				return false;
 			}
