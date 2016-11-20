@@ -52,7 +52,7 @@ CREATE TABLE `User` (
     `username` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
     `firstname` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL,
     `name` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL,
-    `creation` timestamp NOT NULL,
+    `creation` datetime NOT NULL,
     `password` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL,
     `passwordChanged` tinyint(1) unsigned NOT NULL
 ) COLLATE 'latin1_german2_ci';
@@ -100,7 +100,7 @@ CREATE TABLE `StockObject` (
    `totalVolume` int(10) unsigned NULL,
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
-   `creation` timestamp NOT NULL,
+   `creation` datetime NOT NULL,
    `silenceWarning` tinyint(1) unsigned NOT NULL,
    `type_id` int(10) unsigned NOT NULL ,
    CONSTRAINT `Constr_Stock_Type`
@@ -118,7 +118,7 @@ CREATE TABLE `Stock` (
    `serialNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `batchNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `creation` timestamp NOT NULL,
+   `creation` datetime NOT NULL,
    `escalationAck` int(10) unsigned NOT NULL,
    `stockObject_id` int(10) unsigned NOT NULL,
    `location_id` int(10) unsigned NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE `Operation` (
 CREATE TABLE `Logbook` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `date` TIMESTAMP NOT NULL,
+    `date` datetime NOT NULL,
     `user_id` int(10) unsigned NOT NULL,
     `stockObject_id` int(10) unsigned NOT NULL,
     `operation_id` int(10) unsigned NULL,
