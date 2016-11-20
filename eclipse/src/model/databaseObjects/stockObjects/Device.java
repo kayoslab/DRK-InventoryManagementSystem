@@ -6,19 +6,14 @@ import model.databaseObjects.DatabaseObject;
  * Extends Abstract Class StockObject
  */
 public class Device extends StockObject {
-	public final String serailNumber;
-	public final String inventoryNumber;
-	public final String umdns;
+	
 	public final int mtkIntervall;
 	public final int stkIntervall;
 		
 	public Device(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume,
-				  String serialNumber, String inventoryNumber, String umdns, int mtkIntervall, int stkIntervall) { 
+				  int mtkIntervall, int stkIntervall) { 
 		super(id, title, description, silencedWarnings, type, totalVolume);
 		
-		this.serailNumber = serialNumber;
-		this.inventoryNumber = inventoryNumber;
-		this.umdns = umdns;
 		this.mtkIntervall = mtkIntervall;
 		this.stkIntervall = stkIntervall;
 	}

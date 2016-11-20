@@ -460,23 +460,51 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createStockObjectValue(StockObjectValue stockObjectValue) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		String sqlSelectStatement = "";
 		String sqlStatement;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
-			sqlStatement = "";
+			DeviceValue deviceValue = (DeviceValue) stockObjectValue; 
+			sqlStatement = "INSERT INTO `Stock` VALUES(0,"
+					+ stockObjectValue.volume +  ", NULL, '" + sdf.format(deviceValue.mtkDate)
+					+ "', '" + sdf.format(deviceValue.stkDate) + "', '" + deviceValue.inventoryNumber
+					+ "', '" + deviceValue.serialNumber + "', '" + deviceValue.umdns + "', NULL, '" 
+					+ sdf.format(timestamp) + "', 0, " + stockObjectValue.stockObjectID + ", "
+					+ stockObjectValue.locationID + ", " + stockObjectValue.messageID + ");";
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
-				sqlStatement = "";
+				MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue; 
+				sqlStatement = "INSERT INTO `Stock` VALUES(0,"
+						+ stockObjectValue.volume +  ", '"
+						+ sdf.format(medicalValue.date)+ "', NULL, NULL, NULL, NULL, NULL, '"
+						+ medicalValue.batchNumber + "', '" 
+						+ sdf.format(timestamp) + "', 0, " 
+						+ stockObjectValue.stockObjectID + ", "
+						+ stockObjectValue.locationID + ", " 
+						+ stockObjectValue.messageID + ");";
 			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-				sqlStatement = "";
+				ConsumableMaterialValue consumableValue = (ConsumableMaterialValue) stockObjectValue; 
+				sqlStatement = "INSERT INTO `Stock` VALUES(0,"
+						+ stockObjectValue.volume +  ", '"
+						+ sdf.format(consumableValue.date)+ "', NULL, NULL, NULL, NULL, NULL, '"
+						+ consumableValue.batchNumber + "', '" 
+						+ sdf.format(timestamp) + "', 0, " 
+						+ stockObjectValue.stockObjectID + ", "
+						+ stockObjectValue.locationID + ", " 
+						+ stockObjectValue.messageID + ");";
 			} else {
 				return false;
 			}
 		} else {
 			return false;
 		}
-
-		return DatabaseWriteManager.executeUpdate(sqlStatement);
+		if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
+			sqlStatement = "UPDATE `StockObject` SET `totalVolume` = `totalVolume` + "
+					+ stockObjectValue.volume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+			return DatabaseWriteManager.executeUpdate(sqlStatement);
+		}
+		return false;
 	}
 	
 	/**
