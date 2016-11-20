@@ -1,5 +1,8 @@
 package model;
+import java.sql.Timestamp;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
 import model.databaseCommunication.DatabaseValueManager;
 import model.databaseObjects.*;
 import model.databaseObjects.accessControl.*;
@@ -8,6 +11,7 @@ import model.databaseObjects.stockObjects.*;
 import model.databaseObjects.stockValues.*;
 
 public final class DatabaseWriteManager {
+	static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	private DatabaseWriteManager() {
 		// Do nothing here -> Static implementation
@@ -101,8 +105,12 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createUser(User user) {
-		String sqlStatement = "";
-
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		
+		String sqlStatement = "INSERT INTO `User`"
+				+ "(VALUES(NULL, '" + user.username + "', '" 
+				+ user.firstName +"', '" + user.name + "', " + sdf.format(timestamp) 
+				+ ", '"	+ user.passwordHash + "','');";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -147,8 +155,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setPassword(User user) {
-		String sqlStatement = "";
-
+		String sqlStatement = "UPDATE `User` SET `password` = '" 
+				+ user.passwordHash + "' WHERE `id` = " + user.id;
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -164,7 +172,6 @@ public final class DatabaseWriteManager {
 	 */
 	public static Boolean setGroupsForUser(User user, Group[] groups) {
 		String sqlStatement = "";
-
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -182,8 +189,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createGroup(Group group) {
-		String sqlStatement = "";
-
+		String sqlStatement = "INSERT INTO `Group`"
+				+ "(VALUES(NULL, '" + group.title + "', '" + group.isActive + "');";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -196,8 +203,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteGroup(Group group) {
-		String sqlStatement = "";
-
+		String sqlStatement = "DELETE FROM `Group` WHERE `id` = "
+				+ group.id;
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -211,7 +218,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editGroup(Group group) {
-		String sqlStatement = "";
+		String sqlStatement = "UPDATE `Group` SET `title` = "
+				+ group.title + ", `isActive` = '" + group.isActive
+				+"' WHERE `id` = " + group.id;
 
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
@@ -246,8 +255,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createLocation(Location location) {
-		String sqlStatement = "";
-
+		String sqlStatement = "INSERT INTO `Location`"
+				+ "(VALUES(NULL," + location.title + ");";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -260,7 +269,7 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteLocation(Location location) {
-		String sqlStatement = "";
+		String sqlStatement = "DELETE FROM `Location` WHERE id = " + location.id;
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -274,7 +283,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editLocation(Location location) {
-		String sqlStatement = "";
+		String sqlStatement = "UPDATE `Location` SET `title` = " 
+				+ location.title + "WHERE `id` = " + location.id;
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	

@@ -15,7 +15,7 @@ public class DatabaseValueManager {
 	/**
 	 * @param String sql
 	 */
-	public ResultSet executeQuerry(String sql) throws SQLException {
+	public ResultSet executeQuery(String sql) throws SQLException {
 		Connection connection = this.manager.getDatabaseConnection();
 		Statement statement = connection.createStatement();
 		ResultSet result = statement.executeQuery(sql);
