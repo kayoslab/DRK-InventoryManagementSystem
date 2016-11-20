@@ -1,5 +1,6 @@
 import model.databaseCommunication.DatabaseLoginManager;
 import model.databaseObjects.environment.Location;
+import model.databaseObjects.accessControl.*;
 import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
 
@@ -15,7 +16,11 @@ public class main {
 			System.out.println("Database-Connection established.");
 			//User user = DatabaseReadManager.getUser("nforbrich");
 			//System.out.println(user.firstName);
-			boolean test = DatabaseWriteManager.deleteObject(new Location(1,"Testing"));
+			GroupRight[] groupRights = new GroupRight[2];
+			groupRights[0] = new GroupRight(1,"Admin");
+			groupRights[1] = new GroupRight(2,"User");
+			boolean test = DatabaseWriteManager.setGroupRights(new Group(4,"",true), 
+						groupRights);
 			System.out.println(test);
 		} else {
 			// TODO: Show SetupPresenter

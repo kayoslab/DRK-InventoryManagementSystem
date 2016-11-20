@@ -174,7 +174,17 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setGroupsForUser(User user, Group[] groups) {
-		String sqlStatement = "";
+		String sqlDelete = "DELETE FROM `UserIsMemberOfGroup` WHERE `user` = "
+				+ user.id + "; ";
+		DatabaseWriteManager.executeUpdate(sqlDelete);
+		String sqlStatement = "INSERT INTO `UserIsMemberOfGroup` VALUES";
+		for(Group group:groups){
+			sqlStatement += "(" + user.id + "," + group.id + "),";
+		}
+		if (sqlStatement.charAt(sqlStatement.length()-1) == ',' ){
+			sqlStatement = sqlStatement.substring(0, sqlStatement.length()-1);
+		}
+		sqlStatement += ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -239,8 +249,17 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	public static Boolean setGroupRights(Group group, GroupRight[] groupRights) {
-		String sqlStatement = "";
-
+		String sqlDelete = "DELETE FROM `GroupHasRights` WHERE `group` = "
+				+ group.id + "; ";
+		DatabaseWriteManager.executeUpdate(sqlDelete);
+		String sqlStatement = "INSERT INTO `GroupHasRights` VALUES";
+		for(GroupRight groupRight:groupRights){
+			sqlStatement += "(" + group.id + "," + groupRight.id + "),";
+		}
+		if (sqlStatement.charAt(sqlStatement.length()-1) == ',' ){
+			sqlStatement = sqlStatement.substring(0, sqlStatement.length()-1);
+		}
+		sqlStatement += ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
