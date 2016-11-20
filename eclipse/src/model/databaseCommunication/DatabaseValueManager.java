@@ -38,7 +38,7 @@ public class DatabaseValueManager {
 	
 	/**
 	 * @param String sql
-	 */
+	 
 	public Boolean execute(String sql) throws SQLException {
 		Connection connection = this.manager.getDatabaseConnection();
 		Statement statement = connection.createStatement();
@@ -47,7 +47,7 @@ public class DatabaseValueManager {
 		this.manager.releaseDatabaseConnection();
 		return result;
 	}
-	
+	*/
 	public void releaseDatabaseConnection() throws SQLException {
 		this.manager.releaseDatabaseConnection();
 	}
