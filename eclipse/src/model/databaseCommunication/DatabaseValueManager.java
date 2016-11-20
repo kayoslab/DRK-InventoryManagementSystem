@@ -19,8 +19,8 @@ public class DatabaseValueManager {
 		Connection connection = this.manager.getDatabaseConnection();
 		Statement statement = connection.createStatement();
 		ResultSet result = statement.executeQuery(sql);
-		statement.close();
-		this.manager.releaseDatabaseConnection();
+		// statement.close();
+		// this.manager.releaseDatabaseConnection();
 		return result;
 	}
 	
@@ -46,5 +46,9 @@ public class DatabaseValueManager {
 		statement.close();
 		this.manager.releaseDatabaseConnection();
 		return result;
+	}
+	
+	public void releaseDatabaseConnection() throws SQLException {
+		this.manager.releaseDatabaseConnection();
 	}
 }

@@ -21,24 +21,34 @@ public final class DatabaseReadManager {
 	// MARK: - User Management
 
 	/**
-	 * @param String
-	 *            username
+	 * @param String username
 	 * @return User
 	 */
 	public static User getUser(int id) {
 		// get User from Database and return for id
-		String sqlStatement = "SELECT `username`,`firstname`,`name`,`password`" 
-				+ "FROM `User` WHERE id = " + id;
-		// get Data from Database
-		ResultSet rs = DatabaseReadManager.executeQuery(sqlStatement);
-		// fill with reasonable Data
+		String sqlStatement = "SELECT `username`,`firstname`,`name`,`password`,`passwordChanged`" 
+				+ " FROM `User` WHERE id = " + id;
+		ResultSet rs = null;
 		try {
-			return new User(id, rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
-					rs.getString("password"), rs.getBoolean("passwordChanged"));
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				User user = new User(id, rs.getString("username"), rs.getString("firstname"), rs.getString("name"), rs.getString("password"), rs.getBoolean("passwordChanged"));
+				DatabaseReadManager.close(rs);
+				return user;
+			}
+			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
+			// System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null; 
+			}
 			return null;
 		}
 	}
@@ -53,9 +63,10 @@ public final class DatabaseReadManager {
 		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`password`" + "FROM `User` WHERE username = "
 				+ username;
 		// get Data from Database
-		ResultSet rs = DatabaseReadManager.executeQuery(sqlStatement);
+		ResultSet rs;
 		// fill with reasonable Data
 		try {
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			return new User(rs.getInt("id"), username, rs.getString("firstname"), rs.getString("name"),
 					rs.getString("password"), rs.getBoolean("passwordChanged"));
 		} catch (SQLException e) {
@@ -126,19 +137,21 @@ public final class DatabaseReadManager {
 	 *         which indicates the outcome.
 	 *
 	 */
-	private static ResultSet executeQuery(String sqlStatement) {
+	private static ResultSet executeQuery(String sqlStatement) throws SQLException {
 		// Get a shared Instance of the DatabaseValueManager
 		DatabaseValueManager valueManager = DatabaseReadManager.getValueManager();
-		try {
-			// execute Database Update
-			ResultSet result = valueManager.executeQuery(sqlStatement);
-			// returns either the ResultSet or null for SQL statements
-			// that return nothing.
-			return (result);
-		} catch (SQLException exception) {
-			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return null;
+		// execute Database Update
+		ResultSet result = valueManager.executeQuery(sqlStatement);
+		// returns either the ResultSet or null for SQL statements
+		// that return nothing.
+		return (result);
+	}
+	
+	private static void close(ResultSet resultSet) throws SQLException {
+		if (resultSet != null) {
+			resultSet.getStatement().close();
+			resultSet.close();
+			DatabaseReadManager.getValueManager().releaseDatabaseConnection();
 		}
 	}
 }
