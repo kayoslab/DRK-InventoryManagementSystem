@@ -13,8 +13,10 @@ public class main {
 		if (dbloginManager.testDatabaseConnection()) {
 			// TODO: Show LoginPresenter
 			System.out.println("Database-Connection established.");
-			User user = DatabaseReadManager.getUser(1);
+			User user = DatabaseReadManager.getUser("nforbrich");
 			System.out.println(user.firstName);
+			boolean test = DatabaseReadManager.userDidChangePassword("nforbrich");
+			System.out.println(test);
 		} else {
 			// TODO: Show SetupPresenter
 			System.out.println("Can't connect to database using the given credentials.");

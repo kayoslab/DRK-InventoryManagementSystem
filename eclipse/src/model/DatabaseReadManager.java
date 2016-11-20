@@ -59,20 +59,31 @@ public final class DatabaseReadManager {
 	 * @return User
 	 */
 	public static User getUser(String username) {
-		// get User from Database and return for username
-		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`password`" + "FROM `User` WHERE username = "
-				+ username;
-		// get Data from Database
-		ResultSet rs;
-		// fill with reasonable Data
+		// get User from Database and return for id
+		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`password`,`passwordChanged`" 
+				+ " FROM `User` WHERE `username` = '" + username + "'";
+		ResultSet rs = null;
 		try {
+			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			return new User(rs.getInt("id"), username, rs.getString("firstname"), rs.getString("name"),
-					rs.getString("password"), rs.getBoolean("passwordChanged"));
+			if (rs.first()) {
+				// fill with reasonable Data
+				User user = new User(rs.getInt("id"), username, rs.getString("firstname"), rs.getString("name"),
+						rs.getString("password"), rs.getBoolean("passwordChanged"));
+				DatabaseReadManager.close(rs);
+				return user;
+			}
+			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null; 
+			}
 			return null;
 		}
 	}
@@ -86,20 +97,32 @@ public final class DatabaseReadManager {
 	 *         modifies by an admin
 	 */
 	public static Boolean userDidChangePassword(String username) {
-		// get current password hash from Database and return for username
-		String sqlStatement = "SELECT `passwordChanged`" + "FROM `User` WHERE username = " + username;
-		// get Data from Database
-		ResultSet rs = DatabaseReadManager.executeQuery(sqlStatement);
-		// fill with reasonable Data
-		try{
-			return (rs.getBoolean("passwordChanged"));
-		}
-		catch(SQLException e){
-			// rs isNull
+		// check if password has already been changed
+		String sqlStatement = "SELECT `passwordChanged`" + "FROM `User` WHERE `username` = '" 
+				+ username + "'";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				Boolean changed = rs.getBoolean("passwordChanged");
+				DatabaseReadManager.close(rs);
+				return changed;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
-			return(null);
-		}	
+			// System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null; 
+			}
+			return null;
+		}		
 	}
 
 	/**
