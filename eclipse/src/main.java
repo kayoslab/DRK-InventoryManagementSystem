@@ -1,5 +1,9 @@
 import model.databaseCommunication.DatabaseLoginManager;
 import model.databaseObjects.environment.Location;
+import model.databaseObjects.stockObjects.ConsumableMaterial;
+import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.MedicalMaterial;
+import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.accessControl.*;
 import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
@@ -14,14 +18,12 @@ public class main {
 		if (dbloginManager.testDatabaseConnection()) {
 			// TODO: Show LoginPresenter
 			System.out.println("Database-Connection established.");
-			//User user = DatabaseReadManager.getUser("nforbrich");
-			//System.out.println(user.firstName);
-			GroupRight[] groupRights = new GroupRight[2];
-			groupRights[0] = new GroupRight(1,"Admin");
-			groupRights[1] = new GroupRight(2,"User");
-			boolean test = DatabaseWriteManager.setGroupRights(new Group(4,"",true), 
-						groupRights);
-			System.out.println(test);
+			Device device = new Device(0,"Test","Test",false, DatabaseObject.StockObjectType.device,10,"12345","67890","Fisch",24,24);
+			System.out.println(DatabaseWriteManager.createObject(device));
+			MedicalMaterial medmat = new MedicalMaterial(0,"Test1","Test",false,DatabaseObject.StockObjectType.medicalMaterial,0,10,5,30);
+			System.out.println(DatabaseWriteManager.createObject(medmat));
+			ConsumableMaterial consmat = new ConsumableMaterial(0,"Test2","Test",false,DatabaseObject.StockObjectType.consumableMaterial,0,10,5,30);
+			System.out.println(DatabaseWriteManager.createObject(consmat));			
 		} else {
 			// TODO: Show SetupPresenter
 			System.out.println("Can't connect to database using the given credentials.");

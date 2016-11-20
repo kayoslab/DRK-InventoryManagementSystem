@@ -324,15 +324,36 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean createStockObject(StockObject stockObject) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
-			sqlStatement = "";
+			Device device = (Device) stockObject;
+			//Type ID 1 = Device
+			sqlStatement = "INSERT INTO `StockObject` VALUES(0,'"
+					+ device.title + "','" + device.description + "', NULL, NULL, NULL, 0," 
+					+ device.mtkIntervall + ", " + device.stkIntervall
+					+ ", '" + sdf.format(timestamp) + "', " + device.silencedWarnings + ", "
+					+ DatabaseObject.StockObjectType.device.ordinal() + ");";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
-				sqlStatement = "";
+				MedicalMaterial medmat = (MedicalMaterial) stockObject;
+				//Type ID 2 = MedicalMaterial
+				sqlStatement = "INSERT INTO `StockObject` VALUES(0,'"
+						+ medmat.title + "','" + medmat.description + "', "
+						+ medmat.minimumStock + ", " + medmat.quotaStock + ", " 
+						+ medmat.batchSize + ", 0, NULL, NULL, '" 
+						+ sdf.format(timestamp) + "', " + medmat.silencedWarnings + ", "
+						+ DatabaseObject.StockObjectType.medicalMaterial.ordinal() + ");";
 			} else if (stockObject instanceof ConsumableMaterial) {
-				sqlStatement = "";
+				ConsumableMaterial consmat = (ConsumableMaterial) stockObject;
+				//Type ID 3 = ConsumableMaterial
+				sqlStatement = "INSERT INTO `StockObject` VALUES(0,'"
+						+ consmat.title + "','" + consmat.description + "', "
+						+ consmat.minimumStock + ", " + consmat.quotaStock + ", " 
+						+ consmat.batchSize + ", 0, NULL, NULL, '" 
+						+ sdf.format(timestamp) + "', " + consmat.silencedWarnings + ", "
+						+ DatabaseObject.StockObjectType.consumableMaterial.ordinal() + ");";
 			} else {
 				return false;
 			}

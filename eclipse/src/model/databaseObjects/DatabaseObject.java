@@ -5,9 +5,10 @@ package model.databaseObjects;
  */
 public abstract class DatabaseObject {
 	public enum StockObjectType {
-		consumableMaterial,
-		medicalMaterial,
+		empty,
 		device,
+		medicalMaterial,
+		consumableMaterial,
 		vehicle
 	}
 	
