@@ -6,7 +6,7 @@ import model.databaseObjects.DatabaseObject;
 public class GroupRight extends DatabaseObject {
 	public final String title;
 	
-	GroupRight(int id, String title) {
+	public GroupRight(int id, String title) {
 		super(id);
 		this.title = title;
 	}
