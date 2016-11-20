@@ -108,9 +108,9 @@ public final class DatabaseWriteManager {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
 		String sqlStatement = "INSERT INTO `User`"
-				+ "(VALUES(NULL, '" + user.username + "', '" 
-				+ user.firstName +"', '" + user.name + "', " + sdf.format(timestamp) 
-				+ ", '"	+ user.passwordHash + "','');";
+				+ " VALUES(0, '" + user.username + "', '" 
+				+ user.firstName +"', '" + user.name + "', '" + sdf.format(timestamp) 
+				+ "', '"	+ user.passwordHash + "',false);";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -123,8 +123,7 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteUser(User user) {
-		String sqlStatement = "";
-
+		String sqlStatement = "DELETE FROM `User` WHERE `id` = " + user.id + ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -138,7 +137,11 @@ public final class DatabaseWriteManager {
 	 *
 	 */
 	private static Boolean editUser(User user) {
-		String sqlStatement = "";
+		String sqlStatement = "UPDATE `User` SET `username` = '" 
+				+ user.username + "', `firstname` = '" + user.firstName 
+				+"', name = '" + user.name + "', `password` = '" + user.passwordHash 
+				+ "', `passwordChanged` = " + user.passwordChanged 
+				+ " WHERE `id` = " + user.id +";";
 
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
@@ -156,7 +159,7 @@ public final class DatabaseWriteManager {
 	 */
 	public static Boolean setPassword(User user) {
 		String sqlStatement = "UPDATE `User` SET `password` = '" 
-				+ user.passwordHash + "' WHERE `id` = " + user.id;
+				+ user.passwordHash + "' WHERE `id` = " + user.id + ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -190,7 +193,7 @@ public final class DatabaseWriteManager {
 	 */
 	private static Boolean createGroup(Group group) {
 		String sqlStatement = "INSERT INTO `Group`"
-				+ "(VALUES(NULL, '" + group.title + "', '" + group.isActive + "');";
+				+ "VALUES(NULL, '" + group.title + "', " + group.isActive + ");";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -204,7 +207,7 @@ public final class DatabaseWriteManager {
 	 */
 	private static Boolean deleteGroup(Group group) {
 		String sqlStatement = "DELETE FROM `Group` WHERE `id` = "
-				+ group.id;
+				+ group.id + ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -218,9 +221,9 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editGroup(Group group) {
-		String sqlStatement = "UPDATE `Group` SET `title` = "
-				+ group.title + ", `isActive` = '" + group.isActive
-				+"' WHERE `id` = " + group.id;
+		String sqlStatement = "UPDATE `Group` SET `title` = '"
+				+ group.title + "', `isActive` = " + group.isActive
+				+ " WHERE `id` = " + group.id + ";";
 
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
@@ -256,7 +259,7 @@ public final class DatabaseWriteManager {
 	 */
 	private static Boolean createLocation(Location location) {
 		String sqlStatement = "INSERT INTO `Location`"
-				+ "(VALUES(NULL," + location.title + ");";
+				+ "VALUES(NULL,'" + location.title + "');";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -269,7 +272,7 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean deleteLocation(Location location) {
-		String sqlStatement = "DELETE FROM `Location` WHERE id = " + location.id;
+		String sqlStatement = "DELETE FROM `Location` WHERE id = " + location.id + ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -283,8 +286,8 @@ public final class DatabaseWriteManager {
 	 * 
 	 */
 	private static Boolean editLocation(Location location) {
-		String sqlStatement = "UPDATE `Location` SET `title` = " 
-				+ location.title + "WHERE `id` = " + location.id;
+		String sqlStatement = "UPDATE `Location` SET `title` = '" 
+				+ location.title + "' WHERE `id` = " + location.id + ";";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	
@@ -493,7 +496,7 @@ public final class DatabaseWriteManager {
 			}
 		} catch (SQLException exception) {
 			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
+			System.out.println(exception.getMessage());
 			return false;
 		}
 		return false;

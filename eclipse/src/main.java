@@ -1,5 +1,5 @@
 import model.databaseCommunication.DatabaseLoginManager;
-import model.databaseObjects.accessControl.User;
+import model.databaseObjects.environment.Location;
 import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
 
@@ -13,9 +13,9 @@ public class main {
 		if (dbloginManager.testDatabaseConnection()) {
 			// TODO: Show LoginPresenter
 			System.out.println("Database-Connection established.");
-			User user = DatabaseReadManager.getUser("nforbrich");
-			System.out.println(user.firstName);
-			boolean test = DatabaseReadManager.userDidChangePassword("nforbrich");
+			//User user = DatabaseReadManager.getUser("nforbrich");
+			//System.out.println(user.firstName);
+			boolean test = DatabaseWriteManager.deleteObject(new Location(1,"Testing"));
 			System.out.println(test);
 		} else {
 			// TODO: Show SetupPresenter

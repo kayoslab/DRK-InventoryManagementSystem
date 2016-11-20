@@ -7,7 +7,7 @@ public class Group extends DatabaseObject {
 	public final String title;
 	public final Boolean isActive;
 	
-	Group(int id, String title, Boolean isActive) {
+	public Group(int id, String title, Boolean isActive) {
 		super(id);
 		this.title = title;
 		
