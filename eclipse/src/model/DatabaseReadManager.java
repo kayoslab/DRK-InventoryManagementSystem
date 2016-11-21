@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import model.databaseCommunication.DatabaseValueManager;
+import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.accessControl.*;
 import model.databaseObjects.stockObjects.*;
 import model.databaseObjects.stockValues.*;
@@ -206,30 +207,58 @@ public final class DatabaseReadManager {
 
 
 	/**
-	 * @param
-	 * @return Boolean
+	 * @param stockObjectType DatabaseObject.StockObjectType
+	 * @return StockObject[]
 	 *
-	 * Generates Inventory
+	 * Generates Inventorylist for a given StockObjectType
 	 */
-	//public static StockObject[] generateInventory() {
+	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		/*String sqlStatement = "SELECT `id`, `title`, `description`, "
-				+ "`silenceWarning`, `type_id`, `totalVolume` "
-				+ "FROM `StockObject`";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `silenceWarning`, `type_id`, `totalVolume` FROM `StockObject`";
 		// get Data from Database
-		ResultSet rs = DatabaseReadManager.executeQuery(sqlStatement);
-		// fill with reasonable Data
-		StockObject[] stockobject;
-		int i;
-		while (rs.next()) {
-		    stockobject[i++] = new StockObject(rs.getInt("id"), rs.getString("title"),
-		    		rs.getString("description"),rs.getBoolean("silenceWarning"),
-		    		rs.getInt("type_id"), rs.getInt("totalVolume"));
-		
-		
-		  }*/ 
-		//return StockObject[0];
-	//}
+		ResultSet rs = null;
+		// Execute the processed SQL Statement and return an Array of Objects
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			ArrayList<StockObject> inventoryList = new ArrayList<StockObject>();
+			while (rs.next()) {
+				// fill the ArrayList with reasonable Data
+				switch (stockObjectType) {
+					case device:
+						inventoryList.add(new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
+								rs.getBoolean("silenceWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getInt("mtkIntervall"), rs.getInt("stkIntervall")));
+						break;
+					case medicalMaterial:
+						inventoryList.add(new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
+								rs.getBoolean("silenceWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
+						break;
+					case consumableMaterial:
+						inventoryList.add(new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
+								rs.getBoolean("silenceWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
+						break;
+					case vehicle:
+						break;
+				}
+			}
+			DatabaseReadManager.close(rs);
+			return (StockObject[]) inventoryList.toArray();
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			// System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return new StockObject[0];
+			}
+			return new StockObject[0];
+		}
+	}
 
 	/**
 	 * @param sqlStatement String
