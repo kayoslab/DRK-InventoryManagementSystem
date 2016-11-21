@@ -14,7 +14,8 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param int userid, String password
+	 * @param username String
+	 * @param password String
 	 * @return Boolean
 	 */
 	public Boolean tryLogin(String username, String password) {
@@ -31,7 +32,9 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param String username, String currentPassword, String newPassword
+	 * @param username String
+	 * @param currentPassword String
+	 * @param newPassword String
 	 * @return Boolean
 	 */
 	public Boolean setNewPassword(String username, String currentPassword, String newPassword) {
@@ -55,7 +58,8 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param String username, String newPassword
+	 * @param username String
+	 * @param newPassword String
 	 * @return Boolean
 	 */
 	public Boolean overrideCurrentPassword(String username, String newPassword) {
@@ -78,7 +82,7 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param String password
+	 * @param password String
 	 * @return Boolean
 	 */
 	public Boolean validatePassword(String password) {
@@ -86,7 +90,7 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param String password
+	 * @param password String
 	 * @return String
 	 */
 	private String generatePasswordHash(String password) throws NoSuchAlgorithmException {
@@ -98,7 +102,7 @@ public class PasswordManager {
 	}
 	
 	/**
-	 * @param Byte[]
+	 * @param bytes Byte[]
 	 * @return String
 	 */
 	private String toHexString(byte[] bytes) {

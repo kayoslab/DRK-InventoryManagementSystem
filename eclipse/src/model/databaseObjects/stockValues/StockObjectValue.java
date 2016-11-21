@@ -4,7 +4,8 @@ import model.databaseObjects.DatabaseObject;
  * Abstract Struct-like object Class for StockObject StockValues
  */
 public abstract class StockObjectValue extends DatabaseObject {
-	public final int volume;
+	// not final for merging multiple Objects
+	public int volume;
 	public final int stockObjectID;
 	public final int locationID;
 	public final int messageID;

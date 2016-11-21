@@ -23,7 +23,9 @@ public class DatabaseLoginManager {
 	}
 	
 	/**
-	 * @param String usename, String password, String url
+	 * @param username String
+	 * @param password  String
+	 * @param url String
 	 * @return Boolean
 	 */
 	public DatabaseLoginManager(String username, String password, String url) {
@@ -39,7 +41,7 @@ public class DatabaseLoginManager {
 	}
 	
 	/**
-	 * @param String username
+	 * @param username String
 	 */
 	public void setDatabaseUsername(String username) {
 		this.databaseUsername = username;
@@ -47,7 +49,7 @@ public class DatabaseLoginManager {
 	}
 	
 	/**
-	 * @param String password
+	 * @param password String
 	 */
 	public void setPassword(String password) {
 		this.databasePassword = password;
@@ -55,7 +57,7 @@ public class DatabaseLoginManager {
 	}
 	
 	/**
-	 * @param String url
+	 * @param url String
 	 */
 	public void setURL(String url) {
 		this.databaseURL = url;
@@ -188,7 +190,7 @@ public class DatabaseLoginManager {
 	}
 	
 	/**
-	 * @param File filePathInstance
+	 * @param filePathInstance File
 	 * 
 	 * Writes default config File
 	 */
