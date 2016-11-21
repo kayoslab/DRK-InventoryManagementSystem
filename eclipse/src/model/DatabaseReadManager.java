@@ -169,7 +169,7 @@ public final class DatabaseReadManager {
 				// fill the ArrayList with reasonable Data
 				if (stockObjectValue instanceof DeviceValue) {
 					existingObjects.add(new DeviceValue(rs.getInt("id"), rs.getInt("volume"),
-							rs.getDate("mtkDate"), rs.getDate("stkDate"), rs.getInt("stockObject_id"),
+							rs.getDate("mtk"), rs.getDate("stk"), rs.getInt("stockObject_id"),
 							rs.getInt("location_id"), rs.getInt("message_id"), rs.getString("serialNo"),
 							rs.getString("inventarNo"), rs.getString("umdns")));
 				} else if (stockObjectValue instanceof MaterialValue) {
@@ -189,11 +189,11 @@ public final class DatabaseReadManager {
 				}
 			}
 			DatabaseReadManager.close(rs);
-			return (StockObjectValue[]) existingObjects.toArray();
+			return existingObjects.toArray(new StockObjectValue[existingObjects.size()]);
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {

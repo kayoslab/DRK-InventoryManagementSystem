@@ -515,8 +515,7 @@ public final class DatabaseWriteManager {
 			break;
 			case 1:
 				StockObjectValue mergedStockObject = DatabaseWriteManager.mergeStockObjectValues(existingStock[0], stockObjectValue);
-				DatabaseWriteManager.editStockObjectValue(mergedStockObject);
-				break;
+				return DatabaseWriteManager.editStockObjectValue(mergedStockObject);
 			default:
 				// Data inconsistency - by merging existing StockObjects this state is not covered.
 				// The only way this could happen if a user is manually adding StockObjectValues to the db.
@@ -650,7 +649,7 @@ public final class DatabaseWriteManager {
 			}
 		} catch (SQLException exception) {
 			// uncomment for debugging SQL-Statements
-			// System.out.println(exception.getMessage());
+			System.out.println(exception.getMessage());
 			return false;
 		}
 		return false;
