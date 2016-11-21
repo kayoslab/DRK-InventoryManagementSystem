@@ -1,9 +1,7 @@
 import model.databaseCommunication.DatabaseLoginManager;
 
 public class main {
-	/**
-	 * @param args String[]
-	 */
+	
 	public static void main(String[] args) {
 		DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
 		if (dbloginManager.testDatabaseConnection()) {
