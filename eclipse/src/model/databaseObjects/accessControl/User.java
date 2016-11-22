@@ -8,6 +8,7 @@ public class User extends DatabaseObject {
 	public final String username;
 	public final String firstName;
 	public final String name;
+	public final String mail;
 	public String passwordHash;
 	public Boolean passwordChanged;
 	
@@ -18,5 +19,6 @@ public class User extends DatabaseObject {
 		this.name = name;
 		this.passwordHash = passwordHash;
 		this.passwordChanged = passwordChanged;
+		this.mail = "";
 	}
 }

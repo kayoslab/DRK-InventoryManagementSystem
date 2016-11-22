@@ -52,6 +52,7 @@ CREATE TABLE `User` (
     `username` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
     `firstname` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL,
     `name` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL,
+    `mail` varchar(128) COLLATE 'latin1_german2_ci' NULL,
     `creation` datetime NOT NULL,
     `password` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL,
     `passwordChanged` tinyint(1) unsigned NOT NULL
