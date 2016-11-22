@@ -2,6 +2,8 @@ import model.databaseCommunication.DatabaseLoginManager;
 import model.databaseObjects.stockValues.ConsumableMaterialValue;
 import model.databaseObjects.stockValues.DeviceValue;
 import model.databaseObjects.stockValues.MedicalMaterialValue;
+import presenter.LoginPresenter;
+import presenter.SetupPresenter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +15,8 @@ public class main {
 	public static void main(String[] args) {
 		DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
 		if (dbloginManager.testDatabaseConnection()) {
-			// TODO: Show LoginPresenter
+			LoginPresenter loginPresenter = new LoginPresenter();
+			loginPresenter.newScreen();
 			System.out.println("Database Connection established.");
 			try {
 				Date date = sdf.parse("2017-01-01 00:00:00");
@@ -26,6 +29,8 @@ public class main {
 
 		} else {
 			// TODO: Show SetupPresenter
+			SetupPresenter setupPresenter = new SetupPresenter();
+			setupPresenter.newScreen();
 			System.out.println("Can't connect to database using the given credentials.");
 		}
 	}

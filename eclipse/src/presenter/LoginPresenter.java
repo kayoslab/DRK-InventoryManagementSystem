@@ -14,16 +14,17 @@ import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LoginPresenter extends Presenter {
+public class LoginPresenter extends Presenter implements ActionListener {
 	private PasswordManager passwordManager = new PasswordManager();
-	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	JButton btnEinloggen = new JButton("Einloggen");
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void newScreen() {
+		super.newScreen();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,14 +71,8 @@ public class LoginPresenter extends Presenter {
 		passwordField.setBounds(383, 397, 182, 28);
 		frame.getContentPane().add(passwordField);
 		
-		JButton btnEinloggen = new JButton("Einloggen");
-		btnEinloggen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == e){
-					// TODO: Login Abfragen
-				}
-			}
-		});
+
+		btnEinloggen.addActionListener(this);
 		btnEinloggen.setBounds(356, 477, 117, 29);
 		frame.getContentPane().add(btnEinloggen);
 		
@@ -88,8 +83,8 @@ public class LoginPresenter extends Presenter {
 		frame.getContentPane().add(separator);
 		
 		JLabel lblNewLabel = new JLabel("");
-		Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoKlein.jpg")).getImage();
-		lblNewLabel.setIcon (new ImageIcon (img));
+		// Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoKlein.jpg")).getImage();
+		// lblNewLabel.setIcon (new ImageIcon (img));
 		lblNewLabel.setBounds(135, 57, 526, 227);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -98,6 +93,16 @@ public class LoginPresenter extends Presenter {
 		separator_1.setBackground(Color.LIGHT_GRAY);
 		separator_1.setBounds(262, 306, 303, 16);
 		frame.getContentPane().add(separator_1);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == this.btnEinloggen) {
+			DataPresenter dataPresenter = new DataPresenter();
+			dataPresenter.previousPresenter = this;
+			dataPresenter.newScreen();
+		}
 	}
 
 }

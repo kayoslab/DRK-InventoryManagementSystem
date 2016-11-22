@@ -100,7 +100,7 @@ public class DatabaseLoginManager {
 	public Boolean testDatabaseConnection() {
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
 			try {
-				DriverManager.setLoginTimeout(10);
+				DriverManager.setLoginTimeout(2);
 				Connection connection = DriverManager.getConnection(this.databaseURL, this.databaseUsername, this.databasePassword);
 				if(!connection.isClosed() && connection != null){
 		            return true;

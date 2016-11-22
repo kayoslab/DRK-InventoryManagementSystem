@@ -48,7 +48,7 @@ public class SendMailExample {
 			// Eine neue Message erzeugen
 			Message msg = new MimeMessage(session);
 
-			// Hier werden die Absender- und Empfängeradressen gesetzt
+			// Hier werden die Absender- und Empfï¿½ngeradressen gesetzt
 			msg.setFrom(new InternetAddress(senderAddress, "XXX"));
 
 			// msg.addRecipient(Message.RecipientType.TO, new
@@ -67,7 +67,7 @@ public class SendMailExample {
 			multipart.addBodyPart(getText());
 
 			
-			// Text zur Nachricht hinzufügen
+			// Text zur Nachricht hinzufï¿½gen
 			msg.setContent(multipart);
 
 			// Senden der Nachricht
@@ -89,11 +89,11 @@ public class SendMailExample {
 			// message part erstellen
 			BodyPart messageBodyPart = new MimeBodyPart();
 
-			// Mailtext hinzufügen
-			String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen können hat es funktioniert.";
+			// Mailtext
+			String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen kï¿½nnen hat es funktioniert.";
 			messageBodyPart.setText(text);
 
-			// Daten zurückgeben
+			// Daten
 			return messageBodyPart;
 		} catch (MessagingException me) {
 			me.printStackTrace();
@@ -108,7 +108,7 @@ public class SendMailExample {
 	 */
 	public Properties getProperties() {
 		Properties properties = new Properties();
-		// Den Properties wird die ServerAdresse hinzugefügt
+		// Den Properties wird die ServerAdresse hinzugefï¿½gt
 		properties.put("mail.smtp.host", "smtp.web.de");
 		// !!Wichtig!! Falls der SMTP-Server eine Authentifizierung verlangt
 		// muss an dieser Stelle die Property auf "true" gesetzt
@@ -118,7 +118,7 @@ public class SendMailExample {
 		properties.put("mail.smtp.port", "587");
 		// Protokoll festlegen
 		properties.put("mail.transport.protocol", "smtp");
-		// Verschlüsselung festlegen
+		// Verschlï¿½sselung festlegen
 		properties.put("mail.smtp.starttls.enable", "true");
 		return properties;
 	}
@@ -158,7 +158,7 @@ public class SendMailExample {
 		String senderAddress = "XXX";// someone@web.de
 		String recipientsAddress = "XXX"; // somereceiver@web.de
 		String subject = "Testnachricht JAVA";
-		String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen können hat es funktioniert.";
+		String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen kï¿½nnen hat es funktioniert.";
 		String smtpHost = "smtp.web.de";
 
 		new SendMailExample().sendMail(smtpHost, username, password,
