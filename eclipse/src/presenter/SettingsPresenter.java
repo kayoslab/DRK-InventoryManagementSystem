@@ -17,7 +17,6 @@ import javax.swing.JSeparator;
 
 public class SettingsPresenter extends Presenter implements ActionListener {
 	private PasswordManager passwordManager = new PasswordManager();
-	private JFrame frame;
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
 	private JButton help = new JButton("");
@@ -28,14 +27,12 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 	 */
 	public void newScreen() {
 		super.newScreen();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SettingsPresenter window = new SettingsPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				SettingsPresenter window = new SettingsPresenter();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -50,12 +47,8 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	public void initialize() {
+		super.initialize();
 		
 		JButton logo = new JButton("");
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
@@ -108,17 +101,13 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getSource() == this.btnLogout) {
-				SettingsPresenter settingsPresenter = new SettingsPresenter();
-				settingsPresenter.previousPresenter = this;
-				settingsPresenter.newScreen();	
-			}else if (e.getSource() == this.back){
-				SettingsPresenter settingsPresenter = new SettingsPresenter();
-				settingsPresenter.previousPresenter = this;
-				settingsPresenter.newScreen();
+				LoginPresenter loginPresenter = new LoginPresenter();
+				this.frame.dispose();
+				loginPresenter.newScreen();
+			} else if (e.getSource() == this.back){
+				super.showPreviousPresenter();
 			} else if (e.getSource() == this.help){
-				SettingsPresenter settingsPresenter = new SettingsPresenter();
-				settingsPresenter.previousPresenter = this;
-				settingsPresenter.newScreen();
+
 			} 
 			
 	}

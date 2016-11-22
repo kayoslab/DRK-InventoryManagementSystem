@@ -4,20 +4,13 @@ import java.awt.EventQueue;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JComboBox;
 
 public class MenuPresenter extends Presenter implements ActionListener {
-	private JFrame frame;
 	private JButton btnMaterialGerteDaten = new JButton("Material-/ Geräte Daten");
 	private JButton btnInventarliste = new JButton("Inventarliste");
 	private JButton btnMeldungen = new JButton("Meldungen");	
@@ -29,14 +22,12 @@ public class MenuPresenter extends Presenter implements ActionListener {
 	public void newScreen() {
 		super.newScreen();
 		System.out.println("newScreen");
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPresenter window = new MenuPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				MenuPresenter window = new MenuPresenter();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -51,19 +42,12 @@ public class MenuPresenter extends Presenter implements ActionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		
+	public void initialize() {
+		super.initialize();
+
 		btnMaterialGerteDaten.setBounds(278, 361, 234, 57);
 		frame.getContentPane().add(btnMaterialGerteDaten);
-		btnMaterialGerteDaten.addActionListener(this); 
-
-		
+		btnMaterialGerteDaten.addActionListener(this);
 		
 		btnInventarliste.setBackground(Color.WHITE);
 		btnInventarliste.setBounds(278, 200, 234, 57);
@@ -146,7 +130,4 @@ public class MenuPresenter extends Presenter implements ActionListener {
 			loginPresenter.newScreen();
 		}
 	}
-
-	
-	
 }

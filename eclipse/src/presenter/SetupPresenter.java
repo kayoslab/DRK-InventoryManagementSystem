@@ -17,7 +17,6 @@ import java.awt.event.ActionEvent;
 
 public class SetupPresenter extends Presenter {
 	private DatabaseLoginManager loginManager = new DatabaseLoginManager();
-	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -27,14 +26,12 @@ public class SetupPresenter extends Presenter {
 	 */
 	public void newScreen() {
 		super.newScreen();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SetupPresenter window = new SetupPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				SetupPresenter window = new SetupPresenter();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -49,12 +46,8 @@ public class SetupPresenter extends Presenter {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	public void initialize() {
+		super.initialize();
 		
 		JButton logo = new JButton("");
 		logo.addActionListener(new ActionListener() {

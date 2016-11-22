@@ -2,7 +2,6 @@ package presenter;
 import model.PasswordManager;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
 import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,7 +9,6 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -24,14 +22,13 @@ public class LoginPresenter extends Presenter implements ActionListener {
 	 */
 	public void newScreen() {
 		super.newScreen();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginPresenter window = new LoginPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		// lambda implementation
+		EventQueue.invokeLater(() -> {
+			try {
+				LoginPresenter window = new LoginPresenter();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -46,13 +43,9 @@ public class LoginPresenter extends Presenter implements ActionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
+	public void initialize() {
+		super.initialize();
+
 		JLabel lblBenutzername = new JLabel("Benutzername");
 		lblBenutzername.setBounds(261, 352, 88, 16);
 		frame.getContentPane().add(lblBenutzername);

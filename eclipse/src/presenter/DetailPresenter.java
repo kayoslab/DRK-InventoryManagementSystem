@@ -18,7 +18,6 @@ import javax.swing.JTextArea;
 
 
 public class DetailPresenter extends Presenter implements ActionListener {
-	private JFrame frame;
 	private JTable table;
 	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
@@ -33,14 +32,12 @@ public class DetailPresenter extends Presenter implements ActionListener {
 	 */
 	public void newScreen() {
 		super.newScreen();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DetailPresenter window = new DetailPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				DetailPresenter window = new DetailPresenter();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -55,13 +52,8 @@ public class DetailPresenter extends Presenter implements ActionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
+	public void initialize() {
+		super.initialize();
 
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));

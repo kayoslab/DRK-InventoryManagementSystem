@@ -16,25 +16,51 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class DataPresenter extends Presenter {
-
-	private JFrame frame;
+public class DataPresenter extends Presenter implements ActionListener {
 	private JTextField txtSuchen;
 	private JTable table;
+	private JButton btnLogout = new JButton("Logout");
+	private JButton back = new JButton("");
+	private JButton help = new JButton("");
+	private JButton btnA = new JButton("A");
+	private JButton btnB = new JButton("B");
+	private JButton btnC = new JButton("C");
+	private JButton btnD = new JButton("D");
+	private JButton btnE = new JButton("E");
+	private JButton btnF = new JButton("F");
+	private JButton btnG = new JButton("G");
+	private JButton btnH = new JButton("H");
+	private JButton btnI = new JButton("I");
+	private JButton btnJ = new JButton("J");
+	private JButton btnK = new JButton("K");
+	private JButton btnL = new JButton("L");
+	private JButton btnM = new JButton("M");
+	private JButton btnN = new JButton("N");
+	private JButton btnO = new JButton("O");
+	private JButton btnP = new JButton("P");
+	private JButton btnQ = new JButton("Q");
+	private JButton btnR = new JButton("R");
+	private JButton btnS = new JButton("S");
+	private JButton btnT = new JButton("T");
+	private JButton btnU = new JButton("U");
+	private JButton btnV = new JButton("V");
+	private JButton btnW = new JButton("W");
+	private JButton btnX = new JButton("X");
+	private JButton btnY = new JButton("Y");
+	private JButton btnZ = new JButton("Z");
+
 
 	/**
 	 * Launch the application.
 	 */
 	public void newScreen () {
 		super.newScreen();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DataPresenter window = new DataPresenter();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				DataPresenter window = new DataPresenter();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -49,16 +75,13 @@ public class DataPresenter extends Presenter {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	public void initialize() {
+		super.initialize();
 		
 		JButton logo = new JButton("");
 		Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
+		logo.addActionListener(this);
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
 		
@@ -68,22 +91,21 @@ public class DataPresenter extends Presenter {
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnLogout.addActionListener(this);
 		btnLogout.setBounds(455, 27, 98, 22);
 		frame.getContentPane().add(btnLogout);
 		
 		JButton back = new JButton("");
 		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		back.setIcon (new ImageIcon (imgback));
+		back.addActionListener(this);
 		back.setBounds(36, 18, 33, 36);
 		frame.getContentPane().add(back);
 		
 		JButton help = new JButton("");
 		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
+		help.addActionListener(this);
 		help.setBounds(381, 18, 33, 36);
 		frame.getContentPane().add(help);
 		
@@ -91,111 +113,42 @@ public class DataPresenter extends Presenter {
 		MaterialUndGeraeteDaten.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		MaterialUndGeraeteDaten.setBounds(16, 98, 347, 36);
 		frame.getContentPane().add(MaterialUndGeraeteDaten);
-		
-		JButton btnA = new JButton("A");
-		btnA.setBackground(Color.WHITE);
+
 		btnA.setBounds(5, 164, 24, 21);
-		frame.getContentPane().add(btnA);
-		
-		JButton btnB = new JButton("B");
 		btnB.setBounds(31, 164, 24, 21);
-		frame.getContentPane().add(btnB);
-		
-		JButton btnC = new JButton("C");
 		btnC.setBounds(57, 164, 24, 21);
-		frame.getContentPane().add(btnC);
-		
-		JButton btnD = new JButton("D");
 		btnD.setBounds(83, 164, 24, 21);
-		frame.getContentPane().add(btnD);
-		
-		JButton btnE = new JButton("E");
 		btnE.setBounds(109, 164, 24, 21);
-		frame.getContentPane().add(btnE);
-		
-		JButton btnF = new JButton("F");
 		btnF.setBounds(135, 164, 24, 21);
-		frame.getContentPane().add(btnF);
-		
-		JButton btnG = new JButton("G");
 		btnG.setBounds(161, 164, 24, 21);
-		frame.getContentPane().add(btnG);
-		
-		JButton btnH = new JButton("H");
 		btnH.setBounds(187, 164, 24, 21);
-		frame.getContentPane().add(btnH);
-		
-		JButton btnI = new JButton("I");
 		btnI.setBounds(213, 164, 24, 21);
-		frame.getContentPane().add(btnI);
-		
-		JButton btnJ = new JButton("J");
 		btnJ.setBounds(239, 164, 24, 21);
-		frame.getContentPane().add(btnJ);
-		
-		JButton btnK = new JButton("K");
 		btnK.setBounds(265, 164, 24, 21);
-		frame.getContentPane().add(btnK);
-		
-		JButton btnL = new JButton("L");
 		btnL.setBounds(291, 164, 24, 21);
-		frame.getContentPane().add(btnL);
-		
-		JButton btnM = new JButton("M");
 		btnM.setBounds(317, 164, 24, 21);
-		frame.getContentPane().add(btnM);
-		
-		JButton btnN = new JButton("N");
 		btnN.setBounds(343, 164, 24, 21);
-		frame.getContentPane().add(btnN);
-		
-		JButton btnO = new JButton("O");
 		btnO.setBounds(369, 164, 24, 21);
-		frame.getContentPane().add(btnO);
-		
-		JButton btnP = new JButton("P");
 		btnP.setBounds(395, 164, 24, 21);
-		frame.getContentPane().add(btnP);
-		
-		JButton btnQ = new JButton("Q");
 		btnQ.setBounds(421, 164, 24, 21);
-		frame.getContentPane().add(btnQ);
-		
-		JButton btnR = new JButton("R");
 		btnR.setBounds(447, 164, 24, 21);
-		frame.getContentPane().add(btnR);
-		
-		JButton btnS = new JButton("S");
 		btnS.setBounds(473, 164, 24, 21);
-		frame.getContentPane().add(btnS);
-		
-		JButton btnT = new JButton("T");
 		btnT.setBounds(499, 164, 24, 21);
-		frame.getContentPane().add(btnT);
-		
-		JButton btnU = new JButton("U");
 		btnU.setBounds(525, 164, 24, 21);
-		frame.getContentPane().add(btnU);
-		
-		JButton btnV = new JButton("V");
 		btnV.setBounds(551, 164, 24, 21);
-		frame.getContentPane().add(btnV);
-		
-		JButton btnW = new JButton("W");
 		btnW.setBounds(577, 164, 24, 21);
-		frame.getContentPane().add(btnW);
-		
-		JButton btnX = new JButton("X");
 		btnX.setBounds(603, 164, 24, 21);
-		frame.getContentPane().add(btnX);
-		
-		JButton btnY = new JButton("Y");
 		btnY.setBounds(629, 164, 24, 21);
-		frame.getContentPane().add(btnY);
-		
-		JButton btnZ = new JButton("Z");
 		btnZ.setBounds(655, 164, 24, 21);
-		frame.getContentPane().add(btnZ);
+
+		JButton[] buttons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
+				btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS,
+				btnT, btnU, btnV, btnW, btnX, btnY, btnZ};
+
+		for (JButton button:buttons) {
+			frame.getContentPane().add(button);
+			button.addActionListener(this);
+		}
 		
 		txtSuchen = new JTextField();
 		txtSuchen.setBackground(Color.WHITE);
@@ -209,7 +162,71 @@ public class DataPresenter extends Presenter {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setBounds(109, 253, 586, 257);
 		frame.getContentPane().add(table);
-
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == this.btnA) {
+
+		} else if (e.getSource() == this.btnB) {
+
+		} else if (e.getSource() == this.btnC) {
+
+		} else if (e.getSource() == this.btnD) {
+
+		} else if (e.getSource() == this.btnE) {
+
+		} else if (e.getSource() == this.btnF) {
+
+		} else if (e.getSource() == this.btnG) {
+
+		} else if (e.getSource() == this.btnH) {
+
+		} else if (e.getSource() == this.btnI) {
+
+		} else if (e.getSource() == this.btnJ) {
+
+		} else if (e.getSource() == this.btnK) {
+
+		} else if (e.getSource() == this.btnL) {
+
+		} else if (e.getSource() == this.btnM) {
+
+		} else if (e.getSource() == this.btnN) {
+
+		} else if (e.getSource() == this.btnO) {
+
+		} else if (e.getSource() == this.btnP) {
+
+		} else if (e.getSource() == this.btnQ) {
+
+		} else if (e.getSource() == this.btnR) {
+
+		} else if (e.getSource() == this.btnS) {
+
+		} else if (e.getSource() == this.btnT) {
+
+		} else if (e.getSource() == this.btnU) {
+
+		} else if (e.getSource() == this.btnV) {
+
+		} else if (e.getSource() == this.btnW) {
+
+		} else if (e.getSource() == this.btnX) {
+
+		} else if (e.getSource() == this.btnY) {
+
+		} else if (e.getSource() == this.btnZ) {
+
+		} else if (e.getSource() == this.btnLogout) {
+			LoginPresenter loginPresenter = new LoginPresenter();
+			this.frame.dispose();
+			loginPresenter.newScreen();
+		} else if (e.getSource() == this.back) {
+			super.showPreviousPresenter();
+		} else if (e.getSource() == this.help) {
+
+		}
+	}
 }
