@@ -58,7 +58,7 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 		frame.getContentPane().setLayout(null);
 		
 		JButton logo = new JButton("");
-		Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoMini.jpg")).getImage();
+		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
@@ -77,13 +77,13 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 		frame.getContentPane().add(btnLogout);
 		
 		
-		Image imgback = new ImageIcon (this.getClass().getResource("/back-button.jpg")).getImage();
+		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		back.setIcon (new ImageIcon (imgback));
 		back.setBounds(36, 18, 33, 36);
 		frame.getContentPane().add(back);
 		
 		
-		Image imgbook = new ImageIcon (this.getClass().getResource("/book-button.jpg")).getImage();
+		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
 		frame.getContentPane().add(help);

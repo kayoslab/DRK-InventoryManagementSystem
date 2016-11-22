@@ -16,10 +16,9 @@ import java.awt.event.ActionEvent;
 
 public class LoginPresenter extends Presenter implements ActionListener {
 	private PasswordManager passwordManager = new PasswordManager();
-	private JTextField textField;
 	private JPasswordField passwordField;
-	JButton btnEinloggen = new JButton("Einloggen");
-
+	private JButton btnEinloggen = new JButton("Einloggen");
+	private JTextField userNameTextField;
 	/**
 	 * Launch the application.
 	 */
@@ -61,11 +60,11 @@ public class LoginPresenter extends Presenter implements ActionListener {
 		JLabel lblPasswort = new JLabel("Passwort");
 		lblPasswort.setBounds(261, 403, 61, 16);
 		frame.getContentPane().add(lblPasswort);
-		
-		textField = new JTextField();
-		textField.setBounds(383, 346, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+
+		userNameTextField = new JTextField();
+		userNameTextField.setBounds(383, 346, 182, 28);
+		frame.getContentPane().add(userNameTextField);
+		userNameTextField.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(383, 397, 182, 28);
@@ -83,8 +82,8 @@ public class LoginPresenter extends Presenter implements ActionListener {
 		frame.getContentPane().add(separator);
 		
 		JLabel lblNewLabel = new JLabel("");
-		// Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoKlein.jpg")).getImage();
-		// lblNewLabel.setIcon (new ImageIcon (img));
+		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoKlein.jpg")).getImage();
+		lblNewLabel.setIcon (new ImageIcon (img));
 		lblNewLabel.setBounds(135, 57, 526, 227);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -99,9 +98,11 @@ public class LoginPresenter extends Presenter implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == this.btnEinloggen) {
-			DataPresenter dataPresenter = new DataPresenter();
-			dataPresenter.previousPresenter = this;
-			dataPresenter.newScreen();
+			if (this.passwordManager.tryLogin(this.userNameTextField.getText(), String.valueOf(this.passwordField.getPassword()))) {
+				MenuPresenter menuPresenter = new MenuPresenter();
+				menuPresenter.previousPresenter = this;
+				menuPresenter.newScreen();
+			}
 		}
 	}
 

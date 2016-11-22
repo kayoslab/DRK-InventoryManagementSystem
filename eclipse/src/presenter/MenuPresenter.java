@@ -28,6 +28,7 @@ public class MenuPresenter extends Presenter implements ActionListener {
 	 */
 	public void newScreen() {
 		super.newScreen();
+		System.out.println("newScreen");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -89,32 +90,32 @@ public class MenuPresenter extends Presenter implements ActionListener {
 		frame.getContentPane().add(settingsButton);
 		
 		JButton logo = new JButton("");
-		Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoMini.jpg")).getImage();
+		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
 		
 		JButton chat = new JButton("");
-		Image imgchat = new ImageIcon (this.getClass().getResource("/chat-button.jpg")).getImage();
+		Image imgchat = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
 		chat.setIcon (new ImageIcon (imgchat));
 		chat.setBounds(155, 18, 33, 36);
 		frame.getContentPane().add(chat);
 		
 		JButton edit = new JButton("");
-		Image imgedit = new ImageIcon (this.getClass().getResource("/edit-button.jpg")).getImage();
+		Image imgedit = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
 		edit.setIcon (new ImageIcon (imgedit));
 		edit.setBounds(215, 18, 33, 36);
 		frame.getContentPane().add(edit);
 		
 		JButton plus = new JButton("");
-		Image imgplus = new ImageIcon (this.getClass().getResource("/add-circle-1.jpg")).getImage();
+		Image imgplus = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
 		plus.setIcon (new ImageIcon (imgplus));
 		plus.setBounds(278, 18, 33, 36);
 		frame.getContentPane().add(plus);
-		Image imgback = new ImageIcon (this.getClass().getResource("/back-button.jpg")).getImage();
+		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		
 		JButton help = new JButton("");
-		Image imgbook = new ImageIcon (this.getClass().getResource("/book-button.jpg")).getImage();
+		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
 		frame.getContentPane().add(help);

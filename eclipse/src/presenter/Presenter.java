@@ -8,6 +8,9 @@ public abstract class Presenter {
 	
 	public void newScreen() {
 		// General newScreen() implementation
+		if (previousPresenter != null) {
+			previousPresenter.frame.dispose();
+		}
 	}
 	
 	public void showPreviousPresenter() {

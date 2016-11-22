@@ -17,10 +17,17 @@ import javax.swing.JTextArea;
 
 
 
-public class DetailPresenter extends Presenter {
+public class DetailPresenter extends Presenter implements ActionListener {
 	private JFrame frame;
 	private JTable table;
-
+	private JButton logo = new JButton("");
+	private JButton btnLogout = new JButton("Logout");
+	private JButton back = new JButton("");
+	private JButton help = new JButton("");
+	private JButton btnHinzufgen = new JButton("Hinzufügen");
+	private JButton btnEntnehmen = new JButton("Entnehmen");
+	private JButton btnBearbeiten = new JButton("Bearbeiten");
+	private JButton btnLschen = new JButton("Löschen");
 	/**
 	 * Launch the application.
 	 */
@@ -55,8 +62,8 @@ public class DetailPresenter extends Presenter {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton logo = new JButton("");
-		Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoMini.jpg")).getImage();
+
+		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
@@ -64,24 +71,18 @@ public class DetailPresenter extends Presenter {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(6, 66, 788, 12);
 		frame.getContentPane().add(separator);
-		
-		JButton btnLogout = new JButton("Logout");
+
 		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnLogout.addActionListener(this);
 		btnLogout.setBounds(455, 27, 98, 22);
 		frame.getContentPane().add(btnLogout);
-		
-		JButton back = new JButton("");
-		Image imgback = new ImageIcon (this.getClass().getResource("/back-button.jpg")).getImage();
+
+		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		back.setIcon (new ImageIcon (imgback));
 		back.setBounds(36, 18, 33, 36);
 		frame.getContentPane().add(back);
-		
-		JButton help = new JButton("");
-		Image imgbook = new ImageIcon (this.getClass().getResource("/book-button.jpg")).getImage();
+
+		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
 		frame.getContentPane().add(help);
@@ -100,22 +101,38 @@ public class DetailPresenter extends Presenter {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setBounds(350, 199, 358, 208);
 		frame.getContentPane().add(table);
-		
-		JButton btnHinzufgen = new JButton("Hinzufügen");
+
 		btnHinzufgen.setBounds(386, 419, 117, 29);
 		frame.getContentPane().add(btnHinzufgen);
-		
-		JButton btnEntnehmen = new JButton("Entnehmen");
+
 		btnEntnehmen.setBounds(560, 419, 117, 29);
 		frame.getContentPane().add(btnEntnehmen);
-		
-		JButton btnBearbeiten = new JButton("Bearbeiten");
+
 		btnBearbeiten.setBounds(560, 460, 117, 29);
 		frame.getContentPane().add(btnBearbeiten);
-		
-		JButton btnLschen = new JButton("Löschen");
+
 		btnLschen.setBounds(386, 460, 117, 29);
 		frame.getContentPane().add(btnLschen);
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == this.logo) {
+
+		} else if (e.getSource() == this.btnLogout) {
+
+		} else if (e.getSource() == this.back) {
+
+		} else if (e.getSource() == this.help) {
+
+		} else if (e.getSource() == this.btnHinzufgen) {
+
+		} else if (e.getSource() == this.btnEntnehmen) {
+
+		} else if (e.getSource() == this.btnBearbeiten) {
+
+		} else if (e.getSource() == this.btnLschen) {
+
+		}
+	}
 }

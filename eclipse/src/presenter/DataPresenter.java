@@ -76,13 +76,13 @@ public class DataPresenter extends Presenter {
 		frame.getContentPane().add(btnLogout);
 		
 		JButton back = new JButton("");
-		Image imgback = new ImageIcon (this.getClass().getResource("/back-button.jpg")).getImage();
+		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		back.setIcon (new ImageIcon (imgback));
 		back.setBounds(36, 18, 33, 36);
 		frame.getContentPane().add(back);
 		
 		JButton help = new JButton("");
-		Image imgbook = new ImageIcon (this.getClass().getResource("/book-button.jpg")).getImage();
+		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
 		frame.getContentPane().add(help);
