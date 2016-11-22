@@ -15,12 +15,13 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SetupPresenter extends Presenter {
+public class SetupPresenter extends Presenter implements ActionListener  {
 	private DatabaseLoginManager loginManager = new DatabaseLoginManager();
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+	private JButton logo;
+	private JButton btnSpeichern;
 	/**
 	 * Launch the application.
 	 */
@@ -48,12 +49,9 @@ public class SetupPresenter extends Presenter {
 	 */
 	public void initialize() {
 		super.initialize();
-		
-		JButton logo = new JButton("");
-		logo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
+		logo = new JButton("");
+		logo.addActionListener(this);
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
@@ -90,7 +88,7 @@ public class SetupPresenter extends Presenter {
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnSpeichern = new JButton("speichern");
+		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(343, 401, 117, 29);
 		frame.getContentPane().add(btnSpeichern);
 		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
@@ -102,4 +100,12 @@ public class SetupPresenter extends Presenter {
 		frame.getContentPane().add(Datenbank);
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == this.logo) {
+
+		} else if (e.getSource() == this.btnSpeichern){
+			super.showPreviousPresenter();
+		}
+	}
 }

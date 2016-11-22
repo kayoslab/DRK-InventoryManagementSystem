@@ -72,12 +72,14 @@ public class InventoryPresenter extends Presenter implements ActionListener  {
 		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		back.setIcon (new ImageIcon (imgback));
 		back.setBounds(36, 18, 33, 36);
+		back.addActionListener(this);
 		frame.getContentPane().add(back);
 		back.addActionListener(this);
 
 		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
+		help.addActionListener(this);
 		frame.getContentPane().add(help);
 		help.addActionListener(this);
 		

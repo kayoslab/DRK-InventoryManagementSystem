@@ -57,13 +57,9 @@ public class MessagePresenter extends Presenter implements ActionListener {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(6, 66, 788, 12);
 		frame.getContentPane().add(separator);
-		
 
 		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnLogout.addActionListener(this);
 		btnLogout.setBounds(455, 27, 98, 22);
 		frame.getContentPane().add(btnLogout);
 		
@@ -71,12 +67,14 @@ public class MessagePresenter extends Presenter implements ActionListener {
 		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 		back.setIcon (new ImageIcon (imgback));
 		back.setBounds(36, 18, 33, 36);
+		back.addActionListener(this);
 		frame.getContentPane().add(back);
 		
 		
 		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
+		help.addActionListener(this);
 		frame.getContentPane().add(help);
 		
 		JLabel Meldungen = new JLabel("Meldungen");
