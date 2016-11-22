@@ -16,10 +16,9 @@ public class main {
 			// TODO: Show LoginPresenter
 			System.out.println("Database Connection established.");
 			try {
-				Date date = sdf.parse("2016-03-03 03:00:00");
-				DeviceValue dv = new DeviceValue(0, 1, date, date, 10, 2, 1, "ABCD", "EFG", "FOO");
-				MedicalMaterialValue mv = new MedicalMaterialValue(0, 10, 11, 2, 1, "ABC", date);
-				ConsumableMaterialValue cv = new ConsumableMaterialValue(0, 10, 12, 2, 1, "ABC", date);
+				Date date = sdf.parse("2017-01-01 00:00:00");
+				// Constructor(int id, int volume, int stockObjectID, int locationID, int messageID, String batchNumber, Date date)
+				ConsumableMaterialValue cv = new ConsumableMaterialValue(0, 100, 3, 1, 1, "BatchNumber-123456", date);
 				System.out.println(DatabaseWriteManager.createObject(cv));
 			} catch (ParseException e) {
 				System.out.println(e.getMessage());

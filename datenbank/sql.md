@@ -175,33 +175,48 @@ VALUES
     ('modify-user'),
     ('user-login'),
     ('user-logout'),
-    ('create-userRight'),
-    ('delete-userRight'),
-    ('modify-userRight'),
-    ('create-material'),
-    ('delete-material'),
-    ('modify-material'),
-    ('material-increase'),
-    ('material-decrease'),
-    ('material-correction');
+    ('create-device'),
+    ('delete-device'),
+    ('modify-device'),
+    ('device-increase'),
+    ('device-decrease'),
+    ('device-correction'),
+    ('create-medicalMaterial'),
+    ('delete-medicalMaterial'),
+    ('modify-medicalMaterial'),
+    ('medicalMaterial-increase'),
+    ('medicalMaterial-decrease'),
+    ('medicalMaterial-correction'),
+    ('create-consumableMaterial'),
+    ('delete-consumableMaterial'),
+    ('modify-consumableMaterial'),
+    ('consumableMaterial-increase'),
+    ('consumableMaterial-decrease'),
+    ('consumableMaterial-correction');
 
 INSERT INTO `GroupRight` (title)
 VALUES
     ('create-user'),
     ('delete-user'),
     ('modify-user'),
-    ('create-userRight'),
-    ('delete-userRight'),
-    ('modify-userRight'),
-    ('create-material'),
-    ('delete-material'),
-    ('modify-material'),
-    ('material-increase'),
-    ('material-decrease'),
-    ('material-correction'),
-    ('consumable-material'),
-    ('medical-material'),
-    ('devices');
+    ('create-device'),
+    ('delete-device'),
+    ('modify-device'),
+    ('device-increase'),
+    ('device-decrease'),
+    ('device-correction'),
+    ('create-medicalMaterial'),
+    ('delete-medicalMaterial'),
+    ('modify-medicalMaterial'),
+    ('medicalMaterial-increase'),
+    ('medicalMaterial-decrease'),
+    ('medicalMaterial-correction'),
+    ('create-consumableMaterial'),
+    ('delete-consumableMaterial'),
+    ('modify-consumableMaterial'),
+    ('consumableMaterial-increase'),
+    ('consumableMaterial-decrease'),
+    ('consumableMaterial-correction');
 
 INSERT INTO `Group` (title)
 VALUES
@@ -221,7 +236,16 @@ VALUES
     (1,9),
     (1,10),
     (1,11),
-    (1,12);
+    (1,12),
+    (1,13),
+    (1,14),
+    (1,15),
+    (1,16),
+    (1,17),
+    (1,18),
+    (1,19),
+    (1,20),
+    (1,21);
 
 /* pw = md5(test) */
 INSERT INTO `User` (username, firstname, name, password, passwordChanged)
