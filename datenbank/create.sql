@@ -78,9 +78,9 @@ CREATE TABLE `StockObject` (
 CREATE TABLE `Stock` (
    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `volume` int(10) unsigned NOT NULL,
-   `date` date NULL,
-   `mtk` date NULL,
-   `stk` date NULL,
+   `date` DATETIME NULL,
+   `mtk` DATETIME NULL,
+   `stk` DATETIME NULL,
    `inventarNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `serialNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
@@ -109,7 +109,7 @@ CREATE TABLE `Operation` (
 CREATE TABLE `Logbook` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `date` datetime NOT NULL,
+    `date` TIMESTAMP NOT NULL,
     `user_id` int(10) unsigned NOT NULL,
     `stockObject_id` int(10) unsigned NOT NULL,
     `operation_id` int(10) unsigned NULL,

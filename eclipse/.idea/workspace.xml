@@ -30,15 +30,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="605" column="47" selection-start-line="605" selection-start-column="27" selection-end-line="605" selection-end-column="47" />
+            <state relative-caret-position="694">
+              <caret line="537" column="95" selection-start-line="536" selection-start-column="59" selection-end-line="537" selection-end-column="95" />
               <folding>
                 <element signature="e#3316#3341#0" expanded="false" />
                 <element signature="e#6727#6753#0" expanded="false" />
                 <element signature="e#9255#9273#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseReadManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1099">
+              <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5672#5690#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -704,12 +717,12 @@
       <workItem from="1479735058013" duration="6034000" />
       <workItem from="1479741338336" duration="339000" />
       <workItem from="1479741961430" duration="1091000" />
-      <workItem from="1479761887710" duration="4560000" />
+      <workItem from="1479761887710" duration="4799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13946000" />
+    <option name="totallyTimeSpent" value="14185000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1068,17 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5672#5690#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/PasswordManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
@@ -1101,12 +1103,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="605" column="47" selection-start-line="605" selection-start-column="27" selection-end-line="605" selection-end-column="47" />
+        <state relative-caret-position="694">
+          <caret line="537" column="95" selection-start-line="536" selection-start-column="59" selection-end-line="537" selection-end-column="95" />
           <folding>
             <element signature="e#3316#3341#0" expanded="false" />
             <element signature="e#6727#6753#0" expanded="false" />
             <element signature="e#9255#9273#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1099">
+          <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5672#5690#0" expanded="true" />
           </folding>
         </state>
       </provider>
