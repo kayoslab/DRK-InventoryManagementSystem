@@ -90,7 +90,7 @@ public class SendMailExample {
 			BodyPart messageBodyPart = new MimeBodyPart();
 
 			// Mailtext
-			String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen k�nnen hat es funktioniert.";
+			String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen koennen hat es funktioniert.";
 			messageBodyPart.setText(text);
 
 			// Daten
@@ -158,7 +158,7 @@ public class SendMailExample {
 		String senderAddress = "XXX";// someone@web.de
 		String recipientsAddress = "XXX"; // somereceiver@web.de
 		String subject = "Testnachricht JAVA";
-		String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen k�nnen hat es funktioniert.";
+		String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen koennen hat es funktioniert.";
 		String smtpHost = "smtp.web.de";
 
 		new SendMailExample().sendMail(smtpHost, username, password,

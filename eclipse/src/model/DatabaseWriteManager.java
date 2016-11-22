@@ -109,7 +109,7 @@ public final class DatabaseWriteManager {
 
 		String sqlStatement = "INSERT INTO `User`"
 				+ " VALUES(0, '" + user.username + "', '"
-				+ user.firstName +"', '" + user.name + "', '" + DatabaseWriteManager.sdf.format(timestamp)
+				+ user.firstName +"', '" + user.name + "', '" + user.mail + "', '" + DatabaseWriteManager.sdf.format(timestamp)
 				+ "', '"	+ user.passwordHash + "',false);";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
@@ -139,7 +139,8 @@ public final class DatabaseWriteManager {
 	private static Boolean editUser(User user) {
 		String sqlStatement = "UPDATE `User` SET `username` = '"
 				+ user.username + "', `firstname` = '" + user.firstName
-				+"', name = '" + user.name + "', `password` = '" + user.passwordHash
+				+"', name = '" + user.name +"', mail = '" + user.mail
+				+ "', `password` = '" + user.passwordHash
 				+ "', `passwordChanged` = " + user.passwordChanged
 				+ " WHERE `id` = " + user.id +";";
 

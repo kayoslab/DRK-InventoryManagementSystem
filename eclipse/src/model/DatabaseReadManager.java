@@ -30,7 +30,7 @@ public final class DatabaseReadManager {
 	 */
 	public static User getUser(int id) {
 		// get User from Database and return for id
-		String sqlStatement = "SELECT `username`,`firstname`,`name`,`password`,`passwordChanged`" 
+		String sqlStatement = "SELECT `username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`" 
 				+ " FROM `User` WHERE id = " + id;
 		ResultSet rs = null;
 		try {
@@ -38,7 +38,8 @@ public final class DatabaseReadManager {
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {
 				// fill with reasonable Data
-				User user = new User(id, rs.getString("username"), rs.getString("firstname"), rs.getString("name"), rs.getString("password"), rs.getBoolean("passwordChanged"));
+				User user = new User(id, rs.getString("username"), rs.getString("firstname"), rs.getString("name"), 
+						rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
 				DatabaseReadManager.close(rs);
 				return user;
 			}
@@ -63,7 +64,7 @@ public final class DatabaseReadManager {
 	 */
 	public static User getUser(String username) {
 		// get User from Database and return for id
-		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`password`,`passwordChanged`" 
+		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`" 
 				+ " FROM `User` WHERE `username` = '" + username + "'";
 		ResultSet rs = null;
 		try {
@@ -72,7 +73,7 @@ public final class DatabaseReadManager {
 			if (rs.first()) {
 				// fill with reasonable Data
 				User user = new User(rs.getInt("id"), username, rs.getString("firstname"), rs.getString("name"),
-						rs.getString("password"), rs.getBoolean("passwordChanged"));
+						rs.getString("mail"),rs.getString("password"), rs.getBoolean("passwordChanged"));
 				DatabaseReadManager.close(rs);
 				return user;
 			}
