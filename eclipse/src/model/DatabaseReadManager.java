@@ -178,7 +178,7 @@ public final class DatabaseReadManager {
 	 * @return Group[]
 	 */
 	public static Group[] getGroups() {
-		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM GROUP;";
+		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM `Group`;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -189,7 +189,7 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-                    groups[i] = new Group(rs.getInt("id"), rs.getString("tile"), rs.getBoolean("isActive"));
+                    groups[i] = new Group(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isActive"));
                     i++;
 				}
 				// fill with reasonable Data
@@ -215,7 +215,7 @@ public final class DatabaseReadManager {
 	 * @return Group
 	 */
 	public static Group getGroup(int id) {
-		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM GROUP WHERE `id` = " + id + ";";
+		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM `Group` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -248,7 +248,7 @@ public final class DatabaseReadManager {
 	 * @return GroupRight[]
 	 */
 	public static GroupRight[] getGroupRights() {
-		String sqlStatement = "SELECT `id`,`title` FROM GroupRight;";
+		String sqlStatement = "SELECT `id`,`title` FROM `GroupRight`;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -283,7 +283,7 @@ public final class DatabaseReadManager {
 	 * @return GroupRight[]
 	 */
 	public static GroupRight[] getGroupRights(int id) {
-		String sqlStatement = "SELECT `id`,`title` FROM GroupRight WHERE `id` = " + id + ";";
+		String sqlStatement = "SELECT `id`,`title` FROM `GroupRight` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -323,14 +323,21 @@ public final class DatabaseReadManager {
 	 * @return Location[]
 	 */
 	public static Location[] getLocations() {
-		String sqlStatement = "";
+		String sqlStatement = "SELECT `id`,`title` FROM `Location`;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
+			if (rs.last()) {
+				Location[] locations = new Location[rs.getRow()];
+				int i = 0;
 				// fill with reasonable Data
-				return null;
+				rs.beforeFirst();
+				while (rs.next()) {
+					locations[i] = new Location(rs.getInt("id"), rs.getString("title"));
+                    i++;
+                }   				
+				return locations;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -351,15 +358,15 @@ public final class DatabaseReadManager {
 	 * @param id int user.id
 	 * @return Location[]
 	 */
-	public static Location[] getLocation(int id) {
-		String sqlStatement = "";
+	public static Location getLocation(int id) {
+		String sqlStatement = "SELECT `id`,`title` FROM `Location` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
-				// fill with reasonable Data
-				return null;
+			if (rs.first()) {				
+				Location location = new Location(rs.getInt("id"), rs.getString("title"));	
+				return location;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -380,15 +387,22 @@ public final class DatabaseReadManager {
 	 * @param stockObject StockObject
 	 * @return Location[]
 	 */
-	public static Location[] getLocation(StockObject stockObject) {
-		String sqlStatement = "";
+	public static Location[] getLocations(StockObjectValue stockObjectValue) {
+		String sqlStatement = "SELECT `id`,`title` FROM `Location` WHERE `id` = " + stockObjectValue.locationID + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
+			if (rs.last()) {
+				Location[] locations = new Location[rs.getRow()];
+				int i = 0;
 				// fill with reasonable Data
-				return null;
+				rs.beforeFirst();
+				while (rs.next()) {
+					locations[i] = new Location(rs.getInt("id"), rs.getString("title"));
+                    i++;
+                }   		
+				return locations;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -415,12 +429,15 @@ public final class DatabaseReadManager {
 	 * @return StockObject
 	 */
 	public static StockObject getStockObject(int id) {
-		String sqlStatement = "";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silenceWarnings`, `type_id`"
+				+ "FROM `StockObject` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {
+				//je nach TypId unterschiedliche Konstruktoren
 				// fill with reasonable Data
 				return null;
 			}
