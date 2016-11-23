@@ -3,7 +3,7 @@
 ![ER-Model](./../modellierung/UML/ER/ER-Model.png)
 Vorläufiger Entwurf des ER-Models, **request-for-comments**.
 
-# SQL-Aufruf
+# Allgemein
 
 Zunächst wird für das Projekt die Collation `latin1_german2_ci` verwendet, da diese am ehesten der "Telefonbuchsortierung" im deutschen entspricht. Alternativ wäre es auch denkbar gewesen `utf8_general_ci` zu verwenden, diese kann jedoch zu unerwarteten Sortierungen beim Aufkommen von Umlauten führen.
 
@@ -19,6 +19,8 @@ Die Constraints der Tabellen `GroupHasRights` und `UserIsMemberOfGroup` müssen 
 
 ![EER-Model](./../modellierung/UML/EER/EER-Model.png)
 Vorläufiger Entwurf des EER-Models, **request-for-comments**.
+
+# SQL-Aufruf
 
 ## Group has Rights
 
