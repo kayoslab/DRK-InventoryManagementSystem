@@ -47,22 +47,6 @@ public class DataPresenter extends Presenter {
 	private JButton btnY = new JButton("Y");
 	private JButton btnZ = new JButton("Z");
 
-
-	/**
-	 * Launch the application.
-	 */
-	public void newScreen () {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				DataPresenter window = new DataPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
@@ -167,7 +151,7 @@ public class DataPresenter extends Presenter {
 			this.frame.dispose();
 			loginPresenter.newScreen();
 		} else if (e.getSource() == this.back) {
-			super.showPreviousPresenter();
+			this.showPreviousPresenter();
 		} else if (e.getSource() == this.help) {
 
 		} else if (e.getSource() == this.logo) {

@@ -20,21 +20,6 @@ public class MenuPresenter extends Presenter {
 	private JButton help = new JButton("");
 
 	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				MenuPresenter window = new MenuPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public MenuPresenter() {

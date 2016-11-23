@@ -17,21 +17,6 @@ public class MessagePresenter extends Presenter {
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
 	private JButton help = new JButton("");
-	
-	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				MessagePresenter window = new MessagePresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -91,10 +76,9 @@ public class MessagePresenter extends Presenter {
 			this.frame.dispose();
 			loginPresenter.newScreen();
 		} else if (e.getSource() == this.back){
-			super.showPreviousPresenter();
-		} else if (e.getSource() == this.help){
+			this.showPreviousPresenter();
+		} else if (e.getSource() == this.help) {
 
 		}
-		
 	}
 }

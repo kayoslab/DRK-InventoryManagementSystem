@@ -22,21 +22,6 @@ public class SettingsPresenter extends Presenter {
 	private JButton btnPasswortndern = new JButton("Passwort ändern");
 
 	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				SettingsPresenter window = new SettingsPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public SettingsPresenter() {
@@ -96,7 +81,7 @@ public class SettingsPresenter extends Presenter {
 				this.frame.dispose();
 				loginPresenter.newScreen();
 			} else if (e.getSource() == this.back){
-				super.showPreviousPresenter();
+				this.showPreviousPresenter();
 			} else if (e.getSource() == this.help){
 
 			}

@@ -21,22 +21,6 @@ public class InventoryPresenter extends Presenter {
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
 	private JButton help = new JButton("");
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				InventoryPresenter window = new InventoryPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -132,7 +116,7 @@ public class InventoryPresenter extends Presenter {
 			loginPresenter.newScreen();
 		}
 		if (e.getSource() == this.back) {
-			super.showPreviousPresenter();
+			this.showPreviousPresenter();
 		}
 		if (e.getSource() == this.help) {
 

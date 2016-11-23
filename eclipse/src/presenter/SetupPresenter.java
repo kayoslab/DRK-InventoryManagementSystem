@@ -18,20 +18,6 @@ public class SetupPresenter extends Presenter {
 	private JTextField textField_2;
 	private JButton logo =  new JButton("");
 	private JButton btnSpeichern = new JButton("speichern");
-	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				SetupPresenter window = new SetupPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
 
 	/**
 	 * Create the application.

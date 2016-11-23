@@ -1,8 +1,10 @@
 package presenter;
 
 import javax.swing.JFrame;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionListener;
+
+import static javax.swing.JFrame.DISPOSE_ON_CLOSE;
 
 public abstract class Presenter implements ActionListener {
 	Presenter previousPresenter;
@@ -10,9 +12,17 @@ public abstract class Presenter implements ActionListener {
 	
 	public void newScreen() {
 		// General newScreen() implementation
-		if (previousPresenter != null) {
-			previousPresenter.frame.dispose();
-		}
+		EventQueue.invokeLater(() -> {
+			try {
+				// DataPresenter window = new DataPresenter();
+				this.frame.setVisible(true);
+				if (previousPresenter != null) {
+					previousPresenter.frame.setVisible(false);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	/**
@@ -22,7 +32,7 @@ public abstract class Presenter implements ActionListener {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 	}
 
@@ -30,7 +40,7 @@ public abstract class Presenter implements ActionListener {
 		// show previous Presenter if not null
 		if (this.previousPresenter != null) {
 			// and discard current presenter
-			this.previousPresenter.newScreen();
+			this.previousPresenter.frame.setVisible(true);
 			this.frame.dispose();
 		} else {
 			System.out.println("previousPresenter == null");

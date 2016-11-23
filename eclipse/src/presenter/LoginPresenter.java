@@ -16,21 +16,6 @@ public class LoginPresenter extends Presenter {
 	private JPasswordField passwordField;
 	private JButton btnEinloggen = new JButton("Einloggen");
 	private JTextField userNameTextField;
-	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		// lambda implementation
-		EventQueue.invokeLater(() -> {
-			try {
-				LoginPresenter window = new LoginPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
 
 	/**
 	 * Create the application.

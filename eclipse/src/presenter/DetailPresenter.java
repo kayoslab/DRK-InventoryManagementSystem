@@ -24,20 +24,6 @@ public class DetailPresenter extends Presenter {
 	private JButton btnEntnehmen = new JButton("Entnehmen");
 	private JButton btnBearbeiten = new JButton("Bearbeiten");
 	private JButton btnLschen = new JButton("Löschen");
-	/**
-	 * Launch the application.
-	 */
-	public void newScreen() {
-		super.newScreen();
-		EventQueue.invokeLater(() -> {
-			try {
-				DetailPresenter window = new DetailPresenter();
-				window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -111,7 +97,7 @@ public class DetailPresenter extends Presenter {
 		} else if (e.getSource() == this.btnLogout) {
 
 		} else if (e.getSource() == this.back) {
-
+			this.showPreviousPresenter();
 		} else if (e.getSource() == this.help) {
 
 		} else if (e.getSource() == this.btnHinzufgen) {
