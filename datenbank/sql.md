@@ -15,6 +15,11 @@ Für die Implementierung der `BOOLEAN` Werte wie passwordChanged und silenceWarn
 
 Die Constraints der Tabellen `GroupHasRights` und `UserIsMemberOfGroup` müssen bezüglich ihrer `ON DELETE` und `ON UPDATE` Funktionen geprüft und besprochen werden. CASCADE gilt daher nur als Platzhalter für ein sinnvolles Verhalten, welches in den Anforderungen festgehalten werden sollte.
 
+# EER-Model
+
+![EER-Model](./../modellierung/UML/EER/EER-Model.png)
+Vorläufiger Entwurf des EER-Models, **request-for-comments**.
+
 ## Group has Rights
 
 Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `Group` und `GroupRight`.
