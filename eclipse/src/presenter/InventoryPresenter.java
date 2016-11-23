@@ -4,14 +4,11 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -19,7 +16,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 
 
-public class InventoryPresenter extends Presenter implements ActionListener  {
+public class InventoryPresenter extends Presenter {
 	private JTable table;
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
@@ -59,10 +56,6 @@ public class InventoryPresenter extends Presenter implements ActionListener  {
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
 
 		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(this);
@@ -82,6 +75,10 @@ public class InventoryPresenter extends Presenter implements ActionListener  {
 		help.addActionListener(this);
 		frame.getContentPane().add(help);
 		help.addActionListener(this);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 66, 788, 12);
+		frame.getContentPane().add(separator);
 		
 		JLabel Inventarliste = new JLabel("Inventarliste");
 		Inventarliste.setFont(new Font("Lucida Grande", Font.PLAIN, 20));

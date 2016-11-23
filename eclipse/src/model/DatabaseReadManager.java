@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import model.databaseCommunication.DatabaseValueManager;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.accessControl.*;
+import model.databaseObjects.environment.*;
 import model.databaseObjects.stockObjects.*;
 import model.databaseObjects.stockValues.*;
 
@@ -22,15 +23,46 @@ public final class DatabaseReadManager {
 		return new DatabaseValueManager();
 	}
 
-	// MARK: - User Management
+	//================================================================================
+	// region User
+	//================================================================================
 
 	/**
-	 * @param id int
+	 * @return User[]
+	 */
+	public static User[] getUser() {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+
+	/**
+	 * @param id int user.id
 	 * @return User
 	 */
 	public static User getUser(int id) {
 		// get User from Database and return for id
-		String sqlStatement = "SELECT `username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`" 
+		String sqlStatement = "SELECT `username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
 				+ " FROM `User` WHERE id = " + id;
 		ResultSet rs = null;
 		try {
@@ -38,7 +70,7 @@ public final class DatabaseReadManager {
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {
 				// fill with reasonable Data
-				User user = new User(id, rs.getString("username"), rs.getString("firstname"), rs.getString("name"), 
+				User user = new User(id, rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
 						rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
 				DatabaseReadManager.close(rs);
 				return user;
@@ -52,7 +84,7 @@ public final class DatabaseReadManager {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
 				// nothing to do here, return not necessary
-				return null; 
+				return null;
 			}
 			return null;
 		}
@@ -64,7 +96,7 @@ public final class DatabaseReadManager {
 	 */
 	public static User getUser(String username) {
 		// get User from Database and return for id
-		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`" 
+		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
 				+ " FROM `User` WHERE `username` = '" + username + "'";
 		ResultSet rs = null;
 		try {
@@ -86,7 +118,7 @@ public final class DatabaseReadManager {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
 				// nothing to do here, return not necessary
-				return null; 
+				return null;
 			}
 			return null;
 		}
@@ -95,13 +127,13 @@ public final class DatabaseReadManager {
 	/**
 	 * @param username String
 	 * @return Boolean
-	 * 
+	 *
 	 * Check if a user has already changed his password since it was
 	 * modifies by an admin
 	 */
 	public static Boolean userDidChangePassword(String username) {
 		// check if password has already been changed
-		String sqlStatement = "SELECT `passwordChanged`" + "FROM `User` WHERE `username` = '" 
+		String sqlStatement = "SELECT `passwordChanged`" + "FROM `User` WHERE `username` = '"
 				+ username + "'";
 		ResultSet rs = null;
 		try {
@@ -122,10 +154,437 @@ public final class DatabaseReadManager {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
 				// nothing to do here, return not necessary
-				return null; 
+				return null;
 			}
 			return null;
-		}		
+		}
+	}
+
+	//================================================================================
+	// endregion User
+	// region Group
+	//================================================================================
+
+	/**
+	 * @return Group[]
+	 */
+	public static Group[] getGroup() {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param id int group.id
+	 * @return Group
+	 */
+	public static Group getGroup(int id) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	//================================================================================
+	// endregion Group
+	// region GroupRight
+	//================================================================================
+
+	/**
+	 * @return GroupRight[]
+	 */
+	public static GroupRight[] getGroupRights() {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+	/**
+	 * @param id int user.id
+	 * @return GroupRight[]
+	 */
+	public static GroupRight[] getGroupRights(int id) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	//================================================================================
+	// endregion GroupRight
+	// region Location
+	//================================================================================
+
+	/**
+	 * @return Location[]
+	 */
+	public static Location[] getLocations() {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param id int user.id
+	 * @return Location[]
+	 */
+	public static Location[] getLocation(int id) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param stockObject StockObject
+	 * @return Location[]
+	 */
+	public static Location[] getLocation(StockObject stockObject) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	//================================================================================
+	// endregion Location
+	// region StockObject
+	//================================================================================
+
+	/**
+	 * @param id int stockObject.id
+	 * @return StockObject
+	 */
+	public static StockObject getStockObject(int id) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @return StockObject[]
+	 */
+	public static StockObject[] getStockObjects() {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param type DatabaseObject.StockObjectType
+	 * @return StockObject[]
+	 */
+	public static StockObject[] getStockObjects(DatabaseObject.StockObjectType type) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	//================================================================================
+	// endregion StockObject
+	// region StockObjectValue
+	//================================================================================
+
+	/**
+	 * @param stockObject StockObject
+	 * @return StockObjectValue[]
+	 */
+	public static StockObjectValue[] getStockObjectValues(StockObject stockObject) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param id int stockObjectValue.id
+	 * @return StockObjectValue[]
+	 */
+	public static StockObjectValue[] getStockObjectValues(int id) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param location Location
+	 * @return StockObjectValue[]
+	 */
+	public static StockObjectValue[] getStockObjectValues(Location location) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param type DatabaseObject.StockObjectType
+	 * @param message DatabaseObject.StockValueMessage
+	 * @return StockObjectValue[]
+	 */
+	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockObjectType type, DatabaseObject.StockValueMessage message) {
+		String sqlStatement = "";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				return null;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
 	}
 
 	/**
@@ -136,7 +595,7 @@ public final class DatabaseReadManager {
 	 * This fucntion returns an emtpy Array of StockObjectValue[] if the Stock is empty.
 	 *
 	 */
-	public static StockObjectValue[] existingStockFor(StockObjectValue stockObjectValue) {
+	public static StockObjectValue[] existingStockObjectValueFor(StockObjectValue stockObjectValue) {
 		String sqlStatement = "SELECT * FROM `Stock` WHERE `stockObject_id` = " + stockObjectValue.stockObjectID
 				+ " AND `location_id` = " + stockObjectValue.locationID;
 		// Switch between different extended StockObjectValue Types
@@ -205,7 +664,9 @@ public final class DatabaseReadManager {
 		}
 	}
 
-
+	//================================================================================
+	// endregion StockObjectValue
+	//================================================================================
 
 	/**
 	 * @param stockObjectType DatabaseObject.StockObjectType

@@ -1,24 +1,22 @@
 package presenter;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class DataPresenter extends Presenter implements ActionListener {
+public class DataPresenter extends Presenter {
 	private JTextField txtSuchen;
 	private JTable table;
+	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
 	private JButton help = new JButton("");
@@ -77,37 +75,34 @@ public class DataPresenter extends Presenter implements ActionListener {
 	 */
 	public void initialize() {
 		super.initialize();
-		
-		JButton logo = new JButton("");
-		Image img = new ImageIcon (this.getClass().getResource("/DRK-LogoMini.jpg")).getImage();
+
+		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
-		logo.addActionListener(this);
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
-		
+		logo.addActionListener(this);
+
+		btnLogout.setBackground(Color.LIGHT_GRAY);
+		btnLogout.setBounds(455, 27, 98, 22);
+		frame.getContentPane().add(btnLogout);
+		btnLogout.addActionListener(this);
+
+		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
+		back.setIcon (new ImageIcon (imgback));
+		back.setBounds(36, 18, 33, 36);
+		frame.getContentPane().add(back);
+		back.addActionListener(this);
+
+		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
+		help.setIcon (new ImageIcon (imgbook));
+		help.setBounds(381, 18, 33, 36);
+		frame.getContentPane().add(help);
+		help.addActionListener(this);
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(6, 66, 788, 12);
 		frame.getContentPane().add(separator);
-		
-		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(this);
-		btnLogout.setBounds(455, 27, 98, 22);
-		frame.getContentPane().add(btnLogout);
-		
-		JButton back = new JButton("");
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
-		back.setIcon (new ImageIcon (imgback));
-		back.addActionListener(this);
-		back.setBounds(36, 18, 33, 36);
-		frame.getContentPane().add(back);
-		
-		JButton help = new JButton("");
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		help.setIcon (new ImageIcon (imgbook));
-		help.addActionListener(this);
-		help.setBounds(381, 18, 33, 36);
-		frame.getContentPane().add(help);
+
 		
 		JLabel MaterialUndGeraeteDaten = new JLabel("Material- und Geräte Daten");
 		MaterialUndGeraeteDaten.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -167,7 +162,17 @@ public class DataPresenter extends Presenter implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == this.btnA) {
+		if (e.getSource() == this.btnLogout) {
+			LoginPresenter loginPresenter = new LoginPresenter();
+			this.frame.dispose();
+			loginPresenter.newScreen();
+		} else if (e.getSource() == this.back) {
+			super.showPreviousPresenter();
+		} else if (e.getSource() == this.help) {
+
+		} else if (e.getSource() == this.logo) {
+
+		} else if (e.getSource() == this.btnA) {
 
 		} else if (e.getSource() == this.btnB) {
 
@@ -218,14 +223,6 @@ public class DataPresenter extends Presenter implements ActionListener {
 		} else if (e.getSource() == this.btnY) {
 
 		} else if (e.getSource() == this.btnZ) {
-
-		} else if (e.getSource() == this.btnLogout) {
-			LoginPresenter loginPresenter = new LoginPresenter();
-			this.frame.dispose();
-			loginPresenter.newScreen();
-		} else if (e.getSource() == this.back) {
-			super.showPreviousPresenter();
-		} else if (e.getSource() == this.help) {
 
 		}
 	}

@@ -5,21 +5,20 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
 
-public class SettingsPresenter extends Presenter implements ActionListener {
+public class SettingsPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
+	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
 	private JButton help = new JButton("");
+	private JButton btnDatenbankzugangsdatenndern = new JButton("Datenbankzugangsdaten ändern");
 	private JButton btnPasswortndern = new JButton("Passwort ändern");
 
 	/**
@@ -49,16 +48,11 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 	 */
 	public void initialize() {
 		super.initialize();
-		
-		JButton logo = new JButton("");
+
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
 		
 		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(this);
@@ -70,28 +64,28 @@ public class SettingsPresenter extends Presenter implements ActionListener {
 		back.addActionListener(this);
 		back.setBounds(36, 18, 33, 36);
 		frame.getContentPane().add(back);
-		
+
+		btnDatenbankzugangsdatenndern.setBounds(247, 258, 280, 57);
+		frame.getContentPane().add(btnDatenbankzugangsdatenndern);
+
+		btnPasswortndern.setBounds(247, 331, 280, 57);
+		frame.getContentPane().add(btnPasswortndern);
+		btnPasswortndern.addActionListener(this);
 		
 		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
 		help.addActionListener(this);
 		frame.getContentPane().add(help);
-		
+
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 66, 788, 12);
+		frame.getContentPane().add(separator);
+
 		JLabel Einstellungen = new JLabel("Einstellungen");
 		Einstellungen.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Einstellungen.setBounds(16, 98, 247, 36);
 		frame.getContentPane().add(Einstellungen);
-		
-		JButton btnDatenbankzugangsdatenndern = new JButton("Datenbankzugangsdaten ändern");
-		btnDatenbankzugangsdatenndern.setBounds(247, 258, 280, 57);
-		frame.getContentPane().add(btnDatenbankzugangsdatenndern);
-		
-		JButton btnPasswortndern = new JButton("Passwort ändern");
-		btnPasswortndern.setBounds(247, 331, 280, 57);
-		frame.getContentPane().add(btnPasswortndern);
-		btnPasswortndern.addActionListener(this);
-	
 	}
 
 

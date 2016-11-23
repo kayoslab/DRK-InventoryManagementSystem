@@ -464,7 +464,7 @@ public final class DatabaseWriteManager {
 	 */
 	private static Boolean createStockObjectValue(StockObjectValue stockObjectValue) {
 		// Check for allready existing Stock Entries with this particular identifiers (e.g. Location/Message/Date).
-		StockObjectValue[] existingStock = DatabaseReadManager.existingStockFor(stockObjectValue);
+		StockObjectValue[] existingStock = DatabaseReadManager.existingStockObjectValueFor(stockObjectValue);
 		// switch over the number of objects with the same identifier.
 		assert existingStock != null : false;
 		switch (existingStock.length) {
@@ -607,7 +607,7 @@ public final class DatabaseWriteManager {
 	private static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
 		String sqlStatement = "";
 		// Check for allready existing Stock Entries with this particular identifiers (e.g. Location/Message/Date).
-		StockObjectValue[] existingStock = DatabaseReadManager.existingStockFor(stockObjectValue);
+		StockObjectValue[] existingStock = DatabaseReadManager.existingStockObjectValueFor(stockObjectValue);
 		// switch over the number of objects with the same identifier.
 		assert existingStock != null : false;
 		switch (existingStock.length) {

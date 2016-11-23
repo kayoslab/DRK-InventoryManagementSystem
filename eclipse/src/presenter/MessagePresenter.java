@@ -5,17 +5,15 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 
-public class MessagePresenter extends Presenter implements ActionListener {
+public class MessagePresenter extends Presenter {
 	private JTable table;
+	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
 	private JButton help = new JButton("");
@@ -47,36 +45,33 @@ public class MessagePresenter extends Presenter implements ActionListener {
 	 */
 	public void initialize() {
 		super.initialize();
-		
-		JButton logo = new JButton("");
+
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
 
 		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(this);
 		btnLogout.setBounds(455, 27, 98, 22);
 		frame.getContentPane().add(btnLogout);
-		
-		
+
 		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
+		back.addActionListener(this);
 		back.setIcon (new ImageIcon (imgback));
 		back.setBounds(36, 18, 33, 36);
-		back.addActionListener(this);
 		frame.getContentPane().add(back);
-		
-		
+
 		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
+		help.addActionListener(this);
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
-		help.addActionListener(this);
 		frame.getContentPane().add(help);
 		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 66, 788, 12);
+		frame.getContentPane().add(separator);
+
 		JLabel Meldungen = new JLabel("Meldungen");
 		Meldungen.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Meldungen.setBounds(16, 98, 210, 36);

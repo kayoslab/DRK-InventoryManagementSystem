@@ -1,9 +1,10 @@
 package presenter;
 
 import javax.swing.JFrame;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.event.ActionListener;
 
-public abstract class Presenter {
+public abstract class Presenter implements ActionListener {
 	Presenter previousPresenter;
 	JFrame frame;
 	
@@ -11,15 +12,6 @@ public abstract class Presenter {
 		// General newScreen() implementation
 		if (previousPresenter != null) {
 			previousPresenter.frame.dispose();
-		}
-	}
-	
-	public void showPreviousPresenter() {
-		// show previous Presenter if not null
-		if (this.previousPresenter != null) {
-			// and discard current presenter
-			this.frame.dispose();
-			this.previousPresenter.newScreen();
 		}
 	}
 
@@ -33,4 +25,17 @@ public abstract class Presenter {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 	}
+
+	public void showPreviousPresenter() {
+		// show previous Presenter if not null
+		if (this.previousPresenter != null) {
+			// and discard current presenter
+			this.previousPresenter.newScreen();
+			this.frame.dispose();
+		} else {
+			System.out.println("previousPresenter == null");
+		}
+	}
+
+
 }

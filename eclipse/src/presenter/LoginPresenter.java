@@ -9,10 +9,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LoginPresenter extends Presenter implements ActionListener {
+public class LoginPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
 	private JPasswordField passwordField;
 	private JButton btnEinloggen = new JButton("Einloggen");
@@ -46,6 +45,10 @@ public class LoginPresenter extends Presenter implements ActionListener {
 	public void initialize() {
 		super.initialize();
 
+		btnEinloggen.addActionListener(this);
+		btnEinloggen.setBounds(356, 477, 117, 29);
+		frame.getContentPane().add(btnEinloggen);
+
 		JLabel lblBenutzername = new JLabel("Benutzername");
 		lblBenutzername.setBounds(261, 352, 88, 16);
 		frame.getContentPane().add(lblBenutzername);
@@ -62,11 +65,6 @@ public class LoginPresenter extends Presenter implements ActionListener {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(383, 397, 182, 28);
 		frame.getContentPane().add(passwordField);
-		
-
-		btnEinloggen.addActionListener(this);
-		btnEinloggen.setBounds(356, 477, 117, 29);
-		frame.getContentPane().add(btnEinloggen);
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.WHITE);

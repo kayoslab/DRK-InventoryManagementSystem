@@ -3,12 +3,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -17,7 +14,7 @@ import javax.swing.JTextArea;
 
 
 
-public class DetailPresenter extends Presenter implements ActionListener {
+public class DetailPresenter extends Presenter {
 	private JTable table;
 	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
@@ -59,10 +56,6 @@ public class DetailPresenter extends Presenter implements ActionListener {
 		logo.setIcon (new ImageIcon (img));
 		logo.setBounds(595, 6, 199, 65);
 		frame.getContentPane().add(logo);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
 
 		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(this);
@@ -78,6 +71,22 @@ public class DetailPresenter extends Presenter implements ActionListener {
 		help.setIcon (new ImageIcon (imgbook));
 		help.setBounds(381, 18, 33, 36);
 		frame.getContentPane().add(help);
+
+		btnHinzufgen.setBounds(386, 419, 117, 29);
+		frame.getContentPane().add(btnHinzufgen);
+
+		btnEntnehmen.setBounds(560, 419, 117, 29);
+		frame.getContentPane().add(btnEntnehmen);
+
+		btnBearbeiten.setBounds(560, 460, 117, 29);
+		frame.getContentPane().add(btnBearbeiten);
+
+		btnLschen.setBounds(386, 460, 117, 29);
+		frame.getContentPane().add(btnLschen);
+
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 66, 788, 12);
+		frame.getContentPane().add(separator);
 		
 		JLabel DatenFenster = new JLabel("Hier der Name");
 		DatenFenster.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -93,18 +102,6 @@ public class DetailPresenter extends Presenter implements ActionListener {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setBounds(350, 199, 358, 208);
 		frame.getContentPane().add(table);
-
-		btnHinzufgen.setBounds(386, 419, 117, 29);
-		frame.getContentPane().add(btnHinzufgen);
-
-		btnEntnehmen.setBounds(560, 419, 117, 29);
-		frame.getContentPane().add(btnEntnehmen);
-
-		btnBearbeiten.setBounds(560, 460, 117, 29);
-		frame.getContentPane().add(btnBearbeiten);
-
-		btnLschen.setBounds(386, 460, 117, 29);
-		frame.getContentPane().add(btnLschen);
 	}
 
 	@Override

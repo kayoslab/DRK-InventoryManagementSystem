@@ -13,9 +13,9 @@ public abstract class DatabaseObject {
 	}
 	
 	public enum StockValueMessage {
+		empty,
 		green,
 		yellow,
-		orange,
 		red
 	}
 	
