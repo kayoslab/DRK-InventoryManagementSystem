@@ -30,24 +30,24 @@ public final class DatabaseReadManager {
 	/**
 	 * @return User[]
 	 */
-	public static User[] getUser() {
-		String sqlStatement = "SELECT `username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
+	public static User[] getUsers() {
+		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
 				+ " FROM `User` ;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.last()) {
-				User[] user = new User[rs.getRow()];
+				User[] users = new User[rs.getRow()];
 				int i = 0;
 				// fill with reasonable Data
-				while (rs.next())
-                {
-                    user[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
+				rs.beforeFirst();
+				while (rs.next()) {
+                    users[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
     						rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
                     i++;
                 }   
-				return null;
+				return users;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -106,7 +106,7 @@ public final class DatabaseReadManager {
 	public static User getUser(String username) {
 		// get User from Database and return for id
 		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
-				+ " FROM `User` WHERE `username` = '" + username + "'";
+				+ " FROM `User` WHERE `username` = '" + username + "';";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -143,7 +143,7 @@ public final class DatabaseReadManager {
 	public static Boolean userDidChangePassword(String username) {
 		// check if password has already been changed
 		String sqlStatement = "SELECT `passwordChanged`" + "FROM `User` WHERE `username` = '"
-				+ username + "'";
+				+ username + "';";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -177,15 +177,23 @@ public final class DatabaseReadManager {
 	/**
 	 * @return Group[]
 	 */
-	public static Group[] getGroup() {
-		String sqlStatement = "";
+	public static Group[] getGroups() {
+		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM GROUP;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
+			if (rs.last()) {
+				Group[] groups = new Group[rs.getRow()];
+				int i = 0;
 				// fill with reasonable Data
-				return null;
+				rs.beforeFirst();
+				while (rs.next()) {
+                    groups[i] = new Group(rs.getInt("id"), rs.getString("tile"), rs.getBoolean("isActive"));
+                    i++;
+				}
+				// fill with reasonable Data
+				return groups;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -207,14 +215,14 @@ public final class DatabaseReadManager {
 	 * @return Group
 	 */
 	public static Group getGroup(int id) {
-		String sqlStatement = "";
+		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM GROUP WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {
 				// fill with reasonable Data
-				return null;
+				return new Group(rs.getInt("id"),rs.getString("title"),rs.getBoolean("isActive"));
 			}
 			return null;
 		} catch (SQLException e) {
@@ -240,14 +248,21 @@ public final class DatabaseReadManager {
 	 * @return GroupRight[]
 	 */
 	public static GroupRight[] getGroupRights() {
-		String sqlStatement = "";
+		String sqlStatement = "SELECT `id`,`title` FROM GroupRight;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
+			if (rs.last()) {
+				GroupRight[] groupRights = new GroupRight[rs.getRow()];
+				int i = 0;
 				// fill with reasonable Data
-				return null;
+				rs.beforeFirst();
+				while (rs.next()) {
+					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
+                    i++;
+                }   
+				return groupRights;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -268,14 +283,21 @@ public final class DatabaseReadManager {
 	 * @return GroupRight[]
 	 */
 	public static GroupRight[] getGroupRights(int id) {
-		String sqlStatement = "";
+		String sqlStatement = "SELECT `id`,`title` FROM GroupRight WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
+			if (rs.last()) {
+				GroupRight[] groupRights = new GroupRight[rs.getRow()];
+				int i = 0;
 				// fill with reasonable Data
-				return null;
+				rs.beforeFirst();
+				while (rs.next()) {
+					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
+                    i++;
+                }   				
+				return groupRights;
 			}
 			return null;
 		} catch (SQLException e) {
