@@ -1,7 +1,6 @@
 package presenter;
-import model.PasswordManager;
 
-import java.awt.EventQueue;
+import model.PasswordManager;
 import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

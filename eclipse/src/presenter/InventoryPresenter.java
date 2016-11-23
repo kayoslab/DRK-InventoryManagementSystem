@@ -1,7 +1,11 @@
 package presenter;
 
+import model.DatabaseReadManager;
+import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.StockObject;
+
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -14,6 +18,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class InventoryPresenter extends Presenter {
@@ -104,6 +109,18 @@ public class InventoryPresenter extends Presenter {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+
+		StockObject[] stockObjects = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
+		Object columnNames[] = { "Titel", "Menge", "Datum", "Lagerort"};
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+		for (StockObject stockObject : stockObjects) {
+			Object row[] = { stockObject.title, stockObject.totalVolume, "Row1-Column3","Row1-Column4"};
+			model.addRow(row);
+		}
+
+
+		table.setModel(model);
 	}
 
 

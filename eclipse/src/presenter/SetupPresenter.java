@@ -1,7 +1,5 @@
 package presenter;
 import model.databaseCommunication.DatabaseLoginManager;
-
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
