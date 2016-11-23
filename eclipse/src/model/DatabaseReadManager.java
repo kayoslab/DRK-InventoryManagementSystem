@@ -31,13 +31,22 @@ public final class DatabaseReadManager {
 	 * @return User[]
 	 */
 	public static User[] getUser() {
-		String sqlStatement = "";
+		String sqlStatement = "SELECT `username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
+				+ " FROM `User` ;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {
+			if (rs.last()) {
+				User[] user = new User[rs.getRow()];
+				int i = 0;
 				// fill with reasonable Data
+				while (rs.next())
+                {
+                    user[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
+    						rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
+                    i++;
+                }   
 				return null;
 			}
 			return null;
@@ -63,7 +72,7 @@ public final class DatabaseReadManager {
 	public static User getUser(int id) {
 		// get User from Database and return for id
 		String sqlStatement = "SELECT `username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
-				+ " FROM `User` WHERE id = " + id;
+				+ " FROM `User` WHERE id = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
