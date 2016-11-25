@@ -61,15 +61,15 @@ public class MenuPresenter extends Presenter {
 		this.settingsButton.addActionListener(this);
 		this.frame.getContentPane().add(this.settingsButton);
 
-		this.btnMaterialGerteDaten.setBounds(278, 361, 234, 57);
+		this.btnMaterialGerteDaten.setBounds(278, 200, 234, 57);
 		this.btnMaterialGerteDaten.addActionListener(this);
 		this.frame.getContentPane().add(btnMaterialGerteDaten);
 		
-		this.btnInventarliste.setBounds(278, 200, 234, 57);
+		this.btnInventarliste.setBounds(278, 284, 234, 57);
 		this.btnInventarliste.addActionListener(this);
 		this.frame.getContentPane().add(this.btnInventarliste);
 
-		this.btnMeldungen.setBounds(278, 284, 234, 51);
+		this.btnMeldungen.setBounds(278, 361, 234, 51);
 		this.btnMeldungen.addActionListener(this);
 		this.frame.getContentPane().add(this.btnMeldungen);
 
