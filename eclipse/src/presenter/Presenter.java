@@ -1,5 +1,7 @@
 package presenter;
 
+import presenter.onboarding.LoginPresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,13 +10,13 @@ import java.awt.event.ActionListener;
 import static javax.swing.JFrame.DISPOSE_ON_CLOSE;
 
 public abstract class Presenter implements ActionListener {
-	Presenter previousPresenter;
-	JFrame frame;
-	private JButton back;
-	JButton logo;
-	JButton btnLogout;
-	JButton help;
-	JSeparator separator;
+	public Presenter previousPresenter;
+	public JFrame frame;
+	public JButton logo;
+	public JButton btnLogout;
+	public JButton help;
+	public JSeparator separator;
+	private  JButton back;
 
 	public void Presenter() {
 		// General Constructor
@@ -57,7 +59,7 @@ public abstract class Presenter implements ActionListener {
 	}
 
 	/**
-	 * Setup the Top Layout
+	 * Call this function to setup the generic TopLayout
 	 */
 	public void setupTopLayout() {
 		this.logo = new JButton("");
@@ -126,29 +128,38 @@ public abstract class Presenter implements ActionListener {
 	 * Magic Numbers for View Layout
 	 */
 	/* Size */
-	int width = 800;
-	int height = 600;
-	int leftPadding = 16;
-	int rightPadding = 16;
-	int topPadding = 6;
-	int bottomPadding = 26;
+	public int width = 800;
+	public int height = 600;
+	public int leftPadding = 16;
+	public int rightPadding = 16;
+	public int topPadding = 6;
+	public int bottomPadding = 36;
+	public int displayAreaWidth = width - leftPadding - rightPadding;
+	public int displayAreaHeight = height - topPadding - bottomPadding;
 	/* Spacings */
-	int tinySpacing = 4;
-	int smallSpacing = 10;
-	int spacing = 16;
-	int hugeSpacing = 100;
+	public int noSpacing = 1;
+	public int smallSpacing = 10;
+	public int spacing = 16;
+	public int hugeSpacing = 100;
 	/* IconButtons */
-	int iconButtonWidth = 33;
-	int iconButtonHeight = 33;
-	int iconButtonBarX = leftPadding+hugeSpacing;
+	public int characterButtonWidth = 24;
+	public int characterButtonHeight = 24;
+	public int leftSideMenuWidth = 190;
+	public int headlineY = 100;
+	public int lineHeight = 36;
+	public int contentY = headlineY+lineHeight+spacing;
+	public int contentHeight = height-contentY-bottomPadding;
+	public int iconButtonWidth = 33;
+	public int iconButtonHeight = 33;
+	public int iconButtonBarX = leftPadding+hugeSpacing;
 	/* TopLayout */
-	int logoWidth = 200;
-	int logoHeight = 65;
-	int logoX = (width-rightPadding-logoWidth);
-	int logoutWidth = 90;
-	int logoutHeight = 22;
-	int logoutX = (width-rightPadding-logoWidth-spacing-logoutWidth);
+	public int logoWidth = 200;
+	public int logoHeight = 65;
+	public int logoX = (width-rightPadding-logoWidth);
+	public int logoutWidth = 90;
+	public int logoutHeight = 22;
+	public int logoutX = (width-rightPadding-logoWidth-spacing-logoutWidth);
 	/* reference */
-	int topLayoutCenter = (topPadding + (logoHeight) / 2);
+	public int topLayoutCenter = (topPadding + (logoHeight) / 2);
 }
 

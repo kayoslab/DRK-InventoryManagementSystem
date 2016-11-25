@@ -40,23 +40,27 @@ public class InventoryPresenter extends Presenter {
 
 		JLabel Inventarliste = new JLabel("Inventarliste");
 		Inventarliste.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		Inventarliste.setBounds(16, 98, 247, 36);
+		Inventarliste.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		frame.getContentPane().add(Inventarliste);
 
 		// Radiobuttons
 		this.radioButtonAll = new JRadioButton("Alle");
 		this.radioButtonAll.setSelected(true);
 		this.radioButtonAll.addActionListener(this);
-		this.radioButtonAll.setBounds(36, 166, 190, 23);
+		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
 		this.frame.getContentPane().add(this.radioButtonAll);
 		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
-		this.radioButtonMinimumStockOnly.setBounds(36, 199, 190, 23);
+		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
 		this.radioButtonMinimumStockOnly.addActionListener(this);
 		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
 		this.radioButtonCriticalDateOnly = new JRadioButton("Nur abgelaufene Daten");
-		this.radioButtonCriticalDateOnly.setBounds(36, 232, 190, 23);
+		this.radioButtonCriticalDateOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
 		this.radioButtonCriticalDateOnly.addActionListener(this);
 		this.frame.getContentPane().add(this.radioButtonCriticalDateOnly);
+
+		JSeparator comboBoxSeperator = new JSeparator();
+		comboBoxSeperator.setBounds(leftPadding, (contentY+lineHeight*3)+lineHeight/4, leftSideMenuWidth, 12);
+		this.frame.getContentPane().add(comboBoxSeperator);
 
 		//Group the radio buttons.
 		ButtonGroup group = new ButtonGroup();
@@ -66,27 +70,25 @@ public class InventoryPresenter extends Presenter {
 
 		// Checkboxes
 		this.checkBoxDevices = new JCheckBox("Geräte");
-		this.checkBoxDevices.setBounds(36, 277, 190, 23);
+		this.checkBoxDevices.setBounds(leftPadding, contentY+lineHeight*4, leftSideMenuWidth, 24);
 		this.checkBoxDevices.setSelected(true);
 		this.checkBoxDevices.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxDevices);
 		this.checkBoxMedicalMaterials = new JCheckBox("MedMaterialien");
-		this.checkBoxMedicalMaterials.setBounds(36, 312, 190, 23);
+		this.checkBoxMedicalMaterials.setBounds(leftPadding, contentY+lineHeight*5, leftSideMenuWidth, 24);
 		this.checkBoxMedicalMaterials.setSelected(true);
 		this.checkBoxMedicalMaterials.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxMedicalMaterials);
 		this.checkBoxConsumableMaterial = new JCheckBox("Betreuungsmaterialien");
-		this.checkBoxConsumableMaterial.setBounds(36, 347, 190, 23);
+		this.checkBoxConsumableMaterial.setBounds(leftPadding, contentY+lineHeight*6, leftSideMenuWidth, 24);
 		this.checkBoxConsumableMaterial.setSelected(true);
 		this.checkBoxConsumableMaterial.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxConsumableMaterial);
 		
-		JSeparator comboBoxSeperator = new JSeparator();
-		comboBoxSeperator.setBounds(36, 259, 190, 12);
-		this.frame.getContentPane().add(comboBoxSeperator);
+
 
 		// Combobox
-		this.filterComboBox.setBounds(36, 392, 166, 27);
+		this.filterComboBox.setBounds(leftPadding, contentY+lineHeight*7, leftSideMenuWidth, 24);
 		this.filterComboBox.addItem("Alphabetisch");
 		this.filterComboBox.addItem("Typ");
 		this.frame.getContentPane().add(filterComboBox);
@@ -94,9 +96,8 @@ public class InventoryPresenter extends Presenter {
 		this.filterComboBox.addActionListener(this);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(250, 167, 481, 359);
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY, displayAreaWidth-(leftSideMenuWidth+spacing), displayAreaHeight-contentY);
 		this.frame.getContentPane().add(scrollPane);
-
 		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
 				return false;

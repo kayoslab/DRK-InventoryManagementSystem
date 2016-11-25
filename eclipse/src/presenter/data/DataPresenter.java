@@ -1,8 +1,9 @@
-package presenter;
+package presenter.data;
 
 import model.DatabaseReadManager;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.*;
+import presenter.Presenter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -74,39 +75,15 @@ public class DataPresenter extends Presenter implements MouseListener {
 
 		JLabel MaterialUndGeraeteDaten = new JLabel("Material- und Geräte Daten");
 		MaterialUndGeraeteDaten.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		MaterialUndGeraeteDaten.setBounds(leftPadding, 98, (width-leftPadding-rightPadding), 36);
+		MaterialUndGeraeteDaten.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		frame.getContentPane().add(MaterialUndGeraeteDaten);
 
-		this.btnA.setBounds(5, 164, 24, 21);
-		this.btnB.setBounds(31, 164, 24, 21);
-		this.btnC.setBounds(57, 164, 24, 21);
-		this.btnD.setBounds(83, 164, 24, 21);
-		this.btnE.setBounds(109, 164, 24, 21);
-		this.btnF.setBounds(135, 164, 24, 21);
-		this.btnG.setBounds(161, 164, 24, 21);
-		this.btnH.setBounds(187, 164, 24, 21);
-		this.btnI.setBounds(213, 164, 24, 21);
-		this.btnJ.setBounds(239, 164, 24, 21);
-		this.btnK.setBounds(265, 164, 24, 21);
-		this.btnL.setBounds(291, 164, 24, 21);
-		this.btnM.setBounds(317, 164, 24, 21);
-		this.btnN.setBounds(343, 164, 24, 21);
-		this.btnO.setBounds(369, 164, 24, 21);
-		this.btnP.setBounds(395, 164, 24, 21);
-		this.btnQ.setBounds(421, 164, 24, 21);
-		this.btnR.setBounds(447, 164, 24, 21);
-		this.btnS.setBounds(473, 164, 24, 21);
-		this.btnT.setBounds(499, 164, 24, 21);
-		this.btnU.setBounds(525, 164, 24, 21);
-		this.btnV.setBounds(551, 164, 24, 21);
-		this.btnW.setBounds(577, 164, 24, 21);
-		this.btnX.setBounds(603, 164, 24, 21);
-		this.btnY.setBounds(629, 164, 24, 21);
-		this.btnZ.setBounds(655, 164, 24, 21);
-
+		int i = 0;
 		for (JButton button:this.characterButtons) {
+			button.setBounds(leftPadding+noSpacing+(characterButtonWidth)*i,contentY,characterButtonWidth,characterButtonHeight);
 			this.frame.getContentPane().add(button);
 			button.addActionListener(this);
+			i++;
 		}
 
 		this.searchText = new JTextField();
@@ -114,12 +91,15 @@ public class DataPresenter extends Presenter implements MouseListener {
 		this.searchText.setHorizontalAlignment(SwingConstants.CENTER);
 		this.searchText.setText("Suchen");
 		this.searchText.setToolTipText("Suchen");
-		this.searchText.setBounds(707, 160, 87, 28);
+		int searchTextX = leftPadding+noSpacing+(characterButtonWidth)*(this.characterButtons.length) + smallSpacing;
+		int searchTextWidth = width-searchTextX-rightPadding;
+		this.searchText.setBounds(searchTextX, contentY, searchTextWidth, characterButtonHeight);
 		this.frame.getContentPane().add(this.searchText);
 		this.searchText.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(109, 253, 586, 257);
+		int scrollPaneHeight = height - (contentY + characterButtonHeight + smallSpacing + bottomPadding);
+		scrollPane.setBounds(leftPadding, contentY + characterButtonHeight + smallSpacing, displayAreaWidth, scrollPaneHeight);
 		this.frame.getContentPane().add(scrollPane);
 		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {

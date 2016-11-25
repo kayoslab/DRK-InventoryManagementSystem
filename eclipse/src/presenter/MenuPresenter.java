@@ -1,4 +1,7 @@
 package presenter;
+import presenter.data.DataPresenter;
+import presenter.settings.SettingsPresenter;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;

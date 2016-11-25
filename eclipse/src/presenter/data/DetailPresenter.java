@@ -1,7 +1,8 @@
-package presenter;
+package presenter.data;
 import model.DatabaseReadManager;
 import model.databaseObjects.stockObjects.*;
 import model.databaseObjects.stockValues.*;
+import presenter.Presenter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -58,7 +59,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 
 		JLabel titleLabel = this.stockObject != null ? new JLabel(this.stockObject.title) : new JLabel("Titels");
 		titleLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		titleLabel.setBounds(16, 98, 347, 36);
+		titleLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(titleLabel);
 
 		
@@ -69,7 +70,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		if (this.stockObject != null) {
 			descriptionArea.setText(this.stockObject.description);
 		}
-		descriptionArea.setBounds(16, 199, 300, 240);
+		descriptionArea.setBounds(leftPadding, 199, leftSideMenuWidth, 240);
 		this.frame.getContentPane().add(descriptionArea);
 
 		JScrollPane scrollPane = new JScrollPane();

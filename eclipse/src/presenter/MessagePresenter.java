@@ -23,11 +23,11 @@ public class MessagePresenter extends Presenter {
 
 		JLabel messageLabel = new JLabel("Meldungen");
 		messageLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		messageLabel.setBounds(16, 98, 210, 36);
+		messageLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(messageLabel);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(157, 219, 503, 192);
+		scrollPane.setBounds(leftPadding, contentY, displayAreaWidth, contentHeight);
 		this.frame.getContentPane().add(scrollPane);
 
 		this.table = new JTable() {

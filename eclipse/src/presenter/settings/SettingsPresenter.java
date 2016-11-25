@@ -1,5 +1,7 @@
-package presenter;
+package presenter.settings;
 import model.PasswordManager;
+import presenter.Presenter;
+
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import javax.swing.*;
@@ -34,7 +36,7 @@ public class SettingsPresenter extends Presenter {
 
 		JLabel settings = new JLabel("Einstellungen");
 		settings.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		settings.setBounds(16, 98, 247, 36);
+		settings.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(settings);
 	}
 

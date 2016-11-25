@@ -1,8 +1,5 @@
-package model;
-
-import java.util.Date;
+package model.mailing;
 import java.util.Properties;
-
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
@@ -17,7 +14,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class SendMailExample {
+public class Sender {
 
 	public void sendMail(String smtpHost, String username, String password,
 			String senderAddress, String recipientsAddress, String subject,
@@ -149,20 +146,5 @@ public class SendMailExample {
 			e.printStackTrace();
 			return null;
 		}
-	}
-
-	public static void main(String[] args) {
-
-		String username = "XXX";
-		String password = "XXX";
-		String senderAddress = "XXX";// someone@web.de
-		String recipientsAddress = "XXX"; // somereceiver@web.de
-		String subject = "Testnachricht JAVA";
-		String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen koennen hat es funktioniert.";
-		String smtpHost = "smtp.web.de";
-
-		new SendMailExample().sendMail(smtpHost, username, password,
-				senderAddress, recipientsAddress, subject, text);
-
 	}
 }

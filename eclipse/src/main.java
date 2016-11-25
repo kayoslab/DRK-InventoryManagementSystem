@@ -1,6 +1,6 @@
 import model.databaseCommunication.DatabaseLoginManager;
-import presenter.LoginPresenter;
-import presenter.SetupPresenter;
+import presenter.onboarding.LoginPresenter;
+import presenter.onboarding.SetupPresenter;
 
 public class main {
 	public static void main(String[] args) {
