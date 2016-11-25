@@ -59,16 +59,17 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 - 20.12.2016 **(3. Meilenstein Meeting)**
 
 ## 4.2 Hintergrund
-- [Anforderungen](./modellierung/requirements.md) **(RFC)**
+- [Anforderungen](./modellierung/requirements.md) **(ACK)**
 - [Use-Case-Beschreibung](./modellierung/usecases.md) **(DOING)**
 - Use-Case-Diagramme
 - [Sequenzdiagramme](./modellierung/UML/Sequenz) **(RFC)**
 
 ## 4.3 Softwarearchitektur
-- [SQL-Aufruf](./datenbank/sql.md) **(DOING)**
+- [SQL-Aufruf](./datenbank/sql.md) **(ACK)**
 - [ER-Model](./modellierung/UML/ER/ER-Model.jpg) **(ACK)**
 - [Architekturmuster](./modellierung/architecture.md) **(ACK)**
 - [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(DOING)**
 
 ## 4.4 User Interface
 - [UI Mockups](./modellierung/Mockups) **(DOING)**
+- [UI Screenshots](./screenshots) **(DOING)**
