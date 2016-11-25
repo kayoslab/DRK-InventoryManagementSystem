@@ -1,9 +1,6 @@
 package presenter;
-import java.awt.Color;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
+import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 

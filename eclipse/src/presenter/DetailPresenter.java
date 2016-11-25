@@ -3,15 +3,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-
-
-
+import javax.swing.*;
 
 public class DetailPresenter extends Presenter {
 	private JTable table;

@@ -1,14 +1,7 @@
 package presenter;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
+import java.awt.*;
+import javax.swing.*;
 
 public class MessagePresenter extends Presenter {
 	private JTable table;
@@ -60,11 +53,14 @@ public class MessagePresenter extends Presenter {
 		Meldungen.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Meldungen.setBounds(16, 98, 210, 36);
 		frame.getContentPane().add(Meldungen);
-		
+
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(157, 219, 503, 192);
+		frame.getContentPane().add(scrollPane);
+
 		table = new JTable();
-		table.setBackground(Color.LIGHT_GRAY);
-		table.setBounds(157, 219, 503, 192);
-		frame.getContentPane().add(table);
+		scrollPane.setViewportView(table);
 	}
 
 	@Override

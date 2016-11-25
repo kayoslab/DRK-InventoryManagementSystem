@@ -1,13 +1,9 @@
 package presenter;
 import model.databaseCommunication.DatabaseLoginManager;
-import java.awt.Font;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
+import java.awt.*;
+import javax.swing.*;
+
 
 public class SetupPresenter extends Presenter {
 	private DatabaseLoginManager loginManager = new DatabaseLoginManager();

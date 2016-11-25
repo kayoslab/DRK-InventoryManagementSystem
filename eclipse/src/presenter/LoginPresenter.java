@@ -1,14 +1,9 @@
 package presenter;
 
 import model.PasswordManager;
-import java.awt.*;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
 import java.awt.event.ActionEvent;
+import java.awt.*;
+import javax.swing.*;
 
 public class LoginPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();

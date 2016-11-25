@@ -1,14 +1,8 @@
 package presenter;
 import model.PasswordManager;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
+import java.awt.*;
+import javax.swing.*;
 
 
 public class SettingsPresenter extends Presenter {

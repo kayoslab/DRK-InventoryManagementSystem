@@ -1,20 +1,19 @@
 package presenter;
 
+import model.DatabaseReadManager;
+import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.stockObjects.StockObject;
+
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 public class DataPresenter extends Presenter {
 	private JTextField txtSuchen;
 	private JTable table;
+	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
 	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
@@ -131,30 +130,48 @@ public class DataPresenter extends Presenter {
 		txtSuchen = new JTextField();
 		txtSuchen.setBackground(Color.WHITE);
 		txtSuchen.setHorizontalAlignment(SwingConstants.CENTER);
-		txtSuchen.setText("suchen");
+		txtSuchen.setText("Suchen");
+		txtSuchen.setToolTipText("Suchen");
 		txtSuchen.setBounds(707, 160, 87, 28);
 		frame.getContentPane().add(txtSuchen);
 		txtSuchen.setColumns(10);
-		
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(109, 253, 586, 257);
+		frame.getContentPane().add(scrollPane);
+
 		table = new JTable();
-		table.setBackground(Color.LIGHT_GRAY);
-		table.setBounds(109, 253, 586, 257);
-		frame.getContentPane().add(table);
+		scrollPane.setViewportView(table);
+
+		this.loadTableData();
+	}
+
+	private void loadTableData() {
+		// TODO: Check if a user has the right to see all these objects.
+
+		this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
+		this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
+		this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
+
+		this.refreshTableData();
+	}
+
+	private void refreshTableData() {
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == this.btnLogout) {
+		if (e.getSource() == this.logo) {
+			// Do logo things
+		} else if (e.getSource() == this.btnLogout) {
 			LoginPresenter loginPresenter = new LoginPresenter();
 			this.frame.dispose();
 			loginPresenter.newScreen();
 		} else if (e.getSource() == this.back) {
 			this.showPreviousPresenter();
 		} else if (e.getSource() == this.help) {
-
-		} else if (e.getSource() == this.logo) {
-
+			// Do help things
 		} else if (e.getSource() == this.btnA) {
 
 		} else if (e.getSource() == this.btnB) {
