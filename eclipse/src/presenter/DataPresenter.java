@@ -3,19 +3,21 @@ package presenter;
 import model.DatabaseReadManager;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.*;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Color;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class DataPresenter extends Presenter {
+public class DataPresenter extends Presenter implements MouseListener {
 	private JTextField txtSuchen;
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
+	private StockObject[] stockObjects;
 	private JButton logo = new JButton("");
 	private JButton btnLogout = new JButton("Logout");
 	private JButton back = new JButton("");
@@ -146,6 +148,7 @@ public class DataPresenter extends Presenter {
 				return false;
 			};
 		};
+		table.addMouseListener(this);
 		scrollPane.setViewportView(table);
 
 		this.loadTableData();
@@ -158,26 +161,6 @@ public class DataPresenter extends Presenter {
 		this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
 		this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
 
-		this.refreshTableData();
-	}
-
-	private void refreshTableData() {
-		Object columnNames[] = { "Titel", "Menge", "Typ"};
-		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-
-		/**
-		 * TODO sort the data by the given sortDescriptor for this.filterComboBox.getSelectedIndex()
-		 *
-		 * Maybe this is an overcomplicated approach, because some SortDescriptors expect the StockObjects
-		 * to be stored into just one Array (e.g. sort alphabetically by stockObject.title).
-		 *
-		 * For this reason I've added a Switch-Case-Block below. Just add additional options
-		 * to the filterComboBox and switch between them via different cases.
-		 * You can sort the unsorted Arrays and add them to the sortedData ArrayList like
-		 * I've done this exemplary for case 0.
-		 *
-		 */
-
 		StockObject[] unsortedDevices = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
 		StockObject[] unsortedmedicalMaterials = this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()];
 		StockObject[] unsortedconsumableMaterials = this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()];
@@ -188,31 +171,39 @@ public class DataPresenter extends Presenter {
 		sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
 		sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
 
-		StockObject[] stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
+		stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
 		Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
 
+		this.fillTableWithData();
+	}
 
-		// iterate over existing objects in sortedData
-		for (StockObject stockObject : stockObjects) {
-			// Switch between instanceTypes
-			if (stockObject instanceof Device) {
-				Device device = (Device) stockObject;
-				Object row[] = { device.title, device.totalVolume, "Gerät"};
-				model.addRow(row);
-			} else if (stockObject instanceof Material) {
-				if (stockObject instanceof MedicalMaterial) {
-					MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
-					Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
+	private void fillTableWithData() {
+		Object columnNames[] = { "Titel", "Menge", "Typ"};
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+		if (stockObjects != null) {
+			// iterate over existing objects in sortedData
+			for (StockObject stockObject : stockObjects) {
+				// Switch between instanceTypes
+				if (stockObject instanceof Device) {
+					Device device = (Device) stockObject;
+					Object row[] = { device.title, device.totalVolume, "Gerät"};
 					model.addRow(row);
-				} else if (stockObject instanceof ConsumableMaterial) {
-					ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
-					Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
-					model.addRow(row);
+				} else if (stockObject instanceof Material) {
+					if (stockObject instanceof MedicalMaterial) {
+						MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
+						Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
+						model.addRow(row);
+					} else if (stockObject instanceof ConsumableMaterial) {
+						ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
+						Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
+						model.addRow(row);
+					} else {
+						// Do nothing with this object, its not a usable material
+					}
 				} else {
-					// Do nothing with this object, its not a usable material
+					// Do nothing, maybe its a vehicle
 				}
-			} else {
-				// Do nothing, maybe its a vehicle
 			}
 		}
 
@@ -284,5 +275,40 @@ public class DataPresenter extends Presenter {
 		} else if (e.getSource() == this.btnZ) {
 
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// Left mouse click
+		if ( SwingUtilities.isLeftMouseButton(e) ) {
+			// get the coordinates of the mouse click
+			Point p = e.getPoint();
+			// get the row index that contains that coordinate
+			int rowNumber = table.rowAtPoint(p);
+			// Show Details
+			DetailPresenter detailPresenter = new DetailPresenter(this.stockObjects[rowNumber]);
+			detailPresenter.previousPresenter = this;
+			detailPresenter.newScreen();
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
 	}
 }

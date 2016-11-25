@@ -204,66 +204,68 @@ public class InventoryPresenter extends Presenter {
 				break;
 		}
 
-		// iterate over existing objects in sortedData
-		for (StockObject stockObject : stockObjects) {
-			// Switch between instanceTypes
-			if (stockObject instanceof Device) {
-				if (this.chckbxGerte.isSelected()) {
-					Device device = (Device) stockObject;
-					if (this.rdBtnAll.isSelected()){
-						// show all objects
-						Object row[] = { device.title, device.totalVolume, "Gerät"};
-						model.addRow(row);
-					} else if (this.rdbtnNurMindestbestnde.isSelected()) {
-						// do not show filtered objects
-					} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
-						// TODO: compare current Date with mtk/stk Date
-
-					}
-				}
-			} else if (stockObject instanceof Material) {
-				if (stockObject instanceof MedicalMaterial) {
-					if (this.chckbxMedmaterialien.isSelected()) {
-						MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
+		if (stockObjects != null) {
+			// iterate over existing objects in sortedData
+			for (StockObject stockObject : stockObjects) {
+				// Switch between instanceTypes
+				if (stockObject instanceof Device) {
+					if (this.chckbxGerte.isSelected()) {
+						Device device = (Device) stockObject;
 						if (this.rdBtnAll.isSelected()){
 							// show all objects
-							Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
+							Object row[] = { device.title, device.totalVolume, "Gerät"};
 							model.addRow(row);
 						} else if (this.rdbtnNurMindestbestnde.isSelected()) {
-							// show minimum Stock
-							if (medicalMaterial.totalVolume <= medicalMaterial.minimumStock) {
+							// do not show filtered objects
+						} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
+							// TODO: compare current Date with mtk/stk Date
+
+						}
+					}
+				} else if (stockObject instanceof Material) {
+					if (stockObject instanceof MedicalMaterial) {
+						if (this.chckbxMedmaterialien.isSelected()) {
+							MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
+							if (this.rdBtnAll.isSelected()){
+								// show all objects
 								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
 								model.addRow(row);
-							} else {
-								// do not show filtered objects
+							} else if (this.rdbtnNurMindestbestnde.isSelected()) {
+								// show minimum Stock
+								if (medicalMaterial.totalVolume <= medicalMaterial.minimumStock) {
+									Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
+									model.addRow(row);
+								} else {
+									// do not show filtered objects
+								}
+							} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
+								// TODO: compare current Date with medicalMaterial.date
 							}
-						} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
-							// TODO: compare current Date with medicalMaterial.date
 						}
-					}
-				} else if (stockObject instanceof ConsumableMaterial) {
-					if (this.chckbxBetreuungsmaterialien.isSelected()) {
-						ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
-						if (this.rdBtnAll.isSelected()){
-							// show all objects
-							Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
-							model.addRow(row);
-						} else if (this.rdbtnNurMindestbestnde.isSelected()) {
-							if (consumableMaterial.totalVolume <= consumableMaterial.minimumStock) {
+					} else if (stockObject instanceof ConsumableMaterial) {
+						if (this.chckbxBetreuungsmaterialien.isSelected()) {
+							ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
+							if (this.rdBtnAll.isSelected()){
+								// show all objects
 								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
 								model.addRow(row);
-							} else {
-								// do not show filtered objects
+							} else if (this.rdbtnNurMindestbestnde.isSelected()) {
+								if (consumableMaterial.totalVolume <= consumableMaterial.minimumStock) {
+									Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
+									model.addRow(row);
+								} else {
+									// do not show filtered objects
+								}
+							} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
+								// TODO: compare current Date with consumableMaterial.date
 							}
-						} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
-							// TODO: compare current Date with consumableMaterial.date
 						}
+					} else {
+						// Do nothing with this object, its not a usable material
 					}
 				} else {
-					// Do nothing with this object, its not a usable material
+					// Do nothing, maybe its a vehicle
 				}
-			} else {
-				// Do nothing, maybe its a vehicle
 			}
 		}
 
