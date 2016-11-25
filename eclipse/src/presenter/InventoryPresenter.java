@@ -26,7 +26,8 @@ public class InventoryPresenter extends Presenter {
 	/**
 	 * Create the application.
 	 */
-	public InventoryPresenter() {
+	public InventoryPresenter(Presenter previousPresenter) {
+		this.previousPresenter = previousPresenter;
 		initialize();
 	}
 

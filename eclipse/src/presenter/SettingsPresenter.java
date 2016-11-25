@@ -13,7 +13,8 @@ public class SettingsPresenter extends Presenter {
 	/**
 	 * Create the application.
 	 */
-	public SettingsPresenter() {
+	public SettingsPresenter(Presenter previousPresenter) {
+		this.previousPresenter = previousPresenter;
 		initialize();
 	}
 

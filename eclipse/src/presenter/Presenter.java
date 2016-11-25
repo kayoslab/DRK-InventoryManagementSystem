@@ -16,6 +16,16 @@ public abstract class Presenter implements ActionListener {
 	JButton help;
 	JSeparator separator;
 
+	public void Presenter() {
+		// General Constructor
+		this.newScreen();
+	}
+
+	public void Presenter(Presenter previousPresenter) {
+		this.Presenter();
+		this.previousPresenter = previousPresenter;
+	}
+
 	public void newScreen() {
 		// General newScreen() implementation
 		EventQueue.invokeLater(() -> {
@@ -38,7 +48,10 @@ public abstract class Presenter implements ActionListener {
 	public void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, width, height);
+		Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();
+		int coordX = (objDimension.width - frame.getWidth()) / 4;
+		int coordY = (objDimension.height - frame.getHeight()) / 4;
+		frame.setBounds(coordX, coordY, width, height);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 	}
@@ -98,7 +111,7 @@ public abstract class Presenter implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == this.btnLogout) {
-			LoginPresenter loginPresenter = new LoginPresenter();
+			LoginPresenter loginPresenter = new LoginPresenter(this);
 			this.frame.dispose();
 			loginPresenter.newScreen();
 		} else if (e.getSource() == this.back){

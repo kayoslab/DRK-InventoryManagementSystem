@@ -14,7 +14,7 @@ public class DatabaseLoginManager {
 	private String databaseUsername;
 	private String databasePassword;
 	private String databaseURL;
-	public String configLocation = System.getProperty("user.home") + File.separator + ".DRKstockMngmt" + File.separator + "config";
+	public String configLocation = System.getProperty("user.home") + File.separator + ".stockManagement" + File.separator + "config";
 	/**
 	 * Constructor
 	 */

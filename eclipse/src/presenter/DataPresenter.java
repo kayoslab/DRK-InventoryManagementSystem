@@ -53,6 +53,15 @@ public class DataPresenter extends Presenter implements MouseListener {
 	 * Create the application.
 	 */
 	public DataPresenter() {
+		this.previousPresenter = previousPresenter;
+		initialize();
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public DataPresenter(Presenter previousPresenter) {
+		this.previousPresenter = previousPresenter;
 		initialize();
 	}
 
@@ -266,14 +275,13 @@ public class DataPresenter extends Presenter implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Left mouse click
-		if ( SwingUtilities.isLeftMouseButton(e) ) {
+		if (SwingUtilities.isLeftMouseButton(e)) {
 			// get the coordinates of the mouse click
 			Point p = e.getPoint();
 			// get the row index that contains that coordinate
 			int rowNumber = table.rowAtPoint(p);
 			// Show Details
-			DetailPresenter detailPresenter = new DetailPresenter(this.stockObjects[rowNumber]);
-			detailPresenter.previousPresenter = this;
+			DetailPresenter detailPresenter = new DetailPresenter(this, this.stockObjects[rowNumber]);
 			detailPresenter.newScreen();
 		}
 	}

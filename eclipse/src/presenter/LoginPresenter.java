@@ -20,6 +20,14 @@ public class LoginPresenter extends Presenter {
 	}
 
 	/**
+	 * Create the application.
+	 */
+	public LoginPresenter(Presenter previousPresenter) {
+		this.previousPresenter = previousPresenter;
+		initialize();
+	}
+
+	/**
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
@@ -66,11 +74,47 @@ public class LoginPresenter extends Presenter {
 		// TODO Auto-generated method stub
 		if (e.getSource() == this.loginButton) {
 			if (this.passwordManager.tryLogin(this.userNameTextField.getText(), String.valueOf(this.passwordField.getPassword()))) {
-				MenuPresenter menuPresenter = new MenuPresenter();
-				menuPresenter.previousPresenter = this;
+				MenuPresenter menuPresenter = new MenuPresenter(this);
 				menuPresenter.newScreen();
+			} else {
+				shakeButton();
 			}
 		}
+	}
+
+	/**
+	 * Make the Button Shake
+	 */
+	private void shakeButton() {
+		final Point point = this.loginButton.getLocation();
+		final int delay = 75;
+		Runnable r = () -> {
+			for (int i = 0; i < 2; i++) {
+				try {
+					moveButton(new Point(point.x + 5, point.y));
+					Thread.sleep(delay);
+					moveButton(point);
+					Thread.sleep(delay);
+					moveButton(new Point(point.x - 5, point.y));
+					Thread.sleep(delay);
+					moveButton(point);
+					Thread.sleep(delay);
+				} catch (InterruptedException ex) {
+					ex.printStackTrace();
+				}
+			}
+		};
+		Thread t = new Thread(r);
+		t.start();
+	}
+
+	private void moveButton(final Point p) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				loginButton.setLocation(p);
+			}
+		});
 	}
 
 }

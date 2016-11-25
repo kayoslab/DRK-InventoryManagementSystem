@@ -23,6 +23,15 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	/**
 	 * Create the application.
 	 */
+	public DetailPresenter(Presenter previousPresenter, StockObject stockObject) {
+		this.previousPresenter = previousPresenter;
+		this.stockObject = stockObject;
+		initialize();
+	}
+
+	/**
+	 * Create the application.
+	 */
 	public DetailPresenter(StockObject stockObject) {
 		this.stockObject = stockObject;
 		initialize();

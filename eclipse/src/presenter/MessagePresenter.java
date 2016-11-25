@@ -9,7 +9,8 @@ public class MessagePresenter extends Presenter {
 	/**
 	 * Create the application.
 	 */
-	public MessagePresenter() {
+	public MessagePresenter(Presenter previousPresenter) {
+		this.previousPresenter = previousPresenter;
 		initialize();
 	}
 

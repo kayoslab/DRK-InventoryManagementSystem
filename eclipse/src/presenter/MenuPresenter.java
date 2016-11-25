@@ -19,6 +19,15 @@ public class MenuPresenter extends Presenter {
 	 * Create the application.
 	 */
 	public MenuPresenter() {
+		this.previousPresenter = previousPresenter;
+		initialize();
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public MenuPresenter(Presenter previousPresenter) {
+		this.previousPresenter = previousPresenter;
 		initialize();
 	}
 
@@ -94,27 +103,19 @@ public class MenuPresenter extends Presenter {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		super.actionPerformed(e);
 		if (e.getSource() == this.btnMaterialGerteDaten) {
-			DataPresenter dataPresenter = new DataPresenter();
-			dataPresenter.previousPresenter = this;
+			DataPresenter dataPresenter = new DataPresenter(this);
 			dataPresenter.newScreen();
 		} else if (e.getSource() == this.btnInventarliste) {
-			InventoryPresenter inventoryPresenter = new InventoryPresenter();
-			inventoryPresenter.previousPresenter = this;
+			InventoryPresenter inventoryPresenter = new InventoryPresenter(this);
 			inventoryPresenter.newScreen();
 		} else if (e.getSource() == this.btnMeldungen) {
-			MessagePresenter messagePresenter = new MessagePresenter();
-			messagePresenter.previousPresenter = this;
+			MessagePresenter messagePresenter = new MessagePresenter(this);
 			messagePresenter.newScreen();
 		} else if (e.getSource() == this.settingsButton) {
-			SettingsPresenter settingsPresenter = new SettingsPresenter();
-			settingsPresenter.previousPresenter = this;
+			SettingsPresenter settingsPresenter = new SettingsPresenter(this);
 			settingsPresenter.newScreen();
-		} else if (e.getSource() == this.btnLogout) {
-			LoginPresenter loginPresenter = new LoginPresenter();
-			this.frame.dispose();
-			loginPresenter.newScreen();
 		} else if (e.getSource() == this.chat) {
 
 		} else if (e.getSource() == this.edit) {
