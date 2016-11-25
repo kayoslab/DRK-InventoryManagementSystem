@@ -119,8 +119,8 @@ public class InventoryPresenter extends Presenter {
 
 		// Combobox
 		filterComboBox.setBounds(36, 392, 166, 27);
-		filterComboBox.addItem("Sortieren nach...");
 		filterComboBox.addItem("Alphabetisch");
+		filterComboBox.addItem("Typ");
 		frame.getContentPane().add(filterComboBox);
 		// needs to be called after adding the Items
 		filterComboBox.addActionListener(this);
@@ -129,7 +129,11 @@ public class InventoryPresenter extends Presenter {
 		scrollPane.setBounds(250, 167, 481, 359);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
+		table = new JTable() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
 		scrollPane.setViewportView(table);
 		this.loadTableData();
 	}
@@ -167,27 +171,41 @@ public class InventoryPresenter extends Presenter {
 
 		ArrayList<StockObject> sortedData = new ArrayList<StockObject>();
 
+		StockObject[] sortedDevices = unsortedDevices;
+		StockObject[] sortedmedicalMaterials = unsortedmedicalMaterials;
+		StockObject[] sortedconsumableMaterials = unsortedconsumableMaterials;
+
+		StockObject[] stockObjects = new StockObject[0];
+
 		switch (this.filterComboBox.getSelectedIndex()) {
 			case 0:
-				// Just a simple by type, come as you are
-				StockObject[] sortedDevices = unsortedDevices;
-				StockObject[] sortedmedicalMaterials = unsortedmedicalMaterials;
-				StockObject[] sortedconsumableMaterials = unsortedconsumableMaterials;
+				// Lambda sort alphabetically after adding to stockObjects
+				// Outcome: Sorted Alphabetically
+				sortedData.addAll(Arrays.asList(unsortedDevices));
+				sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
+				sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
+
+				stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
+				Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
+
+				break;
+			case 1:
+				// Lambda sort alphabetically before adding to stockObjects
+				// Outcome: Sorted by Type
+				Arrays.sort(sortedDevices, (a, b) -> a.title.compareToIgnoreCase(b.title));
+				Arrays.sort(sortedmedicalMaterials, (a, b) -> a.title.compareToIgnoreCase(b.title));
+				Arrays.sort(sortedconsumableMaterials, (a, b) -> a.title.compareToIgnoreCase(b.title));
+
 				sortedData.addAll(Arrays.asList(sortedDevices));
 				sortedData.addAll(Arrays.asList(sortedmedicalMaterials));
 				sortedData.addAll(Arrays.asList(sortedconsumableMaterials));
 
-				break;
-			case 1:
-				sortedData.addAll(Arrays.asList(unsortedDevices));
-				sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
-				sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
-				// TODO: Sort sortedData Alphabetically ...
+				stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
 				break;
 		}
 
 		// iterate over existing objects in sortedData
-		for (StockObject stockObject : sortedData.toArray(new StockObject[sortedData.size()])) {
+		for (StockObject stockObject : stockObjects) {
 			// Switch between instanceTypes
 			if (stockObject instanceof Device) {
 				if (this.chckbxGerte.isSelected()) {

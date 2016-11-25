@@ -59,7 +59,11 @@ public class MessagePresenter extends Presenter {
 		scrollPane.setBounds(157, 219, 503, 192);
 		frame.getContentPane().add(scrollPane);
 
-		table = new JTable();
+		table = new JTable() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
 		scrollPane.setViewportView(table);
 	}
 
