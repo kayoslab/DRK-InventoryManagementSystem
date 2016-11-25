@@ -7,9 +7,9 @@ import javax.swing.*;
 
 public class SetupPresenter extends Presenter {
 	private DatabaseLoginManager loginManager = new DatabaseLoginManager();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField usernameTextField;
+	private JTextField urlTextField;
+	private JTextField passwordTextField;
 	private JButton logo =  new JButton("");
 	private JButton btnSpeichern = new JButton("speichern");
 
@@ -52,26 +52,31 @@ public class SetupPresenter extends Presenter {
 		JLabel lblPasswort = new JLabel("Passwort");
 		lblPasswort.setBounds(281, 316, 61, 16);
 		frame.getContentPane().add(lblPasswort);
+
+		urlTextField = new JTextField();
+		urlTextField.setBounds(375, 224, 134, 28);
+		frame.getContentPane().add(urlTextField);
+		urlTextField.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(375, 267, 134, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		usernameTextField = new JTextField();
+		usernameTextField.setBounds(375, 267, 134, 28);
+		frame.getContentPane().add(usernameTextField);
+		usernameTextField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(375, 224, 134, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		passwordTextField = new JTextField();
+		passwordTextField.setBounds(375, 310, 134, 28);
+		frame.getContentPane().add(passwordTextField);
+		passwordTextField.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(375, 310, 134, 28);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel Datenbank = new JLabel("Datenbank einrichten");
-		Datenbank.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		Datenbank.setBounds(16, 98, 247, 36);
-		frame.getContentPane().add(Datenbank);
+		JLabel databaseLabel = new JLabel("Datenbank einrichten");
+		databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		databaseLabel.setBounds(16, 98, 247, 36);
+		frame.getContentPane().add(databaseLabel);
+	}
+
+	@Override
+	public void presentData() {
+		super.presentData();
 	}
 
 	public void actionPerformed(ActionEvent e) {

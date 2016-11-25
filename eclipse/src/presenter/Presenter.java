@@ -8,38 +8,13 @@ import java.awt.event.ActionListener;
 import static javax.swing.JFrame.DISPOSE_ON_CLOSE;
 
 public abstract class Presenter implements ActionListener {
-	public Presenter previousPresenter;
-	public JFrame frame;
-	public JButton logo;
-	public JButton btnLogout;
-	public JButton back;
-	public JButton help;
-
-	/* Size */
-	public int width = 800;
-	public int height = 600;
-	public int leftPadding = 16;
-	public int rightPadding = 16;
-	public int topPadding = 6;
-	public int bottomPadding = 26;
-	/* Spacings */
-	public int tinySpacing = 4;
-	public int smallSpacing = 10;
-	public int spacing = 16;
-	public int hugeSpacing = 100;
-	/* IconButtons */
-	public int iconButtonWidth = 33;
-	public int iconButtonHeight = 33;
-	public int iconButtonBarX = leftPadding+hugeSpacing;
-	/* TopLayout */
-	private int logoWidth = 200;
-	private int logoHeight = 65;
-	private int logoX = (width-rightPadding-logoWidth);
-	private int logoutWidth = 90;
-	private int logoutHeight = 22;
-	private int logoutX = (width-rightPadding-logoWidth-spacing-logoutWidth);
-	/* reference */
-	public int topLayoutCenter = (topPadding + (logoHeight) / 2);
+	Presenter previousPresenter;
+	JFrame frame;
+	private JButton back;
+	JButton logo;
+	JButton btnLogout;
+	JButton help;
+	JSeparator separator;
 
 	public void newScreen() {
 		// General newScreen() implementation
@@ -47,9 +22,10 @@ public abstract class Presenter implements ActionListener {
 			try {
 				// DataPresenter window = new DataPresenter();
 				this.frame.setVisible(true);
-				if (previousPresenter != null) {
-					previousPresenter.frame.setVisible(false);
+				if (this.previousPresenter != null) {
+					this.previousPresenter.frame.setVisible(false);
 				}
+				this.presentData();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -75,12 +51,12 @@ public abstract class Presenter implements ActionListener {
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		this.logo.setIcon (new ImageIcon (img));
 		this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
-		frame.getContentPane().add(this.logo);
+		this.frame.getContentPane().add(this.logo);
 		this.logo.addActionListener(this);
 
 		this.btnLogout = new JButton("Logout");
 		this.btnLogout.setBounds(logoutX, (topLayoutCenter - logoutHeight / 2), logoutWidth, logoutHeight);
-		frame.getContentPane().add(this.btnLogout);
+		this.frame.getContentPane().add(this.btnLogout);
 		this.btnLogout.addActionListener(this);
 
 		this.back = new JButton("");
@@ -89,19 +65,19 @@ public abstract class Presenter implements ActionListener {
 		this.back.setIcon (new ImageIcon (imgbackScaled));
 		this.back.addActionListener(this);
 		this.back.setBounds(leftPadding+spacing, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		frame.getContentPane().add(this.back);
+		this.frame.getContentPane().add(this.back);
 
 		this.help = new JButton("");
 		Image helpImage = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		Image helpImageScaled = helpImage.getScaledInstance( iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
 		this.help.setIcon (new ImageIcon (helpImageScaled));
 		this.help.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		frame.getContentPane().add(this.help);
+		this.frame.getContentPane().add(this.help);
 		this.help.addActionListener(this);
 
-		JSeparator separator = new JSeparator();
-		separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
-		frame.getContentPane().add(separator);
+		this.separator = new JSeparator();
+		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
+		this.frame.getContentPane().add(this.separator);
 	}
 
 	public void showPreviousPresenter() {
@@ -113,6 +89,10 @@ public abstract class Presenter implements ActionListener {
 		} else {
 			System.out.println("previousPresenter == null");
 		}
+	}
+
+	public void presentData() {
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -127,5 +107,35 @@ public abstract class Presenter implements ActionListener {
 			// TODO: HELP Message
 		}
 	}
+
+	/**
+	 *
+	 * Magic Numbers for View Layout
+	 */
+	/* Size */
+	int width = 800;
+	int height = 600;
+	int leftPadding = 16;
+	int rightPadding = 16;
+	int topPadding = 6;
+	int bottomPadding = 26;
+	/* Spacings */
+	int tinySpacing = 4;
+	int smallSpacing = 10;
+	int spacing = 16;
+	int hugeSpacing = 100;
+	/* IconButtons */
+	int iconButtonWidth = 33;
+	int iconButtonHeight = 33;
+	int iconButtonBarX = leftPadding+hugeSpacing;
+	/* TopLayout */
+	int logoWidth = 200;
+	int logoHeight = 65;
+	int logoX = (width-rightPadding-logoWidth);
+	int logoutWidth = 90;
+	int logoutHeight = 22;
+	int logoutX = (width-rightPadding-logoWidth-spacing-logoutWidth);
+	/* reference */
+	int topLayoutCenter = (topPadding + (logoHeight) / 2);
 }
 

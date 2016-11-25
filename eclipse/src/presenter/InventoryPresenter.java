@@ -15,12 +15,12 @@ public class InventoryPresenter extends Presenter {
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
 
-	JRadioButton rdBtnAll;
-	JRadioButton rdbtnNurMindestbestnde;
-	JRadioButton rdbtnNurAbgelaufeneDaten;
-	JCheckBox chckbxGerte;
-	JCheckBox chckbxMedmaterialien;
-	JCheckBox chckbxBetreuungsmaterialien;
+	JRadioButton radioButtonAll;
+	JRadioButton radioButtonMinimumStockOnly;
+	JRadioButton radioButtonCriticalDateOnly;
+	JCheckBox checkBoxDevices;
+	JCheckBox checkBoxMedicalMaterials;
+	JCheckBox checkBoxConsumableMaterial;
 	JComboBox filterComboBox = new JComboBox();
 
 	/**
@@ -43,66 +43,73 @@ public class InventoryPresenter extends Presenter {
 		frame.getContentPane().add(Inventarliste);
 
 		// Radiobuttons
-		rdBtnAll = new JRadioButton("Alle");
-		rdBtnAll.setSelected(true);
-		rdBtnAll.addActionListener(this);
-		rdBtnAll.setBounds(36, 166, 190, 23);
-		frame.getContentPane().add(rdBtnAll);
-		rdbtnNurMindestbestnde = new JRadioButton("Nur Mindestbestände");
-		rdbtnNurMindestbestnde.setBounds(36, 199, 190, 23);
-		rdbtnNurMindestbestnde.addActionListener(this);
-		frame.getContentPane().add(rdbtnNurMindestbestnde);
-		rdbtnNurAbgelaufeneDaten = new JRadioButton("Nur abgelaufene Daten");
-		rdbtnNurAbgelaufeneDaten.setBounds(36, 232, 190, 23);
-		rdbtnNurAbgelaufeneDaten.addActionListener(this);
-		frame.getContentPane().add(rdbtnNurAbgelaufeneDaten);
+		this.radioButtonAll = new JRadioButton("Alle");
+		this.radioButtonAll.setSelected(true);
+		this.radioButtonAll.addActionListener(this);
+		this.radioButtonAll.setBounds(36, 166, 190, 23);
+		this.frame.getContentPane().add(this.radioButtonAll);
+		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
+		this.radioButtonMinimumStockOnly.setBounds(36, 199, 190, 23);
+		this.radioButtonMinimumStockOnly.addActionListener(this);
+		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
+		this.radioButtonCriticalDateOnly = new JRadioButton("Nur abgelaufene Daten");
+		this.radioButtonCriticalDateOnly.setBounds(36, 232, 190, 23);
+		this.radioButtonCriticalDateOnly.addActionListener(this);
+		this.frame.getContentPane().add(this.radioButtonCriticalDateOnly);
 
 		//Group the radio buttons.
 		ButtonGroup group = new ButtonGroup();
-		group.add(rdBtnAll);
-		group.add(rdbtnNurMindestbestnde);
-		group.add(rdbtnNurAbgelaufeneDaten);
+		group.add(this.radioButtonAll);
+		group.add(this.radioButtonMinimumStockOnly);
+		group.add(this.radioButtonCriticalDateOnly);
 
 		// Checkboxes
-		chckbxGerte = new JCheckBox("Geräte");
-		chckbxGerte.setBounds(36, 277, 190, 23);
-		chckbxGerte.setSelected(true);
-		chckbxGerte.addActionListener(this);
-		frame.getContentPane().add(chckbxGerte);
-		chckbxMedmaterialien = new JCheckBox("MedMaterialien");
-		chckbxMedmaterialien.setBounds(36, 312, 190, 23);
-		chckbxMedmaterialien.setSelected(true);
-		chckbxMedmaterialien.addActionListener(this);
-		frame.getContentPane().add(chckbxMedmaterialien);
-		chckbxBetreuungsmaterialien = new JCheckBox("Betreuungsmaterialien");
-		chckbxBetreuungsmaterialien.setBounds(36, 347, 190, 23);
-		chckbxBetreuungsmaterialien.setSelected(true);
-		chckbxBetreuungsmaterialien.addActionListener(this);
-		frame.getContentPane().add(chckbxBetreuungsmaterialien);
+		this.checkBoxDevices = new JCheckBox("Geräte");
+		this.checkBoxDevices.setBounds(36, 277, 190, 23);
+		this.checkBoxDevices.setSelected(true);
+		this.checkBoxDevices.addActionListener(this);
+		this.frame.getContentPane().add(this.checkBoxDevices);
+		this.checkBoxMedicalMaterials = new JCheckBox("MedMaterialien");
+		this.checkBoxMedicalMaterials.setBounds(36, 312, 190, 23);
+		this.checkBoxMedicalMaterials.setSelected(true);
+		this.checkBoxMedicalMaterials.addActionListener(this);
+		this.frame.getContentPane().add(this.checkBoxMedicalMaterials);
+		this.checkBoxConsumableMaterial = new JCheckBox("Betreuungsmaterialien");
+		this.checkBoxConsumableMaterial.setBounds(36, 347, 190, 23);
+		this.checkBoxConsumableMaterial.setSelected(true);
+		this.checkBoxConsumableMaterial.addActionListener(this);
+		this.frame.getContentPane().add(this.checkBoxConsumableMaterial);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(36, 259, 190, 12);
-		frame.getContentPane().add(separator_1);
+		JSeparator comboBoxSeperator = new JSeparator();
+		comboBoxSeperator.setBounds(36, 259, 190, 12);
+		this.frame.getContentPane().add(comboBoxSeperator);
 
 		// Combobox
-		filterComboBox.setBounds(36, 392, 166, 27);
-		filterComboBox.addItem("Alphabetisch");
-		filterComboBox.addItem("Typ");
-		frame.getContentPane().add(filterComboBox);
+		this.filterComboBox.setBounds(36, 392, 166, 27);
+		this.filterComboBox.addItem("Alphabetisch");
+		this.filterComboBox.addItem("Typ");
+		this.frame.getContentPane().add(filterComboBox);
 		// needs to be called after adding the Items
-		filterComboBox.addActionListener(this);
+		this.filterComboBox.addActionListener(this);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(250, 167, 481, 359);
-		frame.getContentPane().add(scrollPane);
-		
-		table = new JTable() {
+		this.frame.getContentPane().add(scrollPane);
+
+		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			};
 		};
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(this.table);
+
+	}
+
+	@Override
+	public void presentData() {
+		super.presentData();
 		this.loadTableData();
+		this.refreshTableData();
 	}
 
 	private void loadTableData() {
@@ -111,8 +118,6 @@ public class InventoryPresenter extends Presenter {
 		this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
 		this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
 		this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
-
-		this.refreshTableData();
 	}
 
 	private void refreshTableData() {
@@ -176,28 +181,28 @@ public class InventoryPresenter extends Presenter {
 			for (StockObject stockObject : stockObjects) {
 				// Switch between instanceTypes
 				if (stockObject instanceof Device) {
-					if (this.chckbxGerte.isSelected()) {
+					if (this.checkBoxDevices.isSelected()) {
 						Device device = (Device) stockObject;
-						if (this.rdBtnAll.isSelected()){
+						if (this.radioButtonAll.isSelected()){
 							// show all objects
 							Object row[] = { device.title, device.totalVolume, "Gerät"};
 							model.addRow(row);
-						} else if (this.rdbtnNurMindestbestnde.isSelected()) {
+						} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 							// do not show filtered objects
-						} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
+						} else if (this.radioButtonCriticalDateOnly.isSelected()) {
 							// TODO: compare current Date with mtk/stk Date
 
 						}
 					}
 				} else if (stockObject instanceof Material) {
 					if (stockObject instanceof MedicalMaterial) {
-						if (this.chckbxMedmaterialien.isSelected()) {
+						if (this.checkBoxMedicalMaterials.isSelected()) {
 							MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
-							if (this.rdBtnAll.isSelected()){
+							if (this.radioButtonAll.isSelected()){
 								// show all objects
 								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
 								model.addRow(row);
-							} else if (this.rdbtnNurMindestbestnde.isSelected()) {
+							} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 								// show minimum Stock
 								if (medicalMaterial.totalVolume <= medicalMaterial.minimumStock) {
 									Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
@@ -205,25 +210,25 @@ public class InventoryPresenter extends Presenter {
 								} else {
 									// do not show filtered objects
 								}
-							} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
+							} else if (this.radioButtonCriticalDateOnly.isSelected()) {
 								// TODO: compare current Date with medicalMaterial.date
 							}
 						}
 					} else if (stockObject instanceof ConsumableMaterial) {
-						if (this.chckbxBetreuungsmaterialien.isSelected()) {
+						if (this.checkBoxConsumableMaterial.isSelected()) {
 							ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
-							if (this.rdBtnAll.isSelected()){
+							if (this.radioButtonAll.isSelected()){
 								// show all objects
 								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
 								model.addRow(row);
-							} else if (this.rdbtnNurMindestbestnde.isSelected()) {
+							} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 								if (consumableMaterial.totalVolume <= consumableMaterial.minimumStock) {
 									Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
 									model.addRow(row);
 								} else {
 									// do not show filtered objects
 								}
-							} else if (this.rdbtnNurAbgelaufeneDaten.isSelected()) {
+							} else if (this.radioButtonCriticalDateOnly.isSelected()) {
 								// TODO: compare current Date with consumableMaterial.date
 							}
 						}
@@ -243,17 +248,17 @@ public class InventoryPresenter extends Presenter {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
-		if (e.getSource() == this.rdBtnAll) {
+		if (e.getSource() == this.radioButtonAll) {
 			this.refreshTableData();
-		} else if (e.getSource() == this.rdbtnNurMindestbestnde) {
+		} else if (e.getSource() == this.radioButtonMinimumStockOnly) {
 			this.refreshTableData();
-		} else if (e.getSource() == this.rdbtnNurAbgelaufeneDaten) {
+		} else if (e.getSource() == this.radioButtonCriticalDateOnly) {
 			this.refreshTableData();
-		} else if (e.getSource() == this.chckbxGerte) {
+		} else if (e.getSource() == this.checkBoxDevices) {
 			this.refreshTableData();
-		} else if (e.getSource() == this.chckbxMedmaterialien) {
+		} else if (e.getSource() == this.checkBoxMedicalMaterials) {
 			this.refreshTableData();
-		} else if (e.getSource() == this.chckbxBetreuungsmaterialien) {
+		} else if (e.getSource() == this.checkBoxConsumableMaterial) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.filterComboBox) {
 			this.refreshTableData();

@@ -7,15 +7,13 @@ import java.awt.event.ActionEvent;
 public class MenuPresenter extends Presenter {
 	private JButton btnMaterialGerteDaten = new JButton("Material-/ Geräte Daten");
 	private JButton btnInventarliste = new JButton("Inventarliste");
-	private JButton btnMeldungen = new JButton("Meldungen");	
-
-	private JButton settingsButton = new JButton("Einstellungen");
-	private JButton btnLogout = new JButton("Logout");
+	private JButton btnMeldungen = new JButton("Meldungen");
 
 	private JButton chat = new JButton("");
 	private JButton edit = new JButton("");
 	private JButton plus = new JButton("");
-	private JButton help = new JButton("");
+
+	private JButton settingsButton = new JButton("Einstellungen");
 
 	/**
 	 * Create the application.
@@ -29,63 +27,69 @@ public class MenuPresenter extends Presenter {
 	 */
 	public void initialize() {
 		super.initialize();
-
-		JButton logo = new JButton("");
+		/* Use SuperClass Attributes */
+		this.logo = new JButton("");
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		logo.setIcon (new ImageIcon (img));
-		logo.setBounds(595, 6, 199, 65);
-		frame.getContentPane().add(logo);
+		this.logo.setIcon (new ImageIcon (img));
+		this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
+		this.frame.getContentPane().add(this.logo);
+		this.logo.addActionListener(this);
 
-		btnMaterialGerteDaten.setBounds(278, 361, 234, 57);
-		frame.getContentPane().add(btnMaterialGerteDaten);
-		btnMaterialGerteDaten.addActionListener(this);
+		this.btnLogout = new JButton("Logout");
+		this.btnLogout.setBounds(442, topPadding, logoutWidth, logoutHeight);
+		this.frame.getContentPane().add(this.btnLogout);
+		this.btnLogout.addActionListener(this);
+
+		this.separator = new JSeparator();
+		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
+		this.frame.getContentPane().add(this.separator);
+
+		/* Local Class Layout */
+		this.settingsButton.setBounds(442, 40, logoutWidth, 22);
+		this.settingsButton.addActionListener(this);
+		this.frame.getContentPane().add(this.settingsButton);
+
+		this.btnMaterialGerteDaten.setBounds(278, 361, 234, 57);
+		this.btnMaterialGerteDaten.addActionListener(this);
+		this.frame.getContentPane().add(btnMaterialGerteDaten);
 		
-		btnInventarliste.setBackground(Color.WHITE);
-		btnInventarliste.setBounds(278, 200, 234, 57);
-		frame.getContentPane().add(btnInventarliste);
-		btnInventarliste.addActionListener(this);
+		this.btnInventarliste.setBounds(278, 200, 234, 57);
+		this.btnInventarliste.addActionListener(this);
+		this.frame.getContentPane().add(this.btnInventarliste);
 
-		btnMeldungen.setBounds(278, 284, 234, 51);
-		frame.getContentPane().add(btnMeldungen);
-		btnMeldungen.addActionListener(this);
-
-		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(this);
-		btnLogout.setBounds(442, 6, 98, 22);
-		frame.getContentPane().add(btnLogout);
-
-		settingsButton.addActionListener(this);
-		settingsButton.setBounds(442, 40, 98, 22);
-		frame.getContentPane().add(settingsButton);
+		this.btnMeldungen.setBounds(278, 284, 234, 51);
+		this.btnMeldungen.addActionListener(this);
+		this.frame.getContentPane().add(this.btnMeldungen);
 
 		Image chatImage = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
 		Image chatImageScaled = chatImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		chat.setIcon (new ImageIcon (chatImageScaled));
-		chat.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		frame.getContentPane().add(chat);
+		this.chat.setIcon (new ImageIcon (chatImageScaled));
+		this.chat.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.chat.addActionListener(this);
+		this.frame.getContentPane().add(this.chat);
 
 		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
 		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		edit.setIcon (new ImageIcon (editImageScaled));
-		edit.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		frame.getContentPane().add(edit);
+		this.edit.setIcon (new ImageIcon (editImageScaled));
+		this.edit.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.edit.addActionListener(this);
+		this.frame.getContentPane().add(this.edit);
 
 		Image addImage = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
 		Image addImageScaled = addImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		plus.setIcon (new ImageIcon (addImageScaled));
-		plus.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		frame.getContentPane().add(plus);
+		this.plus.setIcon (new ImageIcon (addImageScaled));
+		this.plus.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.plus.addActionListener(this);
+		this.frame.getContentPane().add(this.plus);
 
-
+		/* Use SuperClass Attribute help */
+		this.help = new JButton("");
 		Image bookImage = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		Image bookImageScaled = bookImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		help.setIcon (new ImageIcon (bookImageScaled));
-		help.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*3, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		frame.getContentPane().add(help);
-
-		JSeparator separator = new JSeparator();
-		separator.setBounds(leftPadding, 66, (width - leftPadding - rightPadding), 12);
-		frame.getContentPane().add(separator);
+		this.help.setIcon (new ImageIcon (bookImageScaled));
+		this.help.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*3, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.help.addActionListener(this);
+		this.frame.getContentPane().add(this.help);
 	}
 
 	@Override
@@ -111,6 +115,12 @@ public class MenuPresenter extends Presenter {
 			LoginPresenter loginPresenter = new LoginPresenter();
 			this.frame.dispose();
 			loginPresenter.newScreen();
+		} else if (e.getSource() == this.chat) {
+
+		} else if (e.getSource() == this.edit) {
+
+		} else if (e.getSource() == this.plus) {
+
 		}
 	}
 }

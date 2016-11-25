@@ -14,7 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class DataPresenter extends Presenter implements MouseListener {
-	private JTextField txtSuchen;
+	private JTextField searchText;
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
 	private StockObject[] stockObjects;
@@ -45,6 +45,9 @@ public class DataPresenter extends Presenter implements MouseListener {
 	private JButton btnX = new JButton("X");
 	private JButton btnY = new JButton("Y");
 	private JButton btnZ = new JButton("Z");
+	private JButton[] characterButtons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
+			btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW,
+			btnX, btnY, btnZ};
 
 	/**
 	 * Create the application.
@@ -65,61 +68,57 @@ public class DataPresenter extends Presenter implements MouseListener {
 		MaterialUndGeraeteDaten.setBounds(leftPadding, 98, (width-leftPadding-rightPadding), 36);
 		frame.getContentPane().add(MaterialUndGeraeteDaten);
 
-		btnA.setBounds(5, 164, 24, 21);
-		btnB.setBounds(31, 164, 24, 21);
-		btnC.setBounds(57, 164, 24, 21);
-		btnD.setBounds(83, 164, 24, 21);
-		btnE.setBounds(109, 164, 24, 21);
-		btnF.setBounds(135, 164, 24, 21);
-		btnG.setBounds(161, 164, 24, 21);
-		btnH.setBounds(187, 164, 24, 21);
-		btnI.setBounds(213, 164, 24, 21);
-		btnJ.setBounds(239, 164, 24, 21);
-		btnK.setBounds(265, 164, 24, 21);
-		btnL.setBounds(291, 164, 24, 21);
-		btnM.setBounds(317, 164, 24, 21);
-		btnN.setBounds(343, 164, 24, 21);
-		btnO.setBounds(369, 164, 24, 21);
-		btnP.setBounds(395, 164, 24, 21);
-		btnQ.setBounds(421, 164, 24, 21);
-		btnR.setBounds(447, 164, 24, 21);
-		btnS.setBounds(473, 164, 24, 21);
-		btnT.setBounds(499, 164, 24, 21);
-		btnU.setBounds(525, 164, 24, 21);
-		btnV.setBounds(551, 164, 24, 21);
-		btnW.setBounds(577, 164, 24, 21);
-		btnX.setBounds(603, 164, 24, 21);
-		btnY.setBounds(629, 164, 24, 21);
-		btnZ.setBounds(655, 164, 24, 21);
+		this.btnA.setBounds(5, 164, 24, 21);
+		this.btnB.setBounds(31, 164, 24, 21);
+		this.btnC.setBounds(57, 164, 24, 21);
+		this.btnD.setBounds(83, 164, 24, 21);
+		this.btnE.setBounds(109, 164, 24, 21);
+		this.btnF.setBounds(135, 164, 24, 21);
+		this.btnG.setBounds(161, 164, 24, 21);
+		this.btnH.setBounds(187, 164, 24, 21);
+		this.btnI.setBounds(213, 164, 24, 21);
+		this.btnJ.setBounds(239, 164, 24, 21);
+		this.btnK.setBounds(265, 164, 24, 21);
+		this.btnL.setBounds(291, 164, 24, 21);
+		this.btnM.setBounds(317, 164, 24, 21);
+		this.btnN.setBounds(343, 164, 24, 21);
+		this.btnO.setBounds(369, 164, 24, 21);
+		this.btnP.setBounds(395, 164, 24, 21);
+		this.btnQ.setBounds(421, 164, 24, 21);
+		this.btnR.setBounds(447, 164, 24, 21);
+		this.btnS.setBounds(473, 164, 24, 21);
+		this.btnT.setBounds(499, 164, 24, 21);
+		this.btnU.setBounds(525, 164, 24, 21);
+		this.btnV.setBounds(551, 164, 24, 21);
+		this.btnW.setBounds(577, 164, 24, 21);
+		this.btnX.setBounds(603, 164, 24, 21);
+		this.btnY.setBounds(629, 164, 24, 21);
+		this.btnZ.setBounds(655, 164, 24, 21);
 
-		JButton[] characterButtons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
-				btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS,
-				btnT, btnU, btnV, btnW, btnX, btnY, btnZ};
-
-		for (JButton button:characterButtons) {
-			frame.getContentPane().add(button);
+		for (JButton button:this.characterButtons) {
+			this.frame.getContentPane().add(button);
 			button.addActionListener(this);
 		}
-		
-		txtSuchen = new JTextField();
-		txtSuchen.setBackground(Color.WHITE);
-		txtSuchen.setHorizontalAlignment(SwingConstants.CENTER);
-		txtSuchen.setText("Suchen");
-		txtSuchen.setToolTipText("Suchen");
-		txtSuchen.setBounds(707, 160, 87, 28);
-		frame.getContentPane().add(txtSuchen);
-		txtSuchen.setColumns(10);
+
+		this.searchText = new JTextField();
+		this.searchText.setBackground(Color.WHITE);
+		this.searchText.setHorizontalAlignment(SwingConstants.CENTER);
+		this.searchText.setText("Suchen");
+		this.searchText.setToolTipText("Suchen");
+		this.searchText.setBounds(707, 160, 87, 28);
+		this.frame.getContentPane().add(this.searchText);
+		this.searchText.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(109, 253, 586, 257);
-		frame.getContentPane().add(scrollPane);
-		table = new JTable() {
+		this.frame.getContentPane().add(scrollPane);
+		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			};
 		};
-		table.addMouseListener(this);
-		scrollPane.setViewportView(table);
+		this.table.addMouseListener(this);
+		scrollPane.setViewportView(this.table);
 
 		this.loadTableData();
 	}

@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class SettingsPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
-	private JButton btnDatenbankzugangsdatenndern = new JButton("Datenbankzugangsdaten ändern");
-	private JButton btnPasswortndern = new JButton("Passwort ändern");
+	private JButton changeDatabaseLoginButton = new JButton("Datenbankzugangsdaten ändern");
+	private JButton changePasswordButton = new JButton("Passwort ändern");
 
 	/**
 	 * Create the application.
@@ -24,17 +24,22 @@ public class SettingsPresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
-		btnDatenbankzugangsdatenndern.setBounds(247, 258, 280, 57);
-		frame.getContentPane().add(btnDatenbankzugangsdatenndern);
+		this.changeDatabaseLoginButton.setBounds(247, 258, 280, 57);
+		this.frame.getContentPane().add(this.changeDatabaseLoginButton);
 
-		btnPasswortndern.setBounds(247, 331, 280, 57);
-		frame.getContentPane().add(btnPasswortndern);
-		btnPasswortndern.addActionListener(this);
+		this.changePasswordButton.setBounds(247, 331, 280, 57);
+		this.frame.getContentPane().add(changePasswordButton);
+		this.changePasswordButton.addActionListener(this);
 
-		JLabel Einstellungen = new JLabel("Einstellungen");
-		Einstellungen.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		Einstellungen.setBounds(16, 98, 247, 36);
-		frame.getContentPane().add(Einstellungen);
+		JLabel settings = new JLabel("Einstellungen");
+		settings.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		settings.setBounds(16, 98, 247, 36);
+		this.frame.getContentPane().add(settings);
+	}
+
+	@Override
+	public void presentData() {
+		super.presentData();
 	}
 
 	public void actionPerformed(ActionEvent e) {

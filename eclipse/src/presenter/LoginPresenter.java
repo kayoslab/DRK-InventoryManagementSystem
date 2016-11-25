@@ -8,8 +8,9 @@ import javax.swing.*;
 public class LoginPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
 	private JPasswordField passwordField;
-	private JButton btnEinloggen = new JButton("Einloggen");
 	private JTextField userNameTextField;
+	private JButton loginButton = new JButton("Einloggen");
+
 
 	/**
 	 * Create the application.
@@ -24,50 +25,46 @@ public class LoginPresenter extends Presenter {
 	public void initialize() {
 		super.initialize();
 
-		btnEinloggen.addActionListener(this);
-		btnEinloggen.setBounds(356, 477, 117, 29);
-		frame.getContentPane().add(btnEinloggen);
+		this.loginButton.addActionListener(this);
+		this.loginButton.setBounds(356, 477, 117, 29);
+		this.frame.getContentPane().add(this.loginButton);
 
-		JLabel lblBenutzername = new JLabel("Benutzername");
-		lblBenutzername.setBounds(261, 352, 88, 16);
-		frame.getContentPane().add(lblBenutzername);
+		JLabel usernameLabel = new JLabel("Benutzername");
+		usernameLabel.setBounds(261, 352, 88, 16);
+		this.frame.getContentPane().add(usernameLabel);
 		
-		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setBounds(261, 403, 61, 16);
-		frame.getContentPane().add(lblPasswort);
+		JLabel passwordLabel = new JLabel("Passwort");
+		passwordLabel.setBounds(261, 403, 61, 16);
+		this.frame.getContentPane().add(passwordLabel);
 
-		userNameTextField = new JTextField();
-		userNameTextField.setBounds(383, 346, 182, 28);
-		frame.getContentPane().add(userNameTextField);
-		userNameTextField.setColumns(10);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(383, 397, 182, 28);
-		frame.getContentPane().add(passwordField);
+		this.userNameTextField = new JTextField();
+		this.userNameTextField.setBounds(383, 346, 182, 28);
+		this.frame.getContentPane().add(this.userNameTextField);
+		this.userNameTextField.setColumns(10);
+
+		this.passwordField = new JPasswordField();
+		this.passwordField.setBounds(383, 397, 182, 28);
+		this.frame.getContentPane().add(this.passwordField);
 		
 		JSeparator separator = new JSeparator();
-		separator.setForeground(Color.WHITE);
-		separator.setBackground(Color.LIGHT_GRAY);
 		separator.setBounds(261, 449, 304, 16);
-		frame.getContentPane().add(separator);
+		this.frame.getContentPane().add(separator);
 		
-		JLabel lblNewLabel = new JLabel("");
+		JLabel logoLabel = new JLabel("");
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoKlein.jpg")).getImage();
-		lblNewLabel.setIcon (new ImageIcon (img));
-		lblNewLabel.setBounds(135, 57, 526, 227);
-		frame.getContentPane().add(lblNewLabel);
+		logoLabel.setIcon (new ImageIcon (img));
+		logoLabel.setBounds(135, 57, 526, 227);
+		this.frame.getContentPane().add(logoLabel);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setForeground(Color.WHITE);
-		separator_1.setBackground(Color.LIGHT_GRAY);
 		separator_1.setBounds(262, 306, 303, 16);
-		frame.getContentPane().add(separator_1);
+		this.frame.getContentPane().add(separator_1);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == this.btnEinloggen) {
+		if (e.getSource() == this.loginButton) {
 			if (this.passwordManager.tryLogin(this.userNameTextField.getText(), String.valueOf(this.passwordField.getPassword()))) {
 				MenuPresenter menuPresenter = new MenuPresenter();
 				menuPresenter.previousPresenter = this;

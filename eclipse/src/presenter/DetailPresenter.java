@@ -15,10 +15,10 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	private StockObjectValue[] stockObjectValues;
 	private JTable table;
 
-	private JButton btnHinzufgen = new JButton("Hinzufügen");
-	private JButton btnEntnehmen = new JButton("Entnehmen");
-	private JButton btnBearbeiten = new JButton("Bearbeiten");
-	private JButton btnLschen = new JButton("Löschen");
+	private JButton addButton = new JButton("Hinzufügen");
+	private JButton removeButton = new JButton("Entnehmen");
+	private JButton editButton = new JButton("Bearbeiten");
+	private JButton deleteButton = new JButton("Löschen");
 
 	/**
 	 * Create the application.
@@ -35,22 +35,22 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		super.initialize();
 		super.setupTopLayout();
 
-		JButton[] buttons = new JButton[]{ btnHinzufgen, btnEntnehmen, btnBearbeiten, btnLschen};
-		btnHinzufgen.setBounds(386, 450, 117, 29);
-		btnEntnehmen.setBounds(560, 450, 117, 29);
-		btnBearbeiten.setBounds(560, 490, 117, 29);
-		btnLschen.setBounds(386, 490, 117, 29);
+		JButton[] buttons = new JButton[]{ this.addButton, this.removeButton, this.editButton, this.deleteButton};
+		this.addButton.setBounds(386, 450, 117, 29);
+		this.removeButton.setBounds(560, 450, 117, 29);
+		this.editButton.setBounds(560, 490, 117, 29);
+		this.deleteButton.setBounds(386, 490, 117, 29);
 
 		for (JButton button : buttons) {
 			button.addActionListener(this);
-			frame.getContentPane().add(button);
+			this.frame.getContentPane().add(button);
 		}
 
 
 		JLabel titleLabel = this.stockObject != null ? new JLabel(this.stockObject.title) : new JLabel("Titels");
 		titleLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		titleLabel.setBounds(16, 98, 347, 36);
-		frame.getContentPane().add(titleLabel);
+		this.frame.getContentPane().add(titleLabel);
 
 		
 		JTextArea descriptionArea = new JTextArea();
@@ -61,20 +61,24 @@ public class DetailPresenter extends Presenter implements MouseListener {
 			descriptionArea.setText(this.stockObject.description);
 		}
 		descriptionArea.setBounds(16, 199, 300, 240);
-		frame.getContentPane().add(descriptionArea);
+		this.frame.getContentPane().add(descriptionArea);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(350, 199, 358, 240);
-		frame.getContentPane().add(scrollPane);
+		this.frame.getContentPane().add(scrollPane);
 		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			};
 		};
 
-		table.addMouseListener(this);
+		this.table.addMouseListener(this);
 		scrollPane.setViewportView(table);
+	}
 
+	@Override
+	public void presentData() {
+		super.presentData();
 		this.loadTableData();
 	}
 
@@ -113,13 +117,13 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 
-		if (e.getSource() == this.btnHinzufgen) {
+		if (e.getSource() == this.addButton) {
 
-		} else if (e.getSource() == this.btnEntnehmen) {
+		} else if (e.getSource() == this.removeButton) {
 
-		} else if (e.getSource() == this.btnBearbeiten) {
+		} else if (e.getSource() == this.editButton) {
 
-		} else if (e.getSource() == this.btnLschen) {
+		} else if (e.getSource() == this.deleteButton) {
 
 		}
 	}

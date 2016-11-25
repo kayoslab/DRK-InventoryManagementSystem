@@ -20,21 +20,26 @@ public class MessagePresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
-		JLabel Meldungen = new JLabel("Meldungen");
-		Meldungen.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		Meldungen.setBounds(16, 98, 210, 36);
-		frame.getContentPane().add(Meldungen);
+		JLabel messageLabel = new JLabel("Meldungen");
+		messageLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		messageLabel.setBounds(16, 98, 210, 36);
+		this.frame.getContentPane().add(messageLabel);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(157, 219, 503, 192);
-		frame.getContentPane().add(scrollPane);
+		this.frame.getContentPane().add(scrollPane);
 
-		table = new JTable() {
+		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			};
 		};
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(this.table);
+	}
+
+	@Override
+	public void presentData() {
+		super.presentData();
 	}
 
 	@Override
