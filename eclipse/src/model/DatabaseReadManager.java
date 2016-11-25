@@ -384,7 +384,7 @@ public final class DatabaseReadManager {
 	}
 
 	/**
-	 * @param stockObject StockObject
+	 * @param stockObjectValue StockObjectValue
 	 * @return Location[]
 	 */
 	public static Location[] getLocations(StockObjectValue stockObjectValue) {
@@ -724,7 +724,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		String sqlStatement = "SELECT `id`, `title`, `description`, `silenceWarning`, `type_id`, `totalVolume` FROM `StockObject`";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `silenceWarning`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `type_id` FROM `StockObject` WHERE `type_id` = " + stockObjectType.ordinal() + ";";
 		// get Data from Database
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
@@ -755,11 +755,11 @@ public final class DatabaseReadManager {
 				}
 			}
 			DatabaseReadManager.close(rs);
-			return (StockObject[]) inventoryList.toArray();
+			return inventoryList.toArray(new StockObject[inventoryList.size()]);
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {

@@ -1,9 +1,7 @@
 package presenter.onboarding;
-
 import model.PasswordManager;
 import presenter.MenuPresenter;
 import presenter.Presenter;
-
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import javax.swing.*;

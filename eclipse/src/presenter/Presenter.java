@@ -1,7 +1,5 @@
 package presenter;
-
 import presenter.onboarding.LoginPresenter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
