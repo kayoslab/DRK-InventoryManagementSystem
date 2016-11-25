@@ -4,9 +4,7 @@ import model.DatabaseReadManager;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.*;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +14,6 @@ import javax.swing.*;
 public class InventoryPresenter extends Presenter {
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
-	private JButton btnLogout = new JButton("Logout");
-	private JButton back = new JButton("");
-	private JButton help = new JButton("");
 
 	JRadioButton rdBtnAll;
 	JRadioButton rdbtnNurMindestbestnde;
@@ -40,40 +35,12 @@ public class InventoryPresenter extends Presenter {
 	 */
 	public void initialize() {
 		super.initialize();
-		
-		JButton logo = new JButton("");
-		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		logo.setIcon (new ImageIcon (img));
-		logo.setBounds(595, 6, 199, 65);
-		frame.getContentPane().add(logo);
-
-		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(this);
-		btnLogout.setBounds(455, 27, 98, 22);
-		frame.getContentPane().add(btnLogout);
-
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
-		back.setIcon (new ImageIcon (imgback));
-		back.setBounds(36, 18, 33, 36);
-		back.addActionListener(this);
-		frame.getContentPane().add(back);
-		back.addActionListener(this);
-
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		help.setIcon (new ImageIcon (imgbook));
-		help.setBounds(381, 18, 33, 36);
-		help.addActionListener(this);
-		frame.getContentPane().add(help);
-		help.addActionListener(this);
+		super.setupTopLayout();
 
 		JLabel Inventarliste = new JLabel("Inventarliste");
 		Inventarliste.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Inventarliste.setBounds(16, 98, 247, 36);
 		frame.getContentPane().add(Inventarliste);
-
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
 
 		// Radiobuttons
 		rdBtnAll = new JRadioButton("Alle");
@@ -275,16 +242,8 @@ public class InventoryPresenter extends Presenter {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == this.btnLogout) {
-			LoginPresenter loginPresenter = new LoginPresenter();
-			this.frame.dispose();
-			loginPresenter.newScreen();
-		} else if (e.getSource() == this.back) {
-			this.showPreviousPresenter();
-		} else if (e.getSource() == this.help) {
-
-		} else if (e.getSource() == this.rdBtnAll) {
+		super.actionPerformed(e);
+		if (e.getSource() == this.rdBtnAll) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.rdbtnNurMindestbestnde) {
 			this.refreshTableData();

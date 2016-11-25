@@ -38,7 +38,7 @@ public class SetupPresenter extends Presenter {
 		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
+		separator.setBounds(leftPadding, 66, (width - leftPadding - rightPadding), 12);
 		frame.getContentPane().add(separator);
 		
 		JLabel lblUrl = new JLabel("URL");

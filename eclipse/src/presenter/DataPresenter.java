@@ -18,10 +18,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
 	private StockObject[] stockObjects;
-	private JButton logo = new JButton("");
-	private JButton btnLogout = new JButton("Logout");
-	private JButton back = new JButton("");
-	private JButton help = new JButton("");
+
 	private JButton btnA = new JButton("A");
 	private JButton btnB = new JButton("B");
 	private JButton btnC = new JButton("C");
@@ -61,38 +58,11 @@ public class DataPresenter extends Presenter implements MouseListener {
 	 */
 	public void initialize() {
 		super.initialize();
+		super.setupTopLayout();
 
-		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		logo.setIcon (new ImageIcon (img));
-		logo.setBounds(595, 6, 199, 65);
-		frame.getContentPane().add(logo);
-		logo.addActionListener(this);
-
-		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.setBounds(455, 27, 98, 22);
-		frame.getContentPane().add(btnLogout);
-		btnLogout.addActionListener(this);
-
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
-		back.setIcon (new ImageIcon (imgback));
-		back.setBounds(36, 18, 33, 36);
-		frame.getContentPane().add(back);
-		back.addActionListener(this);
-
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		help.setIcon (new ImageIcon (imgbook));
-		help.setBounds(381, 18, 33, 36);
-		frame.getContentPane().add(help);
-		help.addActionListener(this);
-
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
-
-		
 		JLabel MaterialUndGeraeteDaten = new JLabel("Material- und Geräte Daten");
 		MaterialUndGeraeteDaten.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		MaterialUndGeraeteDaten.setBounds(16, 98, 347, 36);
+		MaterialUndGeraeteDaten.setBounds(leftPadding, 98, (width-leftPadding-rightPadding), 36);
 		frame.getContentPane().add(MaterialUndGeraeteDaten);
 
 		btnA.setBounds(5, 164, 24, 21);
@@ -122,11 +92,11 @@ public class DataPresenter extends Presenter implements MouseListener {
 		btnY.setBounds(629, 164, 24, 21);
 		btnZ.setBounds(655, 164, 24, 21);
 
-		JButton[] buttons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
+		JButton[] characterButtons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
 				btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS,
 				btnT, btnU, btnV, btnW, btnX, btnY, btnZ};
 
-		for (JButton button:buttons) {
+		for (JButton button:characterButtons) {
 			frame.getContentPane().add(button);
 			button.addActionListener(this);
 		}
@@ -210,20 +180,37 @@ public class DataPresenter extends Presenter implements MouseListener {
 		table.setModel(model);
 	}
 
+	// TODO: Try this function with data in the Table
+	private void scrollToVisible(int rowIndex, int vColIndex) {
+		if (!(this.table.getParent() instanceof JViewport)) {
+			return;
+		}
+		JViewport viewport = (JViewport)this.table.getParent();
+
+		// This rectangle is relative to the table where the
+		// northwest corner of cell (0,0) is always (0,0).
+		Rectangle rect = this.table.getCellRect(rowIndex, vColIndex, true);
+
+		// The location of the viewport relative to the table
+		Point pt = viewport.getViewPosition();
+
+		// Translate the cell location so that it is relative
+		// to the view, assuming the northwest corner of the
+		// view is (0,0)
+		rect.setLocation(rect.x-pt.x, rect.y-pt.y);
+
+		this.table.scrollRectToVisible(rect);
+
+		// Scroll the area into view
+		//viewport.scrollRectToVisible(rect);
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.logo) {
-			// Do logo things
-		} else if (e.getSource() == this.btnLogout) {
-			LoginPresenter loginPresenter = new LoginPresenter();
-			this.frame.dispose();
-			loginPresenter.newScreen();
-		} else if (e.getSource() == this.back) {
-			this.showPreviousPresenter();
-		} else if (e.getSource() == this.help) {
-			// Do help things
-		} else if (e.getSource() == this.btnA) {
-
+		super.actionPerformed(e);
+		// it's a Trap / Character
+		if (e.getSource() == this.btnA) {
+			this.scrollToVisible(0,0);
 		} else if (e.getSource() == this.btnB) {
 
 		} else if (e.getSource() == this.btnC) {

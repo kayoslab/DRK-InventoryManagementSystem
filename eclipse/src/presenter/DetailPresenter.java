@@ -14,10 +14,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	private StockObject stockObject;
 	private StockObjectValue[] stockObjectValues;
 	private JTable table;
-	private JButton logo = new JButton("");
-	private JButton btnLogout = new JButton("Logout");
-	private JButton back = new JButton("");
-	private JButton help = new JButton("");
+
 	private JButton btnHinzufgen = new JButton("Hinzufügen");
 	private JButton btnEntnehmen = new JButton("Entnehmen");
 	private JButton btnBearbeiten = new JButton("Bearbeiten");
@@ -36,56 +33,21 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	 */
 	public void initialize() {
 		super.initialize();
+		super.setupTopLayout();
 
-		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		logo.setIcon (new ImageIcon (img));
-		logo.setBounds(595, 6, 199, 65);
-		logo.addActionListener(this);
-		frame.getContentPane().add(logo);
+		JButton[] buttons = new JButton[]{ btnHinzufgen, btnEntnehmen, btnBearbeiten, btnLschen};
+		btnHinzufgen.setBounds(386, 450, 117, 29);
+		btnEntnehmen.setBounds(560, 450, 117, 29);
+		btnBearbeiten.setBounds(560, 490, 117, 29);
+		btnLschen.setBounds(386, 490, 117, 29);
 
-		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.setBounds(455, 27, 98, 22);
-		btnLogout.addActionListener(this);
-		frame.getContentPane().add(btnLogout);
-
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
-		back.setIcon (new ImageIcon (imgback));
-		back.setBounds(36, 18, 33, 36);
-		back.addActionListener(this);
-		frame.getContentPane().add(back);
-
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		help.setIcon (new ImageIcon (imgbook));
-		help.setBounds(381, 18, 33, 36);
-		help.addActionListener(this);
-		frame.getContentPane().add(help);
-
-		btnHinzufgen.setBounds(386, 419, 117, 29);
-		btnHinzufgen.addActionListener(this);
-		frame.getContentPane().add(btnHinzufgen);
-
-		btnEntnehmen.setBounds(560, 419, 117, 29);
-		btnEntnehmen.addActionListener(this);
-		frame.getContentPane().add(btnEntnehmen);
-
-		btnBearbeiten.setBounds(560, 460, 117, 29);
-		btnBearbeiten.addActionListener(this);
-		frame.getContentPane().add(btnBearbeiten);
-
-		btnLschen.setBounds(386, 460, 117, 29);
-		btnLschen.addActionListener(this);
-		frame.getContentPane().add(btnLschen);
-
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
-		
-		JLabel titleLabel;
-		if (this.stockObject != null) {
-			titleLabel = new JLabel(this.stockObject.title);
-		} else {
-			titleLabel = new JLabel();
+		for (JButton button : buttons) {
+			button.addActionListener(this);
+			frame.getContentPane().add(button);
 		}
+
+
+		JLabel titleLabel = this.stockObject != null ? new JLabel(this.stockObject.title) : new JLabel("Titels");
 		titleLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		titleLabel.setBounds(16, 98, 347, 36);
 		frame.getContentPane().add(titleLabel);
@@ -98,11 +60,11 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		if (this.stockObject != null) {
 			descriptionArea.setText(this.stockObject.description);
 		}
-		descriptionArea.setBounds(36, 199, 258, 224);
+		descriptionArea.setBounds(16, 199, 300, 240);
 		frame.getContentPane().add(descriptionArea);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(350, 199, 358, 208);
+		scrollPane.setBounds(350, 199, 358, 240);
 		frame.getContentPane().add(scrollPane);
 		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
@@ -149,17 +111,9 @@ public class DetailPresenter extends Presenter implements MouseListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.logo) {
-			// Do logo things
-		} else if (e.getSource() == this.btnLogout) {
-			LoginPresenter loginPresenter = new LoginPresenter();
-			this.frame.dispose();
-			loginPresenter.newScreen();
-		} else if (e.getSource() == this.back) {
-			this.showPreviousPresenter();
-		} else if (e.getSource() == this.help) {
-			// Do help things
-		} else if (e.getSource() == this.btnHinzufgen) {
+		super.actionPerformed(e);
+
+		if (e.getSource() == this.btnHinzufgen) {
 
 		} else if (e.getSource() == this.btnEntnehmen) {
 

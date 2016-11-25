@@ -7,10 +7,6 @@ import javax.swing.*;
 
 public class SettingsPresenter extends Presenter {
 	private PasswordManager passwordManager = new PasswordManager();
-	private JButton logo = new JButton("");
-	private JButton btnLogout = new JButton("Logout");
-	private JButton back = new JButton("");
-	private JButton help = new JButton("");
 	private JButton btnDatenbankzugangsdatenndern = new JButton("Datenbankzugangsdaten ändern");
 	private JButton btnPasswortndern = new JButton("Passwort ändern");
 
@@ -26,22 +22,7 @@ public class SettingsPresenter extends Presenter {
 	 */
 	public void initialize() {
 		super.initialize();
-
-		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		logo.setIcon (new ImageIcon (img));
-		logo.setBounds(595, 6, 199, 65);
-		frame.getContentPane().add(logo);
-		
-		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(this);
-		btnLogout.setBounds(455, 27, 98, 22);
-		frame.getContentPane().add(btnLogout);
-		
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
-		back.setIcon (new ImageIcon (imgback));
-		back.addActionListener(this);
-		back.setBounds(36, 18, 33, 36);
-		frame.getContentPane().add(back);
+		super.setupTopLayout();
 
 		btnDatenbankzugangsdatenndern.setBounds(247, 258, 280, 57);
 		frame.getContentPane().add(btnDatenbankzugangsdatenndern);
@@ -49,16 +30,6 @@ public class SettingsPresenter extends Presenter {
 		btnPasswortndern.setBounds(247, 331, 280, 57);
 		frame.getContentPane().add(btnPasswortndern);
 		btnPasswortndern.addActionListener(this);
-		
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		help.setIcon (new ImageIcon (imgbook));
-		help.setBounds(381, 18, 33, 36);
-		help.addActionListener(this);
-		frame.getContentPane().add(help);
-
-		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
-		frame.getContentPane().add(separator);
 
 		JLabel Einstellungen = new JLabel("Einstellungen");
 		Einstellungen.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -66,18 +37,7 @@ public class SettingsPresenter extends Presenter {
 		frame.getContentPane().add(Einstellungen);
 	}
 
-
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			if (e.getSource() == this.btnLogout) {
-				LoginPresenter loginPresenter = new LoginPresenter();
-				this.frame.dispose();
-				loginPresenter.newScreen();
-			} else if (e.getSource() == this.back){
-				this.showPreviousPresenter();
-			} else if (e.getSource() == this.help){
-
-			}
-		}
-
+	public void actionPerformed(ActionEvent e) {
+		super.actionPerformed(e);
+	}
 }

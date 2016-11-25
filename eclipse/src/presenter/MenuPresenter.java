@@ -8,8 +8,10 @@ public class MenuPresenter extends Presenter {
 	private JButton btnMaterialGerteDaten = new JButton("Material-/ Geräte Daten");
 	private JButton btnInventarliste = new JButton("Inventarliste");
 	private JButton btnMeldungen = new JButton("Meldungen");	
+
 	private JButton settingsButton = new JButton("Einstellungen");
 	private JButton btnLogout = new JButton("Logout");
+
 	private JButton chat = new JButton("");
 	private JButton edit = new JButton("");
 	private JButton plus = new JButton("");
@@ -56,29 +58,33 @@ public class MenuPresenter extends Presenter {
 		settingsButton.setBounds(442, 40, 98, 22);
 		frame.getContentPane().add(settingsButton);
 
-		Image imgchat = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
-		chat.setIcon (new ImageIcon (imgchat));
-		chat.setBounds(155, 18, 33, 36);
+		Image chatImage = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
+		Image chatImageScaled = chatImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+		chat.setIcon (new ImageIcon (chatImageScaled));
+		chat.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
 		frame.getContentPane().add(chat);
 
-		Image imgedit = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
-		edit.setIcon (new ImageIcon (imgedit));
-		edit.setBounds(215, 18, 33, 36);
+		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
+		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+		edit.setIcon (new ImageIcon (editImageScaled));
+		edit.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
 		frame.getContentPane().add(edit);
 
-		Image imgplus = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
-		plus.setIcon (new ImageIcon (imgplus));
-		plus.setBounds(278, 18, 33, 36);
+		Image addImage = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
+		Image addImageScaled = addImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+		plus.setIcon (new ImageIcon (addImageScaled));
+		plus.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
 		frame.getContentPane().add(plus);
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
 
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		help.setIcon (new ImageIcon (imgbook));
-		help.setBounds(381, 18, 33, 36);
+
+		Image bookImage = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
+		Image bookImageScaled = bookImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+		help.setIcon (new ImageIcon (bookImageScaled));
+		help.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*3, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
 		frame.getContentPane().add(help);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(6, 66, 788, 12);
+		separator.setBounds(leftPadding, 66, (width - leftPadding - rightPadding), 12);
 		frame.getContentPane().add(separator);
 	}
 
