@@ -144,6 +144,7 @@ public abstract class Presenter implements ActionListener {
 	/* IconButtons */
 	public int characterButtonWidth = 24;
 	public int characterButtonHeight = 24;
+	public int buttonHeight = 29;
 	public int leftSideMenuWidth = 190;
 	public int headlineY = 100;
 	public int lineHeight = 36;

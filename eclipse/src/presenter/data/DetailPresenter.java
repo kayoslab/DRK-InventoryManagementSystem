@@ -45,23 +45,12 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		super.initialize();
 		super.setupTopLayout();
 
-		JButton[] buttons = new JButton[]{ this.addButton, this.removeButton, this.editButton, this.deleteButton};
-		this.addButton.setBounds(386, 450, 117, 29);
-		this.removeButton.setBounds(560, 450, 117, 29);
-		this.editButton.setBounds(560, 490, 117, 29);
-		this.deleteButton.setBounds(386, 490, 117, 29);
-
-		for (JButton button : buttons) {
-			button.addActionListener(this);
-			this.frame.getContentPane().add(button);
-		}
-
+		int decentContentHeight = 350;
 
 		JLabel titleLabel = this.stockObject != null ? new JLabel(this.stockObject.title) : new JLabel("Titels");
 		titleLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		titleLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(titleLabel);
-
 		
 		JTextArea descriptionArea = new JTextArea();
 		descriptionArea.setText("Beschreibung");
@@ -70,11 +59,12 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		if (this.stockObject != null) {
 			descriptionArea.setText(this.stockObject.description);
 		}
-		descriptionArea.setBounds(leftPadding, 199, leftSideMenuWidth, 240);
+		descriptionArea.setBounds(leftPadding, contentY, leftSideMenuWidth, decentContentHeight);
 		this.frame.getContentPane().add(descriptionArea);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(350, 199, 358, 240);
+		int scrollPaneWidth = displayAreaWidth - (leftPadding+leftSideMenuWidth+smallSpacing);
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+smallSpacing, contentY, scrollPaneWidth, decentContentHeight);
 		this.frame.getContentPane().add(scrollPane);
 		this.table = new JTable() {
 			public boolean isCellEditable(int row, int column) {
@@ -84,6 +74,20 @@ public class DetailPresenter extends Presenter implements MouseListener {
 
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(table);
+
+		JButton[] buttons = new JButton[]{ this.addButton, this.removeButton, this.editButton, this.deleteButton};
+		int buttonWidth = (scrollPaneWidth / 4) - smallSpacing;
+		int buttonY = decentContentHeight + contentY + smallSpacing;
+
+		this.addButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*1 , buttonY, buttonWidth, buttonHeight);
+		this.removeButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*2+buttonWidth*1, buttonY, buttonWidth, buttonHeight);
+		this.editButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*3+buttonWidth*2, buttonY, buttonWidth, buttonHeight);
+		this.deleteButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*4+buttonWidth*3, buttonY, buttonWidth, buttonHeight);
+
+		for (JButton button : buttons) {
+			button.addActionListener(this);
+			this.frame.getContentPane().add(button);
+		}
 	}
 
 	@Override

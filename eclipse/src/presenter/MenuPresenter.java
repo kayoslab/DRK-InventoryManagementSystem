@@ -48,16 +48,16 @@ public class MenuPresenter extends Presenter {
 		this.logo.addActionListener(this);
 
 		this.btnLogout = new JButton("Logout");
-		this.btnLogout.setBounds(442, topPadding, logoutWidth, logoutHeight);
+		this.btnLogout.setBounds(logoutX, smallSpacing, logoutWidth, logoutHeight);
 		this.frame.getContentPane().add(this.btnLogout);
 		this.btnLogout.addActionListener(this);
 
 		this.separator = new JSeparator();
-		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
+		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), logoutHeight);
 		this.frame.getContentPane().add(this.separator);
 
 		/* Local Class Layout */
-		this.settingsButton.setBounds(442, 40, logoutWidth, 22);
+		this.settingsButton.setBounds(logoutX, smallSpacing+logoutHeight+smallSpacing, logoutWidth, logoutHeight);
 		this.settingsButton.addActionListener(this);
 		this.frame.getContentPane().add(this.settingsButton);
 
