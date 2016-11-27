@@ -118,7 +118,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 				table.setModel(model);
 			} else if (this.stockObject instanceof Material) {
 				if (this.stockObject instanceof MedicalMaterial) {
-					Object columnNames[] = { "Menge", "Lagerort", "Datum"};
+					Object columnNames[] = { "Menge", "Lagerort", "Haltbar bis"};
 					DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
@@ -130,7 +130,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 					}
 					table.setModel(model);
 				} else if (this.stockObject instanceof ConsumableMaterial) {
-					Object columnNames[] = { "Menge", "Lagerort", "Datum"};
+					Object columnNames[] = { "Menge", "Lagerort", "Haltbar bis"};
 					DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
