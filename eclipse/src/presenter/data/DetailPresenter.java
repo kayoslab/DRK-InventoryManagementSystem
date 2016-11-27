@@ -1,5 +1,6 @@
 package presenter.data;
 import model.DatabaseReadManager;
+import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.*;
 import model.databaseObjects.stockValues.*;
 import presenter.Presenter;
@@ -8,14 +9,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
 
 public class DetailPresenter extends Presenter implements MouseListener {
 	private StockObject stockObject;
 	private StockObjectValue[] stockObjectValues;
 	private JTable table;
-
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 	private JButton addButton = new JButton("Hinzufügen");
 	private JButton removeButton = new JButton("Entnehmen");
 	private JButton editButton = new JButton("Bearbeiten");
@@ -97,32 +101,51 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	}
 
 	private void loadTableData() {
-		Object columnNames[] = { "Menge", "Lagerort", "Datum"};
-		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-
 		this.stockObjectValues = DatabaseReadManager.getStockObjectValues(this.stockObject);
 		if (this.stockObjectValues != null) {
-			for (StockObjectValue stockObjectValue : this.stockObjectValues) {
-				// Switch between instanceTypes
-				if (stockObjectValue instanceof DeviceValue) {
-					DeviceValue deviceValue = (DeviceValue) stockObjectValue;
-					Object row[] = { deviceValue.volume, "Lagerort" + deviceValue.locationID, ""};
-					model.addRow(row);
-				} else if (stockObjectValue instanceof MaterialValue) {
-					if (stockObjectValue instanceof MedicalMaterialValue) {
-						MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
-						Object row[] = { medicalMaterialValue.volume, "Lagerort" + medicalMaterialValue.locationID, ""};
+			if (this.stockObject instanceof Device) {
+				Object columnNames[] = { "Menge", "Lagerort", "MTK", "STK"};
+				DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+				for (StockObjectValue stockObjectValue : this.stockObjectValues) {
+					if (stockObjectValue instanceof DeviceValue) {
+						DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+						Object row[] = { deviceValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title,
+								this.sdf.format(deviceValue.mtkDate), this.sdf.format(deviceValue.stkDate)};
 						model.addRow(row);
-					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-						ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
-						Object row[] = { consumableMaterialValue.volume, "Lagerort" + consumableMaterialValue.locationID, ""};
-						model.addRow(row);
-					} else {
-						// Do nothing with this object, its not a usable material
 					}
-				} else {
-					// Do nothing, maybe its a vehicle
 				}
+				table.setModel(model);
+			} else if (this.stockObject instanceof Material) {
+				if (this.stockObject instanceof MedicalMaterial) {
+					Object columnNames[] = { "Menge", "Lagerort", "Datum"};
+					DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
+						if (stockObjectValue instanceof MedicalMaterialValue) {
+							MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
+							Object row[] = { medicalMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, this.sdf.format(medicalMaterialValue.date)};
+							model.addRow(row);
+						}
+					}
+					table.setModel(model);
+				} else if (this.stockObject instanceof ConsumableMaterial) {
+					Object columnNames[] = { "Menge", "Lagerort", "Datum"};
+					DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
+						if (stockObjectValue instanceof ConsumableMaterialValue) {
+							ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
+							Object row[] = { consumableMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, this.sdf.format(consumableMaterialValue.date)};
+							model.addRow(row);
+						}
+					}
+					table.setModel(model);
+				} else {
+					// Do nothing with this object, its not a usable material
+				}
+			} else {
+				// Do nothing, maybe its a vehicle
 			}
 		}
 	}

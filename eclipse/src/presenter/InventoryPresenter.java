@@ -14,7 +14,6 @@ import javax.swing.*;
 public class InventoryPresenter extends Presenter {
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
-
 	JRadioButton radioButtonAll;
 	JRadioButton radioButtonMinimumStockOnly;
 	JRadioButton radioButtonCriticalDateOnly;
