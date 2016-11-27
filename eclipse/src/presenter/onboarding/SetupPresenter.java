@@ -37,54 +37,53 @@ public class SetupPresenter extends Presenter {
 	public void initialize() {
 		super.initialize();
 
-		logo.addActionListener(this);
+		this.logo = new JButton("");
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		logo.setIcon (new ImageIcon (img));
-		logo.setBounds(595, 6, 199, 65);
-		frame.getContentPane().add(logo);
+		this.logo.setIcon (new ImageIcon (img));
+		this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
+		this.frame.getContentPane().add(this.logo);
+		this.logo.addActionListener(this);
+
+		this.separator = new JSeparator();
+		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
+		this.frame.getContentPane().add(this.separator);
 
 		this.btnSpeichern = new JButton("speichern");
 		this.btnSpeichern.setBounds(343, 401, 117, 29);
 		this.btnSpeichern.addActionListener(this);
 		this.frame.getContentPane().add(this.btnSpeichern);
-		Image imgback = new ImageIcon (this.getClass().getResource("/img/back-button.jpg")).getImage();
-		Image imgbook = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(leftPadding, 66, (width - leftPadding - rightPadding), 12);
-		frame.getContentPane().add(separator);
 		
 		JLabel lblUrl = new JLabel("URL");
 		lblUrl.setBounds(281, 230, 61, 16);
-		frame.getContentPane().add(lblUrl);
+		this.frame.getContentPane().add(lblUrl);
 		
 		JLabel lblNutzername = new JLabel("Nutzername");
 		lblNutzername.setBounds(281, 273, 82, 16);
-		frame.getContentPane().add(lblNutzername);
+		this.frame.getContentPane().add(lblNutzername);
 		
 		JLabel lblPasswort = new JLabel("Passwort");
 		lblPasswort.setBounds(281, 316, 61, 16);
-		frame.getContentPane().add(lblPasswort);
+		this.frame.getContentPane().add(lblPasswort);
 
-		urlTextField = new JTextField();
-		urlTextField.setBounds(375, 224, 134, 28);
-		frame.getContentPane().add(urlTextField);
-		urlTextField.setColumns(10);
-		
-		usernameTextField = new JTextField();
-		usernameTextField.setBounds(375, 267, 134, 28);
-		frame.getContentPane().add(usernameTextField);
-		usernameTextField.setColumns(10);
-		
-		passwordTextField = new JPasswordField();
-		passwordTextField.setBounds(375, 310, 134, 28);
-		frame.getContentPane().add(passwordTextField);
-		passwordTextField.setColumns(10);
+		this.urlTextField = new JTextField();
+		this.urlTextField.setBounds(375, 224, 134, 28);
+		this.frame.getContentPane().add(this.urlTextField);
+		this.urlTextField.setColumns(10);
+
+		this.usernameTextField = new JTextField();
+		this.usernameTextField.setBounds(375, 267, 134, 28);
+		this.frame.getContentPane().add(this.usernameTextField);
+		this.usernameTextField.setColumns(10);
+
+		this.passwordTextField = new JPasswordField();
+		this.passwordTextField.setBounds(375, 310, 134, 28);
+		this.frame.getContentPane().add(this.passwordTextField);
+		this.passwordTextField.setColumns(10);
 		
 		JLabel databaseLabel = new JLabel("Datenbank einrichten");
 		databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		databaseLabel.setBounds(16, 98, 247, 36);
-		frame.getContentPane().add(databaseLabel);
+		this.frame.getContentPane().add(databaseLabel);
 	}
 
 	@Override
