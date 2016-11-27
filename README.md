@@ -50,6 +50,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 # 4. Entwurf
 
 ## 4.1 Logbuch
+- [Zeitplan](./logbook/schedule.md)
 - [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 - [20.10.2016](./logbook/02-meeting-20-10-2016.md)
 - [25.10.2016](./logbook/03-meeting-25-10-2016.md) **(Kick-Off Meeting)**
