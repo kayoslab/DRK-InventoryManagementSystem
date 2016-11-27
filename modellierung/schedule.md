@@ -1,7 +1,7 @@
 # Übersicht
 
 | Datum | Bezeichnung |  Inhalt |
-|----------|:-------------:|------:|
+|----------|-------------|------|
 | 12.10.2016 |  Vergabe des Softwareprojekts | |
 | 20.10.2016 |  Gruppeninternes Treffen | - Aufgaben verteilt</br>- Fragen notiert</br>- Überblick über die Anforderungen verschafft |
 | 25.10.2016 | Gruppeninternes Treffen | - restliche Fragen besprochen</br>- Mockups fertig</br>- Datenbank Schema erstellt</br>- Erster Entwurf eines Klassendiagramms |
@@ -22,7 +22,7 @@
 #Zeitplan
 
 | Datum | Ziel |  Erreicht |
-|----------|:-------------:|------:|
+|----------|-------------|------|
 | 12.10.2016 | Einteilung der Gruppen | |
 | 25.10.2016 | Bis hierhin sollen sich alle mit dem Projekt und seinen Anforderungen auseinander setzten. Fragen an das DRK und Herrn Dessaules sollen aufgeschrieben werden. | Alle kannten sich mit dem Projekt aus, konnten gezielt Fragen stellen. Erste Mockups waren bereits fertig gestellt. |
 | 15.11.2016 | Use Cases, Sequenzdiagramme, Mockups und erste Klassendiagramm Skizzen sollen fertig sein. | Weitere Mockups, sowie Use Cases und Sequenzdiagramme waren fertig. Das Klassendiagramm muss noch überarbeitet werden. |
