@@ -105,7 +105,7 @@ public class Sender {
 	 */
 	public Properties getProperties() {
 		Properties properties = new Properties();
-		// Den Properties wird die ServerAdresse hinzugef�gt
+		// Den Properties wird die ServerAdresse hinzugefuegt
 		properties.put("mail.smtp.host", "smtp.web.de");
 		// !!Wichtig!! Falls der SMTP-Server eine Authentifizierung verlangt
 		// muss an dieser Stelle die Property auf "true" gesetzt
