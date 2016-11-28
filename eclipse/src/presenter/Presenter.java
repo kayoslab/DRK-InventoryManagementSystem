@@ -180,6 +180,6 @@ public abstract class Presenter implements ActionListener {
 	public int firstRowPlacing = firstButtonPlacing;
 	public int secondRowPlacing = firstRowPlacing + setupLabelHeight + spacing;
 	public int thirdRowPlacing = secondRowPlacing + setupLabelHeight + spacing;
-
+	/* *************** */
 }
 

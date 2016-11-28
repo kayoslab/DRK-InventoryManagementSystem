@@ -33,8 +33,8 @@
       <file leaf-file-name="Presenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="177" column="34" lean-forward="false" selection-start-line="177" selection-start-column="15" selection-end-line="177" selection-end-column="34" />
+            <state relative-caret-position="810">
+              <caret line="94" column="56" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="94" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginPresenter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java">
+      <file leaf-file-name="MenuPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/presenter/MenuPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="76" column="95" lean-forward="false" selection-start-line="76" selection-start-column="80" selection-end-line="76" selection-end-column="95" />
+            <state relative-caret-position="720">
+              <caret line="114" column="41" lean-forward="false" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,11 +126,11 @@
         <option value="$PROJECT_DIR$/src/presenter/MessagePresenter.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java" />
-        <option value="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/settings/SettingsPresenter.java" />
-        <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
       </list>
     </option>
   </component>
@@ -890,12 +890,12 @@
       <workItem from="1480281066521" duration="3043000" />
       <workItem from="1480284204056" duration="319000" />
       <workItem from="1480328995864" duration="1280000" />
-      <workItem from="1480332951269" duration="5914000" />
+      <workItem from="1480332951269" duration="6439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69703000" />
+    <option name="totallyTimeSpent" value="70228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1293,26 +1293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/MenuPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="63" column="76" lean-forward="false" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="177" column="34" lean-forward="false" selection-start-line="177" selection-start-column="15" selection-end-line="177" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1335,8 +1315,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
+        <state relative-caret-position="729">
           <caret line="76" column="95" lean-forward="false" selection-start-line="76" selection-start-column="80" selection-end-line="76" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="94" column="56" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="94" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/MenuPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="114" column="41" lean-forward="false" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

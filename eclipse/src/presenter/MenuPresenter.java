@@ -8,15 +8,13 @@ import java.awt.event.ActionEvent;
 
 
 public class MenuPresenter extends Presenter {
-	private JButton btnMaterialGerteDaten = new JButton("Material-/ Geräte Daten");
-	private JButton btnInventarliste = new JButton("Inventarliste");
-	private JButton btnMeldungen = new JButton("Meldungen");
+	private JButton materialAndDevicesButton = new JButton("Material-/ Geräte Daten");
+	private JButton inventoryButton = new JButton("Inventarliste");
+	private JButton settingsButton = new JButton("Einstellungen");
 
-	private JButton chat = new JButton("");
+	private JButton messages = new JButton("");
 	private JButton edit = new JButton("");
 	private JButton plus = new JButton("");
-
-	private JButton settingsButton = new JButton("Einstellungen");
 
 	/**
 	 * Create the application.
@@ -48,37 +46,33 @@ public class MenuPresenter extends Presenter {
 		this.logo.addActionListener(this);
 
 		this.btnLogout = new JButton("Logout");
-		this.btnLogout.setBounds(logoutX, smallSpacing, logoutWidth, logoutHeight);
+		this.btnLogout.setBounds(logoutX, (topLayoutCenter - logoutHeight / 2), logoutWidth, logoutHeight);
 		this.frame.getContentPane().add(this.btnLogout);
 		this.btnLogout.addActionListener(this);
 
 		this.separator = new JSeparator();
-		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), logoutHeight);
+		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
 		this.frame.getContentPane().add(this.separator);
 
-		/* Local Class Layout */
-		this.settingsButton.setBounds(logoutX, smallSpacing+logoutHeight+smallSpacing, logoutWidth, logoutHeight);
+		/* Use Local Class Attributes */
+		this.materialAndDevicesButton.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
+		this.materialAndDevicesButton.addActionListener(this);
+		this.frame.getContentPane().add(materialAndDevicesButton);
+		
+		this.inventoryButton.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
+		this.inventoryButton.addActionListener(this);
+		this.frame.getContentPane().add(this.inventoryButton);
+
+		this.settingsButton.setBounds(menuButtonX, thirdButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.settingsButton.addActionListener(this);
 		this.frame.getContentPane().add(this.settingsButton);
 
-		this.btnMaterialGerteDaten.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
-		this.btnMaterialGerteDaten.addActionListener(this);
-		this.frame.getContentPane().add(btnMaterialGerteDaten);
-		
-		this.btnInventarliste.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
-		this.btnInventarliste.addActionListener(this);
-		this.frame.getContentPane().add(this.btnInventarliste);
-
-		this.btnMeldungen.setBounds(menuButtonX, thirdButtonPlacing, menuButtonWidth, menuButtonHeight);
-		this.btnMeldungen.addActionListener(this);
-		this.frame.getContentPane().add(this.btnMeldungen);
-
 		Image chatImage = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
 		Image chatImageScaled = chatImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		this.chat.setIcon (new ImageIcon (chatImageScaled));
-		this.chat.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		this.chat.addActionListener(this);
-		this.frame.getContentPane().add(this.chat);
+		this.messages.setIcon (new ImageIcon (chatImageScaled));
+		this.messages.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.messages.addActionListener(this);
+		this.frame.getContentPane().add(this.messages);
 
 		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
 		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
@@ -107,20 +101,18 @@ public class MenuPresenter extends Presenter {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
-		if (e.getSource() == this.btnMaterialGerteDaten) {
+		if (e.getSource() == this.materialAndDevicesButton) {
 			DataPresenter dataPresenter = new DataPresenter(this);
 			dataPresenter.newScreen();
-		} else if (e.getSource() == this.btnInventarliste) {
+		} else if (e.getSource() == this.inventoryButton) {
 			InventoryPresenter inventoryPresenter = new InventoryPresenter(this);
 			inventoryPresenter.newScreen();
-		} else if (e.getSource() == this.btnMeldungen) {
-			MessagePresenter messagePresenter = new MessagePresenter(this);
-			messagePresenter.newScreen();
 		} else if (e.getSource() == this.settingsButton) {
 			SettingsPresenter settingsPresenter = new SettingsPresenter(this);
 			settingsPresenter.newScreen();
-		} else if (e.getSource() == this.chat) {
-
+		} else if (e.getSource() == this.messages) {
+			MessagePresenter messagePresenter = new MessagePresenter(this);
+			messagePresenter.newScreen();
 		} else if (e.getSource() == this.edit) {
 
 		} else if (e.getSource() == this.plus) {
