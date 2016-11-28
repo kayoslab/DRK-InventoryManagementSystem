@@ -83,8 +83,6 @@ public class InventoryPresenter extends Presenter {
 		this.checkBoxConsumableMaterial.setSelected(true);
 		this.checkBoxConsumableMaterial.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxConsumableMaterial);
-		
-
 
 		// Combobox
 		this.filterComboBox.setBounds(leftPadding, contentY+lineHeight*7, leftSideMenuWidth, 24);
