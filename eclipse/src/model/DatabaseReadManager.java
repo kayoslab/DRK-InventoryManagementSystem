@@ -429,14 +429,14 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject getStockObject(int id) {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
-				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silenceWarnings`, `type_id`"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
 				+ "FROM `StockObject` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {
-				switch(rs.getInt("type_id")){
+				switch(rs.getInt("typeId")){
 					case 0:
 						//actual value is "empty"
 					case 1:
@@ -472,7 +472,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] getStockObjects() {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
-				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silenceWarnings`, `type_id`"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
 				+ "FROM `StockObject`;";
 		ResultSet rs = null;
 		try {
@@ -484,7 +484,7 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-					switch(rs.getInt("type_id")){
+					switch(rs.getInt("typeId")){
 						case 0:
 							//actual value is "empty"
 						case 1:
@@ -524,7 +524,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] getStockObjects(DatabaseObject.StockObjectType type) {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
-				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silenceWarnings`, `type_id`"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
 				+ "FROM `StockObject` WHERE `type` = " + type.ordinal() + ";";
 		ResultSet rs = null;	
 		try {
@@ -539,6 +539,7 @@ public final class DatabaseReadManager {
 					switch(type){
 						case empty:
 							//actual value is "empty"
+							break;
 						case device:
 							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
 									DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
@@ -550,6 +551,8 @@ public final class DatabaseReadManager {
 							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
 									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"), 
 									rs.getInt("quotaStock"));
+						case vehicle:
+							break;
 					}
 					i++;
 				}
@@ -580,9 +583,9 @@ public final class DatabaseReadManager {
 	 * @return StockObjectValue[]
 	 */
 	public static StockObjectValue[] getStockObjectValues(StockObject stockObject) {
-		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtk`, `stk`, `inventarNo`, `serialNo`, "
-				+ "`umdns`, `batchNo`, `creation`, `escalationAck`, `stockObject_id`, `location_id`, `message_id` "
-				+ "FROM `Stock` WHERE `stockObject_id` = " + stockObject.id + ";";
+		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`, `stkDate`, `inventoryNumber`, `serialNumber`, "
+				+ "`umdns`, `batchNumber`, `creation`, `escalationAck`, `stockObjectId`, `locationId`, `messageId` "
+				+ "FROM `StockValue` WHERE `stockObjectId` = " + stockObject.id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -594,16 +597,16 @@ public final class DatabaseReadManager {
 				rs.beforeFirst();
 				while (rs.next()) {
 					if (stockObject instanceof Device) {
-						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtk"),
-								rs.getDate("stk"),rs.getInt("stockObject_id"), rs.getInt("location_id"), rs.getInt("message_id"),
-								rs.getString("serialNo"),rs.getString("inventarNo"),rs.getString("umdns"));
+						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtkDate"),
+								rs.getDate("stkDate"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
+								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						}
 					}
 					i++;
@@ -630,9 +633,9 @@ public final class DatabaseReadManager {
 	 * @return StockObjectValue[]
 	 */
 	public static StockObjectValue[] getStockObjectValues(int id) {
-		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtk`,`stk`,`inventarNo`,`serialNo`,"
-				+ "`umdns`,`batchNo`,`creation`,`escalationAck`,`stockObject_id`,`location_id`,message_id"
-				+ "FROM `Stock` WHERE `id` = " + id + ";";
+		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
+				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
+				+ "FROM `StockValue` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -643,18 +646,18 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObject_id"));
+					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObjectId"));
 					if (stockObject instanceof Device) {
 						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtk"),
-								rs.getDate("stk"),rs.getInt("stockObject_id"), rs.getInt("location_id"), rs.getInt("message_id"),
-								rs.getString("serialNo"),rs.getString("inventarNo"),rs.getString("umdns"));
+								rs.getDate("stk"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
+								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						}
 					}
 					i++;
@@ -681,9 +684,9 @@ public final class DatabaseReadManager {
 	 * @return StockObjectValue[]
 	 */
 	public static StockObjectValue[] getStockObjectValues(Location location) {
-		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtk`,`stk`,`inventarNo`,`serialNo`,"
-				+ "`umdns`,`batchNo`,`creation`,`escalationAck`,`stockObject_id`,`location_id`,message_id"
-				+ "FROM `Stock` WHERE `location_id` = " + location + ";";
+		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
+				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
+				+ "FROM `StockValue` WHERE `locationId` = " + location + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -694,18 +697,18 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObject_id"));
+					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObjectId"));
 					if (stockObject instanceof Device) {
 						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtk"),
-								rs.getDate("stk"),rs.getInt("stockObject_id"), rs.getInt("location_id"), rs.getInt("message_id"),
-								rs.getString("serialNo"),rs.getString("inventarNo"),rs.getString("umdns"));
+								rs.getDate("stk"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
+								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						}
 					}
 					i++;
@@ -733,9 +736,9 @@ public final class DatabaseReadManager {
 	 * @return StockObjectValue[]
 	 */
 	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockObjectType type, DatabaseObject.StockValueMessage message) {
-		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtk`,`stk`,`inventarNo`,`serialNo`,"
-				+ "`umdns`,`batchNo`,`creation`,`escalationAck`,`stockObject_id`,`location_id`,message_id"
-				+ "FROM `Stock` WHERE `stockObject_id` = " + type + " AND `message_id` = " + message + ";";
+		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
+				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
+				+ "FROM `StockValue` WHERE `stockObjectId` = " + type + " AND `messageId` = " + message + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -746,18 +749,18 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObject_id"));
+					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObjectId"));
 					if (stockObject instanceof Device) {
 						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtk"),
-								rs.getDate("stk"),rs.getInt("stockObject_id"), rs.getInt("location_id"), rs.getInt("message_id"),
-								rs.getString("serialNo"),rs.getString("inventarNo"),rs.getString("umdns"));
+								rs.getDate("stk"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
+								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObject_id"),
-									rs.getInt("location_id"),rs.getInt("message_id"), rs.getString("batchNo"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
+									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
 						}
 					}
 					i++;
@@ -788,22 +791,22 @@ public final class DatabaseReadManager {
 	 *
 	 */
 	public static StockObjectValue[] existingStockObjectValueFor(StockObjectValue stockObjectValue) {
-		String sqlStatement = "SELECT * FROM `Stock` WHERE `stockObject_id` = " + stockObjectValue.stockObjectID
-				+ " AND `location_id` = " + stockObjectValue.locationID;
+		String sqlStatement = "SELECT * FROM `StockValue` WHERE `stockObjectId` = " + stockObjectValue.stockObjectID
+				+ " AND `locationId` = " + stockObjectValue.locationID;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
 			DeviceValue deviceValue = (DeviceValue) stockObjectValue;
-			sqlStatement += " AND `inventarNo` = '" + deviceValue.inventoryNumber
-					+ "' AND `serialNo` = '" + deviceValue.serialNumber
-					+ "' AND `mtk` = '" + DatabaseReadManager.sdf.format(deviceValue.mtkDate)
-					+ "' AND `stk` = '" + DatabaseReadManager.sdf.format(deviceValue.stkDate) + "'";
+			sqlStatement += " AND `inventoryNumber` = '" + deviceValue.inventoryNumber
+					+ "' AND `serialNumber` = '" + deviceValue.serialNumber
+					+ "' AND `mtkDate` = '" + DatabaseReadManager.sdf.format(deviceValue.mtkDate)
+					+ "' AND `stkDate` = '" + DatabaseReadManager.sdf.format(deviceValue.stkDate) + "'";
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
 				MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
-				sqlStatement += " AND `batchNo` = '" + medicalValue.batchNumber + "'";
+				sqlStatement += " AND `batchNumber` = '" + medicalValue.batchNumber + "'";
 			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 				ConsumableMaterialValue consumableValue = (ConsumableMaterialValue) stockObjectValue;
-				sqlStatement += " AND `batchNo` = '" + consumableValue.batchNumber + "'";
+				sqlStatement += " AND `batchNumber` = '" + consumableValue.batchNumber + "'";
 			} else {
 				return new StockObjectValue[0];
 			}
@@ -821,18 +824,18 @@ public final class DatabaseReadManager {
 				// fill the ArrayList with reasonable Data
 				if (stockObjectValue instanceof DeviceValue) {
 					existingObjects.add(new DeviceValue(rs.getInt("id"), rs.getInt("volume"),
-							rs.getDate("mtk"), rs.getDate("stk"), rs.getInt("stockObject_id"),
-							rs.getInt("location_id"), rs.getInt("message_id"), rs.getString("serialNo"),
-							rs.getString("inventarNo"), rs.getString("umdns")));
+							rs.getDate("mtk"), rs.getDate("stk"), rs.getInt("stockObjectId"),
+							rs.getInt("locationId"), rs.getInt("messageId"), rs.getString("serialNumber"),
+							rs.getString("inventoryNumber"), rs.getString("umdns")));
 				} else if (stockObjectValue instanceof MaterialValue) {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
 						existingObjects.add(new MedicalMaterialValue(rs.getInt("id"), rs.getInt("volume"),
-								rs.getInt("stockObject_id"), rs.getInt("location_id"), rs.getInt("message_id"),
-								rs.getString("batchNo"), rs.getDate("date")));
+								rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
+								rs.getString("batchNumber"), rs.getDate("date")));
 					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 						existingObjects.add(new ConsumableMaterialValue(rs.getInt("id"), rs.getInt("volume"),
-								rs.getInt("stockObject_id"), rs.getInt("location_id"), rs.getInt("message_id"),
-								rs.getString("batchNo"), rs.getDate("date")));
+								rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
+								rs.getString("batchNumber"), rs.getDate("date")));
 					} else {
 						return new StockObjectValue[0];
 					}
@@ -868,7 +871,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		String sqlStatement = "SELECT `id`, `title`, `description`, `silenceWarning`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `type_id` FROM `StockObject` WHERE `type_id` = " + stockObjectType.ordinal() + ";";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `silenceWarning`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + ";";
 		// get Data from Database
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
