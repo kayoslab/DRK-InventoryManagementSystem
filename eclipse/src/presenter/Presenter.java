@@ -138,6 +138,7 @@ public abstract class Presenter implements ActionListener {
 	public int noSpacing = 1;
 	public int smallSpacing = 10;
 	public int spacing = 16;
+	public int buttonSpacing = 27;
 	public int hugeSpacing = 100;
 	/* IconButtons */
 	public int characterButtonWidth = 24;
@@ -160,5 +161,13 @@ public abstract class Presenter implements ActionListener {
 	public int logoutX = (width-rightPadding-logoWidth-spacing-logoutWidth);
 	/* reference */
 	public int topLayoutCenter = (topPadding + (logoHeight) / 2);
+	/* Menu Presenter */
+	public int buttonToRight = 234;
+	public int buttonToLeft = 278;
+	public int menuButtonHeight = 57;
+	public int firstButtonPlacing = 200;
+	public int secondButtonPlacing = (firstButtonPlacing + menuButtonHeight + buttonSpacing );
+	public int thirdButtonPlacing = (secondButtonPlacing + menuButtonHeight + buttonSpacing );
+	
 }
 
