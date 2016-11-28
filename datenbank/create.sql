@@ -69,36 +69,36 @@ CREATE TABLE `StockObject` (
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
    `creation` datetime NOT NULL,
-   `silenceWarning` tinyint(1) unsigned NOT NULL,
-   `type_id` int(10) unsigned NOT NULL ,
+   `silencedWarning` tinyint(1) unsigned NOT NULL,
+   `typeId` int(10) unsigned NOT NULL ,
    CONSTRAINT `Constr_Stock_Type`
-       FOREIGN KEY `type_fk` (`type_id`) REFERENCES `Type` (`id`)
+       FOREIGN KEY `type_fk` (`typeId`) REFERENCES `Type` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';
 
-CREATE TABLE `Stock` (
+CREATE TABLE `StockValue` (
    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `volume` int(10) unsigned NOT NULL,
    `date` DATETIME NULL,
-   `mtk` DATETIME NULL,
-   `stk` DATETIME NULL,
-   `inventarNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `serialNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+   `mtkDate` DATETIME NULL,
+   `stkDate` DATETIME NULL,
+   `inventoryNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+   `serialNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `batchNo` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+   `batchNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `creation` datetime NOT NULL,
    `escalationAck` int(10) unsigned NOT NULL,
-   `stockObject_id` int(10) unsigned NOT NULL,
-   `location_id` int(10) unsigned NOT NULL,
-   `message_id` int(10) unsigned NOT NULL,
-   CONSTRAINT `Constr_Stock_StockObject`
-       FOREIGN KEY `stockObject_fk` (`stockObject_id`) REFERENCES `StockObject` (`id`)
+   `stockObjectId` int(10) unsigned NOT NULL,
+   `locationId` int(10) unsigned NOT NULL,
+   `messageId` int(10) unsigned NOT NULL,
+   CONSTRAINT `Constr_StockValue_StockObject`
+       FOREIGN KEY `stockObject_fk` (`stockObjectId`) REFERENCES `StockObject` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE,
-   CONSTRAINT `Constr_Stock_Location`
-       FOREIGN KEY `location_fk` (`location_id`) REFERENCES `Location` (`id`)
+   CONSTRAINT `Constr_StockValue_Location`
+       FOREIGN KEY `location_fk` (`locationId`) REFERENCES `Location` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE,
-   CONSTRAINT `Constr_Stock_Message`
-       FOREIGN KEY `message_fk` (`message_id`) REFERENCES `Message` (`id`)
+   CONSTRAINT `Constr_StockValue_Message`
+       FOREIGN KEY `message_fk` (`messageId`) REFERENCES `Message` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';
 
@@ -111,16 +111,16 @@ CREATE TABLE `Logbook` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
     `date` TIMESTAMP NOT NULL,
-    `user_id` int(10) unsigned NOT NULL,
-    `stockObject_id` int(10) unsigned NOT NULL,
-    `operation_id` int(10) unsigned NULL,
+    `userId` int(10) unsigned NOT NULL,
+    `stockObjectId` int(10) unsigned NOT NULL,
+    `operationId` int(10) unsigned NULL,
     CONSTRAINT `Constr_Logbook_User`
-        FOREIGN KEY `user_fk` (`user_id`) REFERENCES `User` (`id`)
+        FOREIGN KEY `user_fk` (`userId`) REFERENCES `User` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT `Constr_Logbook_StockObject`
-        FOREIGN KEY `stockObject_fk` (`stockObject_id`) REFERENCES `StockObject` (`id`)
+        FOREIGN KEY `stockObject_fk` (`stockObjectId`) REFERENCES `StockObject` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT `Constr_Logbook_Operation`
-        FOREIGN KEY `operation_fk` (`operation_id`) REFERENCES `Operation` (`id`)
+        FOREIGN KEY `operation_fk` (`operationId`) REFERENCES `Operation` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';

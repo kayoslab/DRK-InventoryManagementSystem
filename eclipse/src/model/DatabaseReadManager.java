@@ -871,7 +871,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		String sqlStatement = "SELECT `id`, `title`, `description`, `silenceWarning`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + ";";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `silencedWarning`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + ";";
 		// get Data from Database
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
@@ -887,17 +887,17 @@ public final class DatabaseReadManager {
 						break; 
 					case device:
 						inventoryList.add(new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silenceWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getBoolean("silencedWarning"), stockObjectType, rs.getInt("totalVolume"),
 								rs.getInt("mtkIntervall"), rs.getInt("stkIntervall")));
 						break;
 					case medicalMaterial:
 						inventoryList.add(new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silenceWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getBoolean("silencedWarning"), stockObjectType, rs.getInt("totalVolume"),
 								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
 						break;
 					case consumableMaterial:
 						inventoryList.add(new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silenceWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getBoolean("silencedWarning"), stockObjectType, rs.getInt("totalVolume"),
 								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
 						break;
 					case vehicle:
