@@ -1,6 +1,7 @@
 package presenter.settings;
 import model.PasswordManager;
 import presenter.Presenter;
+import presenter.onboarding.SetupPresenter;
 
 import java.awt.event.ActionEvent;
 import java.awt.*;
@@ -27,17 +28,18 @@ public class SettingsPresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
-		this.changeDatabaseLoginButton.setBounds(247, 258, 280, 57);
-		this.frame.getContentPane().add(this.changeDatabaseLoginButton);
-
-		this.changePasswordButton.setBounds(247, 331, 280, 57);
-		this.frame.getContentPane().add(changePasswordButton);
-		this.changePasswordButton.addActionListener(this);
-
 		JLabel settings = new JLabel("Einstellungen");
 		settings.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		settings.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(settings);
+
+		this.changeDatabaseLoginButton.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
+		this.frame.getContentPane().add(this.changeDatabaseLoginButton);
+		this.changeDatabaseLoginButton.addActionListener(this);
+
+		this.changePasswordButton.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
+		this.frame.getContentPane().add(changePasswordButton);
+		this.changePasswordButton.addActionListener(this);
 	}
 
 	@Override
@@ -47,5 +49,12 @@ public class SettingsPresenter extends Presenter {
 
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
+		if (e.getSource() == this.changeDatabaseLoginButton) {
+			SetupPresenter setupPresenter = new SetupPresenter(this);
+			setupPresenter.newScreen();
+		} else if (e.getSource() == this.changePasswordButton){
+			ChangePasswordPresenter changePasswordPresenter = new ChangePasswordPresenter(this);
+			changePasswordPresenter.newScreen();
+		}
 	}
 }

@@ -61,15 +61,15 @@ public class MenuPresenter extends Presenter {
 		this.settingsButton.addActionListener(this);
 		this.frame.getContentPane().add(this.settingsButton);
 
-		this.btnMaterialGerteDaten.setBounds(buttonToLeft, firstButtonPlacing, buttonToRight, menuButtonHeight);
+		this.btnMaterialGerteDaten.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.btnMaterialGerteDaten.addActionListener(this);
 		this.frame.getContentPane().add(btnMaterialGerteDaten);
 		
-		this.btnInventarliste.setBounds(buttonToLeft, secondButtonPlacing, buttonToRight, menuButtonHeight);
+		this.btnInventarliste.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.btnInventarliste.addActionListener(this);
 		this.frame.getContentPane().add(this.btnInventarliste);
 
-		this.btnMeldungen.setBounds(buttonToLeft, thirdButtonPlacing, buttonToRight, menuButtonHeight);
+		this.btnMeldungen.setBounds(menuButtonX, thirdButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.btnMeldungen.addActionListener(this);
 		this.frame.getContentPane().add(this.btnMeldungen);
 

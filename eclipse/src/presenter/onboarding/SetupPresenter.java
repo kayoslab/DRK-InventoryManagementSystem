@@ -36,54 +36,64 @@ public class SetupPresenter extends Presenter {
 	 */
 	public void initialize() {
 		super.initialize();
+		if (this.previousPresenter != null) {
+			// Show total TopLayout with backButton if this Presenter is defined by SettingsPresenter.
+			super.setupTopLayout();
 
-		this.logo = new JButton("");
-		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
-		this.logo.setIcon (new ImageIcon (img));
-		this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
-		this.frame.getContentPane().add(this.logo);
-		this.logo.addActionListener(this);
+			JLabel databaseLabel = new JLabel("Datenbankzugangsdaten ändern");
+			databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+			databaseLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
+			this.frame.getContentPane().add(databaseLabel);
+		} else {
+			// If this is the inital Presenter don't display any Buttons.
+			this.logo = new JButton("");
+			Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
+			this.logo.setIcon (new ImageIcon (img));
+			this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
+			this.frame.getContentPane().add(this.logo);
+			this.logo.addActionListener(this);
 
-		this.separator = new JSeparator();
-		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
-		this.frame.getContentPane().add(this.separator);
+			this.separator = new JSeparator();
+			this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
+			this.frame.getContentPane().add(this.separator);
 
-		this.btnSpeichern = new JButton("speichern");
-		this.btnSpeichern.setBounds(343, 401, 117, 29);
-		this.btnSpeichern.addActionListener(this);
-		this.frame.getContentPane().add(this.btnSpeichern);
-		
+			JLabel databaseLabel = new JLabel("Datenbank einrichten");
+			databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+			databaseLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
+			this.frame.getContentPane().add(databaseLabel);
+		}
+
 		JLabel lblUrl = new JLabel("URL");
-		lblUrl.setBounds(281, 230, 61, 16);
+		lblUrl.setBounds(centeredContentAreaX, firstRowPlacing+setupLabelTopMargin, setupLabelWidth, setupLabelHeight);
 		this.frame.getContentPane().add(lblUrl);
-		
+
 		JLabel lblNutzername = new JLabel("Nutzername");
-		lblNutzername.setBounds(281, 273, 82, 16);
+		lblNutzername.setBounds(centeredContentAreaX, secondRowPlacing+setupLabelTopMargin, setupLabelWidth, setupLabelHeight);
 		this.frame.getContentPane().add(lblNutzername);
-		
+
 		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setBounds(281, 316, 61, 16);
+		lblPasswort.setBounds(centeredContentAreaX, thirdRowPlacing+setupLabelTopMargin, setupLabelWidth, setupLabelHeight);
 		this.frame.getContentPane().add(lblPasswort);
 
 		this.urlTextField = new JTextField();
-		this.urlTextField.setBounds(375, 224, 134, 28);
+		this.urlTextField.setBounds(centeredContentAreaX+setupLabelWidth+spacing, firstRowPlacing, centeredContentAreaWidth-(rightPadding+leftPadding+setupLabelWidth+spacing), setupTextFieldHeight);
 		this.frame.getContentPane().add(this.urlTextField);
 		this.urlTextField.setColumns(10);
 
 		this.usernameTextField = new JTextField();
-		this.usernameTextField.setBounds(375, 267, 134, 28);
+		this.usernameTextField.setBounds(centeredContentAreaX+setupLabelWidth+spacing, secondRowPlacing, centeredContentAreaWidth-(rightPadding+leftPadding+setupLabelWidth+spacing), setupTextFieldHeight);
 		this.frame.getContentPane().add(this.usernameTextField);
 		this.usernameTextField.setColumns(10);
 
 		this.passwordTextField = new JPasswordField();
-		this.passwordTextField.setBounds(375, 310, 134, 28);
+		this.passwordTextField.setBounds(centeredContentAreaX+setupLabelWidth+spacing, thirdRowPlacing, centeredContentAreaWidth-(rightPadding+leftPadding+setupLabelWidth+spacing), setupTextFieldHeight);
 		this.frame.getContentPane().add(this.passwordTextField);
 		this.passwordTextField.setColumns(10);
-		
-		JLabel databaseLabel = new JLabel("Datenbank einrichten");
-		databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		databaseLabel.setBounds(16, 98, 247, 36);
-		this.frame.getContentPane().add(databaseLabel);
+
+		this.btnSpeichern = new JButton("speichern");
+		this.btnSpeichern.setBounds(menuButtonX, thirdRowPlacing+setupTextFieldHeight+buttonSpacing, setupButtonWidth, buttonHeight);
+		this.btnSpeichern.addActionListener(this);
+		this.frame.getContentPane().add(this.btnSpeichern);
 	}
 
 	@Override
@@ -95,16 +105,19 @@ public class SetupPresenter extends Presenter {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.logo) {
-
-		} else if (e.getSource() == this.btnSpeichern){
-			this.loginManager = new DatabaseLoginManager(this.usernameTextField.getText(),  String.valueOf(this.passwordTextField.getPassword()), this.urlTextField.getText());
-			if (loginManager.testDatabaseConnection()) {
-				System.out.println("Database Connection established.");
-				LoginPresenter loginPresenter = new LoginPresenter(this);
-				loginPresenter.newScreen();
+		super.actionPerformed(e);
+		if (e.getSource() == this.btnSpeichern){
+			if (this.previousPresenter != null) {
+				this.loginManager = new DatabaseLoginManager(this.usernameTextField.getText(),  String.valueOf(this.passwordTextField.getPassword()), this.urlTextField.getText());
+				this.showPreviousPresenter();
 			} else {
-				this.shakeButton();
+				if (loginManager.testDatabaseConnection()) {
+					System.out.println("Database Connection established.");
+					LoginPresenter loginPresenter = new LoginPresenter(this);
+					loginPresenter.newScreen();
+				} else {
+					this.shakeButton();
+				}
 			}
 		}
 	}
@@ -115,7 +128,7 @@ public class SetupPresenter extends Presenter {
 	 */
 	private void shakeButton() {
 		final Point point = this.btnSpeichern.getLocation();
-		final int delay = 75;
+		final int delay = 50;
 		Runnable r = () -> {
 			for (int i = 0; i < 2; i++) {
 				try {

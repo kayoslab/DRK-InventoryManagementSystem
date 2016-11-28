@@ -54,6 +54,8 @@ public abstract class Presenter implements ActionListener {
 		frame.setBounds(coordX, coordY, width, height);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setMaximumSize(new Dimension(width,height));
+		frame.getContentPane().setMinimumSize(new Dimension(width,height));
 	}
 
 	/**
@@ -109,7 +111,6 @@ public abstract class Presenter implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
 		if (e.getSource() == this.btnLogout) {
 			LoginPresenter loginPresenter = new LoginPresenter(this);
 			this.frame.dispose();
@@ -162,12 +163,23 @@ public abstract class Presenter implements ActionListener {
 	/* reference */
 	public int topLayoutCenter = (topPadding + (logoHeight) / 2);
 	/* Menu Presenter */
-	public int buttonToRight = 234;
-	public int buttonToLeft = 278;
-	public int menuButtonHeight = 57;
+	public int menuButtonWidth = 240;
+	public int menuButtonX = (displayAreaWidth/2) - (menuButtonWidth/2);
+	public int menuButtonHeight = 58;
 	public int firstButtonPlacing = 200;
 	public int secondButtonPlacing = (firstButtonPlacing + menuButtonHeight + buttonSpacing );
 	public int thirdButtonPlacing = (secondButtonPlacing + menuButtonHeight + buttonSpacing );
-	
+	/* Login and Setup */
+	public int centeredContentAreaWidth = displayAreaWidth * 2 / 3;
+	public int centeredContentAreaX = displayAreaWidth / 6;
+	public int setupLabelHeight = 16;
+	public int setupLabelWidth = centeredContentAreaWidth / 3;
+	public int setupTextFieldHeight = 28;
+	public int setupLabelTopMargin = (setupTextFieldHeight-setupLabelHeight)/2;
+	public int setupButtonWidth = centeredContentAreaWidth / 2;
+	public int firstRowPlacing = firstButtonPlacing;
+	public int secondRowPlacing = firstRowPlacing + setupLabelHeight + spacing;
+	public int thirdRowPlacing = secondRowPlacing + setupLabelHeight + spacing;
+
 }
 

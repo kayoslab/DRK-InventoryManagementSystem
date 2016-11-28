@@ -88,7 +88,7 @@ public class LoginPresenter extends Presenter {
 	 */
 	private void shakeButton() {
 		final Point point = this.loginButton.getLocation();
-		final int delay = 75;
+		final int delay = 50;
 		Runnable r = () -> {
 			for (int i = 0; i < 2; i++) {
 				try {
