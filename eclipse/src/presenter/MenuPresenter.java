@@ -15,7 +15,7 @@ public class MenuPresenter extends Presenter {
 	private JButton messages = new JButton("");
 	private JButton edit = new JButton("");
 	private JButton plus = new JButton("");
-
+	private JPopupMenu plusPopup = new JPopupMenu();
 	/**
 	 * Create the application.
 	 */
@@ -74,19 +74,39 @@ public class MenuPresenter extends Presenter {
 		this.messages.addActionListener(this);
 		this.frame.getContentPane().add(this.messages);
 
-		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
-		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		this.edit.setIcon (new ImageIcon (editImageScaled));
-		this.edit.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		this.edit.addActionListener(this);
-		this.frame.getContentPane().add(this.edit);
-
 		Image addImage = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
 		Image addImageScaled = addImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
 		this.plus.setIcon (new ImageIcon (addImageScaled));
-		this.plus.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.plus.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
 		this.plus.addActionListener(this);
 		this.frame.getContentPane().add(this.plus);
+
+		// Add Popup
+		this.plusPopup.add(new JMenuItem(new AbstractAction("Gerät hinzufügen") {
+			public void actionPerformed(ActionEvent e) {
+				//
+			}
+		}));
+		this.plusPopup.add(new JMenuItem(new AbstractAction("Medizinisches Material hinzufügen") {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Option 2 selected");
+			}
+		}));
+
+		this.plusPopup.add(new JMenuItem(new AbstractAction("Verbrauchsmaterial hinzufügen") {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Option 3 selected");
+			}
+		}));
+		this.frame.getContentPane().add(this.plusPopup);
+
+
+		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
+		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+		this.edit.setIcon (new ImageIcon (editImageScaled));
+		this.edit.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.edit.addActionListener(this);
+		this.frame.getContentPane().add(this.edit);
 
 		/* Use SuperClass Attribute help */
 		this.help = new JButton("");
@@ -116,7 +136,7 @@ public class MenuPresenter extends Presenter {
 		} else if (e.getSource() == this.edit) {
 
 		} else if (e.getSource() == this.plus) {
-
+			this.plusPopup.show(null,iconButtonBarX+(iconButtonWidth+spacing),(topLayoutCenter - iconButtonHeight / 2)+iconButtonHeight);
 		}
 	}
 }
