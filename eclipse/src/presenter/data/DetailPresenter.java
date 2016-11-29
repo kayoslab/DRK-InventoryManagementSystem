@@ -60,6 +60,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		descriptionArea.setText("Beschreibung");
 		descriptionArea.setLineWrap(true);
 		descriptionArea.setWrapStyleWord(true);
+		descriptionArea.setEditable(false);
 		if (this.stockObject != null) {
 			descriptionArea.setText(this.stockObject.description);
 		}

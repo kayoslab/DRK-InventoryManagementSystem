@@ -10,7 +10,6 @@ public class main {
 			LoginPresenter loginPresenter = new LoginPresenter();
 			loginPresenter.newScreen();
 		} else {
-			// TODO: Show SetupPresenter
 			System.out.println("Can't connect to database using the given credentials.");
 			SetupPresenter setupPresenter = new SetupPresenter();
 			setupPresenter.newScreen();

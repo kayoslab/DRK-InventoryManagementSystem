@@ -19,7 +19,7 @@ public abstract class StockObjectValue extends DatabaseObject {
 	}
 
 	public Boolean shouldBeWarned() {
-		
+
 
 		return false;
 	}

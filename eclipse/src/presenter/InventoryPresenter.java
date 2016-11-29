@@ -120,7 +120,7 @@ public class InventoryPresenter extends Presenter {
 	}
 
 	private void refreshTableData() {
-		Object columnNames[] = { "Titel", "Menge", "Typ"};
+		Object columnNames[] = { "Titel", "Menge", "Mindesbestand", "Typ"};
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 		/**
@@ -184,7 +184,7 @@ public class InventoryPresenter extends Presenter {
 						Device device = (Device) stockObject;
 						if (this.radioButtonAll.isSelected()){
 							// show all objects
-							Object row[] = { device.title, device.totalVolume, "Gerät"};
+							Object row[] = { device.title, device.totalVolume, 0, "Gerät"};
 							model.addRow(row);
 						} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 							// do not show filtered objects
@@ -199,12 +199,12 @@ public class InventoryPresenter extends Presenter {
 							MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
 							if (this.radioButtonAll.isSelected()){
 								// show all objects
-								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
+								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, medicalMaterial.minimumStock, "Medizinisches Material"};
 								model.addRow(row);
 							} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 								// show minimum Stock
 								if (medicalMaterial.totalVolume <= medicalMaterial.minimumStock) {
-									Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
+									Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, medicalMaterial.minimumStock, "Medizinisches Material"};
 									model.addRow(row);
 								} else {
 									// do not show filtered objects
@@ -218,11 +218,11 @@ public class InventoryPresenter extends Presenter {
 							ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
 							if (this.radioButtonAll.isSelected()){
 								// show all objects
-								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
+								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, consumableMaterial.minimumStock, "Verbrauchsmaterial"};
 								model.addRow(row);
 							} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 								if (consumableMaterial.totalVolume <= consumableMaterial.minimumStock) {
-									Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
+									Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, consumableMaterial.minimumStock, "Verbrauchsmaterial"};
 									model.addRow(row);
 								} else {
 									// do not show filtered objects

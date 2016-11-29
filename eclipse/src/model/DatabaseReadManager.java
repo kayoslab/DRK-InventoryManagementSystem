@@ -277,6 +277,7 @@ public final class DatabaseReadManager {
 			return null;
 		}
 	}
+
 	/**
 	 * @param id int user.id
 	 * @return GroupRight[]

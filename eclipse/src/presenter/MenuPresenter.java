@@ -1,13 +1,16 @@
 package presenter;
 import presenter.data.DataPresenter;
+import presenter.data.DetailPresenter;
 import presenter.settings.SettingsPresenter;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
-public class MenuPresenter extends Presenter {
+public class MenuPresenter extends Presenter implements MouseListener {
 	private JButton materialAndDevicesButton = new JButton("Material-/ Geräte Daten");
 	private JButton inventoryButton = new JButton("Inventarliste");
 	private JButton settingsButton = new JButton("Einstellungen");
@@ -15,7 +18,21 @@ public class MenuPresenter extends Presenter {
 	private JButton messages = new JButton("");
 	private JButton edit = new JButton("");
 	private JButton plus = new JButton("");
+	/******** PopUps *********/
 	private JPopupMenu plusPopup = new JPopupMenu();
+	private JMenuItem addDeviceMenuItem = new JMenuItem("Gerät hinzufügen");
+	private JMenuItem addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzufügen");
+	private JMenuItem addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzufügen");
+	private JMenuItem addLocationMenuItem = new JMenuItem("Lagerort hinzufügen");
+	private JMenuItem addUserMenuItem = new JMenuItem("Benutzer hinzufügen");
+	private JMenuItem addGroupMenuItem = new JMenuItem("Gruppe hinzufügen");
+	private JPopupMenu editPopup = new JPopupMenu();
+	private JMenuItem editDeviceMenuItem = new JMenuItem("Gerät bearbeiten");
+	private JMenuItem editMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material bearbeiten");
+	private JMenuItem editConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial bearbeiten");
+	private JMenuItem editLocationMenuItem = new JMenuItem("Lagerort bearbeiten");
+	private JMenuItem editUserMenuItem = new JMenuItem("Benutzer bearbeiten");
+	private JMenuItem editGroupMenuItem = new JMenuItem("Gruppe bearbeiten");
 	/**
 	 * Create the application.
 	 */
@@ -38,6 +55,7 @@ public class MenuPresenter extends Presenter {
 	public void initialize() {
 		super.initialize();
 		/* Use SuperClass Attributes */
+		this.frame.addMouseListener(this);
 		this.logo = new JButton("");
 		Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();
 		this.logo.setIcon (new ImageIcon (img));
@@ -82,25 +100,34 @@ public class MenuPresenter extends Presenter {
 		this.frame.getContentPane().add(this.plus);
 
 		// Add Popup
-		this.plusPopup.add(new JMenuItem(new AbstractAction("Gerät hinzufügen") {
-			public void actionPerformed(ActionEvent e) {
-				//
-			}
-		}));
-		this.plusPopup.add(new JMenuItem(new AbstractAction("Medizinisches Material hinzufügen") {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "Option 2 selected");
-			}
-		}));
-
-		this.plusPopup.add(new JMenuItem(new AbstractAction("Verbrauchsmaterial hinzufügen") {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "Option 3 selected");
-			}
-		}));
+		this.addDeviceMenuItem.addActionListener(this);
+		this.addMedicalMaterialMenuItem.addActionListener(this);
+		this.addConsumableMaterialMenuItem.addActionListener(this);
+		this.addLocationMenuItem.addActionListener(this);
+		this.addUserMenuItem.addActionListener(this);
+		this.addGroupMenuItem.addActionListener(this);
+		this.plusPopup.add(addDeviceMenuItem);
+		this.plusPopup.add(addMedicalMaterialMenuItem);
+		this.plusPopup.add(addConsumableMaterialMenuItem);
+		this.plusPopup.add(addLocationMenuItem);
+		this.plusPopup.add(addUserMenuItem);
+		this.plusPopup.add(addGroupMenuItem);
 		this.frame.getContentPane().add(this.plusPopup);
 
-
+		// Edit Popup
+		this.editDeviceMenuItem.addActionListener(this);
+		this.editMedicalMaterialMenuItem.addActionListener(this);
+		this.editConsumableMaterialMenuItem.addActionListener(this);
+		this.editLocationMenuItem.addActionListener(this);
+		this.editUserMenuItem.addActionListener(this);
+		this.editGroupMenuItem.addActionListener(this);
+		this.editPopup.add(editDeviceMenuItem);
+		this.editPopup.add(editMedicalMaterialMenuItem);
+		this.editPopup.add(editConsumableMaterialMenuItem);
+		this.editPopup.add(editLocationMenuItem);
+		this.editPopup.add(editUserMenuItem);
+		this.editPopup.add(editGroupMenuItem);
+		this.frame.getContentPane().add(this.editPopup);
 
 		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
 		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
@@ -122,6 +149,7 @@ public class MenuPresenter extends Presenter {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
+		this.hideAllPopups();
 		if (e.getSource() == this.materialAndDevicesButton) {
 			DataPresenter dataPresenter = new DataPresenter(this);
 			dataPresenter.newScreen();
@@ -135,9 +163,47 @@ public class MenuPresenter extends Presenter {
 			MessagePresenter messagePresenter = new MessagePresenter(this);
 			messagePresenter.newScreen();
 		} else if (e.getSource() == this.edit) {
-
+			this.editPopup.show(null,this.frame.getX()+this.edit.getX()+iconButtonHeight,this.frame.getY()+this.edit.getY()+iconButtonWidth);
 		} else if (e.getSource() == this.plus) {
-			this.plusPopup.show(null,iconButtonBarX+(iconButtonWidth+spacing),(topLayoutCenter - iconButtonHeight / 2)+iconButtonHeight);
+			this.plusPopup.show(null,this.frame.getX()+this.plus.getX()+iconButtonHeight,this.frame.getY()+this.plus.getY()+iconButtonWidth);
 		}
+
+	}
+
+	private void hideAllPopups() {
+		if (this.plusPopup.isShowing()) {
+			this.plusPopup.setVisible(false);
+		}
+		if (this.editPopup.isShowing()) {
+			this.editPopup.setVisible(false);
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// Left mouse click
+		if (SwingUtilities.isLeftMouseButton(e)) {
+			this.hideAllPopups();
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
 	}
 }

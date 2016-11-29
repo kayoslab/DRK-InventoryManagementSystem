@@ -2,6 +2,8 @@ package model;
 // Import for MD5 Hash
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+
 import model.databaseObjects.accessControl.*;
 
 public class PasswordManager {
@@ -85,6 +87,10 @@ public class PasswordManager {
 	/**
 	 * @param password String
 	 * @return Boolean
+	 *
+	 * Implement this for required PasswordConventions.
+	 * Use RegularExpressions to check a password for this conventions.
+	 *
 	 */
 	public Boolean validatePassword(String password) {
 		return true;
@@ -121,5 +127,4 @@ public class PasswordManager {
 	    }
 	    return hexString.toString();
 	}
-	
 }
