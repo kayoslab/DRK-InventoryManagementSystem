@@ -5,11 +5,11 @@ import model.databaseObjects.DatabaseObject;
  */
 public abstract class StockObject extends DatabaseObject {
 	
-	public final String title;
-	public final String description;
-	public final Boolean silencedWarnings;
-	public final DatabaseObject.StockObjectType type;
-	public final int totalVolume;
+	public String title;
+	public String description;
+	public Boolean silencedWarnings;
+	public DatabaseObject.StockObjectType type;
+	public int totalVolume;
 
 	public StockObject(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume) {
 		super(id);

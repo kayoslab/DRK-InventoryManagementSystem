@@ -4,8 +4,8 @@ import model.databaseObjects.DatabaseObject;
  * Struct-like object Class for Groups
  */
 public class Group extends DatabaseObject {
-	public final String title;
-	public final Boolean isActive;
+	public String title;
+	public Boolean isActive;
 	
 	public Group(int id, String title, Boolean isActive) {
 		super(id);

@@ -7,8 +7,8 @@ import model.databaseObjects.DatabaseObject;
  */
 public class Device extends StockObject {
 	
-	public final int mtkIntervall;
-	public final int stkIntervall;
+	public int mtkIntervall;
+	public int stkIntervall;
 		
 	public Device(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume,
 				  int mtkIntervall, int stkIntervall) { 
