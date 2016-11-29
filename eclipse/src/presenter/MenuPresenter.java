@@ -101,6 +101,7 @@ public class MenuPresenter extends Presenter {
 		this.frame.getContentPane().add(this.plusPopup);
 
 
+
 		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
 		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
 		this.edit.setIcon (new ImageIcon (editImageScaled));

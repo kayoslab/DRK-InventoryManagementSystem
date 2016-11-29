@@ -6,9 +6,9 @@ import model.databaseObjects.DatabaseObject;
 public abstract class StockObjectValue extends DatabaseObject {
 	// not final for merging multiple Objects
 	public int volume;
-	public final int stockObjectID;
-	public final int locationID;
-	public final int messageID;
+	public int stockObjectID;
+	public int locationID;
+	public int messageID;
 	
 	public StockObjectValue(int id, int volume, int stockObjectID, int locationID, int messageID) {
 		super(id);
@@ -18,4 +18,9 @@ public abstract class StockObjectValue extends DatabaseObject {
 		this.messageID = messageID;
 	}
 
+	public Boolean shouldBeWarned() {
+		
+
+		return false;
+	}
 }
