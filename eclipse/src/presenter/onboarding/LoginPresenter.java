@@ -1,5 +1,6 @@
 package presenter.onboarding;
-import model.PasswordManager;
+import model.DatabaseReadManager;
+import model.UserManager;
 import presenter.MenuPresenter;
 import presenter.Presenter;
 import java.awt.event.ActionEvent;
@@ -7,7 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class LoginPresenter extends Presenter {
-	private PasswordManager passwordManager = new PasswordManager();
+	private UserManager userManager = UserManager.getSharedInstance();
 	private JPasswordField passwordField;
 	private JTextField userNameTextField;
 	private JButton loginButton = new JButton("Einloggen");
@@ -74,7 +75,8 @@ public class LoginPresenter extends Presenter {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == this.loginButton) {
-			if (this.passwordManager.tryLogin(this.userNameTextField.getText(), String.valueOf(this.passwordField.getPassword()))) {
+			if (this.userManager.tryLogin(this.userNameTextField.getText(), String.valueOf(this.passwordField.getPassword()))) {
+				this.userManager.loginProceeded(this.userNameTextField.getText());
 				MenuPresenter menuPresenter = new MenuPresenter(this);
 				menuPresenter.newScreen();
 			} else {

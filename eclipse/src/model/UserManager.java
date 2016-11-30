@@ -6,13 +6,31 @@ import java.util.ArrayList;
 
 import model.databaseObjects.accessControl.*;
 
-public class PasswordManager {
-
+public class UserManager {
+	private static UserManager sharedInstance;
+	public static User user;
+	public static GroupRight[] rights;
 	/**
 	 * Constructor
 	 */
-	public PasswordManager() {
+	private UserManager() {
 		
+	}
+
+	/**
+	 * Singleton
+	 */
+	public static UserManager getSharedInstance() {
+		if (UserManager.sharedInstance == null) {
+			UserManager.sharedInstance = new UserManager();
+		}
+
+		return UserManager.sharedInstance;
+	}
+
+	public void loginProceeded(String username) {
+		UserManager.getSharedInstance().user = DatabaseReadManager.getUser(username);
+		UserManager.getSharedInstance().rights = DatabaseReadManager.getGroupRights(UserManager.getSharedInstance().user.id);
 	}
 	
 	/**

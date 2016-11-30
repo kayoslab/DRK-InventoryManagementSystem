@@ -1,5 +1,5 @@
 package presenter.settings;
-import model.PasswordManager;
+import model.UserManager;
 import presenter.Presenter;
 import presenter.onboarding.SetupPresenter;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 
 
 public class SettingsPresenter extends Presenter {
-	private PasswordManager passwordManager = new PasswordManager();
+	private UserManager userManager = UserManager.getSharedInstance();
 	private JButton changeDatabaseLoginButton = new JButton("Datenbankzugangsdaten ändern");
 	private JButton changePasswordButton = new JButton("Passwort ändern");
 

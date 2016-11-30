@@ -1,6 +1,6 @@
 package presenter;
+import model.UserManager;
 import presenter.data.DataPresenter;
-import presenter.data.DetailPresenter;
 import presenter.settings.SettingsPresenter;
 
 import java.awt.*;
@@ -144,6 +144,8 @@ public class MenuPresenter extends Presenter implements MouseListener {
 		this.help.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*3, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
 		this.help.addActionListener(this);
 		this.frame.getContentPane().add(this.help);
+
+		// System.out.println(PasswordManager.getSharedInstance().user.firstName);
 	}
 
 	@Override

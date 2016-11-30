@@ -1,6 +1,6 @@
 package presenter.settings;
 import presenter.Presenter;
-import model.PasswordManager;
+import model.UserManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
@@ -10,7 +10,7 @@ public class ChangePasswordPresenter extends Presenter {
 	private JPasswordField passwordTextField;
 	private JPasswordField newPasswordTextField;
 	private JButton saveButton = new JButton("speichern");
-	private PasswordManager passwordManager = new PasswordManager();
+	private UserManager userManager = UserManager.getSharedInstance();
 
 	/**
 	 * Create the application.
@@ -67,7 +67,7 @@ public class ChangePasswordPresenter extends Presenter {
 		super.actionPerformed(e);
 		if (e.getSource() == this.saveButton){
 			if (passwordTextField.getPassword().equals(newPasswordTextField.getPassword())) {
-				if (this.passwordManager.setNewPassword("", String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
+				if (this.userManager.setNewPassword("", String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
 					// Password changed.
 				} else {
 					// Can't change Password.
