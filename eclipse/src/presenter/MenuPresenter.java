@@ -1,4 +1,6 @@
 package presenter;
+import model.Session;
+import model.databaseObjects.DatabaseObject;
 import presenter.data.DataPresenter;
 import presenter.settings.SettingsPresenter;
 import java.awt.*;
@@ -9,10 +11,12 @@ import java.awt.event.MouseListener;
 
 
 public class MenuPresenter extends Presenter implements MouseListener {
-	private JButton materialAndDevicesButton = new JButton("Material-/ Geräte Daten");
-	private JButton inventoryButton = new JButton("Inventarliste");
+	private Session session = Session.getSharedInstance();
+	/******** Menu *********/
+	private JButton materialAndDevicesButton;
+	private JButton inventoryButton;
 	private JButton settingsButton = new JButton("Einstellungen");
-
+	/******** Toolbar *********/
 	private JButton messagesButton;
 	private JButton editButton;
 	private JButton addButton;
@@ -31,6 +35,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	private JMenuItem editLocationMenuItem;
 	private JMenuItem editUserMenuItem;
 	private JMenuItem editGroupMenuItem;
+
 	/**
 	 * Create the application.
 	 */
@@ -70,15 +75,22 @@ public class MenuPresenter extends Presenter implements MouseListener {
 		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
 		this.frame.getContentPane().add(this.separator);
 
-		/* Use Local Class Attributes */
-		this.materialAndDevicesButton.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
-		this.materialAndDevicesButton.addActionListener(this);
-		this.frame.getContentPane().add(materialAndDevicesButton);
-		
-		this.inventoryButton.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
-		this.inventoryButton.addActionListener(this);
-		this.frame.getContentPane().add(this.inventoryButton);
+		/******************* Menu Buttons ************************/
+		if (this.session.currentUserCanAccessInventory()) {
+			this.materialAndDevicesButton = new JButton("Material-/ Geräte Daten");
+			this.materialAndDevicesButton.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
+			this.materialAndDevicesButton.addActionListener(this);
+			this.frame.getContentPane().add(materialAndDevicesButton);
+		}
 
+		if (this.session.currentUserCanAccessInventory()) {
+			this.inventoryButton = new JButton("Inventarliste");
+			this.inventoryButton.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
+			this.inventoryButton.addActionListener(this);
+			this.frame.getContentPane().add(this.inventoryButton);
+		}
+
+		this.settingsButton = new JButton("Einstellungen");
 		this.settingsButton.setBounds(menuButtonX, thirdButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.settingsButton.addActionListener(this);
 		this.frame.getContentPane().add(this.settingsButton);
@@ -92,13 +104,15 @@ public class MenuPresenter extends Presenter implements MouseListener {
 		this.frame.getContentPane().add(this.help);
 
 		/******************* Toolbar Buttons ************************/
-		this.messagesButton = new JButton("");
-		Image chatImage = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
-		Image chatImageScaled = chatImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		this.messagesButton.setIcon (new ImageIcon (chatImageScaled));
-		this.messagesButton.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		this.messagesButton.addActionListener(this);
-		this.frame.getContentPane().add(this.messagesButton);
+		if (this.session.currentUserCanAccessInventory()) {
+			this.messagesButton = new JButton("");
+			Image chatImage = new ImageIcon (this.getClass().getResource("/img/chat-button.jpg")).getImage();
+			Image chatImageScaled = chatImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+			this.messagesButton.setIcon (new ImageIcon (chatImageScaled));
+			this.messagesButton.setBounds(iconButtonBarX, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+			this.messagesButton.addActionListener(this);
+			this.frame.getContentPane().add(this.messagesButton);
+		}
 
 		this.addButton = new JButton("");
 		Image addImage = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();

@@ -2,7 +2,6 @@ package model;
 // Import for MD5 Hash
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import model.databaseCommunication.Session;
 import model.databaseObjects.accessControl.*;
 
 public class UserManager {

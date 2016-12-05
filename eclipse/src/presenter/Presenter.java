@@ -1,5 +1,5 @@
 package presenter;
-import model.databaseCommunication.Session;
+import model.Session;
 import presenter.onboarding.LoginPresenter;
 import javax.swing.*;
 import java.awt.*;

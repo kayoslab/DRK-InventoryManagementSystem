@@ -21,6 +21,45 @@ public abstract class DatabaseObject {
 		yellow,
 		red
 	}
+
+	public enum GroupRight {
+		empty,
+		login,
+		editSelf,
+		createUser,
+		deleteUser,
+		editUser,
+		viewUsers,
+		createGroup,
+		deleteGroup,
+		editGroup,
+		viewGroups,
+		createDevice,
+		deleteDevice,
+		editDevice,
+		viewDevices,
+		deviceIncrease,
+		deviceDecrease,
+		deviceCorrection,
+		createMedicalMaterial,
+		deleteMedicalMaterial,
+		editMedicalMaterial,
+		viewMedicalMaterials,
+		medicalMaterialIncrease,
+		medicalMaterialDecrease,
+		medicalMaterialCorrection,
+		createConsumableMaterial,
+		deleteConsumableMaterial,
+		editConsumableMaterial,
+		viewConsumableMaterials,
+		consumableMaterialIncrease,
+		consumableMaterialDecrease,
+		consumableMaterialCorrection,
+		createLocation,
+		deleteLocation,
+		editLocation,
+		viewLocations
+	}
 	
 	public final int id;
 	public DatabaseObject(int id) {
