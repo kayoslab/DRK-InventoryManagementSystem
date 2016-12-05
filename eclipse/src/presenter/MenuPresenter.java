@@ -114,66 +114,93 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			this.frame.getContentPane().add(this.messagesButton);
 		}
 
-		this.addButton = new JButton("");
-		Image addImage = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
-		Image addImageScaled = addImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		this.addButton.setIcon (new ImageIcon (addImageScaled));
-		this.addButton.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		this.addButton.addActionListener(this);
-		this.frame.getContentPane().add(this.addButton);
+		if (this.session.currentUserCanAddData()) {
+			this.addButton = new JButton("");
+			Image addImage = new ImageIcon (this.getClass().getResource("/img/add-circle-1.jpg")).getImage();
+			Image addImageScaled = addImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+			this.addButton.setIcon (new ImageIcon (addImageScaled));
+			this.addButton.setBounds(iconButtonBarX+(iconButtonWidth+spacing), (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+			this.addButton.addActionListener(this);
+			this.frame.getContentPane().add(this.addButton);
 
-		this.editButton = new JButton("");
-		Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
-		Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		this.editButton.setIcon (new ImageIcon (editImageScaled));
-		this.editButton.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		this.editButton.addActionListener(this);
-		this.frame.getContentPane().add(this.editButton);
+			this.addPopup = new JPopupMenu();
+			this.frame.getContentPane().add(this.addPopup);
 
-		/******************* Toolbar Popups ************************/
-		this.addPopup = new JPopupMenu();
-		this.addDeviceMenuItem = new JMenuItem("Gerät hinzufügen");
-		this.addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzufügen");
-		this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzufügen");
-		this.addLocationMenuItem = new JMenuItem("Lagerort hinzufügen");
-		this.addUserMenuItem = new JMenuItem("Benutzer hinzufügen");
-		this.addGroupMenuItem = new JMenuItem("Gruppe hinzufügen");
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createDevice)) {
+				this.addDeviceMenuItem = new JMenuItem("Gerät hinzufügen");
+				this.addDeviceMenuItem.addActionListener(this);
+				this.addPopup.add(addDeviceMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createMedicalMaterial)) {
+				this.addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzufügen");
+				this.addMedicalMaterialMenuItem.addActionListener(this);
+				this.addPopup.add(addMedicalMaterialMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createConsumableMaterial)) {
+				this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzufügen");
+				this.addConsumableMaterialMenuItem.addActionListener(this);
+				this.addPopup.add(addConsumableMaterialMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createLocation)) {
+				this.addLocationMenuItem = new JMenuItem("Lagerort hinzufügen");
+				this.addLocationMenuItem.addActionListener(this);
+				this.addPopup.add(addLocationMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createUser)) {
+				this.addUserMenuItem = new JMenuItem("Benutzer hinzufügen");
+				this.addUserMenuItem.addActionListener(this);
+				this.addPopup.add(addUserMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createGroup)) {
+				this.addGroupMenuItem = new JMenuItem("Gruppe hinzufügen");
+				this.addGroupMenuItem.addActionListener(this);
+				this.addPopup.add(addGroupMenuItem);
+			}
+		}
 
-		this.addDeviceMenuItem.addActionListener(this);
-		this.addMedicalMaterialMenuItem.addActionListener(this);
-		this.addConsumableMaterialMenuItem.addActionListener(this);
-		this.addLocationMenuItem.addActionListener(this);
-		this.addUserMenuItem.addActionListener(this);
-		this.addGroupMenuItem.addActionListener(this);
-		this.addPopup.add(addDeviceMenuItem);
-		this.addPopup.add(addMedicalMaterialMenuItem);
-		this.addPopup.add(addConsumableMaterialMenuItem);
-		this.addPopup.add(addLocationMenuItem);
-		this.addPopup.add(addUserMenuItem);
-		this.addPopup.add(addGroupMenuItem);
-		this.frame.getContentPane().add(this.addPopup);
+		if (this.session.currentUserCanEditData()) {
+			this.editButton = new JButton("");
+			Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
+			Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+			this.editButton.setIcon (new ImageIcon (editImageScaled));
+			this.editButton.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*2, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+			this.editButton.addActionListener(this);
+			this.frame.getContentPane().add(this.editButton);
 
-		this.editPopup = new JPopupMenu();
-		this.editDeviceMenuItem = new JMenuItem("Gerät bearbeiten");
-		this.editMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material bearbeiten");
-		this.editConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial bearbeiten");
-		this.editLocationMenuItem = new JMenuItem("Lagerort bearbeiten");
-		this.editUserMenuItem = new JMenuItem("Benutzer bearbeiten");
-		this.editGroupMenuItem = new JMenuItem("Gruppe bearbeiten");
+			this.editPopup = new JPopupMenu();
+			this.frame.getContentPane().add(this.editPopup);
 
-		this.editDeviceMenuItem.addActionListener(this);
-		this.editMedicalMaterialMenuItem.addActionListener(this);
-		this.editConsumableMaterialMenuItem.addActionListener(this);
-		this.editLocationMenuItem.addActionListener(this);
-		this.editUserMenuItem.addActionListener(this);
-		this.editGroupMenuItem.addActionListener(this);
-		this.editPopup.add(editDeviceMenuItem);
-		this.editPopup.add(editMedicalMaterialMenuItem);
-		this.editPopup.add(editConsumableMaterialMenuItem);
-		this.editPopup.add(editLocationMenuItem);
-		this.editPopup.add(editUserMenuItem);
-		this.editPopup.add(editGroupMenuItem);
-		this.frame.getContentPane().add(this.editPopup);
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)) {
+				this.editDeviceMenuItem = new JMenuItem("Gerät bearbeiten");
+				this.editDeviceMenuItem.addActionListener(this);
+				this.editPopup.add(editDeviceMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)) {
+				this.editMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material bearbeiten");
+				this.editMedicalMaterialMenuItem.addActionListener(this);
+				this.editPopup.add(editMedicalMaterialMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)) {
+				this.editConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial bearbeiten");
+				this.editConsumableMaterialMenuItem.addActionListener(this);
+				this.editPopup.add(editConsumableMaterialMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)) {
+				this.editLocationMenuItem = new JMenuItem("Lagerort bearbeiten");
+				this.editLocationMenuItem.addActionListener(this);
+				this.editPopup.add(editLocationMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser)) {
+				this.editUserMenuItem = new JMenuItem("Benutzer bearbeiten");
+				this.editUserMenuItem.addActionListener(this);
+				this.editPopup.add(editUserMenuItem);
+			}
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)) {
+				this.editGroupMenuItem = new JMenuItem("Gruppe bearbeiten");
+				this.editGroupMenuItem.addActionListener(this);
+				this.editPopup.add(editGroupMenuItem);
+			}
+		}
 	}
 
 	@Override
