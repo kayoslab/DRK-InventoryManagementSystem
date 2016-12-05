@@ -158,7 +158,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			}
 		}
 
-		if (this.session.currentUserCanEditData()) {
+		if (this.session.currentUserCanEditData() || this.session.currentUserCanDeleteData()) {
 			this.editButton = new JButton("");
 			Image editImage = new ImageIcon (this.getClass().getResource("/img/edit-button.jpg")).getImage();
 			Image editImageScaled = editImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
@@ -170,32 +170,38 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			this.editPopup = new JPopupMenu();
 			this.frame.getContentPane().add(this.editPopup);
 
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)
+					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteDevice)) {
 				this.editDeviceMenuItem = new JMenuItem("Gerät bearbeiten");
 				this.editDeviceMenuItem.addActionListener(this);
 				this.editPopup.add(editDeviceMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)
+					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteMedicalMaterial)) {
 				this.editMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material bearbeiten");
 				this.editMedicalMaterialMenuItem.addActionListener(this);
 				this.editPopup.add(editMedicalMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)
+					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteConsumableMaterial)) {
 				this.editConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial bearbeiten");
 				this.editConsumableMaterialMenuItem.addActionListener(this);
 				this.editPopup.add(editConsumableMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)
+					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteLocation)) {
 				this.editLocationMenuItem = new JMenuItem("Lagerort bearbeiten");
 				this.editLocationMenuItem.addActionListener(this);
 				this.editPopup.add(editLocationMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser)
+					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteUser)) {
 				this.editUserMenuItem = new JMenuItem("Benutzer bearbeiten");
 				this.editUserMenuItem.addActionListener(this);
 				this.editPopup.add(editUserMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)
+					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteGroup)) {
 				this.editGroupMenuItem = new JMenuItem("Gruppe bearbeiten");
 				this.editGroupMenuItem.addActionListener(this);
 				this.editPopup.add(editGroupMenuItem);
