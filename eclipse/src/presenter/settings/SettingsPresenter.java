@@ -9,7 +9,7 @@ import javax.swing.*;
 
 
 public class SettingsPresenter extends Presenter {
-	private UserManager userManager = UserManager.getSharedInstance();
+	private UserManager userManager = new UserManager();
 	private JButton changeDatabaseLoginButton = new JButton("Datenbankzugangsdaten ändern");
 	private JButton changePasswordButton = new JButton("Passwort ändern");
 

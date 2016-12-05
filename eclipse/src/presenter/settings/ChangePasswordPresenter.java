@@ -10,7 +10,7 @@ public class ChangePasswordPresenter extends Presenter {
 	private JPasswordField passwordTextField;
 	private JPasswordField newPasswordTextField;
 	private JButton saveButton = new JButton("speichern");
-	private UserManager userManager = UserManager.getSharedInstance();
+	private UserManager userManager = new UserManager();
 
 	/**
 	 * Create the application.

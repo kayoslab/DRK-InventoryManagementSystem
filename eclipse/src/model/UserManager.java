@@ -2,35 +2,19 @@ package model;
 // Import for MD5 Hash
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-
+import model.databaseCommunication.Session;
 import model.databaseObjects.accessControl.*;
 
 public class UserManager {
-	private static UserManager sharedInstance;
-	public static User user;
-	public static GroupRight[] rights;
-	/**
-	 * Constructor
-	 */
-	private UserManager() {
-		
-	}
+	private Session session = Session.getSharedInstance();
 
-	/**
-	 * Singleton
-	 */
-	public static UserManager getSharedInstance() {
-		if (UserManager.sharedInstance == null) {
-			UserManager.sharedInstance = new UserManager();
-		}
+	public UserManager() {
 
-		return UserManager.sharedInstance;
 	}
 
 	public void loginProceeded(String username) {
-		UserManager.getSharedInstance().user = DatabaseReadManager.getUser(username);
-		UserManager.getSharedInstance().rights = DatabaseReadManager.getGroupRights(UserManager.getSharedInstance().user.id);
+		this.session.currentUser = DatabaseReadManager.getUser(username);
+		this.session.currentRights = DatabaseReadManager.getGroupRights(this.session.currentUser.id);
 	}
 	
 	/**

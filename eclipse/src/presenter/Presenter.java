@@ -1,4 +1,5 @@
 package presenter;
+import model.databaseCommunication.Session;
 import presenter.onboarding.LoginPresenter;
 import javax.swing.*;
 import java.awt.*;
@@ -115,6 +116,7 @@ public abstract class Presenter implements ActionListener {
 			LoginPresenter loginPresenter = new LoginPresenter(this);
 			this.frame.dispose();
 			loginPresenter.newScreen();
+			Session.getSharedInstance().invalidateSession();
 		} else if (e.getSource() == this.back){
 			this.showPreviousPresenter();
 		} else if (e.getSource() == this.help){

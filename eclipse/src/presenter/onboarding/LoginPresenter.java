@@ -8,7 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class LoginPresenter extends Presenter {
-	private UserManager userManager = UserManager.getSharedInstance();
+	private UserManager userManager = new UserManager();
 	private JPasswordField passwordField;
 	private JTextField userNameTextField;
 	private JButton loginButton = new JButton("Einloggen");
