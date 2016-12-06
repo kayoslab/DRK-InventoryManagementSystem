@@ -2543,7 +2543,7 @@
 									"height": 13,
 									"autoResize": false,
 									"underline": false,
-									"text": "Stock",
+									"text": "StockObjectValue",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -4408,7 +4408,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFXvhtHWBKD5JA="
 					},
-					"name": "Stock",
+					"name": "StockObjectValue",
 					"columns": [
 						{
 							"_type": "ERDColumn",
@@ -6541,7 +6541,7 @@
 									"height": 13,
 									"autoResize": false,
 									"underline": false,
-									"text": "Stock",
+									"text": "StockObjectValue",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false

@@ -46,7 +46,7 @@ public class InventoryPresenter extends Presenter {
 		this.radioButtonAll = new JRadioButton("Alle");
 		this.radioButtonAll.setSelected(true);
 		this.radioButtonAll.addActionListener(this);
-		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
+		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 14);
 		this.frame.getContentPane().add(this.radioButtonAll);
 		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
 		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);

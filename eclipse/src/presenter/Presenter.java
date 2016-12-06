@@ -69,7 +69,6 @@ public abstract class Presenter implements ActionListener {
 		this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
 		this.frame.getContentPane().add(this.logo);
 		this.logo.addActionListener(this);
-		this.logo.setBorderPainted(false);
 
 		this.btnLogout = new JButton("Logout");
 		this.btnLogout.setBounds(logoutX, (topLayoutCenter - logoutHeight / 2), logoutWidth, logoutHeight);
@@ -151,6 +150,8 @@ public abstract class Presenter implements ActionListener {
 	public int leftSideMenuWidth = 190;
 	public int headlineY = 100;
 	public int lineHeight = 36;
+	public int labelHeight = 14;
+	public int generalButtonWidth = 140;
 	public int contentY = headlineY+lineHeight+spacing;
 	public int contentHeight = height-contentY-bottomPadding;
 	public int iconButtonWidth = 33;

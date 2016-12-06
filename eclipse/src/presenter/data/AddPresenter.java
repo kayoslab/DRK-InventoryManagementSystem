@@ -73,64 +73,59 @@ public class AddPresenter extends Presenter {
 	}
 
 	private void setupDeviceMenuItem() {
-		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(276, 160, 46, 14);
+		/******** Labels ********/
+		JLabel lblName = new JLabel("Name:");
+		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel lblInventarnummer = new JLabel("Inventarnummer");
-		lblInventarnummer.setBounds(276, 198, 103, 14);
+		JLabel lblInventarnummer = new JLabel("Inventarnummer:");
+		lblInventarnummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblInventarnummer);
 
-		JLabel lblSeriennummer = new JLabel("Seriennummer");
-		lblSeriennummer.setBounds(276, 234, 103, 16);
+		JLabel lblSeriennummer = new JLabel("Seriennummer:");
+		lblSeriennummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblSeriennummer);
 
-		JLabel lblOptionalerText = new JLabel("optionaler Text");
-		lblOptionalerText.setBounds(276, 276, 85, 14);
+		JLabel lblOptionalerText = new JLabel("optionaler Text:");
+		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
 
+		/******** Eingabe ********/
 		JTextField textField = new JTextField();
-		textField.setBounds(389, 157, 182, 28);
+		textField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 
 		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(389, 192, 182, 28);
+		textField_1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 
 		JTextField textField_2 = new JTextField();
-		textField_2.setBounds(389, 231, 182, 28);
+		textField_2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*3);
 		TextArea textArea = new TextArea();
-		textArea.setBounds(389, 276, 182, 103);
+		textArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
 		frame.getContentPane().add(textArea);
 
+		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(393, 415, 117, 29);
+		btnSpeichern.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(btnSpeichern);
 	}
 
 	private void setupMedicalMaterialMenuItem() {
+		/******** Labels ********/
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(228, 166, 61, 16);
 		frame.getContentPane().add(lblName);
 
-		JTextField textField = new JTextField();
-		textField.setBounds(367, 160, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-
 		JLabel lblChargennummer = new JLabel("Chargennummer");
 		lblChargennummer.setBounds(228, 220, 131, 16);
 		frame.getContentPane().add(lblChargennummer);
-
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(367, 214, 182, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
 
 		JLabel lblMindestbestand = new JLabel("Meldebestand");
 		lblMindestbestand.setBounds(121, 306, 131, 16);
@@ -144,6 +139,17 @@ public class AddPresenter extends Presenter {
 		lblOptionalerText.setBounds(228, 384, 119, 16);
 		frame.getContentPane().add(lblOptionalerText);
 
+		/******** Eingabe ********/
+		JTextField textField = new JTextField();
+		textField.setBounds(367, 160, 182, 28);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+
+		JTextField textField_1 = new JTextField();
+		textField_1.setBounds(367, 214, 182, 28);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+
 		JTextField textField_4 = new JTextField();
 		textField_4.setBounds(228, 300, 134, 28);
 		frame.getContentPane().add(textField_4);
@@ -158,6 +164,7 @@ public class AddPresenter extends Presenter {
 		textArea.setBounds(367, 386, 182, 103);
 		frame.getContentPane().add(textArea);
 
+		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(357, 518, 117, 29);
 		frame.getContentPane().add(btnSpeichern);
@@ -165,23 +172,10 @@ public class AddPresenter extends Presenter {
 	}
 
 	private void setupConsumableMaterialMenuItem() {
+		/******** Labels ********/
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(169, 166, 61, 16);
 		frame.getContentPane().add(lblName);
-
-		JTextField textField = new JTextField();
-		textField.setBounds(367, 160, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-
-		JLabel lblChargennummer = new JLabel("Chargennummer (optional)");
-		lblChargennummer.setBounds(169, 220, 193, 16);
-		frame.getContentPane().add(lblChargennummer);
-
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(367, 214, 182, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
 
 		JLabel lblMindestbestand = new JLabel("Meldebestand");
 		lblMindestbestand.setBounds(121, 306, 131, 16);
@@ -195,6 +189,21 @@ public class AddPresenter extends Presenter {
 		lblOptionalerText.setBounds(169, 386, 119, 16);
 		frame.getContentPane().add(lblOptionalerText);
 
+		JLabel lblChargennummer = new JLabel("Chargennummer (optional)");
+		lblChargennummer.setBounds(169, 220, 193, 16);
+		frame.getContentPane().add(lblChargennummer);
+
+		/******** Eingabe ********/
+		JTextField textField = new JTextField();
+		textField.setBounds(367, 160, 182, 28);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+
+		JTextField textField_1 = new JTextField();
+		textField_1.setBounds(367, 214, 182, 28);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+
 		JTextField textField_4 = new JTextField();
 		textField_4.setBounds(228, 300, 134, 28);
 		frame.getContentPane().add(textField_4);
@@ -209,21 +218,25 @@ public class AddPresenter extends Presenter {
 		textArea.setBounds(367, 386, 182, 103);
 		frame.getContentPane().add(textArea);
 
+		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(357, 518, 117, 29);
 		frame.getContentPane().add(btnSpeichern);
 	}
 
 	private void setupLocationMenuItem() {
+		/******** Labels ********/
 		JLabel lblLagerortName = new JLabel("Lagerort Name");
 		lblLagerortName.setBounds(239, 291, 123, 16);
 		frame.getContentPane().add(lblLagerortName);
 
+		/******** Eingabe ********/
 		JTextField textField = new JTextField();
 		textField.setBounds(354, 285, 182, 28);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 
+		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(329, 355, 117, 29);
 		frame.getContentPane().add(btnSpeichern);
@@ -231,6 +244,7 @@ public class AddPresenter extends Presenter {
 	}
 
 	private void setupUserMenuItem() {
+		/******** Labels ********/
 		JLabel lblBenutzername = new JLabel("Benutzername");
 		lblBenutzername.setBounds(251, 247, 88, 16);
 		frame.getContentPane().add(lblBenutzername);
@@ -239,6 +253,11 @@ public class AddPresenter extends Presenter {
 		lblPasswort.setBounds(251, 297, 61, 16);
 		frame.getContentPane().add(lblPasswort);
 
+		JLabel lblGruppe = new JLabel("Gruppe");
+		lblGruppe.setBounds(251, 350, 61, 16);
+		frame.getContentPane().add(lblGruppe);
+
+		/******** Eingabe ********/
 		JTextField textField = new JTextField();
 		textField.setBounds(361, 241, 182, 28);
 		frame.getContentPane().add(textField);
@@ -249,15 +268,12 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 
-		JLabel lblGruppe = new JLabel("Gruppe");
-		lblGruppe.setBounds(251, 350, 61, 16);
-		frame.getContentPane().add(lblGruppe);
-
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(361, 346, 182, 27);
 		frame.getContentPane().add(comboBox);
 		comboBox.addItem("Bitte auswählen...");
 
+		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(343, 434, 117, 29);
 		frame.getContentPane().add(btnSpeichern);
@@ -265,27 +281,29 @@ public class AddPresenter extends Presenter {
 	}
 
 	private void setupGroupMenuItem() {
+		/******** Labels ********/
 		JLabel lblGruppenname = new JLabel("Gruppenname");
 		lblGruppenname.setBounds(254, 132, 154, 14);
 		frame.getContentPane().add(lblGruppenname);
-
-		JTextField textField = new JTextField();
-		textField.setBounds(382, 125, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 
 		JLabel lblGruppenstatus = new JLabel("Gruppenstatus");
 		lblGruppenstatus.setBounds(254, 178, 84, 14);
 		frame.getContentPane().add(lblGruppenstatus);
 
+		JLabel lblGrupenberechtigung = new JLabel("Grupenberechtigung");
+		lblGrupenberechtigung.setBounds(254, 239, 154, 14);
+		frame.getContentPane().add(lblGrupenberechtigung);
+
+		/******** Eingabe ********/
+		JTextField textField = new JTextField();
+		textField.setBounds(382, 125, 182, 28);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+
 		JTextField textField_1 = new JTextField();
 		textField_1.setBounds(382, 171, 182, 28);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-
-		JLabel lblGrupenberechtigung = new JLabel("Grupenberechtigung");
-		lblGrupenberechtigung.setBounds(254, 239, 154, 14);
-		frame.getContentPane().add(lblGrupenberechtigung);
 
 		JCheckBox chckbxMedizinischeMaterialienHinzufgen = new JCheckBox("Medizinische Materialien hinzuf\u00FCgen");
 		chckbxMedizinischeMaterialienHinzufgen.setBounds(382, 235, 195, 23);
@@ -317,11 +335,10 @@ public class AddPresenter extends Presenter {
 		chckbxGerteBearbeiten.setBackground(Color.WHITE);
 		frame.getContentPane().add(chckbxGerteBearbeiten);
 
+		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(382, 419, 117, 29);
 		frame.getContentPane().add(btnSpeichern);
-		//Image imgback1 = new ImageIcon (this.getClass().getResource("/back-button.jpg")).getImage();
-		//Image imgbook1 = new ImageIcon (this.getClass().getResource("/book-button.jpg")).getImage();
 		btnSpeichern.addActionListener(this);
 	}
 
