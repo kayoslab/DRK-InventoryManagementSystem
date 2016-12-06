@@ -53,7 +53,7 @@ public abstract class Presenter implements ActionListener {
 		int coordX = (objDimension.width - frame.getWidth()) / 4;
 		int coordY = (objDimension.height - frame.getHeight()) / 4;
 		frame.setBounds(coordX, coordY, width, height);
-		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().setMaximumSize(new Dimension(width,height));
 		frame.getContentPane().setMinimumSize(new Dimension(width,height));
@@ -69,6 +69,7 @@ public abstract class Presenter implements ActionListener {
 		this.logo.setBounds(logoX, topPadding, logoWidth, logoHeight);
 		this.frame.getContentPane().add(this.logo);
 		this.logo.addActionListener(this);
+		this.logo.setBorderPainted(false);
 
 		this.btnLogout = new JButton("Logout");
 		this.btnLogout.setBounds(logoutX, (topLayoutCenter - logoutHeight / 2), logoutWidth, logoutHeight);
