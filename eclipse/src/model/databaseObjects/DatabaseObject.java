@@ -60,7 +60,16 @@ public abstract class DatabaseObject {
 		editLocation,
 		viewLocations
 	}
-	
+
+	public enum ModificationType {
+		deviceMenuItem,
+		medicalMaterialMenuItem,
+		consumableMaterialMenuItem,
+		locationMenuItem,
+		userMenuItem,
+		groupMenuItem
+	}
+
 	public final int id;
 	public DatabaseObject(int id) {
 		this.id = id;

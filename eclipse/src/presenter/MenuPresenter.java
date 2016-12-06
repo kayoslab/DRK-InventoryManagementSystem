@@ -1,7 +1,9 @@
 package presenter;
 import model.Session;
 import model.databaseObjects.DatabaseObject;
+import presenter.data.AddPresenter;
 import presenter.data.DataPresenter;
+import presenter.data.EditPresenter;
 import presenter.settings.SettingsPresenter;
 import java.awt.*;
 import javax.swing.*;
@@ -45,6 +47,8 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	}
 
 	/**
+	 * @param previousPresenter Presenter
+	 *
 	 * Create the application.
 	 */
 	public MenuPresenter(Presenter previousPresenter) {
@@ -57,6 +61,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	 */
 	public void initialize() {
 		super.initialize();
+
 		/******************* Header Layout ************************/
 		this.frame.addMouseListener(this);
 		this.logo = new JButton("");
@@ -207,6 +212,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 				this.editPopup.add(editGroupMenuItem);
 			}
 		}
+
 	}
 
 	@Override
@@ -233,6 +239,42 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			if (this.editPopup != null) {
 				this.editPopup.show(null,this.frame.getX()+this.editButton.getX()+iconButtonHeight,this.frame.getY()+this.editButton.getY()+iconButtonWidth);
 			}
+		} else if (e.getSource() == this.addDeviceMenuItem) {
+			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.deviceMenuItem);
+			addPresenter.newScreen();
+		} else if (e.getSource() == this.addMedicalMaterialMenuItem) {
+			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
+			addPresenter.newScreen();
+		} else if (e.getSource() == this.addConsumableMaterialMenuItem) {
+			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
+			addPresenter.newScreen();
+		} else if (e.getSource() == this.addLocationMenuItem) {
+			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.locationMenuItem);
+			addPresenter.newScreen();
+		} else if (e.getSource() == this.addUserMenuItem) {
+			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.userMenuItem);
+			addPresenter.newScreen();
+		} else if (e.getSource() == this.addGroupMenuItem) {
+			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.groupMenuItem);
+			addPresenter.newScreen();
+		} else if (e.getSource() == this.editDeviceMenuItem) {
+			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.deviceMenuItem);
+			editPresenter.newScreen();
+		} else if (e.getSource() == this.editMedicalMaterialMenuItem) {
+			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
+			editPresenter.newScreen();
+		} else if (e.getSource() == this.editConsumableMaterialMenuItem) {
+			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
+			editPresenter.newScreen();
+		} else if (e.getSource() == this.editLocationMenuItem) {
+			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.locationMenuItem);
+			editPresenter.newScreen();
+		} else if (e.getSource() == this.editUserMenuItem) {
+			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.userMenuItem);
+			editPresenter.newScreen();
+		} else if (e.getSource() == this.editGroupMenuItem) {
+			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.groupMenuItem);
+			editPresenter.newScreen();
 		}
 
 	}

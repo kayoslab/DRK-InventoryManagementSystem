@@ -54,7 +54,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 	 * Create the application.
 	 */
 	public DataPresenter() {
-		this.previousPresenter = previousPresenter;
+		// this.previousPresenter = previousPresenter;
 		initialize();
 	}
 

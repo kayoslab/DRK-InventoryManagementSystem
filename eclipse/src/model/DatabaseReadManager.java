@@ -283,7 +283,10 @@ public final class DatabaseReadManager {
 	 * @return GroupRight[]
 	 */
 	public static GroupRight[] getGroupRights(int id) {
-		String sqlStatement = "SELECT `id`,`title` FROM `GroupRight` WHERE `id` = " + id + ";";
+		String sqlStatement = "SELECT `GroupRight`.`id`, `GroupRight`.`title`\n" +
+				"FROM `UserIsMemberOfGroup`, `Group`, `GroupHasRights`, `GroupRight`\n" +
+				"WHERE `UserIsMemberOfGroup`.`group` = `Group`.`id` AND `Group`.`id` = `GroupHasRights`.`group` \n" +
+				"AND `GroupHasRights`.`right` = `GroupRight`.`id` AND `UserIsMemberOfGroup`.`user` = " + id + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
