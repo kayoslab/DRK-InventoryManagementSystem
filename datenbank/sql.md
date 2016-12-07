@@ -109,7 +109,7 @@ CREATE TABLE `StockObject` (
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
    `creation` datetime NOT NULL,
-   `silencedWarning` tinyint(1) unsigned NOT NULL,
+   `silencedWarnings` tinyint(1) unsigned NOT NULL,
    `typeId` int(10) unsigned NOT NULL ,
    CONSTRAINT `Constr_Stock_Type`
        FOREIGN KEY `type_fk` (`typeId`) REFERENCES `Type` (`id`)
