@@ -5,6 +5,8 @@ import presenter.Presenter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddPresenter extends Presenter {
 	DatabaseObject.ModificationType modificationType;
@@ -102,14 +104,44 @@ public class AddPresenter extends Presenter {
 		textField_1.setColumns(10);
 
 		JTextField textField_2 = new JTextField();
+		textField_2.setEditable(true);
 		textField_2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 
 		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*3);
-		TextArea textArea = new TextArea();
-		textArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
-		frame.getContentPane().add(textArea);
+		// TextArea textArea = new TextArea();
+		// textArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
+		// frame.getContentPane().add(textArea);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
+		this.frame.getContentPane().add(scrollPane);
+		JTextArea descriptionArea = new JTextArea();
+		// descriptionArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		// descriptionArea.setText("Beschreibung");
+		descriptionArea.setLineWrap(true);
+		descriptionArea.setWrapStyleWord(true);
+		descriptionArea.setEditable(true);
+		scrollPane.setViewportView(descriptionArea);
+
+		// Add key listener to change the TAB behavior in
+		// JTextArea to transfer focus to other component forward
+		// or backward.
+		descriptionArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_TAB) {
+					if (e.getModifiers() > 0) {
+						descriptionArea.transferFocusBackward();
+					} else {
+						descriptionArea.transferFocus();
+					}
+					e.consume();
+				}
+			}
+		});
+
 
 		/******** Buttons ********/
 		JButton btnSpeichern = new JButton("speichern");

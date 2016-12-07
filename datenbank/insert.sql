@@ -23,7 +23,7 @@ VALUES
     ('viewMedicalMaterials'),
     ('medicalMaterialIncrease'),
     ('medicalMaterialDecrease'),
-    ('medicalMaterialCorrection'),    
+    ('medicalMaterialCorrection'),
     ('createConsumableMaterial'),
     ('deleteConsumableMaterial'),
     ('editConsumableMaterial'),
@@ -61,7 +61,7 @@ VALUES
     ('viewMedicalMaterials'),
     ('medicalMaterialIncrease'),
     ('medicalMaterialDecrease'),
-    ('medicalMaterialCorrection'),    
+    ('medicalMaterialCorrection'),
     ('createConsumableMaterial'),
     ('deleteConsumableMaterial'),
     ('editConsumableMaterial'),
@@ -89,7 +89,7 @@ VALUES
     (1,6),
     (1,10),
     (1,14),
-    (1,21),	
+    (1,21),
 	(1,28),
     (1,35),
     (2,3),
@@ -141,7 +141,7 @@ VALUES
     (0,'aschoenfeld', 'Alexander', 'Schönfeld','alexander.schoenfeld@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0);
 
 INSERT INTO `UserIsMemberOfGroup`
-VALUES 
+VALUES
     (1,1),
     (1,2),
     (2,1),
@@ -152,3 +152,16 @@ VALUES
     (5,1),
     (5,5),
     (6,1);
+
+INSERT INTO `Type`
+VALUES
+    (0,'device'),
+    (0,'medicalMaterial'),
+    (0,'consumableMaterial'),
+    (0,'vehicle');
+
+INSERT INTO `Message`
+VALUES
+    (0,'green',1),
+    (0,'yellow',2),
+    (0,'red',3);
