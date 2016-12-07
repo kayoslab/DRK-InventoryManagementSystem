@@ -1,4 +1,3 @@
-import model.MessageUpdateManager;
 import model.databaseCommunication.DatabaseLoginManager;
 import presenter.onboarding.LoginPresenter;
 import presenter.onboarding.SetupPresenter;
@@ -17,8 +16,5 @@ public class main {
 			SetupPresenter setupPresenter = new SetupPresenter();
 			setupPresenter.newScreen();
 		}
-		
-		//MessageUpdateManager msgupdateManager = new MessageUpdateManager();
-		//msgupdateManager.updateAll();
 	}
 }

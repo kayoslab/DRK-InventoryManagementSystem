@@ -1,6 +1,5 @@
 package model;
 
-import com.sun.mail.imap.Rights;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.accessControl.GroupRight;
 import model.databaseObjects.accessControl.User;

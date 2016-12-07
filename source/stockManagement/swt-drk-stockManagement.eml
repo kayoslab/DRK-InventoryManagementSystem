@@ -6,9 +6,6 @@
 	<lib name="mysql-connector-java-5.1.40-bin.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.40-bin.jar!/"/>
 	</lib>
-	<lib name="javax.mail-1.5.6.jar" scope="COMPILE">
-		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/javax.mail-1.5.6.jar!/"/>
-	</lib>
 	<levels>
 		<level name="lib" value="project"/>
 	</levels>
