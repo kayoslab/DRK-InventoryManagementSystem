@@ -175,154 +175,125 @@ CREATE TABLE `Logbook` (
 
 ## Insert
 
-```sql
-INSERT INTO `Operation` (title)
-VALUES
-    ('create-user'),
-    ('delete-user'),
-    ('modify-user'),
-    ('user-login'),
-    ('user-logout'),
-    ('create-device'),
-    ('delete-device'),
-    ('modify-device'),
-    ('device-increase'),
-    ('device-decrease'),
-    ('device-correction'),
-    ('create-medicalMaterial'),
-    ('delete-medicalMaterial'),
-    ('modify-medicalMaterial'),
-    ('medicalMaterial-increase'),
-    ('medicalMaterial-decrease'),
-    ('medicalMaterial-correction'),
-    ('create-consumableMaterial'),
-    ('delete-consumableMaterial'),
-    ('modify-consumableMaterial'),
-    ('consumableMaterial-increase'),
-    ('consumableMaterial-decrease'),
-    ('consumableMaterial-correction');
+Gruppen und Gruppenrechte:
 
+```sql
 INSERT INTO `GroupRight` (title)
 VALUES
-    ('create-user'),
-    ('delete-user'),
-    ('modify-user'),
-    ('create-device'),
-    ('delete-device'),
-    ('modify-device'),
-    ('device-increase'),
-    ('device-decrease'),
-    ('device-correction'),
-    ('create-medicalMaterial'),
-    ('delete-medicalMaterial'),
-    ('modify-medicalMaterial'),
-    ('medicalMaterial-increase'),
-    ('medicalMaterial-decrease'),
-    ('medicalMaterial-correction'),
-    ('create-consumableMaterial'),
-    ('delete-consumableMaterial'),
-    ('modify-consumableMaterial'),
-    ('consumableMaterial-increase'),
-    ('consumableMaterial-decrease'),
-    ('consumableMaterial-correction');
+    ('login'),
+    ('editSelf'),
+    ('createUser'),
+    ('deleteUser'),
+    ('editUser'),
+    ('viewUsers'),
+    ('createGroup'),
+    ('deleteGroup'),
+    ('editGroup'),
+    ('viewGroups'),
+    ('createDevice'),
+    ('deleteDevice'),
+    ('editDevice'),
+    ('viewDevices'),
+    ('deviceIncrease'),
+    ('deviceDecrease'),
+    ('deviceCorrection'),
+    ('createMedicalMaterial'),
+    ('deleteMedicalMaterial'),
+    ('editMedicalMaterial'),
+    ('viewMedicalMaterials'),
+    ('medicalMaterialIncrease'),
+    ('medicalMaterialDecrease'),
+    ('medicalMaterialCorrection'),
+    ('createConsumableMaterial'),
+    ('deleteConsumableMaterial'),
+    ('editConsumableMaterial'),
+    ('viewConsumableMaterials'),
+    ('consumableMaterialIncrease'),
+    ('consumableMaterialDecrease'),
+    ('consumableMaterialCorrection'),
+    ('createLocation'),
+    ('deleteLocation'),
+    ('editLocation'),
+    ('viewLocations');
 
-INSERT INTO `Group` (title)
+INSERT INTO `Group`
 VALUES
-    ('admin'),
-    ('user');
+    (0,'user',true),
+    (0,'admin',true),
+    (0,'deviceResponsible',true),
+	(0,'medicalMaterialResponsible',true),
+    (0,'consumableMaterialResponsible',true);
 
 INSERT INTO `GroupHasRights`
 VALUES
     (1,1),
     (1,2),
-    (1,3),
-    (1,4),
-    (1,5),
     (1,6),
-    (1,7),
-    (1,8),
-    (1,9),
     (1,10),
-    (1,11),
-    (1,12),
-    (1,13),
     (1,14),
-    (1,15),
-    (1,16),
-    (1,17),
-    (1,18),
-    (1,19),
-    (1,20),
-    (1,21);
+    (1,21),
+	(1,28),
+    (1,35),
+    (2,3),
+    (2,4),
+    (2,5),
+    (2,6),
+    (2,7),
+    (2,8),
+    (2,9),
+    (2,11),
+    (2,12),
+    (2,13),
+    (2,15),
+    (2,16),
+    (2,17),
+    (2,18),
+    (2,19),
+    (2,20),
+    (2,22),
+    (2,23),
+    (2,24),
+    (2,25),
+    (2,26),
+    (2,27),
+    (2,29),
+    (2,30),
+    (2,31),
+    (2,32),
+    (2,33),
+    (2,34),
+    (3,15),
+    (3,16),
+	(3,17),
+    (4,22),
+    (4,23),
+    (4,24),
+    (5,29),
+	(5,30),
+    (5,31);
+```
 
-/* pw = md5(test) */
-INSERT INTO `User` (username, firstname, name, password, passwordChanged)
-VALUES ('root', 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', 0);
+Standard Benutzer mit initialem Passwort md5("test"):
+```sql
+INSERT INTO `User`
+VALUES
+    (0,'nforbrich', 'Nina', 'Forbrich','nina.forbrich@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0),
+    (0,'nwittkowski', 'Nicole', 'Wittkowski','nicole.wittkowski@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0),
+    (0,'tschulz', 'Tanja', 'Schulz','tanja.schulz@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0),
+    (0,'mscholz', 'Markus', 'Scholz','markus.scholz@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0),
+    (0,'mforbrich', 'Martina', 'Forbrich','martina.forbrich@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0),
+    (0,'aschoenfeld', 'Alexander', 'Schönfeld','alexander.schoenfeld@drk-sennestadt.de',Now(),'098f6bcd4621d373cade4e832627b4f6', 0);
 
 INSERT INTO `UserIsMemberOfGroup`
-VALUES (1,1);
-
-INSERT INTO `Logbook` (title, material_id, operation_id, user_id)
-VALUES ('Initialisation', NULL, 6, 1);
-```
-
-## Select
-
-Alle Rechte, welche der Gruppe ``admin`` gewährt wurden:
-
-```sql
-SELECT
-    `GroupRight`.*
-FROM
-    `GroupRight`
-JOIN
-    `GroupHasRights`
-    ON `GroupRight`.`id` = `GroupHasRights`.`right`
-WHERE
-    `GroupHasRights`.`group` = 1
-```
-
-
-Alle User, die das Recht haben neue Benutzer anzulegen:
-
-```sql
-SELECT
-    `Group`.*
-FROM
-    `Group`
-JOIN
-    `GroupHasRights`
-    ON `Group`.`id` = `GroupHasRights`.`group`
-WHERE
-    `GroupHasRights`.`right` = 1
-```
-
-
-Alle User, die der Gruppe ``admin`` angehören:
-
-```sql
-SELECT
-    `User`.*
-FROM
-    `User`
-JOIN
-    `UserIsMemberOfGroup`
-    ON `User`.`id` = `UserIsMemberOfGroup`.`user`
-WHERE
-    `UserIsMemberOfGroup`.`group` = 1
-```
-
-
-Alle Gruppen, in denen der Nutzer ``root`` ist:
-
-```sql
-SELECT
-    `Group`.*
-FROM
-    `Group`
-JOIN
-    `UserIsMemberOfGroup`
-    ON `Group`.`id` = `UserIsMemberOfGroup`.`group`
-WHERE
-    `UserIsMemberOfGroup`.`user` = 1
+VALUES
+    (1,1),
+    (1,2),
+    (2,1),
+    (2,3),
+    (2,4),
+    (3,1),
+	(4,1),
+    (5,1),
+    (5,5),
+    (6,1);
 ```
