@@ -11,3 +11,7 @@ Hintergrundprozess, welcher mittels cron-job auf dem Server getriggert wird. Die
 ## stockManagement-importer
 
 Einfaches Import Script, welches aus gegebenen .csv Dateien einen SQL-Insert Aufruf generiert. Dieser Code soll nicht fest ins Projekt integriert werden, da auf die Textvalidierung keinen großen Wert gelegt wird und es ggf. zu Datenbankinkosistenzen führen könnte.
+
+## stockManagement-online
+
+Testimplementierung einer Webseite zum Login, welcher ggf. eine komplette Inventarliste anzeigen soll.
