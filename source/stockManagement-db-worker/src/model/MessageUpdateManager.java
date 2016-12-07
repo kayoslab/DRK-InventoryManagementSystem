@@ -6,106 +6,115 @@ import model.databaseObjects.stockValues.ConsumableMaterialValue;
 import model.databaseObjects.stockValues.DeviceValue;
 import model.databaseObjects.stockValues.MedicalMaterialValue;
 import model.databaseObjects.stockValues.StockObjectValue;
+import model.mailing.Sender;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.sql.Date;
 
 public class MessageUpdateManager {
+	private ArrayList<StockObjectValue> deviceUpdateList = new ArrayList<StockObjectValue>();
+	private ArrayList<StockObjectValue> medicalMaterialUpdateList = new ArrayList<StockObjectValue>();
+	private ArrayList<StockObjectValue> consumableMaterialUpdateList = new ArrayList<StockObjectValue>();
+	// private ArrayList<StockObjectValue> vehicleUpdateList = new ArrayList<StockObjectValue>();
 
-	public void updateAll(){
+	public void updateAll() {
 		StockObjectValue[] greenValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.green);
 		StockObjectValue[] yellowValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.yellow);
 		StockObjectValue[] redValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.red);
 
-		this.compare(greenValues);
-		this.compare(yellowValues);
-		this.compare(redValues);
+		this.updateList(greenValues);
+		this.updateList(yellowValues);
+		this.updateList(redValues);
+		this.sendMail();
 	}
 
-	private void compare(StockObjectValue[] stockObjectValues) {
+	private void updateList(StockObjectValue[] stockObjectValues) {
 		if (stockObjectValues != null) {
-			for (StockObjectValue stockValue:stockObjectValues) {
+			for (StockObjectValue stockValue : stockObjectValues) {
 				Calendar currenttime = Calendar.getInstance();
 				Date sqlDate = new Date((currenttime.getTime()).getTime());
 				Calendar currenttimeThreeMonths = Calendar.getInstance();
-				currenttimeThreeMonths.add(Calendar.MONTH,3);
+				currenttimeThreeMonths.add(Calendar.MONTH, 3);
 				Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 				Boolean edited = false;
 				if (stockValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) stockValue;
 
-					if (sqlDate.after(deviceValue.mtkDate) || sqlDate.after(deviceValue.stkDate)){
-						// Only Update this Value if it changes.
-						if (deviceValue.messageID != DatabaseObject.StockValueMessage.red.ordinal()) {
-							deviceValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
-							edited = deviceValue.editObject();
-						}
-					} else if(deviceValue.mtkDate.after(sqlDate) && ((deviceValue.mtkDate.before(sqlDateThreeMonths))
-							|| (deviceValue.stkDate.before(sqlDateThreeMonths)))){
-						// Only Update this Value if it changes.
-						if (deviceValue.messageID != DatabaseObject.StockValueMessage.yellow.ordinal()) {
-							deviceValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
-							edited = deviceValue.editObject();
-						}
+					// Check deviceValue for Message State Changes
+					if (sqlDate.after(deviceValue.mtkDate) || sqlDate.after(deviceValue.stkDate)) {
+						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
+					} else if (deviceValue.mtkDate.after(sqlDate) && ((deviceValue.mtkDate.before(sqlDateThreeMonths))
+							|| (deviceValue.stkDate.before(sqlDateThreeMonths)))) {
+						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
 					} else {
-						// Only Update this Value if it changes.
-						if (deviceValue.messageID != DatabaseObject.StockValueMessage.green.ordinal()) {
-							deviceValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
-							edited = deviceValue.editObject();
-						}
+						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
 					}
 				} else if (stockValue instanceof MedicalMaterialValue) {
-					MedicalMaterialValue medMatValue = (MedicalMaterialValue) stockValue;
-					StockObject stockobj = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
-					MedicalMaterial medmat = (MedicalMaterial) stockobj;
-					if ((sqlDate.after(medMatValue.date) || medmat.totalVolume < medmat.minimumStock)){
-						// Only Update this Value if it changes.
-						if (medMatValue.messageID != DatabaseObject.StockValueMessage.red.ordinal()) {
-							medMatValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
-							edited = medMatValue.editObject();
-						}
-					} else if ((medMatValue.date.after(sqlDate) && medMatValue.date.before(sqlDateThreeMonths))
-							|| (medmat.totalVolume < medmat.quotaStock)){
-						// Only Update this Value if it changes.
-						if (medMatValue.messageID != DatabaseObject.StockValueMessage.yellow.ordinal()) {
-							medMatValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
-							edited = medMatValue.editObject();
-						}
+					MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockValue;
+					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
+					MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
+
+					// Check medicalMaterialValue for Message State Changes
+					if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterial.totalVolume < medicalMaterial.minimumStock)) {
+						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
+					} else if ((medicalMaterialValue.date.after(sqlDate) && medicalMaterialValue.date.before(sqlDateThreeMonths))
+							|| (medicalMaterial.totalVolume < medicalMaterial.quotaStock)) {
+						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
 					} else {
-						// Only Update this Value if it changes.
-						if (medMatValue.messageID != DatabaseObject.StockValueMessage.green.ordinal()) {
-							medMatValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
-							edited = medMatValue.editObject();
-						}
+						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
 					}
 				} else if (stockValue instanceof ConsumableMaterialValue) {
-					ConsumableMaterialValue consMatValue = (ConsumableMaterialValue) stockValue;
-					StockObject stockobj = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
-					ConsumableMaterial consmat = (ConsumableMaterial) stockobj;
-					if ((sqlDate.after(consMatValue.date) || consmat.totalVolume < consmat.minimumStock)){
-						// Only Update this Value if it changes.
-						if (consMatValue.messageID != DatabaseObject.StockValueMessage.red.ordinal()) {
-							consMatValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
-							edited = consMatValue.editObject();
-						}
-					} else if ((consMatValue.date.after(sqlDate) && consMatValue.date.before(sqlDateThreeMonths))
-							|| (consmat.totalVolume < consmat.quotaStock)){
-						// Only Update this Value if it changes.
-						if (consMatValue.messageID != DatabaseObject.StockValueMessage.yellow.ordinal()) {
-							consMatValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
-							edited = consMatValue.editObject();
-						}
+					ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockValue;
+					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
+					ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
+
+					// Check consumableMaterialValue for Message State Changes
+					if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterial.totalVolume < consumableMaterial.minimumStock)) {
+						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
+					} else if ((consumableMaterialValue.date.after(sqlDate) && consumableMaterialValue.date.before(sqlDateThreeMonths))
+							|| (consumableMaterial.totalVolume < consumableMaterial.quotaStock)) {
+						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
 					} else {
-						// Only Update this Value if it changes.
-						if (consMatValue.messageID != DatabaseObject.StockValueMessage.green.ordinal()) {
-							consMatValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
-							edited = consMatValue.editObject();
-						}
+						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
 					}
 				}
 				if (edited) {
-					System.out.println("Succesfully edited: id "+ stockValue.stockObjectID);
+					System.out.println("Succesfully edited: id " + stockValue.stockObjectID);
 				}
 			}
+		}
+	}
+
+	private Boolean setStockObjectValueMessage(StockObjectValue stockObjectValue, DatabaseObject.StockValueMessage message) {
+		// Only Update this Value if it changes.
+		if (stockObjectValue.messageID != message.ordinal()) {
+			stockObjectValue.messageID = message.ordinal();
+			// Update the DatabaseObject
+			if (stockObjectValue.editObject() == true) {
+				if (stockObjectValue instanceof DeviceValue) {
+					this.deviceUpdateList.add(stockObjectValue);
+				} else if (stockObjectValue instanceof MedicalMaterialValue) {
+					this.medicalMaterialUpdateList.add(stockObjectValue);
+				} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+					this.consumableMaterialUpdateList.add(stockObjectValue);
+				}
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void sendMail() {
+		if (this.deviceUpdateList.size() > 0) {
+			Sender.sendMailWithUpdateableDatabaseObjects(this.deviceUpdateList.toArray(new StockObjectValue[deviceUpdateList.size()]), DatabaseObject.StockObjectType.device);
+		}
+		if (this.medicalMaterialUpdateList.size() > 0) {
+			Sender.sendMailWithUpdateableDatabaseObjects(this.medicalMaterialUpdateList.toArray(new StockObjectValue[medicalMaterialUpdateList.size()]), DatabaseObject.StockObjectType.medicalMaterial);
+		}
+		if (this.consumableMaterialUpdateList.size() > 0) {
+			Sender.sendMailWithUpdateableDatabaseObjects(this.consumableMaterialUpdateList.toArray(new StockObjectValue[consumableMaterialUpdateList.size()]), DatabaseObject.StockObjectType.consumableMaterial);
 		}
 	}
 }

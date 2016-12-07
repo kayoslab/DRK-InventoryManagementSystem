@@ -10,6 +10,11 @@ public class DatabaseLoginManager {
 	private String databaseUsername;
 	private String databasePassword;
 	private String databaseURL;
+	private String senderAddress = "";
+	private String smtpUserName = "";
+	private String smtpPassword = "";
+	private String smtpHost = "";
+	private String smtpPort = "";
 	private String configLocation = System.getProperty("user.home") + File.separator + ".stockManager" + File.separator + "config";
 	/**
 	 * Constructor
@@ -89,7 +94,27 @@ public class DatabaseLoginManager {
 		}
 		return this.databaseURL;
 	}
-	
+
+	public String getSenderAddress() {
+		return senderAddress;
+	}
+
+	public String getSmtpUserName() {
+		return smtpUserName;
+	}
+
+	public String getSmtpPassword() {
+		return smtpPassword;
+	}
+
+	public String getSmtpHost() {
+		return smtpHost;
+	}
+
+	public String getSmtpPort() {
+		return smtpPort;
+	}
+
 	/**
 	 * Test credentials for Login
 	 */
@@ -164,15 +189,30 @@ public class DatabaseLoginManager {
 							String content = syntax[1];
 							
 							switch (variable) {
-							case "databaseUsername":
-								this.databaseUsername = content;
-								break;
-							case "databasePassword":
-								this.databasePassword = content;
-								break;
-							case "databaseURL":
-								this.databaseURL = content;
-								break;
+								case "databaseUsername":
+									this.databaseUsername = content;
+									break;
+								case "databasePassword":
+									this.databasePassword = content;
+									break;
+								case "databaseURL":
+									this.databaseURL = content;
+									break;
+								case "senderAddress":
+									this.senderAddress = content;
+									break;
+								case "smtpUsername":
+									this.smtpUserName = content;
+									break;
+								case "smtpPassword":
+									this.smtpPassword = content;
+									break;
+								case "smtpHost":
+									this.smtpHost = content;
+									break;
+								case "smtpPort":
+									this.smtpPort = content;
+									break;
 							}
 						}						
 					}
