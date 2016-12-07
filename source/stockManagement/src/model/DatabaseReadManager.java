@@ -735,14 +735,13 @@ public final class DatabaseReadManager {
 	}
 
 	/**
-	 * @param type DatabaseObject.StockObjectType
 	 * @param message DatabaseObject.StockValueMessage
 	 * @return StockObjectValue[]
 	 */
-	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockObjectType type, DatabaseObject.StockValueMessage message) {
+	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockValueMessage message) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
-				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
-				+ "FROM `StockValue` WHERE `stockObjectId` = " + type + " AND `messageId` = " + message + ";";
+				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,`messageId`"
+				+ "FROM `StockValue` WHERE `messageId` = " + message.ordinal() + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -875,7 +874,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		String sqlStatement = "SELECT `id`, `title`, `description`, `silencedWarning`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + ";";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `silencedWarnings`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + ";";
 		// get Data from Database
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
@@ -891,17 +890,17 @@ public final class DatabaseReadManager {
 						break; 
 					case device:
 						inventoryList.add(new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silencedWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
 								rs.getInt("mtkIntervall"), rs.getInt("stkIntervall")));
 						break;
 					case medicalMaterial:
 						inventoryList.add(new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silencedWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
 								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
 						break;
 					case consumableMaterial:
 						inventoryList.add(new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silencedWarning"), stockObjectType, rs.getInt("totalVolume"),
+								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
 								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
 						break;
 					case vehicle:

@@ -49,9 +49,9 @@ public class MessagePresenter extends Presenter {
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 		// ArrayList<StockObjectValue> sortedYellowData = new ArrayList<StockObjectValue>();
-		StockObjectValue[] yellowDeviceObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.device, DatabaseObject.StockValueMessage.yellow);
-		StockObjectValue[] yellowMedicalObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.medicalMaterial, DatabaseObject.StockValueMessage.yellow);
-		StockObjectValue[] yellowConsumableObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.consumableMaterial, DatabaseObject.StockValueMessage.yellow);
+		// StockObjectValue[] yellowDeviceObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.yellow);
+		// StockObjectValue[] yellowMedicalObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.yellow);
+		// StockObjectValue[] yellowConsumableObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.yellow);
 
 		// Lambda sort alphabetically after adding to stockObjects
 		// Outcome: Sorted Alphabetically

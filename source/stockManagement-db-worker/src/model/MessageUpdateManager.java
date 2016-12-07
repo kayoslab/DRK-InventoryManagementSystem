@@ -12,83 +12,98 @@ import java.sql.Date;
 public class MessageUpdateManager {
 
 	public void updateAll(){
-		StockObjectValue[] greenDeviceValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.device, DatabaseObject.StockValueMessage.green);
-		StockObjectValue[] greenMedMatValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.medicalMaterial, DatabaseObject.StockValueMessage.green);
-		StockObjectValue[] greenConsMatValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.consumableMaterial, DatabaseObject.StockValueMessage.green);
-		StockObjectValue[] yellowDeviceValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.device, DatabaseObject.StockValueMessage.yellow);
-		StockObjectValue[] yellowMedMatValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.medicalMaterial, DatabaseObject.StockValueMessage.yellow);
-		StockObjectValue[] yellowConsMatValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.consumableMaterial, DatabaseObject.StockValueMessage.yellow);
-		StockObjectValue[] redDeviceValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.device, DatabaseObject.StockValueMessage.red);
-		StockObjectValue[] redMedMatValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.medicalMaterial, DatabaseObject.StockValueMessage.red);
-		StockObjectValue[] redConsMatValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockObjectType.consumableMaterial, DatabaseObject.StockValueMessage.red);
+		StockObjectValue[] greenValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.green);
+		StockObjectValue[] yellowValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.yellow);
+		StockObjectValue[] redValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.red);
 
-		this.compare(greenDeviceValues);
-		this.compare(greenMedMatValues);
-		this.compare(greenConsMatValues);
-		this.compare(yellowDeviceValues);
-		this.compare(yellowMedMatValues);
-		this.compare(yellowConsMatValues);
-		this.compare(redDeviceValues);
-		this.compare(redMedMatValues);
-		this.compare(redConsMatValues);
+		this.compare(greenValues);
+		this.compare(yellowValues);
+		this.compare(redValues);
 	}
 
 	private void compare(StockObjectValue[] stockObjectValues) {
 		if (stockObjectValues != null) {
 			for (StockObjectValue stockValue:stockObjectValues) {
-
 				Calendar currenttime = Calendar.getInstance();
 				Date sqlDate = new Date((currenttime.getTime()).getTime());
 				Calendar currenttimeThreeMonths = Calendar.getInstance();
 				currenttimeThreeMonths.add(Calendar.MONTH,3);
 				Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
-
+				Boolean edited = false;
 				if (stockValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) stockValue;
 
 					if (sqlDate.after(deviceValue.mtkDate) || sqlDate.after(deviceValue.stkDate)){
-						deviceValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
-						deviceValue.editObject();
-					} else if(deviceValue.mtkDate.after(sqlDate)
-							&& ((deviceValue.mtkDate.before(sqlDateThreeMonths)) || (deviceValue.stkDate.before(sqlDateThreeMonths)))){
-						deviceValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
-						deviceValue.editObject();
+						// Only Update this Value if it changes.
+						if (deviceValue.messageID != DatabaseObject.StockValueMessage.red.ordinal()) {
+							deviceValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
+							edited = deviceValue.editObject();
+						}
+					} else if(deviceValue.mtkDate.after(sqlDate) && ((deviceValue.mtkDate.before(sqlDateThreeMonths))
+							|| (deviceValue.stkDate.before(sqlDateThreeMonths)))){
+						// Only Update this Value if it changes.
+						if (deviceValue.messageID != DatabaseObject.StockValueMessage.yellow.ordinal()) {
+							deviceValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
+							edited = deviceValue.editObject();
+						}
 					} else {
-						deviceValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
-						deviceValue.editObject();
+						// Only Update this Value if it changes.
+						if (deviceValue.messageID != DatabaseObject.StockValueMessage.green.ordinal()) {
+							deviceValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
+							edited = deviceValue.editObject();
+						}
 					}
 				} else if (stockValue instanceof MedicalMaterialValue) {
 					MedicalMaterialValue medMatValue = (MedicalMaterialValue) stockValue;
 					StockObject stockobj = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
 					MedicalMaterial medmat = (MedicalMaterial) stockobj;
-
 					if ((sqlDate.after(medMatValue.date) || medmat.totalVolume < medmat.minimumStock)){
-						medMatValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
-						medMatValue.editObject();
+						// Only Update this Value if it changes.
+						if (medMatValue.messageID != DatabaseObject.StockValueMessage.red.ordinal()) {
+							medMatValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
+							edited = medMatValue.editObject();
+						}
 					} else if ((medMatValue.date.after(sqlDate) && medMatValue.date.before(sqlDateThreeMonths))
 							|| (medmat.totalVolume < medmat.quotaStock)){
-						medMatValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
-						medMatValue.editObject();
+						// Only Update this Value if it changes.
+						if (medMatValue.messageID != DatabaseObject.StockValueMessage.yellow.ordinal()) {
+							medMatValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
+							edited = medMatValue.editObject();
+						}
 					} else {
-						medMatValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
-						medMatValue.editObject();
+						// Only Update this Value if it changes.
+						if (medMatValue.messageID != DatabaseObject.StockValueMessage.green.ordinal()) {
+							medMatValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
+							edited = medMatValue.editObject();
+						}
 					}
 				} else if (stockValue instanceof ConsumableMaterialValue) {
 					ConsumableMaterialValue consMatValue = (ConsumableMaterialValue) stockValue;
 					StockObject stockobj = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
 					ConsumableMaterial consmat = (ConsumableMaterial) stockobj;
-
 					if ((sqlDate.after(consMatValue.date) || consmat.totalVolume < consmat.minimumStock)){
-						consMatValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
-						consMatValue.editObject();
+						// Only Update this Value if it changes.
+						if (consMatValue.messageID != DatabaseObject.StockValueMessage.red.ordinal()) {
+							consMatValue.messageID = DatabaseObject.StockValueMessage.red.ordinal();
+							edited = consMatValue.editObject();
+						}
 					} else if ((consMatValue.date.after(sqlDate) && consMatValue.date.before(sqlDateThreeMonths))
 							|| (consmat.totalVolume < consmat.quotaStock)){
-						consMatValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
-						consMatValue.editObject();
+						// Only Update this Value if it changes.
+						if (consMatValue.messageID != DatabaseObject.StockValueMessage.yellow.ordinal()) {
+							consMatValue.messageID = DatabaseObject.StockValueMessage.yellow.ordinal();
+							edited = consMatValue.editObject();
+						}
 					} else {
-						consMatValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
-						consMatValue.editObject();
+						// Only Update this Value if it changes.
+						if (consMatValue.messageID != DatabaseObject.StockValueMessage.green.ordinal()) {
+							consMatValue.messageID = DatabaseObject.StockValueMessage.green.ordinal();
+							edited = consMatValue.editObject();
+						}
 					}
+				}
+				if (edited) {
+					System.out.println("Succesfully edited: id "+ stockValue.stockObjectID);
 				}
 			}
 		}
