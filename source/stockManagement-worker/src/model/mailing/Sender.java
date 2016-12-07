@@ -1,7 +1,11 @@
 package model.mailing;
 
+import model.DatabaseReadManager;
 import model.databaseCommunication.DatabaseLoginManager;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.stockObjects.ConsumableMaterial;
+import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.MedicalMaterial;
 import model.databaseObjects.stockValues.ConsumableMaterialValue;
 import model.databaseObjects.stockValues.DeviceValue;
 import model.databaseObjects.stockValues.MedicalMaterialValue;
@@ -29,12 +33,7 @@ public class Sender {
 
 		/** Authentication Properties **/
 		Authenticator auth = getAuthenticator(dbloginManager.getSmtpUserName(), dbloginManager.getSmtpPassword());
-		Properties properties = new Properties();
-		properties.put("mail.smtp.host", dbloginManager.getSmtpHost());
-		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.port", dbloginManager.getSmtpPort());
-		properties.put("mail.transport.protocol", "smtp");
-		properties.put("mail.smtp.starttls.enable", "true");
+		Properties properties = Sender.getProperties(dbloginManager.getSmtpHost(), dbloginManager.getSmtpPort());
 		Session session = Session.getDefaultInstance(properties, auth);
 
 		/** Message Object **/
@@ -48,16 +47,19 @@ public class Sender {
 				case device:
 					internetAddresses = new InternetAddress[] { new InternetAddress("nina.forbrich@drk-sennestadt.de") };
 					message.setRecipients(RecipientType.BCC, internetAddresses);
+					message.setRecipient(RecipientType.TO, new InternetAddress(dbloginManager.getSenderAddress()));
 					message.setSubject("Geräte: " + stockObjectValues.length + " neue Meldungen");
 					break;
 				case medicalMaterial:
 					internetAddresses = new InternetAddress[] { new InternetAddress("nina.forbrich@drk-sennestadt.de") };
 					message.setRecipients(RecipientType.BCC, internetAddresses);
+					message.setRecipient(RecipientType.TO, new InternetAddress(dbloginManager.getSenderAddress()));
 					message.setSubject("MedMat: " + stockObjectValues.length + " neue Meldungen");
 					break;
 				case consumableMaterial:
 					internetAddresses = new InternetAddress[] { new InternetAddress("nina.forbrich@drk-sennestadt.de") };
 					message.setRecipients(RecipientType.BCC, internetAddresses);
+					message.setRecipient(RecipientType.TO, new InternetAddress(dbloginManager.getSenderAddress()));
 					message.setSubject("Versorgung: " + stockObjectValues.length + " neue Meldungen");
 					break;
 				case vehicle:
@@ -69,135 +71,28 @@ public class Sender {
 			multipart.addBodyPart(Sender.generateTextForStockObjectValues(stockObjectValues));
 			message.setContent(multipart);
 			Transport.send(message);
+			System.out.println("Message send: " + type.name());
 		}  catch (Exception e) {
+			System.out.println(e);
 			return;
 		}
 	}
 
-	private static BodyPart generateTextForStockObjectValues(StockObjectValue[] stockObjectValues) {
-		BodyPart messageBodyPart = new MimeBodyPart();
-		String messageBodyTextString = "";
-
-		// Add relevant StockObjectValues to an E-Mail
-		for (StockObjectValue stockObjectValue : stockObjectValues) {
-			if (stockObjectValue instanceof DeviceValue) {
-
-			} else if (stockObjectValue instanceof MedicalMaterialValue) {
-
-			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-
-			}
-		}
-
-		// Add Text to the MessageBody
-		try {
-			messageBodyPart.setText(messageBodyTextString);
-			return messageBodyPart;
-		} catch (MessagingException me) {
-			return null;
-		}
-	}
-
-	/** *************************************************  ************************************************* **/
-
-
-	private static void sendMail(String smtpHost, String username, String password, String senderAddress, String recipientsAddress, String subject, String text) {
-		Authenticator auth = getAuthenticator(username, password);
-		Properties properties = getProperties();
-		// Hier wird mit den Properties und dem Authenticator eine Session erzeugt
-		Session session = Session.getDefaultInstance(properties, auth);
-		// Message senden
-		sendMessage(session, senderAddress, recipientsAddress, subject);
-	}
-
-	/**
-	 * Nachricht wird gesendet
-	 *
-	 * @param session
-	 * @param senderAddress
-	 * @param recipientsAddress
-	 * @param subject
-	 */
-	private static void sendMessage(Session session, String senderAddress, String recipientsAddress, String subject) {
-		try {
-			// Eine neue Message erzeugen
-			Message msg = new MimeMessage(session);
-			// Hier werden die Absender- und Empf�ngeradressen gesetzt
-			msg.setFrom(new InternetAddress(senderAddress, "XXX"));
-			// msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientsAddress));
-			msg.setRecipient(RecipientType.TO, new InternetAddress(recipientsAddress));
-			// Der Betreff wird gesetzt
-			msg.setSubject(subject);
-			// multipart message erstellen, in dem Text und Attachment gepuffert werden
-			Multipart multipart = new MimeMultipart();
-			// Der Text wird gesetzt
-			multipart.addBodyPart(getText());
-			// Text zur Nachricht hinzufügen
-			msg.setContent(multipart);
-			// Senden der Nachricht
-			Transport.send(msg);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Nachrichtentext wird gesetzt
-	 *
-	 * @return
-	 */
-	private static BodyPart getText() {
-		try {
-			// message part erstellen
-			BodyPart messageBodyPart = new MimeBodyPart();
-			// Mailtext
-			String text = "Hallo das ist ein Test mit Javamail!\nWenn Sie den Text lesen koennen hat es funktioniert.";
-			messageBodyPart.setText(text);
-			// Daten
-			return messageBodyPart;
-		} catch (MessagingException me) {
-			me.printStackTrace();
-			return null;
-		}
-
-	}
-
-	/**
-	 * Eigenschaften des Mail-Servers werden gesetzt
-	 *
-	 * @return
-	 */
-	private static Properties getProperties() {
+	private static Properties getProperties(String smtpHost, String smtpPort) {
 		Properties properties = new Properties();
-		// Den Properties wird die ServerAdresse hinzugefuegt
-		properties.put("mail.smtp.host", "smtp.web.de");
-		// !!Wichtig!! Falls der SMTP-Server eine Authentifizierung verlangt
-		// muss an dieser Stelle die Property auf "true" gesetzt
-		// werden
+		properties.put("mail.smtp.host", smtpHost);
 		properties.put("mail.smtp.auth", "true");
-		// Port setzen
-		properties.put("mail.smtp.port", "587");
-		// Protokoll festlegen
+		properties.put("mail.smtp.port", smtpPort);
 		properties.put("mail.transport.protocol", "smtp");
-		// Verschlüsselung festlegen
 		properties.put("mail.smtp.starttls.enable", "true");
 		return properties;
 	}
 
-	/**
-	 * Die Methode erzeugt ein MailAuthenticator Objekt aus den beiden
-	 * Parametern user und passwort des Mailaccounts.
-	 *
-	 * @param user
-	 * @param password
-	 */
 	private static Authenticator getAuthenticator(String user, String password) {
 		try {
 			Authenticator auth = new Authenticator() {
 				/**
-				 * Diese Methode gibt ein neues PasswortAuthentication Objekt
-				 * zurueck.
-				 *
+				 * @return PasswordAuthentication Object
 				 * @see javax.mail.Authenticator#getPasswordAuthentication()
 				 */
 				@Override
@@ -207,7 +102,39 @@ public class Sender {
 			};
 			return auth;
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	private static BodyPart generateTextForStockObjectValues(StockObjectValue[] stockObjectValues) {
+		BodyPart messageBodyPart = new MimeBodyPart();
+		String messageBodyTextString = "<html><head></head><body><h2>" + stockObjectValues.length + " neue Warnung(en):</h2>\n\n\n<ul>";
+
+		// Add relevant StockObjectValues to an E-Mail
+		for (StockObjectValue stockObjectValue : stockObjectValues) {
+			if (stockObjectValue instanceof DeviceValue) {
+				DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+				Device device = (Device) DatabaseReadManager.getStockObject(deviceValue.stockObjectID);
+				messageBodyTextString += "<li><b>" + device.title + ":</b>&nbsp;&nbsp;&nbsp;&nbsp;Menge: " + device.totalVolume + "</li>";
+			} else if (stockObjectValue instanceof MedicalMaterialValue) {
+				MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
+				MedicalMaterial medicalMaterial = (MedicalMaterial) DatabaseReadManager.getStockObject(medicalMaterialValue.stockObjectID);
+				messageBodyTextString += "<li><b>" + medicalMaterial.title + ":</b>&nbsp;&nbsp;&nbsp;&nbsp;Menge: " + medicalMaterial.totalVolume + "</li>";
+			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+				ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
+				ConsumableMaterial consumableMaterial = (ConsumableMaterial) DatabaseReadManager.getStockObject(consumableMaterialValue.stockObjectID);
+				messageBodyTextString += "<li><b>" + consumableMaterial.title + ":</b>&nbsp;&nbsp;&nbsp;&nbsp;Menge: " + consumableMaterial.totalVolume + "</li>";
+			}
+		}
+		messageBodyTextString += "</ul></body></html>";
+		// Add Text to the MessageBody
+		try {
+			// messageBodyPart.setText(messageBodyTextString);
+			messageBodyPart.setContent(messageBodyTextString,  "text/html; charset=utf-8");
+			return messageBodyPart;
+		} catch (MessagingException me) {
+			System.out.println(me);
 			return null;
 		}
 	}

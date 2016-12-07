@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="cr0ss.org" uuid="85020468-16c3-4000-aea0-80038f0fa579">
+      <database-info product="MySQL" version="5.1.73-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>cr0ss</user-name>
+      <resolve-scope>cr0ss_drk_sm:</resolve-scope>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <proxy-host>cr0ss.org</proxy-host>
+        <proxy-port>22</proxy-port>
+        <secret-storage>master_key</secret-storage>
+        <user>cr0ss</user>
+        <use-password>false</use-password>
+        <private-key-path>~/.ssh/cr0ss</private-key-path>
+      </ssh-properties>
+    </data-source>
+  </component>
+</project>

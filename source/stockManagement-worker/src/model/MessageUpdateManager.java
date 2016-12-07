@@ -13,9 +13,9 @@ import java.util.Calendar;
 import java.sql.Date;
 
 public class MessageUpdateManager {
-	private ArrayList<StockObjectValue> deviceUpdateList = new ArrayList<StockObjectValue>();
-	private ArrayList<StockObjectValue> medicalMaterialUpdateList = new ArrayList<StockObjectValue>();
-	private ArrayList<StockObjectValue> consumableMaterialUpdateList = new ArrayList<StockObjectValue>();
+	private ArrayList<StockObjectValue> deviceUpdateMailingList = new ArrayList<StockObjectValue>();
+	private ArrayList<StockObjectValue> medicalMaterialUpdateMailingList = new ArrayList<StockObjectValue>();
+	private ArrayList<StockObjectValue> consumableMaterialUpdateMailingList = new ArrayList<StockObjectValue>();
 	// private ArrayList<StockObjectValue> vehicleUpdateList = new ArrayList<StockObjectValue>();
 
 	public void updateAll() {
@@ -89,32 +89,43 @@ public class MessageUpdateManager {
 	private Boolean setStockObjectValueMessage(StockObjectValue stockObjectValue, DatabaseObject.StockValueMessage message) {
 		// Only Update this Value if it changes.
 		if (stockObjectValue.messageID != message.ordinal()) {
-			stockObjectValue.messageID = message.ordinal();
-			// Update the DatabaseObject
-			if (stockObjectValue.editObject() == true) {
-				if (stockObjectValue instanceof DeviceValue) {
-					this.deviceUpdateList.add(stockObjectValue);
-				} else if (stockObjectValue instanceof MedicalMaterialValue) {
-					this.medicalMaterialUpdateList.add(stockObjectValue);
-				} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-					this.consumableMaterialUpdateList.add(stockObjectValue);
+			// Check if the messageID is getting worse
+			if (stockObjectValue.messageID < message.ordinal()) {
+				stockObjectValue.messageID = message.ordinal();
+				// Update the DatabaseObject
+				if (stockObjectValue.editObject() == true) {
+					// And add the stockObjectValue to the MailingList
+					if (stockObjectValue instanceof DeviceValue) {
+						this.deviceUpdateMailingList.add(stockObjectValue);
+					} else if (stockObjectValue instanceof MedicalMaterialValue) {
+						this.medicalMaterialUpdateMailingList.add(stockObjectValue);
+					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+						this.consumableMaterialUpdateMailingList.add(stockObjectValue);
+					}
+					return true;
 				}
-
-				return true;
+			} else {
+				stockObjectValue.messageID = message.ordinal();
+				// Update the DatabaseObject
+				return stockObjectValue.editObject();
 			}
+
 		}
 		return false;
 	}
 
 	private void sendMail() {
-		if (this.deviceUpdateList.size() > 0) {
-			Sender.sendMailWithUpdateableDatabaseObjects(this.deviceUpdateList.toArray(new StockObjectValue[deviceUpdateList.size()]), DatabaseObject.StockObjectType.device);
+		if (this.deviceUpdateMailingList.size() > 0) {
+			StockObjectValue[] stockObjectValues = this.deviceUpdateMailingList.toArray(new StockObjectValue[deviceUpdateMailingList.size()]);
+			Sender.sendMailWithUpdateableDatabaseObjects(stockObjectValues, DatabaseObject.StockObjectType.device);
 		}
-		if (this.medicalMaterialUpdateList.size() > 0) {
-			Sender.sendMailWithUpdateableDatabaseObjects(this.medicalMaterialUpdateList.toArray(new StockObjectValue[medicalMaterialUpdateList.size()]), DatabaseObject.StockObjectType.medicalMaterial);
+		if (this.medicalMaterialUpdateMailingList.size() > 0) {
+			StockObjectValue[] stockObjectValues = this.medicalMaterialUpdateMailingList.toArray(new StockObjectValue[medicalMaterialUpdateMailingList.size()]);
+			Sender.sendMailWithUpdateableDatabaseObjects(stockObjectValues, DatabaseObject.StockObjectType.medicalMaterial);
 		}
-		if (this.consumableMaterialUpdateList.size() > 0) {
-			Sender.sendMailWithUpdateableDatabaseObjects(this.consumableMaterialUpdateList.toArray(new StockObjectValue[consumableMaterialUpdateList.size()]), DatabaseObject.StockObjectType.consumableMaterial);
+		if (this.consumableMaterialUpdateMailingList.size() > 0) {
+			StockObjectValue[] stockObjectValues = this.consumableMaterialUpdateMailingList.toArray(new StockObjectValue[consumableMaterialUpdateMailingList.size()]);
+			Sender.sendMailWithUpdateableDatabaseObjects(stockObjectValues, DatabaseObject.StockObjectType.consumableMaterial);
 		}
 	}
 }
