@@ -71,7 +71,7 @@ public final class DatabaseReadManager {
 		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
 				+ " FROM `User`, `UserIsMemberOfGroup`" +
 				" WHERE `UserIsMemberOfGroup`.`group` = " + group.id +
-				";";
+				" AND `UserIsMemberOfGroup`.`user` = `User`.`id`;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
