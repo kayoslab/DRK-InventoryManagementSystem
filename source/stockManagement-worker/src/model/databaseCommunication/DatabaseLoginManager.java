@@ -120,7 +120,6 @@ public class DatabaseLoginManager {
 	 */
 	public Boolean testDatabaseConnection() {
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
-			System.out.println("Test: " + this.databaseURL);
 			try {
 				DriverManager.setLoginTimeout(5);
 				Connection connection = DriverManager.getConnection(this.databaseURL, this.databaseUsername, this.databasePassword);

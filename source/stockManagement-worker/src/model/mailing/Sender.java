@@ -34,6 +34,10 @@ import javax.mail.internet.MimeMultipart;
 
 public class Sender {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	/** Fixed IDs for Responsible Groups **/
+	private static final int deviceResponsibleGroupID = 3;
+	private static final int medicalMaterialResponsibleGroupID = 4;
+	private static final int consumableMaterialResponsibleGroupID = 5;
 
 	public static void sendMailWithUpdateableDatabaseObjects(StockObjectValue[] stockObjectValues, DatabaseObject.StockObjectType type) {
 		/** Sort the StockObjectValues by Message **/
@@ -54,15 +58,15 @@ public class Sender {
 				case empty:
 					break;
 				case device:
-					group = DatabaseReadManager.getGroup(3);
+					group = DatabaseReadManager.getGroup(Sender.deviceResponsibleGroupID);
 					message.setSubject("Geräte: " + stockObjectValues.length + " neue Meldung(en)");
 					break;
 				case medicalMaterial:
-					group = DatabaseReadManager.getGroup(4);
+					group = DatabaseReadManager.getGroup(Sender.medicalMaterialResponsibleGroupID);
 					message.setSubject("MedMat: " + stockObjectValues.length + " neue Meldung(en)");
 					break;
 				case consumableMaterial:
-					group = DatabaseReadManager.getGroup(5);
+					group = DatabaseReadManager.getGroup(Sender.consumableMaterialResponsibleGroupID);
 					message.setSubject("Versorgung: " + stockObjectValues.length + " neue Meldung(en)");
 					break;
 				case vehicle:

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="cr0ss.org" uuid="85020468-16c3-4000-aea0-80038f0fa579">
+    <data-source source="LOCAL" name="stockManagement@pi" uuid="1470d74e-f02a-40c6-ad9e-0325520bf7a5">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/cr0ss_drk_sm</jdbc-url>
+      <jdbc-url>jdbc:mysql://192.168.178.37:3306/stockManagement</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

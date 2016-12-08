@@ -14,6 +14,8 @@ import java.sql.Date;
 
 public class MessageUpdateManager {
 	private int warningIntervallMonths = 3;
+
+
 	private ArrayList<StockObjectValue> deviceUpdateMailingList = new ArrayList<StockObjectValue>();
 	private ArrayList<StockObjectValue> medicalMaterialUpdateMailingList = new ArrayList<StockObjectValue>();
 	private ArrayList<StockObjectValue> consumableMaterialUpdateMailingList = new ArrayList<StockObjectValue>();
@@ -51,7 +53,7 @@ public class MessageUpdateManager {
 					stkIntervallTime.add(Calendar.MONTH, device.stkIntervall);
 					Date nextStkDate = new Date((stkIntervallTime.getTime()).getTime());
 
-					/** Dynamic Time Intervalls for Devices minus fixed 3 months **/
+					/** Dynamic Time Intervalls for Devices minus fixed number of months **/
 					Calendar mtkSoftIntervallTime = Calendar.getInstance();
 					mtkSoftIntervallTime.setTime(deviceValue.stkDate);
 					mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
@@ -74,7 +76,7 @@ public class MessageUpdateManager {
 					MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
 					MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
-					/** Fixed 3 Months Time Intervall **/
+					/** Fixed number of Months Time Intervall **/
 					Calendar currenttimeThreeMonths = Calendar.getInstance();
 					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
