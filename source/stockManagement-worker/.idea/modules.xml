@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/stockManagement-db-worker.iml" filepath="$PROJECT_DIR$/stockManagement-db-worker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stockManagement-worker.iml" filepath="$PROJECT_DIR$/stockManagement-worker.iml" />
     </modules>
   </component>
 </project>

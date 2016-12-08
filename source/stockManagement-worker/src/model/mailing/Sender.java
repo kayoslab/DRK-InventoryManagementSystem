@@ -13,10 +13,10 @@ import model.databaseObjects.stockValues.DeviceValue;
 import model.databaseObjects.stockValues.MedicalMaterialValue;
 import model.databaseObjects.stockValues.StockObjectValue;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -89,6 +89,7 @@ public class Sender {
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(Sender.generateTextForStockObjectValues(sortedStockObjectValues, type));
 			message.setContent(multipart);
+			message.setSentDate(new Date());
 			/** Send **/
 			Transport.send(message);
 			System.out.println("Message send: " + type.name());
@@ -231,7 +232,7 @@ public class Sender {
 		// Add HTML Text to the MessageBody
 		try {
 			// messageBodyPart.setText(messageBodyTextString);
-			messageBodyPart.setContent(messageBodyTextString,  "text/html; charset=utf-8");
+			messageBodyPart.setContent(messageBodyTextString,  "text/html; charset=ISO-8859-1");
 			return messageBodyPart;
 		} catch (MessagingException me) {
 			System.out.println(me);
