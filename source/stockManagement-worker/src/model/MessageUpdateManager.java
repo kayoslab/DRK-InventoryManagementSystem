@@ -80,7 +80,7 @@ public class MessageUpdateManager {
 					}
 				}
 				if (edited) {
-					System.out.println("Succesfully edited: id " + stockValue.stockObjectID);
+					System.out.println("Succesfully edited: id " + stockValue.id);
 				}
 			}
 		}

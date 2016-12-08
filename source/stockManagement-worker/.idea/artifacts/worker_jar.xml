@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="stockManagement-db-worker:jar">
-    <output-path>$PROJECT_DIR$/classes/artifacts/stockManagement_db_worker_jar</output-path>
-    <root id="archive" name="stockManagement-db-worker.jar">
+  <artifact type="jar" name="worker:jar">
+    <output-path>$PROJECT_DIR$/classes/</output-path>
+    <root id="archive" name="worker.jar">
       <element id="module-output" name="stockManagement-db-worker" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/javax.mail-1.5.6.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.40-bin.jar" path-in-jar="/" />

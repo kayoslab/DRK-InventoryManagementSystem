@@ -63,6 +63,46 @@ public final class DatabaseReadManager {
 		}
 	}
 
+	/**
+	 * Get Responsible Users for
+	 * @return User[]
+	 */
+	public static User[] getUsers(Group group) {
+		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
+				+ " FROM `User`, `UserIsMemberOfGroup`" +
+				" WHERE `UserIsMemberOfGroup`.`group` = " + group.id +
+				";";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.last()) {
+				User[] users = new User[rs.getRow()];
+				int i = 0;
+				// fill with reasonable Data
+				rs.beforeFirst();
+				while (rs.next()) {
+					users[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
+							rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
+					i++;
+				}
+				return users;
+			}
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
 
 	/**
 	 * @param id int user.id
