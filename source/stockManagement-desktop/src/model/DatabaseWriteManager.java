@@ -627,6 +627,7 @@ public final class DatabaseWriteManager {
 							+ "',`locationId` = " + stockObjectValue.locationID
 							+ ",`messageId` = " + stockObjectValue.messageID
 							+ " WHERE `id` = " + stockObjectValue.id + ";";
+					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				} else if (stockObjectValue instanceof MaterialValue) {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
 						MedicalMaterialValue mergedMedicalValue = (MedicalMaterialValue) stockObjectValue;

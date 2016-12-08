@@ -39,6 +39,7 @@ public class Sender {
 		/** Sort the StockObjectValues by Message **/
 		DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
 		StockObjectValue[] sortedStockObjectValues = stockObjectValues;
+		Arrays.sort(sortedStockObjectValues, Comparator.comparingInt(a -> a.stockObjectID));
 		Arrays.sort(sortedStockObjectValues, Comparator.comparingInt(a -> a.messageID));
 		/** Authentication Properties **/
 		Authenticator auth = getAuthenticator(dbloginManager.getSmtpUserName(), dbloginManager.getSmtpPassword());

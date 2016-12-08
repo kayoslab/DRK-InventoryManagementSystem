@@ -13,10 +13,10 @@ import java.util.Calendar;
 import java.sql.Date;
 
 public class MessageUpdateManager {
+	private int warningIntervallMonths = 3;
 	private ArrayList<StockObjectValue> deviceUpdateMailingList = new ArrayList<StockObjectValue>();
 	private ArrayList<StockObjectValue> medicalMaterialUpdateMailingList = new ArrayList<StockObjectValue>();
 	private ArrayList<StockObjectValue> consumableMaterialUpdateMailingList = new ArrayList<StockObjectValue>();
-	// private ArrayList<StockObjectValue> vehicleUpdateList = new ArrayList<StockObjectValue>();
 
 	public void updateAll() {
 		StockObjectValue[] greenValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.green);
@@ -34,18 +34,38 @@ public class MessageUpdateManager {
 			for (StockObjectValue stockValue : stockObjectValues) {
 				Calendar currenttime = Calendar.getInstance();
 				Date sqlDate = new Date((currenttime.getTime()).getTime());
-				Calendar currenttimeThreeMonths = Calendar.getInstance();
-				currenttimeThreeMonths.add(Calendar.MONTH, 3);
-				Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 				Boolean edited = false;
 				if (stockValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) stockValue;
+					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
+					Device device = (Device) stockObject;
 
-					// Check deviceValue for Message State Changes
-					if (sqlDate.after(deviceValue.mtkDate) || sqlDate.after(deviceValue.stkDate)) {
+					/** Dynamic Time Intervalls for Devices **/
+					Calendar mtkIntervallTime = Calendar.getInstance();
+					mtkIntervallTime.setTime(deviceValue.mtkDate);
+					mtkIntervallTime.add(Calendar.MONTH, device.mtkIntervall);
+					Date nextMtkDate = new Date((mtkIntervallTime.getTime()).getTime());
+
+					Calendar stkIntervallTime = Calendar.getInstance();
+					stkIntervallTime.setTime(deviceValue.stkDate);
+					stkIntervallTime.add(Calendar.MONTH, device.stkIntervall);
+					Date nextStkDate = new Date((stkIntervallTime.getTime()).getTime());
+
+					/** Dynamic Time Intervalls for Devices minus fixed 3 months **/
+					Calendar mtkSoftIntervallTime = Calendar.getInstance();
+					mtkSoftIntervallTime.setTime(deviceValue.stkDate);
+					mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
+					Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
+
+					Calendar stkSoftIntervallTime = Calendar.getInstance();
+					stkSoftIntervallTime.setTime(deviceValue.stkDate);
+					stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
+					Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
+
+					/** Check deviceValue for Message State Changes **/
+					if (sqlDate.after(nextMtkDate) || sqlDate.after(nextStkDate)) {
 						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
-					} else if (deviceValue.mtkDate.after(sqlDate) && ((deviceValue.mtkDate.before(sqlDateThreeMonths))
-							|| (deviceValue.stkDate.before(sqlDateThreeMonths)))) {
+					} else if ((deviceValue.mtkDate.before(nextSoftMtkDate)) || (deviceValue.stkDate.before(nextSoftStkDate))) {
 						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
 					} else {
 						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
@@ -54,12 +74,14 @@ public class MessageUpdateManager {
 					MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
 					MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
-
-					// Check medicalMaterialValue for Message State Changes
+					/** Fixed 3 Months Time Intervall **/
+					Calendar currenttimeThreeMonths = Calendar.getInstance();
+					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
+					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
+					/** Check medicalMaterialValue for Message State Changes **/
 					if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterial.totalVolume < medicalMaterial.minimumStock)) {
 						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-					} else if ((medicalMaterialValue.date.after(sqlDate) && medicalMaterialValue.date.before(sqlDateThreeMonths))
-							|| (medicalMaterial.totalVolume < medicalMaterial.quotaStock)) {
+					} else if (medicalMaterialValue.date.before(sqlDateThreeMonths) || (medicalMaterial.totalVolume < medicalMaterial.quotaStock)) {
 						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
 					} else {
 						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
@@ -68,12 +90,14 @@ public class MessageUpdateManager {
 					ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
 					ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
-
-					// Check consumableMaterialValue for Message State Changes
+					/** Fixed 3 Months Time Intervall **/
+					Calendar currenttimeThreeMonths = Calendar.getInstance();
+					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
+					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
+					/** Check consumableMaterialValue for Message State Changes **/
 					if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterial.totalVolume < consumableMaterial.minimumStock)) {
 						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-					} else if ((consumableMaterialValue.date.after(sqlDate) && consumableMaterialValue.date.before(sqlDateThreeMonths))
-							|| (consumableMaterial.totalVolume < consumableMaterial.quotaStock)) {
+					} else if (consumableMaterialValue.date.before(sqlDateThreeMonths) || (consumableMaterial.totalVolume < consumableMaterial.quotaStock)) {
 						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
 					} else {
 						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
