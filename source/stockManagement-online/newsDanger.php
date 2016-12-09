@@ -25,7 +25,7 @@
                 echo "</colgroup>";
                 echo "<tr><th>Titel</th> <th>Letzte MTK</th> <th>MTK Intervall</th> <th>Letzte STK</th> <th>STK Intervall</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
-                    echo "<tr><td>" . $stockValue['title'] . "</td><td>" . date( 'd.m.y', strtotime($stockValue['mtkDate'])) . "</td><td>" . $stockValue['mtkIntervall'] . "</td><td>" . date( 'd.m.y', strtotime($stockValue['stkDate'])) . "</td><td> \n" . $stockValue['stkIntervall'] . "</td></tr>";
+                    echo "<tr><td>" . $stockValue['title'] . "</td><td>" . date( 'd.m.y', strtotime($stockValue['mtkDate'])) . "</td><td>" . $stockValue['mtkIntervall'] . " Monate</td><td>" . date( 'd.m.y', strtotime($stockValue['stkDate'])) . "</td><td>" . $stockValue['stkIntervall'] . " Monate</td></tr> \n";
                 }
                 echo "</table> \n";
                 echo "</div> \n";

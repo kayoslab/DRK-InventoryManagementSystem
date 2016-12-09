@@ -9,11 +9,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Stock Management</a>
+                <a class="navbar-brand" href="./index.php">Stock Management</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="./index.php">News</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lager<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Geräte</a></li>
+                            <li><a href="#">Medizinisches Material</a></li>
+                            <li><a href="#">Versorgungsmaterial</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="logout.php">Abmelden</a></a></li>
@@ -36,4 +44,7 @@
                 include 'newsWarnings.php';
         ?>
     </div> <!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="./js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="./js/bootstrap.min.js"></script>
 </body>
