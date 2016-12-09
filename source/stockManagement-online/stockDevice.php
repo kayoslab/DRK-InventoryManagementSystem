@@ -11,8 +11,6 @@
                     echo 'Eingeloggt als: ' . $row['firstname'] . ' ' . $row['name'];
                 }
                 echo "</br> \n </br> \n </br> \n";
-                include 'newsDanger.php';
-                include 'newsWarnings.php';
         ?>
     </div> <!-- /container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
