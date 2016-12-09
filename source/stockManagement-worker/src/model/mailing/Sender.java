@@ -140,7 +140,7 @@ public class Sender {
 				"<body>" +
 				"<h2>" + stockObjectValues.length + " neue Meldung(en):</h2>" +
 				"\n\n\n" +
-				"<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"1\"'>" +
+				"<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"1\">" +
 				"<colgroup>\n" +
 				"    <col width=\"20%\" />\n" +
 				"    <col width=\"20%\" />\n" +

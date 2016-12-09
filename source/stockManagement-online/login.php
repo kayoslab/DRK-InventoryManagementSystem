@@ -1,3 +1,4 @@
+<body>
     <div class = "container form-signin">
         <h2 class="form-signin-heading">Anmelden</h2>
         <form class = "form-signin" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method = "post">
@@ -12,3 +13,4 @@
             <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Einloggen</button>
         </form>
     </div> <!-- /container -->
+</body>
