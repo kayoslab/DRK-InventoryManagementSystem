@@ -16,7 +16,7 @@ public class InventoryPresenter extends Presenter {
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
 	JRadioButton radioButtonAll;
 	JRadioButton radioButtonMinimumStockOnly;
-	JRadioButton radioButtonCriticalDateOnly;
+	JRadioButton radioButtonquotaStockOnly;
 	JCheckBox checkBoxDevices;
 	JCheckBox checkBoxMedicalMaterials;
 	JCheckBox checkBoxConsumableMaterial;
@@ -46,16 +46,16 @@ public class InventoryPresenter extends Presenter {
 		this.radioButtonAll = new JRadioButton("Alle");
 		this.radioButtonAll.setSelected(true);
 		this.radioButtonAll.addActionListener(this);
-		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 14);
+		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
 		this.frame.getContentPane().add(this.radioButtonAll);
 		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
 		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
 		this.radioButtonMinimumStockOnly.addActionListener(this);
 		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
-		this.radioButtonCriticalDateOnly = new JRadioButton("Nur abgelaufene Daten");
-		this.radioButtonCriticalDateOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
-		this.radioButtonCriticalDateOnly.addActionListener(this);
-		this.frame.getContentPane().add(this.radioButtonCriticalDateOnly);
+		this.radioButtonquotaStockOnly = new JRadioButton("Nur Sollbestände");
+		this.radioButtonquotaStockOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
+		this.radioButtonquotaStockOnly.addActionListener(this);
+		this.frame.getContentPane().add(this.radioButtonquotaStockOnly);
 
 		JSeparator comboBoxSeperator = new JSeparator();
 		comboBoxSeperator.setBounds(leftPadding, (contentY+lineHeight*3)+lineHeight/4, leftSideMenuWidth, 12);
@@ -65,7 +65,7 @@ public class InventoryPresenter extends Presenter {
 		ButtonGroup group = new ButtonGroup();
 		group.add(this.radioButtonAll);
 		group.add(this.radioButtonMinimumStockOnly);
-		group.add(this.radioButtonCriticalDateOnly);
+		group.add(this.radioButtonquotaStockOnly);
 
 		// Checkboxes
 		this.checkBoxDevices = new JCheckBox("Geräte");
@@ -120,8 +120,17 @@ public class InventoryPresenter extends Presenter {
 	}
 
 	private void refreshTableData() {
-		Object columnNames[] = { "Titel", "Menge", "Mindesbestand", "Typ"};
-		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+		DefaultTableModel model;
+		if (this.radioButtonMinimumStockOnly.isSelected()) {
+			Object columnNames[] = { "Titel", "Menge", "Mindesbestand", "Typ"};
+			model = new DefaultTableModel(columnNames, 0);
+		} else if (this.radioButtonquotaStockOnly.isSelected()) {
+			Object columnNames[] = { "Titel", "Menge", "Sollbestand", "Typ"};
+			model = new DefaultTableModel(columnNames, 0);
+		} else {
+			Object columnNames[] = { "Titel", "Menge", "Mindesbestand", "Typ"};
+			model = new DefaultTableModel(columnNames, 0);
+		}
 
 		/**
 		 * TODO sort the data by the given sortDescriptor for this.filterComboBox.getSelectedIndex()
@@ -184,13 +193,13 @@ public class InventoryPresenter extends Presenter {
 						Device device = (Device) stockObject;
 						if (this.radioButtonAll.isSelected()){
 							// show all objects
-							Object row[] = { device.title, device.totalVolume, 0, "Gerät"};
+							Object row[] = { device.title, device.totalVolume,  0 , "Gerät"};
 							model.addRow(row);
 						} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 							// do not show filtered objects
-						} else if (this.radioButtonCriticalDateOnly.isSelected()) {
-							// TODO: compare current Date with mtk/stk Date
-
+						} else if (this.radioButtonquotaStockOnly.isSelected()) {
+							Object row[] = { device.title, device.totalVolume, 0, "Gerät"};
+							model.addRow(row);
 						}
 					}
 				} else if (stockObject instanceof Material) {
@@ -209,8 +218,9 @@ public class InventoryPresenter extends Presenter {
 								} else {
 									// do not show filtered objects
 								}
-							} else if (this.radioButtonCriticalDateOnly.isSelected()) {
-								// TODO: compare current Date with medicalMaterial.date
+							} else if (this.radioButtonquotaStockOnly.isSelected()) {
+								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, medicalMaterial.quotaStock, "Medizinisches Material"};
+								model.addRow(row);
 							}
 						}
 					} else if (stockObject instanceof ConsumableMaterial) {
@@ -227,8 +237,9 @@ public class InventoryPresenter extends Presenter {
 								} else {
 									// do not show filtered objects
 								}
-							} else if (this.radioButtonCriticalDateOnly.isSelected()) {
-								// TODO: compare current Date with consumableMaterial.date
+							} else if (this.radioButtonquotaStockOnly.isSelected()) {
+								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, consumableMaterial.quotaStock, "Verbrauchsmaterial"};
+								model.addRow(row);
 							}
 						}
 					} else {
@@ -251,7 +262,7 @@ public class InventoryPresenter extends Presenter {
 			this.refreshTableData();
 		} else if (e.getSource() == this.radioButtonMinimumStockOnly) {
 			this.refreshTableData();
-		} else if (e.getSource() == this.radioButtonCriticalDateOnly) {
+		} else if (e.getSource() == this.radioButtonquotaStockOnly) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.checkBoxDevices) {
 			this.refreshTableData();

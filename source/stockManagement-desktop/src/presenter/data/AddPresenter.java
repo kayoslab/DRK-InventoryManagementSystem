@@ -16,22 +16,16 @@ public class AddPresenter extends Presenter {
 	private JTextField textField4;
 
 	private JTextArea textArea;
+	private JTable table;
 
 	private JButton saveButton;
 
 	/**
 	 * Create the application.
 	 */
-	public AddPresenter() {
-		initialize();
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public AddPresenter(Presenter previousPresenter) {
+	private AddPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		initialize();
+		this.initialize();
 	}
 
 	/**
@@ -40,7 +34,7 @@ public class AddPresenter extends Presenter {
 	public AddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
-		initialize();
+		this.initialize();
 	}
 
 	/**
@@ -160,48 +154,49 @@ public class AddPresenter extends Presenter {
 	private void setupMedicalMaterialMenuItem() {
 		/******** Labels ********/
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(228, 166, 61, 16);
+		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel lblChargennummer = new JLabel("Chargennummer");
-		lblChargennummer.setBounds(228, 220, 131, 16);
-		frame.getContentPane().add(lblChargennummer);
-
 		JLabel lblMindestbestand = new JLabel("Meldebestand");
-		lblMindestbestand.setBounds(121, 306, 131, 16);
+		lblMindestbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblMindestbestand);
 
 		JLabel lblSollbestand = new JLabel("Sollbestand");
-		lblSollbestand.setBounds(442, 306, 98, 16);
+		lblSollbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblSollbestand);
 
+		JLabel lblChargennummer = new JLabel("Chargennummer");
+		lblChargennummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(lblChargennummer);
+
 		JLabel lblOptionalerText = new JLabel("optionaler Text");
-		lblOptionalerText.setBounds(228, 384, 119, 16);
+		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
 
 		/******** Eingabe ********/
 		this.textField1 = new JTextField();
-		this.textField1.setBounds(367, 160, 182, 28);
+		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField1);
 		this.textField1.setColumns(10);
 
 		this.textField2 = new JTextField();
-		this.textField2.setBounds(367, 214, 182, 28);
+		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
 
 		this.textField3 = new JTextField();
-		this.textField3.setBounds(228, 300, 134, 28);
+		this.textField3.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField3);
 		this.textField3.setColumns(10);
 
 		this.textField4 = new JTextField();
-		this.textField4.setBounds(536, 300, 134, 28);
+		this.textField4.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField4);
 		this.textField4.setColumns(10);
 
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*4);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(367, 386, 182, 103);
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*4, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
 		this.frame.getContentPane().add(scrollPane);
 		this.textArea = new JTextArea();
 		this.textArea.setLineWrap(true);
@@ -228,7 +223,7 @@ public class AddPresenter extends Presenter {
 
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(357, 518, 117, 29);
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
 	}
@@ -236,48 +231,50 @@ public class AddPresenter extends Presenter {
 	private void setupConsumableMaterialMenuItem() {
 		/******** Labels ********/
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(169, 166, 61, 16);
+		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
 		JLabel lblMindestbestand = new JLabel("Meldebestand");
-		lblMindestbestand.setBounds(121, 306, 131, 16);
+		lblMindestbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblMindestbestand);
 
 		JLabel lblSollbestand = new JLabel("Sollbestand");
-		lblSollbestand.setBounds(442, 306, 98, 16);
+		lblSollbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblSollbestand);
 
-		JLabel lblOptionalerText = new JLabel("optionaler Text");
-		lblOptionalerText.setBounds(169, 386, 119, 16);
-		frame.getContentPane().add(lblOptionalerText);
-
-		JLabel lblChargennummer = new JLabel("Chargennummer (optional)");
-		lblChargennummer.setBounds(169, 220, 193, 16);
+		JLabel lblChargennummer = new JLabel("Chargennummer");
+		lblChargennummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblChargennummer);
+
+		JLabel lblOptionalerText = new JLabel("optionaler Text");
+		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(lblOptionalerText);
 
 		/******** Eingabe ********/
 		this.textField1 = new JTextField();
-		this.textField1.setBounds(367, 160, 182, 28);
+		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField1);
 		this.textField1.setColumns(10);
 
 		this.textField2 = new JTextField();
-		this.textField2.setBounds(367, 214, 182, 28);
+		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
 
 		this.textField3 = new JTextField();
-		this.textField3.setBounds(228, 300, 134, 28);
+		this.textField3.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField3);
 		this.textField3.setColumns(10);
 
 		this.textField4 = new JTextField();
-		this.textField4.setBounds(536, 300, 134, 28);
+		this.textField4.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField4);
 		this.textField4.setColumns(10);
 
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*4);
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(367, 386, 182, 103);
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*4, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
 		this.frame.getContentPane().add(scrollPane);
 		this.textArea = new JTextArea();
 		this.textArea.setLineWrap(true);
@@ -304,25 +301,25 @@ public class AddPresenter extends Presenter {
 
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(357, 518, 117, 29);
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 	}
 
 	private void setupLocationMenuItem() {
 		/******** Labels ********/
 		JLabel lblLagerortName = new JLabel("Lagerort Name");
-		lblLagerortName.setBounds(239, 291, 123, 16);
+		lblLagerortName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblLagerortName);
 
 		/******** Eingabe ********/
-		JTextField textField = new JTextField();
-		textField.setBounds(354, 285, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		this.textField1 = new JTextField();
+		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField1);
+		this.textField1.setColumns(10);
 
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(329, 355, 117, 29);
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
 	}
@@ -330,31 +327,39 @@ public class AddPresenter extends Presenter {
 	private void setupUserMenuItem() {
 		/******** Labels ********/
 		JLabel lblBenutzername = new JLabel("Benutzername");
-		lblBenutzername.setBounds(251, 247, 88, 16);
+		lblBenutzername.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblBenutzername);
 
 		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setBounds(251, 297, 61, 16);
+		lblPasswort.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblPasswort);
 
 		JLabel lblGruppe = new JLabel("Gruppe");
-		lblGruppe.setBounds(251, 350, 61, 16);
+		lblGruppe.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGruppe);
 
 		/******** Eingabe ********/
 		this.textField1 = new JTextField();
-		this.textField1.setBounds(361, 241, 182, 28);
+		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField1);
 		this.textField1.setColumns(10);
 
 		this.textField2 = new JTextField();
-		this.textField2.setBounds(361, 291, 182, 28);
+		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
 
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
+		this.frame.getContentPane().add(scrollPane);
+		this.table = new JTable();
+
+		scrollPane.setViewportView(this.table);
+
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(343, 434, 117, 29);
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
 	}
@@ -362,31 +367,39 @@ public class AddPresenter extends Presenter {
 	private void setupGroupMenuItem() {
 		/******** Labels ********/
 		JLabel lblGruppenname = new JLabel("Gruppenname");
-		lblGruppenname.setBounds(254, 132, 154, 14);
+		lblGruppenname.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGruppenname);
 
 		JLabel lblGruppenstatus = new JLabel("Gruppenstatus");
-		lblGruppenstatus.setBounds(254, 178, 84, 14);
+		lblGruppenstatus.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGruppenstatus);
 
 		JLabel lblGrupenberechtigung = new JLabel("Grupenberechtigung");
-		lblGrupenberechtigung.setBounds(254, 239, 154, 14);
+		lblGrupenberechtigung.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGrupenberechtigung);
 
 		/******** Eingabe ********/
 		this.textField1 = new JTextField();
-		this.textField1.setBounds(382, 125, 182, 28);
+		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField1);
 		this.textField1.setColumns(10);
 
 		this.textField2 = new JTextField();
-		this.textField2.setBounds(382, 171, 182, 28);
+		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
 
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
+		this.frame.getContentPane().add(scrollPane);
+		this.table = new JTable();
+
+		scrollPane.setViewportView(this.table);
+
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(382, 419, 117, 29);
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
 	}
