@@ -1,6 +1,12 @@
 package presenter.data;
+import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
+import model.UserManager;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.accessControl.Group;
+import model.databaseObjects.accessControl.GroupRight;
+import model.databaseObjects.accessControl.User;
+import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.ConsumableMaterial;
 import model.databaseObjects.stockObjects.Device;
 import model.databaseObjects.stockObjects.MedicalMaterial;
@@ -8,10 +14,12 @@ import model.databaseObjects.stockObjects.StockObject;
 import presenter.Presenter;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
@@ -23,6 +31,7 @@ public class AddPresenter extends Presenter {
 	private JTextField textField2;
 	private JTextField textField3;
 	private JTextField textField4;
+	private JTextField textField5;
 	/** Areas **/
 	private JTextArea textArea;
 	private JTable table;
@@ -323,17 +332,29 @@ public class AddPresenter extends Presenter {
 
 	private void setupUserMenuItem() {
 		/******** Labels ********/
-		JLabel lblBenutzername = new JLabel("Benutzername");
-		lblBenutzername.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
-		frame.getContentPane().add(lblBenutzername);
+		JLabel usernameLabel = new JLabel("Benutzername");
+		usernameLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
+		frame.getContentPane().add(usernameLabel);
 
-		JLabel lblPasswort = new JLabel("Passwort");
-		lblPasswort.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth,lineHeight);
-		frame.getContentPane().add(lblPasswort);
+		JLabel firstNameLabel = new JLabel("Vorname");
+		firstNameLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(firstNameLabel);
 
-		JLabel lblGruppe = new JLabel("Gruppe");
-		lblGruppe.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth,lineHeight);
-		frame.getContentPane().add(lblGruppe);
+		JLabel nameLabel = new JLabel("Name");
+		nameLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(nameLabel);
+
+		JLabel mailLabel = new JLabel("E-Mail");
+		mailLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(mailLabel);
+
+		JLabel passwordLabel = new JLabel("Passwort");
+		passwordLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(passwordLabel);
+
+		JLabel groupLabel = new JLabel("Gruppe");
+		groupLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*5, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(groupLabel);
 
 		/******** Eingabe ********/
 		this.textField1 = new JTextField();
@@ -346,12 +367,46 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
 
-		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*2);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
-		this.frame.getContentPane().add(scrollPane);
-		this.table = new JTable();
+		this.textField3 = new JTextField();
+		this.textField3.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField3);
+		this.textField3.setColumns(10);
 
+		this.textField4 = new JTextField();
+		this.textField4.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField4);
+		this.textField4.setColumns(10);
+
+		this.textField5 = new JTextField();
+		this.textField5.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*4, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField5);
+		this.textField5.setColumns(10);
+
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*5);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*5, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
+		this.frame.getContentPane().add(scrollPane);
+		this.table = new JTable() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
+		Object columnNames[] = { "Gruppe", "Hinzufügen"};
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+		Group[] groups = DatabaseReadManager.getGroups();
+		if (groups != null) {
+			for (Group group : groups) {
+				if (group.id == 1) {
+					Object row[] = { group.title,  true };
+					model.addRow(row);
+				} else {
+					Object row[] = { group.title,  false };
+					model.addRow(row);
+				}
+			}
+		}
+		this.table.setModel(model);
+		this.table.getColumnModel().getColumn(1).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
 		scrollPane.setViewportView(this.table);
 
 		/******** Buttons ********/
@@ -390,8 +445,27 @@ public class AddPresenter extends Presenter {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
 		this.frame.getContentPane().add(scrollPane);
-		this.table = new JTable();
-
+		this.table = new JTable() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
+		Object columnNames[] = { "Recht", "Hinzufügen"};
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+		GroupRight[] groupRights = DatabaseReadManager.getGroupRights();
+		if (groupRights != null) {
+			for (GroupRight groupRight : groupRights) {
+				if (groupRight.title.equals("login") || groupRight.title.equals("editSelf")) {
+					Object row[] = { groupRight.title,  true };
+					model.addRow(row);
+				} else {
+					Object row[] = { groupRight.title,  false };
+					model.addRow(row);
+				}
+			}
+		}
+		this.table.setModel(model);
+		this.table.getColumnModel().getColumn(1).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
 		scrollPane.setViewportView(this.table);
 
 		/******** Buttons ********/
@@ -404,7 +478,7 @@ public class AddPresenter extends Presenter {
 	private Boolean saveButtonValidation() {
 		switch (this.modificationType) {
 			case deviceMenuItem:
-				if (this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0) {
+				if (this.textField1.getText().length() > 0 && this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0) {
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					try {
 						int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
@@ -412,13 +486,16 @@ public class AddPresenter extends Presenter {
 						Device device = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
 						return DatabaseWriteManager.createObject(device);
 					} catch (ParseException e) {
-						// System.out.println(e.getMessage());
+						// Cant parse Textfields to int
 						return false;
 					}
+				} else {
+					// required Textfields are empty
 				}
+
 				return false;
 			case medicalMaterialMenuItem:
-				if (this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
+				if (this.textField1.getText().length() > 0 && this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					try {
 						int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
@@ -427,13 +504,15 @@ public class AddPresenter extends Presenter {
 						MedicalMaterial medicalMaterial = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
 						return DatabaseWriteManager.createObject(medicalMaterial);
 					} catch (ParseException e) {
-						// System.out.println(e.getMessage());
+						// Cant parse Textfields to int
 						return false;
 					}
+				} else {
+					// required Textfields are empty
 				}
-				return true;
+				return false;
 			case consumableMaterialMenuItem:
-				if (this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
+				if (this.textField1.getText().length() > 0 && this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					try {
 						int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
@@ -442,17 +521,50 @@ public class AddPresenter extends Presenter {
 						ConsumableMaterial consumableMaterial = new ConsumableMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
 						return DatabaseWriteManager.createObject(consumableMaterial);
 					} catch (ParseException e) {
-						// System.out.println(e.getMessage());
+						// Cant parse Textfields to int
 						return false;
 					}
+				} else {
+					// required Textfields are empty
 				}
-				return true;
+				return false;
 			case locationMenuItem:
-				return true;
+				if (this.textField1.getText().length() > 0) {
+					Location location = new Location(0, this.textField1.getText());
+					return DatabaseWriteManager.createObject(location);
+				} else {
+					// required Textfields are empty
+				}
+				return false;
 			case userMenuItem:
-				return true;
+				if (this.textField1.getText().length() > 0
+						&& this.textField2.getText().length() > 0
+						&& this.textField3.getText().length() > 0
+						&& this.textField4.getText().length() > 0
+						&& this.textField5.getText().length() > 0) {
+					UserManager userManager = new UserManager();
+					try {
+						String passwordHash = userManager.generatePasswordHash(textField5.getText());
+						User user = new User(0, textField1.getText(), textField2.getText(), textField3.getText(), this.textField4.getText(), passwordHash, false);
+						if (DatabaseWriteManager.createObject(user)) {
+							User dbUser = DatabaseReadManager.getUser(this.textField1.getText());
+							if (dbUser != null) {
+								Group[] groups = new Group[]{
+										DatabaseReadManager.getGroup(1)
+								};
+								return DatabaseWriteManager.setGroupsForUser(dbUser, groups);
+							}
+						}
+					} catch (NoSuchAlgorithmException exception) {
+
+					}
+				} else {
+					// required Textfields are empty
+				}
+				return false;
 			case groupMenuItem:
-				return true;
+
+				return false;
 		}
 		return false;
 	}
@@ -464,7 +576,7 @@ public class AddPresenter extends Presenter {
 			if (this.saveButtonValidation()) {
 				this.showPreviousPresenter();
 			} else {
-				// TODO: Show Popup -> cant't be saved.
+				// Can't be saved, unique field with same value or db connection error.
 			}
 		}
 	}

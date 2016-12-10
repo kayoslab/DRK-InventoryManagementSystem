@@ -101,7 +101,7 @@ public class UserManager {
 	 * @param password String
 	 * @return String
 	 */
-	private String generatePasswordHash(String password) throws NoSuchAlgorithmException {
+	public String generatePasswordHash(String password) throws NoSuchAlgorithmException {
 		// Create Instance of MessageDigest with MD5 Hash Initializer
 		MessageDigest messageDigest = MessageDigest.getInstance("MD5");
         // Cast String to md5 Byte Array
