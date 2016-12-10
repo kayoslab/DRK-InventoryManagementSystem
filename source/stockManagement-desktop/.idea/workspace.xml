@@ -43,8 +43,8 @@
       <file leaf-file-name="AddPresenter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+            <state relative-caret-position="-2749">
+              <caret line="224" column="5" lean-forward="true" selection-start-line="224" selection-start-column="5" selection-end-line="224" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -975,12 +975,12 @@
       <workItem from="1481206369182" duration="787000" />
       <workItem from="1481233252860" duration="500000" />
       <workItem from="1481296130849" duration="195000" />
-      <workItem from="1481374336642" duration="4401000" />
+      <workItem from="1481374336642" duration="5049000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106862000" />
+    <option name="totallyTimeSpent" value="107510000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1431,8 +1431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        <state relative-caret-position="-2749">
+          <caret line="224" column="5" lean-forward="true" selection-start-line="224" selection-start-column="5" selection-end-line="224" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

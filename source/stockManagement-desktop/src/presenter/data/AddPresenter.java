@@ -1,7 +1,9 @@
 package presenter.data;
 import model.DatabaseWriteManager;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.stockObjects.ConsumableMaterial;
 import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.MedicalMaterial;
 import model.databaseObjects.stockObjects.StockObject;
 import presenter.Presenter;
 
@@ -151,17 +153,17 @@ public class AddPresenter extends Presenter {
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel lblMindestbestand = new JLabel("Meldebestand");
-		lblMindestbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblMindestbestand);
+		JLabel batchSizeLabel = new JLabel("Losgröße");
+		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(batchSizeLabel);
 
-		JLabel lblSollbestand = new JLabel("Sollbestand");
-		lblSollbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblSollbestand);
+		JLabel minimumStockLabel = new JLabel("Mindestbestand");
+		minimumStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(minimumStockLabel);
 
-		JLabel lblChargennummer = new JLabel("Chargennummer");
-		lblChargennummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblChargennummer);
+		JLabel quotaStockLabel = new JLabel("Sollbestand");
+		quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(quotaStockLabel);
 
 		JLabel lblOptionalerText = new JLabel("optionaler Text");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
@@ -228,17 +230,17 @@ public class AddPresenter extends Presenter {
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel lblMindestbestand = new JLabel("Meldebestand");
-		lblMindestbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblMindestbestand);
+		JLabel batchSizeLabel = new JLabel("Losgröße");
+		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(batchSizeLabel);
 
-		JLabel lblSollbestand = new JLabel("Sollbestand");
-		lblSollbestand.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblSollbestand);
+		JLabel minimumStockLabel = new JLabel("Mindestbestand");
+		minimumStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(minimumStockLabel);
 
-		JLabel lblChargennummer = new JLabel("Chargennummer");
-		lblChargennummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblChargennummer);
+		JLabel quotaStockLabel = new JLabel("Sollbestand");
+		quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(quotaStockLabel);
 
 		JLabel lblOptionalerText = new JLabel("optionaler Text");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
@@ -410,14 +412,40 @@ public class AddPresenter extends Presenter {
 						Device device = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
 						return DatabaseWriteManager.createObject(device);
 					} catch (ParseException e) {
-						System.out.println(e.getMessage());
+						// System.out.println(e.getMessage());
 						return false;
 					}
 				}
 				return false;
 			case medicalMaterialMenuItem:
+				if (this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					try {
+						int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+						int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
+						int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
+						MedicalMaterial medicalMaterial = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
+						return DatabaseWriteManager.createObject(medicalMaterial);
+					} catch (ParseException e) {
+						// System.out.println(e.getMessage());
+						return false;
+					}
+				}
 				return true;
 			case consumableMaterialMenuItem:
+				if (this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					try {
+						int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+						int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
+						int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
+						ConsumableMaterial consumableMaterial = new ConsumableMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
+						return DatabaseWriteManager.createObject(consumableMaterial);
+					} catch (ParseException e) {
+						// System.out.println(e.getMessage());
+						return false;
+					}
+				}
 				return true;
 			case locationMenuItem:
 				return true;
