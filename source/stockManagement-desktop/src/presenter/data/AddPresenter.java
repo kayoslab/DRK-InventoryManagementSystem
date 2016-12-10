@@ -9,7 +9,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class AddPresenter extends Presenter {
-	DatabaseObject.ModificationType modificationType;
+	public DatabaseObject.ModificationType modificationType;
+	private JTextField textField1;
+	private JTextField textField2;
+	private JTextField textField3;
+	private JTextField textField4;
+
+	private JTextArea textArea;
+
+	private JButton saveButton;
 
 	/**
 	 * Create the application.
@@ -93,21 +101,21 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(lblOptionalerText);
 
 		/******** Eingabe ********/
-		JTextField textField = new JTextField();
-		textField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		this.textField1 = new JTextField();
+		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField1);
+		this.textField1.setColumns(10);
 
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		this.textField2 = new JTextField();
+		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField2);
+		this.textField2.setColumns(10);
 
-		JTextField textField_2 = new JTextField();
-		textField_2.setEditable(true);
-		textField_2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		this.textField3 = new JTextField();
+		this.textField3.setEditable(true);
+		this.textField3.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		frame.getContentPane().add(this.textField3);
+		this.textField3.setColumns(10);
 
 		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*3);
 		// TextArea textArea = new TextArea();
@@ -117,25 +125,25 @@ public class AddPresenter extends Presenter {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
 		this.frame.getContentPane().add(scrollPane);
-		JTextArea descriptionArea = new JTextArea();
+		this.textArea = new JTextArea();
 		// descriptionArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		// descriptionArea.setText("Beschreibung");
-		descriptionArea.setLineWrap(true);
-		descriptionArea.setWrapStyleWord(true);
-		descriptionArea.setEditable(true);
-		scrollPane.setViewportView(descriptionArea);
+		this.textArea.setLineWrap(true);
+		this.textArea.setWrapStyleWord(true);
+		this.textArea.setEditable(true);
+		scrollPane.setViewportView(this.textArea);
 
 		// Add key listener to change the TAB behavior in
 		// JTextArea to transfer focus to other component forward
 		// or backward.
-		descriptionArea.addKeyListener(new KeyAdapter() {
+		this.textArea.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
 					if (e.getModifiers() > 0) {
-						descriptionArea.transferFocusBackward();
+						textArea.transferFocusBackward();
 					} else {
-						descriptionArea.transferFocus();
+						textArea.transferFocus();
 					}
 					e.consume();
 				}
@@ -144,9 +152,9 @@ public class AddPresenter extends Presenter {
 
 
 		/******** Buttons ********/
-		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		frame.getContentPane().add(btnSpeichern);
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		frame.getContentPane().add(this.saveButton);
 	}
 
 	private void setupMedicalMaterialMenuItem() {
@@ -172,35 +180,57 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(lblOptionalerText);
 
 		/******** Eingabe ********/
-		JTextField textField = new JTextField();
-		textField.setBounds(367, 160, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		this.textField1 = new JTextField();
+		this.textField1.setBounds(367, 160, 182, 28);
+		frame.getContentPane().add(this.textField1);
+		this.textField1.setColumns(10);
 
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(367, 214, 182, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		this.textField2 = new JTextField();
+		this.textField2.setBounds(367, 214, 182, 28);
+		frame.getContentPane().add(this.textField2);
+		this.textField2.setColumns(10);
 
-		JTextField textField_4 = new JTextField();
-		textField_4.setBounds(228, 300, 134, 28);
-		frame.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
+		this.textField3 = new JTextField();
+		this.textField3.setBounds(228, 300, 134, 28);
+		frame.getContentPane().add(this.textField3);
+		this.textField3.setColumns(10);
 
-		JTextField textField_5 = new JTextField();
-		textField_5.setBounds(536, 300, 134, 28);
-		frame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		this.textField4 = new JTextField();
+		this.textField4.setBounds(536, 300, 134, 28);
+		frame.getContentPane().add(this.textField4);
+		this.textField4.setColumns(10);
 
-		TextArea textArea = new TextArea();
-		textArea.setBounds(367, 386, 182, 103);
-		frame.getContentPane().add(textArea);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(367, 386, 182, 103);
+		this.frame.getContentPane().add(scrollPane);
+		this.textArea = new JTextArea();
+		this.textArea.setLineWrap(true);
+		this.textArea.setWrapStyleWord(true);
+		this.textArea.setEditable(true);
+		scrollPane.setViewportView(this.textArea);
+
+		// Add key listener to change the TAB behavior in
+		// JTextArea to transfer focus to other component forward
+		// or backward.
+		this.textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_TAB) {
+					if (e.getModifiers() > 0) {
+						textArea.transferFocusBackward();
+					} else {
+						textArea.transferFocus();
+					}
+					e.consume();
+				}
+			}
+		});
 
 		/******** Buttons ********/
-		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(357, 518, 117, 29);
-		frame.getContentPane().add(btnSpeichern);
-		btnSpeichern.addActionListener(this);
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(357, 518, 117, 29);
+		frame.getContentPane().add(this.saveButton);
+		this.saveButton.addActionListener(this);
 	}
 
 	private void setupConsumableMaterialMenuItem() {
@@ -226,34 +256,56 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(lblChargennummer);
 
 		/******** Eingabe ********/
-		JTextField textField = new JTextField();
-		textField.setBounds(367, 160, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		this.textField1 = new JTextField();
+		this.textField1.setBounds(367, 160, 182, 28);
+		frame.getContentPane().add(this.textField1);
+		this.textField1.setColumns(10);
 
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(367, 214, 182, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		this.textField2 = new JTextField();
+		this.textField2.setBounds(367, 214, 182, 28);
+		frame.getContentPane().add(this.textField2);
+		this.textField2.setColumns(10);
 
-		JTextField textField_4 = new JTextField();
-		textField_4.setBounds(228, 300, 134, 28);
-		frame.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
+		this.textField3 = new JTextField();
+		this.textField3.setBounds(228, 300, 134, 28);
+		frame.getContentPane().add(this.textField3);
+		this.textField3.setColumns(10);
 
-		JTextField textField_5 = new JTextField();
-		textField_5.setBounds(536, 300, 134, 28);
-		frame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		this.textField4 = new JTextField();
+		this.textField4.setBounds(536, 300, 134, 28);
+		frame.getContentPane().add(this.textField4);
+		this.textField4.setColumns(10);
 
-		TextArea textArea = new TextArea();
-		textArea.setBounds(367, 386, 182, 103);
-		frame.getContentPane().add(textArea);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(367, 386, 182, 103);
+		this.frame.getContentPane().add(scrollPane);
+		this.textArea = new JTextArea();
+		this.textArea.setLineWrap(true);
+		this.textArea.setWrapStyleWord(true);
+		this.textArea.setEditable(true);
+		scrollPane.setViewportView(this.textArea);
+
+		// Add key listener to change the TAB behavior in
+		// JTextArea to transfer focus to other component forward
+		// or backward.
+		this.textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_TAB) {
+					if (e.getModifiers() > 0) {
+						textArea.transferFocusBackward();
+					} else {
+						textArea.transferFocus();
+					}
+					e.consume();
+				}
+			}
+		});
 
 		/******** Buttons ********/
-		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(357, 518, 117, 29);
-		frame.getContentPane().add(btnSpeichern);
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(357, 518, 117, 29);
+		frame.getContentPane().add(this.saveButton);
 	}
 
 	private void setupLocationMenuItem() {
@@ -269,10 +321,10 @@ public class AddPresenter extends Presenter {
 		textField.setColumns(10);
 
 		/******** Buttons ********/
-		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(329, 355, 117, 29);
-		frame.getContentPane().add(btnSpeichern);
-		btnSpeichern.addActionListener(this);
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(329, 355, 117, 29);
+		frame.getContentPane().add(this.saveButton);
+		this.saveButton.addActionListener(this);
 	}
 
 	private void setupUserMenuItem() {
@@ -290,26 +342,21 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(lblGruppe);
 
 		/******** Eingabe ********/
-		JTextField textField = new JTextField();
-		textField.setBounds(361, 241, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		this.textField1 = new JTextField();
+		this.textField1.setBounds(361, 241, 182, 28);
+		frame.getContentPane().add(this.textField1);
+		this.textField1.setColumns(10);
 
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(361, 291, 182, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(361, 346, 182, 27);
-		frame.getContentPane().add(comboBox);
-		comboBox.addItem("Bitte auswählen...");
+		this.textField2 = new JTextField();
+		this.textField2.setBounds(361, 291, 182, 28);
+		frame.getContentPane().add(this.textField2);
+		this.textField2.setColumns(10);
 
 		/******** Buttons ********/
-		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(343, 434, 117, 29);
-		frame.getContentPane().add(btnSpeichern);
-		btnSpeichern.addActionListener(this);
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(343, 434, 117, 29);
+		frame.getContentPane().add(this.saveButton);
+		this.saveButton.addActionListener(this);
 	}
 
 	private void setupGroupMenuItem() {
@@ -327,51 +374,21 @@ public class AddPresenter extends Presenter {
 		frame.getContentPane().add(lblGrupenberechtigung);
 
 		/******** Eingabe ********/
-		JTextField textField = new JTextField();
-		textField.setBounds(382, 125, 182, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		this.textField1 = new JTextField();
+		this.textField1.setBounds(382, 125, 182, 28);
+		frame.getContentPane().add(this.textField1);
+		this.textField1.setColumns(10);
 
-		JTextField textField_1 = new JTextField();
-		textField_1.setBounds(382, 171, 182, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-
-		JCheckBox chckbxMedizinischeMaterialienHinzufgen = new JCheckBox("Medizinische Materialien hinzuf\u00FCgen");
-		chckbxMedizinischeMaterialienHinzufgen.setBounds(382, 235, 195, 23);
-		chckbxMedizinischeMaterialienHinzufgen.setBackground(Color.WHITE);
-		frame.getContentPane().add(chckbxMedizinischeMaterialienHinzufgen);
-
-		JCheckBox chckbxMedizinischeMaterialienBearbeiten = new JCheckBox("Medizinische Materialien bearbeiten");
-		chckbxMedizinischeMaterialienBearbeiten.setBounds(382, 260, 195, 23);
-		chckbxMedizinischeMaterialienBearbeiten.setBackground(Color.WHITE);
-		frame.getContentPane().add(chckbxMedizinischeMaterialienBearbeiten);
-
-		JCheckBox chckbxBetreuungsmaterialienHinzufgen = new JCheckBox("Betreuungsmaterialien hinzuf\u00FCgen");
-		chckbxBetreuungsmaterialienHinzufgen.setBounds(382, 286, 189, 23);
-		chckbxBetreuungsmaterialienHinzufgen.setBackground(Color.WHITE);
-		frame.getContentPane().add(chckbxBetreuungsmaterialienHinzufgen);
-
-		JCheckBox chckbxBetreuungsmaterialienBearbeiten = new JCheckBox("Betreuungsmaterialien bearbeiten");
-		chckbxBetreuungsmaterialienBearbeiten.setBounds(382, 312, 187, 23);
-		chckbxBetreuungsmaterialienBearbeiten.setBackground(Color.WHITE);
-		frame.getContentPane().add(chckbxBetreuungsmaterialienBearbeiten);
-
-		JCheckBox chckbxGerteHinzufgen = new JCheckBox("Ger\u00E4te hinzuf\u00FCgen");
-		chckbxGerteHinzufgen.setBounds(382, 338, 115, 23);
-		chckbxGerteHinzufgen.setBackground(Color.WHITE);
-		frame.getContentPane().add(chckbxGerteHinzufgen);
-
-		JCheckBox chckbxGerteBearbeiten = new JCheckBox("Ger\u00E4te bearbeiten");
-		chckbxGerteBearbeiten.setBounds(382, 364, 113, 23);
-		chckbxGerteBearbeiten.setBackground(Color.WHITE);
-		frame.getContentPane().add(chckbxGerteBearbeiten);
+		this.textField2 = new JTextField();
+		this.textField2.setBounds(382, 171, 182, 28);
+		frame.getContentPane().add(this.textField2);
+		this.textField2.setColumns(10);
 
 		/******** Buttons ********/
-		JButton btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(382, 419, 117, 29);
-		frame.getContentPane().add(btnSpeichern);
-		btnSpeichern.addActionListener(this);
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(382, 419, 117, 29);
+		frame.getContentPane().add(this.saveButton);
+		this.saveButton.addActionListener(this);
 	}
 
 	@Override
