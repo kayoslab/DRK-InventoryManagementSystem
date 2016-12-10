@@ -9,11 +9,11 @@
                 $sql = "SELECT `sv`.`id`,`so`.`id` as `object`, `so`.`title`, `sv`.`volume`, `lo`.`title` as `location`, `sv`.`messageId`, `so`.`typeId` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) INNER JOIN `Location` `lo` ON (`sv`.`locationId` = `lo`.`id`)  ORDER BY `so`.`typeId` ASC;";
                 $result = mysql_query($sql);
                 if ($result && mysql_num_rows($result) > 0) {
-                    echo "<div class=\"panel panel-primary\"> \n";
+                    echo "<div class=\"panel panel-default\"> \n";
                     echo "<div class=\"panel-heading\"> \n";
                     echo "<h3 class=\"panel-title\">Inventar</h3> \n";
                     echo "</div> \n";
-                    echo "<table class=\"table table-bordered\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
+                    echo "<table class=\"table table-bordered table-hover\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
                     echo "<colgroup>\n";
                     echo "<col width=\"35%\" />\n";
                     echo "<col width=\"35%\" />\n";

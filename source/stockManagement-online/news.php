@@ -30,6 +30,26 @@
                             echo "</br> \n";
                             echo "<b>E-Mail:</b> " . $row['mail'] . " \n";
                             echo "</br> \n";
+                            $sql = "SELECT `group` FROM `UserIsMemberOfGroup` WHERE  `user` = " . $_SESSION['userId'] . " ORDER BY `group` DESC;";
+                            $result = mysql_query($sql);
+                            if ($result && mysql_num_rows($result) > 0) {
+                                $roll = "User";
+                                while ($groupMember = mysql_fetch_array($result)) {
+                                    if ($groupMember['group'] = 5) {
+                                        $roll = "Versorgungs-verantwortlich";
+                                    }
+                                    if ($groupMember['group'] = 4) {
+                                        $roll = "MedMat-verantwortlich";
+                                    }
+                                    if ($groupMember['group'] = 3) {
+                                        $roll = "Geräte-verantwortlich";
+                                    }
+                                    if ($groupMember['group'] = 2) {
+                                        $roll = "Admin";
+                                    }
+                                }
+                                echo "<b>Rolle:</b> " . $roll . " \n";
+                            }
                             echo "</br> \n";
                         echo "</div> \n";
                     echo "</div> \n";

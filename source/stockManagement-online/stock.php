@@ -44,7 +44,7 @@
                 WHERE `so`.`typeId` = " . $_GET['type'] ." ORDER BY `so`.`id` ASC;";
                 $result = mysql_query($sql);
                 if ($result && mysql_num_rows($result) > 0) {
-                    echo "<div class=\"panel panel-primary\"> \n";
+                    echo "<div class=\"panel panel-default\"> \n";
                     echo "<div class=\"panel-heading\"> \n";
 
                     switch ($_GET['type']) {
@@ -61,7 +61,7 @@
                         break;
                     }
                     echo "</div> \n";
-                    echo "<table class=\"table table-bordered\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
+                    echo "<table class=\"table table-bordered table-hover\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
                     echo "<colgroup>\n";
                     echo "<col width=\"10%\" />\n";
                     echo "<col width=\"30%\" />\n";
