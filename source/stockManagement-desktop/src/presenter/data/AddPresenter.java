@@ -36,6 +36,7 @@ public class AddPresenter extends Presenter implements MouseListener {
 	/** Areas **/
 	private JTextArea textArea;
 	private JTable table;
+	private JComboBox booleanCombobox;
 	/** Buttons **/
 	private JButton saveButton;
 
@@ -439,10 +440,13 @@ public class AddPresenter extends Presenter implements MouseListener {
 		frame.getContentPane().add(this.textField1);
 		this.textField1.setColumns(10);
 
-		this.textField2 = new JTextField();
-		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-		frame.getContentPane().add(this.textField2);
-		this.textField2.setColumns(10);
+		this.booleanCombobox = new JComboBox();
+		this.booleanCombobox.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		this.booleanCombobox.addItem("Aktiviert");
+		this.booleanCombobox.addItem("Deaktiviert");
+		this.frame.getContentPane().add(booleanCombobox);
+		// needs to be called after adding the Items
+		this.booleanCombobox.addActionListener(this);
 
 		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*2);
 		JScrollPane scrollPane = new JScrollPane();
@@ -578,7 +582,34 @@ public class AddPresenter extends Presenter implements MouseListener {
 				}
 				return false;
 			case groupMenuItem:
-
+				if (this.textField1.getText().length() > 0) {
+					Boolean comboboxState = true;
+					if (this.booleanCombobox.getSelectedIndex() == 1) {
+						comboboxState = false;
+					}
+					Group group = new Group(0, this.textField1.getText(), comboboxState);
+					if (DatabaseWriteManager.createObject(group)) {
+						Group dbGroup = DatabaseReadManager.getGroup(group.title);
+						if (dbGroup != null) {
+							ArrayList<GroupRight> groupRights = new ArrayList<>();
+							DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
+							int nRow = dtm.getRowCount();
+							for (int i = 1 ; i <= nRow ; i++) {
+								Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+								if (selected) {
+									GroupRight groupRight = DatabaseReadManager.getGroupRight(i);
+									if (groupRight != null) {
+										groupRights.add(groupRight);
+									}
+								}
+							}
+							GroupRight[] groupRightsArray = groupRights.toArray(new GroupRight[groupRights.size()]);
+							return DatabaseWriteManager.setGroupRights(dbGroup, groupRightsArray);
+						}
+					}
+				} else {
+					// required Textfields are empty
+				}
 				return false;
 		}
 		return false;

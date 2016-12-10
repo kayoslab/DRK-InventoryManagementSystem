@@ -42,10 +42,52 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-                    users[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
-    						rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
-                    i++;
-                }   
+					users[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
+							rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
+					i++;
+				}
+				DatabaseReadManager.close(rs);
+				return users;
+			}
+			DatabaseReadManager.close(rs);
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * Get Responsible Users for
+	 * @return User[]
+	 */
+	public static User[] getUsers(Group group) {
+		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
+				+ " FROM `User`, `UserIsMemberOfGroup`" +
+				" WHERE `UserIsMemberOfGroup`.`group` = " + group.id +
+				" AND `UserIsMemberOfGroup`.`user` = `User`.`id`;";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.last()) {
+				User[] users = new User[rs.getRow()];
+				int i = 0;
+				// fill with reasonable Data
+				rs.beforeFirst();
+				while (rs.next()) {
+					users[i] = new User(rs.getInt("id"), rs.getString("username"), rs.getString("firstname"), rs.getString("name"),
+							rs.getString("mail"), rs.getString("password"), rs.getBoolean("passwordChanged"));
+					i++;
+				}
 				return users;
 			}
 			return null;
@@ -62,7 +104,6 @@ public final class DatabaseReadManager {
 			return null;
 		}
 	}
-
 
 	/**
 	 * @param id int user.id
@@ -83,6 +124,7 @@ public final class DatabaseReadManager {
 				DatabaseReadManager.close(rs);
 				return user;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -117,6 +159,7 @@ public final class DatabaseReadManager {
 				DatabaseReadManager.close(rs);
 				return user;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -153,6 +196,7 @@ public final class DatabaseReadManager {
 				DatabaseReadManager.close(rs);
 				return changed;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -191,9 +235,10 @@ public final class DatabaseReadManager {
                     groups[i] = new Group(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isActive"));
                     i++;
 				}
-				// fill with reasonable Data
+				DatabaseReadManager.close(rs);
 				return groups;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -221,8 +266,43 @@ public final class DatabaseReadManager {
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {
 				// fill with reasonable Data
-				return new Group(rs.getInt("id"),rs.getString("title"),rs.getBoolean("isActive"));
+				Group group = new Group(rs.getInt("id"),rs.getString("title"),rs.getBoolean("isActive"));
+				DatabaseReadManager.close(rs);
+				return group;
 			}
+			DatabaseReadManager.close(rs);
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param title String group.title
+	 * @return Group
+	 */
+	public static Group getGroup(String title) {
+		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM `Group` WHERE `title` = '" + title + "';";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				// fill with reasonable Data
+				Group group = new Group(rs.getInt("id"),rs.getString("title"),rs.getBoolean("isActive"));
+				DatabaseReadManager.close(rs);
+				return group;
+			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -260,9 +340,11 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
                     i++;
-                }   
+                }
+				DatabaseReadManager.close(rs);
 				return groupRights;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -299,9 +381,42 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
                     i++;
-                }   				
+                }
+				DatabaseReadManager.close(rs);
 				return groupRights;
 			}
+			DatabaseReadManager.close(rs);
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @param id int groupRight.id
+	 * @return GroupRight[]
+	 */
+	public static GroupRight getGroupRight(int id) {
+		String sqlStatement = "SELECT `id`, `title` FROM `GroupRight` WHERE `id` = " + id + ";";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				GroupRight groupRight = new GroupRight(rs.getInt("id"), rs.getString("title"));
+				DatabaseReadManager.close(rs);
+				return groupRight;
+			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -339,9 +454,11 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					locations[i] = new Location(rs.getInt("id"), rs.getString("title"));
                     i++;
-                }   				
+                }
+				DatabaseReadManager.close(rs);
 				return locations;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -368,9 +485,11 @@ public final class DatabaseReadManager {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
 			if (rs.first()) {				
-				Location location = new Location(rs.getInt("id"), rs.getString("title"));	
+				Location location = new Location(rs.getInt("id"), rs.getString("title"));
+				DatabaseReadManager.close(rs);
 				return location;
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -404,7 +523,8 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					locations[i] = new Location(rs.getInt("id"), rs.getString("title"));
                     i++;
-                }   		
+                }
+				DatabaseReadManager.close(rs);
 				return locations;
 			}
 			return null;
@@ -444,18 +564,25 @@ public final class DatabaseReadManager {
 					case 0:
 						//actual value is "empty"
 					case 1:
-						return new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
+						Device device = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 								DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+						DatabaseReadManager.close(rs);
+						return device;
 					case 2:
-						return new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
-								DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"), 
+						MedicalMaterial medicalMaterial = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
+								DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 								rs.getInt("quotaStock"));
+						DatabaseReadManager.close(rs);
+						return medicalMaterial;
 					case 3:
-						return new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
-								DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"), 
-								rs.getInt("quotaStock"));					
+						ConsumableMaterial consumableMaterial = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
+								DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
+								rs.getInt("quotaStock"));
+						DatabaseReadManager.close(rs);
+						return 	consumableMaterial;
 				}
 			}
+			DatabaseReadManager.close(rs);
 			return null;
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
@@ -505,6 +632,7 @@ public final class DatabaseReadManager {
 					}
 					i++;
 				}
+				DatabaseReadManager.close(rs);
 				return stockObjects;
 			}
 			return null;
@@ -560,6 +688,7 @@ public final class DatabaseReadManager {
 					}
 					i++;
 				}
+				DatabaseReadManager.close(rs);
 				return stockObjects;
 			}
 			return null;
@@ -615,6 +744,7 @@ public final class DatabaseReadManager {
 					}
 					i++;
 				}
+				DatabaseReadManager.close(rs);
 				return stockObjectValues;
 			}
 			return null;
@@ -667,6 +797,7 @@ public final class DatabaseReadManager {
 					}
 					i++;
 				}
+				DatabaseReadManager.close(rs);
 				return stockObjectValues;
 			}
 			return null;
@@ -718,6 +849,7 @@ public final class DatabaseReadManager {
 					}
 					i++;
 				}
+				DatabaseReadManager.close(rs);
 				return stockObjectValues;
 			}
 			return null;
@@ -769,6 +901,7 @@ public final class DatabaseReadManager {
 					}
 					i++;
 				}
+				DatabaseReadManager.close(rs);
 				return stockObjectValues;
 			}
 			return null;

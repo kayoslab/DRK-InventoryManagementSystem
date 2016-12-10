@@ -261,7 +261,7 @@ public final class DatabaseWriteManager {
 	 */
 	public static Boolean setGroupRights(Group group, GroupRight[] groupRights) {
 		String sqlDelete = "DELETE FROM `GroupHasRights` WHERE `group` = "
-				+ group.id + "; ";
+				+ group.id + ";";
 		DatabaseWriteManager.executeUpdate(sqlDelete);
 		String sqlStatement = "INSERT INTO `GroupHasRights` VALUES";
 		for(GroupRight groupRight:groupRights){
