@@ -37,13 +37,7 @@
 
             if (isset($_GET['type'])) {
                 include 'connect.php';
-                $sql = "SELECT `id`, `firstname`, `name` FROM `User` WHERE `id` = " . $_SESSION['userId'] . ";";
-                $result = mysql_query($sql);
-                $row = mysql_fetch_array($result);
-                if ($result) {
-                    echo 'Eingeloggt als: ' . $row['firstname'] . ' ' . $row['name'];
-                }
-                echo "</br> \n </br> \n </br> \n";
+                echo "</br> \n </br> \n";
 
                 $sql = "SELECT `so`.`id`, `so`.`title`, `so`.`totalVolume`, `so`.`typeId`, `so`.`mtkIntervall`, `so`.`stkIntervall`, `so`.`minimumStock`, `so`.`quotaStock`
                 FROM `StockObject` `so`

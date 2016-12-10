@@ -4,13 +4,37 @@
         </br>
         <?php
                 include 'connect.php';
-                $sql = "SELECT `id`, `firstname`, `name` FROM `User` WHERE `id` = " . $_SESSION['userId'] . ";";
+                $sql = "SELECT `id`, `firstname`, `name`, `username`, `mail` FROM `User` WHERE `id` = " . $_SESSION['userId'] . ";";
                 $result = mysql_query($sql);
                 $row = mysql_fetch_array($result);
                 if ($result) {
-                    echo 'Eingeloggt als: ' . $row['firstname'] . ' ' . $row['name'];
+
                 }
-                echo "</br> \n </br> \n </br> \n";
+                echo "</br> \n </br> \n";
+                echo "<div class=\"panel panel-info\"> \n";
+                echo "<div class=\"panel-heading\"> \n";
+                echo "<h3 class=\"panel-title\">Benutzerdaten</h3> \n";
+                echo "</div> \n";
+                    echo "<div class=\"row\"> \n";
+                        echo "<div class=\"col-md-4 col-md-offset-1\"> \n";
+                            echo "</br> \n";
+                            echo "<b>Eingeloggt als:</b> " . $row['username'] . " \n";
+                            echo "</br> \n";
+                            echo "<b>Vorname:</b> " . $row['firstname'] . " \n";
+                            echo "</br> \n";
+                            echo "<b>Nachname:</b> " . $row['name'] . " \n";
+                            echo "</br> \n";
+                            echo "</br> \n";
+                        echo "</div> \n";
+                        echo "<div class=\"col-md-4 col-md-offset-2\"> \n";
+                            echo "</br> \n";
+                            echo "<b>E-Mail:</b> " . $row['mail'] . " \n";
+                            echo "</br> \n";
+                            echo "</br> \n";
+                        echo "</div> \n";
+                    echo "</div> \n";
+                echo "</div> \n";
+
                 include 'newsDanger.php';
                 include 'newsWarnings.php';
         ?>

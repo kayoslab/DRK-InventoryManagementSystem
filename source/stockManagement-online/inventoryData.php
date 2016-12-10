@@ -4,13 +4,7 @@
         </br>
         <?php
                 include 'connect.php';
-                $sql = "SELECT `id`, `firstname`, `name` FROM `User` WHERE `id` = " . $_SESSION['userId'] . ";";
-                $result = mysql_query($sql);
-                $row = mysql_fetch_array($result);
-                if ($result) {
-                    echo 'Eingeloggt als: ' . $row['firstname'] . ' ' . $row['name'];
-                }
-                echo "</br> \n </br> \n </br> \n";
+                echo "</br> \n </br> \n";
 
                 $sql = "SELECT `sv`.`id`,`so`.`id` as `object`, `so`.`title`, `sv`.`volume`, `lo`.`title` as `location`, `sv`.`messageId`, `so`.`typeId` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) INNER JOIN `Location` `lo` ON (`sv`.`locationId` = `lo`.`id`)  ORDER BY `so`.`typeId` ASC;";
                 $result = mysql_query($sql);

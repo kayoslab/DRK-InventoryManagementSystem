@@ -10,7 +10,7 @@
                 if ($result) {
                     echo 'Eingeloggt als: ' . $row['firstname'] . ' ' . $row['name'];
                 }
-                echo "</br> \n </br> \n </br> \n";
+                echo "</br> \n </br> \n";
 
                 $sql = "SELECT
                         `sv`.`id`,
@@ -27,7 +27,7 @@
                 $result = mysql_query($sql);
                 $row = mysql_fetch_array($result);
                 if ($result) {
-                    
+
                 }
         ?>
     </div> <!-- /container -->
