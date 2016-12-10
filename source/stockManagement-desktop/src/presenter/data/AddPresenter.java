@@ -20,6 +20,9 @@ import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class AddPresenter extends Presenter implements MouseListener {
 	/** Reusable AddPresenter modType **/
@@ -392,6 +395,7 @@ public class AddPresenter extends Presenter implements MouseListener {
 		Object columnNames[] = { "Gruppe", "Hinzufügen"};
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		Group[] groups = DatabaseReadManager.getGroups();
+		Arrays.sort(groups, Comparator.comparingInt(a -> a.id));
 		if (groups != null) {
 			for (Group group : groups) {
 				if (group.id == 1) {
@@ -452,6 +456,7 @@ public class AddPresenter extends Presenter implements MouseListener {
 		Object columnNames[] = { "Recht", "Hinzufügen"};
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		GroupRight[] groupRights = DatabaseReadManager.getGroupRights();
+		Arrays.sort(groupRights, Comparator.comparingInt(a -> a.id));
 		if (groupRights != null) {
 			for (GroupRight groupRight : groupRights) {
 				if (groupRight.title.equals("login") || groupRight.title.equals("editSelf")) {
@@ -549,10 +554,20 @@ public class AddPresenter extends Presenter implements MouseListener {
 						if (DatabaseWriteManager.createObject(user)) {
 							User dbUser = DatabaseReadManager.getUser(this.textField1.getText());
 							if (dbUser != null) {
-								Group[] groups = new Group[]{
-										DatabaseReadManager.getGroup(1)
-								};
-								return DatabaseWriteManager.setGroupsForUser(dbUser, groups);
+								ArrayList<Group> groups = new ArrayList<>();
+								DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
+								int nRow = dtm.getRowCount();
+								for (int i = 1 ; i <= nRow ; i++) {
+									Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+									if (selected) {
+										Group group = DatabaseReadManager.getGroup(i);
+										if (group != null) {
+											groups.add(group);
+										}
+									}
+								}
+								Group[] groupsArray = groups.toArray(new Group[groups.size()]);
+								return DatabaseWriteManager.setGroupsForUser(dbUser, groupsArray);
 							}
 						}
 					} catch (NoSuchAlgorithmException exception) {

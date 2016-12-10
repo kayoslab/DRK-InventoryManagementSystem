@@ -176,18 +176,26 @@ public final class DatabaseWriteManager {
 	 *
 	 */
 	public static Boolean setGroupsForUser(User user, Group[] groups) {
-		String sqlDelete = "DELETE FROM `UserIsMemberOfGroup` WHERE `user` = "
-				+ user.id + "; ";
+		String sqlDelete = "DELETE FROM `UserIsMemberOfGroup` WHERE `user` = " + user.id + ";";
 		DatabaseWriteManager.executeUpdate(sqlDelete);
-		String sqlStatement = "INSERT INTO `UserIsMemberOfGroup` VALUES";
-		for(Group group:groups){
-			sqlStatement += "(" + user.id + "," + group.id + "),";
+
+		if (groups != null && user != null) {
+			System.out.println("Deletion true");
+			String sqlStatement = "INSERT INTO `UserIsMemberOfGroup` VALUES";
+			for(Group group:groups){
+				sqlStatement += "(" + user.id + "," + group.id + "),";
+			}
+
+			if (sqlStatement.charAt(sqlStatement.length()-1) == ',' ){
+				sqlStatement = sqlStatement.substring(0, sqlStatement.length()-1);
+			}
+			sqlStatement += ";";
+			return DatabaseWriteManager.executeUpdate(sqlStatement);
+		} else {
+			System.out.println("Deletion false");
 		}
-		if (sqlStatement.charAt(sqlStatement.length()-1) == ',' ){
-			sqlStatement = sqlStatement.substring(0, sqlStatement.length()-1);
-		}
-		sqlStatement += ";";
-		return DatabaseWriteManager.executeUpdate(sqlStatement);
+
+		return false;
 	}
 
 	//================================================================================
