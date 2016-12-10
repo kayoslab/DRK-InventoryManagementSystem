@@ -10,7 +10,7 @@ Einfaches Import Script, welches aus gegebenen .csv Dateien einen SQL-Insert Auf
 
 ## stockManagement-online
 
-Testimplementierung einer Webseite zum Login, welcher ggf. eine komplette Inventarliste anzeigen könnte.
+Implementierung einer Webseite, welche eine komplette Inventarliste anzeigt und die Möglichkeit bietet nähere Details zu gelagerten Objekten einzusehen.
 
 ## stockManagement-worker
 

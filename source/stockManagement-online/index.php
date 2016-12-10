@@ -4,8 +4,8 @@
 ?>
 <html lang="en">
 <!DOCTYPE html>
-    <?php include 'head.php'; ?>
     <?php
+        include 'head.php';
         $msg = '';
         if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['password'])) {
             include 'connect.php';

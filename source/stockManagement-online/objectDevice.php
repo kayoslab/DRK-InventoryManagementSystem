@@ -18,7 +18,7 @@
                 if ($result) {
                     echo "<div class=\"panel panel-info\"> \n";
                     echo "<div class=\"panel-heading\"> \n";
-                    echo "<h3 class=\"panel-title\">Benutzerdaten</h3> \n";
+                    echo "<h3 class=\"panel-title\">Gerätedaten</h3> \n";
                     echo "</div> \n";
                         echo "<div class=\"row\"> \n";
                             echo "<div class=\"col-md-4 col-md-offset-1\"> \n";
