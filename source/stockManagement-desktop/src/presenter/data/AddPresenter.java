@@ -463,13 +463,8 @@ public class AddPresenter extends Presenter implements MouseListener {
 		Arrays.sort(groupRights, Comparator.comparingInt(a -> a.id));
 		if (groupRights != null) {
 			for (GroupRight groupRight : groupRights) {
-				if (groupRight.title.equals("login") || groupRight.title.equals("editSelf")) {
-					Object row[] = { groupRight.title,  true };
-					model.addRow(row);
-				} else {
-					Object row[] = { groupRight.title,  false };
-					model.addRow(row);
-				}
+				Object row[] = { groupRight.title,  false };
+				model.addRow(row);
 			}
 		}
 		this.table.setModel(model);
