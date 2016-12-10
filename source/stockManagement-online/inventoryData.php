@@ -11,6 +11,54 @@
                     echo 'Eingeloggt als: ' . $row['firstname'] . ' ' . $row['name'];
                 }
                 echo "</br> \n </br> \n </br> \n";
+
+                $sql = "SELECT `sv`.`id`,`so`.`id` as `object`, `so`.`title`, `sv`.`volume`, `lo`.`title` as `location`, `sv`.`messageId`, `so`.`typeId` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) INNER JOIN `Location` `lo` ON (`sv`.`locationId` = `lo`.`id`)  ORDER BY `so`.`typeId` ASC;";
+                $result = mysql_query($sql);
+                if ($result && mysql_num_rows($result) > 0) {
+                    echo "<div class=\"panel panel-primary\"> \n";
+                    echo "<div class=\"panel-heading\"> \n";
+                    echo "<h3 class=\"panel-title\">Inventar</h3> \n";
+                    echo "</div> \n";
+                    echo "<table class=\"table table-bordered\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
+                    echo "<colgroup>\n";
+                    echo "<col width=\"35%\" />\n";
+                    echo "<col width=\"35%\" />\n";
+                    echo "<col width=\"10%\" />\n";
+                    echo "<col width=\"20%\" />\n";
+                    echo "</colgroup>";
+                    echo "<tr><th>Titel</th> <th>Lagerort</th> <th>Bestand</th> <th>Art</th> </tr> \n";
+                    $type = array("Gerät", "Medizinisches Material", "Versorgungsmaterial");
+                    while ($stockValue = mysql_fetch_array($result)) {
+                        switch ($stockValue['messageId']) {
+                        case 2:
+                            echo "<tr class=\"warning\">" .
+                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>" .
+                            "<td>" . $stockValue['location'] . "</td>".
+                            "<td>" . $stockValue['volume'] . "</td>".
+                            "<td><a href=\"./stock.php?type=\"" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
+                            "</td></tr> \n";
+                            break;
+                        case 3:
+                            echo "<tr class=\"danger\">" .
+                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>" .
+                            "<td>" . $stockValue['location'] . "</td>".
+                            "<td>" . $stockValue['volume'] . "</td>".
+                            "<td><a href=\"./stock.php?type=" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
+                            "</td></tr> \n";
+                            break;
+                        default:
+                            echo "<tr>" .
+                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>" .
+                            "<td>" . $stockValue['location'] . "</td>".
+                            "<td>" . $stockValue['volume'] . "</td>".
+                            "<td><a href=\"./stock.php?type=" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
+                            "</td></tr> \n";
+                            break;
+                        }
+                    }
+                    echo "</table> \n";
+                    echo "</div> \n";
+                }
         ?>
     </div> <!-- /container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="./index.php">News</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lager<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Objekte<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="./stock.php?type=1">Geräte</a></li>
                         <li><a href="./stock.php?type=2">Medizinisches Material</a></li>
