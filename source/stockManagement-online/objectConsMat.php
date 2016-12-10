@@ -7,21 +7,46 @@
                 echo "</br> \n </br> \n";
 
                 $sql = "SELECT
-                        `sv`.`id`,
-                        `so`.`id` as `object`,
+                        `so`.`id`,
                         `so`.`title`,
-                        `sv`.`volume`,
-                        `lo`.`title` as `location`,
-                        `sv`.`messageId`,
-                        `so`.`typeId`
-                        FROM `StockValue` `sv`
-                        INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`)
-                        INNER JOIN `Location` `lo` ON (`sv`.`locationId` = `lo`.`id`)
+                        `so`.`description`,
+                        `so`.`totalVolume`
+                        FROM `StockObject` `so`
                         WHERE `so`.`id` = " . $_GET['id'] . ";";
                 $result = mysql_query($sql);
                 $row = mysql_fetch_array($result);
                 if ($result) {
-
+                    echo "<div class=\"panel panel-info\"> \n";
+                    echo "<div class=\"panel-heading\"> \n";
+                    echo "<h3 class=\"panel-title\">Benutzerdaten</h3> \n";
+                    echo "</div> \n";
+                        echo "<div class=\"row\"> \n";
+                            echo "<div class=\"col-md-4 col-md-offset-1\"> \n";
+                                echo "</br> \n";
+                                echo "<b>Titel:</b> \n";
+                                echo "</br> \n";
+                                echo "</br> \n";
+                            echo "</div> \n";
+                            echo "<div class=\"col-md-4 col-md-offset-2\"> \n";
+                                echo "</br> \n";
+                                echo " " . utf8_encode($row['title']) . " \n";
+                                echo "</br> \n";
+                                echo "</br> \n";
+                            echo "</div> \n";
+                        echo "</div> \n";
+                        echo "<div class=\"row\"> \n";
+                            echo "<div class=\"col-md-4 col-md-offset-1\"> \n";
+                                echo "<b>Beschreibung:</b> \n";
+                                echo "</br> \n";
+                                echo "</br> \n";
+                            echo "</div> \n";
+                            echo "<div class=\"col-md-4 col-md-offset-2\"> \n";
+                                echo " " . utf8_encode($row['description']) . " \n";
+                                echo "</br> \n";
+                                echo "</br> \n";
+                            echo "</div> \n";
+                        echo "</div> \n";
+                    echo "</div> \n";
                 }
         ?>
     </div> <!-- /container -->

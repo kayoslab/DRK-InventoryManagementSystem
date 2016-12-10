@@ -86,7 +86,7 @@
                     while ($stockValue = mysql_fetch_array($result)) {
                         echo "<tr>".
                         "<th>" . $stockValue['id'] . "</th>" .
-                        "<td><a href=\"./object.php?id=" . $stockValue['id'] . "\">" . $stockValue['title']  . "</a></td>";
+                        "<td><a href=\"./object.php?id=" . $stockValue['id'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>";
 
                         switch ($stockValue['typeId']) {
                         case 1:

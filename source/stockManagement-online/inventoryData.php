@@ -26,24 +26,24 @@
                         switch ($stockValue['messageId']) {
                         case 2:
                             echo "<tr class=\"warning\">" .
-                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>" .
-                            "<td>" . $stockValue['location'] . "</td>".
+                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>" .
+                            "<td>" . utf8_encode($stockValue['location']) . "</td>".
                             "<td>" . $stockValue['volume'] . "</td>".
                             "<td><a href=\"./stock.php?type=\"" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
                             "</td></tr> \n";
                             break;
                         case 3:
                             echo "<tr class=\"danger\">" .
-                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>" .
-                            "<td>" . $stockValue['location'] . "</td>".
+                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>" .
+                            "<td>" . utf8_encode($stockValue['location']) . "</td>".
                             "<td>" . $stockValue['volume'] . "</td>".
                             "<td><a href=\"./stock.php?type=" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
                             "</td></tr> \n";
                             break;
                         default:
                             echo "<tr>" .
-                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>" .
-                            "<td>" . $stockValue['location'] . "</td>".
+                            "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>" .
+                            "<td>" . utf8_encode($stockValue['location']) . "</td>".
                             "<td>" . $stockValue['volume'] . "</td>".
                             "<td><a href=\"./stock.php?type=" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
                             "</td></tr> \n";

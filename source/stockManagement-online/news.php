@@ -18,33 +18,33 @@
                     echo "<div class=\"row\"> \n";
                         echo "<div class=\"col-md-4 col-md-offset-1\"> \n";
                             echo "</br> \n";
-                            echo "<b>Eingeloggt als:</b> " . $row['username'] . " \n";
+                            echo "<b>Eingeloggt als:</b> " . utf8_encode($row['username']) . " \n";
                             echo "</br> \n";
-                            echo "<b>Vorname:</b> " . $row['firstname'] . " \n";
+                            echo "<b>Vorname:</b> " . utf8_encode($row['firstname']) . " \n";
                             echo "</br> \n";
-                            echo "<b>Nachname:</b> " . $row['name'] . " \n";
+                            echo "<b>Nachname:</b> " . utf8_encode($row['name']) . " \n";
                             echo "</br> \n";
                             echo "</br> \n";
                         echo "</div> \n";
                         echo "<div class=\"col-md-4 col-md-offset-2\"> \n";
                             echo "</br> \n";
-                            echo "<b>E-Mail:</b> " . $row['mail'] . " \n";
+                            echo "<b>E-Mail:</b> " . utf8_encode($row['mail']) . " \n";
                             echo "</br> \n";
                             $sql = "SELECT `group` FROM `UserIsMemberOfGroup` WHERE  `user` = " . $_SESSION['userId'] . " ORDER BY `group` DESC;";
                             $result = mysql_query($sql);
                             if ($result) {
                                 $roll = "User";
                                 while ($groupMember = mysql_fetch_array($result)) {
-                                    if ($groupMember['group'] === 5) {
+                                    if ($groupMember['group'] == 5) {
                                         $roll = "Versorgungs-verantwortlich";
                                     }
-                                    if ($groupMember['group'] === 4) {
+                                    if ($groupMember['group'] == 4) {
                                         $roll = "MedMat-verantwortlich";
                                     }
-                                    if ($groupMember['group'] === 3) {
+                                    if ($groupMember['group'] == 3) {
                                         $roll = "Geräte-verantwortlich";
                                     }
-                                    if ($groupMember['group'] === 2) {
+                                    if ($groupMember['group'] == 2) {
                                         $roll = "Admin";
                                     }
                                 }

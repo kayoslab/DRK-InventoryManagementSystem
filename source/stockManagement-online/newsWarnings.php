@@ -26,7 +26,7 @@
                 echo "<tr><th>Titel</th> <th>Letzte MTK</th> <th>MTK Intervall</th> <th>Letzte STK</th> <th>STK Intervall</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
                     echo "<tr>".
-                    "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>".
+                    "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>".
                     "<td>" . date( 'd.m.y', strtotime($stockValue['mtkDate'])) . "</td>".
                     "<td>" . $stockValue['mtkIntervall'] . " Monate</td>".
                     "<td>" . date( 'd.m.y', strtotime($stockValue['stkDate'])) . "</td>".
@@ -60,7 +60,7 @@
                 echo "<tr><th>Titel</th> <th>Mindestbestand</th> <th>Sollbestand</th> <th>Lagerbestand</th> <th>Ablaufdatum</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
                     echo "<tr>".
-                    "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>".
+                    "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>".
                     "<td>" . $stockValue['minimumStock'] . "</td>".
                     "<td>" . $stockValue['quotaStock'] . "</td>".
                     "<td>" . $stockValue['totalVolume'] . "</td>".
@@ -94,7 +94,7 @@
                 echo "<tr><th>Titel</th> <th>Mindestbestand</th> <th>Sollbestand</th> <th>Lagerbestand</th> <th>Ablaufdatum</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
                     echo "<tr>".
-                    "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . $stockValue['title']  . "</a></td>".
+                    "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>".
                     "<td>" . $stockValue['minimumStock'] . "</td>".
                     "<td>" . $stockValue['quotaStock'] . "</td>".
                     "<td>" . $stockValue['totalVolume'] . "</td>".
