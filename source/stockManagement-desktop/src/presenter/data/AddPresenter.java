@@ -16,14 +16,12 @@ import presenter.Presenter;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
-public class AddPresenter extends Presenter {
+public class AddPresenter extends Presenter implements MouseListener {
 	/** Reusable AddPresenter modType **/
 	public DatabaseObject.ModificationType modificationType;
 	/** TextFields **/
@@ -407,6 +405,7 @@ public class AddPresenter extends Presenter {
 		}
 		this.table.setModel(model);
 		this.table.getColumnModel().getColumn(1).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
+		this.table.addMouseListener(this);
 		scrollPane.setViewportView(this.table);
 
 		/******** Buttons ********/
@@ -466,6 +465,7 @@ public class AddPresenter extends Presenter {
 		}
 		this.table.setModel(model);
 		this.table.getColumnModel().getColumn(1).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
+		this.table.addMouseListener(this);
 		scrollPane.setViewportView(this.table);
 
 		/******** Buttons ********/
@@ -579,5 +579,39 @@ public class AddPresenter extends Presenter {
 				// Can't be saved, unique field with same value or db connection error.
 			}
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// Left mouse click
+		if (SwingUtilities.isLeftMouseButton(e)) {
+			// get the coordinates of the mouse click
+			Point p = e.getPoint();
+			// get the row index that contains that coordinate
+			int rowNumber = table.rowAtPoint(p);
+			// Do sth with the rowPosition
+			Boolean value = (Boolean) this.table.getValueAt(rowNumber,1);
+			this.table.setValueAt(!value, rowNumber,1);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
 	}
 }
