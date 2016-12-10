@@ -1,5 +1,8 @@
 package presenter.data;
+import model.DatabaseWriteManager;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.StockObject;
 import presenter.Presenter;
 
 import javax.swing.*;
@@ -7,26 +10,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 
 public class AddPresenter extends Presenter {
+	/** Reusable AddPresenter modType **/
 	public DatabaseObject.ModificationType modificationType;
+	/** TextFields **/
 	private JTextField textField1;
 	private JTextField textField2;
 	private JTextField textField3;
 	private JTextField textField4;
-
+	/** Areas **/
 	private JTextArea textArea;
 	private JTable table;
-
+	/** Buttons **/
 	private JButton saveButton;
-
-	/**
-	 * Create the application.
-	 */
-	private AddPresenter(Presenter previousPresenter) {
-		this.previousPresenter = previousPresenter;
-		this.initialize();
-	}
 
 	/**
 	 * Create the application.
@@ -82,15 +81,15 @@ public class AddPresenter extends Presenter {
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel lblInventarnummer = new JLabel("Inventarnummer:");
-		lblInventarnummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblInventarnummer);
+		JLabel lblMtkIntervall = new JLabel("MTK Intervall (in Monaten):");
+		lblMtkIntervall.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(lblMtkIntervall);
 
-		JLabel lblSeriennummer = new JLabel("Seriennummer:");
-		lblSeriennummer.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
-		frame.getContentPane().add(lblSeriennummer);
+		JLabel lblStkIntervall = new JLabel("STK Intervall (in Monaten):");
+		lblStkIntervall.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
+		frame.getContentPane().add(lblStkIntervall);
 
-		JLabel lblOptionalerText = new JLabel("optionaler Text:");
+		JLabel lblOptionalerText = new JLabel("Beschreibung:");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
 
@@ -112,16 +111,10 @@ public class AddPresenter extends Presenter {
 		this.textField3.setColumns(10);
 
 		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*3);
-		// TextArea textArea = new TextArea();
-		// textArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
-		// frame.getContentPane().add(textArea);
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
 		this.frame.getContentPane().add(scrollPane);
 		this.textArea = new JTextArea();
-		// descriptionArea.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-		// descriptionArea.setText("Beschreibung");
 		this.textArea.setLineWrap(true);
 		this.textArea.setWrapStyleWord(true);
 		this.textArea.setEditable(true);
@@ -148,6 +141,7 @@ public class AddPresenter extends Presenter {
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
 	}
 
@@ -224,8 +218,8 @@ public class AddPresenter extends Presenter {
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
+		frame.getContentPane().add(this.saveButton);
 	}
 
 	private void setupConsumableMaterialMenuItem() {
@@ -302,6 +296,7 @@ public class AddPresenter extends Presenter {
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
 	}
 
@@ -400,12 +395,49 @@ public class AddPresenter extends Presenter {
 		/******** Buttons ********/
 		this.saveButton = new JButton("speichern");
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
+		frame.getContentPane().add(this.saveButton);
+	}
+
+	private Boolean saveButtonValidation() {
+		switch (this.modificationType) {
+			case deviceMenuItem:
+				if (this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0) {
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					try {
+						int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
+						int stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
+						Device device = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
+						return DatabaseWriteManager.createObject(device);
+					} catch (ParseException e) {
+						System.out.println(e.getMessage());
+						return false;
+					}
+				}
+				return false;
+			case medicalMaterialMenuItem:
+				return true;
+			case consumableMaterialMenuItem:
+				return true;
+			case locationMenuItem:
+				return true;
+			case userMenuItem:
+				return true;
+			case groupMenuItem:
+				return true;
+		}
+		return false;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
+		if (e.getSource() == this.saveButton) {
+			if (this.saveButtonValidation()) {
+				this.showPreviousPresenter();
+			} else {
+				// TODO: Show Popup -> cant't be saved.
+			}
+		}
 	}
 }

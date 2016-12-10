@@ -16,7 +16,7 @@
                 // returning each result as an array
                 while ($user = mysql_fetch_array($result)) {
                     if (md5($_POST['password']) === $user['password']) {
-                        $_SESSION['valid'] = true;
+                        $_SESSION['valid'] = TRUE;
                         $_SESSION['timeout'] = time();
                         $_SESSION['userId'] = $user['id'];
                         break;
