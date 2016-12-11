@@ -1,5 +1,6 @@
 package presenter.data;
 import model.DatabaseReadManager;
+import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.*;
 import model.databaseObjects.stockValues.*;
@@ -89,6 +90,11 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		this.editButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*3+buttonWidth*2, buttonY, buttonWidth, buttonHeight);
 		this.deleteButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*4+buttonWidth*3, buttonY, buttonWidth, buttonHeight);
 
+		this.addButton.setEnabled(false);
+		this.removeButton.setEnabled(false);
+		this.editButton.setEnabled(false);
+		this.deleteButton.setEnabled(false);
+
 		for (JButton button : buttons) {
 			button.addActionListener(this);
 			this.frame.getContentPane().add(button);
@@ -151,6 +157,28 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		}
 	}
 
+	private void activateButtons() {
+		if (this.stockObjectValues != null) {
+			if (this.stockObject instanceof Device) {
+
+			} else if (this.stockObject instanceof Material) {
+				if (this.stockObject instanceof MedicalMaterial) {
+
+				} else if (this.stockObject instanceof ConsumableMaterial) {
+
+				} else {
+					// Do nothing with this object, its not a usable material
+				}
+			} else {
+				// Do nothing, maybe its a vehicle
+			}
+		}
+		this.addButton.setEnabled(true);
+		this.removeButton.setEnabled(true);
+		this.editButton.setEnabled(true);
+		this.deleteButton.setEnabled(true);
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
@@ -175,6 +203,8 @@ public class DetailPresenter extends Presenter implements MouseListener {
 
 			// get the row index that contains that coordinate
 			int rowNumber = table.rowAtPoint(p);
+
+			this.activateButtons();
 		}
 	}
 

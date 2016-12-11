@@ -111,6 +111,18 @@
                     }
                     echo "</table> \n";
                     echo "</div> \n";
+                } else {
+                    echo "<div class=\"panel panel-default\"> \n";
+                    echo "<div class=\"panel-heading\"> \n";
+                    echo "<h3 class=\"panel-title\">Inventar</h3> \n";
+                    echo "</div> \n";
+                        echo "<div class=\"row\"> \n";
+                            echo "</br> \n";
+                            echo "<p class=\"text-center\">Keine Einträge vorhanden</p> \n";
+                            echo "</br> \n";
+                            echo "</br> \n";
+                        echo "</div> \n";
+                    echo "</div> \n";
                 }
             } else {
                 // include '';

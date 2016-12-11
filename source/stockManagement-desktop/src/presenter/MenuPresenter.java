@@ -13,7 +13,6 @@ import java.awt.event.MouseListener;
 
 
 public class MenuPresenter extends Presenter implements MouseListener {
-	private Session session = Session.getSharedInstance();
 	/******** Menu *********/
 	private JButton materialAndDevicesButton;
 	private JButton inventoryButton;

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import static javax.swing.JFrame.DISPOSE_ON_CLOSE;
 
 public abstract class Presenter implements ActionListener {
+	public Session session = Session.getSharedInstance();
 	public Presenter previousPresenter;
 	public JFrame frame;
 	public JButton logo;

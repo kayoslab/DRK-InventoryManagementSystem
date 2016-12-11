@@ -87,8 +87,7 @@ public class Sender {
 
 			/** Get Mail Content **/
 			Multipart multipart = new MimeMultipart();
-			multipart.addBodyPart(Sender.generateTextForStockObjectValues(sortedStockObjectValues, type));
-			message.setContent(multipart);
+			message.setContent(Sender.generateMultipartForStockObjectValues(sortedStockObjectValues, type));
 			message.setSentDate(new Date());
 			/** Send **/
 			Transport.send(message);
@@ -128,9 +127,9 @@ public class Sender {
 		}
 	}
 
-	private static BodyPart generateTextForStockObjectValues(StockObjectValue[] stockObjectValues, DatabaseObject.StockObjectType type) {
-		BodyPart messageBodyPart = new MimeBodyPart();
-		String messageBodyTextString = "<html><head>" +
+	private static Multipart generateMultipartForStockObjectValues(StockObjectValue[] stockObjectValues, DatabaseObject.StockObjectType type) {
+		String plainMessageString = stockObjectValues.length + " neue Meldung(en) \n\n";
+		String messageHTMLString = "<html><head>" +
 				"<style type=\"text/css\">" +
 				"  tr:nth-child(2n) {" +
 				"    background-color: #BBBBBB;" +
@@ -152,7 +151,7 @@ public class Sender {
 			case empty:
 				return null;
 			case device:
-				messageBodyTextString += "<tbody>" +
+				messageHTMLString += "<tbody>" +
 						"<tr>" +
 						"<th align=\"center\">Titel</th>" +
 						"<th align=\"center\">Letzte MTK</th>" +
@@ -160,12 +159,17 @@ public class Sender {
 						"<th align=\"center\">Letzte STK</th>" +
 						"<th align=\"center\">STK Intervall</th>" +
 						"</tr>";
-
 				for (StockObjectValue stockObjectValue : stockObjectValues) {
 					if (stockObjectValue instanceof DeviceValue) {
 						DeviceValue deviceValue = (DeviceValue) stockObjectValue;
 						Device device = (Device) DatabaseReadManager.getStockObject(deviceValue.stockObjectID);
-						messageBodyTextString += "<tr>" +
+						plainMessageString += "Titel: " + device.title + ", " +
+								"Letzte MTK: " + Sender.sdf.format(deviceValue.mtkDate) + ", "+
+								"MTK Intervall: " + device.mtkIntervall + ", "+
+								"Letzte STK: " + Sender.sdf.format(deviceValue.stkDate) + ", "+
+								"STK Intervall: " + device.stkIntervall +
+								" \n\n";
+						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + device.title + "</td>" +
 								"<td align=\"center\">" + Sender.sdf.format(deviceValue.mtkDate) + "</td>" +
 								"<td align=\"center\">" + device.mtkIntervall + "</td>" +
@@ -174,10 +178,10 @@ public class Sender {
 								"</tr>";
 					}
 				}
-				messageBodyTextString += "</tbody>";
+				messageHTMLString += "</tbody>";
 				break;
 			case medicalMaterial:
-				messageBodyTextString += "<tbody>" +
+				messageHTMLString += "<tbody>" +
 						"<tr>" +
 						"<th align=\"center\">Titel</th>" +
 						"<th align=\"center\">Mindestbestand</th>" +
@@ -189,7 +193,13 @@ public class Sender {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
 						MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
 						MedicalMaterial medicalMaterial = (MedicalMaterial) DatabaseReadManager.getStockObject(medicalMaterialValue.stockObjectID);
-						messageBodyTextString += "<tr>" +
+						plainMessageString += "Titel: " + medicalMaterial.title + ", " +
+								"Mindestbestand: " + medicalMaterial.minimumStock + ", "+
+								"Sollbestand: " + medicalMaterial.quotaStock + ", "+
+								"Lagerbestand: " + medicalMaterialValue.volume + ", "+
+								"Ablaufdatum: " + Sender.sdf.format(medicalMaterialValue.date) +
+								" \n\n";
+						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + medicalMaterial.title + "</td>" +
 								"<td align=\"center\">" + medicalMaterial.minimumStock + "</td>" +
 								"<td align=\"center\">" + medicalMaterial.quotaStock + "</td>" +
@@ -198,10 +208,10 @@ public class Sender {
 								"</tr>";
 					}
 				}
-				messageBodyTextString += "</tbody>";
+				messageHTMLString += "</tbody>";
 				break;
 			case consumableMaterial:
-				messageBodyTextString += "<tbody>" +
+				messageHTMLString += "<tbody>" +
 						"<tr>" +
 						"<th align=\"center\">Titel</th>" +
 						"<th align=\"center\">Mindestbestand</th>" +
@@ -213,7 +223,13 @@ public class Sender {
 					if (stockObjectValue instanceof ConsumableMaterialValue) {
 						ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
 						ConsumableMaterial consumableMaterial = (ConsumableMaterial) DatabaseReadManager.getStockObject(consumableMaterialValue.stockObjectID);
-						messageBodyTextString += "<tr>" +
+						plainMessageString += "Titel: " + consumableMaterial.title + ", " +
+								"Mindestbestand: " + consumableMaterial.minimumStock + ", "+
+								"Sollbestand: " + consumableMaterial.quotaStock + ", "+
+								"Lagerbestand: " + consumableMaterialValue.volume + ", "+
+								"Ablaufdatum: " + Sender.sdf.format(consumableMaterialValue.date) +
+								" \n\n";
+						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + consumableMaterial.title + "</td>" +
 								"<td align=\"center\">" + consumableMaterial.minimumStock + "</td>" +
 								"<td align=\"center\">" + consumableMaterial.quotaStock + "</td>" +
@@ -222,21 +238,30 @@ public class Sender {
 								"</tr>";
 					}
 				}
-				messageBodyTextString += "</tbody>";
+				messageHTMLString += "</tbody>";
 				break;
 			case vehicle:
 				return null;
 		}
 
-		messageBodyTextString += "</table></body></html>";
+		messageHTMLString += "</table></body></html>";
 		// Add HTML Text to the MessageBody
+		BodyPart plainMessageBodyPart = new MimeBodyPart();
+		BodyPart htmlMessageBodyPart = new MimeBodyPart();
 		try {
-			// messageBodyPart.setText(messageBodyTextString);
-			messageBodyPart.setContent(messageBodyTextString,  "text/html; charset=ISO-8859-1");
-			return messageBodyPart;
+			// messageBodyPart.setText(messageHTMLString);
+			plainMessageBodyPart.setContent(plainMessageString,  "text/plain; charset=ISO-8859-1");
+			htmlMessageBodyPart.setContent(messageHTMLString,  "text/html; charset=ISO-8859-1");
+			// return messageBodyPart;
+
+			Multipart mp = new MimeMultipart("alternative");
+			mp.addBodyPart(plainMessageBodyPart);
+			mp.addBodyPart(htmlMessageBodyPart);
+			return mp;
 		} catch (MessagingException me) {
 			System.out.println(me);
 			return null;
 		}
+
 	}
 }
