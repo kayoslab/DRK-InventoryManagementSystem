@@ -191,6 +191,58 @@ public class EditPresenter extends Presenter implements MouseListener {
 	}
 
 	@Override
+	public void showedAsPreviousPresenter() {
+		super.showedAsPreviousPresenter();
+		int selectedRow = this.table.getSelectedRow();
+		DatabaseObject selectedObject = this.databaseObjects[selectedRow];
+
+		switch (this.modificationType) {
+			case deviceMenuItem:
+				if (selectedObject instanceof Device) {
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getStockObject(selectedObject.id);
+					this.table.setValueAt(((Device)this.databaseObjects[selectedRow]).id, selectedRow, 0);
+					this.table.setValueAt(((Device)this.databaseObjects[selectedRow]).title, selectedRow, 1);
+				}
+				break;
+			case medicalMaterialMenuItem:
+				if (selectedObject instanceof MedicalMaterial) {
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getStockObject(selectedObject.id);
+					this.table.setValueAt(((MedicalMaterial)this.databaseObjects[selectedRow]).id, selectedRow, 0);
+					this.table.setValueAt(((MedicalMaterial)this.databaseObjects[selectedRow]).title, selectedRow, 1);
+				}
+				break;
+			case consumableMaterialMenuItem:
+				if (selectedObject instanceof ConsumableMaterial) {
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getStockObject(selectedObject.id);
+					this.table.setValueAt(((ConsumableMaterial)this.databaseObjects[selectedRow]).id, selectedRow, 0);
+					this.table.setValueAt(((ConsumableMaterial)this.databaseObjects[selectedRow]).title, selectedRow, 1);
+				}
+				break;
+			case locationMenuItem:
+				if (selectedObject instanceof Location) {
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getLocation(selectedObject.id);
+					this.table.setValueAt(((Location)this.databaseObjects[selectedRow]).id, selectedRow, 0);
+					this.table.setValueAt(((Location)this.databaseObjects[selectedRow]).title, selectedRow, 1);
+				}
+				break;
+			case userMenuItem:
+				if (selectedObject instanceof User) {
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getUser(selectedObject.id);
+					this.table.setValueAt(((User)this.databaseObjects[selectedRow]).id, selectedRow, 0);
+					this.table.setValueAt(((User)this.databaseObjects[selectedRow]).username, selectedRow, 1);
+				}
+				break;
+			case groupMenuItem:
+				if (selectedObject instanceof Group) {
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getUser(selectedObject.id);
+					this.table.setValueAt(((Group)this.databaseObjects[selectedRow]).id, selectedRow, 0);
+					this.table.setValueAt(((Group)this.databaseObjects[selectedRow]).title, selectedRow, 1);
+				}
+				break;
+		}
+	}
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		if (e.getSource() == this.nextButton) {

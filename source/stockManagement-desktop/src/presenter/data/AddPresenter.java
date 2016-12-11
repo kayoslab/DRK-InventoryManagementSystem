@@ -15,7 +15,6 @@ import presenter.Presenter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
@@ -587,16 +586,36 @@ public class AddPresenter extends Presenter implements MouseListener {
 	private Boolean saveButtonValidation() {
 		switch (this.modificationType) {
 			case deviceMenuItem:
-				if (this.textField1.getText().length() > 0 && this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0) {
-					DecimalFormat decimalFormat = new DecimalFormat("#");
-					try {
-						int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
-						int stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
-						Device device = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
-						return DatabaseWriteManager.createObject(device);
-					} catch (ParseException e) {
-						// Cant parse Textfields to int
-						return false;
+				if (this.textField1.getText().length() > 0
+						&& this.textField2.getText().length() > 0
+						&& this.textField3.getText().length() > 0) {
+					if (this.databaseObject == null) {
+						/** Create new Device **/
+						DecimalFormat decimalFormat = new DecimalFormat("#");
+						try {
+							int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
+							int stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
+							this.databaseObject = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
+							return DatabaseWriteManager.createObject(this.databaseObject);
+						} catch (ParseException e) {
+							// Cant parse Textfields to int
+							return false;
+						}
+					} else {
+						/** Update existing Device **/
+						DecimalFormat decimalFormat = new DecimalFormat("#");
+						try {
+							int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
+							int stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
+							((Device)this.databaseObject).title = this.textField1.getText();
+							((Device)this.databaseObject).description = this.textArea.getText();
+							((Device)this.databaseObject).mtkIntervall = mtkIntervall;
+							((Device)this.databaseObject).stkIntervall = stkIntervall;
+							return DatabaseWriteManager.editObject(this.databaseObject);
+						} catch (ParseException e) {
+							// Cant parse Textfields to int
+							return false;
+						}
 					}
 				} else {
 					// required Textfields are empty
@@ -604,34 +623,50 @@ public class AddPresenter extends Presenter implements MouseListener {
 
 				return false;
 			case medicalMaterialMenuItem:
-				if (this.textField1.getText().length() > 0 && this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
-					DecimalFormat decimalFormat = new DecimalFormat("#");
-					try {
-						int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
-						int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
-						int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
-						MedicalMaterial medicalMaterial = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
-						return DatabaseWriteManager.createObject(medicalMaterial);
-					} catch (ParseException e) {
-						// Cant parse Textfields to int
-						return false;
+				if (this.textField1.getText().length() > 0
+						&& this.textField2.getText().length() > 0
+						&& this.textField3.getText().length() > 0
+						&& this.textField4.getText().length() > 0) {
+					if (this.databaseObject == null) {
+						// new StockObject
+						DecimalFormat decimalFormat = new DecimalFormat("#");
+						try {
+							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							this.databaseObject = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
+							return DatabaseWriteManager.createObject(this.databaseObject);
+						} catch (ParseException e) {
+							// Cant parse Textfields to int
+							return false;
+						}
+					} else {
+						// update existing StockObject
 					}
 				} else {
 					// required Textfields are empty
 				}
 				return false;
 			case consumableMaterialMenuItem:
-				if (this.textField1.getText().length() > 0 && this.textField2.getText().length() > 0 && this.textField3.getText().length() > 0 && this.textField4.getText().length() > 0) {
-					DecimalFormat decimalFormat = new DecimalFormat("#");
-					try {
-						int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
-						int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
-						int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
-						ConsumableMaterial consumableMaterial = new ConsumableMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
-						return DatabaseWriteManager.createObject(consumableMaterial);
-					} catch (ParseException e) {
-						// Cant parse Textfields to int
-						return false;
+				if (this.textField1.getText().length() > 0
+						&& this.textField2.getText().length() > 0
+						&& this.textField3.getText().length() > 0
+						&& this.textField4.getText().length() > 0) {
+					if (this.databaseObject == null) {
+						// new StockObject
+						DecimalFormat decimalFormat = new DecimalFormat("#");
+						try {
+							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							this.databaseObject = new ConsumableMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
+							return DatabaseWriteManager.createObject(this.databaseObject);
+						} catch (ParseException e) {
+							// Cant parse Textfields to int
+							return false;
+						}
+					} else {
+						// update existing StockObject
 					}
 				} else {
 					// required Textfields are empty
@@ -651,61 +686,70 @@ public class AddPresenter extends Presenter implements MouseListener {
 						&& this.textField3.getText().length() > 0
 						&& this.textField4.getText().length() > 0
 						&& this.textField5.getText().length() > 0) {
-					UserManager userManager = new UserManager();
-					try {
-						String passwordHash = userManager.generatePasswordHash(textField5.getText());
-						User user = new User(0, textField1.getText(), textField2.getText(), textField3.getText(), this.textField4.getText(), passwordHash, false);
-						if (DatabaseWriteManager.createObject(user)) {
-							User dbUser = DatabaseReadManager.getUser(this.textField1.getText());
-							if (dbUser != null) {
-								ArrayList<Group> groups = new ArrayList<>();
-								DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
-								int nRow = dtm.getRowCount();
-								for (int i = 1 ; i <= nRow ; i++) {
-									Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
-									if (selected) {
-										Group group = DatabaseReadManager.getGroup(i);
-										if (group != null) {
-											groups.add(group);
+					if (this.databaseObject == null) {
+						UserManager userManager = new UserManager();
+						try {
+							String passwordHash = userManager.generatePasswordHash(textField5.getText());
+							this.databaseObject = new User(0, textField1.getText(), textField2.getText(), textField3.getText(), this.textField4.getText(), passwordHash, false);
+							if (DatabaseWriteManager.createObject(this.databaseObject)) {
+								this.databaseObject = DatabaseReadManager.getUser(this.textField1.getText());
+								if (this.databaseObject != null) {
+									ArrayList<Group> groups = new ArrayList<>();
+									DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
+									int nRow = dtm.getRowCount();
+									for (int i = 1 ; i <= nRow ; i++) {
+										Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+										if (selected) {
+											Group group = DatabaseReadManager.getGroup(i);
+											if (group != null) {
+												groups.add(group);
+											}
 										}
 									}
+									Group[] groupsArray = groups.toArray(new Group[groups.size()]);
+									return DatabaseWriteManager.setGroupsForUser((User)this.databaseObject, groupsArray);
 								}
-								Group[] groupsArray = groups.toArray(new Group[groups.size()]);
-								return DatabaseWriteManager.setGroupsForUser(dbUser, groupsArray);
 							}
+						} catch (NoSuchAlgorithmException exception) {
+							return false;
 						}
-					} catch (NoSuchAlgorithmException exception) {
-
+					} else {
+						// update existing StockObject
 					}
+
 				} else {
 					// required Textfields are empty
 				}
 				return false;
 			case groupMenuItem:
 				if (this.textField1.getText().length() > 0) {
-					Boolean comboboxState = true;
-					if (this.booleanCombobox.getSelectedIndex() == 1) {
-						comboboxState = false;
-					}
-					Group group = new Group(0, this.textField1.getText(), comboboxState);
-					if (DatabaseWriteManager.createObject(group)) {
-						Group dbGroup = DatabaseReadManager.getGroup(group.title);
-						if (dbGroup != null) {
-							ArrayList<GroupRight> groupRights = new ArrayList<>();
-							DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
-							int nRow = dtm.getRowCount();
-							for (int i = 1 ; i <= nRow ; i++) {
-								Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
-								if (selected) {
-									GroupRight groupRight = DatabaseReadManager.getGroupRight(i);
-									if (groupRight != null) {
-										groupRights.add(groupRight);
+					if (this.databaseObject == null) {
+						Boolean comboboxState = true;
+						if (this.booleanCombobox.getSelectedIndex() == 1) {
+							comboboxState = false;
+						}
+						this.databaseObject = new Group(0, this.textField1.getText(), comboboxState);
+						if (DatabaseWriteManager.createObject(this.databaseObject)) {
+							this.databaseObject = DatabaseReadManager.getGroup(((Group)this.databaseObject).title);
+							if (this.databaseObject != null) {
+								ArrayList<GroupRight> groupRights = new ArrayList<>();
+								DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
+								int nRow = dtm.getRowCount();
+								for (int i = 1 ; i <= nRow ; i++) {
+									Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+									if (selected) {
+										GroupRight groupRight = DatabaseReadManager.getGroupRight(i);
+										if (groupRight != null) {
+											groupRights.add(groupRight);
+										}
 									}
 								}
+								GroupRight[] groupRightsArray = groupRights.toArray(new GroupRight[groupRights.size()]);
+								return DatabaseWriteManager.setGroupRights((Group)this.databaseObject, groupRightsArray);
 							}
-							GroupRight[] groupRightsArray = groupRights.toArray(new GroupRight[groupRights.size()]);
-							return DatabaseWriteManager.setGroupRights(dbGroup, groupRightsArray);
 						}
+					} else {
+						// update existing StockObject
 					}
 				} else {
 					// required Textfields are empty

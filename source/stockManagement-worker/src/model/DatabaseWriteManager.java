@@ -424,7 +424,7 @@ public final class DatabaseWriteManager {
 			sqlStatement = "UPDATE `StockObject` SET `title` = '" + device.title
 					+ "', `description` = '" + device.description + "', `mtkIntervall` = "
 					+ device.mtkIntervall + ", `stkIntervall` = " + device.stkIntervall
-					+ ", silenceWarning = "	+ device.silencedWarnings + " WHERE `id` = "
+					+ ", silencedWarnings = "	+ device.silencedWarnings + " WHERE `id` = "
 					+ stockObject.id + ";";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
@@ -435,7 +435,7 @@ public final class DatabaseWriteManager {
 						+ medmat.minimumStock + ", `quotaStock` = " + medmat.quotaStock
 						+ ", `batchSize` = " + medmat.batchSize
 						+ ", `totalVolume` = " + medmat.totalVolume
-						+ ", silenceWarning = "	+ medmat.silencedWarnings + " WHERE `id` = "
+						+ ", silencedWarnings = "	+ medmat.silencedWarnings + " WHERE `id` = "
 						+ stockObject.id + ";";
 			} else if (stockObject instanceof ConsumableMaterial) {
 				ConsumableMaterial consmat = (ConsumableMaterial) stockObject;
@@ -445,7 +445,7 @@ public final class DatabaseWriteManager {
 						+ consmat.minimumStock + ", `quotaStock` = " + consmat.quotaStock
 						+ ", `batchSize` = " + consmat.batchSize
 						+ ", `totalVolume` = " + consmat.totalVolume
-						+ ", silenceWarning = "	+ consmat.silencedWarnings + " WHERE `id` = "
+						+ ", silencedWarnings = "	+ consmat.silencedWarnings + " WHERE `id` = "
 						+ stockObject.id + ";";
 			} else {
 				return false;

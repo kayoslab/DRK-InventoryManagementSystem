@@ -31,7 +31,7 @@ public final class DatabaseReadManager {
 	 */
 	public static User[] getUsers() {
 		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
-				+ " FROM `User` ;";
+				+ " FROM `User` ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -73,7 +73,7 @@ public final class DatabaseReadManager {
 		String sqlStatement = "SELECT `id`,`username`,`firstname`,`name`,`mail`,`password`,`passwordChanged`"
 				+ " FROM `User`, `UserIsMemberOfGroup`" +
 				" WHERE `UserIsMemberOfGroup`.`group` = " + group.id +
-				" AND `UserIsMemberOfGroup`.`user` = `User`.`id`;";
+				" AND `UserIsMemberOfGroup`.`user` = `User`.`id` ORDER BY `User`.`id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -221,7 +221,7 @@ public final class DatabaseReadManager {
 	 * @return Group[]
 	 */
 	public static Group[] getGroups() {
-		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM `Group`;";
+		String sqlStatement = "SELECT `id`,`title`,`isActive` FROM `Group` ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -327,7 +327,7 @@ public final class DatabaseReadManager {
 	 * @return GroupRight[]
 	 */
 	public static GroupRight[] getGroupRights() {
-		String sqlStatement = "SELECT `id`,`title` FROM `GroupRight`;";
+		String sqlStatement = "SELECT `id`,`title` FROM `GroupRight` ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -368,7 +368,8 @@ public final class DatabaseReadManager {
 		String sqlStatement = "SELECT `GroupRight`.`id`, `GroupRight`.`title`\n" +
 				"FROM `UserIsMemberOfGroup`, `Group`, `GroupHasRights`, `GroupRight`\n" +
 				"WHERE `UserIsMemberOfGroup`.`group` = `Group`.`id` AND `Group`.`id` = `GroupHasRights`.`group` \n" +
-				"AND `GroupHasRights`.`right` = `GroupRight`.`id` AND `UserIsMemberOfGroup`.`user` = " + id + ";";
+				"AND `GroupHasRights`.`right` = `GroupRight`.`id` AND `UserIsMemberOfGroup`.`user` = " + id +
+				" ORDER BY `GroupRight`.`id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -441,7 +442,7 @@ public final class DatabaseReadManager {
 	 * @return Location[]
 	 */
 	public static Location[] getLocations() {
-		String sqlStatement = "SELECT `id`,`title` FROM `Location`;";
+		String sqlStatement = "SELECT `id`,`title` FROM `Location` ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -510,7 +511,8 @@ public final class DatabaseReadManager {
 	 * @return Location[]
 	 */
 	public static Location[] getLocations(StockObjectValue stockObjectValue) {
-		String sqlStatement = "SELECT `id`,`title` FROM `Location` WHERE `id` = " + stockObjectValue.locationID + ";";
+		String sqlStatement = "SELECT `id`,`title` FROM `Location` WHERE `id` = " + stockObjectValue.locationID +
+				" ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -604,7 +606,7 @@ public final class DatabaseReadManager {
 	public static StockObject[] getStockObjects() {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
 				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
-				+ "FROM `StockObject`;";
+				+ "FROM `StockObject` ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -661,7 +663,7 @@ public final class DatabaseReadManager {
 	public static StockObject[] getStockObjects(DatabaseObject.StockObjectType type) {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
 				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
-				+ "FROM `StockObject` WHERE `typeId` = " + type.ordinal() + ";";
+				+ "FROM `StockObject` WHERE `typeId` = " + type.ordinal() + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -675,27 +677,22 @@ public final class DatabaseReadManager {
 					switch(type){
 						case empty:
 							// actual value is "empty"
-							System.out.println("Append nothing?");
 							break;
 						case device:
-							System.out.println("Append device");
 							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									type, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
 							break;
 						case medicalMaterial:
-							System.out.println("Append medicalMaterial");
 							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
 							break;
 						case consumableMaterial:
-							System.out.println("Append consumableMaterial");
 							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
 							break;
 						case vehicle:
-							System.out.println("Append vehicle");
 							break;
 					}
 					i++;
@@ -730,7 +727,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(StockObject stockObject) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`, `stkDate`, `inventoryNumber`, `serialNumber`, "
 				+ "`umdns`, `batchNumber`, `creation`, `escalationAck`, `stockObjectId`, `locationId`, `messageId` "
-				+ "FROM `StockValue` WHERE `stockObjectId` = " + stockObject.id + ";";
+				+ "FROM `StockValue` WHERE `stockObjectId` = " + stockObject.id + "ORDER BY `id` ASC ;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -781,7 +778,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(int id) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
 				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
-				+ "FROM `StockValue` WHERE `stockObjectId` = " + id + ";";
+				+ "FROM `StockValue` WHERE `stockObjectId` = " + id + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -834,7 +831,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(Location location) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
 				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
-				+ "FROM `StockValue` WHERE `locationId` = " + location + ";";
+				+ "FROM `StockValue` WHERE `locationId` = " + location + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -886,7 +883,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockValueMessage message) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
 				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,`messageId`"
-				+ "FROM `StockValue` WHERE `messageId` = " + message.ordinal() + ";";
+				+ "FROM `StockValue` WHERE `messageId` = " + message.ordinal() + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -941,7 +938,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObjectValue[] existingStockObjectValueFor(StockObjectValue stockObjectValue) {
 		String sqlStatement = "SELECT * FROM `StockValue` WHERE `stockObjectId` = " + stockObjectValue.stockObjectID
-				+ " AND `locationId` = " + stockObjectValue.locationID;
+				+ " AND `locationId` = " + stockObjectValue.locationID + " ORDER BY `id` ASC;";
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
 			DeviceValue deviceValue = (DeviceValue) stockObjectValue;
@@ -1020,7 +1017,9 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		String sqlStatement = "SELECT `id`, `title`, `description`, `silencedWarnings`, `batchSize`, `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, `typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + ";";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `silencedWarnings`, `batchSize`," +
+				" `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, " +
+				"`typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + " ORDER BY `id` ASC;";
 		// get Data from Database
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects

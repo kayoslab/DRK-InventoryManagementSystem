@@ -3,9 +3,7 @@ import presenter.onboarding.LoginPresenter;
 import presenter.onboarding.SetupPresenter;
 
 public class main {
-
 	public static void main(String[] args) {
-		
 		DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
 		if (dbloginManager.testDatabaseConnection()) {
 			System.out.println("Database Connection established.");

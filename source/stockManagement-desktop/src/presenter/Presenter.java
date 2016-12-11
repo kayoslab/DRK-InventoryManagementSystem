@@ -103,13 +103,18 @@ public abstract class Presenter implements ActionListener {
 			// and discard current presenter
 			this.previousPresenter.frame.setVisible(true);
 			this.frame.dispose();
+			this.previousPresenter.showedAsPreviousPresenter();
 		} else {
 			System.out.println("previousPresenter == null");
 		}
 	}
 
-	public void presentData() {
+	public void showedAsPreviousPresenter() {
+		// Delegate
+	}
 
+	public void presentData() {
+		// hmm ...
 	}
 
 	public void actionPerformed(ActionEvent e) {
