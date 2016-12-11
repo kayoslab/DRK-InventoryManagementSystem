@@ -40,11 +40,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7975">
+              <caret line="299" column="42" lean-forward="false" selection-start-line="299" selection-start-column="42" selection-end-line="299" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,10 +164,10 @@
         <option value="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
         <option value="$PROJECT_DIR$/src/main.java" />
-        <option value="$PROJECT_DIR$/src/presenter/data/AddPresenter.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
-        <option value="$PROJECT_DIR$/src/presenter/data/EditPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/EditPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/AddPresenter.java" />
       </list>
     </option>
   </component>
@@ -887,12 +899,12 @@
       <workItem from="1481233252860" duration="500000" />
       <workItem from="1481296130849" duration="195000" />
       <workItem from="1481374336642" duration="14353000" />
-      <workItem from="1481415708365" duration="9946000" />
+      <workItem from="1481415708365" duration="12324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126760000" />
+    <option name="totallyTimeSpent" value="129138000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1228,14 +1240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/MessagePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="53" column="102" lean-forward="false" selection-start-line="53" selection-start-column="102" selection-end-line="53" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/javax/swing/JComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -1349,10 +1353,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
+    <entry file="file://$PROJECT_DIR$/src/presenter/MessagePresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-310">
-          <caret line="613" column="61" lean-forward="false" selection-start-line="613" selection-start-column="61" selection-end-line="613" selection-end-column="61" />
+        <state relative-caret-position="600">
+          <caret line="53" column="102" lean-forward="false" selection-start-line="53" selection-start-column="102" selection-end-line="53" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1361,18 +1373,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/data/EditPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="238" column="49" lean-forward="false" selection-start-line="238" selection-start-column="49" selection-end-line="238" selection-end-column="49" />
+        <state relative-caret-position="3480">
+          <caret line="236" column="85" lean-forward="false" selection-start-line="236" selection-start-column="85" selection-end-line="236" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.java">
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="-7975">
+          <caret line="299" column="42" lean-forward="false" selection-start-line="299" selection-start-column="42" selection-end-line="299" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

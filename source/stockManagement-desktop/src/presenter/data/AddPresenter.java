@@ -213,19 +213,19 @@ public class AddPresenter extends Presenter implements MouseListener {
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel batchSizeLabel = new JLabel("Losgröße");
+		JLabel batchSizeLabel = new JLabel("Losgröße:");
 		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(batchSizeLabel);
 
-		JLabel minimumStockLabel = new JLabel("Mindestbestand");
+		JLabel minimumStockLabel = new JLabel("Mindestbestand:");
 		minimumStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(minimumStockLabel);
 
-		JLabel quotaStockLabel = new JLabel("Sollbestand");
+		JLabel quotaStockLabel = new JLabel("Sollbestand:");
 		quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(quotaStockLabel);
 
-		JLabel lblOptionalerText = new JLabel("optionaler Text");
+		JLabel lblOptionalerText = new JLabel("optionaler Text:");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
 
@@ -297,23 +297,23 @@ public class AddPresenter extends Presenter implements MouseListener {
 
 	private void setupConsumableMaterialMenuItem() {
 		/******** Labels ********/
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel batchSizeLabel = new JLabel("Losgröße");
+		JLabel batchSizeLabel = new JLabel("Losgröße:");
 		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(batchSizeLabel);
 
-		JLabel minimumStockLabel = new JLabel("Mindestbestand");
+		JLabel minimumStockLabel = new JLabel("Mindestbestand:");
 		minimumStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(minimumStockLabel);
 
-		JLabel quotaStockLabel = new JLabel("Sollbestand");
+		JLabel quotaStockLabel = new JLabel("Sollbestand:");
 		quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(quotaStockLabel);
 
-		JLabel lblOptionalerText = new JLabel("optionaler Text");
+		JLabel lblOptionalerText = new JLabel("optionaler Text:");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
 
@@ -386,7 +386,7 @@ public class AddPresenter extends Presenter implements MouseListener {
 
 	private void setupLocationMenuItem() {
 		/******** Labels ********/
-		JLabel lblLagerortName = new JLabel("Lagerort Name");
+		JLabel lblLagerortName = new JLabel("Lagerort Name:");
 		lblLagerortName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblLagerortName);
 
@@ -412,27 +412,27 @@ public class AddPresenter extends Presenter implements MouseListener {
 
 	private void setupUserMenuItem() {
 		/******** Labels ********/
-		JLabel usernameLabel = new JLabel("Benutzername");
+		JLabel usernameLabel = new JLabel("Benutzername:");
 		usernameLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(usernameLabel);
 
-		JLabel firstNameLabel = new JLabel("Vorname");
+		JLabel firstNameLabel = new JLabel("Vorname:");
 		firstNameLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(firstNameLabel);
 
-		JLabel nameLabel = new JLabel("Name");
+		JLabel nameLabel = new JLabel("Name:");
 		nameLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(nameLabel);
 
-		JLabel mailLabel = new JLabel("E-Mail");
+		JLabel mailLabel = new JLabel("E-Mail:");
 		mailLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(mailLabel);
 
-		JLabel passwordLabel = new JLabel("Passwort");
+		JLabel passwordLabel = new JLabel("Passwort:");
 		passwordLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(passwordLabel);
 
-		JLabel groupLabel = new JLabel("Gruppe");
+		JLabel groupLabel = new JLabel("Gruppen:");
 		groupLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*5, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(groupLabel);
 
@@ -504,7 +504,8 @@ public class AddPresenter extends Presenter implements MouseListener {
 				this.textField2.setText("" + user.firstName);
 				this.textField3.setText("" + user.name);
 				this.textField4.setText("" + user.mail);
-				this.textField5.setText("************");
+				this.textField5.setText("");
+				passwordLabel.setText("Passwort (ausgeblendet):");
 				// TODO: UserRights
 			}
 		}
@@ -512,15 +513,15 @@ public class AddPresenter extends Presenter implements MouseListener {
 
 	private void setupGroupMenuItem() {
 		/******** Labels ********/
-		JLabel lblGruppenname = new JLabel("Gruppenname");
+		JLabel lblGruppenname = new JLabel("Gruppenname:");
 		lblGruppenname.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGruppenname);
 
-		JLabel lblGruppenstatus = new JLabel("Gruppenstatus");
+		JLabel lblGruppenstatus = new JLabel("Gruppenstatus:");
 		lblGruppenstatus.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGruppenstatus);
 
-		JLabel lblGrupenberechtigung = new JLabel("Grupenberechtigung");
+		JLabel lblGrupenberechtigung = new JLabel("Grupenberechtigungen:");
 		lblGrupenberechtigung.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblGrupenberechtigung);
 
@@ -641,7 +642,22 @@ public class AddPresenter extends Presenter implements MouseListener {
 							return false;
 						}
 					} else {
-						// update existing StockObject
+						/** update existing MedicalMaterial **/
+						DecimalFormat decimalFormat = new DecimalFormat("#");
+						try {
+							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							((MedicalMaterial)this.databaseObject).title = this.textField1.getText();
+							((MedicalMaterial)this.databaseObject).description = this.textArea.getText();
+							((MedicalMaterial)this.databaseObject).batchSize = batchSize;
+							((MedicalMaterial)this.databaseObject).minimumStock = minimumStock;
+							((MedicalMaterial)this.databaseObject).quotaStock = quotaStock;
+							return DatabaseWriteManager.editObject(this.databaseObject);
+						} catch (ParseException e) {
+							// Cant parse Textfields to int
+							return false;
+						}
 					}
 				} else {
 					// required Textfields are empty
@@ -666,7 +682,22 @@ public class AddPresenter extends Presenter implements MouseListener {
 							return false;
 						}
 					} else {
-						// update existing StockObject
+						/** update existing ConsumableMaterial **/
+						DecimalFormat decimalFormat = new DecimalFormat("#");
+						try {
+							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
+							((ConsumableMaterial)this.databaseObject).title = this.textField1.getText();
+							((ConsumableMaterial)this.databaseObject).description = this.textArea.getText();
+							((ConsumableMaterial)this.databaseObject).batchSize = batchSize;
+							((ConsumableMaterial)this.databaseObject).minimumStock = minimumStock;
+							((ConsumableMaterial)this.databaseObject).quotaStock = quotaStock;
+							return DatabaseWriteManager.editObject(this.databaseObject);
+						} catch (ParseException e) {
+							// Cant parse Textfields to int
+							return false;
+						}
 					}
 				} else {
 					// required Textfields are empty
@@ -674,8 +705,14 @@ public class AddPresenter extends Presenter implements MouseListener {
 				return false;
 			case locationMenuItem:
 				if (this.textField1.getText().length() > 0) {
-					Location location = new Location(0, this.textField1.getText());
-					return DatabaseWriteManager.createObject(location);
+					if (this.databaseObject == null) {
+						this.databaseObject = new Location(0, this.textField1.getText());
+						return DatabaseWriteManager.createObject(this.databaseObject);
+					} else {
+						((Location)this.databaseObject).title = this.textField1.getText();
+						return DatabaseWriteManager.editObject(this.databaseObject);
+					}
+
 				} else {
 					// required Textfields are empty
 				}
@@ -714,7 +751,38 @@ public class AddPresenter extends Presenter implements MouseListener {
 							return false;
 						}
 					} else {
-						// update existing StockObject
+						/** Update existing User */
+						UserManager userManager = new UserManager();
+						try {
+							String passwordHash;
+							if (this.textField5.getText().length() > 0) {
+								passwordHash = userManager.generatePasswordHash(textField5.getText());
+								((User)this.databaseObject).passwordHash = passwordHash;
+							}
+							((User)this.databaseObject).username = this.textField1.getText();
+							((User)this.databaseObject).firstName = this.textField2.getText();
+							((User)this.databaseObject).name = this.textField3.getText();
+							((User)this.databaseObject).mail = this.textField4.getText();
+							/** Save Update and add Groups **/
+							if (DatabaseWriteManager.editObject(this.databaseObject)) {
+								ArrayList<Group> groups = new ArrayList<>();
+								DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
+								int nRow = dtm.getRowCount();
+								for (int i = 1 ; i <= nRow ; i++) {
+									Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+									if (selected) {
+										Group group = DatabaseReadManager.getGroup(i);
+										if (group != null) {
+											groups.add(group);
+										}
+									}
+								}
+								Group[] groupsArray = groups.toArray(new Group[groups.size()]);
+								return DatabaseWriteManager.setGroupsForUser((User)this.databaseObject, groupsArray);
+							}
+						} catch (NoSuchAlgorithmException exception) {
+							return false;
+						}
 					}
 
 				} else {
@@ -730,13 +798,13 @@ public class AddPresenter extends Presenter implements MouseListener {
 						}
 						this.databaseObject = new Group(0, this.textField1.getText(), comboboxState);
 						if (DatabaseWriteManager.createObject(this.databaseObject)) {
-							this.databaseObject = DatabaseReadManager.getGroup(((Group)this.databaseObject).title);
+							this.databaseObject = DatabaseReadManager.getGroup(((Group) this.databaseObject).title);
 							if (this.databaseObject != null) {
 								ArrayList<GroupRight> groupRights = new ArrayList<>();
 								DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
 								int nRow = dtm.getRowCount();
-								for (int i = 1 ; i <= nRow ; i++) {
-									Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+								for (int i = 1; i <= nRow; i++) {
+									Boolean selected = (Boolean) dtm.getValueAt(i - 1, 1);
 									if (selected) {
 										GroupRight groupRight = DatabaseReadManager.getGroupRight(i);
 										if (groupRight != null) {
@@ -745,11 +813,34 @@ public class AddPresenter extends Presenter implements MouseListener {
 									}
 								}
 								GroupRight[] groupRightsArray = groupRights.toArray(new GroupRight[groupRights.size()]);
-								return DatabaseWriteManager.setGroupRights((Group)this.databaseObject, groupRightsArray);
+								return DatabaseWriteManager.setGroupRights((Group) this.databaseObject, groupRightsArray);
 							}
 						}
 					} else {
-						// update existing StockObject
+						/** Update existing Group **/
+						Boolean comboboxState = true;
+						if (this.booleanCombobox.getSelectedIndex() == 1) {
+							comboboxState = false;
+						}
+						((Group)this.databaseObject).isActive = comboboxState;
+						((Group)this.databaseObject).title = this.textField1.getText();
+
+						if (DatabaseWriteManager.editObject(this.databaseObject)) {
+							ArrayList<GroupRight> groupRights = new ArrayList<>();
+							DefaultTableModel dtm = (DefaultTableModel) this.table.getModel();
+							int nRow = dtm.getRowCount();
+							for (int i = 1 ; i <= nRow ; i++) {
+								Boolean selected = (Boolean) dtm.getValueAt(i-1,1);
+								if (selected) {
+									GroupRight groupRight = DatabaseReadManager.getGroupRight(i);
+									if (groupRight != null) {
+										groupRights.add(groupRight);
+									}
+								}
+							}
+							GroupRight[] groupRightsArray = groupRights.toArray(new GroupRight[groupRights.size()]);
+							return DatabaseWriteManager.setGroupRights((Group)this.databaseObject, groupRightsArray);
+						}
 					}
 				} else {
 					// required Textfields are empty

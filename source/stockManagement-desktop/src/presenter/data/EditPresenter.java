@@ -234,7 +234,7 @@ public class EditPresenter extends Presenter implements MouseListener {
 				break;
 			case groupMenuItem:
 				if (selectedObject instanceof Group) {
-					this.databaseObjects[selectedRow] = DatabaseReadManager.getUser(selectedObject.id);
+					this.databaseObjects[selectedRow] = DatabaseReadManager.getGroup(selectedObject.id);
 					this.table.setValueAt(((Group)this.databaseObjects[selectedRow]).id, selectedRow, 0);
 					this.table.setValueAt(((Group)this.databaseObjects[selectedRow]).title, selectedRow, 1);
 				}
