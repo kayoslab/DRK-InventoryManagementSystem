@@ -255,6 +255,48 @@ public final class DatabaseReadManager {
 	}
 
 	/**
+	 * @param user User
+	 * @return Group[]
+	 */
+	public static Group[] getGroups(User user) {
+		String sqlStatement = "SELECT `Group`.`id`, `Group`.`title`,`Group`.`isActive` " +
+				"FROM `UserIsMemberOfGroup`, `Group` " +
+				"WHERE `UserIsMemberOfGroup`.`group` = `Group`.`id`" +
+				"AND `UserIsMemberOfGroup`.`user` = " + user.id +
+				" ORDER BY `Group`.`id` ASC;";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.last()) {
+				Group[] groups = new Group[rs.getRow()];
+				int i = 0;
+				// fill with reasonable Data
+				rs.beforeFirst();
+				while (rs.next()) {
+					groups[i] = new Group(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isActive"));
+					i++;
+				}
+				DatabaseReadManager.close(rs);
+				return groups;
+			}
+			DatabaseReadManager.close(rs);
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
 	 * @param id int group.id
 	 * @return Group
 	 */
@@ -328,6 +370,47 @@ public final class DatabaseReadManager {
 	 */
 	public static GroupRight[] getGroupRights() {
 		String sqlStatement = "SELECT `id`,`title` FROM `GroupRight` ORDER BY `id` ASC;";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.last()) {
+				GroupRight[] groupRights = new GroupRight[rs.getRow()];
+				int i = 0;
+				// fill with reasonable Data
+				rs.beforeFirst();
+				while (rs.next()) {
+					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
+					i++;
+				}
+				DatabaseReadManager.close(rs);
+				return groupRights;
+			}
+			DatabaseReadManager.close(rs);
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * @return GroupRight[]
+	 */
+	public static GroupRight[] getGroupRights(Group group) {
+		String sqlStatement = "SELECT `GroupRight`.`id`,`GroupRight`.`title` " +
+				"FROM `GroupRight`, `GroupHasRights` " +
+				"WHERE `GroupRight`.`id` = `GroupHasRights`.`right` AND " +
+				"`GroupHasRights`.`group` = " + group.id +
+				" ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database

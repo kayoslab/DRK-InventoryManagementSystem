@@ -476,13 +476,35 @@ public class AddPresenter extends Presenter implements MouseListener {
 		Group[] groups = DatabaseReadManager.getGroups();
 		Arrays.sort(groups, Comparator.comparingInt(a -> a.id));
 		if (groups != null) {
-			for (Group group : groups) {
-				if (group.id == 1) {
-					Object row[] = { group.title,  true };
-					model.addRow(row);
-				} else {
-					Object row[] = { group.title,  false };
-					model.addRow(row);
+			if (this.databaseObject == null) {
+				for (Group group : groups) {
+					if (group.id == 1) {
+						Object row[] = { group.title,  true };
+						model.addRow(row);
+					} else {
+						Object row[] = { group.title,  false };
+						model.addRow(row);
+					}
+				}
+			} else {
+				Group[] usersGroups = DatabaseReadManager.getGroups((User)this.databaseObject);
+				for (Group group : groups) {
+					if (usersGroups != null) {
+						if (group.id == 1) {
+							Object row[] = { group.title,  true };
+							model.addRow(row);
+						} else {
+							Boolean selectedGroup = false;
+							for (Group usersGroup : usersGroups) {
+								if (usersGroup.id == group.id) {
+									selectedGroup = true;
+									break;
+								}
+							}
+							Object row[] = { group.title,  selectedGroup };
+							model.addRow(row);
+						}
+					}
 				}
 			}
 		}
@@ -553,9 +575,26 @@ public class AddPresenter extends Presenter implements MouseListener {
 		GroupRight[] groupRights = DatabaseReadManager.getGroupRights();
 		Arrays.sort(groupRights, Comparator.comparingInt(a -> a.id));
 		if (groupRights != null) {
-			for (GroupRight groupRight : groupRights) {
-				Object row[] = { groupRight.title,  false };
-				model.addRow(row);
+			if (this.databaseObject == null) {
+				for (GroupRight groupRight : groupRights) {
+					Object row[] = { groupRight.title,  false };
+					model.addRow(row);
+				}
+			} else {
+				GroupRight[] groupsRights = DatabaseReadManager.getGroupRights((Group)this.databaseObject);
+				for (GroupRight groupRight : groupRights) {
+					Boolean selectedGroupRight = false;
+
+					for (GroupRight groupsRight : groupsRights) {
+						if (groupsRight.id == groupRight.id) {
+							selectedGroupRight = true;
+							break;
+						}
+					}
+
+					Object row[] = { groupRight.title,  selectedGroupRight };
+					model.addRow(row);
+				}
 			}
 		}
 		this.table.setModel(model);
