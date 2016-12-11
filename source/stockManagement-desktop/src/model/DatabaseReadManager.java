@@ -810,7 +810,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(StockObject stockObject) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`, `stkDate`, `inventoryNumber`, `serialNumber`, "
 				+ "`umdns`, `batchNumber`, `creation`, `escalationAck`, `stockObjectId`, `locationId`, `messageId` "
-				+ "FROM `StockValue` WHERE `stockObjectId` = " + stockObject.id + "ORDER BY `id` ASC ;";
+				+ "FROM `StockValue` WHERE `stockObjectId` = " + stockObject.id + " ORDER BY `id` ASC ;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -948,7 +948,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("Read Error - getStockObjectValues(Location location): " + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -964,8 +964,8 @@ public final class DatabaseReadManager {
 	 * @return StockObjectValue[]
 	 */
 	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockValueMessage message) {
-		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
-				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,`messageId`"
+		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`, `stkDate`, `inventoryNumber`, `serialNumber`, "
+				+ "`umdns`, `batchNumber`, `creation`, `escalationAck`, `stockObjectId`, `locationId`, `messageId` "
 				+ "FROM `StockValue` WHERE `messageId` = " + message.ordinal() + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -1000,7 +1000,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("Read Error - getStockObjectValues(DatabaseObject.StockValueMessage message): " + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -1021,7 +1021,7 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObjectValue[] existingStockObjectValueFor(StockObjectValue stockObjectValue) {
 		String sqlStatement = "SELECT * FROM `StockValue` WHERE `stockObjectId` = " + stockObjectValue.stockObjectID
-				+ " AND `locationId` = " + stockObjectValue.locationID + " ORDER BY `id` ASC;";
+				+ " AND `locationId` = " + stockObjectValue.locationID;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
 			DeviceValue deviceValue = (DeviceValue) stockObjectValue;
@@ -1042,7 +1042,7 @@ public final class DatabaseReadManager {
 		} else {
 			return new StockObjectValue[0];
 		}
-		sqlStatement += ";";
+		sqlStatement += " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
 		try {
@@ -1077,7 +1077,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			System.out.println(e.getMessage());
+			System.out.println("Read Error existingStockObjectValueFor(StockObjectValue stockObjectValue): " + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -1140,7 +1140,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			System.out.println(e.getMessage());
+			System.out.println("Read Error - generateInventory: " + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {

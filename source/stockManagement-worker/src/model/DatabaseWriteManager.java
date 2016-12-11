@@ -703,6 +703,7 @@ public final class DatabaseWriteManager {
 			}
 		} catch (SQLException exception) {
 			// uncomment for debugging SQL-Statements
+			System.out.println("Write Error:");
 			System.out.println(exception.getMessage());
 			return false;
 		}

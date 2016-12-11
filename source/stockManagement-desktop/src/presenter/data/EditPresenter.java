@@ -120,10 +120,10 @@ public class EditPresenter extends Presenter implements MouseListener {
 				columnNames = new Object[]{ "ID", "Titel"};
 				break;
 			case userMenuItem:
-				columnNames = new Object[]{ "ID", "Username"};
+				columnNames = new Object[]{ "ID", "Username", "Vorname", "Name"};
 				break;
 			case groupMenuItem:
-				columnNames = new Object[]{ "ID", "Name"};
+				columnNames = new Object[]{ "ID", "Name", "Aktiviert"};
 				break;
 		}
 
@@ -163,21 +163,38 @@ public class EditPresenter extends Presenter implements MouseListener {
 					case userMenuItem:
 						if (databaseObject instanceof User) {
 							User user = (User) databaseObject;
-							Object row[] = {databaseObject.id, user.username};
+							Object row[] = {databaseObject.id, user.username, user.firstName, user.name};
 							model.addRow(row);
 						}
 						break;
 					case groupMenuItem:
 						if (databaseObject instanceof Group) {
 							Group group = (Group) databaseObject;
-							Object row[] = { databaseObject.id, group.title};
+							Object row[] = { databaseObject.id, group.title, group.isActive};
 							model.addRow(row);
 						}
 						break;
 				}
 			}
 		}
+
 		this.table.setModel(model);
+		/** Type specific Model setup **/
+		switch (this.modificationType) {
+			case deviceMenuItem:
+				break;
+			case medicalMaterialMenuItem:
+				break;
+			case consumableMaterialMenuItem:
+				break;
+			case locationMenuItem:
+				break;
+			case userMenuItem:
+				break;
+			case groupMenuItem:
+				this.table.getColumnModel().getColumn(2).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
+				break;
+		}
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(this.table);
 
