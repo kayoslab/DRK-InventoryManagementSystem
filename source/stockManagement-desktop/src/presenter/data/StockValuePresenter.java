@@ -1,18 +1,37 @@
 package presenter.data;
-import model.databaseObjects.stockObjects.StockObject;
-import model.databaseObjects.stockValues.StockObjectValue;
+import model.DatabaseReadManager;
+import model.databaseObjects.environment.Location;
+import model.databaseObjects.stockObjects.*;
+import model.databaseObjects.stockValues.*;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 import presenter.Presenter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Properties;
 
 public class StockValuePresenter extends Presenter {
 	/** Data **/
 	private StockObject stockObject;
 	private StockObjectValue stockObjectValue;
+	Location[] locations = DatabaseReadManager.getLocations();
 	/** Buttons **/
 	private JButton saveButton;
+	/** Data **/
+	private JTextField volumeTextField;
+	private JComboBox locationComboBox;
+	private JDatePickerImpl dateField1;
+	private JDatePickerImpl dateField2;
+	private JTextField inventoryField;
+	private JTextField serialField;
+	private JTextField umdnsField;
+	private JTextField batchField;
 
 	/**
 	 * Create the application.
@@ -49,6 +68,204 @@ public class StockValuePresenter extends Presenter {
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();
+
+		/******** Labels ********/
+		JLabel titleLabel = new JLabel("Titel:");
+		titleLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
+		this.frame.getContentPane().add(titleLabel);
+
+		JLabel currentVolumeLabel = new JLabel("Bestand:");
+		currentVolumeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
+		this.frame.getContentPane().add(currentVolumeLabel);
+
+		JLabel locationLabel = new JLabel("Lagerort:");
+		locationLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
+		this.frame.getContentPane().add(locationLabel);
+
+
+		/******** Data ********/
+		JLabel titleField = new JLabel(this.stockObject.title);
+		titleField.setBounds(leftPadding+leftSideMenuWidth+spacing+noSpacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		this.frame.getContentPane().add(titleField);
+
+		if (this.stockObjectValue != null) {
+			JLabel volumeLabel = new JLabel("" + this.stockObjectValue.volume);
+			volumeLabel.setBounds(leftPadding+leftSideMenuWidth+spacing+noSpacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+			this.frame.getContentPane().add(volumeLabel);
+		} else {
+			this.volumeTextField = new JTextField();
+			this.volumeTextField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+			frame.getContentPane().add(this.volumeTextField);
+			this.volumeTextField.setColumns(10);
+			this.volumeTextField.addActionListener(this);
+			this.volumeTextField.setText("0");
+		}
+
+		this.locationComboBox = new JComboBox();
+		this.locationComboBox.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+		int selectedLocation = 0;
+		int currentLocation = 0;
+		for (Location location : this.locations) {
+			this.locationComboBox.addItem(location.title);
+			if (this.stockObjectValue != null) {
+				if (location.id == this.stockObjectValue.locationID) {
+					selectedLocation = currentLocation;
+				}
+			}
+			currentLocation++;
+		}
+		this.locationComboBox.setSelectedIndex(selectedLocation);
+		this.frame.getContentPane().add(locationComboBox);
+		// needs to be called after adding the Items
+		this.locationComboBox.addActionListener(this);
+
+		if (this.stockObject != null) {
+			if (this.stockObject instanceof Device) {
+				/** Device Specific Setup **/
+				JLabel dateFieldLabel1 = new JLabel("Letzte MTK:");
+				dateFieldLabel1.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(dateFieldLabel1);
+
+				JLabel dateFieldLabel2 = new JLabel("Letzte STK:");
+				dateFieldLabel2.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(dateFieldLabel2);
+
+				JLabel serialLabel = new JLabel("Seriennummer:");
+				serialLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*5, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(serialLabel);
+
+				JLabel inventoryLabel = new JLabel("Inventarnummer:");
+				inventoryLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*6, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(inventoryLabel);
+
+				JLabel umdnsLabel = new JLabel("UMDNS-Nummer:");
+				umdnsLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*7, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(umdnsLabel);
+
+
+				UtilDateModel model1 = new UtilDateModel();
+				Properties p1 = new Properties();
+				p1.put("text.today", "Heute");
+				p1.put("text.month", "Monat");
+				p1.put("text.year", "Jahr");
+
+				UtilDateModel model2 = new UtilDateModel();
+				Properties p2 = new Properties();
+				p2.put("text.today", "Heute");
+				p2.put("text.month", "Monat");
+				p2.put("text.year", "Jahr");
+
+				if (this.stockObjectValue != null) {
+					if (this.stockObjectValue instanceof DeviceValue) {
+						DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
+						model1.setValue(deviceValue.mtkDate);
+						model2.setValue(deviceValue.stkDate);
+					}
+				}
+
+				JDatePanelImpl datePanel1 = new JDatePanelImpl(model1, p1);
+				datePanel1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				this.dateField1 = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
+				this.dateField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				this.frame.add(this.dateField1);
+
+				JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p2);
+				datePanel2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*4, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				this.dateField2 = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
+				this.dateField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*4, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				this.frame.add(this.dateField2);
+
+				this.serialField = new JTextField();
+				this.serialField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*5, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				frame.getContentPane().add(this.serialField);
+				this.serialField.setColumns(10);
+				this.serialField.addActionListener(this);
+
+				if (this.stockObjectValue != null) {
+					if (this.stockObjectValue instanceof DeviceValue) {
+						DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
+						this.serialField.setText(deviceValue.serialNumber);
+					}
+				}
+
+				this.inventoryField = new JTextField();
+				this.inventoryField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*6, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				frame.getContentPane().add(this.inventoryField);
+				this.inventoryField.setColumns(10);
+				this.inventoryField.addActionListener(this);
+
+				if (this.stockObjectValue != null) {
+					if (this.stockObjectValue instanceof DeviceValue) {
+						DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
+						this.inventoryField.setText(deviceValue.inventoryNumber);
+					}
+				}
+
+				this.umdnsField = new JTextField();
+				this.umdnsField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*7, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				frame.getContentPane().add(this.umdnsField);
+				this.umdnsField.setColumns(10);
+				this.umdnsField.addActionListener(this);
+
+				if (this.stockObjectValue != null) {
+					if (this.stockObjectValue instanceof DeviceValue) {
+						DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
+						this.umdnsField.setText(deviceValue.umdns);
+					}
+				}
+
+			} else if (this.stockObject instanceof Material) {
+				/** Material Specific Setup **/
+
+				/** Labels **/
+				JLabel dateFieldLabel1 = new JLabel("Mindestens haltbar bis:");
+				dateFieldLabel1.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(dateFieldLabel1);
+
+				JLabel dateFieldLabel2 = new JLabel("Chargennummer:");
+				dateFieldLabel2.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(dateFieldLabel2);
+
+				/** Data **/
+				UtilDateModel model = new UtilDateModel();
+				Properties p = new Properties();
+				p.put("text.today", "Heute");
+				p.put("text.month", "Monat");
+				p.put("text.year", "Jahr");
+				if (this.stockObjectValue != null) {
+					if (this.stockObjectValue instanceof MaterialValue) {
+						MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
+						model.setValue(materialValue.date);
+					}
+				}
+				JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+				datePanel.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				this.dateField1 = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+				this.dateField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				this.frame.add(this.dateField1);
+
+				this.batchField = new JTextField();
+				this.batchField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*4, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				frame.getContentPane().add(this.batchField);
+				this.batchField.setColumns(10);
+				this.batchField.addActionListener(this);
+
+				if (this.stockObjectValue != null) {
+					if (this.stockObjectValue instanceof MaterialValue) {
+						MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
+						this.batchField.setText(materialValue.batchNumber);
+					}
+				}
+			} else {
+				// Should not be reached - only Vehicles
+			}
+		}
+
+		/******** Buttons ********/
+		this.saveButton = new JButton("speichern");
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		this.saveButton.addActionListener(this);
+		frame.getContentPane().add(this.saveButton);
 	}
 
 	@Override
@@ -57,5 +274,27 @@ public class StockValuePresenter extends Presenter {
 		if (e.getSource() == this.saveButton) {
 
 		}
+	}
+
+	public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
+
+		private String datePattern = "yyyy-MM-dd HH:mm:ss";
+		private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+		@Override
+		public Object stringToValue(String text) throws ParseException {
+			return dateFormatter.parseObject(text);
+		}
+
+		@Override
+		public String valueToString(Object value) throws ParseException {
+			if (value != null) {
+				Calendar cal = (Calendar) value;
+				return dateFormatter.format(cal.getTime());
+			}
+
+			return "";
+		}
+
 	}
 }

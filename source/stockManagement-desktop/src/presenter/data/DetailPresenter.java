@@ -88,7 +88,6 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		this.editButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*2+buttonWidth*1, buttonY, buttonWidth, buttonHeight);
 		this.shiftButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*3+buttonWidth*2, buttonY, buttonWidth, buttonHeight);
 
-		this.addButton.setEnabled(false);
 		this.editButton.setEnabled(false);
 		this.shiftButton.setEnabled(false);
 
@@ -155,22 +154,6 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	}
 
 	private void activateButtons() {
-		if (this.stockObjectValues != null) {
-			if (this.stockObject instanceof Device) {
-
-			} else if (this.stockObject instanceof Material) {
-				if (this.stockObject instanceof MedicalMaterial) {
-
-				} else if (this.stockObject instanceof ConsumableMaterial) {
-
-				} else {
-					// Do nothing with this object, its not a usable material
-				}
-			} else {
-				// Do nothing, maybe its a vehicle
-			}
-		}
-		this.addButton.setEnabled(true);
 		this.editButton.setEnabled(true);
 		this.shiftButton.setEnabled(true);
 	}
