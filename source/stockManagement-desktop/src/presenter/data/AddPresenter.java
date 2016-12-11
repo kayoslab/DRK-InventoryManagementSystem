@@ -15,6 +15,7 @@ import presenter.Presenter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
@@ -27,6 +28,8 @@ import java.util.Comparator;
 public class AddPresenter extends Presenter implements MouseListener {
 	/** Reusable AddPresenter modType **/
 	public DatabaseObject.ModificationType modificationType;
+	/** Prepared Data **/
+	private DatabaseObject databaseObject;
 	/** TextFields **/
 	private JTextField textField1;
 	private JTextField textField2;
@@ -50,6 +53,16 @@ public class AddPresenter extends Presenter implements MouseListener {
 	}
 
 	/**
+	 * Create the application.
+	 */
+	public AddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType, DatabaseObject preparedData) {
+		this.previousPresenter = previousPresenter;
+		this.modificationType = modificationType;
+		this.databaseObject = preparedData;
+		this.initialize();
+	}
+
+	/**
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
@@ -59,27 +72,51 @@ public class AddPresenter extends Presenter implements MouseListener {
 		JLabel title = new JLabel();
 		switch (this.modificationType) {
 			case deviceMenuItem:
-				title = new JLabel("Gerät hinzufügen:");
+				if (this.databaseObject == null) {
+					title = new JLabel("Gerät hinzufügen:");
+				} else {
+					title = new JLabel("Gerät bearbeiten:");
+				}
 				this.setupDeviceMenuItem();
 				break;
 			case medicalMaterialMenuItem:
-				title = new JLabel("Medizinisches Material hinzufügen:");
+				if (this.databaseObject == null) {
+					title = new JLabel("Medizinisches Material hinzufügen:");
+				} else {
+					title = new JLabel("Medizinisches Material bearbeiten:");
+				}
 				this.setupMedicalMaterialMenuItem();
 				break;
 			case consumableMaterialMenuItem:
-				title = new JLabel("Verbrauchsmaterial hinzufügen:");
+				if (this.databaseObject == null) {
+					title = new JLabel("Verbrauchsmaterial hinzufügen:");
+				} else {
+					title = new JLabel("Verbrauchsmaterial bearbeiten:");
+				}
 				this.setupConsumableMaterialMenuItem();
 				break;
 			case locationMenuItem:
-				title = new JLabel("Lagerort hinzufügen:");
+				if (this.databaseObject == null) {
+					title = new JLabel("Lagerort hinzufügen:");
+				} else {
+					title = new JLabel("Lagerort bearbeiten:");
+				}
 				this.setupLocationMenuItem();
 				break;
 			case userMenuItem:
-				title = new JLabel("Benutzer hinzufügen:");
+				if (this.databaseObject == null) {
+					title = new JLabel("Benutzer hinzufügen:");
+				} else {
+					title = new JLabel("Benutzer bearbeiten:");
+				}
 				this.setupUserMenuItem();
 				break;
 			case groupMenuItem:
-				title = new JLabel("Gruppe hinzufügen:");
+				if (this.databaseObject == null) {
+					title = new JLabel("Gruppe hinzufügen:");
+				} else {
+					title = new JLabel("Gruppe bearbeiten:");
+				}
 				this.setupGroupMenuItem();
 				break;
 		}
@@ -151,8 +188,21 @@ public class AddPresenter extends Presenter implements MouseListener {
 		});
 
 
-		/******** Buttons ********/
-		this.saveButton = new JButton("speichern");
+		if (this.databaseObject != null) {
+			if (this.databaseObject instanceof Device) {
+				Device device = (Device) this.databaseObject;
+				this.textField1.setText(device.title);
+				this.textField2.setText("" + device.mtkIntervall);
+				this.textField3.setText("" + device.stkIntervall);
+				this.textArea.setText(device.description);
+			}
+			/******** Buttons ********/
+			this.saveButton = new JButton("aktualisieren");
+		} else {
+			/******** Buttons ********/
+			this.saveButton = new JButton("speichern");
+		}
+
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
@@ -233,6 +283,17 @@ public class AddPresenter extends Presenter implements MouseListener {
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
+
+		if (this.databaseObject != null) {
+			if (this.databaseObject instanceof MedicalMaterial) {
+				MedicalMaterial medicalMaterial = (MedicalMaterial) this.databaseObject;
+				this.textField1.setText(medicalMaterial.title);
+				this.textField2.setText("" + medicalMaterial.batchSize);
+				this.textField3.setText("" + medicalMaterial.minimumStock);
+				this.textField4.setText("" + medicalMaterial.quotaStock);
+				this.textArea.setText(medicalMaterial.description);
+			}
+		}
 	}
 
 	private void setupConsumableMaterialMenuItem() {
@@ -311,6 +372,17 @@ public class AddPresenter extends Presenter implements MouseListener {
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
+
+		if (this.databaseObject != null) {
+			if (this.databaseObject instanceof ConsumableMaterial) {
+				ConsumableMaterial consumableMaterial = (ConsumableMaterial) this.databaseObject;
+				this.textField1.setText(consumableMaterial.title);
+				this.textField2.setText("" + consumableMaterial.batchSize);
+				this.textField3.setText("" + consumableMaterial.minimumStock);
+				this.textField4.setText("" + consumableMaterial.quotaStock);
+				this.textArea.setText(consumableMaterial.description);
+			}
+		}
 	}
 
 	private void setupLocationMenuItem() {
@@ -330,6 +402,13 @@ public class AddPresenter extends Presenter implements MouseListener {
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
+
+		if (this.databaseObject != null) {
+			if (this.databaseObject instanceof Location) {
+				Location location = (Location) this.databaseObject;
+				this.textField1.setText(location.title);
+			}
+		}
 	}
 
 	private void setupUserMenuItem() {
@@ -418,6 +497,18 @@ public class AddPresenter extends Presenter implements MouseListener {
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		frame.getContentPane().add(this.saveButton);
 		this.saveButton.addActionListener(this);
+
+		if (this.databaseObject != null) {
+			if (this.databaseObject instanceof User) {
+				User user = (User) this.databaseObject;
+				this.textField1.setText(user.username);
+				this.textField2.setText("" + user.firstName);
+				this.textField3.setText("" + user.name);
+				this.textField4.setText("" + user.mail);
+				this.textField5.setText("************");
+				// TODO: UserRights
+			}
+		}
 	}
 
 	private void setupGroupMenuItem() {
@@ -477,6 +568,20 @@ public class AddPresenter extends Presenter implements MouseListener {
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
+
+		if (this.databaseObject != null) {
+			if (this.databaseObject instanceof Group) {
+				Group group = (Group) this.databaseObject;
+				this.textField1.setText(group.title);
+				if (group.isActive) {
+					this.booleanCombobox.setSelectedIndex(0);
+				} else {
+					this.booleanCombobox.setSelectedIndex(1);
+				}
+
+				// TODO: GroupRights
+			}
+		}
 	}
 
 	private Boolean saveButtonValidation() {

@@ -232,8 +232,8 @@ public final class DatabaseReadManager {
 				// fill with reasonable Data
 				rs.beforeFirst();
 				while (rs.next()) {
-                    groups[i] = new Group(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isActive"));
-                    i++;
+					groups[i] = new Group(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isActive"));
+					i++;
 				}
 				DatabaseReadManager.close(rs);
 				return groups;
@@ -339,8 +339,8 @@ public final class DatabaseReadManager {
 				rs.beforeFirst();
 				while (rs.next()) {
 					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
-                    i++;
-                }
+					i++;
+				}
 				DatabaseReadManager.close(rs);
 				return groupRights;
 			}
@@ -380,8 +380,8 @@ public final class DatabaseReadManager {
 				rs.beforeFirst();
 				while (rs.next()) {
 					groupRights[i] = new GroupRight(rs.getInt("id"), rs.getString("title"));
-                    i++;
-                }
+					i++;
+				}
 				DatabaseReadManager.close(rs);
 				return groupRights;
 			}
@@ -453,8 +453,8 @@ public final class DatabaseReadManager {
 				rs.beforeFirst();
 				while (rs.next()) {
 					locations[i] = new Location(rs.getInt("id"), rs.getString("title"));
-                    i++;
-                }
+					i++;
+				}
 				DatabaseReadManager.close(rs);
 				return locations;
 			}
@@ -484,7 +484,7 @@ public final class DatabaseReadManager {
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
-			if (rs.first()) {				
+			if (rs.first()) {
 				Location location = new Location(rs.getInt("id"), rs.getString("title"));
 				DatabaseReadManager.close(rs);
 				return location;
@@ -522,8 +522,8 @@ public final class DatabaseReadManager {
 				rs.beforeFirst();
 				while (rs.next()) {
 					locations[i] = new Location(rs.getInt("id"), rs.getString("title"));
-                    i++;
-                }
+					i++;
+				}
 				DatabaseReadManager.close(rs);
 				return locations;
 			}
@@ -618,17 +618,21 @@ public final class DatabaseReadManager {
 					switch(rs.getInt("typeId")){
 						case 0:
 							//actual value is "empty"
+							break;
 						case 1:
 							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							break;
 						case 2:
 							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 						case 3:
 							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 					}
 					i++;
 				}
@@ -657,8 +661,8 @@ public final class DatabaseReadManager {
 	public static StockObject[] getStockObjects(DatabaseObject.StockObjectType type) {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
 				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
-				+ "FROM `StockObject` WHERE `type` = " + type.ordinal() + ";";
-		ResultSet rs = null;	
+				+ "FROM `StockObject` WHERE `typeId` = " + type.ordinal() + ";";
+		ResultSet rs = null;
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);
@@ -670,19 +674,22 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					switch(type){
 						case empty:
-							//actual value is "empty"
+							// actual value is "empty"
 							break;
 						case device:
-							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
-									DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
+									type, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							break;
 						case medicalMaterial:
-							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
-									DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"), 
+							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
+									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 						case consumableMaterial:
-							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"), 
-									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"), 
+							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
+									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 						case vehicle:
 							break;
 					}
@@ -695,7 +702,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			System.out.println(e.getMessage());
+			// System.out.println(e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -1021,7 +1028,7 @@ public final class DatabaseReadManager {
 				switch (stockObjectType) {
 					case empty:
 						//empty space
-						break; 
+						break;
 					case device:
 						inventoryList.add(new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
 								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
@@ -1074,7 +1081,7 @@ public final class DatabaseReadManager {
 		// that return nothing.
 		return (result);
 	}
-	
+
 	private static void close(ResultSet resultSet) throws SQLException {
 		if (resultSet != null) {
 			resultSet.getStatement().close();

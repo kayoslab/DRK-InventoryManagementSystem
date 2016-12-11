@@ -618,17 +618,21 @@ public final class DatabaseReadManager {
 					switch(rs.getInt("typeId")){
 						case 0:
 							//actual value is "empty"
+							break;
 						case 1:
 							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							break;
 						case 2:
 							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 						case 3:
 							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
 									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 					}
 					i++;
 				}
@@ -657,7 +661,7 @@ public final class DatabaseReadManager {
 	public static StockObject[] getStockObjects(DatabaseObject.StockObjectType type) {
 		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
 				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
-				+ "FROM `StockObject` WHERE `type` = " + type.ordinal() + ";";
+				+ "FROM `StockObject` WHERE `typeId` = " + type.ordinal() + ";";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
@@ -670,20 +674,28 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					switch(type){
 						case empty:
-							//actual value is "empty"
+							// actual value is "empty"
+							System.out.println("Append nothing?");
 							break;
 						case device:
+							System.out.println("Append device");
 							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+									type, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							break;
 						case medicalMaterial:
+							System.out.println("Append medicalMaterial");
 							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
+									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 						case consumableMaterial:
+							System.out.println("Append consumableMaterial");
 							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
+									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
 									rs.getInt("quotaStock"));
+							break;
 						case vehicle:
+							System.out.println("Append vehicle");
 							break;
 					}
 					i++;
@@ -695,7 +707,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			System.out.println(e.getMessage());
+			// System.out.println(e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {

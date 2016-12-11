@@ -1,28 +1,30 @@
 package presenter.data;
+import model.DatabaseReadManager;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.accessControl.Group;
+import model.databaseObjects.accessControl.User;
+import model.databaseObjects.environment.Location;
+import model.databaseObjects.stockObjects.ConsumableMaterial;
+import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.MedicalMaterial;
 import presenter.Presenter;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class EditPresenter extends Presenter {
-	DatabaseObject.ModificationType modificationType;
-
-	/**
-	 * Create the application.
-	 */
-	public EditPresenter() {
-		initialize();
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public EditPresenter(Presenter previousPresenter) {
-		this.previousPresenter = previousPresenter;
-		initialize();
-	}
+public class EditPresenter extends Presenter implements MouseListener {
+	/** Reusable AddPresenter modType **/
+	public DatabaseObject.ModificationType modificationType;
+	/** Data **/
+	private DatabaseObject[] databaseObjects = null;
+	/** Areas **/
+	private JTable table;
+	/** Buttons **/
+	private JButton nextButton;
 
 	/**
 	 * Create the application.
@@ -40,6 +42,7 @@ public class EditPresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
+		/******** Labels ********/
 		JLabel title = new JLabel();
 		switch (this.modificationType) {
 			case deviceMenuItem:
@@ -65,10 +68,169 @@ public class EditPresenter extends Presenter {
 		title.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(title);
 
+		JLabel lblName = new JLabel("Auswahl:");
+		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
+		frame.getContentPane().add(lblName);
+
+		/******** Initial Data seperated for readability ********/
+		switch (this.modificationType) {
+			case deviceMenuItem:
+				this.databaseObjects = DatabaseReadManager.getStockObjects(DatabaseObject.StockObjectType.device);
+				break;
+			case medicalMaterialMenuItem:
+				this.databaseObjects = DatabaseReadManager.getStockObjects(DatabaseObject.StockObjectType.medicalMaterial);
+				break;
+			case consumableMaterialMenuItem:
+				this.databaseObjects = DatabaseReadManager.getStockObjects(DatabaseObject.StockObjectType.consumableMaterial);
+				break;
+			case locationMenuItem:
+				this.databaseObjects = DatabaseReadManager.getLocations();
+				break;
+			case userMenuItem:
+				this.databaseObjects = DatabaseReadManager.getUsers();
+				break;
+			case groupMenuItem:
+				this.databaseObjects = DatabaseReadManager.getGroups();
+				break;
+		}
+
+		/******** Table Data ********/
+		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*0);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),calculatedTextAreaHeight);
+		this.frame.getContentPane().add(scrollPane);
+		this.table = new JTable() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
+		Object[] columnNames = new Object[0];
+
+		switch (this.modificationType) {
+			case deviceMenuItem:
+				columnNames = new Object[]{ "ID", "Titel"};
+				break;
+			case medicalMaterialMenuItem:
+				columnNames = new Object[]{ "ID", "Titel"};
+				break;
+			case consumableMaterialMenuItem:
+				columnNames = new Object[]{ "ID", "Titel"};
+				break;
+			case locationMenuItem:
+				columnNames = new Object[]{ "ID", "Titel"};
+				break;
+			case userMenuItem:
+				columnNames = new Object[]{ "ID", "Username"};
+				break;
+			case groupMenuItem:
+				columnNames = new Object[]{ "ID", "Name"};
+				break;
+		}
+
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+		/******** Database Typesafety because it once crashed here ********/
+		if (this.databaseObjects != null) {
+			for (DatabaseObject databaseObject : this.databaseObjects) {
+				switch (this.modificationType) {
+					case deviceMenuItem:
+						if (databaseObject instanceof Device) {
+							Device device = (Device) databaseObject;
+							Object row[] = {databaseObject.id, device.title};
+							model.addRow(row);
+						}
+						break;
+					case medicalMaterialMenuItem:
+						if (databaseObject instanceof MedicalMaterial) {
+							MedicalMaterial medicalMaterial = (MedicalMaterial) databaseObject;
+							Object row[] = {databaseObject.id, medicalMaterial.title};
+							model.addRow(row);
+						}
+						break;
+					case consumableMaterialMenuItem:
+						if (databaseObject instanceof ConsumableMaterial) {
+							ConsumableMaterial consumableMaterial = (ConsumableMaterial) databaseObject;
+							Object row[] = {databaseObject.id, consumableMaterial.title};
+							model.addRow(row);
+						}
+						break;
+					case locationMenuItem:
+						if (databaseObject instanceof Location) {
+							Location location = (Location) databaseObject;
+							Object row[] = {databaseObject.id, location.title};
+							model.addRow(row);
+						}
+						break;
+					case userMenuItem:
+						if (databaseObject instanceof User) {
+							User user = (User) databaseObject;
+							Object row[] = {databaseObject.id, user.username};
+							model.addRow(row);
+						}
+						break;
+					case groupMenuItem:
+						if (databaseObject instanceof Group) {
+							Group group = (Group) databaseObject;
+							Object row[] = { databaseObject.id, group.title};
+							model.addRow(row);
+						}
+						break;
+				}
+			}
+		}
+		this.table.setModel(model);
+		this.table.addMouseListener(this);
+		scrollPane.setViewportView(this.table);
+
+
+		/******** Buttons ********/
+		this.nextButton = new JButton("weiter");
+		this.nextButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		this.nextButton.addActionListener(this);
+		frame.getContentPane().add(this.nextButton);
+		this.nextButton.setEnabled(false);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
+		if (e.getSource() == this.nextButton) {
+			int selectedRow = this.table.getSelectedRow();
+			DatabaseObject selectedDatabaseObject = this.databaseObjects[selectedRow];
+			AddPresenter addPresenter = new AddPresenter(this, this.modificationType, selectedDatabaseObject);
+			addPresenter.newScreen();
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// Left mouse click
+		if (SwingUtilities.isLeftMouseButton(e)) {
+			// get the coordinates of the mouse click
+			Point p = e.getPoint();
+			// get the row index that contains that coordinate
+			int rowNumber = table.rowAtPoint(p);
+			// Do sth with the rowPosition
+			this.nextButton.setEnabled(true);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
 	}
 }
