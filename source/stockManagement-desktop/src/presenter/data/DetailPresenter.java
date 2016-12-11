@@ -22,9 +22,8 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	private JTable table;
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 	private JButton addButton = new JButton("Hinzufügen");
-	private JButton removeButton = new JButton("Entnehmen");
 	private JButton editButton = new JButton("Bearbeiten");
-	private JButton deleteButton = new JButton("Löschen");
+	private JButton shiftButton = new JButton("Bestandsänderung");
 
 	/**
 	 * Create the application.
@@ -81,19 +80,17 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(table);
 
-		JButton[] buttons = new JButton[]{ this.addButton, this.removeButton, this.editButton, this.deleteButton};
-		int buttonWidth = (scrollPaneWidth / 4) - smallSpacing;
+		JButton[] buttons = new JButton[]{ this.addButton, this.editButton, this.shiftButton};
+		int buttonWidth = (scrollPaneWidth / buttons.length) - smallSpacing;
 		int buttonY = decentContentHeight + contentY + smallSpacing;
 
 		this.addButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*1 , buttonY, buttonWidth, buttonHeight);
-		this.removeButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*2+buttonWidth*1, buttonY, buttonWidth, buttonHeight);
-		this.editButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*3+buttonWidth*2, buttonY, buttonWidth, buttonHeight);
-		this.deleteButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*4+buttonWidth*3, buttonY, buttonWidth, buttonHeight);
+		this.editButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*2+buttonWidth*1, buttonY, buttonWidth, buttonHeight);
+		this.shiftButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*3+buttonWidth*2, buttonY, buttonWidth, buttonHeight);
 
 		this.addButton.setEnabled(false);
-		this.removeButton.setEnabled(false);
 		this.editButton.setEnabled(false);
-		this.deleteButton.setEnabled(false);
+		this.shiftButton.setEnabled(false);
 
 		for (JButton button : buttons) {
 			button.addActionListener(this);
@@ -174,9 +171,8 @@ public class DetailPresenter extends Presenter implements MouseListener {
 			}
 		}
 		this.addButton.setEnabled(true);
-		this.removeButton.setEnabled(true);
 		this.editButton.setEnabled(true);
-		this.deleteButton.setEnabled(true);
+		this.shiftButton.setEnabled(true);
 	}
 
 	@Override
@@ -184,13 +180,57 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		super.actionPerformed(e);
 
 		if (e.getSource() == this.addButton) {
-
-		} else if (e.getSource() == this.removeButton) {
-
+			StockValuePresenter stockValuePresenter = new StockValuePresenter(this, this.stockObject);
+			stockValuePresenter.newScreen();
 		} else if (e.getSource() == this.editButton) {
+			int selectedIndex = this.table.getSelectedRow();
+			StockObjectValue selectedValue = this.stockObjectValues[selectedIndex];
+			StockValuePresenter stockValuePresenter = new StockValuePresenter(this, this.stockObject, selectedValue);
+			stockValuePresenter.newScreen();
+		} else if (e.getSource() == this.shiftButton) {
+			int selectedIndex = this.table.getSelectedRow();
+			StockObjectValue selectedValue = this.stockObjectValues[selectedIndex];
+			StockModificationPresenter stockModificationPresenter = new StockModificationPresenter(this, this.stockObject, selectedValue);
+			stockModificationPresenter.newScreen();
+		}
+	}
 
-		} else if (e.getSource() == this.deleteButton) {
-
+	@Override
+	public void showedAsPreviousPresenter() {
+		super.showedAsPreviousPresenter();
+		int selectedRow = this.table.getSelectedRow();
+		StockObjectValue selectedObjectValue = this.stockObjectValues[selectedRow];
+		this.stockObjectValues = DatabaseReadManager.getStockObjectValues(this.stockObject);
+		if (this.stockObjectValues != null) {
+			if (this.stockObject instanceof Device) {
+				if (selectedObjectValue instanceof DeviceValue) {
+					DeviceValue deviceValue = (DeviceValue) selectedObjectValue;
+					this.table.setValueAt(deviceValue.volume, selectedRow, 0);
+					this.table.setValueAt(DatabaseReadManager.getLocation(selectedObjectValue.locationID).title, selectedRow, 1);
+					this.table.setValueAt(this.sdf.format(deviceValue.mtkDate), selectedRow, 2);
+					this.table.setValueAt(this.sdf.format(deviceValue.stkDate), selectedRow, 3);
+				}
+			} else if (this.stockObject instanceof Material) {
+				if (this.stockObject instanceof MedicalMaterial) {
+					if (selectedObjectValue instanceof MedicalMaterialValue) {
+						MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) selectedObjectValue;
+						this.table.setValueAt(medicalMaterialValue.volume, selectedRow, 0);
+						this.table.setValueAt(DatabaseReadManager.getLocation(selectedObjectValue.locationID).title, selectedRow, 1);
+						this.table.setValueAt(this.sdf.format(medicalMaterialValue.date), selectedRow, 2);
+					}
+				} else if (this.stockObject instanceof ConsumableMaterial) {
+					if (selectedObjectValue instanceof ConsumableMaterialValue) {
+						ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) selectedObjectValue;
+						this.table.setValueAt(consumableMaterialValue.volume, selectedRow, 0);
+						this.table.setValueAt(DatabaseReadManager.getLocation(selectedObjectValue.locationID).title, selectedRow, 1);
+						this.table.setValueAt(this.sdf.format(consumableMaterialValue.date), selectedRow, 2);
+					}
+				} else {
+					// Do nothing with this object, its not a usable material
+				}
+			} else {
+				// Do nothing, maybe its a vehicle
+			}
 		}
 	}
 

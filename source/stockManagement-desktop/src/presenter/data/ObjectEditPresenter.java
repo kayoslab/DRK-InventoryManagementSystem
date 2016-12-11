@@ -16,8 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class EditPresenter extends Presenter implements MouseListener {
-	/** Reusable AddPresenter modType **/
+public class ObjectEditPresenter extends Presenter implements MouseListener {
+	/** Reusable ObjectAddPresenter modType **/
 	public DatabaseObject.ModificationType modificationType;
 	/** Data **/
 	private DatabaseObject[] databaseObjects = null;
@@ -29,7 +29,7 @@ public class EditPresenter extends Presenter implements MouseListener {
 	/**
 	 * Create the application.
 	 */
-	public EditPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
+	public ObjectEditPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
 		initialize();
@@ -265,8 +265,8 @@ public class EditPresenter extends Presenter implements MouseListener {
 		if (e.getSource() == this.nextButton) {
 			int selectedRow = this.table.getSelectedRow();
 			DatabaseObject selectedDatabaseObject = this.databaseObjects[selectedRow];
-			AddPresenter addPresenter = new AddPresenter(this, this.modificationType, selectedDatabaseObject);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, this.modificationType, selectedDatabaseObject);
+			objectAddPresenter.newScreen();
 		}
 	}
 

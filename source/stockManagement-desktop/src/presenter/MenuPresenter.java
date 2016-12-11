@@ -1,9 +1,8 @@
 package presenter;
-import model.Session;
 import model.databaseObjects.DatabaseObject;
-import presenter.data.AddPresenter;
+import presenter.data.ObjectAddPresenter;
 import presenter.data.DataPresenter;
-import presenter.data.EditPresenter;
+import presenter.data.ObjectEditPresenter;
 import presenter.settings.SettingsPresenter;
 import java.awt.*;
 import javax.swing.*;
@@ -239,41 +238,41 @@ public class MenuPresenter extends Presenter implements MouseListener {
 				this.editPopup.show(null,this.frame.getX()+this.editButton.getX()+iconButtonHeight,this.frame.getY()+this.editButton.getY()+iconButtonWidth);
 			}
 		} else if (e.getSource() == this.addDeviceMenuItem) {
-			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.deviceMenuItem);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.deviceMenuItem);
+			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addMedicalMaterialMenuItem) {
-			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
+			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addConsumableMaterialMenuItem) {
-			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
+			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addLocationMenuItem) {
-			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.locationMenuItem);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.locationMenuItem);
+			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addUserMenuItem) {
-			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.userMenuItem);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.userMenuItem);
+			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addGroupMenuItem) {
-			AddPresenter addPresenter = new AddPresenter(this, DatabaseObject.ModificationType.groupMenuItem);
-			addPresenter.newScreen();
+			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.groupMenuItem);
+			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.editDeviceMenuItem) {
-			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.deviceMenuItem);
-			editPresenter.newScreen();
+			ObjectEditPresenter objectEditPresenter = new ObjectEditPresenter(this, DatabaseObject.ModificationType.deviceMenuItem);
+			objectEditPresenter.newScreen();
 		} else if (e.getSource() == this.editMedicalMaterialMenuItem) {
-			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
-			editPresenter.newScreen();
+			ObjectEditPresenter objectEditPresenter = new ObjectEditPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
+			objectEditPresenter.newScreen();
 		} else if (e.getSource() == this.editConsumableMaterialMenuItem) {
-			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
-			editPresenter.newScreen();
+			ObjectEditPresenter objectEditPresenter = new ObjectEditPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
+			objectEditPresenter.newScreen();
 		} else if (e.getSource() == this.editLocationMenuItem) {
-			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.locationMenuItem);
-			editPresenter.newScreen();
+			ObjectEditPresenter objectEditPresenter = new ObjectEditPresenter(this, DatabaseObject.ModificationType.locationMenuItem);
+			objectEditPresenter.newScreen();
 		} else if (e.getSource() == this.editUserMenuItem) {
-			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.userMenuItem);
-			editPresenter.newScreen();
+			ObjectEditPresenter objectEditPresenter = new ObjectEditPresenter(this, DatabaseObject.ModificationType.userMenuItem);
+			objectEditPresenter.newScreen();
 		} else if (e.getSource() == this.editGroupMenuItem) {
-			EditPresenter editPresenter = new EditPresenter(this, DatabaseObject.ModificationType.groupMenuItem);
-			editPresenter.newScreen();
+			ObjectEditPresenter objectEditPresenter = new ObjectEditPresenter(this, DatabaseObject.ModificationType.groupMenuItem);
+			objectEditPresenter.newScreen();
 		}
 
 	}

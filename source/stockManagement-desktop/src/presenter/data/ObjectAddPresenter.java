@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class AddPresenter extends Presenter implements MouseListener {
-	/** Reusable AddPresenter modType **/
+public class ObjectAddPresenter extends Presenter implements MouseListener {
+	/** Reusable ObjectAddPresenter modType **/
 	public DatabaseObject.ModificationType modificationType;
 	/** Prepared Data **/
 	private DatabaseObject databaseObject;
@@ -45,7 +45,7 @@ public class AddPresenter extends Presenter implements MouseListener {
 	/**
 	 * Create the application.
 	 */
-	public AddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
+	public ObjectAddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
 		this.initialize();
@@ -54,7 +54,7 @@ public class AddPresenter extends Presenter implements MouseListener {
 	/**
 	 * Create the application.
 	 */
-	public AddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType, DatabaseObject preparedData) {
+	public ObjectAddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType, DatabaseObject preparedData) {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
 		this.databaseObject = preparedData;

@@ -40,35 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.java">
+      <file leaf-file-name="StockModificationPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditPresenter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/presenter/data/EditPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="845">
-              <caret line="196" column="9" lean-forward="false" selection-start-line="196" selection-start-column="9" selection-end-line="196" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="600" column="111" lean-forward="true" selection-start-line="600" selection-start-column="8" selection-end-line="600" selection-end-column="111" />
+            <state relative-caret-position="755">
+              <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,7 +63,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>newScreen</find>
       <find>back</find>
       <find>[]</find>
       <find>ArrayList</find>
@@ -114,6 +89,10 @@
       <find>getGroupRights</find>
       <find>getStockObjects</find>
       <find>silencedWarnings</find>
+      <find>removeButton</find>
+      <find>increaseButton</find>
+      <find>booleanCombobox</find>
+      <find>Integer</find>
     </findStrings>
     <replaceStrings>
       <replace>this.radioButtonAll</replace>
@@ -126,6 +105,8 @@
       <replace>changePasswordButton</replace>
       <replace>\u00FC</replace>
       <replace>radioButtonquotaStockOnly</replace>
+      <replace>editButton</replace>
+      <replace>shiftButton</replace>
     </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -169,17 +150,23 @@
         <option value="$PROJECT_DIR$/src/model/Session.java" />
         <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/MessagePresenter.java" />
-        <option value="$PROJECT_DIR$/src/presenter/InventoryPresenter.java" />
         <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" />
         <option value="$PROJECT_DIR$/src/model/UserManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
-        <option value="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" />
         <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
-        <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
-        <option value="$PROJECT_DIR$/src/presenter/data/AddPresenter.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/AddPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/InventoryPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/ModificationPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/AddObjectPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/data/EditPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/ObjectEditPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" />
+        <option value="$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java" />
       </list>
     </option>
   </component>
@@ -296,24 +283,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stockManagement-desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stockManagement-desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -911,12 +880,12 @@
       <workItem from="1481233252860" duration="500000" />
       <workItem from="1481296130849" duration="195000" />
       <workItem from="1481374336642" duration="14353000" />
-      <workItem from="1481415708365" duration="15419000" />
+      <workItem from="1481415708365" duration="20642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132233000" />
+    <option name="totallyTimeSpent" value="137456000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -940,7 +909,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.139823" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.139823" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -948,6 +917,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16773163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12034079" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20766774" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -959,7 +929,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -987,16 +956,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/img/add-circle-1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/edit-button.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/img/chat-button.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1260,18 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/data/DetailPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="167" column="0" lean-forward="false" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2696#2697#0" expanded="false" />
-            <element signature="e#2719#2720#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
@@ -1333,26 +1280,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/InventoryPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6630">
           <caret line="453" column="25" lean-forward="true" selection-start-line="453" selection-start-column="25" selection-end-line="453" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="116" column="18" lean-forward="false" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1373,6 +1304,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/InventoryPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="146" column="28" lean-forward="false" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/DetailPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1715">
+          <caret line="233" column="9" lean-forward="false" selection-start-line="233" selection-start-column="9" selection-end-line="233" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1383,20 +1348,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/data/AddPresenter.java">
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="600" column="111" lean-forward="true" selection-start-line="600" selection-start-column="8" selection-end-line="600" selection-end-column="111" />
+        <state relative-caret-position="380">
+          <caret line="906" column="27" lean-forward="false" selection-start-line="906" selection-start-column="27" selection-end-line="906" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/data/EditPresenter.java">
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/ObjectEditPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="196" column="9" lean-forward="false" selection-start-line="196" selection-start-column="9" selection-end-line="196" selection-end-column="9" />
+        <state relative-caret-position="380">
+          <caret line="231" column="58" lean-forward="true" selection-start-line="231" selection-start-column="58" selection-end-line="231" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="755">
+          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

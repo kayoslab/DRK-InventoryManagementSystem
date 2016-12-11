@@ -48,14 +48,16 @@ public class InventoryPresenter extends Presenter {
 		this.radioButtonAll.addActionListener(this);
 		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
 		this.frame.getContentPane().add(this.radioButtonAll);
-		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
-		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
-		this.radioButtonMinimumStockOnly.addActionListener(this);
-		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
+
 		this.radioButtonquotaStockOnly = new JRadioButton("Nur Sollbestände");
-		this.radioButtonquotaStockOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
+		this.radioButtonquotaStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
 		this.radioButtonquotaStockOnly.addActionListener(this);
 		this.frame.getContentPane().add(this.radioButtonquotaStockOnly);
+
+		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
+		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
+		this.radioButtonMinimumStockOnly.addActionListener(this);
+		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
 
 		JSeparator comboBoxSeperator = new JSeparator();
 		comboBoxSeperator.setBounds(leftPadding, (contentY+lineHeight*3)+lineHeight/4, leftSideMenuWidth, 12);

@@ -144,7 +144,7 @@ public abstract class Presenter implements ActionListener {
 	public int displayAreaWidth = width - leftPadding - rightPadding;
 	public int displayAreaHeight = height - topPadding - bottomPadding;
 	/* Spacings */
-	public int noSpacing = 1;
+	public int noSpacing = 4;
 	public int smallSpacing = 10;
 	public int spacing = 16;
 	public int buttonSpacing = 27;
