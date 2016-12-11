@@ -108,7 +108,11 @@ public class DataPresenter extends Presenter implements MouseListener {
 		};
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(this.table);
+	}
 
+	@Override
+	public void presentData() {
+		super.presentData();
 		this.loadTableData();
 	}
 
@@ -191,6 +195,12 @@ public class DataPresenter extends Presenter implements MouseListener {
 
 		// Scroll the area into view
 		//viewport.scrollRectToVisible(rect);
+	}
+
+	@Override
+	public void showedAsPreviousPresenter() {
+		super.showedAsPreviousPresenter();
+		this.loadTableData();
 	}
 
 	@Override

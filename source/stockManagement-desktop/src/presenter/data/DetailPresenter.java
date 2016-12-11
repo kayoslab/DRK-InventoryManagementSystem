@@ -76,7 +76,6 @@ public class DetailPresenter extends Presenter implements MouseListener {
 				return false;
 			};
 		};
-
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(table);
 
@@ -181,40 +180,9 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	@Override
 	public void showedAsPreviousPresenter() {
 		super.showedAsPreviousPresenter();
-		int selectedRow = this.table.getSelectedRow();
-		StockObjectValue selectedObjectValue = this.stockObjectValues[selectedRow];
-		this.stockObjectValues = DatabaseReadManager.getStockObjectValues(this.stockObject);
-		if (this.stockObjectValues != null) {
-			if (this.stockObject instanceof Device) {
-				if (selectedObjectValue instanceof DeviceValue) {
-					DeviceValue deviceValue = (DeviceValue) selectedObjectValue;
-					this.table.setValueAt(deviceValue.volume, selectedRow, 0);
-					this.table.setValueAt(DatabaseReadManager.getLocation(selectedObjectValue.locationID).title, selectedRow, 1);
-					this.table.setValueAt(this.sdf.format(deviceValue.mtkDate), selectedRow, 2);
-					this.table.setValueAt(this.sdf.format(deviceValue.stkDate), selectedRow, 3);
-				}
-			} else if (this.stockObject instanceof Material) {
-				if (this.stockObject instanceof MedicalMaterial) {
-					if (selectedObjectValue instanceof MedicalMaterialValue) {
-						MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) selectedObjectValue;
-						this.table.setValueAt(medicalMaterialValue.volume, selectedRow, 0);
-						this.table.setValueAt(DatabaseReadManager.getLocation(selectedObjectValue.locationID).title, selectedRow, 1);
-						this.table.setValueAt(this.sdf.format(medicalMaterialValue.date), selectedRow, 2);
-					}
-				} else if (this.stockObject instanceof ConsumableMaterial) {
-					if (selectedObjectValue instanceof ConsumableMaterialValue) {
-						ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) selectedObjectValue;
-						this.table.setValueAt(consumableMaterialValue.volume, selectedRow, 0);
-						this.table.setValueAt(DatabaseReadManager.getLocation(selectedObjectValue.locationID).title, selectedRow, 1);
-						this.table.setValueAt(this.sdf.format(consumableMaterialValue.date), selectedRow, 2);
-					}
-				} else {
-					// Do nothing with this object, its not a usable material
-				}
-			} else {
-				// Do nothing, maybe its a vehicle
-			}
-		}
+		loadTableData();
+		this.editButton.setEnabled(false);
+		this.shiftButton.setEnabled(false);
 	}
 
 	@Override

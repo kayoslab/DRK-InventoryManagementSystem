@@ -1045,6 +1045,7 @@ public final class DatabaseReadManager {
 		sqlStatement += " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
+		System.out.println(sqlStatement);
 		try {
 			// get Data from Database
 			rs = DatabaseReadManager.executeQuery(sqlStatement);

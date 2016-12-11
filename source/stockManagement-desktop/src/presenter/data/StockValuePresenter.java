@@ -11,9 +11,11 @@ import presenter.Presenter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 public class StockValuePresenter extends Presenter {
@@ -23,6 +25,7 @@ public class StockValuePresenter extends Presenter {
 	Location[] locations = DatabaseReadManager.getLocations();
 	/** Buttons **/
 	private JButton saveButton;
+	private JButton deleteButton;
 	/** Data **/
 	private JTextField volumeTextField;
 	private JComboBox locationComboBox;
@@ -266,13 +269,91 @@ public class StockValuePresenter extends Presenter {
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		this.saveButton.addActionListener(this);
 		frame.getContentPane().add(this.saveButton);
+
+		if (this.stockObjectValue != null) {
+			this.deleteButton = new JButton("löschen");
+			this.deleteButton.setBounds(displayAreaWidth-saveButton.getWidth()+leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+			this.deleteButton.addActionListener(this);
+			frame.getContentPane().add(this.deleteButton);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		if (e.getSource() == this.saveButton) {
+			if (this.stockObjectValue != null) {
+				System.out.println("Edit");
+				this.stockObjectValue.locationID = this.locations[this.locationComboBox.getSelectedIndex()].id;
+				if (this.stockObjectValue instanceof DeviceValue) {
+					DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
+					deviceValue.mtkDate = (Date)this.dateField1.getModel().getValue();
+					deviceValue.stkDate = (Date)this.dateField2.getModel().getValue();
+					deviceValue.serialNumber = this.serialField.getText();
+					deviceValue.inventoryNumber = this.inventoryField.getText();
+					deviceValue.umdns = this.umdnsField.getText();
+					if (deviceValue.editObject()) {
+						this.showPreviousPresenter();
+					}
+				} else if (this.stockObjectValue instanceof MaterialValue) {
+					System.out.println("Material");
+					MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
+					materialValue.date = (Date)this.dateField1.getModel().getValue();
+					materialValue.batchNumber = this.batchField.getText();
+					if (materialValue.editObject()) {
+						System.out.println("Saved");
+						this.showPreviousPresenter();
+					} else {
+						System.out.println("Not");
+					}
+				}
+			} else {
+				int locationID = this.locations[this.locationComboBox.getSelectedIndex()].id;
+				String textFieldValue = this.volumeTextField.getText();
+				DecimalFormat decimalFormat = new DecimalFormat("#");
+				try {
+					int volume = decimalFormat.parse(textFieldValue).intValue();
+					if (volume > 0){
+						/** Reasonable Data **/
+						if (this.stockObject instanceof Device) {
+							Date mtkDate = (Date)this.dateField1.getModel().getValue();
+							Date stkDate = (Date)this.dateField2.getModel().getValue();
+							String serialNumber = this.serialField.getText();
+							String inventoryNumber = this.inventoryField.getText();
+							String umdns = this.umdnsField.getText();
+							DeviceValue deviceValue = new DeviceValue(0, volume, mtkDate, stkDate, this.stockObject.id, locationID, 1, serialNumber, inventoryNumber, umdns);
+							if (deviceValue.createObject()) {
+								this.showPreviousPresenter();
+							}
+						} else if (this.stockObject instanceof Material) {
+							Date date = (Date)this.dateField1.getModel().getValue();
+							String batchNumber = this.batchField.getText();
+							if (this.stockObject instanceof MedicalMaterial) {
+								MedicalMaterialValue medicalMaterialValue = new MedicalMaterialValue(0, volume, this.stockObject.id, locationID, 1, batchNumber, date);
+								if (medicalMaterialValue.createObject()) {
+									this.showPreviousPresenter();
+								}
+							} else if (this.stockObject instanceof ConsumableMaterial) {
+								ConsumableMaterialValue consumableMaterialValue = new ConsumableMaterialValue(0, volume, this.stockObject.id, locationID, 1, batchNumber, date);
+								if (consumableMaterialValue.createObject()) {
+									this.showPreviousPresenter();
+								}
+							}
 
+						}
+					} else {
+
+					}
+				} catch (ParseException exception) {
+
+				}
+			}
+
+		} else if (e.getSource() == this.deleteButton) {
+			if (this.stockObjectValue != null) {
+				this.stockObjectValue.deleteObject();
+				this.showPreviousPresenter();
+			}
 		}
 	}
 
