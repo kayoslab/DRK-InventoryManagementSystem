@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
+#################################################################################
+#
+# 
+#
+#################################################################################
+
 from DatabaseObjects import DatabaseObjects
 import csv
 import time
 import datetime
+import re
 from sets import Set
 # just for testing:
 import os
@@ -166,8 +173,40 @@ class Importer:
     # our MySQL Database expects
     def getNormalizedDateString(self, dateString):
         if dateString != "":
-            date = datetime.datetime.strptime(dateString, "%d/%m/%Y").strftime(self.timeFormat)
-            if date != None:
+            #################################################################################
+            # The following RegEx would be good enough, but wouldn't contain leap years
+            # ^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\]\d{4}$
+            # pattern for 20/02/2016
+            # Could also loop over ["\/","\-","\."] but this tells more of a story
+            #################################################################################
+            pattern = re.compile("(^(((0[1-9]|1[0-9]|2[0-8])[\/]" + "(0[1-9]|1[012]))|((29|30|31)[\/]" + "(0[13578]|1[02]))|((29|30)[\/]" + "(0[4,6,9]|11)))[\/]" + "(19|[2-9][0-9])\d\d$)|" + "(^29[\/]" + "02[\/]" + "(19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)")
+            if pattern.match(dateString):
+                date = datetime.datetime.strptime(dateString, "%d/%m/%Y").strftime(self.timeFormat)
+                return date
+            # pattern for 20-02-2016
+            pattern = re.compile("(^(((0[1-9]|1[0-9]|2[0-8])[\-]" + "(0[1-9]|1[012]))|((29|30|31)[\-]" + "(0[13578]|1[02]))|((29|30)[\-]" + "(0[4,6,9]|11)))[\-]" + "(19|[2-9][0-9])\d\d$)|" + "(^29[\-]" + "02[\-]" + "(19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)")
+            if pattern.match(dateString):
+                date = datetime.datetime.strptime(dateString, "%d-%m-%Y").strftime(self.timeFormat)
+                return date
+            # pattern for 20.02.2016
+            pattern = re.compile("(^(((0[1-9]|1[0-9]|2[0-8])[\.]" + "(0[1-9]|1[012]))|((29|30|31)[\.]" + "(0[13578]|1[02]))|((29|30)[\.]" + "(0[4,6,9]|11)))[\.]" + "(19|[2-9][0-9])\d\d$)|" + "(^29[\.]" + "02[\.]" + "(19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)")
+            if pattern.match(dateString):
+                date = datetime.datetime.strptime(dateString, "%d-%m-%Y").strftime(self.timeFormat)
+                return date
+            # pattern for 02/2016
+            pattern = re.compile("^(0?[1-9]|1[012])[\/]\d{4}$")
+            if pattern.match(dateString):
+                date = datetime.datetime.strptime(dateString, "%m/%Y").strftime(self.timeFormat)
+                return date
+            # pattern for 02-2016
+            pattern = re.compile("^(0?[1-9]|1[012])[\/]\d{4}$")
+            if pattern.match(dateString):
+                date = datetime.datetime.strptime(dateString, "%m/%Y").strftime(self.timeFormat)
+                return date
+            # pattern for 02-2016
+            pattern = re.compile("^(0?[1-9]|1[012])[\.]\d{4}$")
+            if pattern.match(dateString):
+                date = datetime.datetime.strptime(dateString, "%m.%Y").strftime(self.timeFormat)
                 return date
         return "null"
 
