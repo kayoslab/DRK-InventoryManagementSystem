@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from DatabaseObjects import DatabaseObjects
 import csv
+import time
 from sets import Set
 # just for testing:
 import os
 
 class Importer:
     dbo = DatabaseObjects()
+    timeFormat = "%Y-%m-%d %H:%M:%S"
     importPath = ""
     exportPath = ""
     # CSV Data
@@ -63,7 +65,9 @@ class Importer:
         locationSqlString = "// Location Insert Statement \n" + "INSERT INTO " + str(self.dbo.locationTable["table"]) + "\n(" + self.dbo.locationTable["title"] + ")\nVALUES\n"
         for location in locations:
             locationSqlString += "('" + location + "'),\n"
+        # Stripping last \n and ,
         locationSqlString = locationSqlString[:-2]
+        # and replace with ; and \n's
         locationSqlString += ";\n\n\n"
         return locationSqlString
 
@@ -91,17 +95,36 @@ class Importer:
                 mtkIntervall = str(stockObject["mtkIntervall"])
             if stockObject["stkIntervall"] != None and type(stockObject["stkIntervall"]) == int:
                 stkIntervall = str(stockObject["stkIntervall"])
-
+            # appending Strings
             stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
-
+        # Stripping last \n and ,
         stockObjectSqlString = stockObjectSqlString[:-2]
+        # and replace with ; and \n's
         stockObjectSqlString += ";\n\n\n"
         return stockObjectSqlString
 
     def generateStockValueSQL(self, stockValues):
-        stockValueSqlString = "// StockValue Insert Statement \n" + "INSERT INTO " + str(self.dbo.stockValueTable["table"]) + "\n(title)\nVALUES\n"
+        stockValueSqlString = "// StockValue Insert Statement \n" + "INSERT INTO " + "\n(" + str(self.dbo.stockValueTable["table"]) + str(self.dbo.stockValueTable["volume"]) + ", " + str(self.dbo.stockValueTable["date"]) + ", " + str(self.dbo.stockValueTable["mtkDate"]) + ", " + str(self.dbo.stockValueTable["stkDate"]) + ", " + str(self.dbo.stockValueTable["inventoryNumber"]) + ", " + str(self.dbo.stockValueTable["serialNumber"]) + ", " + str(self.dbo.stockValueTable["umdns"]) + ", " + str(self.dbo.stockValueTable["batchNumber"]) + ", " + str(self.dbo.stockValueTable["creation"]) + ", " + str(self.dbo.stockValueTable["escalationAck"]) + ", " + str(self.dbo.stockValueTable["stockObjectId"]) + ", " + str(self.dbo.stockValueTable["locationId"]) + ", " + str(self.dbo.stockValueTable["messageId"]) + ")\nVALUES\n"
 
+        for stockValue in stockValues:
+            volume = "0"
+            date = "null"
+            mtkDate = "null"
+            stkDate = "null"
+            inventoryNumber = "null"
+            serialNumber = "null"
+            umdns = "null"
+            batchNumber = "null"
+            creation = time.strftime(self.timeFormat)
+            escalationAck = "0"
+            stockObjectId = "0"
+            locationId = "0"
+            messageId = "1"
+            # appending Strings
+            stockValueSqlString += "(" + volume + "," + date + "," + mtkDate + "," + stkDate + "," + inventoryNumber + "," + serialNumber + "," + umdns + "," + batchNumber + "," + creation + "," + escalationAck + "," + stockObjectId + "," + locationId + "," + messageId + "," + "),\n"
+        # Stripping last \n and ,
         stockValueSqlString = stockValueSqlString[:-2]
+        # and replace with ; and \n's
         stockValueSqlString += ";\n\n\n"
         return stockValueSqlString
 
