@@ -86,6 +86,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 			button.setBounds(leftPadding+noSpacing+(characterButtonWidth)*i,contentY,characterButtonWidth,characterButtonHeight);
 			this.frame.getContentPane().add(button);
 			button.addActionListener(this);
+			button.setVisible(false);
 			i++;
 		}
 
@@ -134,8 +135,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 	}
 
 	private void loadTableData() {
-		// TODO: Check if a user has the right to see all these objects.
-
+		/** Get unsorted Data **/
 		this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
 		this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
 		this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
@@ -143,7 +143,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 		StockObject[] unsortedDevices = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
 		StockObject[] unsortedmedicalMaterials = this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()];
 		StockObject[] unsortedconsumableMaterials = this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()];
-
+		/** Sort the Data **/
 		ArrayList<StockObject> sortedData = new ArrayList<StockObject>();
 
 		sortedData.addAll(Arrays.asList(unsortedDevices));
@@ -152,20 +152,20 @@ public class DataPresenter extends Presenter implements MouseListener {
 
 		stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
 		Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
-
+		/** New TableModel **/
 		this.fillTableWithData();
-
+		/** Sorting Rows **/
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(this.table.getModel());
 		this.searchText.getDocument().addDocumentListener(new DocumentListener() {
 			private void searchFieldChangedUpdate(DocumentEvent evt) {
 				String text = searchText.getText();
 				if (!text.equals("Suchen") && !text.equals("")) {
-					System.out.println(text);
 					try {
 						sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
 					} catch (PatternSyntaxException pse) {
-						JOptionPane.showMessageDialog(null, "Bad regex pattern",
+						JOptionPane.showMessageDialog(null, "Ihr Suchbegriff enthält ein ausgeschlossenes Symbol.",
 								"Bad regex pattern", JOptionPane.ERROR_MESSAGE);
+						sorter.setRowFilter(null);
 					}
 				} else {
 					sorter.setRowFilter(null);
