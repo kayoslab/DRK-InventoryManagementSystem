@@ -2,16 +2,24 @@
 from DatabaseObjects import DatabaseObjects
 import csv
 from sets import Set
+# just for testing:
+import os
 
 class Importer:
     dbo = DatabaseObjects()
     importPath = ""
     exportPath = ""
-    fileData = None
+    # CSV Data
+    readData = None
+    # ParsedString
     sqlString = ""
+
     def __init__(self, importPath, exportPath):
         self.importPath = importPath
         self.exportPath = exportPath
+        if self.readCSV():
+            self.writeSQL()
+
 
     def getCSVReader(self):
         with open(self.importPath) as csvfile:
@@ -22,8 +30,8 @@ class Importer:
             return data
 
     def readCSV(self):
-        self.fileData = self.getCSVReader()
-        if self.fileData != None:
+        self.readData = self.getCSVReader()
+        if self.readData != None:
             return True
         else:
             return False
@@ -31,25 +39,36 @@ class Importer:
     def writeSQL(self):
         locations = Set()
         stockObjects = []
-        for row in self.fileData:
+        stockValues = []
+        for row in self.readData:
+            # Location
             locations.add(row['Lagerort'])
+            # StockObject
             stockObject = {"title":row['Titel'], "description":row['Beschreibung'], "type":row['Art'], "minimumStock":row["Mindestbestand"], "quotaStock":row["Sollbestand"], "batchSize":row["Losgröße"], "totalVolume":row["Bestand"], "mtkIntervall":row["MTK Intervall"], "stkIntervall":row["STK Intervall"], "location":row["Lagerort"]}
             stockObjects.append(stockObject)
+            # StockValue
+            stockValue = {}
+            stockValues.append(stockValue)
         if len(locations) > 0:
-            self.generateLocationSQL(locations)
+            self.sqlString += str(self.generateLocationSQL(locations))
         if len(stockObjects) > 0:
-            self.generateStockObjectSQL(stockObjects)
+            self.sqlString += str(self.generateStockObjectSQL(stockObjects))
+        if len(stockValues) > 0:
+            self.sqlString += str(self.generateStockValueSQL(stockValues))
+        outputFile = open(self.exportPath, 'w')
+        outputFile.write(self.sqlString)
+        outputFile.close
 
     def generateLocationSQL(self, locations):
-        sqlString = "INSERT INTO " + str(self.dbo.locationTable["table"]) + "\n(" + self.dbo.locationTable["title"] + ")\nVALUES\n"
+        locationSqlString = "// Location Insert Statement \n" + "INSERT INTO " + str(self.dbo.locationTable["table"]) + "\n(" + self.dbo.locationTable["title"] + ")\nVALUES\n"
         for location in locations:
-            sqlString += "('" + location + "'),\n"
-        sqlString = sqlString[:-2]
-        sqlString += ";"
-        print(sqlString)
+            locationSqlString += "('" + location + "'),\n"
+        locationSqlString = locationSqlString[:-2]
+        locationSqlString += ";\n\n\n"
+        return locationSqlString
 
     def generateStockObjectSQL(self, stockObjects):
-        sqlString = "INSERT INTO " + str(self.dbo.stockObjectTable["table"]) + "\n(" + str(self.dbo.stockObjectTable["title"]) + ",\n " + str(self.dbo.stockObjectTable["description"]) + ",\n " + str(self.dbo.stockObjectTable["minimumStock"]) + ",\n " + str(self.dbo.stockObjectTable["quotaStock"]) + ",\n " + str(self.dbo.stockObjectTable["batchSize"]) + ",\n " + str(self.dbo.stockObjectTable["totalVolume"]) + ",\n " + str(self.dbo.stockObjectTable["mtkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["stkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["silencedWarnings"]) + ",\n " + str(self.dbo.stockObjectTable["typeId"]) + ")\nVALUES\n"
+        stockObjectSqlString = "// StockObject Insert Statement \n" + "INSERT INTO " + str(self.dbo.stockObjectTable["table"]) + "\n(" + str(self.dbo.stockObjectTable["title"]) + ",\n " + str(self.dbo.stockObjectTable["description"]) + ",\n " + str(self.dbo.stockObjectTable["minimumStock"]) + ",\n " + str(self.dbo.stockObjectTable["quotaStock"]) + ",\n " + str(self.dbo.stockObjectTable["batchSize"]) + ",\n " + str(self.dbo.stockObjectTable["totalVolume"]) + ",\n " + str(self.dbo.stockObjectTable["mtkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["stkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["silencedWarnings"]) + ",\n " + str(self.dbo.stockObjectTable["typeId"]) + ")\nVALUES\n"
         for stockObject in stockObjects:
             minimumStock = "0"
             quotaStock = "0"
@@ -73,15 +92,26 @@ class Importer:
             if stockObject["stkIntervall"] != None and type(stockObject["stkIntervall"]) == int:
                 stkIntervall = str(stockObject["stkIntervall"])
 
-            sqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
+            stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
 
-        sqlString = sqlString[:-2]
-        sqlString += ";"
-        print(sqlString)
+        stockObjectSqlString = stockObjectSqlString[:-2]
+        stockObjectSqlString += ";\n\n\n"
+        return stockObjectSqlString
 
+    def generateStockValueSQL(self, stockValues):
+        stockValueSqlString = "// StockValue Insert Statement \n" + "INSERT INTO " + str(self.dbo.stockValueTable["table"]) + "\n(title)\nVALUES\n"
+
+        stockValueSqlString = stockValueSqlString[:-2]
+        stockValueSqlString += ";\n\n\n"
+        return stockValueSqlString
+
+    # normalizes a given date String and
+    # reformat the string to the VALUE
+    # our MySQL Database expects
     def getNormalizedDateString(self, dateString):
         return "null"
 
+    # get type id from String
     def getTypeIdSelect(self, typeString):
         if typeString == "1":
             return typeString
@@ -105,16 +135,12 @@ class Importer:
             return "3"
         elif typeString.lower() == "Consumable Material".lower() :
             return "3"
+        elif typeString.lower() == "ConsumableMaterial".lower() :
+            return "3"
+        elif typeString.lower() == "Versorgungsmaterial".lower() :
+            return "3"
         return "4"
 
-    def generateStockValueSQL(self, stockValues):
-        sqlString = "INSERT INTO " + str(self.dbo.stockValueTable["table"]) + "\n(title)\nVALUES\n"
-
-        sqlString = sqlString[:-2]
-        sqlString += ";"
-        print(sqlString)
-
-
-i = Importer("/Users/cr0ss/Desktop/Medikamente.csv", "~/Documents/Medikamente.sql")
-if i.readCSV():
-    i.writeSQL()
+# also for testing, gets current directory of Importer.py
+dir_path = os.path.dirname(os.path.realpath(__file__))
+i = Importer(dir_path + "/data.csv", dir_path + "/data.sql")
