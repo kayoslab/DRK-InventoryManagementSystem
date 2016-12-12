@@ -2,6 +2,7 @@
 from DatabaseObjects import DatabaseObjects
 import csv
 import time
+import datetime
 from sets import Set
 # just for testing:
 import os
@@ -164,6 +165,10 @@ class Importer:
     # reformat the string to the VALUE
     # our MySQL Database expects
     def getNormalizedDateString(self, dateString):
+        if dateString != "":
+            date = datetime.datetime.strptime(dateString, "%d/%m/%Y").strftime(self.timeFormat)
+            if date != None:
+                return date
         return "null"
 
     def getStockObjectSelectStatement(self, stockObjectTitleString):
