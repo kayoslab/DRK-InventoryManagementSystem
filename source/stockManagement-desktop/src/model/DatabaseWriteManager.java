@@ -597,9 +597,25 @@ public final class DatabaseWriteManager {
 			} else {
 				return false;
 			}
+			if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
+				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
+				if (stockObject != null) {
+					StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
+					int totalVolume = 0;
+					if (stockObjectValues != null) {
+						for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
+							totalVolume += iteratedStockObjectValue.volume;
+						}
+					}
+					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
+							+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+					return DatabaseWriteManager.executeUpdate(sqlStatement);
+				}
+			}
 		} else {
 			return false;
 		}
+
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 	

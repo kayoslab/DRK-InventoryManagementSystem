@@ -597,9 +597,25 @@ public final class DatabaseWriteManager {
 			} else {
 				return false;
 			}
+			if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
+				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
+				if (stockObject != null) {
+					StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
+					int totalVolume = 0;
+					if (stockObjectValues != null) {
+						for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
+							totalVolume += iteratedStockObjectValue.volume;
+						}
+					}
+					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
+							+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+					return DatabaseWriteManager.executeUpdate(sqlStatement);
+				}
+			}
 		} else {
 			return false;
 		}
+
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 
@@ -614,66 +630,53 @@ public final class DatabaseWriteManager {
 	 */
 	private static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
 		String sqlStatement = "";
-		// Check for allready existing Stock Entries with this particular identifiers (e.g. Location/Message/Date).
-		StockObjectValue[] existingStock = DatabaseReadManager.existingStockObjectValueFor(stockObjectValue);
-		// switch over the number of objects with the same identifier.
-		assert existingStock != null : false;
-		switch (existingStock.length) {
-			case 0:
+		if (stockObjectValue instanceof DeviceValue) {
+			DeviceValue mergedDeviceValue = (DeviceValue) stockObjectValue;
+			sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
+					+ ", `mtkDate` = '" + DatabaseWriteManager.sdf.format(mergedDeviceValue.mtkDate)
+					+ "', `stkDate` = '" + DatabaseWriteManager.sdf.format(mergedDeviceValue.stkDate)
+					+ "', `inventoryNumber` = '" + mergedDeviceValue.inventoryNumber
+					+ "', `serialNumber` = '" + mergedDeviceValue.serialNumber
+					+ "', `umdns` = '" + mergedDeviceValue.umdns
+					+ "',`locationId` = " + stockObjectValue.locationID
+					+ ",`messageId` = " + stockObjectValue.messageID
+					+ " WHERE `id` = " + stockObjectValue.id + ";";
+			return DatabaseWriteManager.executeUpdate(sqlStatement);
+		} else if (stockObjectValue instanceof MaterialValue) {
+			if (stockObjectValue instanceof MedicalMaterialValue) {
+				MedicalMaterialValue mergedMedicalValue = (MedicalMaterialValue) stockObjectValue;
+				sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
+						+ ", `date` = '" + DatabaseWriteManager.sdf.format(mergedMedicalValue.date)
+						+ "', `batchNumber` = '" + mergedMedicalValue.batchNumber
+						+ "',`locationId` = " + stockObjectValue.locationID
+						+ ",`messageId` = " + stockObjectValue.messageID
+						+ " WHERE `id` = " + stockObjectValue.id + ";";
+			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+				ConsumableMaterialValue mergedConsumableValue = (ConsumableMaterialValue) stockObjectValue;
+				sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
+						+ ", `date` = '" + DatabaseWriteManager.sdf.format(mergedConsumableValue.date)
+						+ "', `batchNumber` = '" + mergedConsumableValue.batchNumber
+						+ "',`locationId` = " + stockObjectValue.locationID
+						+ ",`messageId` = " + stockObjectValue.messageID
+						+ " WHERE `id` = " + stockObjectValue.id + ";";
+			} else {
 				return false;
-			case 1:
-				// StockObjectValue mergedValue = DatabaseWriteManager.mergeStockObjectValues(stockObjectValue, existingStock[0]);
-				// Switch between different extended StockObjectValue Types
-				if (stockObjectValue instanceof DeviceValue) {
-					DeviceValue mergedDeviceValue = (DeviceValue) stockObjectValue;
-					sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-							+ ", `mtkDate` = '" + DatabaseWriteManager.sdf.format(mergedDeviceValue.mtkDate)
-							+ "', `stkDate` = '" + DatabaseWriteManager.sdf.format(mergedDeviceValue.stkDate)
-							+ "', `inventoryNumber` = '" + mergedDeviceValue.inventoryNumber
-							+ "', `serialNumber` = '" + mergedDeviceValue.serialNumber
-							+ "', `umdns` = '" + mergedDeviceValue.umdns
-							+ "',`locationId` = " + stockObjectValue.locationID
-							+ ",`messageId` = " + stockObjectValue.messageID
-							+ " WHERE `id` = " + stockObjectValue.id + ";";
-					return DatabaseWriteManager.executeUpdate(sqlStatement);
-				} else if (stockObjectValue instanceof MaterialValue) {
-					if (stockObjectValue instanceof MedicalMaterialValue) {
-						MedicalMaterialValue mergedMedicalValue = (MedicalMaterialValue) stockObjectValue;
-						sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-								+ ", `date` = '" + DatabaseWriteManager.sdf.format(mergedMedicalValue.date)
-								+ "', `batchNumber` = '" + mergedMedicalValue.batchNumber
-								+ "',`locationId` = " + stockObjectValue.locationID
-								+ ",`messageId` = " + stockObjectValue.messageID
-								+ " WHERE `id` = " + stockObjectValue.id + ";";
-					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-						ConsumableMaterialValue mergedConsumableValue = (ConsumableMaterialValue) stockObjectValue;
-						sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-								+ ", `date` = '" + DatabaseWriteManager.sdf.format(mergedConsumableValue.date)
-								+ "', `batchNumber` = '" + mergedConsumableValue.batchNumber
-								+ "',`locationId` = " + stockObjectValue.locationID
-								+ ",`messageId` = " + stockObjectValue.messageID
-								+ " WHERE `id` = " + stockObjectValue.id + ";";
-					} else {
-						return false;
-					}
-
-					if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
-						StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
-						if (stockObject != null) {
-							StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
-							int totalVolume = 0;
-							if (stockObjectValues != null) {
-								for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
-									totalVolume += iteratedStockObjectValue.volume;
-								}
-							}
-							sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
-									+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
-							return DatabaseWriteManager.executeUpdate(sqlStatement);
+			}
+			if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
+				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
+				if (stockObject != null) {
+					StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
+					int totalVolume = 0;
+					if (stockObjectValues != null) {
+						for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
+							totalVolume += iteratedStockObjectValue.volume;
 						}
 					}
+					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
+							+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
-				break;
+			}
 		}
 		return false;
 	}
@@ -703,7 +706,6 @@ public final class DatabaseWriteManager {
 			}
 		} catch (SQLException exception) {
 			// uncomment for debugging SQL-Statements
-			System.out.println("Write Error:");
 			System.out.println(exception.getMessage());
 			return false;
 		}

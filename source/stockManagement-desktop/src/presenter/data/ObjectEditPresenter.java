@@ -126,13 +126,13 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 
 		switch (this.modificationType) {
 			case deviceMenuItem:
-				columnNames = new Object[]{ "ID", "Titel"};
+				columnNames = new Object[]{ "ID", "Titel", "MTK Intervall", "STK Intervall"};
 				break;
 			case medicalMaterialMenuItem:
-				columnNames = new Object[]{ "ID", "Titel"};
+				columnNames = new Object[]{ "ID", "Titel", "Mindestbestand", "Sollbestand"};
 				break;
 			case consumableMaterialMenuItem:
-				columnNames = new Object[]{ "ID", "Titel"};
+				columnNames = new Object[]{ "ID", "Titel", "Mindestbestand", "Sollbestand"};
 				break;
 			case locationMenuItem:
 				columnNames = new Object[]{ "ID", "Titel"};
@@ -153,21 +153,21 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 					case deviceMenuItem:
 						if (databaseObject instanceof Device) {
 							Device device = (Device) databaseObject;
-							Object row[] = {databaseObject.id, device.title};
+							Object row[] = {databaseObject.id, device.title, device.mtkIntervall, device.stkIntervall};
 							model.addRow(row);
 						}
 						break;
 					case medicalMaterialMenuItem:
 						if (databaseObject instanceof MedicalMaterial) {
 							MedicalMaterial medicalMaterial = (MedicalMaterial) databaseObject;
-							Object row[] = {databaseObject.id, medicalMaterial.title};
+							Object row[] = {databaseObject.id, medicalMaterial.title, medicalMaterial.minimumStock, medicalMaterial.quotaStock};
 							model.addRow(row);
 						}
 						break;
 					case consumableMaterialMenuItem:
 						if (databaseObject instanceof ConsumableMaterial) {
 							ConsumableMaterial consumableMaterial = (ConsumableMaterial) databaseObject;
-							Object row[] = {databaseObject.id, consumableMaterial.title};
+							Object row[] = {databaseObject.id, consumableMaterial.title, consumableMaterial.minimumStock, consumableMaterial.quotaStock};
 							model.addRow(row);
 						}
 						break;
