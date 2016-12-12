@@ -90,17 +90,17 @@ class Importer:
             silencedWarnings = "false"
             typeId = str(self.getTypeIdSelect(stockObject["type"]))
 
-            if stockObject["minimumStock"] != None and type(stockObject["minimumStock"]) == int:
+            if stockObject["minimumStock"] != None and stockObject["minimumStock"].isdigit():
                 minimumStock = str(stockObject["minimumStock"])
-            if stockObject["quotaStock"] != None and type(stockObject["quotaStock"]) == int:
+            if stockObject["quotaStock"] != None and stockObject["quotaStock"].isdigit():
                 quotaStock = str(stockObject["quotaStock"])
-            if stockObject["batchSize"] != None and type(stockObject["batchSize"]) == int:
+            if stockObject["batchSize"] != None and stockObject["batchSize"].isdigit():
                 batchSize = str(stockObject["batchSize"])
-            if stockObject["totalVolume"] != None and type(stockObject["totalVolume"]) == int:
+            if stockObject["totalVolume"] != None and stockObject["totalVolume"].isdigit():
                 totalVolume = str(stockObject["totalVolume"])
-            if stockObject["mtkIntervall"] != None and type(stockObject["mtkIntervall"]) == int:
+            if stockObject["mtkIntervall"] != None and stockObject["mtkIntervall"].isdigit():
                 mtkIntervall = str(stockObject["mtkIntervall"])
-            if stockObject["stkIntervall"] != None and type(stockObject["stkIntervall"]) == int:
+            if stockObject["stkIntervall"] != None and stockObject["stkIntervall"].isdigit():
                 stkIntervall = str(stockObject["stkIntervall"])
             # appending Strings
             stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
@@ -127,7 +127,7 @@ class Importer:
             stockObjectId = "0"
             locationId = "0"
             messageId = "1"
-            if stockValue["volume"] != None and type(stockValue["volume"]) == int:
+            if stockValue["volume"] != None and stockValue["volume"].isdigit():
                 volume = str(stockValue["volume"])
             if stockValue["date"] != None:
                 date = self.getNormalizedDateString(str(stockValue["date"]))
