@@ -129,7 +129,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("getUser(int id)" + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -201,7 +201,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("userDidChangePassword(String username)" + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -787,7 +787,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("getStockObjects(DatabaseObject.StockObjectType type)" + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -843,7 +843,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("getStockObjectValues(StockObject stockObject)" + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {
@@ -896,7 +896,7 @@ public final class DatabaseReadManager {
 		} catch (SQLException e) {
 			// rs isNull or one or more attributes are missing
 			// uncomment for debugging SQL-Statements
-			// System.out.println(e.getMessage());
+			System.out.println("getStockObjectValues(int id)" + e.getMessage());
 			try {
 				DatabaseReadManager.close(rs);
 			} catch (SQLException e1) {

@@ -6,13 +6,16 @@ import model.databaseObjects.stockObjects.*;
 import presenter.Presenter;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.PatternSyntaxException;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class DataPresenter extends Presenter implements MouseListener {
 	private JTextField searchText;
@@ -97,6 +100,20 @@ public class DataPresenter extends Presenter implements MouseListener {
 		this.frame.getContentPane().add(this.searchText);
 		this.searchText.setColumns(10);
 
+		this.searchText.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				searchText.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				searchText.setText("Suchen");
+			}
+		});
+
+
 		JScrollPane scrollPane = new JScrollPane();
 		int scrollPaneHeight = height - (contentY + characterButtonHeight + smallSpacing + bottomPadding);
 		scrollPane.setBounds(leftPadding, contentY + characterButtonHeight + smallSpacing, displayAreaWidth, scrollPaneHeight);
@@ -137,6 +154,41 @@ public class DataPresenter extends Presenter implements MouseListener {
 		Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
 
 		this.fillTableWithData();
+
+		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(this.table.getModel());
+		this.searchText.getDocument().addDocumentListener(new DocumentListener() {
+			private void searchFieldChangedUpdate(DocumentEvent evt) {
+				String text = searchText.getText();
+				if (!text.equals("Suchen") && !text.equals("")) {
+					System.out.println(text);
+					try {
+						sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+					} catch (PatternSyntaxException pse) {
+						JOptionPane.showMessageDialog(null, "Bad regex pattern",
+								"Bad regex pattern", JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					sorter.setRowFilter(null);
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent evt) {
+				searchFieldChangedUpdate(evt);
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent evt) {
+				searchFieldChangedUpdate(evt);
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent evt) {
+				searchFieldChangedUpdate(evt);
+			}
+
+		});
+		this.table.setRowSorter(sorter);
 	}
 
 	private void fillTableWithData() {
