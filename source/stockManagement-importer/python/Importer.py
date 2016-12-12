@@ -69,7 +69,7 @@ class Importer:
         outputFile.close
 
     def generateLocationSQL(self, locations):
-        locationSqlString = "// Location Insert Statement \n" + "INSERT INTO " + str(self.dbo.locationTable["table"]) + "\n(" + self.dbo.locationTable["title"] + ")\nVALUES\n"
+        locationSqlString = "INSERT IGNORE INTO " + str(self.dbo.locationTable["table"]) + "\n(" + self.dbo.locationTable["title"] + ")\nVALUES\n"
         for location in locations:
             locationSqlString += "('" + location + "'),\n"
         # Stripping last \n and ,
@@ -79,7 +79,7 @@ class Importer:
         return locationSqlString
 
     def generateStockObjectSQL(self, stockObjects):
-        stockObjectSqlString = "// StockObject Insert Statement \n" + "INSERT INTO " + str(self.dbo.stockObjectTable["table"]) + "\n(" + str(self.dbo.stockObjectTable["title"]) + ",\n " + str(self.dbo.stockObjectTable["description"]) + ",\n " + str(self.dbo.stockObjectTable["minimumStock"]) + ",\n " + str(self.dbo.stockObjectTable["quotaStock"]) + ",\n " + str(self.dbo.stockObjectTable["batchSize"]) + ",\n " + str(self.dbo.stockObjectTable["totalVolume"]) + ",\n " + str(self.dbo.stockObjectTable["mtkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["stkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["silencedWarnings"]) + ",\n " + str(self.dbo.stockObjectTable["typeId"]) + ")\nVALUES\n"
+        stockObjectSqlString = "INSERT IGNORE INTO " + str(self.dbo.stockObjectTable["table"]) + "\n(" + str(self.dbo.stockObjectTable["title"]) + ",\n " + str(self.dbo.stockObjectTable["description"]) + ",\n " + str(self.dbo.stockObjectTable["minimumStock"]) + ",\n " + str(self.dbo.stockObjectTable["quotaStock"]) + ",\n " + str(self.dbo.stockObjectTable["batchSize"]) + ",\n " + str(self.dbo.stockObjectTable["totalVolume"]) + ",\n " + str(self.dbo.stockObjectTable["mtkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["stkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["silencedWarnings"]) + ",\n " + str(self.dbo.stockObjectTable["typeId"]) + ")\nVALUES\n"
         for stockObject in stockObjects:
             minimumStock = "0"
             quotaStock = "0"
@@ -111,7 +111,7 @@ class Importer:
         return stockObjectSqlString
 
     def generateStockValueSQL(self, stockValues):
-        stockValueSqlString = "// StockValue Insert Statement \n" + "INSERT INTO " + "\n(" + str(self.dbo.stockValueTable["table"]) + str(self.dbo.stockValueTable["volume"]) + ", " + str(self.dbo.stockValueTable["date"]) + ", " + str(self.dbo.stockValueTable["mtkDate"]) + ", " + str(self.dbo.stockValueTable["stkDate"]) + ", " + str(self.dbo.stockValueTable["inventoryNumber"]) + ", " + str(self.dbo.stockValueTable["serialNumber"]) + ", " + str(self.dbo.stockValueTable["umdns"]) + ", " + str(self.dbo.stockValueTable["batchNumber"]) + ", " + str(self.dbo.stockValueTable["creation"]) + ", " + str(self.dbo.stockValueTable["escalationAck"]) + ", " + str(self.dbo.stockValueTable["stockObjectId"]) + ", " + str(self.dbo.stockValueTable["locationId"]) + ", " + str(self.dbo.stockValueTable["messageId"]) + ")\nVALUES\n"
+        stockValueSqlString = "INSERT IGNORE INTO " + str(self.dbo.stockValueTable["table"]) + "\n(" + str(self.dbo.stockValueTable["volume"]) + ", " + str(self.dbo.stockValueTable["date"]) + ", " + str(self.dbo.stockValueTable["mtkDate"]) + ", " + str(self.dbo.stockValueTable["stkDate"]) + ", " + str(self.dbo.stockValueTable["inventoryNumber"]) + ", " + str(self.dbo.stockValueTable["serialNumber"]) + ", " + str(self.dbo.stockValueTable["umdns"]) + ", " + str(self.dbo.stockValueTable["batchNumber"]) + ", " + str(self.dbo.stockValueTable["creation"]) + ", " + str(self.dbo.stockValueTable["escalationAck"]) + ", " + str(self.dbo.stockValueTable["stockObjectId"]) + ", " + str(self.dbo.stockValueTable["locationId"]) + ", " + str(self.dbo.stockValueTable["messageId"]) + ")\nVALUES\n"
 
         for stockValue in stockValues:
             volume = "0"
@@ -167,10 +167,10 @@ class Importer:
         return "null"
 
     def getStockObjectSelectStatement(self, stockObjectTitleString):
-        return "0"
+        return "(SELECT " + str(self.dbo.stockObjectTable["id"]) + " FROM " + str(self.dbo.stockObjectTable["table"]) + " WHERE "  + str(self.dbo.stockObjectTable["title"]) + " = '" + str(stockObjectTitleString) + "' LIMIT 1)"
 
     def getLocationSelectStatement(self, locationTitleString):
-        return "0"
+        return "(SELECT " + str(self.dbo.locationTable["id"]) + " FROM " + str(self.dbo.locationTable["table"]) + " WHERE "  + str(self.dbo.locationTable["title"]) + " = '" + str(locationTitleString) + "' LIMIT 1)"
 
     # get type id from String
     def getTypeIdSelect(self, typeString):
