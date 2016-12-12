@@ -8,7 +8,7 @@ import os
 
 class Importer:
     dbo = DatabaseObjects()
-    timeFormat = "%Y-%m-%d %H:%M:%S"
+    timeFormat = "'%Y-%m-%d %H:%M:%S'"
     importPath = ""
     exportPath = ""
     # CSV Data
@@ -49,14 +49,21 @@ class Importer:
             stockObject = {"title":row['Titel'], "description":row['Beschreibung'], "type":row['Art'], "minimumStock":row["Mindestbestand"], "quotaStock":row["Sollbestand"], "batchSize":row["Losgröße"], "totalVolume":row["Bestand"], "mtkIntervall":row["MTK Intervall"], "stkIntervall":row["STK Intervall"], "location":row["Lagerort"]}
             stockObjects.append(stockObject)
             # StockValue
-            stockValue = {}
+            stockValue = {"volume":row['Bestand'], "date":row['Datum'], "mtkDate":row['Letzte MTK'], "stkDate":row['Letzte STK'], "inventoryNumber":row['Inventarnummer'], "serialNumber":row['Seriennummer'], "umdns":row['UMDNS'], "batchNumber":row['Chargennummer'], "title":row['Titel'], "location":row['Lagerort']}
             stockValues.append(stockValue)
         if len(locations) > 0:
-            self.sqlString += str(self.generateLocationSQL(locations))
+            locationsString = self.generateLocationSQL(locations)
+            if locationsString != None:
+                self.sqlString += str(locationsString) + "\n\n\n"
         if len(stockObjects) > 0:
-            self.sqlString += str(self.generateStockObjectSQL(stockObjects))
+            stockObjectsString = self.generateStockObjectSQL(stockObjects)
+            if stockObjectsString != None:
+                self.sqlString += str(stockObjectsString) + "\n\n\n"
         if len(stockValues) > 0:
-            self.sqlString += str(self.generateStockValueSQL(stockValues))
+            stockValuesString = self.generateStockValueSQL(stockValues)
+            if stockValuesString != None:
+                self.sqlString += str(stockValuesString) + "\n\n\n"
+
         outputFile = open(self.exportPath, 'w')
         outputFile.write(self.sqlString)
         outputFile.close
@@ -68,7 +75,7 @@ class Importer:
         # Stripping last \n and ,
         locationSqlString = locationSqlString[:-2]
         # and replace with ; and \n's
-        locationSqlString += ";\n\n\n"
+        locationSqlString += ";"
         return locationSqlString
 
     def generateStockObjectSQL(self, stockObjects):
@@ -100,7 +107,7 @@ class Importer:
         # Stripping last \n and ,
         stockObjectSqlString = stockObjectSqlString[:-2]
         # and replace with ; and \n's
-        stockObjectSqlString += ";\n\n\n"
+        stockObjectSqlString += ";"
         return stockObjectSqlString
 
     def generateStockValueSQL(self, stockValues):
@@ -120,12 +127,37 @@ class Importer:
             stockObjectId = "0"
             locationId = "0"
             messageId = "1"
-            # appending Strings
-            stockValueSqlString += "(" + volume + "," + date + "," + mtkDate + "," + stkDate + "," + inventoryNumber + "," + serialNumber + "," + umdns + "," + batchNumber + "," + creation + "," + escalationAck + "," + stockObjectId + "," + locationId + "," + messageId + "," + "),\n"
+            if stockValue["volume"] != None and type(stockValue["volume"]) == int:
+                volume = str(stockValue["volume"])
+            if stockValue["date"] != None:
+                date = self.getNormalizedDateString(str(stockValue["date"]))
+            if stockValue["mtkDate"] != None:
+                mtkDate = self.getNormalizedDateString(str(stockValue["mtkDate"]))
+            if stockValue["stkDate"] != None:
+                stkDate = self.getNormalizedDateString(str(stockValue["stkDate"]))
+            if stockValue["inventoryNumber"] != None:
+                inventoryNumber = str(stockValue["inventoryNumber"])
+            if stockValue["serialNumber"] != None:
+                serialNumber = str(stockValue["serialNumber"])
+            if stockValue["umdns"] != None:
+                umdns = str(stockValue["umdns"])
+            if stockValue["batchNumber"] != None:
+                batchNumber = str(stockValue["batchNumber"])
+            if stockValue["title"] != None:
+                stockObjectId = self.getStockObjectSelectStatement(stockValue["title"])
+            if stockValue["location"] != None:
+                locationId = self.getLocationSelectStatement(stockValue["location"])
+
+            if stockValue["volume"] != None and stockValue["title"] != None and stockValue["location"] != None:
+                # appending Strings
+                stockValueSqlString += "(" + volume + ", " + date + ", " + mtkDate + ", " + stkDate + ", '" + inventoryNumber + "', '" + serialNumber + "', '" + umdns + "', '" + batchNumber + "', " + creation + ", " + escalationAck + ", " + stockObjectId + ", " + locationId + ", " + messageId + "),\n"
+
+        if len(stockValueSqlString) == 0:
+            return None
         # Stripping last \n and ,
         stockValueSqlString = stockValueSqlString[:-2]
         # and replace with ; and \n's
-        stockValueSqlString += ";\n\n\n"
+        stockValueSqlString += ";"
         return stockValueSqlString
 
     # normalizes a given date String and
@@ -133,6 +165,12 @@ class Importer:
     # our MySQL Database expects
     def getNormalizedDateString(self, dateString):
         return "null"
+
+    def getStockObjectSelectStatement(self, stockObjectTitleString):
+        return "0"
+
+    def getLocationSelectStatement(self, locationTitleString):
+        return "0"
 
     # get type id from String
     def getTypeIdSelect(self, typeString):
