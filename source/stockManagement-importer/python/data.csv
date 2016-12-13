@@ -1,219 +1,325 @@
 Titel;Beschreibung;Art;Bestand;Mindestbestand;Sollbestand;Losgröße;Datum;Letzte MTK;MTK Intervall;Letzte STK;STK Intervall;Inventarnummer;Seriennummer;UMDNS;Chargennummer;Lagerort
-Adrenalin;;MedMat;5;0;0;0;01/03/2017;;;;;;;;M031510;Ampullarium (NFR, KTW-B)
-Atropin;;MedMat;2;0;0;0;01/04/2017;;;;;;;;14201034;Ampullarium (NFR, KTW-B)
-Midazolam;;MedMat;1;0;0;0;01/05/2017;;;;;;;;19529;Ampullarium (NFR, KTW-B)
-Cordarex;;MedMat;2;0;0;0;01/07/2017;;;;;;;;AY017;Ampullarium (NFR, KTW-B)
-Sultanol;;MedMat;1;0;0;0;01/07/2017;;;;;;;;PJ7G;Ampullarium (NFR, KTW-B)
-Nitrolingual;;MedMat;1;0;0;0;01/08/2017;;;;;;;;241539;Ampullarium (NFR, KTW-B)
-Aqua;;MedMat;4;0;0;0;01/10/2017;;;;;;;;14465012;Ampullarium (NFR, KTW-B)
-Glucose;;MedMat;4;0;0;0;01/02/2017;;;;;;;;14125011;Ampullarium (NFR, KTW-B)
-Ibuprofen 400mg;;MedMat;10;0;0;0;01/04/2018;;;;;;;;DR5437;Ampullarium (NFR, KTW-B)
-Nitrolingual-Spray;;MedMat;1;0;0;0;01/08/2017;;;;;;;;241539;SEG-Rucksack (KdoW)
-Sultanol;;MedMat;1;0;0;0;01/07/2017;;;;;;;;PJ7G;SEG-Rucksack (KdoW)
-Ibuprofen 400mg;;MedMat;10;0;0;0;01/04/2018;;;;;;;;DR5437;SEG-Rucksack (KdoW)
-Nitrolingual-Spray;;MedMat;1;0;0;0;01/03/2017;;;;;;;;239176;SEG-Rucksack (KTW-B)
-Sultanol;;MedMat;1;0;0;0;01/07/2017;;;;;;;;PJ7G;SEG-Rucksack (KTW-B)
-Ibuprofen 400mg;;MedMat;10;0;0;0;01/04/2018;;;;;;;;DR5437;SEG-Rucksack (KTW-B)
-Nitrolingual-Spray;;MedMat;1;0;0;0;01/08/2017;;;;;;;;241539;SEG-Rucksack (Vito Land)
-Sultanol;;MedMat;1;0;0;0;01/07/2017;;;;;;;;PJ7G;SEG-Rucksack (Vito Land)
-Ibuprofen 400mg;;MedMat;10;0;0;0;;;;;;;;;;SEG-Rucksack (Vito Land)
-Ibuprofen 400mg;;MedMat;10;0;0;0;;;;;;;;;;Schublade Diagnostik (KTW-B)
-Fenistil;;MedMat;1;0;0;0;01/06/2017;;;;;;;;P02730A;Schublade Diagnostik (KTW-B)
-Nitrolingual-Spray;;MedMat;0;0;0;0;;;;;;;;;;Rucksack (Vito OV)
-Sultanol;;MedMat;0;0;0;0;;;;;;;;;;Rucksack (Vito OV)
-Ibuprofen 400mg;;MedMat;0;0;0;0;;;;;;;;;;Rucksack (Vito OV)
-Kompressen 10 x 10 cm;;MedMat;0;0;0;0;01/06/2026;;;;;;;;26610061;Sanmaterial-Lager
-Kompressen 10 x 10 cm;;MedMat;0;0;0;0;01/12/2028;;;;;;;;28627256;Sanmaterial-Lager
-Kompressen 7,5 x 7,5 cm;;MedMat;0;0;0;0;01/12/2017;;;;;;;;80-1190-1305;Sanmaterial-Lager
-Augenkompresse;;MedMat;0;0;0;0;01/03/2017;;;;;;;;437000351A;Sanmaterial-Lager
-Saugkompresse;;MedMat;0;0;0;0;01/06/2018;;;;;;;;121776;Sanmaterial-Lager
-Verbandpäcken K;;MedMat;0;0;0;0;01/10/2016;;;;;;;;118358;Sanmaterial-Lager
-Verbandpäcken M;;MedMat;0;0;0;0;01/12/2032;;;;;;;;126021120;Sanmaterial-Lager
-Verbandpäcken M;;MedMat;0;0;0;0;01/12/2031;;;;;;;;116027841;Sanmaterial-Lager
-Verbandpäcken M;;MedMat;0;0;0;0;01/12/2016;;;;;;;;48544;Sanmaterial-Lager
-Verbandpäckchen G;;MedMat;0;0;0;0;01/12/2017;;;;;;;;122377;Sanmaterial-Lager
-Verbandtuch 40 x 60;;MedMat;0;0;0;0;01/12/2033;;;;;;;;136026969;Sanmaterial-Lager
-Verbandtuch 60 x 80;;MedMat;0;0;0;0;01/12/2017;;;;;;;;121462;Sanmaterial-Lager
-Verbandtuch 80 x 120;;MedMat;0;0;0;0;01/06/2018;;;;;;;;122841;Sanmaterial-Lager
-Verbandtuch 80 x 120;;MedMat;0;0;0;0;01/06/2029;;;;;;;;29619184;Sanmaterial-Lager
-Verbandtuch Metaline 80x120;;MedMat;0;0;0;0;01/12/2031;;;;;;;;116022872;Sanmaterial-Lager
-Verbandtuch Metaline 60x80;;MedMat;0;0;0;0;01/02/2028;;;;;;;;28626923;Sanmaterial-Lager
-Verbandtuch Metaline 40x60;;MedMat;0;0;0;0;01/12/2028;;;;;;;;28628867;Sanmaterial-Lager
-Flächenschürfverband;;MedMat;0;0;0;0;01/12/2031;;;;;;;;116025118;Sanmaterial-Lager
-Ellenbogen & Knieverband;;MedMat;0;0;0;0;01/12/2031;;;;;;;;116025193;Sanmaterial-Lager
-Mullbinden 6 cm;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Mullbinden 8 cm;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Mullbinden 10 cm;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Universalbind 8cm;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Kanülenfixierpflaster;;MedMat;0;0;0;0;01/06/2016;;;;;;;;118017;Sanmaterial-Lager
-Venenverweilkanülen orange;;MedMat;0;0;0;0;01/01/2018;;;;;;;;3A23258251;Sanmaterial-Lager
-Venenverweilkanüle rosa;;MedMat;0;0;0;0;01/02/2019;;;;;;;;4B04258252;Sanmaterial-Lager
-Venenverweilkanüle rosa;;MedMat;0;0;0;0;01/12/2016;;;;;;;;1M01258346;Sanmaterial-Lager
-Venenverweilkanüle rosa;;MedMat;0;0;0;0;01/01/2018;;;;;;;;3A19258271;Sanmaterial-Lager
-Venenverweilkanüle rosa;;MedMat;0;0;0;0;01/02/2018;;;;;;;;3B15258272;Sanmaterial-Lager
-Venenverweilkanüle weiß;;MedMat;0;0;0;0;01/06/2016;;;;;;;;1F26258237;Sanmaterial-Lager
-Venenverweilkanüle blau;;MedMat;0;0;0;0;01/12/2018;;;;;;;;3M12258331;Sanmaterial-Lager
-Venenverweilkanüle grün;;MedMat;0;0;0;0;01/10/2018;;;;;;;;3K31258349;Sanmaterial-Lager
-Venenverweilkanüle gelb;;MedMat;0;0;0;0;01/07/2016;;;;;;;;1G26258330;Sanmaterial-Lager
-Absaugkatheter grün;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Absaugkatheter schwarz;;MedMat;0;0;0;0;01/04/2018;;;;;;;;20130405;Sanmaterial-Lager
-Absaugkatheter schwarz;;MedMat;0;0;0;0;01/12/2016;;;;;;;;120419;Sanmaterial-Lager
-Absaugkatheter blau;;MedMat;0;0;0;0;01/04/2018;;;;;;;;20130405;Sanmaterial-Lager
-Absaugkatheter blau;;MedMat;0;0;0;0;01/04/2016;;;;;;;;111919;Sanmaterial-Lager
-Absaugkatheter organe;;MedMat;0;0;0;0;01/07/2018;;;;;;;;20130720;Sanmaterial-Lager
-Schleimabsauger Neugeborene;;MedMat;0;0;0;0;01/12/2016;;;;;;;;05/2012/18;Sanmaterial-Lager
-Fingertip;;MedMat;0;0;0;0;01/10/2017;;;;;;;;07.031.00.000;Sanmaterial-Lager
-Skapell;;MedMat;0;0;0;0;01/05/2015;;;;;;;;10231635;Sanmaterial-Lager
-Dreiwegehahn blau;;MedMat;0;0;0;0;01/10/2015;;;;;;;;2275336C58;Sanmaterial-Lager
-Discofix (Verlängerung);;MedMat;0;0;0;0;01/09/2015;;;;;;;;12/0392049;Sanmaterial-Lager
-Stopfen;;MedMat;0;0;0;0;01/11/2017;;;;;;;;32503122;Sanmaterial-Lager
-Kanülen gelb;;MedMat;0;0;0;0;01/12/2017;;;;;;;;1301;Sanmaterial-Lager
-Kanülen gelb;;MedMat;0;0;0;0;01/12/2017;;;;;;;;3023258821;Sanmaterial-Lager
-Kanülen rosa;;MedMat;0;0;0;0;01/03/2017;;;;;;;;1204;Sanmaterial-Lager
-Spritzen 2ml;;MedMat;0;0;0;0;01/01/2017;;;;;;;;1202;Sanmaterial-Lager
-Spritzen 5ml;;MedMat;0;0;0;0;01/05/2017;;;;;;;;1206;Sanmaterial-Lager
-Spritzen 10 ml;;MedMat;0;0;0;0;01/04/2017;;;;;;;;1205;Sanmaterial-Lager
-Spritzen 20ml;;MedMat;0;0;0;0;01/03/2017;;;;;;;;1204;Sanmaterial-Lager
-Kühlpacks;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Infusionsystem;;MedMat;0;0;0;0;01/01/2019;;;;;;;;4A30018301;Sanmaterial-Lager
-Infusionsystem;;MedMat;0;0;0;0;01/06/2016;;;;;;;;84291111;Sanmaterial-Lager
-Infusion Ringer;;MedMat;0;0;0;0;01/01/2019;;;;;;;;14Ha3301;Sanmaterial-Lager
-Infusion Sterofundin;;MedMat;0;0;0;0;01/07/2017;;;;;;;;143518141;Sanmaterial-Lager
-Handschuhe S;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Handschuhe M;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Handschuhe L;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Handschuhe XL;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Abwurf klein;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Abwurf klein;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Abwurf groß;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-FFP 3 Masken;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-FFP 2 Masken;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Händedesinfektion 100 ml;;MedMat;0;0;0;0;01/06/2018;;;;;;;;357737;Sanmaterial-Lager
-Händedesinfektion 500 ml;;MedMat;0;0;0;0;01/03/2019;;;;;;;;368981;Sanmaterial-Lager
-Händedesinfektion 500 ml;;MedMat;0;0;0;0;01/02/2018;;;;;;;;365527;Sanmaterial-Lager
-Händedesinfektion klein - Virugard;;MedMat;0;0;0;0;01/12/2015;;;;;;;;351243;Sanmaterial-Lager
-Händedesinfektion 500 ml - Virugard;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Hautdesinfektion klein;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Hautdesinfektion groß;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Sam Splint 18inch;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Sam Splint 36inch;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Fingerschiene 18x5 cm;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Rettungsdecke;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Dreiecktuch Stoff;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Dreiecktuch Vlies;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaske Gr. 1;;MedMat;0;0;0;0;;;;;;;;;50680;Sanmaterial-Lager
-Beatmungsmaskte Gr. 2;;MedMat;0;0;0;0;01/04/2017;;;;;;;;120427;Sanmaterial-Lager
-Beatmungsmaskte Gr. 2;;MedMat;0;0;0;0;01/04/2016;;;;;;;;310410;Sanmaterial-Lager
-Beatmungsmaskte Gr. 2;;MedMat;0;0;0;0;;;;;;;;;31212;Sanmaterial-Lager
-Intersurgical Maske;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaskte Gr. 0;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaskte Gr. 1;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaskte Gr. 2;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaskte Gr. 3;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaskte Gr. 4;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Beatmungsmaskte Gr.5;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband classic 5mx8cm;;MedMat;0;0;0;0;01/04/2015;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband classic 5mx4 cm;;MedMat;0;0;0;0;01/07/2013;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband classic 5mx4 cm;;MedMat;0;0;0;0;01/07/2013;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband classic 5mx 6 cm;;MedMat;0;0;0;0;01/08/2014;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband classic 5mx 6 cm;;MedMat;0;0;0;0;01/08/2014;;;;;;;;;Sanmaterial-Lager
-Sauerstfoffmaske Kind;;MedMat;0;0;0;0;01/06/2016;;;;;;;;110617;Sanmaterial-Lager
-Verneblermaske Kind;;MedMat;0;0;0;0;01/05/2017;;;;;;;;120528;Sanmaterial-Lager
-Sauerstfoffmaske Erw.;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Verneblermaske Erw.;;MedMat;0;0;0;0;01/05/2017;;;;;;;;120511;Sanmaterial-Lager
-Nasenbrille;;MedMat;0;0;0;0;01/08/2016;;;;;;;;110819;Sanmaterial-Lager
-Guedeltubs Gr. 12;;MedMat;0;0;0;0;01/11/2017;;;;;;;;31858942;Sanmaterial-Lager
-Guedeltubs Gr. 10;;MedMat;0;0;0;0;01/05/2018;;;;;;;;31354661;Sanmaterial-Lager
-Guedeltubs Gr. 9;;MedMat;0;0;0;0;01/05/2016;;;;;;;;31106944;Sanmaterial-Lager
-Guedeltubs Gr. 9;;MedMat;0;0;0;0;01/07/2017;;;;;;;;;Sanmaterial-Lager
-Guedeltubs Gr. 9;;MedMat;0;0;0;0;01/08/2018;;;;;;;;31356615;Sanmaterial-Lager
-Guedeltubs Gr.8;;MedMat;0;0;0;0;01/05/2017;;;;;;;;31254064;Sanmaterial-Lager
-Guedeltubs Gr.8;;MedMat;0;0;0;0;01/11/2013;;;;;;;;30811633;Sanmaterial-Lager
-Guedeltubs Gr. 1;;MedMat;0;0;0;0;01/10/2018;;;;;;;;31359162;Sanmaterial-Lager
-Guedeltubs Gr. 0;;MedMat;0;0;0;0;01/06/2018;;;;;;;;31355010;Sanmaterial-Lager
-Guedeltubs Gr. 000;;MedMat;0;0;0;0;01/03/2015;;;;;;;;31003442;Sanmaterial-Lager
-Guedeltubs Gr. 000;;MedMat;0;0;0;0;01/09/2017;;;;;;;;31257233;Sanmaterial-Lager
-Venenstauer;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Blutzuckermessgeräte Disc;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Blutdruckmessgeräte;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Pinzette (steril);;MedMat;0;0;0;0;01/10/2018;;;;;;;;4505551203;Sanmaterial-Lager
-Chirugische Schere (steril);;MedMat;0;0;0;0;01/01/2018;;;;;;;;51919409;Sanmaterial-Lager
-Chirugische Schere (steril);;MedMat;0;0;0;0;01/01/2017;;;;;;;;51830144;Sanmaterial-Lager
-Klemme (steril);;MedMat;0;0;0;0;01/01/2018;;;;;;;;51917602;Sanmaterial-Lager
-BZ-Nadeln ca;;MedMat;0;0;0;0;01/12/2013;;;;;;;;52G76C1;Sanmaterial-Lager
-Einmalrasier;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Kotzschalen;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Kotztüten;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Becher;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Wasser still;;MedMat;0;0;0;0;01/02/2016;;;;;;;;;Sanmaterial-Lager
-Patientenbeutel;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Stifneck Erwachsenen;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Stifneck Kind;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Baby Windel;;MedMat;0;0;0;0;01/06/2029;;;;;;;;29600274;Sanmaterial-Lager
-Baby Rettungsdecke;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Nabelbinde;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Magensonde Ch 14;;MedMat;0;0;0;0;01/06/2017;;;;;;;;1207;Sanmaterial-Lager
-Magensonde Ch. 16;;MedMat;0;0;0;0;01/04/2017;;;;;;;;1205;Sanmaterial-Lager
-Magensonde Ch. 12;;MedMat;0;0;0;0;01/09/2014;;;;;;;;;Sanmaterial-Lager
-Magensonde Ch. 08;;MedMat;0;0;0;0;01/10/2014;;;;;;;;;Sanmaterial-Lager
-Magensonde Ch. 06;;MedMat;0;0;0;0;01/11/2014;;;;;;;;;Sanmaterial-Lager
-Reserve System Absauge (Akku Wac) inkl Schlauch & Beutel;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Desinfektionsmittel Dismozor pur (Beutel);;MedMat;0;0;0;0;;;;;;;;;CHAB0325;Sanmaterial-Lager
-Beatmungsbeutel ;;MedMat;0;0;0;0;;;;;;;;;1553648;Sanmaterial-Lager
-Beatmungsbeutel ;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Papiertücher 250 Stück;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Batterien Mrico;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Batterien Baby;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Batterien Cell;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Stetoskop;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-How Sit (Toilette);;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Einmallacken;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Einmaldecken;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Stecklacken;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Zahnprotestenbeutel;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Medizid AF (1 Liter);;MedMat;0;0;0;0;01/10/2015;;;;;;;;432705;Sanmaterial-Lager
-Co2-Adapter;;MedMat;0;0;0;0;01/08/2015;;;;;;;;122550232x;Sanmaterial-Lager
-Verbandvlies;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Verbandzellstoff;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Netzverband Gr. 4;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Netzverband Gr. 3;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Hygienetücher ;;MedMat;0;0;0;0;01/10/2017;;;;;;;;342063;Sanmaterial-Lager
-Hygienetücher ;;MedMat;0;0;0;0;01/02/2017;;;;;;;;305013;Sanmaterial-Lager
-unsterile Kompresse ca.;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Vaseline;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Verbandmull 80 cm x 1m;;MedMat;0;0;0;0;;;;;;;;;314843;Sanmaterial-Lager
-Fingerverbände 2x12xm ca.;;MedMat;0;0;0;0;;;;;;;;;13024187;Sanmaterial-Lager
-Leukoplast 2,5 cm;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Leukosilk 1,25;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Netzschlauch Gr. 3;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Fieberthermometerhüllen (15 Stk);;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Fieberthermometerhüllen (12 Stk);;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Fingerstrips (10 Stk.);;MedMat;0;0;0;0;;;;;;;;;12061058;Sanmaterial-Lager
-Mundspachtel (Holz);;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Tupfer;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Pflasterstrips DRK;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Sterilverband 40x53mm;;MedMat;0;0;0;0;01/07/2016;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband Abschnitte 10x6cm sensitiv;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Wundschnellverband Abschnitte 10x5cm sensitiv;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Zeckenzange;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Heidelberger Verlängerung ;;MedMat;0;0;0;0;01/05/2015;;;;;;;;1829;Sanmaterial-Lager
-Baldur Silberwindel;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-OP-Handschuhe Gr. 8;;MedMat;0;0;0;0;01/07/2016;;;;;;;;148490811;Sanmaterial-Lager
-OP-Handschuhe Gr. 9;;MedMat;0;0;0;0;01/04/2015;;;;;;;;112420510;Sanmaterial-Lager
-OP-Handschuhe Gr. 8,5;;MedMat;0;0;0;0;01/08/2014;;;;;;;;1024685;Sanmaterial-Lager
-OP-Handschuhe Gr. 7,5;;MedMat;0;0;0;0;01/07/2014;;;;;;;;1015475;Sanmaterial-Lager
-Thomas Holder;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Fixierband Endotrachealtuben;;MedMat;0;0;0;0;;;;;;;;;;Sanmaterial-Lager
-Führungsstab Gr. 6;;MedMat;0;0;0;0;01/02/2016;;;;;;;;11CE12;Sanmaterial-Lager
-Führungsstab Gr. 14;;MedMat;0;0;0;0;01/06/2016;;;;;;;;11GE29;Sanmaterial-Lager
-Endotracheltubus Gr. 3;;MedMat;0;0;0;0;01/03/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 4;;MedMat;0;0;0;0;01/04/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 5 mit Führungstab;;MedMat;0;0;0;0;01/10/2017;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 5 mit Führungstab;;MedMat;0;0;0;0;01/04/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 6 mit Führungstab;;MedMat;0;0;0;0;01/06/2017;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 6 mit Führungstab;;MedMat;0;0;0;0;01/03/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 7 mit Führungstab;;MedMat;0;0;0;0;01/04/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 7 mit Führungstab;;MedMat;0;0;0;0;01/10/2017;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 8 mit Führungstab;;MedMat;0;0;0;0;01/04/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 9 mit Führungstab;;MedMat;0;0;0;0;01/03/2016;;;;;;;;;Sanmaterial-Lager
-Endotracheltubus Gr. 9 mit Führungstab;;MedMat;0;0;0;0;01/11/2017;;;;;;;;;Sanmaterial-Lager
+Absaugkatheter blau;;MedMat;0;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter grün;;MedMat;1;5;10;1;01.05.19;null;0;null;0;;;;;Rucksack Vito
+Absaugkatheter grün;;MedMat;1;5;10;1;01.05.19;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter orange;;MedMat;1;0;10;1;01.07.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter rot;;MedMat;1;5;10;1;01.07.20;null;0;null;0;;;;;Rucksack Vito
+Absaugkatheter rot;;MedMat;1;5;10;1;01.03.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter schwarz;;MedMat;1;5;10;1;01.04.18;null;0;null;0;;;;;Rucksack Vito
+Absaugkatheter schwarz;;MedMat;1;5;10;1;01.04.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugpumpe (manuell);;MedMat;1;0;0;1;null;null;0;null;0;;;;;Rucksack Vito
+Absaugpumpe (manuell);;MedMat;1;0;0;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Abwurf groß;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Abwurf klein;;MedMat;1;1;3;1;null;null;0;null;0;;;;;Rucksack Vito
+Abwurf klein;;MedMat;1;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Augenkompresse;;MedMat;1;0;2;1;01.06.35;null;0;null;0;;;;;Rucksack Vito
+Augenkompresse;;MedMat;1;0;2;1;01.06.35;null;0;null;0;;;;;Rucksack Vito
+Baby Rettungsdecke;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Baby Windel;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Baldur Silberwindel;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Batterien Baby;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Batterien Cell;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Batterien Mrico;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Beatmungsbeutel ;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Beatmungsbeutel mit Reservoir;;MedMat;1;1;0;1;null;null;0;null;0;;;;;Rucksack Vito
+Beatmungsbeutel mit Reservoir;;MedMat;1;1;0;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Beatmungsmaske Gr. 1 EcoMask;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Beatmungsmaske Gr. 2 EcoMask;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Beatmungsmaske Gr. 3 EcoMask;;MedMat;1;1;3;1;null;null;0;null;0;;;;;Rucksack Vito
+Beatmungsmaske Gr. 3 EcoMask;;MedMat;1;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Beatmungsmaske Gr. 4 EcoMask;;MedMat;1;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Beatmungsmaske Gr. 5 EcoMask;;MedMat;1;1;3;1;null;null;0;null;0;;;;;Rucksack Vito
+Beatmungsmaske Gr. 5 EcoMask;;MedMat;1;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Becher;;MedMat;0;0;15;1;null;null;0;null;0;;;;;Lager
+Blockspritz Larynx;;MedMat;1;1;1;1;01.12.20;null;0;null;0;;;;;Rucksack Vito
+Blutzucker-Messgerät;;Gerät;1;0;1;1;null;30.06.15;24;null;0;;;;#6860;Rucksack Vito
+Blutzucker-Messgerät;;Gerät;1;0;1;1;null;01.01.15;24;null;0;;;;#6833;SEG Rucksack Bulli
+Blutzucker-Messgerät;;MedMat;1;0;1;1;null;null;0;null;0;;;;#C6C8779;Rucksack Vito
+Blutzucker-Messgerät;;MedMat;1;0;1;1;null;null;0;null;0;;;;#C6C8862;SEG Rucksack Bulli
+BZ-Teststreifen;;MedMat;25;10;20;1;01.10.17;null;0;null;0;;;;;Rucksack Vito
+BZ-Teststreifen;;MedMat;8;10;20;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Chirurgische Schere (steril);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Co2-Adapter;;MedMat;;0;1;1;null;null;0;null;0;;;;;Lager
+Desinfektionsmittel Dismozor pur (Beutel);;MedMat;;0;0;1;null;null;0;null;0;;;;;Lager
+Discofix (Verlängerung);;MedMat;;0;2;1;null;null;0;null;0;;;;;Lager
+Dreiecktuch Stoff;;MedMat;2;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
+Dreiecktuch Stoff;;MedMat;2;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Dreiecktuch Vlies;;MedMat;4;10;30;1;null;null;0;null;0;;;;;Rucksack Vito
+Dreiecktuch Vlies;;MedMat;3;10;30;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Dreiwegehahn blau;;MedMat;1;2;5;1;01.09.17;null;0;null;0;;;;;Rucksack Vito
+Dreiwegehahn blau;;MedMat;0;2;5;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Druckminderer Weinmann;;Gerät;1;0;1;1;null;30.06.16;24;null;0;;;;#1609145;Rucksack Vito
+Einmaldecken;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
+Einmallaken;;MedMat;0;5;15;1;null;null;0;null;0;;;;;Lager
+Einmalrasier;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Ellenbogen & Knieverband;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 3;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 4;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 5 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 6 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 7 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 8 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Endotracheltubus Gr. 9 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Faserstift (Wasserfest);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Faserstift (Wasserfest);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+FFP 2 Maske;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
+FFP 3 Maske;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
+Fieberthermometerhülle;;MedMat;0;10;20;1;null;null;0;null;0;;;;;Lager
+Fingerkuppenverband;;MedMat;10;0;10;1;null;null;0;null;0;;;;;Rucksack Vito
+Fingerkuppenverband;;MedMat;10;0;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Fingerschiene 18x5 cm;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Fingerstrips (10 Stk.);;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Fingertip;;MedMat;1;2;5;1;01.12.18;null;0;null;0;;;;;Rucksack Vito
+Fingertip;;MedMat;1;2;5;1;01.10.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Fingertip;;MedMat;1;2;5;1;01.12.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Fingerverbände 2x12cm ca.;;MedMat;10;50;100;1;null;null;0;null;0;;;;;Rucksack Vito
+Fingerverbände 2x12cm ca.;;MedMat;10;50;100;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Flächenschürfverband;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Führungsstab Gr. 14;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Führungsstab Gr. 6;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Guedeltubs Gr. 0;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Guedeltubs Gr. 000;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Guedeltubs Gr. 000;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Guedeltubs Gr. 1;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Guedeltubs Gr. 2;;MedMat;1;0;1;1;01.06.20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 2;;MedMat;1;1;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Guedeltubs Gr. 3;;MedMat;1;1;2;1;01.04.20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 3;;MedMat;1;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Guedeltubs Gr. 4;;MedMat;1;1;2;1;01.04.20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 4;;MedMat;1;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Guedeltubs Gr. 5;;MedMat;1;1;2;1;01.04.20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 5;;MedMat;1;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Händedesinfektion 100 ml Sterilium;;MedMat;1;2;3;1;01.12.20;null;0;null;0;;;;;Rucksack Vito
+Händedesinfektion 100 ml Virugard;;MedMat;1;1;2;1;01.09.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Händedesinfektion 500 ml Sterilium;;MedMat;0;1;3;1;null;null;0;null;0;;;;;Lager
+Handschuhe L;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Handschuhe M;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Handschuhe S;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Handschuhe XL;;MedMat;10;1;3;1;null;null;0;null;0;;;;;Rucksack Vito
+Handschuhe XL;;MedMat;10;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Hautdesinfektion groß 250 ml;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Hautdesinfektion klein 50 ml;;MedMat;1;1;2;1;01.04.20;null;0;null;0;;;;;Rucksack Vito
+Hautdesinfektion klein 50 ml;;MedMat;1;1;2;1;01.11.19;null;0;null;0;;;;;SEG Rucksack Bulli
+Heidelberger Verlängerung ;;MedMat;0;0;2;1;null;null;0;null;0;;;;;Lager
+Holzspatel;;MedMat;5;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+How Sit (Toilette);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Hygienetücher ;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Infusion NaCl;;MedMat;1;2;5;1;01.12.18;null;0;null;0;;;;;Rucksack Vito
+Infusion NaCl;;MedMat;0;2;5;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusion Ringer;;MedMat;1;2;5;1;01.08.18;null;0;null;0;;;;;Rucksack Vito
+Infusion Ringer;;MedMat;1;2;5;1;01.01.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusion Ringer;;MedMat;1;2;5;1;01.01.19;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusion Sterofundin;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Infusionsystem;;MedMat;2;10;20;1;01.09.20;null;0;null;0;;;;;Rucksack Vito
+Infusionsystem;;MedMat;1;10;20;1;01.07.20;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusionsystem;;MedMat;1;10;20;1;01.09.20;null;0;null;0;;;;;SEG Rucksack Bulli
+Kanülen (gelb);;MedMat;5;50;100;1;01.12.17;null;0;null;0;;;;;Rucksack Vito
+Kanülen (gelb);;MedMat;4;50;100;1;01.12.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Kanülenfixierpflaster;;MedMat;5;10;20;1;28.02.20;null;0;null;0;;;;;Rucksack Vito
+Kanülenfixierpflaster;;MedMat;0;10;20;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Klemmbrett;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Klemmbrett;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Klemme (steril);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Kompressen 10 x 10 cm;;MedMat;5;20;50;1;31.03.21;null;0;null;0;;;;;Rucksack Vito
+Kompressen 10 x 10 cm;;MedMat;5;20;50;1;30.06.21;null;0;null;0;;;;;Rucksack Vito
+Kompressen 10 x 10 cm;;MedMat;1;20;50;1;01.09.19;null;0;null;0;;;;;SEG Rucksack Bulli
+Kompressen 10 x 10 cm;;MedMat;7;20;50;1;31.03.21;null;0;null;0;;;;;SEG Rucksack Bulli
+Kompressen 7,5 x 7,5 cm;;MedMat;0;0;5;1;null;null;0;null;0;;;;;Lager
+Kugelschreiber;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Kugelschreiber;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Kühlpack;;MedMat;1;20;50;1;01.09.17;null;0;null;0;;;;;Rucksack Vito
+Kühlpack;;MedMat;3;20;50;1;01.12.17;null;0;null;0;;;;;Rucksack Vito
+Kühlpack;;MedMat;3;20;50;1;01.10.14;null;0;null;0;;;;;SEG Rucksack Bulli
+Kühlpack;;MedMat;1;20;50;1;01.12.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Lanzette;;MedMat;15;50;100;1;null;null;0;null;0;;;;;Rucksack Vito
+Lanzette;;MedMat;10;50;100;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Larynxtubus gelb;;MedMat;1;0;1;1;01.07.20;null;0;null;0;;;;;Rucksack Vito
+Larynxtubus rot;;MedMat;1;0;1;1;01.07.20;null;0;null;0;;;;;Rucksack Vito
+Larynxtubus violett;;MedMat;1;0;1;1;01.08.20;null;0;null;0;;;;;Rucksack Vito
+Leukoplast 2,5 cm;;MedMat;1;1;3;1;null;null;0;null;0;;;;;Rucksack Vito
+Leukoplast 2,5 cm;;MedMat;1;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Leukosilk 1,25;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Magensonde Ch. 06;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Magensonde Ch. 08;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Magensonde Ch. 12;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Magensonde Ch. 14;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Magensonde Ch. 16;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Medizid AF (1 Liter);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Mullbinden 10 cm;;MedMat;0;5;10;1;null;null;0;null;0;;;;;Lager
+Mullbinden 6 cm;;MedMat;2;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
+Mullbinden 6 cm;;MedMat;2;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Mullbinden 8 cm;;MedMat;6;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
+Mullbinden 8 cm;;MedMat;6;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Holzspatel;;MedMat;0;5;10;1;null;null;0;null;0;;;;;Lager
+Nabelbinde;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Nasenbrille;;MedMat;2;5;10;1;01.04.19;null;0;null;0;;;;;Rucksack Vito
+Nasenbrille;;MedMat;0;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Netzschlauch Gr. 3;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Netzverband Gr. 3;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Netzverband Gr. 4;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Nierenschale;;MedMat;0;5;10;1;null;null;0;null;0;;;;;Lager
+OP-Handschuhe Gr. 7;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+OP-Handschuhe Gr. 8;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+OP-Handschuhe Gr. 9;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Papiertücher 250 Stück;;MedMat;0;2;4;1;null;null;0;null;0;;;;;Lager
+Patientenbeutel;;MedMat;1;2;5;1;null;null;0;null;0;;;;;Rucksack Vito
+Pflasterstrips (10 Stk.);;MedMat;10;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Pflasterstrips (10 Stk.);;MedMat;10;10;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Pflasterstrips DRK;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Pinzette (steril);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Pinzette (unsteril);;MedMat;1;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Pinzette (unsteril);;MedMat;1;1;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Pulsuhr;;MedMat;1;1;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Pupillenleuchte;;MedMat;1;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Pupillenleuchte;;MedMat;1;1;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Reserve System Absauge (Akku Wac) inkl Schlauch & Beutel;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Rettungsdecke;;MedMat;2;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
+Rettungsdecke;;MedMat;2;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Rettungsdienstprotokolle;;MedMat;3;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Rettungsdienstprotokolle;;MedMat;0;3;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Sam Splint 18inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Sam Splint 18inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Sam Splint 36inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Sam Splint 36inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Sanitätsdienstprotokolle;;MedMat;10;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Sanitätsdienstprotokolle;;MedMat;9;10;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Sauerstfoffmaske Erw.;;MedMat;1;5;10;1;01.02.19;null;0;null;0;;;;;Rucksack Vito
+Sauerstfoffmaske Erw.;;MedMat;1;5;10;1;01.01.20;null;0;null;0;;;;;Rucksack Vito
+Sauerstfoffmaske Erw.;;MedMat;1;5;10;1;01.02.19;null;0;null;0;;;;;SEG Rucksack Bulli
+Sauerstfoffmaske Kind;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
+Saugkompresse;;MedMat;0;0;5;1;null;null;0;null;0;;;;;Lager
+Schere (Kleider-);;MedMat;1;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Schere (Kleider-);;MedMat;1;1;;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Schere (Stumpf/Spitz);;MedMat;1;;;1;null;null;0;null;0;;;;;Rucksack Vito
+Schleimabsauger Neugeborene;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+SicSacBrechbeutel;;MedMat;0;5;20;1;null;null;0;null;0;;;;;Lager
+Skalpell;;MedMat;1;3;10;1;01.03.18;null;0;null;0;;;;;Rucksack Vito
+Spritze 10 ml;;MedMat;2;10;20;1;01.04.17;null;0;null;0;;;;;Rucksack Vito
+Spritze 10 ml;;MedMat;2;10;20;1;01.04.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Spritze 20ml;;MedMat;0;5;15;1;null;null;0;null;0;;;;;Lager
+Spritze 2ml;;MedMat;2;10;20;1;01.01.17;null;0;null;0;;;;;Rucksack Vito
+Spritze 2ml;;MedMat;2;10;20;1;01.01.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Spritze 5ml;;MedMat;2;10;20;1;01.05.17;null;0;null;0;;;;;Rucksack Vito
+Spritze 5ml;;MedMat;2;10;20;1;01.05.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Stecklacken;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
+Sterilverband 40x53mm;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Stetoskop;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Stetoskop;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Stifneck Erwachsenen;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Stifneck Kind;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Stopfen;;MedMat;2;5;20;1;01.11.17;null;0;null;0;;;;;Rucksack Vito
+Stopfen;;MedMat;2;5;20;1;01.11.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Thomas Holder;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Tupfer;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Universalbinde 8cm;;MedMat;2;2;5;1;null;null;0;null;0;;;;;Rucksack Vito
+Universalbinde 8cm;;MedMat;1;2;5;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+unsterile Kompresse ca.;;MedMat;10;50;100;1;null;null;0;null;0;;;;;Rucksack Vito
+unsterile Kompresse ca.;;MedMat;10;50;100;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Vaseline;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Venenstauer;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Venenstauer;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle blau;;MedMat;2;3;10;1;01.03.20;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle blau;;MedMat;1;3;10;1;01.01.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle blau;;MedMat;1;3;10;1;01.12.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle gelb;;MedMat;0;3;10;1;null;null;0;null;0;;;;;Lager
+Venenverweilkanüle grün;;MedMat;0;3;10;1;null;null;0;null;0;;;;;Lager
+Venenverweilkanüle rosa;;MedMat;1;5;15;1;01.01.18;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle rosa;;MedMat;1;5;15;1;01.12.18;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle rosa;;MedMat;1;5;15;1;01.12.16;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle rosa;;MedMat;1;5;15;1;01.02.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle weiß;;MedMat;2;5;15;1;01.09.19;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle weiß;;MedMat;1;5;15;1;01.04.16;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle weiß;;MedMat;1;5;15;1;01.10.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanülen orange;;MedMat;1;5;15;1;01.01.18;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanülen orange;;MedMat;1;5;15;1;01.05.19;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanülen orange;;MedMat;2;5;15;1;01.01.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandmull 80 cm x 1m;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Verbandpäckchen G;;MedMat;4;10;20;1;31.08.19;null;0;null;0;;;;;Rucksack Vito
+Verbandpäckchen G;;MedMat;1;10;20;1;31.12.17;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäckchen G;;MedMat;3;10;20;1;31.12.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäcken K;;MedMat;1;5;10;1;31.08.19;null;0;null;0;;;;;Rucksack Vito
+Verbandpäcken K;;MedMat;1;5;10;1;31.05.20;null;0;null;0;;;;;Rucksack Vito
+Verbandpäcken K;;MedMat;1;5;10;1;31.12.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäcken M;;MedMat;2;8;15;1;31.05.20;null;0;null;0;;;;;Rucksack Vito
+Verbandpäcken M;;MedMat;1;8;15;1;31.05.19;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 40 x 60;;MedMat;1;2;5;1;01.06.30;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 40 x 60;;MedMat;1;2;5;1;01.06.30;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 40 x 60;;MedMat;1;2;5;1;01.06.35;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 60 x 80;;MedMat;2;2;5;1;01.12.19;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 60 x 80;;MedMat;0;2;5;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 80 x 120;;MedMat;2;2;5;1;01.06.36;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 80 x 120;;MedMat;1;2;5;1;01.12.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 80 x 120;;MedMat;1;2;5;1;01.06.29;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch Metaline 40x60;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Verbandtuch Metaline 60x80;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Verbandtuch Metaline 80x120;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Verbandvlies;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Verbandzellstoff;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Verneblermaske Erw.;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Verneblermaske Kind;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Wasser still0,5;;MedMat;0;2;4;1;null;null;0;null;0;;;;;Lager
+Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;01.02.19;null;0;null;0;;;;;Rucksack Vito
+Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;01.07.18;null;0;null;0;;;;;SEG Rucksack Bulli
+Wundschnellverband Abschnitte 10x5cm sensitiv;;MedMat;1;0;0;1;null;null;0;null;0;;;;;Rucksack Vito
+Wundschnellverband Abschnitte 10x5cm sensitiv;;MedMat;1;0;0;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Wundschnellverband Abschnitte 10x6cm sensitiv;;MedMat;1;0;0;1;null;null;0;null;0;;;;;Rucksack Vito
+Wundschnellverband Abschnitte 10x6cm sensitiv;;MedMat;1;0;0;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
+Wundschnellverband classic 5mx4cm;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Wundschnellverband classic 5mx6cm;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Wundschnellverband classic 5mx8cm;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Zahnprothesenbeutel;;MedMat;2;2;5;1;null;null;0;null;0;;;;;Rucksack Vito
+Zeckenzange;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;

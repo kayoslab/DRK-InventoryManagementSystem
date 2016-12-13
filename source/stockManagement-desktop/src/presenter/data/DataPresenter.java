@@ -110,7 +110,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				searchText.setText("Suchen");
+				// searchText.setText("Suchen");
 			}
 		});
 
@@ -252,6 +252,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 	@Override
 	public void showedAsPreviousPresenter() {
 		super.showedAsPreviousPresenter();
+		this.searchText.setText("Suchen");
 		this.loadTableData();
 	}
 
@@ -323,8 +324,19 @@ public class DataPresenter extends Presenter implements MouseListener {
 			// get the row index that contains that coordinate
 			int rowNumber = table.rowAtPoint(p);
 			// Show Details
-			DetailPresenter detailPresenter = new DetailPresenter(this, this.stockObjects[rowNumber]);
-			detailPresenter.newScreen();
+			String selectedTitle = (String)this.table.getValueAt(rowNumber, 0);
+			StockObject selectedStockObject = null;
+			for (StockObject stockObject : this.stockObjects) {
+				if (stockObject.title == selectedTitle) {
+					selectedStockObject = stockObject;
+					break;
+				}
+			}
+			if (selectedStockObject != null) {
+				DetailPresenter detailPresenter = new DetailPresenter(this, selectedStockObject);
+				detailPresenter.newScreen();
+			}
+
 		}
 	}
 

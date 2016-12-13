@@ -15,6 +15,7 @@ public class DatabaseLoginManager {
 	private String databasePassword;
 	private String databaseURL;
 	private String configLocation = System.getProperty("user.home") + File.separator + ".stockManager" + File.separator + "config";
+
 	/**
 	 * Constructor
 	 */
@@ -100,7 +101,8 @@ public class DatabaseLoginManager {
 	public Boolean testDatabaseConnection() {
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
 			try {
-				DriverManager.setLoginTimeout(10);
+				// Low Timeout for not blocking the UserInterface while testing the DB Connection
+				DriverManager.setLoginTimeout(5);
 				Connection connection = DriverManager.getConnection(this.databaseURL, this.databaseUsername, this.databasePassword);
 				if(!connection.isClosed() && connection != null){
 		            return true;
@@ -161,6 +163,7 @@ public class DatabaseLoginManager {
 					for (String command : configCommands) {
 						// execute command
 						String[] syntax = command.split(":", 2);
+						// command without value is ignored where (syntax.length == 1)
 						if (syntax.length == 2) {
 							String variable = syntax[0];
 							String content = syntax[1];

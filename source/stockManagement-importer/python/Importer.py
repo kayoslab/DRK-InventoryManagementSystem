@@ -151,7 +151,8 @@ class Importer:
             if stockObject["stkIntervall"] != None and stockObject["stkIntervall"].isdigit():
                 stkIntervall = str(stockObject["stkIntervall"])
             # appending Strings
-            stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
+            if totalVolume != "0":
+                stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
         # Stripping last \n and ,
         stockObjectSqlString = stockObjectSqlString[:-2]
         # and replace with ; and \n's

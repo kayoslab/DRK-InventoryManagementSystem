@@ -74,6 +74,14 @@ public class MenuPresenter extends Presenter implements MouseListener {
 		this.frame.getContentPane().add(this.btnLogout);
 		this.btnLogout.addActionListener(this);
 
+		this.help = new JButton("");
+		Image bookImage = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
+		Image bookImageScaled = bookImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
+		this.help.setIcon (new ImageIcon (bookImageScaled));
+		this.help.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*3, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
+		this.help.addActionListener(this);
+		this.frame.getContentPane().add(this.help);
+
 		this.separator = new JSeparator();
 		this.separator.setBounds(leftPadding, topPadding+logoHeight+1, (width - leftPadding - rightPadding), smallSpacing);
 		this.frame.getContentPane().add(this.separator);
@@ -97,14 +105,6 @@ public class MenuPresenter extends Presenter implements MouseListener {
 		this.settingsButton.setBounds(menuButtonX, thirdButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.settingsButton.addActionListener(this);
 		this.frame.getContentPane().add(this.settingsButton);
-
-		this.help = new JButton("");
-		Image bookImage = new ImageIcon (this.getClass().getResource("/img/book-button.jpg")).getImage();
-		Image bookImageScaled = bookImage.getScaledInstance(iconButtonWidth, iconButtonHeight,  java.awt.Image.SCALE_SMOOTH );
-		this.help.setIcon (new ImageIcon (bookImageScaled));
-		this.help.setBounds(iconButtonBarX+(iconButtonWidth+spacing)*3, (topLayoutCenter - iconButtonHeight / 2), iconButtonWidth, iconButtonHeight);
-		this.help.addActionListener(this);
-		this.frame.getContentPane().add(this.help);
 
 		/******************* Toolbar Buttons ************************/
 		if (this.session.currentUserCanAccessInventory()) {
@@ -244,7 +244,9 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.medicalMaterialMenuItem);
 			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addConsumableMaterialMenuItem) {
-			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.consumableMaterialMenuItem);
+			ObjectAddPresenter objectAddPresenter =
+					new ObjectAddPresenter(this,
+							DatabaseObject.ModificationType.consumableMaterialMenuItem);
 			objectAddPresenter.newScreen();
 		} else if (e.getSource() == this.addLocationMenuItem) {
 			ObjectAddPresenter objectAddPresenter = new ObjectAddPresenter(this, DatabaseObject.ModificationType.locationMenuItem);

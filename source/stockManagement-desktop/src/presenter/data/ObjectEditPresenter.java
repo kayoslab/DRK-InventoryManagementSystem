@@ -126,22 +126,22 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 
 		switch (this.modificationType) {
 			case deviceMenuItem:
-				columnNames = new Object[]{ "ID", "Titel", "MTK Intervall", "STK Intervall"};
+				columnNames = new Object[]{ "Titel", "MTK Intervall", "STK Intervall"};
 				break;
 			case medicalMaterialMenuItem:
-				columnNames = new Object[]{ "ID", "Titel", "Mindestbestand", "Sollbestand"};
+				columnNames = new Object[]{ "Titel", "Mindestbestand", "Sollbestand"};
 				break;
 			case consumableMaterialMenuItem:
-				columnNames = new Object[]{ "ID", "Titel", "Mindestbestand", "Sollbestand"};
+				columnNames = new Object[]{ "Titel", "Mindestbestand", "Sollbestand"};
 				break;
 			case locationMenuItem:
-				columnNames = new Object[]{ "ID", "Titel"};
+				columnNames = new Object[]{ "Titel"};
 				break;
 			case userMenuItem:
-				columnNames = new Object[]{ "ID", "Username", "Vorname", "Name"};
+				columnNames = new Object[]{ "Username", "Vorname", "Name"};
 				break;
 			case groupMenuItem:
-				columnNames = new Object[]{ "ID", "Name", "Aktiviert"};
+				columnNames = new Object[]{ "Name", "Aktiviert"};
 				break;
 		}
 
@@ -153,42 +153,42 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 					case deviceMenuItem:
 						if (databaseObject instanceof Device) {
 							Device device = (Device) databaseObject;
-							Object row[] = {databaseObject.id, device.title, device.mtkIntervall, device.stkIntervall};
+							Object row[] = {device.title, device.mtkIntervall, device.stkIntervall};
 							model.addRow(row);
 						}
 						break;
 					case medicalMaterialMenuItem:
 						if (databaseObject instanceof MedicalMaterial) {
 							MedicalMaterial medicalMaterial = (MedicalMaterial) databaseObject;
-							Object row[] = {databaseObject.id, medicalMaterial.title, medicalMaterial.minimumStock, medicalMaterial.quotaStock};
+							Object row[] = {medicalMaterial.title, medicalMaterial.minimumStock, medicalMaterial.quotaStock};
 							model.addRow(row);
 						}
 						break;
 					case consumableMaterialMenuItem:
 						if (databaseObject instanceof ConsumableMaterial) {
 							ConsumableMaterial consumableMaterial = (ConsumableMaterial) databaseObject;
-							Object row[] = {databaseObject.id, consumableMaterial.title, consumableMaterial.minimumStock, consumableMaterial.quotaStock};
+							Object row[] = {consumableMaterial.title, consumableMaterial.minimumStock, consumableMaterial.quotaStock};
 							model.addRow(row);
 						}
 						break;
 					case locationMenuItem:
 						if (databaseObject instanceof Location) {
 							Location location = (Location) databaseObject;
-							Object row[] = {databaseObject.id, location.title};
+							Object row[] = {location.title};
 							model.addRow(row);
 						}
 						break;
 					case userMenuItem:
 						if (databaseObject instanceof User) {
 							User user = (User) databaseObject;
-							Object row[] = {databaseObject.id, user.username, user.firstName, user.name};
+							Object row[] = { user.username, user.firstName, user.name};
 							model.addRow(row);
 						}
 						break;
 					case groupMenuItem:
 						if (databaseObject instanceof Group) {
 							Group group = (Group) databaseObject;
-							Object row[] = { databaseObject.id, group.title, group.isActive};
+							Object row[] = { group.title, group.isActive};
 							model.addRow(row);
 						}
 						break;
@@ -210,7 +210,7 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 			case userMenuItem:
 				break;
 			case groupMenuItem:
-				this.table.getColumnModel().getColumn(2).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
+				this.table.getColumnModel().getColumn(1).setCellRenderer(this.table.getDefaultRenderer(Boolean.class));
 				break;
 		}
 	}

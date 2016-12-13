@@ -93,7 +93,7 @@ public class Sender {
 			Transport.send(message);
 			System.out.println("Message send: " + type.name());
 		}  catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			return;
 		}
 	}
@@ -122,7 +122,7 @@ public class Sender {
 			};
 			return auth;
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -163,17 +163,27 @@ public class Sender {
 					if (stockObjectValue instanceof DeviceValue) {
 						DeviceValue deviceValue = (DeviceValue) stockObjectValue;
 						Device device = (Device) DatabaseReadManager.getStockObject(deviceValue.stockObjectID);
+
+						String mtkDate = "";
+						String stkDate = "";
+						if (deviceValue.stkDate != null) {
+							mtkDate = Sender.sdf.format(deviceValue.mtkDate);
+						}
+						if (deviceValue.stkDate != null) {
+							stkDate = Sender.sdf.format(deviceValue.stkDate);
+						}
+
 						plainMessageString += "Titel: " + device.title + ", " +
-								"Letzte MTK: " + Sender.sdf.format(deviceValue.mtkDate) + ", "+
+								"Letzte MTK: " + mtkDate + ", "+
 								"MTK Intervall: " + device.mtkIntervall + ", "+
-								"Letzte STK: " + Sender.sdf.format(deviceValue.stkDate) + ", "+
+								"Letzte STK: " + stkDate + ", "+
 								"STK Intervall: " + device.stkIntervall +
 								" \n\n";
 						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + device.title + "</td>" +
-								"<td align=\"center\">" + Sender.sdf.format(deviceValue.mtkDate) + "</td>" +
+								"<td align=\"center\">" + mtkDate + "</td>" +
 								"<td align=\"center\">" + device.mtkIntervall + "</td>" +
-								"<td align=\"center\">" + Sender.sdf.format(deviceValue.stkDate) + "</td>" +
+								"<td align=\"center\">" + stkDate + "</td>" +
 								"<td align=\"center\">" + device.stkIntervall + "</td>" +
 								"</tr>";
 					}
@@ -193,18 +203,24 @@ public class Sender {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
 						MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
 						MedicalMaterial medicalMaterial = (MedicalMaterial) DatabaseReadManager.getStockObject(medicalMaterialValue.stockObjectID);
+
+						String date = "";
+						if (medicalMaterialValue.date != null) {
+							date = Sender.sdf.format(medicalMaterialValue.date);
+						}
+
 						plainMessageString += "Titel: " + medicalMaterial.title + ", " +
 								"Mindestbestand: " + medicalMaterial.minimumStock + ", "+
 								"Sollbestand: " + medicalMaterial.quotaStock + ", "+
 								"Lagerbestand: " + medicalMaterialValue.volume + ", "+
-								"Ablaufdatum: " + Sender.sdf.format(medicalMaterialValue.date) +
+								"Ablaufdatum: " + date +
 								" \n\n";
 						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + medicalMaterial.title + "</td>" +
 								"<td align=\"center\">" + medicalMaterial.minimumStock + "</td>" +
 								"<td align=\"center\">" + medicalMaterial.quotaStock + "</td>" +
 								"<td align=\"center\">" + medicalMaterialValue.volume + "</td>" +
-								"<td align=\"center\">" + Sender.sdf.format(medicalMaterialValue.date) + "</td>" +
+								"<td align=\"center\">" + date + "</td>" +
 								"</tr>";
 					}
 				}
@@ -223,18 +239,24 @@ public class Sender {
 					if (stockObjectValue instanceof ConsumableMaterialValue) {
 						ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
 						ConsumableMaterial consumableMaterial = (ConsumableMaterial) DatabaseReadManager.getStockObject(consumableMaterialValue.stockObjectID);
+
+						String date = "";
+						if (consumableMaterialValue.date != null) {
+							date = Sender.sdf.format(consumableMaterialValue.date);
+						}
+
 						plainMessageString += "Titel: " + consumableMaterial.title + ", " +
 								"Mindestbestand: " + consumableMaterial.minimumStock + ", "+
 								"Sollbestand: " + consumableMaterial.quotaStock + ", "+
 								"Lagerbestand: " + consumableMaterialValue.volume + ", "+
-								"Ablaufdatum: " + Sender.sdf.format(consumableMaterialValue.date) +
+								"Ablaufdatum: " + date +
 								" \n\n";
 						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + consumableMaterial.title + "</td>" +
 								"<td align=\"center\">" + consumableMaterial.minimumStock + "</td>" +
 								"<td align=\"center\">" + consumableMaterial.quotaStock + "</td>" +
 								"<td align=\"center\">" + consumableMaterialValue.volume + "</td>" +
-								"<td align=\"center\">" + Sender.sdf.format(consumableMaterialValue.date) + "</td>" +
+								"<td align=\"center\">" + date + "</td>" +
 								"</tr>";
 					}
 				}
@@ -259,7 +281,7 @@ public class Sender {
 			mp.addBodyPart(htmlMessageBodyPart);
 			return mp;
 		} catch (MessagingException me) {
-			System.out.println(me);
+			me.printStackTrace();
 			return null;
 		}
 

@@ -38,6 +38,7 @@ public class LoginPresenter extends Presenter {
 		this.loginButton.addActionListener(this);
 		this.loginButton.setBounds(356, 477, 117, 29);
 		this.frame.getContentPane().add(this.loginButton);
+		this.frame.getRootPane().setDefaultButton(this.loginButton);
 
 		JLabel usernameLabel = new JLabel("Benutzername");
 		usernameLabel.setBounds(261, 352, 88, 16);

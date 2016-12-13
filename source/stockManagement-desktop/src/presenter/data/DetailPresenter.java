@@ -45,6 +45,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();

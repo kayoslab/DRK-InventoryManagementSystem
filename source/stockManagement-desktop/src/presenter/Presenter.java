@@ -16,7 +16,7 @@ public abstract class Presenter implements ActionListener {
 	public JButton btnLogout;
 	public JButton help;
 	public JSeparator separator;
-	private  JButton back;
+	private JButton back;
 
 	public void Presenter() {
 		// General Constructor
@@ -56,8 +56,11 @@ public abstract class Presenter implements ActionListener {
 		frame.setBounds(coordX, coordY, width, height);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.getContentPane().setMaximumSize(new Dimension(width,height));
-		frame.getContentPane().setMinimumSize(new Dimension(width,height));
+		/** it just works **/
+		frame.setMinimumSize(new Dimension(width,height));
+		frame.setMaximumSize(new Dimension(width,height));
+		frame.setPreferredSize(new Dimension(width,height));
+
 	}
 
 	/**
@@ -126,7 +129,14 @@ public abstract class Presenter implements ActionListener {
 		} else if (e.getSource() == this.back){
 			this.showPreviousPresenter();
 		} else if (e.getSource() == this.help){
-			// TODO: HELP Message
+			// TODO: Show HELP Message
+		} else if (e.getSource() == this.logo) {
+			String urlString = "http://drk-sennestadt.de/";
+			try {
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
+			} catch (Exception openException) {
+
+			}
 		}
 	}
 

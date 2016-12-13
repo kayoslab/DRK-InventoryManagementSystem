@@ -42,36 +42,81 @@ public class MessageUpdateManager {
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
 					Device device = (Device) stockObject;
 
-					/** Dynamic Time Intervalls for Devices **/
-					Calendar mtkIntervallTime = Calendar.getInstance();
-					mtkIntervallTime.setTime(deviceValue.mtkDate);
-					mtkIntervallTime.add(Calendar.MONTH, device.mtkIntervall);
-					Date nextMtkDate = new Date((mtkIntervallTime.getTime()).getTime());
-
-					Calendar stkIntervallTime = Calendar.getInstance();
-					stkIntervallTime.setTime(deviceValue.stkDate);
-					stkIntervallTime.add(Calendar.MONTH, device.stkIntervall);
-					Date nextStkDate = new Date((stkIntervallTime.getTime()).getTime());
-
-					/** Dynamic Time Intervalls for Devices minus fixed number of months **/
-					Calendar mtkSoftIntervallTime = Calendar.getInstance();
-					mtkSoftIntervallTime.setTime(deviceValue.stkDate);
-					mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
-					Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
-
-					Calendar stkSoftIntervallTime = Calendar.getInstance();
-					stkSoftIntervallTime.setTime(deviceValue.stkDate);
-					stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
-					Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
-
 					/** Check deviceValue for Message State Changes **/
-					if (sqlDate.after(nextMtkDate) || sqlDate.after(nextStkDate)) {
-						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
-					} else if ((deviceValue.mtkDate.before(nextSoftMtkDate)) || (deviceValue.stkDate.before(nextSoftStkDate))) {
-						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
+					if (deviceValue.mtkDate != null && deviceValue.stkDate != null) {
+						/** Dynamic Time Intervalls for Devices **/
+						Calendar mtkIntervallTime = Calendar.getInstance();
+						mtkIntervallTime.setTime(deviceValue.mtkDate);
+						mtkIntervallTime.add(Calendar.MONTH, device.mtkIntervall);
+						Date nextMtkDate = new Date((mtkIntervallTime.getTime()).getTime());
+
+						Calendar stkIntervallTime = Calendar.getInstance();
+						stkIntervallTime.setTime(deviceValue.stkDate);
+						stkIntervallTime.add(Calendar.MONTH, device.stkIntervall);
+						Date nextStkDate = new Date((stkIntervallTime.getTime()).getTime());
+
+						/** Dynamic Time Intervalls for Devices minus fixed number of months **/
+						Calendar mtkSoftIntervallTime = Calendar.getInstance();
+						mtkSoftIntervallTime.setTime(deviceValue.stkDate);
+						mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
+						Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
+
+						Calendar stkSoftIntervallTime = Calendar.getInstance();
+						stkSoftIntervallTime.setTime(deviceValue.stkDate);
+						stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
+						Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
+
+						if (sqlDate.after(nextMtkDate) || sqlDate.after(nextStkDate)) {
+							edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
+						} else if ((deviceValue.mtkDate.before(nextSoftMtkDate)) || (deviceValue.stkDate.before(nextSoftStkDate))) {
+							edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
+						} else {
+							edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
+						}
 					} else {
-						edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
+						if (deviceValue.mtkDate != null) {
+							/** Dynamic Time Intervalls for Devices **/
+							Calendar stkIntervallTime = Calendar.getInstance();
+							stkIntervallTime.setTime(deviceValue.stkDate);
+							stkIntervallTime.add(Calendar.MONTH, device.stkIntervall);
+							Date nextStkDate = new Date((stkIntervallTime.getTime()).getTime());
+
+							/** Dynamic Time Intervalls for Devices minus fixed number of months **/
+							Calendar mtkSoftIntervallTime = Calendar.getInstance();
+							mtkSoftIntervallTime.setTime(deviceValue.stkDate);
+							mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
+							Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
+
+							if (sqlDate.after(nextStkDate)) {
+								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
+							} else if (deviceValue.mtkDate.before(nextSoftMtkDate)) {
+								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
+							} else {
+								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
+							}
+						} else if (deviceValue.stkDate != null) {
+							/** Dynamic Time Intervalls for Devices **/
+							Calendar mtkIntervallTime = Calendar.getInstance();
+							mtkIntervallTime.setTime(deviceValue.mtkDate);
+							mtkIntervallTime.add(Calendar.MONTH, device.mtkIntervall);
+							Date nextMtkDate = new Date((mtkIntervallTime.getTime()).getTime());
+
+							/** Dynamic Time Intervalls for Devices minus fixed number of months **/
+							Calendar stkSoftIntervallTime = Calendar.getInstance();
+							stkSoftIntervallTime.setTime(deviceValue.stkDate);
+							stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
+							Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
+
+							if (sqlDate.after(nextMtkDate)) {
+								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
+							} else if (deviceValue.stkDate.before(nextSoftStkDate)) {
+								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
+							} else {
+								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
+							}
+						}
 					}
+
 				} else if (stockValue instanceof MedicalMaterialValue) {
 					MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
@@ -81,13 +126,25 @@ public class MessageUpdateManager {
 					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check medicalMaterialValue for Message State Changes **/
-					if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterial.totalVolume < medicalMaterial.minimumStock)) {
-						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-					} else if (medicalMaterialValue.date.before(sqlDateThreeMonths) || (medicalMaterial.totalVolume < medicalMaterial.quotaStock)) {
-						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+					if (medicalMaterialValue.date != null) {
+						if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterial.totalVolume < medicalMaterial.minimumStock)) {
+							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
+						} else if (medicalMaterialValue.date.before(sqlDateThreeMonths) || (medicalMaterial.totalVolume < medicalMaterial.quotaStock)) {
+							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+						} else {
+							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+						}
 					} else {
-						edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+						if (medicalMaterial.totalVolume < medicalMaterial.minimumStock) {
+							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
+						} else if (medicalMaterial.totalVolume < medicalMaterial.quotaStock) {
+							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+						} else {
+							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+						}
 					}
+
+
 				} else if (stockValue instanceof ConsumableMaterialValue) {
 					ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
@@ -97,13 +154,24 @@ public class MessageUpdateManager {
 					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check consumableMaterialValue for Message State Changes **/
-					if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterial.totalVolume < consumableMaterial.minimumStock)) {
-						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-					} else if (consumableMaterialValue.date.before(sqlDateThreeMonths) || (consumableMaterial.totalVolume < consumableMaterial.quotaStock)) {
-						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+					if (consumableMaterialValue.date != null) {
+						if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterial.totalVolume < consumableMaterial.minimumStock)) {
+							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
+						} else if (consumableMaterialValue.date.before(sqlDateThreeMonths) || (consumableMaterial.totalVolume < consumableMaterial.quotaStock)) {
+							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+						} else {
+							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+						}
 					} else {
-						edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+						if (consumableMaterial.totalVolume < consumableMaterial.minimumStock) {
+							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
+						} else if (consumableMaterial.totalVolume < consumableMaterial.quotaStock) {
+							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+						} else {
+							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+						}
 					}
+
 				}
 				if (edited) {
 					System.out.println("Succesfully edited: id " + stockValue.id);

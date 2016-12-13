@@ -521,14 +521,14 @@ public final class DatabaseWriteManager {
 							+ stockObjectValue.volume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
 					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
-			break;
+				break;
 			case 1:
 				StockObjectValue mergedStockObject = DatabaseWriteManager.mergeStockObjectValues(existingStock[0], stockObjectValue);
 				return DatabaseWriteManager.editStockObjectValue(mergedStockObject);
 			default:
 				// Data inconsistency - by merging existing StockObjects this state is not covered.
 				// The only way this could happen if a user is manually adding StockObjectValues to the db.
-			break;
+				break;
 		}
 		return false;
 	}
@@ -575,14 +575,14 @@ public final class DatabaseWriteManager {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * @param stockObjectValue StockObjectValue
 	 * @return Boolean
-	 * 
+	 *
 	 * Try to delete a StockObjectValue with a given extended StockObjectValue Struct.
 	 * Returns a boolean Value, which indicates the outcome.
-	 * 
+	 *
 	 */
 	private static Boolean deleteStockObjectValue(StockObjectValue stockObjectValue) {
 		String sqlStatement;
@@ -618,24 +618,32 @@ public final class DatabaseWriteManager {
 
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
-	
+
 	/**
 	 * @param stockObjectValue StockObjectValue
 	 * @return Boolean
-	 * 
+	 *
 	 * Try to edit an existing StockObjectValue with a given extended StockObjectValue Struct.
 	 * Fetch the StockObjectValue by its stockObjectValue.id
 	 * Returns a boolean Value, which indicates the outcome.
-	 * 
+	 *
 	 */
 	private static Boolean editStockObjectValue(StockObjectValue stockObjectValue) {
 		String sqlStatement = "";
 		if (stockObjectValue instanceof DeviceValue) {
 			DeviceValue mergedDeviceValue = (DeviceValue) stockObjectValue;
+			String mtkDate = "null";
+			String stkDate = "null";
+			if (mergedDeviceValue.mtkDate != null) {
+				mtkDate = "'" +  DatabaseWriteManager.sdf.format(mergedDeviceValue.mtkDate) + "'";
+			}
+			if (mergedDeviceValue.stkDate != null) {
+				stkDate = "'" + DatabaseWriteManager.sdf.format(mergedDeviceValue.stkDate) + "'";
+			}
 			sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-					+ ", `mtkDate` = '" + DatabaseWriteManager.sdf.format(mergedDeviceValue.mtkDate)
-					+ "', `stkDate` = '" + DatabaseWriteManager.sdf.format(mergedDeviceValue.stkDate)
-					+ "', `inventoryNumber` = '" + mergedDeviceValue.inventoryNumber
+					+ ", `mtkDate` = " + mtkDate
+					+ ", `stkDate` = " + stkDate
+					+ ", `inventoryNumber` = '" + mergedDeviceValue.inventoryNumber
 					+ "', `serialNumber` = '" + mergedDeviceValue.serialNumber
 					+ "', `umdns` = '" + mergedDeviceValue.umdns
 					+ "',`locationId` = " + stockObjectValue.locationID
@@ -645,17 +653,25 @@ public final class DatabaseWriteManager {
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
 				MedicalMaterialValue mergedMedicalValue = (MedicalMaterialValue) stockObjectValue;
+				String date = "null";
+				if (mergedMedicalValue.date != null) {
+					date =  "'" + DatabaseWriteManager.sdf.format(mergedMedicalValue.date) + "'";
+				}
 				sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-						+ ", `date` = '" + DatabaseWriteManager.sdf.format(mergedMedicalValue.date)
-						+ "', `batchNumber` = '" + mergedMedicalValue.batchNumber
+						+ ", `date` = " + date
+						+ ", `batchNumber` = '" + mergedMedicalValue.batchNumber
 						+ "',`locationId` = " + stockObjectValue.locationID
 						+ ",`messageId` = " + stockObjectValue.messageID
 						+ " WHERE `id` = " + stockObjectValue.id + ";";
 			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 				ConsumableMaterialValue mergedConsumableValue = (ConsumableMaterialValue) stockObjectValue;
+				String date = "null";
+				if (mergedConsumableValue.date != null) {
+					date = "'" + DatabaseWriteManager.sdf.format(mergedConsumableValue.date) + "'";
+				}
 				sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-						+ ", `date` = '" + DatabaseWriteManager.sdf.format(mergedConsumableValue.date)
-						+ "', `batchNumber` = '" + mergedConsumableValue.batchNumber
+						+ ", `date` = " + date
+						+ ", `batchNumber` = '" + mergedConsumableValue.batchNumber
 						+ "',`locationId` = " + stockObjectValue.locationID
 						+ ",`messageId` = " + stockObjectValue.messageID
 						+ " WHERE `id` = " + stockObjectValue.id + ";";
@@ -680,7 +696,7 @@ public final class DatabaseWriteManager {
 		}
 		return false;
 	}
-	
+
 	//================================================================================
 	// endregion StockValue
 	//================================================================================

@@ -67,8 +67,9 @@ public class ChangePasswordPresenter extends Presenter {
 		super.actionPerformed(e);
 		if (e.getSource() == this.saveButton){
 			if (passwordTextField.getPassword().equals(newPasswordTextField.getPassword())) {
-				if (this.userManager.setNewPassword("", String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
+				if (this.userManager.setNewPassword(this.session.currentUser.username, String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
 					// Password changed.
+					this.showPreviousPresenter();
 				} else {
 					// Can't change Password.
 				}
