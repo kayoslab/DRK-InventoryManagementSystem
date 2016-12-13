@@ -3,8 +3,7 @@ INSERT IGNORE INTO `Location`
 VALUES
 ('Lager'),
 ('Rucksack Vito'),
-('SEG Rucksack Bulli'),
-('');
+('SEG Rucksack Bulli');
 
 
 INSERT IGNORE INTO `StockObject`
@@ -361,5 +360,3 @@ VALUES
 (2, null, null, null, '', '', '', '', '2016-12-13 17:47:00', 0, (SELECT `StockObject`.`id` FROM `StockObject` WHERE `StockObject`.`title` = 'Zahnprothesenbeutel' LIMIT 1), (SELECT `Location`.`id` FROM `Location` WHERE `Location`.`title` = 'Rucksack Vito' LIMIT 1), 1),
 (0, null, null, null, '', '', '', '', '2016-12-13 17:47:00', 0, (SELECT `StockObject`.`id` FROM `StockObject` WHERE `StockObject`.`title` = 'Zeckenzange' LIMIT 1), (SELECT `Location`.`id` FROM `Location` WHERE `Location`.`title` = 'Lager' LIMIT 1), 1),
 (0, null, null, null, '', '', '', '', '2016-12-13 17:47:00', 0, (SELECT `StockObject`.`id` FROM `StockObject` WHERE `StockObject`.`title` = '' LIMIT 1), (SELECT `Location`.`id` FROM `Location` WHERE `Location`.`title` = '' LIMIT 1), 1);
-
-

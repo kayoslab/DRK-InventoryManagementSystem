@@ -1,16 +1,13 @@
 package model;
 
-import java.io.IOException;
-
 import model.databaseCommunication.DatabaseValueManager;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDTrueTypeFont;
-import sun.font.FontManager;
 
-
+import java.io.IOException;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,7 +25,7 @@ public class PDFtest {
 		try {
 
 			System.out.println("Creating PDF");
-			String file = "Inventory.pdf";
+			String file =  System.getProperty("user.home") + File.separator + "Desktop" + File.separator + "Inventory.pdf";
 
 			PDDocument doc = new PDDocument();
 			PDPage page = new PDPage();
@@ -95,9 +92,6 @@ public class PDFtest {
 			content.close();
 			doc.save(file);
 			doc.close();
-
-			System.out.println("Your file was created in : "
-					+ System.getProperty("user.dir"));
 
 		} catch (IOException e) {
 
