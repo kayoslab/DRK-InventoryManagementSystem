@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #################################################################################
 #
-# 
+#
 #
 #################################################################################
 
@@ -53,12 +53,52 @@ class Importer:
         for row in self.readData:
             # Location
             locations.add(row['Lagerort'])
+
             # StockObject
-            stockObject = {"title":row['Titel'], "description":row['Beschreibung'], "type":row['Art'], "minimumStock":row["Mindestbestand"], "quotaStock":row["Sollbestand"], "batchSize":row["Losgröße"], "totalVolume":row["Bestand"], "mtkIntervall":row["MTK Intervall"], "stkIntervall":row["STK Intervall"], "location":row["Lagerort"]}
-            stockObjects.append(stockObject)
+            stockObjectConstainsNewStockObject = False
+            stockObjectForIndex = 0
+            for stockObject in stockObjects:
+                if stockObject["title"] == row['Titel']:
+                    stockObjectConstainsNewStockObject = True
+                    oldTotalVolume = 0
+                    addingRowVolume = 0
+                    try:
+                        oldTotalVolume = int(stockObject["totalVolume"])
+                    except ValueError:
+                        oldTotalVolume = 0
+                    try:
+                        addingRowVolume = int(row['Bestand'])
+                    except ValueError:
+                        addingRowVolume = 0
+                    stockObjects[stockObjectForIndex]["totalVolume"] = str(oldTotalVolume + addingRowVolume)
+                    break
+                stockObjectForIndex += 1
+            if stockObjectConstainsNewStockObject == False:
+                stockObject = {"title":row['Titel'], "description":row['Beschreibung'], "type":row['Art'], "minimumStock":row["Mindestbestand"], "quotaStock":row["Sollbestand"], "batchSize":row["Losgröße"], "totalVolume":row["Bestand"], "mtkIntervall":row["MTK Intervall"], "stkIntervall":row["STK Intervall"], "location":row["Lagerort"]}
+                stockObjects.append(stockObject)
+
             # StockValue
-            stockValue = {"volume":row['Bestand'], "date":row['Datum'], "mtkDate":row['Letzte MTK'], "stkDate":row['Letzte STK'], "inventoryNumber":row['Inventarnummer'], "serialNumber":row['Seriennummer'], "umdns":row['UMDNS'], "batchNumber":row['Chargennummer'], "title":row['Titel'], "location":row['Lagerort']}
-            stockValues.append(stockValue)
+            stockValueConstainsNewStockObject = False
+            stockValueForIndex = 0
+            for stockValue in stockValues:
+                if stockValue["title"] == row['Titel'] and stockValue["location"] == row['Lagerort'] and stockValue["inventoryNumber"] == row['Inventarnummer'] and stockValue["serialNumber"] == row['Seriennummer'] and stockValue["umdns"] == row['UMDNS'] and stockValue["batchNumber"] == row['Chargennummer']:
+                    stockValueConstainsNewStockObject = True
+                    oldTotalVolume = 0
+                    addingRowVolume = 0
+                    try:
+                        oldTotalVolume = int(stockValue["volume"])
+                    except ValueError:
+                        oldTotalVolume = 0
+                    try:
+                        addingRowVolume = int(row['Bestand'])
+                    except ValueError:
+                        addingRowVolume = 0
+                    stockValues[stockValueForIndex]["volume"] = str(oldTotalVolume + addingRowVolume)
+                    break
+                stockValueForIndex += 1
+            if stockValueConstainsNewStockObject == False:
+                stockValue = {"volume":row['Bestand'], "date":row['Datum'], "mtkDate":row['Letzte MTK'], "stkDate":row['Letzte STK'], "inventoryNumber":row['Inventarnummer'], "serialNumber":row['Seriennummer'], "umdns":row['UMDNS'], "batchNumber":row['Chargennummer'], "title":row['Titel'], "location":row['Lagerort'] }
+                stockValues.append(stockValue)
         if len(locations) > 0:
             locationsString = self.generateLocationSQL(locations)
             if locationsString != None:
