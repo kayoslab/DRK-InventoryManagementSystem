@@ -14,13 +14,13 @@ import javax.swing.*;
 public class InventoryPresenter extends Presenter {
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
-	JRadioButton radioButtonAll;
-	JRadioButton radioButtonMinimumStockOnly;
-	JRadioButton radioButtonquotaStockOnly;
-	JCheckBox checkBoxDevices;
-	JCheckBox checkBoxMedicalMaterials;
-	JCheckBox checkBoxConsumableMaterial;
-	JComboBox filterComboBox = new JComboBox();
+	private JRadioButton radioButtonAll;
+	private JRadioButton radioButtonMinimumStockOnly;
+	private JRadioButton radioButtonquotaStockOnly;
+	private JCheckBox checkBoxDevices;
+	private JCheckBox checkBoxMedicalMaterials;
+	private JCheckBox checkBoxConsumableMaterial;
+	private JComboBox filterComboBox = new JComboBox();
 
 	/**
 	 * Create the application.
@@ -253,7 +253,7 @@ public class InventoryPresenter extends Presenter {
 			}
 		}
 
-		table.setModel(model);
+		this.table.setModel(model);
 	}
 
 

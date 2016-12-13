@@ -14,7 +14,8 @@ public abstract class DatabaseObject {
 		consumableMaterial,
 		vehicle
 	}
-	
+	public static String[] StockObjectTypeStrings = new String[]{"None", "Geräte", "Medizinisches Material", "Versorgungsmaterial", "Fahrzeuge"};
+
 	public enum StockValueMessage {
 		empty,
 		green,
