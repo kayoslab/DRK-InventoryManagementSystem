@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Inventory.pdf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/PDFtest.java" afterPath="$PROJECT_DIR$/src/model/PDFtest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-importer/python/data.sql" afterPath="$PROJECT_DIR$/../stockManagement-importer/python/data.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,13 +45,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="556">
+              <caret line="519" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="745" selection-end-column="1" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#649#650#0" expanded="false" />
+                <element signature="e#689#690#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -63,7 +74,12 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="16" column="130" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="130" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#649#650#0" expanded="false" />
+                <element signature="e#691#692#0" expanded="false" />
+                <element signature="e#3733#3741#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,8 +201,8 @@
         <option value="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
         <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
         <option value="$PROJECT_DIR$/src/main.java" />
-        <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
         <option value="$PROJECT_DIR$/src/model/PDFtest.java" />
+        <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
       </list>
     </option>
   </component>
@@ -281,6 +297,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseObjects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -911,12 +949,12 @@
       <workItem from="1481585773539" duration="207000" />
       <workItem from="1481626197711" duration="2588000" />
       <workItem from="1481632306250" duration="10761000" />
-      <workItem from="1481663427391" duration="548000" />
+      <workItem from="1481663427391" duration="823000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166488000" />
+    <option name="totallyTimeSpent" value="166763000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1346,19 +1384,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="728" column="5" lean-forward="true" selection-start-line="728" selection-start-column="5" selection-end-line="728" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="16" column="130" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="130" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#649#650#0" expanded="false" />
+            <element signature="e#691#692#0" expanded="false" />
+            <element signature="e#3733#3741#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1374,8 +1409,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="519" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="745" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#649#650#0" expanded="false" />
+            <element signature="e#689#690#0" expanded="false" />
           </folding>
         </state>
       </provider>

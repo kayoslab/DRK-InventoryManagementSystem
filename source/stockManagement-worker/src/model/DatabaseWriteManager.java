@@ -483,18 +483,30 @@ public final class DatabaseWriteManager {
 				// Switch between different extended StockObjectValue Types
 				if (stockObjectValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+					String mtkDate = "null";
+					String stkDate = "null";
+					if (deviceValue.mtkDate != null) {
+						mtkDate = "'" +  DatabaseWriteManager.sdf.format(deviceValue.mtkDate) + "'";
+					}
+					if (deviceValue.stkDate != null) {
+						stkDate = "'" + DatabaseWriteManager.sdf.format(deviceValue.stkDate) + "'";
+					}
 					sqlStatement = "INSERT INTO `StockValue` VALUES(0,"
-							+ stockObjectValue.volume + ", NULL, '" + DatabaseWriteManager.sdf.format(deviceValue.mtkDate)
-							+ "', '" + sdf.format(deviceValue.stkDate) + "', '" + deviceValue.inventoryNumber
+							+ stockObjectValue.volume + ", NULL, " + mtkDate
+							+ ", " + stkDate + ", '" + deviceValue.inventoryNumber
 							+ "', '" + deviceValue.serialNumber + "', '" + deviceValue.umdns + "', NULL, '"
 							+ DatabaseWriteManager.sdf.format(timestamp) + "', 0, " + stockObjectValue.stockObjectID + ", "
 							+ stockObjectValue.locationID + ", " + stockObjectValue.messageID + ");";
 				} else if (stockObjectValue instanceof MaterialValue) {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
 						MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
+						String date = "null";
+						if (medicalValue.date != null) {
+							date =  "'" + DatabaseWriteManager.sdf.format(medicalValue.date) + "'";
+						}
 						sqlStatement = "INSERT INTO `StockValue` VALUES(0,"
-								+ stockObjectValue.volume + ", '"
-								+ DatabaseWriteManager.sdf.format(medicalValue.date) + "', NULL, NULL, NULL, NULL, NULL, '"
+								+ stockObjectValue.volume + ", "
+								+ date + ", NULL, NULL, NULL, NULL, NULL, '"
 								+ medicalValue.batchNumber + "', '"
 								+ DatabaseWriteManager.sdf.format(timestamp) + "', 0, "
 								+ stockObjectValue.stockObjectID + ", "
@@ -502,9 +514,13 @@ public final class DatabaseWriteManager {
 								+ stockObjectValue.messageID + ");";
 					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 						ConsumableMaterialValue consumableValue = (ConsumableMaterialValue) stockObjectValue;
+						String date = "null";
+						if (consumableValue.date != null) {
+							date = "'" + DatabaseWriteManager.sdf.format(consumableValue.date) + "'";
+						}
 						sqlStatement = "INSERT INTO `StockValue` VALUES(0,"
-								+ stockObjectValue.volume + ", '"
-								+ DatabaseWriteManager.sdf.format(consumableValue.date) + "', NULL, NULL, NULL, NULL, NULL, '"
+								+ stockObjectValue.volume + ", "
+								+ date + ", NULL, NULL, NULL, NULL, NULL, '"
 								+ consumableValue.batchNumber + "', '"
 								+ DatabaseWriteManager.sdf.format(timestamp) + "', 0, "
 								+ stockObjectValue.stockObjectID + ", "
