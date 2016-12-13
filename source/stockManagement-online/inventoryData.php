@@ -29,7 +29,7 @@
                             "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>" .
                             "<td>" . utf8_encode($stockValue['location']) . "</td>".
                             "<td>" . $stockValue['volume'] . "</td>".
-                            "<td><a href=\"./stock.php?type=\"" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
+                            "<td><a href=\"./stock.php?type=" . $stockValue['typeId'] . "\">" . $type[$stockValue['typeId'] - 1] . "</a>" .
                             "</td></tr> \n";
                             break;
                         case 3:
