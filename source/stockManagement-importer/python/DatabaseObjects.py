@@ -79,17 +79,13 @@ class DatabaseObjects:
     "serialNumber":"`StockValue`.`serialNumber`",
     "umdns":"`StockValue`.`umdns`",
     "batchNumber":"`StockValue`.`batchNumber`",
+    "minimumStock":"`StockValue`.`minimumStock`",
+    "quotaStock":"`StockValue`.`quotaStock`",
+    "silencedWarnings":"`StockValue`.`silencedWarnings`",
     "creation":"`StockValue`.`creation`",
     "stockObjectId":"`StockValue`.`stockObjectId`",
+    "locationId":"`StockValue`.`locationId`",
     "messageId":"`StockValue`.`messageId`"
-    }
-    # LocationForStockValue Table
-    locationForStockValue = {"table":"`LocationForStockValue`",
-    "stockValue":"LocationForStockValue`.`stockValue`",
-    "location":"LocationForStockValue`.`location`",
-    "minimumStock":"LocationForStockValue`.`minimumStock`",
-    "quotaStock":"LocationForStockValue`.`quotaStock`",
-    "silencedWarnings":"LocationForStockValue`.`silencedWarnings`"
     }
     # Operation Table
     operationTable = {
