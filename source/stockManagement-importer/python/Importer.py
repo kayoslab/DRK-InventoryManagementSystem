@@ -200,7 +200,8 @@ class Importer:
 
             if stockValue["volume"] != None and stockValue["title"] != None and stockValue["location"] != None:
                 # appending Strings
-                stockValueSqlString += "(" + volume + ", " + date + ", " + mtkDate + ", " + stkDate + ", '" + inventoryNumber + "', '" + serialNumber + "', '" + umdns + "', '" + batchNumber + "', " + creation + ", " + escalationAck + ", " + stockObjectId + ", " + locationId + ", " + messageId + "),\n"
+                if volume != "0":
+                    stockValueSqlString += "(" + volume + ", " + date + ", " + mtkDate + ", " + stkDate + ", '" + inventoryNumber + "', '" + serialNumber + "', '" + umdns + "', '" + batchNumber + "', " + creation + ", " + escalationAck + ", " + stockObjectId + ", " + locationId + ", " + messageId + "),\n"
 
         if len(stockValueSqlString) == 0:
             return None
