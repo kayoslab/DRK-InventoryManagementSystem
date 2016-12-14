@@ -37,6 +37,7 @@ public class MessageUpdateManager {
 				Calendar currenttime = Calendar.getInstance();
 				Date sqlDate = new Date((currenttime.getTime()).getTime());
 				Boolean edited = false;
+
 				if (stockValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
@@ -127,17 +128,17 @@ public class MessageUpdateManager {
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check medicalMaterialValue for Message State Changes **/
 					if (medicalMaterialValue.date != null) {
-						if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterial.totalVolume < medicalMaterial.minimumStock)) {
+						if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterialValue.volume < medicalMaterialValue.minimumStock)) {
 							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (medicalMaterialValue.date.before(sqlDateThreeMonths) || (medicalMaterial.totalVolume < medicalMaterial.quotaStock)) {
+						} else if (medicalMaterialValue.date.before(sqlDateThreeMonths) || (medicalMaterialValue.volume < medicalMaterialValue.quotaStock)) {
 							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
 						} else {
 							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
 						}
 					} else {
-						if (medicalMaterial.totalVolume < medicalMaterial.minimumStock) {
+						if (medicalMaterialValue.volume < medicalMaterialValue.minimumStock) {
 							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (medicalMaterial.totalVolume < medicalMaterial.quotaStock) {
+						} else if (medicalMaterialValue.volume < medicalMaterialValue.quotaStock) {
 							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
 						} else {
 							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
@@ -155,17 +156,17 @@ public class MessageUpdateManager {
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check consumableMaterialValue for Message State Changes **/
 					if (consumableMaterialValue.date != null) {
-						if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterial.totalVolume < consumableMaterial.minimumStock)) {
+						if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterialValue.volume < consumableMaterialValue.minimumStock)) {
 							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (consumableMaterialValue.date.before(sqlDateThreeMonths) || (consumableMaterial.totalVolume < consumableMaterial.quotaStock)) {
+						} else if (consumableMaterialValue.date.before(sqlDateThreeMonths) || (consumableMaterialValue.volume < consumableMaterialValue.quotaStock)) {
 							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
 						} else {
 							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
 						}
 					} else {
-						if (consumableMaterial.totalVolume < consumableMaterial.minimumStock) {
+						if (consumableMaterialValue.volume < consumableMaterialValue.minimumStock) {
 							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (consumableMaterial.totalVolume < consumableMaterial.quotaStock) {
+						} else if (consumableMaterialValue.volume < consumableMaterialValue.quotaStock) {
 							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
 						} else {
 							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);

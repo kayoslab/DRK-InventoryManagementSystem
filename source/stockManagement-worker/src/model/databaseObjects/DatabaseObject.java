@@ -14,7 +14,14 @@ public abstract class DatabaseObject {
 		consumableMaterial,
 		vehicle
 	}
-	
+	public static String[] StockObjectTypeStrings = new String[]{
+			"None",
+			"Ger\u00e4te",
+			"Medizinisches Material",
+			"Versorgungsmaterial",
+			"Fahrzeuge"
+	};
+
 	public enum StockValueMessage {
 		empty,
 		green,
@@ -23,6 +30,45 @@ public abstract class DatabaseObject {
 	}
 
 	public enum GroupRight {
+		empty,
+		login,
+		editSelf,
+		createUser,
+		deleteUser,
+		editUser,
+		viewUsers,
+		createGroup,
+		deleteGroup,
+		editGroup,
+		viewGroups,
+		createDevice,
+		deleteDevice,
+		editDevice,
+		viewDevices,
+		deviceIncrease,
+		deviceDecrease,
+		deviceCorrection,
+		createMedicalMaterial,
+		deleteMedicalMaterial,
+		editMedicalMaterial,
+		viewMedicalMaterials,
+		medicalMaterialIncrease,
+		medicalMaterialDecrease,
+		medicalMaterialCorrection,
+		createConsumableMaterial,
+		deleteConsumableMaterial,
+		editConsumableMaterial,
+		viewConsumableMaterials,
+		consumableMaterialIncrease,
+		consumableMaterialDecrease,
+		consumableMaterialCorrection,
+		createLocation,
+		deleteLocation,
+		editLocation,
+		viewLocations
+	}
+
+	public enum Operation {
 		empty,
 		login,
 		editSelf,

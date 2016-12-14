@@ -209,7 +209,7 @@ public class Sender {
 							date = Sender.sdf.format(medicalMaterialValue.date);
 						}
 
-						int orderQuantity = medicalMaterial.quotaStock - medicalMaterial.totalVolume;
+						int orderQuantity = medicalMaterialValue.quotaStock - medicalMaterialValue.volume;
 						String locationTitle = DatabaseReadManager.getLocation(medicalMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + medicalMaterial.title + ", " +
 								"Lagerort: " + locationTitle + ", "+
@@ -247,7 +247,7 @@ public class Sender {
 							date = Sender.sdf.format(consumableMaterialValue.date);
 						}
 
-						int orderQuantity = consumableMaterial.quotaStock - consumableMaterial.totalVolume;
+						int orderQuantity = consumableMaterialValue.quotaStock - consumableMaterialValue.volume;
 						String locationTitle = DatabaseReadManager.getLocation(consumableMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + consumableMaterial.title + ", " +
 								"Lagerort: " + locationTitle + ", "+
