@@ -14,6 +14,7 @@ import model.databaseObjects.stockObjects.StockObject;
 import presenter.Presenter;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -626,120 +627,117 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 	private Boolean saveButtonValidation() {
 		switch (this.modificationType) {
 			case deviceMenuItem:
-				if (this.textField1.getText().length() > 0
-						&& this.textField2.getText().length() > 0
-						&& this.textField3.getText().length() > 0) {
+				if (this.textField1.getText().length() > 0) {
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					int mtkIntervall = 0;
+					int stkIntervall = 0;
+					try {
+						mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
+					try {
+						stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
 					if (this.databaseObject == null) {
 						/** Create new Device **/
-						DecimalFormat decimalFormat = new DecimalFormat("#");
-						try {
-							int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
-							int stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
-							this.databaseObject = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
-							return DatabaseWriteManager.createObject(this.databaseObject);
-						} catch (ParseException e) {
-							// Cant parse Textfields to int
-							return false;
-						}
+						this.databaseObject = new Device(0,this.textField1.getText(), this.textArea.getText(),false, StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
+						return DatabaseWriteManager.createObject(this.databaseObject);
 					} else {
 						/** Update existing Device **/
-						DecimalFormat decimalFormat = new DecimalFormat("#");
-						try {
-							int mtkIntervall = decimalFormat.parse(this.textField2.getText()).intValue();
-							int stkIntervall = decimalFormat.parse(this.textField3.getText()).intValue();
-							((Device)this.databaseObject).title = this.textField1.getText();
-							((Device)this.databaseObject).description = this.textArea.getText();
-							((Device)this.databaseObject).mtkIntervall = mtkIntervall;
-							((Device)this.databaseObject).stkIntervall = stkIntervall;
-							return DatabaseWriteManager.editObject(this.databaseObject);
-						} catch (ParseException e) {
-							// Cant parse Textfields to int
-							return false;
-						}
+						((Device)this.databaseObject).title = this.textField1.getText();
+						((Device)this.databaseObject).description = this.textArea.getText();
+						((Device)this.databaseObject).mtkIntervall = mtkIntervall;
+						((Device)this.databaseObject).stkIntervall = stkIntervall;
+						return DatabaseWriteManager.editObject(this.databaseObject);
 					}
 				} else {
 					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.textField1.setBorder(border);
 				}
 
 				return false;
 			case medicalMaterialMenuItem:
-				if (this.textField1.getText().length() > 0
-						&& this.textField2.getText().length() > 0
-						&& this.textField3.getText().length() > 0
-						&& this.textField4.getText().length() > 0) {
+				if (this.textField1.getText().length() > 0) {
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					int batchSize = 0;
+					int minimumSize = 0;
+					int quotaSize = 0;
+					try {
+						batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
+					try {
+						minimumSize = decimalFormat.parse(this.textField3.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
+					try {
+						quotaSize = decimalFormat.parse(this.textField4.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
 					if (this.databaseObject == null) {
 						// new StockObject
-						DecimalFormat decimalFormat = new DecimalFormat("#");
-						try {
-							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
-							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							this.databaseObject = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
-							return DatabaseWriteManager.createObject(this.databaseObject);
-						} catch (ParseException e) {
-							// Cant parse Textfields to int
-							return false;
-						}
+						this.databaseObject = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumSize ,quotaSize);
+						return DatabaseWriteManager.createObject(this.databaseObject);
 					} else {
 						/** update existing MedicalMaterial **/
-						DecimalFormat decimalFormat = new DecimalFormat("#");
-						try {
-							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
-							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							((MedicalMaterial)this.databaseObject).title = this.textField1.getText();
-							((MedicalMaterial)this.databaseObject).description = this.textArea.getText();
-							((MedicalMaterial)this.databaseObject).batchSize = batchSize;
-							((MedicalMaterial)this.databaseObject).minimumStock = minimumStock;
-							((MedicalMaterial)this.databaseObject).quotaStock = quotaStock;
-							return DatabaseWriteManager.editObject(this.databaseObject);
-						} catch (ParseException e) {
-							// Cant parse Textfields to int
-							return false;
-						}
+						((MedicalMaterial)this.databaseObject).title = this.textField1.getText();
+						((MedicalMaterial)this.databaseObject).description = this.textArea.getText();
+						((MedicalMaterial)this.databaseObject).batchSize = batchSize;
+						((MedicalMaterial)this.databaseObject).minimumStock = minimumSize;
+						((MedicalMaterial)this.databaseObject).quotaStock = quotaSize;
+						return DatabaseWriteManager.editObject(this.databaseObject);
 					}
 				} else {
 					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.textField1.setBorder(border);
 				}
 				return false;
 			case consumableMaterialMenuItem:
-				if (this.textField1.getText().length() > 0
-						&& this.textField2.getText().length() > 0
-						&& this.textField3.getText().length() > 0
-						&& this.textField4.getText().length() > 0) {
+				if (this.textField1.getText().length() > 0) {
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					int batchSize = 0;
+					int minimumSize = 0;
+					int quotaSize = 0;
+					try {
+						batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
+					try {
+						minimumSize = decimalFormat.parse(this.textField3.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
+					try {
+						quotaSize = decimalFormat.parse(this.textField4.getText()).intValue();
+					} catch (ParseException e) {
+						// Cant parse Textfields to int
+					}
 					if (this.databaseObject == null) {
 						// new StockObject
-						DecimalFormat decimalFormat = new DecimalFormat("#");
-						try {
-							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
-							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							this.databaseObject = new ConsumableMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumStock ,quotaStock );
-							return DatabaseWriteManager.createObject(this.databaseObject);
-						} catch (ParseException e) {
-							// Cant parse Textfields to int
-							return false;
-						}
+						this.databaseObject = new ConsumableMaterial(0,this.textField1.getText(), this.textArea.getText(), false, StockObject.StockObjectType.medicalMaterial, 0, batchSize, minimumSize ,quotaSize );
+						return DatabaseWriteManager.createObject(this.databaseObject);
 					} else {
 						/** update existing ConsumableMaterial **/
-						DecimalFormat decimalFormat = new DecimalFormat("#");
-						try {
-							int batchSize = decimalFormat.parse(this.textField2.getText()).intValue();
-							int minimumStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							int quotaStock = decimalFormat.parse(this.textField3.getText()).intValue();
-							((ConsumableMaterial)this.databaseObject).title = this.textField1.getText();
-							((ConsumableMaterial)this.databaseObject).description = this.textArea.getText();
-							((ConsumableMaterial)this.databaseObject).batchSize = batchSize;
-							((ConsumableMaterial)this.databaseObject).minimumStock = minimumStock;
-							((ConsumableMaterial)this.databaseObject).quotaStock = quotaStock;
-							return DatabaseWriteManager.editObject(this.databaseObject);
-						} catch (ParseException e) {
-							// Cant parse Textfields to int
-							return false;
-						}
+						((ConsumableMaterial)this.databaseObject).title = this.textField1.getText();
+						((ConsumableMaterial)this.databaseObject).description = this.textArea.getText();
+						((ConsumableMaterial)this.databaseObject).batchSize = batchSize;
+						((ConsumableMaterial)this.databaseObject).minimumStock = minimumSize;
+						((ConsumableMaterial)this.databaseObject).quotaStock = quotaSize;
+						return DatabaseWriteManager.editObject(this.databaseObject);
 					}
 				} else {
 					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.textField1.setBorder(border);
 				}
 				return false;
 			case locationMenuItem:
@@ -754,6 +752,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 
 				} else {
 					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.textField1.setBorder(border);
 				}
 				return false;
 			case userMenuItem:
@@ -826,6 +826,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 
 				} else {
 					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.textField1.setBorder(border);
+					this.textField2.setBorder(border);
+					this.textField3.setBorder(border);
+					this.textField4.setBorder(border);
+					this.textField5.setBorder(border);
 				}
 				return false;
 			case groupMenuItem:
@@ -883,6 +889,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					}
 				} else {
 					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.textField1.setBorder(border);
 				}
 				return false;
 		}
