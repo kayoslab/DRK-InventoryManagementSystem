@@ -637,8 +637,8 @@ public final class DatabaseReadManager {
 	 * @return StockObject
 	 */
 	public static StockObject getStockObject(int id) {
-		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
-				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
+		String sqlStatement = "SELECT `id`, `title`, `description`, `batchSize`,`totalVolume`,"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`,`typeId`"
 				+ "FROM `StockObject` WHERE `id` = " + id + ";";
 		ResultSet rs = null;
 		try {
@@ -649,20 +649,24 @@ public final class DatabaseReadManager {
 					case 0:
 						//actual value is "empty"
 					case 1:
-						Device device = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-								DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+						Device device = new Device(rs.getInt("id"), rs.getString("title"),
+								rs.getString("description"), DatabaseObject.StockObjectType.device,
+								rs.getInt("totalVolume"), rs.getInt("mtkIntervall"),
+								rs.getInt("stkIntervall"));
 						DatabaseReadManager.close(rs);
 						return device;
 					case 2:
-						MedicalMaterial medicalMaterial = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-								DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
-								rs.getInt("quotaStock"));
+						MedicalMaterial medicalMaterial = new MedicalMaterial(rs.getInt("id"),
+								rs.getString("title"), rs.getString("description"),
+								DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"),
+								rs.getInt("batchSize"));
 						DatabaseReadManager.close(rs);
 						return medicalMaterial;
 					case 3:
-						ConsumableMaterial consumableMaterial = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-								DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
-								rs.getInt("quotaStock"));
+						ConsumableMaterial consumableMaterial = new ConsumableMaterial(rs.getInt("id"),
+								rs.getString("title"), rs.getString("description"),
+								DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"),
+								rs.getInt("batchSize"));
 						DatabaseReadManager.close(rs);
 						return 	consumableMaterial;
 				}
@@ -687,8 +691,8 @@ public final class DatabaseReadManager {
 	 * @return StockObject[]
 	 */
 	public static StockObject[] getStockObjects() {
-		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
-				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
+		String sqlStatement = "SELECT `id`, `title`, `description`, `batchSize`,`totalVolume`,"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`, `typeId`"
 				+ "FROM `StockObject` ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -705,18 +709,22 @@ public final class DatabaseReadManager {
 							//actual value is "empty"
 							break;
 						case 1:
-							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									DatabaseObject.StockObjectType.device, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"),
+									rs.getString("description"), 	DatabaseObject.StockObjectType.device,
+									rs.getInt("totalVolume"), rs.getInt("mtkIntervall"),
+									rs.getInt("stkIntervall"));
 							break;
 						case 2:
-							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
-									rs.getInt("quotaStock"));
+							stockObjects[i] = new MedicalMaterial(rs.getInt("id"),
+									rs.getString("title"), rs.getString("description"),
+									DatabaseObject.StockObjectType.medicalMaterial, rs.getInt("totalVolume"),
+									rs.getInt("batchSize"));
 							break;
 						case 3:
-							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
-									rs.getInt("quotaStock"));
+							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"),
+									rs.getString("title"), rs.getString("description"),
+									DatabaseObject.StockObjectType.consumableMaterial, rs.getInt("totalVolume"),
+									rs.getInt("batchSize"));
 							break;
 					}
 					i++;
@@ -744,8 +752,8 @@ public final class DatabaseReadManager {
 	 * @return StockObject[]
 	 */
 	public static StockObject[] getStockObjects(DatabaseObject.StockObjectType type) {
-		String sqlStatement = "SELECT `id`, `title`, `description`, `minimumStock`,`quotaStock`,`batchSize`,`totalVolume`,"
-				+ "`mtkIntervall`,`stkIntervall`,`creation`,`silencedWarnings`, `typeId`"
+		String sqlStatement = "SELECT `id`, `title`, `description`, `batchSize`,`totalVolume`,"
+				+ "`mtkIntervall`,`stkIntervall`,`creation`, `typeId`"
 				+ "FROM `StockObject` WHERE `typeId` = " + type.ordinal() + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -762,18 +770,19 @@ public final class DatabaseReadManager {
 							// actual value is "empty"
 							break;
 						case device:
-							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									type, rs.getInt("totalVolume"), rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
+							stockObjects[i] = new Device(rs.getInt("id"), rs.getString("title"),
+									rs.getString("description"), type, rs.getInt("totalVolume"),
+									rs.getInt("mtkIntervall"), rs.getInt("stkIntervall"));
 							break;
 						case medicalMaterial:
-							stockObjects[i] = new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
-									rs.getInt("quotaStock"));
+							stockObjects[i] = new MedicalMaterial(rs.getInt("id"),
+									rs.getString("title"), rs.getString("description"),
+									type, rs.getInt("totalVolume"), rs.getInt("batchSize"));
 							break;
 						case consumableMaterial:
-							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getBoolean("silencedWarnings"),
-									type, rs.getInt("totalVolume"), rs.getInt("batchSize"), rs.getInt("minimumStock"),
-									rs.getInt("quotaStock"));
+							stockObjects[i] = new ConsumableMaterial(rs.getInt("id"),
+									rs.getString("title"), rs.getString("description"),
+									type, rs.getInt("totalVolume"), rs.getInt("batchSize"));
 							break;
 						case vehicle:
 							break;
@@ -809,7 +818,8 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObjectValue[] getStockObjectValues(StockObject stockObject) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`, `stkDate`, `inventoryNumber`, `serialNumber`, "
-				+ "`umdns`, `batchNumber`, `creation`, `escalationAck`, `stockObjectId`, `locationId`, `messageId` "
+				+ "`umdns`, `batchNumber`, `creation`, `minimumStock`,`quotaStock`,`silencedWarnings`," +
+				" `stockObjectId`, `locationId`, `messageId` "
 				+ "FROM `StockValue` WHERE `stockObjectId` = " + stockObject.id + " ORDER BY `id` ASC ;";
 		ResultSet rs = null;
 		try {
@@ -822,16 +832,27 @@ public final class DatabaseReadManager {
 				rs.beforeFirst();
 				while (rs.next()) {
 					if (stockObject instanceof Device) {
-						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtkDate"),
-								rs.getDate("stkDate"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
-								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
+						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),
+								rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+								rs.getDate("mtkDate"), rs.getDate("stkDate"),
+								rs.getInt("stockObjectId"), rs.getInt("locationId"),
+								rs.getInt("messageId"), rs.getString("serialNumber"),
+								rs.getString("inventoryNumber"), rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						}
 					}
 					i++;
@@ -860,7 +881,8 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObjectValue[] getStockObjectValues(int id) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
-				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
+				+ "`umdns`,`batchNumber`,`creation`,`minimumStock`,`quotaStock`,`silencedWarnings`" +
+				",`stockObjectId`,`locationId`,messageId"
 				+ "FROM `StockValue` WHERE `stockObjectId` = " + id + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -875,16 +897,25 @@ public final class DatabaseReadManager {
 					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObjectId"));
 
 					if (stockObject instanceof Device) {
-						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtkDate"),
+						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),
+								rs.getInt("volume"), rs.getBoolean("silencedWarnings"), rs.getDate("mtkDate"),
 								rs.getDate("stkDate"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
 								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						}
 					}
 					i++;
@@ -913,7 +944,8 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObjectValue[] getStockObjectValues(Location location) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
-				+ "`umdns`,`batchNumber`,`creation`,`escalationAck`,`stockObjectId`,`locationId`,messageId"
+				+ "`umdns`,`batchNumber`,`creation`,`minimumStock`,`quotaStock`,`silencedWarnings`" +
+				",`stockObjectId`,`locationId`,messageId"
 				+ "FROM `StockValue` WHERE `locationId` = " + location + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -927,16 +959,27 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObjectId"));
 					if (stockObject instanceof Device) {
-						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtkDate"),
-								rs.getDate("stkDate"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
-								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
+						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),
+								rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+								rs.getDate("mtkDate"), rs.getDate("stkDate"),
+								rs.getInt("stockObjectId"), rs.getInt("locationId"),
+								rs.getInt("messageId"), rs.getString("serialNumber"),
+								rs.getString("inventoryNumber"), rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						}
 					}
 					i++;
@@ -965,7 +1008,8 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObjectValue[] getStockObjectValues(DatabaseObject.StockValueMessage message) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`, `stkDate`, `inventoryNumber`, `serialNumber`, "
-				+ "`umdns`, `batchNumber`, `creation`, `escalationAck`, `stockObjectId`, `locationId`, `messageId` "
+				+ "`umdns`, `batchNumber`, `creation`, `minimumStock`,`quotaStock`,`silencedWarnings`" +
+				", `stockObjectId`, `locationId`, `messageId` "
 				+ "FROM `StockValue` WHERE `messageId` = " + message.ordinal() + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -979,16 +1023,27 @@ public final class DatabaseReadManager {
 				while (rs.next()) {
 					StockObject stockObject = DatabaseReadManager.getStockObject(rs.getInt("stockObjectId"));
 					if (stockObject instanceof Device) {
-						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),rs.getInt("volume"),rs.getDate("mtkDate"),
-								rs.getDate("stkDate"),rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
-								rs.getString("serialNumber"),rs.getString("inventoryNumber"),rs.getString("umdns"));
+						stockObjectValues[i] = new DeviceValue(rs.getInt("id"),
+								rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+								rs.getDate("mtkDate"), rs.getDate("stkDate"),
+								rs.getInt("stockObjectId"), rs.getInt("locationId"),
+								rs.getInt("messageId"), rs.getString("serialNumber"),
+								rs.getString("inventoryNumber"), rs.getString("umdns"));
 					}  else if (stockObject instanceof Material) {
 						if (stockObject instanceof MedicalMaterial) {
-							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new MedicalMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						} else if (stockObject instanceof ConsumableMaterial) {
-							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),rs.getInt("volume"),rs.getInt("stockObjectId"),
-									rs.getInt("locationId"),rs.getInt("messageId"), rs.getString("batchNumber"), rs.getDate("date"));
+							stockObjectValues[i] = new ConsumableMaterialValue(rs.getInt("id"),
+									rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+									rs.getInt("stockObjectId"), rs.getInt("locationId"),
+									rs.getInt("messageId"), rs.getString("batchNumber"),
+									rs.getDate("date"), rs.getInt("minimumStock"),
+									rs.getInt("quotaStock"));
 						}
 					}
 					i++;
@@ -1053,18 +1108,26 @@ public final class DatabaseReadManager {
 				// fill the ArrayList with reasonable Data
 				if (stockObjectValue instanceof DeviceValue) {
 					existingObjects.add(new DeviceValue(rs.getInt("id"), rs.getInt("volume"),
-							rs.getDate("mtkDate"), rs.getDate("stkDate"), rs.getInt("stockObjectId"),
-							rs.getInt("locationId"), rs.getInt("messageId"), rs.getString("serialNumber"),
-							rs.getString("inventoryNumber"), rs.getString("umdns")));
+							rs.getBoolean("silencedWarnings"), rs.getDate("mtkDate"),
+							rs.getDate("stkDate"), rs.getInt("stockObjectId"),
+							rs.getInt("locationId"), rs.getInt("messageId"),
+							rs.getString("serialNumber"), rs.getString("inventoryNumber"),
+							rs.getString("umdns")));
 				} else if (stockObjectValue instanceof MaterialValue) {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
-						existingObjects.add(new MedicalMaterialValue(rs.getInt("id"), rs.getInt("volume"),
-								rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
-								rs.getString("batchNumber"), rs.getDate("date")));
+						existingObjects.add(new MedicalMaterialValue(rs.getInt("id"),
+								rs.getInt("volume"),rs.getBoolean("silencedWarnings"),
+								rs.getInt("stockObjectId"), rs.getInt("locationId"),
+								rs.getInt("messageId"), rs.getString("batchNumber"),
+								rs.getDate("date"), rs.getInt("minimumStock"),
+								rs.getInt("quotaStock")));
 					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-						existingObjects.add(new ConsumableMaterialValue(rs.getInt("id"), rs.getInt("volume"),
-								rs.getInt("stockObjectId"), rs.getInt("locationId"), rs.getInt("messageId"),
-								rs.getString("batchNumber"), rs.getDate("date")));
+						existingObjects.add(new ConsumableMaterialValue(rs.getInt("id"),
+								rs.getInt("volume"),rs.getBoolean("silencedWarnings"),
+								rs.getInt("stockObjectId"), rs.getInt("locationId"),
+								rs.getInt("messageId"), rs.getString("batchNumber"),
+								rs.getDate("date"), rs.getInt("minimumStock"),
+								rs.getInt("quotaStock")));
 					} else {
 						return new StockObjectValue[0];
 					}
@@ -1100,9 +1163,9 @@ public final class DatabaseReadManager {
 	 */
 	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
-		String sqlStatement = "SELECT `id`, `title`, `description`, `silencedWarnings`, `batchSize`," +
-				" `minimumStock`, `quotaStock`, `totalVolume`, `mtkIntervall`, `stkIntervall`, " +
-				"`typeId` FROM `StockObject` WHERE `typeId` = " + stockObjectType.ordinal() + " ORDER BY `id` ASC;";
+		String sqlStatement = "SELECT `id`, `title`, `description`, `batchSize`, `totalVolume`, `mtkIntervall`," +
+				" `stkIntervall`, `typeId` FROM `StockObject` " +
+				"WHERE `typeId` = " + stockObjectType.ordinal() + " ORDER BY `id` ASC;";
 		// get Data from Database
 		ResultSet rs = null;
 		// Execute the processed SQL Statement and return an Array of Objects
@@ -1117,19 +1180,21 @@ public final class DatabaseReadManager {
 						//empty space
 						break;
 					case device:
-						inventoryList.add(new Device(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
-								rs.getInt("mtkIntervall"), rs.getInt("stkIntervall")));
+						inventoryList.add(new Device(rs.getInt("id"), rs.getString("title"),
+								rs.getString("description"), stockObjectType,
+								rs.getInt("totalVolume"), rs.getInt("mtkIntervall"),
+								rs.getInt("stkIntervall")));
 						break;
 					case medicalMaterial:
-						inventoryList.add(new MedicalMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
-								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
+						inventoryList.add(new MedicalMaterial(rs.getInt("id"),
+								rs.getString("title"), rs.getString("description"),
+								stockObjectType, rs.getInt("totalVolume"),
+								rs.getInt("batchSize")));
 						break;
 					case consumableMaterial:
-						inventoryList.add(new ConsumableMaterial(rs.getInt("id"), rs.getString("title"), rs.getString("description"),
-								rs.getBoolean("silencedWarnings"), stockObjectType, rs.getInt("totalVolume"),
-								rs.getInt("batchSize"), rs.getInt("minimumStock"), rs.getInt("quotaStock")));
+						inventoryList.add(new ConsumableMaterial(rs.getInt("id"),
+								rs.getString("title"), rs.getString("description"),
+								stockObjectType, rs.getInt("totalVolume"), rs.getInt("batchSize")));
 						break;
 					case vehicle:
 						break;
