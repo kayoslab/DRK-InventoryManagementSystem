@@ -1,5 +1,6 @@
 package presenter.data;
 import model.DatabaseReadManager;
+import model.DatabaseWriteManager;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.*;
@@ -113,8 +114,16 @@ public class DetailPresenter extends Presenter implements MouseListener {
 				for (StockObjectValue stockObjectValue : this.stockObjectValues) {
 					if (stockObjectValue instanceof DeviceValue) {
 						DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+						String mtkDate = "kein Datum";
+						String stkDate = "kein Datum";
+						if (deviceValue.mtkDate != null) {
+							mtkDate = this.sdf.format(deviceValue.mtkDate);
+						}
+						if (deviceValue.stkDate != null) {
+							stkDate = this.sdf.format(deviceValue.stkDate);
+						}
 						Object row[] = { deviceValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title,
-								this.sdf.format(deviceValue.mtkDate), this.sdf.format(deviceValue.stkDate)};
+								mtkDate, stkDate};
 						model.addRow(row);
 					}
 				}
@@ -127,7 +136,11 @@ public class DetailPresenter extends Presenter implements MouseListener {
 					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
 						if (stockObjectValue instanceof MedicalMaterialValue) {
 							MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
-							Object row[] = { medicalMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, this.sdf.format(medicalMaterialValue.date)};
+							String date = "kein Datum";
+							if (medicalMaterialValue.date != null) {
+								date = this.sdf.format(medicalMaterialValue.date);
+							}
+							Object row[] = { medicalMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, date};
 							model.addRow(row);
 						}
 					}
@@ -139,7 +152,11 @@ public class DetailPresenter extends Presenter implements MouseListener {
 					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
 						if (stockObjectValue instanceof ConsumableMaterialValue) {
 							ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
-							Object row[] = { consumableMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, this.sdf.format(consumableMaterialValue.date)};
+							String date = "kein Datum";
+							if (consumableMaterialValue.date != null) {
+								date = this.sdf.format(consumableMaterialValue.date);
+							}
+							Object row[] = { consumableMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, date};
 							model.addRow(row);
 						}
 					}
