@@ -144,15 +144,16 @@ class Importer:
                 quotaStock = str(stockObject["quotaStock"])
             if stockObject["batchSize"] != None and stockObject["batchSize"].isdigit():
                 batchSize = str(stockObject["batchSize"])
-            if stockObject["totalVolume"] != None and stockObject["totalVolume"].isdigit():
+            # workaround for totalVolume only when location == "Lager"
+            if stockObject["totalVolume"] != None and stockObject["totalVolume"].isdigit() and stockObject["location"] == "Lager":
                 totalVolume = str(stockObject["totalVolume"])
             if stockObject["mtkIntervall"] != None and stockObject["mtkIntervall"].isdigit():
                 mtkIntervall = str(stockObject["mtkIntervall"])
             if stockObject["stkIntervall"] != None and stockObject["stkIntervall"].isdigit():
                 stkIntervall = str(stockObject["stkIntervall"])
             # appending Strings
-            if totalVolume != "0":
-                stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
+            stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
+
         # Stripping last \n and ,
         stockObjectSqlString = stockObjectSqlString[:-2]
         # and replace with ; and \n's
