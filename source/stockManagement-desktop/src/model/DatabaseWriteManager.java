@@ -533,9 +533,13 @@ public final class DatabaseWriteManager {
 					return false;
 				}
 				if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
-					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = `totalVolume` + "
-							+ stockObjectValue.volume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
-					return DatabaseWriteManager.executeUpdate(sqlStatement);
+					if (DatabaseReadManager.getLocation(stockObjectValue.locationID).title ==  "Lager") {
+						sqlStatement = "UPDATE `StockObject` SET `totalVolume` = `totalVolume` + "
+								+ stockObjectValue.volume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+						return DatabaseWriteManager.executeUpdate(sqlStatement);
+					} else {
+						return true;
+					}
 				}
 				break;
 			case 1:
@@ -698,15 +702,21 @@ public final class DatabaseWriteManager {
 				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
 				if (stockObject != null) {
 					StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
-					int totalVolume = 0;
-					if (stockObjectValues != null) {
-						for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
-							totalVolume += iteratedStockObjectValue.volume;
+
+					if (DatabaseReadManager.getLocation(stockObjectValue.locationID).title ==  "Lager") {
+						int totalVolume = 0;
+						if (stockObjectValues != null) {
+							for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
+								totalVolume += iteratedStockObjectValue.volume;
+							}
 						}
+
+						sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
+								+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+						return DatabaseWriteManager.executeUpdate(sqlStatement);
+					} else {
+						return true;
 					}
-					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
-							+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
-					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
 			}
 		}

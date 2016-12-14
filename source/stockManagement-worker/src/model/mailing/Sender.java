@@ -194,9 +194,9 @@ public class Sender {
 				messageHTMLString += "<tbody>" +
 						"<tr>" +
 						"<th align=\"center\">Titel</th>" +
-						"<th align=\"center\">Mindestbestand</th>" +
-						"<th align=\"center\">Sollbestand</th>" +
+						"<th align=\"center\">Lagerort</th>" +
 						"<th align=\"center\">Lagerbestand</th>" +
+						"<th align=\"center\">Bestellmenge</th>" +
 						"<th align=\"center\">Ablaufdatum</th>" +
 						"</tr>";
 				for (StockObjectValue stockObjectValue : stockObjectValues) {
@@ -209,17 +209,19 @@ public class Sender {
 							date = Sender.sdf.format(medicalMaterialValue.date);
 						}
 
+						int orderQuantity = medicalMaterial.quotaStock - medicalMaterial.totalVolume;
+						String locationTitle = DatabaseReadManager.getLocation(medicalMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + medicalMaterial.title + ", " +
-								"Mindestbestand: " + medicalMaterial.minimumStock + ", "+
-								"Sollbestand: " + medicalMaterial.quotaStock + ", "+
+								"Lagerort: " + locationTitle + ", "+
 								"Lagerbestand: " + medicalMaterialValue.volume + ", "+
+								"Bestellmenge: " + orderQuantity + ", "+
 								"Ablaufdatum: " + date +
 								" \n\n";
 						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + medicalMaterial.title + "</td>" +
-								"<td align=\"center\">" + medicalMaterial.minimumStock + "</td>" +
-								"<td align=\"center\">" + medicalMaterial.quotaStock + "</td>" +
+								"<td align=\"center\">" + locationTitle + "</td>" +
 								"<td align=\"center\">" + medicalMaterialValue.volume + "</td>" +
+								"<td align=\"center\">" + orderQuantity + "</td>" +
 								"<td align=\"center\">" + date + "</td>" +
 								"</tr>";
 					}
@@ -230,9 +232,9 @@ public class Sender {
 				messageHTMLString += "<tbody>" +
 						"<tr>" +
 						"<th align=\"center\">Titel</th>" +
-						"<th align=\"center\">Mindestbestand</th>" +
-						"<th align=\"center\">Sollbestand</th>" +
+						"<th align=\"center\">Lagerort</th>" +
 						"<th align=\"center\">Lagerbestand</th>" +
+						"<th align=\"center\">Bestellmenge</th>" +
 						"<th align=\"center\">Ablaufdatum</th>" +
 						"</tr>";
 				for (StockObjectValue stockObjectValue : stockObjectValues) {
@@ -245,17 +247,19 @@ public class Sender {
 							date = Sender.sdf.format(consumableMaterialValue.date);
 						}
 
+						int orderQuantity = consumableMaterial.quotaStock - consumableMaterial.totalVolume;
+						String locationTitle = DatabaseReadManager.getLocation(consumableMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + consumableMaterial.title + ", " +
-								"Mindestbestand: " + consumableMaterial.minimumStock + ", "+
-								"Sollbestand: " + consumableMaterial.quotaStock + ", "+
+								"Lagerort: " + locationTitle + ", "+
 								"Lagerbestand: " + consumableMaterialValue.volume + ", "+
+								"Bestellmenge: " + orderQuantity + ", "+
 								"Ablaufdatum: " + date +
 								" \n\n";
 						messageHTMLString += "<tr>" +
 								"<td align=\"center\">" + consumableMaterial.title + "</td>" +
-								"<td align=\"center\">" + consumableMaterial.minimumStock + "</td>" +
-								"<td align=\"center\">" + consumableMaterial.quotaStock + "</td>" +
+								"<td align=\"center\">" + locationTitle + "</td>" +
 								"<td align=\"center\">" + consumableMaterialValue.volume + "</td>" +
+								"<td align=\"center\">" + orderQuantity + "</td>" +
 								"<td align=\"center\">" + date + "</td>" +
 								"</tr>";
 					}
