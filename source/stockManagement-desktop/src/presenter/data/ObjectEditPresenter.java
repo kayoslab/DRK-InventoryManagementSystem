@@ -129,7 +129,7 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 				columnNames = new Object[]{ "Titel", "MTK Intervall", "STK Intervall"};
 				break;
 			case medicalMaterialMenuItem:
-				columnNames = new Object[]{ "Titel"};
+				columnNames = new Object[]{ "Titel", "" };
 				break;
 			case consumableMaterialMenuItem:
 				columnNames = new Object[]{ "Titel"};

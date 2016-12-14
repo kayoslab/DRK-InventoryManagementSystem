@@ -6,7 +6,7 @@ import model.databaseObjects.DatabaseObject;
  */
 public class MedicalMaterial extends Material {
 	
-	public MedicalMaterial(int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize) {
+	public MedicalMaterial( int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize ) {
 		super(id, title, description, type, totalVolume, batchSize);
 	}
 
