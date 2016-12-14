@@ -10,8 +10,8 @@ import javax.swing.*;
 
 public class SettingsPresenter extends Presenter {
 	private UserManager userManager = new UserManager();
-	private JButton changeDatabaseLoginButton = new JButton("Datenbankzugangsdaten ändern");
-	private JButton changePasswordButton = new JButton("Passwort ändern");
+	private JButton changeDatabaseLoginButton = new JButton("Datenbankzugangsdaten \u00e4ndern");
+	private JButton changePasswordButton = new JButton("Passwort \u00e4ndern");
 
 	/**
 	 * Create the application.

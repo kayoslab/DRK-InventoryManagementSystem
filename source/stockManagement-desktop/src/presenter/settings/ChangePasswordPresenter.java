@@ -27,7 +27,7 @@ public class ChangePasswordPresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
-		JLabel changePasswordLabel = new JLabel("Passwort Ändern");
+		JLabel changePasswordLabel = new JLabel("Passwort \u00c4ndern");
 		changePasswordLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		changePasswordLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(changePasswordLabel);

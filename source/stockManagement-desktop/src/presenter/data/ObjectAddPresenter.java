@@ -72,15 +72,15 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		switch (this.modificationType) {
 			case deviceMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Gerät hinzufügen:");
+					title = new JLabel("Ger\u00e4t hinzuf\u00fcgen:");
 				} else {
-					title = new JLabel("Gerät bearbeiten:");
+					title = new JLabel("Ger\u00e4t bearbeiten:");
 				}
 				this.setupDeviceMenuItem();
 				break;
 			case medicalMaterialMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Medizinisches Material hinzufügen:");
+					title = new JLabel("Medizinisches Material hinzuf\u00fcgen:");
 				} else {
 					title = new JLabel("Medizinisches Material bearbeiten:");
 				}
@@ -88,7 +88,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				break;
 			case consumableMaterialMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Verbrauchsmaterial hinzufügen:");
+					title = new JLabel("Verbrauchsmaterial hinzuf\u00fcgen:");
 				} else {
 					title = new JLabel("Verbrauchsmaterial bearbeiten:");
 				}
@@ -96,7 +96,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				break;
 			case locationMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Lagerort hinzufügen:");
+					title = new JLabel("Lagerort hinzuf\u00fcgen:");
 				} else {
 					title = new JLabel("Lagerort bearbeiten:");
 				}
@@ -104,7 +104,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				break;
 			case userMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Benutzer hinzufügen:");
+					title = new JLabel("Benutzer hinzuf\u00fcgen:");
 				} else {
 					title = new JLabel("Benutzer bearbeiten:");
 				}
@@ -112,7 +112,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				break;
 			case groupMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Gruppe hinzufügen:");
+					title = new JLabel("Gruppe hinzuf\u00fcgen:");
 				} else {
 					title = new JLabel("Gruppe bearbeiten:");
 				}
@@ -213,7 +213,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel batchSizeLabel = new JLabel("Losgröße:");
+		JLabel batchSizeLabel = new JLabel("Losgr\u00f6\u00dfe:");
 		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(batchSizeLabel);
 
@@ -301,7 +301,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		lblName.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
 		frame.getContentPane().add(lblName);
 
-		JLabel batchSizeLabel = new JLabel("Losgröße:");
+		JLabel batchSizeLabel = new JLabel("Losgr\u00f6\u00dfe:");
 		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(batchSizeLabel);
 
@@ -471,7 +471,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				return false;
 			};
 		};
-		Object columnNames[] = { "Gruppe", "Hinzufügen"};
+		Object columnNames[] = { "Gruppe", "Hinzuf\u00fcgen"};
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		Group[] groups = DatabaseReadManager.getGroups();
 		Arrays.sort(groups, Comparator.comparingInt(a -> a.id));
@@ -570,7 +570,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				return false;
 			};
 		};
-		Object columnNames[] = { "Recht", "Hinzufügen"};
+		Object columnNames[] = { "Recht", "Hinzuf\u00fcgen"};
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		GroupRight[] groupRights = DatabaseReadManager.getGroupRights();
 		Arrays.sort(groupRights, Comparator.comparingInt(a -> a.id));

@@ -49,12 +49,12 @@ public class InventoryPresenter extends Presenter {
 		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
 		this.frame.getContentPane().add(this.radioButtonAll);
 
-		this.radioButtonquotaStockOnly = new JRadioButton("Nur Sollbestände");
+		this.radioButtonquotaStockOnly = new JRadioButton("Nur Sollbest\u00e4nde");
 		this.radioButtonquotaStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
 		this.radioButtonquotaStockOnly.addActionListener(this);
 		this.frame.getContentPane().add(this.radioButtonquotaStockOnly);
 
-		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbestände");
+		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbest\u00e4nde");
 		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
 		this.radioButtonMinimumStockOnly.addActionListener(this);
 		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
@@ -70,7 +70,7 @@ public class InventoryPresenter extends Presenter {
 		group.add(this.radioButtonquotaStockOnly);
 
 		// Checkboxes
-		this.checkBoxDevices = new JCheckBox("Geräte");
+		this.checkBoxDevices = new JCheckBox("Ger\u00e4te");
 		this.checkBoxDevices.setBounds(leftPadding, contentY+lineHeight*4, leftSideMenuWidth, 24);
 		this.checkBoxDevices.setSelected(true);
 		this.checkBoxDevices.addActionListener(this);
@@ -195,12 +195,12 @@ public class InventoryPresenter extends Presenter {
 						Device device = (Device) stockObject;
 						if (this.radioButtonAll.isSelected()){
 							// show all objects
-							Object row[] = { device.title, device.totalVolume,  0 , "Gerät"};
+							Object row[] = { device.title, device.totalVolume,  0 , "Ger\u00e4t"};
 							model.addRow(row);
 						} else if (this.radioButtonMinimumStockOnly.isSelected()) {
 							// do not show filtered objects
 						} else if (this.radioButtonquotaStockOnly.isSelected()) {
-							Object row[] = { device.title, device.totalVolume, 0, "Gerät"};
+							Object row[] = { device.title, device.totalVolume, 0, "Ger\u00e4t"};
 							model.addRow(row);
 						}
 					}

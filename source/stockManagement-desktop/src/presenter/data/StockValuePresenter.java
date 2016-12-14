@@ -44,7 +44,7 @@ public class StockValuePresenter extends Presenter {
 		this.stockObject = stockObject;
 		this.initialize();
 
-		JLabel title = new JLabel("Hinzufügen:");
+		JLabel title = new JLabel("Hinzuf\u00fcgen:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		title.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(title);
@@ -271,7 +271,7 @@ public class StockValuePresenter extends Presenter {
 		frame.getContentPane().add(this.saveButton);
 
 		if (this.stockObjectValue != null) {
-			this.deleteButton = new JButton("löschen");
+			this.deleteButton = new JButton("l\u00f6schen");
 			this.deleteButton.setBounds(displayAreaWidth-saveButton.getWidth()+leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 			this.deleteButton.addActionListener(this);
 			frame.getContentPane().add(this.deleteButton);

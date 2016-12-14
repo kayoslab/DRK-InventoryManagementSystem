@@ -88,7 +88,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 
 		/******************* Menu Buttons ************************/
 		if (this.session.currentUserCanAccessInventory()) {
-			this.materialAndDevicesButton = new JButton("Material-/ Geräte Daten");
+			this.materialAndDevicesButton = new JButton("Material-/ Ger\u00e4te Daten");
 			this.materialAndDevicesButton.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
 			this.materialAndDevicesButton.addActionListener(this);
 			this.frame.getContentPane().add(materialAndDevicesButton);
@@ -130,32 +130,32 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			this.frame.getContentPane().add(this.addPopup);
 
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createDevice)) {
-				this.addDeviceMenuItem = new JMenuItem("Gerät hinzufügen");
+				this.addDeviceMenuItem = new JMenuItem("Ger\u00e4t hinzuf\u00fcgen");
 				this.addDeviceMenuItem.addActionListener(this);
 				this.addPopup.add(addDeviceMenuItem);
 			}
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createMedicalMaterial)) {
-				this.addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzufügen");
+				this.addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzuf\u00fcgen");
 				this.addMedicalMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addMedicalMaterialMenuItem);
 			}
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createConsumableMaterial)) {
-				this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzufügen");
+				this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzuf\u00fcgen");
 				this.addConsumableMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addConsumableMaterialMenuItem);
 			}
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createLocation)) {
-				this.addLocationMenuItem = new JMenuItem("Lagerort hinzufügen");
+				this.addLocationMenuItem = new JMenuItem("Lagerort hinzuf\u00fcgen");
 				this.addLocationMenuItem.addActionListener(this);
 				this.addPopup.add(addLocationMenuItem);
 			}
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createUser)) {
-				this.addUserMenuItem = new JMenuItem("Benutzer hinzufügen");
+				this.addUserMenuItem = new JMenuItem("Benutzer hinzuf\u00fcgen");
 				this.addUserMenuItem.addActionListener(this);
 				this.addPopup.add(addUserMenuItem);
 			}
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createGroup)) {
-				this.addGroupMenuItem = new JMenuItem("Gruppe hinzufügen");
+				this.addGroupMenuItem = new JMenuItem("Gruppe hinzuf\u00fcgen");
 				this.addGroupMenuItem.addActionListener(this);
 				this.addPopup.add(addGroupMenuItem);
 			}
@@ -175,7 +175,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 
 			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)
 					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteDevice)) {
-				this.editDeviceMenuItem = new JMenuItem("Gerät bearbeiten");
+				this.editDeviceMenuItem = new JMenuItem("Ger\u00e4t bearbeiten");
 				this.editDeviceMenuItem.addActionListener(this);
 				this.editPopup.add(editDeviceMenuItem);
 			}

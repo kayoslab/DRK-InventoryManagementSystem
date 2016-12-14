@@ -40,7 +40,7 @@ public class SetupPresenter extends Presenter {
 			// Show total TopLayout with backButton if this Presenter is defined by SettingsPresenter.
 			super.setupTopLayout();
 
-			JLabel databaseLabel = new JLabel("Datenbankzugangsdaten ändern");
+			JLabel databaseLabel = new JLabel("Datenbankzugangsdaten \u00e4ndern");
 			databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 			databaseLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 			this.frame.getContentPane().add(databaseLabel);

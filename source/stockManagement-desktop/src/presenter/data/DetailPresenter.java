@@ -21,9 +21,9 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	private StockObjectValue[] stockObjectValues;
 	private JTable table;
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-	private JButton addButton = new JButton("Hinzufügen");
+	private JButton addButton = new JButton("Hinzuf\u00fcgen");
 	private JButton editButton = new JButton("Bearbeiten");
-	private JButton shiftButton = new JButton("Bestandsänderung");
+	private JButton shiftButton = new JButton("Bestands\u00e4nderung");
 
 	/**
 	 * Create the application.

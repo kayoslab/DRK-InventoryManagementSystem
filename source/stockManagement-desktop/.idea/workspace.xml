@@ -84,7 +84,7 @@
       <find>sdf</find>
       <find>sort</find>
       <find>silenceWarning</find>
-      <find>ä</find>
+      <find>\u00e4</find>
       <find>getStockObject(</find>
       <find>getValueManager</find>
       <find>getStockObjectValues</find>

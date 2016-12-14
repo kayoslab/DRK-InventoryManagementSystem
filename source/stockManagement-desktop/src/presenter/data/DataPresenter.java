@@ -76,7 +76,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 		super.initialize();
 		super.setupTopLayout();
 
-		JLabel MaterialUndGeraeteDaten = new JLabel("Material- und Geräte Daten");
+		JLabel MaterialUndGeraeteDaten = new JLabel("Material- und Ger\u00e4te Daten");
 		MaterialUndGeraeteDaten.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		MaterialUndGeraeteDaten.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		frame.getContentPane().add(MaterialUndGeraeteDaten);
@@ -163,7 +163,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 					try {
 						sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
 					} catch (PatternSyntaxException pse) {
-						JOptionPane.showMessageDialog(null, "Ihr Suchbegriff enthält ein ausgeschlossenes Symbol.",
+						JOptionPane.showMessageDialog(null, "Ihr Suchbegriff enth\u00e4lt ein ausgeschlossenes Symbol.",
 								"Bad regex pattern", JOptionPane.ERROR_MESSAGE);
 						sorter.setRowFilter(null);
 					}
@@ -201,7 +201,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 				// Switch between instanceTypes
 				if (stockObject instanceof Device) {
 					Device device = (Device) stockObject;
-					Object row[] = { device.title, device.totalVolume, "Gerät"};
+					Object row[] = { device.title, device.totalVolume, "Ger\u00e4t"};
 					model.addRow(row);
 				} else if (stockObject instanceof Material) {
 					if (stockObject instanceof MedicalMaterial) {

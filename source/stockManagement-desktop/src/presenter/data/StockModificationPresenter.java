@@ -39,7 +39,7 @@ public class StockModificationPresenter extends Presenter implements DocumentLis
 		super.initialize();
 		super.setupTopLayout();
 
-		JLabel title = new JLabel("Bestandsänderung:");
+		JLabel title = new JLabel("Bestands\u00e4nderung:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		title.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		this.frame.getContentPane().add(title);
@@ -57,7 +57,7 @@ public class StockModificationPresenter extends Presenter implements DocumentLis
 		operationLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		this.frame.getContentPane().add(operationLabel);
 
-		JLabel changeLabel = new JLabel("Änderung:");
+		JLabel changeLabel = new JLabel("\u00c4nderung:");
 		changeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 		this.frame.getContentPane().add(changeLabel);
 
