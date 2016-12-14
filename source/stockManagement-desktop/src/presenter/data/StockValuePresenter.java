@@ -321,20 +321,35 @@ public class StockValuePresenter extends Presenter {
 							String serialNumber = this.serialField.getText();
 							String inventoryNumber = this.inventoryField.getText();
 							String umdns = this.umdnsField.getText();
-							DeviceValue deviceValue = new DeviceValue(0, volume, mtkDate, stkDate, this.stockObject.id, locationID, 1, serialNumber, inventoryNumber, umdns);
+
+							// (int id, int volume, Boolean silencedWarnings, Date mtkDate, Date stkDate,
+							// int stockObjectID, int locationID, int messageID, String serialNumber,
+							// String inventoryNumber, String umdns)
+							DeviceValue deviceValue = new DeviceValue(0, volume, false, mtkDate,
+									stkDate, this.stockObject.id, locationID, 1, serialNumber,
+									inventoryNumber, umdns);
 							if (deviceValue.createObject()) {
 								this.showPreviousPresenter();
 							}
 						} else if (this.stockObject instanceof Material) {
 							Date date = (Date)this.dateField1.getModel().getValue();
 							String batchNumber = this.batchField.getText();
+							int minimumStock = 0;
+							int quotaStock = 0;
+
 							if (this.stockObject instanceof MedicalMaterial) {
-								MedicalMaterialValue medicalMaterialValue = new MedicalMaterialValue(0, volume, this.stockObject.id, locationID, 1, batchNumber, date);
+								// (int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID, String batchNumber, Date date, int minimumStock, int quotaStock)
+								MedicalMaterialValue medicalMaterialValue = new MedicalMaterialValue(0, volume,
+										false, this.stockObject.id, locationID, 1,
+										batchNumber, date, minimumStock, quotaStock);
 								if (medicalMaterialValue.createObject()) {
 									this.showPreviousPresenter();
 								}
 							} else if (this.stockObject instanceof ConsumableMaterial) {
-								ConsumableMaterialValue consumableMaterialValue = new ConsumableMaterialValue(0, volume, this.stockObject.id, locationID, 1, batchNumber, date);
+								// (int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID, String batchNumber, Date date, int minimumStock, int quotaStock)
+								ConsumableMaterialValue consumableMaterialValue = new ConsumableMaterialValue(0,
+										volume, false, this.stockObject.id, locationID, 1,
+										batchNumber, date, minimumStock, quotaStock);
 								if (consumableMaterialValue.createObject()) {
 									this.showPreviousPresenter();
 								}
