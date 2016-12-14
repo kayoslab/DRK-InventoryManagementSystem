@@ -6,21 +6,18 @@ import model.databaseObjects.DatabaseObject;
 public abstract class StockObjectValue extends DatabaseObject {
 	// not final for merging multiple Objects
 	public int volume;
+	public Boolean silencedWarnings;
 	public int stockObjectID;
 	public int locationID;
 	public int messageID;
 	
-	public StockObjectValue(int id, int volume, int stockObjectID, int locationID, int messageID) {
+	public StockObjectValue(int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID) {
 		super(id);
 		this.volume = volume;
+		this.silencedWarnings = silencedWarnings;
 		this.stockObjectID = stockObjectID;
 		this.locationID = locationID;
 		this.messageID = messageID;
 	}
 
-	public Boolean shouldBeWarned() {
-
-
-		return false;
-	}
 }
