@@ -25,11 +25,19 @@
                 echo "</colgroup>";
                 echo "<tr><th>Titel</th> <th>Letzte MTK</th> <th>MTK Intervall</th> <th>Letzte STK</th> <th>STK Intervall</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
+                    $mtkDateString = "";
+                    $stkDateString = "";
+                    if (!is_null($stockValue['mtkDate'])) {
+                        $mtkDateString = date( 'd.m.y', strtotime($stockValue['mtkDate']));
+                    }
+                    if (!is_null($stockValue['stkDate'])) {
+                        $stkDateString = date( 'd.m.y', strtotime($stockValue['stkDate']));
+                    }
                     echo "<tr>".
                     "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>".
-                    "<td>" . date( 'd.m.y', strtotime($stockValue['mtkDate'])) . "</td>".
+                    "<td>" . $mtkDateString . "</td>".
                     "<td>" . $stockValue['mtkIntervall'] . " Monate</td>".
-                    "<td>" . date( 'd.m.y', strtotime($stockValue['stkDate'])) . "</td>".
+                    "<td>" . $stkDateString . "</td>".
                     "<td>" . $stockValue['stkIntervall'] . " Monate</td>".
                     "</tr> \n";
                 }
@@ -41,7 +49,7 @@
         $sql = "SELECT * FROM `UserIsMemberOfGroup` WHERE (`group` = 2 OR `group` = 4) AND `user` = " . $_SESSION['userId'] . ";";
         $result = mysql_query($sql);
         if ($result && mysql_num_rows($result) > 0) {
-            $sql = "SELECT `sv`.`id`, `so`.`id` as `object`, `so`.`title`, `so`.`minimumStock`, `so`.`quotaStock`, `so`.`totalVolume`, `sv`.`date` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) WHERE `sv`.`messageId` = 3 and `so`.`typeId` = 2;";
+            $sql = "SELECT `sv`.`id`, `so`.`id` as `object`, `so`.`title`, `sv`.`minimumStock`, `sv`.`quotaStock`, `so`.`totalVolume`, `sv`.`date` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) WHERE `sv`.`messageId` = 3 and `so`.`typeId` = 2;";
             $result = mysql_query($sql);
             if ($result && mysql_num_rows($result) > 0) {
                 echo "<div class=\"panel panel-danger\"> \n";
@@ -59,12 +67,16 @@
                 echo "</colgroup>";
                 echo "<tr><th>Titel</th> <th>Mindestbestand</th> <th>Sollbestand</th> <th>Lagerbestand</th> <th>Ablaufdatum</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
+                    $dateString = "";
+                    if (!is_null($stockValue['date'])) {
+                        $dateString = date( 'd.m.y', strtotime($stockValue['date']));
+                    }
                     echo "<tr>".
                     "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>".
                     "<td>" . $stockValue['minimumStock'] . "</td>".
                     "<td>" . $stockValue['quotaStock'] . "</td>".
                     "<td>" . $stockValue['totalVolume'] . "</td>".
-                    "<td>" . date( 'd.m.y', strtotime($stockValue['date'])) . "</td>".
+                    "<td>" . $dateString . "</td>".
                     "</tr> \n";
                 }
                 echo "</table> \n";
@@ -75,7 +87,7 @@
         $sql = "SELECT * FROM `UserIsMemberOfGroup` WHERE (`group` = 2 OR `group` = 5) AND `user` = " . $_SESSION['userId'] . ";";
         $result = mysql_query($sql);
         if ($result && mysql_num_rows($result) > 0) {
-            $sql = "SELECT `sv`.`id`, `so`.`id` as `object`, `so`.`title`, `so`.`minimumStock`, `so`.`quotaStock`, `so`.`totalVolume`, `sv`.`date` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) WHERE `sv`.`messageId` = 3 and `so`.`typeId` = 3;";
+            $sql = "SELECT `sv`.`id`, `so`.`id` as `object`, `so`.`title`, `sv`.`minimumStock`, `sv`.`quotaStock`, `so`.`totalVolume`, `sv`.`date` FROM `StockValue` `sv` INNER JOIN `StockObject` `so` ON (`sv`.`stockObjectId` = `so`.`id`) WHERE `sv`.`messageId` = 3 and `so`.`typeId` = 3;";
             $result = mysql_query($sql);
             if ($result && mysql_num_rows($result) > 0) {
                 echo "<div class=\"panel panel-danger\"> \n";
@@ -93,12 +105,16 @@
                 echo "</colgroup>";
                 echo "<tr><th>Titel</th> <th>Mindestbestand</th> <th>Sollbestand</th> <th>Lagerbestand</th> <th>Ablaufdatum</th></tr> \n";
                 while ($stockValue = mysql_fetch_array($result)) {
+                    $dateString = "";
+                    if (!is_null($stockValue['date'])) {
+                        $dateString = date( 'd.m.y', strtotime($stockValue['date']));
+                    }
                     echo "<tr>".
                     "<td><a href=\"./object.php?id=" . $stockValue['object'] . "\">" . utf8_encode($stockValue['title'])  . "</a></td>".
                     "<td>" . $stockValue['minimumStock'] . "</td>".
                     "<td>" . $stockValue['quotaStock'] . "</td>".
                     "<td>" . $stockValue['totalVolume'] . "</td>".
-                    "<td>" . date( 'd.m.y', strtotime($stockValue['date'])) . "</td>".
+                    "<td>" . $dateString . "</td>".
                     "</tr> \n";
                 }
                 echo "</table> \n";

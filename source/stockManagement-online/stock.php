@@ -39,7 +39,7 @@
                 include 'connect.php';
                 echo "</br> \n </br> \n";
 
-                $sql = "SELECT `so`.`id`, `so`.`title`, `so`.`totalVolume`, `so`.`typeId`, `so`.`mtkIntervall`, `so`.`stkIntervall`, `so`.`minimumStock`, `so`.`quotaStock`
+                $sql = "SELECT `so`.`id`, `so`.`title`, `so`.`totalVolume`, `so`.`typeId`, `so`.`mtkIntervall`, `so`.`stkIntervall`
                 FROM `StockObject` `so`
                 WHERE `so`.`typeId` = " . $_GET['type'] ." ORDER BY `so`.`id` ASC;";
                 $result = mysql_query($sql);
@@ -61,24 +61,35 @@
                         break;
                     }
                     echo "</div> \n";
-                    echo "<table class=\"table table-bordered table-hover\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
-                    echo "<colgroup>\n";
-                    echo "<col width=\"10%\" />\n";
-                    echo "<col width=\"30%\" />\n";
-                    echo "<col width=\"20%\" />\n";
-                    echo "<col width=\"20%\" />\n";
-                    echo "<col width=\"20%\" />\n";
-                    echo "</colgroup>";
-
                     switch ($_GET['type']) {
                     case 1:
+                        echo "<table class=\"table table-bordered table-hover\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
+                        echo "<colgroup>\n";
+                        echo "<col width=\"10%\" />\n";
+                        echo "<col width=\"30%\" />\n";
+                        echo "<col width=\"20%\" />\n";
+                        echo "<col width=\"20%\" />\n";
+                        echo "<col width=\"20%\" />\n";
+                        echo "</colgroup>";
                         echo "<tr><th>id</th> <th>Titel</th> <th>MTK Intervall</th> <th>STK Intervall</th> <th>Lagerbestand</th> </tr> \n";
                         break;
                     case 2:
-                        echo "<tr><th>id</th> <th>Titel</th> <th>Mindestbestand</th> <th>Sollbestand</th> <th>Lagerbestand</th> </tr> \n";
+                        echo "<table class=\"table table-bordered table-hover\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
+                        echo "<colgroup>\n";
+                        echo "<col width=\"10%\" />\n";
+                        echo "<col width=\"70%\" />\n";
+                        echo "<col width=\"20%\" />\n";
+                        echo "</colgroup>";
+                        echo "<tr><th>id</th> <th>Titel</th> <th>Lagerbestand</th> </tr> \n";
                         break;
                     case 3:
-                        echo "<tr><th>id</th> <th>Titel</th> <th>Mindestbestand</th> <th>Sollbestand</th> <th>Lagerbestand</th> </tr> \n";
+                        echo "<table class=\"table table-bordered table-hover\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">";
+                        echo "<colgroup>\n";
+                        echo "<col width=\"10%\" />\n";
+                        echo "<col width=\"70%\" />\n";
+                        echo "<col width=\"20%\" />\n";
+                        echo "</colgroup>";
+                        echo "<tr><th>id</th> <th>Titel</th> <th>Lagerbestand</th> </tr> \n";
                         break;
                     default:
                         break;
@@ -95,14 +106,10 @@
                             "<td>" . $stockValue['totalVolume'] . "</td>";
                             break;
                         case 2:
-                            echo "<td>" . $stockValue['minimumStock'] . "</td>".
-                            "<td>" . $stockValue['quotaStock'] . "</td>".
-                            "<td>" . $stockValue['totalVolume'] . "</td>";
+                            echo "<td>" . $stockValue['totalVolume'] . "</td>";
                             break;
                         case 3:
-                            echo "<td>" . $stockValue['minimumStock'] . "</td>".
-                            "<td>" . $stockValue['quotaStock'] . "</td>".
-                            "<td>" . $stockValue['totalVolume'] . "</td>";
+                            echo "<td>" . $stockValue['totalVolume'] . "</td>";
                             break;
                         default:
                             break;
