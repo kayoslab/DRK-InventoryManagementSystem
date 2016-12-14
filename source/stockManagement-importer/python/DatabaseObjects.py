@@ -48,7 +48,6 @@ class DatabaseObjects:
     "table":"`Message`",
     "id":"`Message`.`id`",
     "title":"`Message`.`title`",
-    "escalation":"`Message`.`escalation`"
     }
     # Type Table
     typeTable = {
@@ -62,14 +61,11 @@ class DatabaseObjects:
     "id":"`StockObject`.`id`",
     "title":"`StockObject`.`title`",
     "description":"`StockObject`.`description`",
-    "minimumStock":"`StockObject`.`minimumStock`",
-    "quotaStock":"`StockObject`.`quotaStock`",
     "batchSize":"`StockObject`.`batchSize`",
     "totalVolume":"`StockObject`.`totalVolume`",
     "mtkIntervall":"`StockObject`.`mtkIntervall`",
     "stkIntervall":"`StockObject`.`stkIntervall`",
     "creation":"`StockObject`.`creation`",
-    "silencedWarnings":"`StockObject`.`silencedWarnings`",
     "typeId":"`StockObject`.`typeId`"
     }
     # StockValue Table
@@ -84,10 +80,16 @@ class DatabaseObjects:
     "umdns":"`StockValue`.`umdns`",
     "batchNumber":"`StockValue`.`batchNumber`",
     "creation":"`StockValue`.`creation`",
-    "escalationAck":"`StockValue`.`escalationAck`",
     "stockObjectId":"`StockValue`.`stockObjectId`",
-    "locationId":"`StockValue`.`locationId`",
     "messageId":"`StockValue`.`messageId`"
+    }
+    # LocationForStockValue Table
+    locationForStockValue = {"table":"`LocationForStockValue`",
+    "stockValue":"LocationForStockValue`.`stockValue`",
+    "location":"LocationForStockValue`.`location`",
+    "minimumStock":"LocationForStockValue`.`minimumStock`",
+    "quotaStock":"LocationForStockValue`.`quotaStock`",
+    "silencedWarnings":"LocationForStockValue`.`silencedWarnings`"
     }
     # Operation Table
     operationTable = {
