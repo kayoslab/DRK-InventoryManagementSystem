@@ -23,35 +23,35 @@ public class DataPresenter extends Presenter implements MouseListener {
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
 	private StockObject[] stockObjects;
 
-	private JButton btnA = new JButton("A");
-	private JButton btnB = new JButton("B");
-	private JButton btnC = new JButton("C");
-	private JButton btnD = new JButton("D");
-	private JButton btnE = new JButton("E");
-	private JButton btnF = new JButton("F");
-	private JButton btnG = new JButton("G");
-	private JButton btnH = new JButton("H");
-	private JButton btnI = new JButton("I");
-	private JButton btnJ = new JButton("J");
-	private JButton btnK = new JButton("K");
-	private JButton btnL = new JButton("L");
-	private JButton btnM = new JButton("M");
-	private JButton btnN = new JButton("N");
-	private JButton btnO = new JButton("O");
-	private JButton btnP = new JButton("P");
-	private JButton btnQ = new JButton("Q");
-	private JButton btnR = new JButton("R");
-	private JButton btnS = new JButton("S");
-	private JButton btnT = new JButton("T");
-	private JButton btnU = new JButton("U");
-	private JButton btnV = new JButton("V");
-	private JButton btnW = new JButton("W");
-	private JButton btnX = new JButton("X");
-	private JButton btnY = new JButton("Y");
-	private JButton btnZ = new JButton("Z");
-	private JButton[] characterButtons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
-			btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW,
-			btnX, btnY, btnZ};
+//	private JButton btnA = new JButton("A");
+//	private JButton btnB = new JButton("B");
+//	private JButton btnC = new JButton("C");
+//	private JButton btnD = new JButton("D");
+//	private JButton btnE = new JButton("E");
+//	private JButton btnF = new JButton("F");
+//	private JButton btnG = new JButton("G");
+//	private JButton btnH = new JButton("H");
+//	private JButton btnI = new JButton("I");
+//	private JButton btnJ = new JButton("J");
+//	private JButton btnK = new JButton("K");
+//	private JButton btnL = new JButton("L");
+//	private JButton btnM = new JButton("M");
+//	private JButton btnN = new JButton("N");
+//	private JButton btnO = new JButton("O");
+//	private JButton btnP = new JButton("P");
+//	private JButton btnQ = new JButton("Q");
+//	private JButton btnR = new JButton("R");
+//	private JButton btnS = new JButton("S");
+//	private JButton btnT = new JButton("T");
+//	private JButton btnU = new JButton("U");
+//	private JButton btnV = new JButton("V");
+//	private JButton btnW = new JButton("W");
+//	private JButton btnX = new JButton("X");
+//	private JButton btnY = new JButton("Y");
+//	private JButton btnZ = new JButton("Z");
+//	private JButton[] characterButtons = new JButton[]{btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH,
+//			btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW,
+//			btnX, btnY, btnZ};
 
 	/**
 	 * Create the application.
@@ -81,21 +81,21 @@ public class DataPresenter extends Presenter implements MouseListener {
 		MaterialUndGeraeteDaten.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		frame.getContentPane().add(MaterialUndGeraeteDaten);
 
-		int i = 0;
-		for (JButton button:this.characterButtons) {
-			button.setBounds(leftPadding+noSpacing+(characterButtonWidth)*i,contentY,characterButtonWidth,characterButtonHeight);
-			this.frame.getContentPane().add(button);
-			button.addActionListener(this);
-			button.setVisible(false);
-			i++;
-		}
+//		int i = 0;
+//		for (JButton button:this.characterButtons) {
+//			button.setBounds(leftPadding+noSpacing+(characterButtonWidth)*i,contentY,characterButtonWidth,characterButtonHeight);
+//			this.frame.getContentPane().add(button);
+//			button.addActionListener(this);
+//			button.setVisible(false);
+//			i++;
+//		}
 
 		this.searchText = new JTextField();
 		this.searchText.setBackground(Color.WHITE);
 		this.searchText.setHorizontalAlignment(SwingConstants.CENTER);
 		this.searchText.setText("Suchen");
 		this.searchText.setToolTipText("Suchen");
-		int searchTextX = leftPadding+noSpacing+(characterButtonWidth)*(this.characterButtons.length) + smallSpacing;
+		int searchTextX = leftPadding+noSpacing+(characterButtonWidth)*26 + smallSpacing;
 		int searchTextWidth = width-searchTextX-rightPadding;
 		this.searchText.setBounds(searchTextX, contentY, searchTextWidth, characterButtonHeight);
 		this.frame.getContentPane().add(this.searchText);
@@ -224,30 +224,29 @@ public class DataPresenter extends Presenter implements MouseListener {
 		table.setModel(model);
 	}
 
-	// TODO: Try this function with data in the Table
-	private void scrollToVisible(int rowIndex, int vColIndex) {
-		if (!(this.table.getParent() instanceof JViewport)) {
-			return;
-		}
-		JViewport viewport = (JViewport)this.table.getParent();
-
-		// This rectangle is relative to the table where the
-		// northwest corner of cell (0,0) is always (0,0).
-		Rectangle rect = this.table.getCellRect(rowIndex, vColIndex, true);
-
-		// The location of the viewport relative to the table
-		Point pt = viewport.getViewPosition();
-
-		// Translate the cell location so that it is relative
-		// to the view, assuming the northwest corner of the
-		// view is (0,0)
-		rect.setLocation(rect.x-pt.x, rect.y-pt.y);
-
-		this.table.scrollRectToVisible(rect);
-
-		// Scroll the area into view
-		//viewport.scrollRectToVisible(rect);
-	}
+//	private void scrollToVisible(int rowIndex, int vColIndex) {
+//		if (!(this.table.getParent() instanceof JViewport)) {
+//			return;
+//		}
+//		JViewport viewport = (JViewport)this.table.getParent();
+//
+//		// This rectangle is relative to the table where the
+//		// northwest corner of cell (0,0) is always (0,0).
+//		Rectangle rect = this.table.getCellRect(rowIndex, vColIndex, true);
+//
+//		// The location of the viewport relative to the table
+//		Point pt = viewport.getViewPosition();
+//
+//		// Translate the cell location so that it is relative
+//		// to the view, assuming the northwest corner of the
+//		// view is (0,0)
+//		rect.setLocation(rect.x-pt.x, rect.y-pt.y);
+//
+//		this.table.scrollRectToVisible(rect);
+//
+//		// Scroll the area into view
+//		//viewport.scrollRectToVisible(rect);
+//	}
 
 	@Override
 	public void showedAsPreviousPresenter() {
@@ -260,59 +259,59 @@ public class DataPresenter extends Presenter implements MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		// it's a Trap / Character
-		if (e.getSource() == this.btnA) {
-			this.scrollToVisible(0,0);
-		} else if (e.getSource() == this.btnB) {
-
-		} else if (e.getSource() == this.btnC) {
-
-		} else if (e.getSource() == this.btnD) {
-
-		} else if (e.getSource() == this.btnE) {
-
-		} else if (e.getSource() == this.btnF) {
-
-		} else if (e.getSource() == this.btnG) {
-
-		} else if (e.getSource() == this.btnH) {
-
-		} else if (e.getSource() == this.btnI) {
-
-		} else if (e.getSource() == this.btnJ) {
-
-		} else if (e.getSource() == this.btnK) {
-
-		} else if (e.getSource() == this.btnL) {
-
-		} else if (e.getSource() == this.btnM) {
-
-		} else if (e.getSource() == this.btnN) {
-
-		} else if (e.getSource() == this.btnO) {
-
-		} else if (e.getSource() == this.btnP) {
-
-		} else if (e.getSource() == this.btnQ) {
-
-		} else if (e.getSource() == this.btnR) {
-
-		} else if (e.getSource() == this.btnS) {
-
-		} else if (e.getSource() == this.btnT) {
-
-		} else if (e.getSource() == this.btnU) {
-
-		} else if (e.getSource() == this.btnV) {
-
-		} else if (e.getSource() == this.btnW) {
-
-		} else if (e.getSource() == this.btnX) {
-
-		} else if (e.getSource() == this.btnY) {
-
-		} else if (e.getSource() == this.btnZ) {
-
-		}
+//		if (e.getSource() == this.btnA) {
+//			this.scrollToVisible(0,0);
+//		} else if (e.getSource() == this.btnB) {
+//
+//		} else if (e.getSource() == this.btnC) {
+//
+//		} else if (e.getSource() == this.btnD) {
+//
+//		} else if (e.getSource() == this.btnE) {
+//
+//		} else if (e.getSource() == this.btnF) {
+//
+//		} else if (e.getSource() == this.btnG) {
+//
+//		} else if (e.getSource() == this.btnH) {
+//
+//		} else if (e.getSource() == this.btnI) {
+//
+//		} else if (e.getSource() == this.btnJ) {
+//
+//		} else if (e.getSource() == this.btnK) {
+//
+//		} else if (e.getSource() == this.btnL) {
+//
+//		} else if (e.getSource() == this.btnM) {
+//
+//		} else if (e.getSource() == this.btnN) {
+//
+//		} else if (e.getSource() == this.btnO) {
+//
+//		} else if (e.getSource() == this.btnP) {
+//
+//		} else if (e.getSource() == this.btnQ) {
+//
+//		} else if (e.getSource() == this.btnR) {
+//
+//		} else if (e.getSource() == this.btnS) {
+//
+//		} else if (e.getSource() == this.btnT) {
+//
+//		} else if (e.getSource() == this.btnU) {
+//
+//		} else if (e.getSource() == this.btnV) {
+//
+//		} else if (e.getSource() == this.btnW) {
+//
+//		} else if (e.getSource() == this.btnX) {
+//
+//		} else if (e.getSource() == this.btnY) {
+//
+//		} else if (e.getSource() == this.btnZ) {
+//
+//		}
 	}
 
 	@Override
