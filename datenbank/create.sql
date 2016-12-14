@@ -49,8 +49,7 @@ CREATE TABLE `Location` (
 
 CREATE TABLE `Message` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `escalation` int(10) unsigned NOT NULL UNIQUE
+    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Type` (
@@ -84,7 +83,6 @@ CREATE TABLE `StockValue` (
    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `batchNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `creation` datetime NOT NULL,
-   `escalationAck` int(10) unsigned NOT NULL,
    `stockObjectId` int(10) unsigned NOT NULL,
    `messageId` int(10) unsigned NOT NULL,
    CONSTRAINT `Constr_StockValue_StockObject`

@@ -89,8 +89,7 @@ CREATE TABLE `Location` (
 
 CREATE TABLE `Message` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
-    `escalation` int(10) unsigned NOT NULL UNIQUE
+    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `Type` (
@@ -102,14 +101,11 @@ CREATE TABLE `StockObject` (
    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
    `description` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `minimumStock` int(10) unsigned NULL,
-   `quotaStock` int(10) unsigned NULL,
    `batchSize` int(10) unsigned NULL,
    `totalVolume` int(10) unsigned NULL,
    `mtkIntervall` int(10) unsigned NULL,
    `stkIntervall` int(10) unsigned NULL,
    `creation` datetime NOT NULL,
-   `silencedWarnings` tinyint(1) unsigned NOT NULL,
    `typeId` int(10) unsigned NOT NULL ,
    CONSTRAINT `Constr_Stock_Type`
        FOREIGN KEY `type_fk` (`typeId`) REFERENCES `Type` (`id`)
@@ -127,20 +123,30 @@ CREATE TABLE `StockValue` (
    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `batchNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
    `creation` datetime NOT NULL,
-   `escalationAck` int(10) unsigned NOT NULL,
    `stockObjectId` int(10) unsigned NOT NULL,
-   `locationId` int(10) unsigned NOT NULL,
    `messageId` int(10) unsigned NOT NULL,
    CONSTRAINT `Constr_StockValue_StockObject`
        FOREIGN KEY `stockObject_fk` (`stockObjectId`) REFERENCES `StockObject` (`id`)
-       ON DELETE CASCADE ON UPDATE CASCADE,
-   CONSTRAINT `Constr_StockValue_Location`
-       FOREIGN KEY `location_fk` (`locationId`) REFERENCES `Location` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE,
    CONSTRAINT `Constr_StockValue_Message`
        FOREIGN KEY `message_fk` (`messageId`) REFERENCES `Message` (`id`)
        ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';
+
+CREATE TABLE `LocationForStockValue` (
+    `stockValue` int(10) unsigned NOT NULL,
+    `location` int(10) unsigned NOT NULL,
+    `minimumStock` int(10) unsigned NULL,
+    `quotaStock` int(10) unsigned NULL,
+    `silencedWarnings` tinyint(1) unsigned NOT NULL,
+    CONSTRAINT `Constr_LocationHasStockValue`
+        FOREIGN KEY `stockValue_fk` (`stockValue`) REFERENCES `StockValue` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `Constr_StockValueHasLocation`
+        FOREIGN KEY `location_fk` (`location`) REFERENCES `Location` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) COLLATE 'latin1_german2_ci';
+
 ```
 
 ## Logbook
@@ -296,4 +302,16 @@ VALUES
     (5,1),
     (5,5),
     (6,1);
+INSERT INTO `Type`
+VALUES
+    (0,'Gerät'),
+    (0,'Medizinisches Material'),
+    (0,'Versorgungsmaterial'),
+    (0,'Fahrzeug');
+
+INSERT INTO `Message`
+VALUES
+    (0,'green'),
+    (0,'yellow'),
+    (0,'red');
 ```
