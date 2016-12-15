@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) - All Rights Reserved
+ *
+ * Unauthorized copying of these files, via any medium is
+ * strictly prohibited Proprietary and confidential
+ *
+ * NOTICE:
+ * All information contained in this project is, and remains the property of the owner and its suppliers, if any.
+ * The intellectual and technical concepts contained herein are proprietary to the owner and its suppliers and
+ * are protected by trade secret or copyright law. Dissemination of this information or reproduction of this
+ * material is strictly forbidden unless prior written permission is obtained by the owner.
+ *
+ * @author Amina
+ * @author Sabine
+ *
+ */
+
 package presenter.data;
 import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
@@ -218,14 +235,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(batchSizeLabel);
 
-//		JLabel minimumStockLabel = new JLabel("Mindestbestand:");
-//		minimumStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
-//		frame.getContentPane().add(minimumStockLabel);
-//
-//		JLabel quotaStockLabel = new JLabel("Sollbestand:");
-//		quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
-//		frame.getContentPane().add(quotaStockLabel);
-
 		JLabel lblOptionalerText = new JLabel("optionaler Text:");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
@@ -241,15 +250,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
 
-//		this.textField3 = new JTextField();
-//		this.textField3.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-//		frame.getContentPane().add(this.textField3);
-//		this.textField3.setColumns(10);
-//
-//		this.textField4 = new JTextField();
-//		this.textField4.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-//		frame.getContentPane().add(this.textField4);
-//		this.textField4.setColumns(10);
 
 		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*2);
 		JScrollPane scrollPane = new JScrollPane();
@@ -289,8 +289,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				MedicalMaterial medicalMaterial = (MedicalMaterial) this.databaseObject;
 				this.textField1.setText(medicalMaterial.title);
 				this.textField2.setText("" + medicalMaterial.batchSize);
-				// this.textField3.setText("" + medicalMaterial.minimumStock);
-				// this.textField4.setText("" + medicalMaterial.quotaStock);
 				this.textArea.setText(medicalMaterial.description);
 			}
 		}
@@ -306,14 +304,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		batchSizeLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*1, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(batchSizeLabel);
 
-//		JLabel minimumStockLabel = new JLabel("Mindestbestand:");
-//		minimumStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*2, leftSideMenuWidth, lineHeight);
-//		frame.getContentPane().add(minimumStockLabel);
-//
-//		JLabel quotaStockLabel = new JLabel("Sollbestand:");
-//		quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
-//		frame.getContentPane().add(quotaStockLabel);
-
 		JLabel lblOptionalerText = new JLabel("optionaler Text:");
 		lblOptionalerText.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
 		frame.getContentPane().add(lblOptionalerText);
@@ -328,16 +318,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		this.textField2.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*1, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField2);
 		this.textField2.setColumns(10);
-
-//		this.textField3 = new JTextField();
-//		this.textField3.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*2, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-//		frame.getContentPane().add(this.textField3);
-//		this.textField3.setColumns(10);
-//
-//		this.textField4 = new JTextField();
-//		this.textField4.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*3, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
-//		frame.getContentPane().add(this.textField4);
-//		this.textField4.setColumns(10);
 
 		int calculatedTextAreaHeight = displayAreaHeight - (contentY+(lineHeight+smallSpacing)*2);
 
@@ -671,16 +651,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					} catch (ParseException e) {
 						// Cant parse Textfields to int
 					}
-//					try {
-//						minimumSize = decimalFormat.parse(this.textField3.getText()).intValue();
-//					} catch (ParseException e) {
-//						// Cant parse Textfields to int
-//					}
-//					try {
-//						quotaSize = decimalFormat.parse(this.textField4.getText()).intValue();
-//					} catch (ParseException e) {
-//						// Cant parse Textfields to int
-//					}
 					if (this.databaseObject == null) {
 						// new StockObject
 						// (int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize)
@@ -691,8 +661,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 						((MedicalMaterial)this.databaseObject).title = this.textField1.getText();
 						((MedicalMaterial)this.databaseObject).description = this.textArea.getText();
 						((MedicalMaterial)this.databaseObject).batchSize = batchSize;
-						// ((MedicalMaterial)this.databaseObject).minimumStock = minimumSize;
-						// ((MedicalMaterial)this.databaseObject).quotaStock = quotaSize;
 						return DatabaseWriteManager.editObject(this.databaseObject);
 					}
 				} else {
@@ -712,16 +680,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					} catch (ParseException e) {
 						// Cant parse Textfields to int
 					}
-//					try {
-//						minimumSize = decimalFormat.parse(this.textField3.getText()).intValue();
-//					} catch (ParseException e) {
-//						// Cant parse Textfields to int
-//					}
-//					try {
-//						quotaSize = decimalFormat.parse(this.textField4.getText()).intValue();
-//					} catch (ParseException e) {
-//						// Cant parse Textfields to int
-//					}
 					if (this.databaseObject == null) {
 						// new StockObject
 						// (int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize)
@@ -732,8 +690,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 						((ConsumableMaterial)this.databaseObject).title = this.textField1.getText();
 						((ConsumableMaterial)this.databaseObject).description = this.textArea.getText();
 						((ConsumableMaterial)this.databaseObject).batchSize = batchSize;
-						// ((ConsumableMaterial)this.databaseObject).minimumStock = minimumSize;
-						// ((ConsumableMaterial)this.databaseObject).quotaStock = quotaSize;
 						return DatabaseWriteManager.editObject(this.databaseObject);
 					}
 				} else {
