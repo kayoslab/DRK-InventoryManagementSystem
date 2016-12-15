@@ -776,10 +776,10 @@ public final class DatabaseWriteManager {
 				sqlStatement = "UPDATE `StockValue` SET " +
 						"`volume` = " + stockObjectValue.volume +
 						", " + "`date` = " + date +
-						", " + "`batchNumber` = '" + mergedConsumableValue.batchNumber +
+						", " + "`batchNumber` = '" + mergedConsumableValue.batchNumber + "'" +
 						", " + "`minimumStock` = " + mergedConsumableValue.minimumStock +
 						", " + "`quotaStock` = " + mergedConsumableValue.quotaStock +
-						"', " + "`locationId` = " + stockObjectValue.locationID +
+						", " + "`locationId` = " + stockObjectValue.locationID +
 						", " + "`messageId` = " + stockObjectValue.messageID +
 						" WHERE `id` = " + stockObjectValue.id +
 						";";
