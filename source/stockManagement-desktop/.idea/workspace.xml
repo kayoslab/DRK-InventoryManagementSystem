@@ -2,85 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/PDFtest.java" afterPath="$PROJECT_DIR$/src/model/PdfGenerator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.java" afterPath="$PROJECT_DIR$/src/main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/LogManager.java" afterPath="$PROJECT_DIR$/src/model/LogManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Session.java" afterPath="$PROJECT_DIR$/src/model/Session.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/UserManager.java" afterPath="$PROJECT_DIR$/src/model/UserManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" afterPath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" afterPath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" afterPath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/InventoryPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/InventoryPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/MenuPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/MessagePresenter.java" afterPath="$PROJECT_DIR$/src/presenter/MessagePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/Presenter.java" afterPath="$PROJECT_DIR$/src/presenter/Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/DataPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/DataPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectEditPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectEditPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-importer/python/DatabaseObjects.py" afterPath="$PROJECT_DIR$/../stockManagement-importer/python/DatabaseObjects.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-importer/python/Importer.py" afterPath="$PROJECT_DIR$/../stockManagement-importer/python/Importer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/connect.php" afterPath="$PROJECT_DIR$/../stockManagement-online/connect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/head.php" afterPath="$PROJECT_DIR$/../stockManagement-online/head.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/index.php" afterPath="$PROJECT_DIR$/../stockManagement-online/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/inventory.php" afterPath="$PROJECT_DIR$/../stockManagement-online/inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/inventoryData.php" afterPath="$PROJECT_DIR$/../stockManagement-online/inventoryData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/login.php" afterPath="$PROJECT_DIR$/../stockManagement-online/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/logout.php" afterPath="$PROJECT_DIR$/../stockManagement-online/logout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/nav.php" afterPath="$PROJECT_DIR$/../stockManagement-online/nav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/news.php" afterPath="$PROJECT_DIR$/../stockManagement-online/news.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/newsDanger.php" afterPath="$PROJECT_DIR$/../stockManagement-online/newsDanger.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/newsWarnings.php" afterPath="$PROJECT_DIR$/../stockManagement-online/newsWarnings.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/object.php" afterPath="$PROJECT_DIR$/../stockManagement-online/object.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/objectConsMat.php" afterPath="$PROJECT_DIR$/../stockManagement-online/objectConsMat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/objectDevice.php" afterPath="$PROJECT_DIR$/../stockManagement-online/objectDevice.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/objectMedMat.php" afterPath="$PROJECT_DIR$/../stockManagement-online/objectMedMat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/stock.php" afterPath="$PROJECT_DIR$/../stockManagement-online/stock.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/main.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseReadManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseReadManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/MessageUpdateManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/MessageUpdateManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseConnectionManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseConnectionManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseLoginManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseLoginManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseValueManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseValueManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/DatabaseObject.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/DatabaseObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/Group.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/GroupRight.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/GroupRight.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/User.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/environment/Location.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/environment/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/Device.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/Device.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/Material.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/Material.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/MedicalMaterial.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/MedicalMaterial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/StockObject.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/StockObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/DeviceValue.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/DeviceValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/MaterialValue.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/MaterialValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/StockObjectValue.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/StockObjectValue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/mailing/Sender.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/mailing/Sender.java" />
     </list>
     <ignored path="eclipse.iws" />
@@ -124,10 +48,12 @@
       <file leaf-file-name="DatabaseReadManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="30" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1259" selection-end-column="1" />
+            <state relative-caret-position="90">
+              <caret line="30" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1259" selection-end-column="1" />
               <folding>
-                <element signature="e#0#43514#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1326#1327#0" expanded="false" />
+                <element signature="e#1366#1367#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -136,10 +62,12 @@
       <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="30" column="37" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="839" selection-end-column="1" />
+            <state relative-caret-position="90">
+              <caret line="30" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="839" selection-end-column="1" />
               <folding>
-                <element signature="e#0#31465#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1288#1289#0" expanded="false" />
+                <element signature="e#1328#1329#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -327,6 +255,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -435,9 +366,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1046,11 +974,12 @@
       <workItem from="1481751740372" duration="2193000" />
       <workItem from="1481796639400" duration="477000" />
       <workItem from="1481799256441" duration="2833000" />
+      <workItem from="1481810541807" duration="573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180251000" />
+    <option name="totallyTimeSpent" value="180824000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1068,7 +997,6 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1159292" sideWeight="0.55271566" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23097345" sideWeight="0.45654082" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1080,7 +1008,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23109691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23322684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3567625" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1093,6 +1021,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23097345" sideWeight="0.45654082" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1419,9 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#3224#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1429,9 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1324#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1439,9 +1362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1129#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1449,9 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1227#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1459,9 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1365#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1469,9 +1383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1138#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1479,9 +1390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1196#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1489,9 +1397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1011#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1499,9 +1404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="39" column="22" lean-forward="true" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#1738#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1520,7 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1528,9 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#1063#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1538,9 +1436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#915#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1548,9 +1443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1277#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1558,9 +1450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#857#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1568,9 +1457,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1015#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1578,9 +1464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1186#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1588,28 +1471,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#995#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="30" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1259" selection-end-column="1" />
+        <state relative-caret-position="90">
+          <caret line="30" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1259" selection-end-column="1" />
           <folding>
-            <element signature="e#0#43514#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1326#1327#0" expanded="false" />
+            <element signature="e#1366#1367#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="30" column="37" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="839" selection-end-column="1" />
+        <state relative-caret-position="90">
+          <caret line="30" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="839" selection-end-column="1" />
           <folding>
-            <element signature="e#0#31465#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1288#1289#0" expanded="false" />
+            <element signature="e#1328#1329#0" expanded="false" />
           </folding>
         </state>
       </provider>

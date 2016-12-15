@@ -226,6 +226,9 @@ public class Sender {
 						}
 
 						int orderQuantity = medicalMaterialValue.quotaStock - medicalMaterialValue.volume;
+						if (orderQuantity < 0) {
+							orderQuantity = 0;
+						}
 						String locationTitle = DatabaseReadManager.getLocation(medicalMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + medicalMaterial.title + ", " +
 								"Lagerort: " + locationTitle + ", "+
@@ -267,6 +270,9 @@ public class Sender {
 						}
 
 						int orderQuantity = consumableMaterialValue.quotaStock - consumableMaterialValue.volume;
+						if (orderQuantity < 0) {
+							orderQuantity = 0;
+						}
 						String locationTitle = DatabaseReadManager.getLocation(consumableMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + consumableMaterial.title + ", " +
 								"Lagerort: " + locationTitle + ", "+

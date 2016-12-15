@@ -90,7 +90,7 @@ public class MessageUpdateManager {
 							edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
 						}
 					} else {
-						if (deviceValue.mtkDate != null) {
+						if (deviceValue.stkDate != null) {
 							/** Dynamic Time Intervalls for Devices **/
 							Calendar stkIntervallTime = Calendar.getInstance();
 							stkIntervallTime.setTime(deviceValue.stkDate);
@@ -98,19 +98,19 @@ public class MessageUpdateManager {
 							Date nextStkDate = new Date((stkIntervallTime.getTime()).getTime());
 
 							/** Dynamic Time Intervalls for Devices minus fixed number of months **/
-							Calendar mtkSoftIntervallTime = Calendar.getInstance();
-							mtkSoftIntervallTime.setTime(deviceValue.stkDate);
-							mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
-							Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
+							Calendar stkSoftIntervallTime = Calendar.getInstance();
+							stkSoftIntervallTime.setTime(deviceValue.stkDate);
+							stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
+							Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
 
 							if (sqlDate.after(nextStkDate)) {
 								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
-							} else if (deviceValue.mtkDate.before(nextSoftMtkDate)) {
+							} else if (deviceValue.stkDate.before(nextSoftStkDate)) {
 								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
 							} else {
 								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
 							}
-						} else if (deviceValue.stkDate != null) {
+						} else if (deviceValue.mtkDate != null) {
 							/** Dynamic Time Intervalls for Devices **/
 							Calendar mtkIntervallTime = Calendar.getInstance();
 							mtkIntervallTime.setTime(deviceValue.mtkDate);
@@ -118,14 +118,14 @@ public class MessageUpdateManager {
 							Date nextMtkDate = new Date((mtkIntervallTime.getTime()).getTime());
 
 							/** Dynamic Time Intervalls for Devices minus fixed number of months **/
-							Calendar stkSoftIntervallTime = Calendar.getInstance();
-							stkSoftIntervallTime.setTime(deviceValue.stkDate);
-							stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
-							Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
+							Calendar mtkSoftIntervallTime = Calendar.getInstance();
+							mtkSoftIntervallTime.setTime(deviceValue.mtkDate);
+							mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
+							Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
 
 							if (sqlDate.after(nextMtkDate)) {
 								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.red);
-							} else if (deviceValue.stkDate.before(nextSoftStkDate)) {
+							} else if (deviceValue.mtkDate.before(nextSoftMtkDate)) {
 								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.yellow);
 							} else {
 								edited = this.setStockObjectValueMessage(deviceValue, DatabaseObject.StockValueMessage.green);
