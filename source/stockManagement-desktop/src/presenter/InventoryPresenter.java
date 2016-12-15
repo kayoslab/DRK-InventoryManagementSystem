@@ -42,33 +42,6 @@ public class InventoryPresenter extends Presenter {
 		Inventarliste.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 		frame.getContentPane().add(Inventarliste);
 
-//		// Radiobuttons
-//		this.radioButtonAll = new JRadioButton("Alle");
-//		this.radioButtonAll.setSelected(true);
-//		this.radioButtonAll.addActionListener(this);
-//		this.radioButtonAll.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
-//		this.frame.getContentPane().add(this.radioButtonAll);
-//
-//		this.radioButtonquotaStockOnly = new JRadioButton("Nur Sollbest\u00e4nde");
-//		this.radioButtonquotaStockOnly.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
-//		this.radioButtonquotaStockOnly.addActionListener(this);
-//		this.frame.getContentPane().add(this.radioButtonquotaStockOnly);
-//
-//		this.radioButtonMinimumStockOnly = new JRadioButton("Nur Mindestbest\u00e4nde");
-//		this.radioButtonMinimumStockOnly.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
-//		this.radioButtonMinimumStockOnly.addActionListener(this);
-//		this.frame.getContentPane().add(this.radioButtonMinimumStockOnly);
-//
-//		JSeparator comboBoxSeperator = new JSeparator();
-//		comboBoxSeperator.setBounds(leftPadding, (contentY+lineHeight*3)+lineHeight/4, leftSideMenuWidth, 12);
-//		this.frame.getContentPane().add(comboBoxSeperator);
-//
-//		//Group the radio buttons.
-//		ButtonGroup group = new ButtonGroup();
-//		group.add(this.radioButtonAll);
-//		group.add(this.radioButtonMinimumStockOnly);
-//		group.add(this.radioButtonquotaStockOnly);
-
 		// Checkboxes
 		this.checkBoxDevices = new JCheckBox("Ger\u00e4te");
 		this.checkBoxDevices.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
@@ -126,19 +99,9 @@ public class InventoryPresenter extends Presenter {
 		Object columnNames[] = { "Titel", "Menge", "Typ"};
 		model = new DefaultTableModel(columnNames, 0);
 
-//		if (this.radioButtonMinimumStockOnly.isSelected()) {
-//			Object columnNames[] = { "Titel", "Menge", "Typ"};
-//			model = new DefaultTableModel(columnNames, 0);
-//		} else if (this.radioButtonquotaStockOnly.isSelected()) {
-//			Object columnNames[] = { "Titel", "Menge", "Typ"};
-//			model = new DefaultTableModel(columnNames, 0);
-//		} else {
-//			Object columnNames[] = { "Titel", "Menge", "Typ"};
-//			model = new DefaultTableModel(columnNames, 0);
-//		}
+
 
 		/**
-		 * TODO sort the data by the given sortDescriptor for this.filterComboBox.getSelectedIndex()
 		 *
 		 * Maybe this is an overcomplicated approach, because some SortDescriptors expect the StockObjects
 		 * to be stored into just one Array (e.g. sort alphabetically by stockObject.title).
@@ -199,16 +162,6 @@ public class InventoryPresenter extends Presenter {
 						// show all objects
 						Object row[] = { device.title, device.totalVolume , "Ger\u00e4t"};
 						model.addRow(row);
-//						if (this.radioButtonAll.isSelected()){
-//							// show all objects
-//							Object row[] = { device.title, device.totalVolume,  0 , "Ger\u00e4t"};
-//							model.addRow(row);
-//						} else if (this.radioButtonMinimumStockOnly.isSelected()) {
-//							// do not show filtered objects
-//						} else if (this.radioButtonquotaStockOnly.isSelected()) {
-//							Object row[] = { device.title, device.totalVolume, 0, "Ger\u00e4t"};
-//							model.addRow(row);
-//						}
 					}
 				} else if (stockObject instanceof Material) {
 					if (stockObject instanceof MedicalMaterial) {
@@ -217,22 +170,6 @@ public class InventoryPresenter extends Presenter {
 							// show all objects
 							Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume,  "Medizinisches Material"};
 							model.addRow(row);
-//							if (this.radioButtonAll.isSelected()){
-//								// show all objects
-//								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume,  "Medizinisches Material"};
-//								model.addRow(row);
-//							} else if (this.radioButtonMinimumStockOnly.isSelected()) {
-//								// show minimum Stock
-//								if (medicalMaterial.totalVolume <= medicalMaterial.minimumStock) {
-//									Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
-//									model.addRow(row);
-//								} else {
-//									// do not show filtered objects
-//								}
-//							} else if (this.radioButtonquotaStockOnly.isSelected()) {
-//								Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume, "Medizinisches Material"};
-//								model.addRow(row);
-//							}
 						}
 					} else if (stockObject instanceof ConsumableMaterial) {
 						if (this.checkBoxConsumableMaterial.isSelected()) {
@@ -240,21 +177,6 @@ public class InventoryPresenter extends Presenter {
 							// show all objects
 							Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
 							model.addRow(row);
-//							if (this.radioButtonAll.isSelected()){
-//								// show all objects
-//								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
-//								model.addRow(row);
-//							} else if (this.radioButtonMinimumStockOnly.isSelected()) {
-//								if (consumableMaterial.totalVolume <= consumableMaterial.minimumStock) {
-//									Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
-//									model.addRow(row);
-//								} else {
-//									// do not show filtered objects
-//								}
-//							} else if (this.radioButtonquotaStockOnly.isSelected()) {
-//								Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
-//								model.addRow(row);
-//							}
 						}
 					} else {
 						// Do nothing with this object, its not a usable material
@@ -272,13 +194,6 @@ public class InventoryPresenter extends Presenter {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
-//		if (e.getSource() == this.radioButtonAll) {
-//			this.refreshTableData();
-//		} else if (e.getSource() == this.radioButtonMinimumStockOnly) {
-//			this.refreshTableData();
-//		} else if (e.getSource() == this.radioButtonquotaStockOnly) {
-//			this.refreshTableData();
-//		} else
 		if (e.getSource() == this.checkBoxDevices) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.checkBoxMedicalMaterials) {

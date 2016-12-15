@@ -35,13 +35,6 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		initialize();
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public DetailPresenter(StockObject stockObject) {
-		this.stockObject = stockObject;
-		initialize();
-	}
 
 	/**
 	 * Initialize the contents of the frame.
