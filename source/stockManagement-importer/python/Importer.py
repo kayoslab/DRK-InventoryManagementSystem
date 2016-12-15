@@ -240,7 +240,7 @@ class Importer:
             # pattern for 20.02.2016
             pattern = re.compile("(^(((0[1-9]|1[0-9]|2[0-8])[\.]" + "(0[1-9]|1[012]))|((29|30|31)[\.]" + "(0[13578]|1[02]))|((29|30)[\.]" + "(0[4,6,9]|11)))[\.]" + "(19|[2-9][0-9])\d\d$)|" + "(^29[\.]" + "02[\.]" + "(19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)")
             if pattern.match(dateString):
-                date = datetime.datetime.strptime(dateString, "%d-%m-%Y").strftime(self.timeFormat)
+                date = datetime.datetime.strptime(dateString, "%d.%m.%Y").strftime(self.timeFormat)
                 return date
             # pattern for 02/2016
             pattern = re.compile("^(0?[1-9]|1[012])[\/]\d{4}$")
@@ -248,9 +248,9 @@ class Importer:
                 date = datetime.datetime.strptime(dateString, "%m/%Y").strftime(self.timeFormat)
                 return date
             # pattern for 02-2016
-            pattern = re.compile("^(0?[1-9]|1[012])[\/]\d{4}$")
+            pattern = re.compile("^(0?[1-9]|1[012])[\-]\d{4}$")
             if pattern.match(dateString):
-                date = datetime.datetime.strptime(dateString, "%m/%Y").strftime(self.timeFormat)
+                date = datetime.datetime.strptime(dateString, "%m-%Y").strftime(self.timeFormat)
                 return date
             # pattern for 02-2016
             pattern = re.compile("^(0?[1-9]|1[012])[\.]\d{4}$")
@@ -275,24 +275,27 @@ class Importer:
             return typeString
         elif typeString == "4":
             return typeString
-        elif typeString.lower()  == "Gerät".lower() :
+        elif typeString.lower()  == "Gerät".lower():
             return "1"
-        elif typeString.lower() == "Device".lower() :
+        elif typeString.lower() == "Device".lower():
             return "1"
-        elif typeString.lower() == "MedMat".lower() :
+        elif typeString.lower() == "MedMat".lower():
             return "2"
-        elif typeString.lower() == "Medical Material".lower() :
+        elif typeString.lower() == "Medical Material".lower():
             return "2"
-        elif typeString.lower() == "MedicalMaterial".lower() :
+        elif typeString.lower() == "MedicalMaterial".lower():
             return "2"
-        elif typeString.lower() == "ConsMat".lower() :
+        elif typeString.lower() == "ConsMat".lower():
             return "3"
-        elif typeString.lower() == "Consumable Material".lower() :
+        elif typeString.lower() == "Consumable Material".lower():
             return "3"
-        elif typeString.lower() == "ConsumableMaterial".lower() :
+        elif typeString.lower() == "ConsumableMaterial".lower():
             return "3"
-        elif typeString.lower() == "Versorgungsmaterial".lower() :
+        elif typeString.lower() == "Versorgungsmaterial".lower():
             return "3"
+        elif typeString.lower() == "Verbrauchsmaterial".lower():
+            return "3"
+        print "There is a strange TypeString: " + typeString
         return "4"
 
 # also for testing, gets current directory of Importer.py

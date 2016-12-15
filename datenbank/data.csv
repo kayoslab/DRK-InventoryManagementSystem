@@ -1,29 +1,29 @@
 Titel;Beschreibung;Art;Bestand;Mindestbestand;Sollbestand;Losgröße;Datum;Letzte MTK;MTK Intervall;Letzte STK;STK Intervall;Inventarnummer;Seriennummer;UMDNS;Chargennummer;Lagerort
 Absaugkatheter blau;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Absaugkatheter blau;;MedMat;3;1;3;1;3/1/19;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter blau;;MedMat;3;1;3;1;4/1/18;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Absaugkatheter blau;;MedMat;1;0;1;1;3/1/19;null;0;null;0;;;;;SEG Rucksack Vito Land
-Absaugkatheter grün;;MedMat;1;0;1;1;5/1/19;null;0;null;0;;;;;Rucksack Vito
-Absaugkatheter grün;;MedMat;1;0;1;1;5/1/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Absaugkatheter grün;;MedMat;1;1;3;1;8/31/19;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter grün;;MedMat;2;1;3;1;5/31/19;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter grün;;MedMat;3;1;3;1;5/31/19;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Absaugkatheter grün;;MedMat;1;0;1;1;5/1/19;null;0;null;0;;;;;SEG Rucksack Vito Land
-Absaugkatheter orange;;MedMat;1;0;0;1;7/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Absaugkatheter orange;;MedMat;1;0;0;1;7/31/18;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter orange;;MedMat;1;0;0;1;7/31/18;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Absaugkatheter orange;;MedMat;1;0;0;1;7/1/18;null;0;null;0;;;;;SEG Rucksack Vito Land
-Absaugkatheter rot;;MedMat;1;0;1;1;7/1/20;null;0;null;0;;;;;Rucksack Vito
-Absaugkatheter rot;;MedMat;1;0;1;1;3/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Absaugkatheter rot;;MedMat;3;1;3;1;7/1/20;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter rot;;MedMat;3;1;3;1;7/1/20;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Absaugkatheter rot;;MedMat;1;0;1;1;7/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
-Absaugkatheter schwarz;;MedMat;1;0;1;1;4/1/18;null;0;null;0;;;;;Rucksack Vito
-Absaugkatheter schwarz;;MedMat;1;0;1;1;4/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Absaugkatheter schwarz;;MedMat;2;1;3;1;4/1/18;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter schwarz;;MedMat;1;1;3;1;2/28/20;null;0;null;0;;;;;Sauerstofftasche Bulli
-Absaugkatheter schwarz;;MedMat;3;1;3;1;2/1/20;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Absaugkatheter schwarz;;MedMat;1;0;1;1;4/1/18;null;0;null;0;;;;;SEG Rucksack Vito Land
+Absaugkatheter blau;;MedMat;3;1;3;1;01.03.2019;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter blau;;MedMat;3;1;3;1;01.04.2018;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Absaugkatheter blau;;MedMat;1;0;1;1;01.03.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
+Absaugkatheter grün;;MedMat;1;0;1;1;01.05.2019;null;0;null;0;;;;;Rucksack Vito
+Absaugkatheter grün;;MedMat;1;0;1;1;01.05.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter grün;;MedMat;1;1;3;1;31.08.2019;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter grün;;MedMat;2;1;3;1;31.05.2019;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter grün;;MedMat;3;1;3;1;31.05.2019;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Absaugkatheter grün;;MedMat;1;0;1;1;01.05.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
+Absaugkatheter orange;;MedMat;1;0;0;1;01.07.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter orange;;MedMat;1;0;0;1;31.07.2018;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter orange;;MedMat;1;0;0;1;31.07.2018;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Absaugkatheter orange;;MedMat;1;0;0;1;01.07.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
+Absaugkatheter rot;;MedMat;1;0;1;1;01.07.2020;null;0;null;0;;;;;Rucksack Vito
+Absaugkatheter rot;;MedMat;1;0;1;1;01.03.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter rot;;MedMat;3;1;3;1;01.07.2020;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter rot;;MedMat;3;1;3;1;01.07.2020;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Absaugkatheter rot;;MedMat;1;0;1;1;01.07.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
+Absaugkatheter schwarz;;MedMat;1;0;1;1;01.04.2018;null;0;null;0;;;;;Rucksack Vito
+Absaugkatheter schwarz;;MedMat;1;0;1;1;01.04.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Absaugkatheter schwarz;;MedMat;2;1;3;1;01.04.2018;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter schwarz;;MedMat;1;1;3;1;28.02.2020;null;0;null;0;;;;;Sauerstofftasche Bulli
+Absaugkatheter schwarz;;MedMat;3;1;3;1;01.02.2020;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Absaugkatheter schwarz;;MedMat;1;0;1;1;01.04.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
 Absaugpumpe (manuell);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Absaugpumpe (manuell);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Absaugpumpe (manuell);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Bulli
@@ -33,14 +33,18 @@ Abwurf groß;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Abwurf klein;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Abwurf klein;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Abwurf klein;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Adrenalin;;MedMat;1;1;1;1;9/1/17;null;0;null;0;;;;M091522;KTW Ampullarium
-Adrenalin;;MedMat;4;4;4;1;2/1/18;null;0;null;0;;;;M021603;KTW Ampullarium
-Amiodaron;;MedMat;2;2;2;1;11/1/17;null;0;null;0;;;;09441115B;KTW Ampullarium
-Aqua;;MedMat;4;4;4;1;5/1/19;null;0;null;0;;;;16231013;KTW Ampullarium
-Atropin;;MedMat;2;2;2;1;9/1/18;null;0;null;0;;;;1443512;KTW Ampullarium
-Augenkompresse;;MedMat;2;1;2;1;6/1/35;null;0;null;0;;;;;Rucksack Vito
+Adrenalin;;MedMat;1;1;1;1;01.09.2017;null;0;null;0;;;;M091522;KTW Ampullarium
+Adrenalin;;MedMat;4;4;4;1;01.02.2018;null;0;null;0;;;;M021603;KTW Ampullarium
+Amiodaron;;MedMat;2;2;2;1;01.11.2017;null;0;null;0;;;;09441115B;KTW Ampullarium
+Apfelschorle;0,5 l;Verbrauchsmaterial;18;9;18;1;08.01.2017;null;0;null;0;;;;;Thermophore 1 (rechts)
+Aqua;;MedMat;4;4;4;1;01.05.2019;null;0;null;0;;;;16231013;KTW Ampullarium
+Atropin;;MedMat;2;2;2;1;01.09.2018;null;0;null;0;;;;1443512;KTW Ampullarium
+Augenkompresse;;MedMat;2;1;2;1;01.06.2035;null;0;null;0;;;;;Rucksack Vito
 Baby Rettungsdecke;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Baby Windel;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Baby-Feuchttücher;1 Paket;Verbrauchsmaterial;1;0;1;1;01.05.2017;null;0;null;0;;;;;Rucksack 1
+Baby-Feuchttücher;1 Paket;Verbrauchsmaterial;1;0;1;1;01.05.2017;null;0;null;0;;;;;Rucksack 2
+Babyflasche mit Sauger;;Verbrauchsmaterial;3;1;3;1;null;null;0;null;0;;;;;Babykiste
 Baldur Silberwindel;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Batterien Baby;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
 Batterien Cell;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
@@ -75,21 +79,51 @@ Beatmungsmaske Gr. 5 EcoMask;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack
 Bebeatmungsbeutel Baby;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Bulli
 Bebeatmungsbeutel Baby;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Becher;;MedMat;0;0;15;1;null;null;0;null;0;;;;;Lager
-Blockspritz Larynx;;MedMat;1;0;1;1;12/1/20;null;0;null;0;;;;;Rucksack Vito
-Blutdruckmessgerät;;Gerät;1;0;1;1;null;6/30/15;24;null;0;#6860;;;;Rucksack Vito
-Blutdruckmessgerät;;Gerät;1;0;1;1;null;1/1/15;24;null;0;#6833;;;;SEG Rucksack Bulli
-Blutdruckmessgeräte;;Gerät;1;0;1;1;null;6/30/15;24;null;0;#6986;;;;SEG Rucksack Vito Land
-Blutzucker-Messgerät;;Gerät;1;0;1;1;null;6/30/16;24;null;0;#C6C8779;;;;Rucksack Vito
-Blutzucker-Messgerät;;Gerät;1;0;1;1;null;6/30/16;24;null;0;#C6C8862;;;;SEG Rucksack Bulli
-Blutzucker-Messgerät;;Gerät;1;0;1;1;null;6/30/16;24;null;0;#C6C8776;;;;SEG Rucksack Vito Land
-BZ-Teststreifen;;MedMat;25;5;10;1;10/1/17;null;0;null;0;;;;;Rucksack Vito
+Becher Coffee to go;Stück;Verbrauchsmaterial;90;45;90;1;null;null;0;null;0;;;;;große Getränktethermophore
+Bio Fencheltee;Beutel;Verbrauchsmaterial;20;10;20;1;31.12.2016;null;0;null;0;;;;;kleine Getränktethermophore
+Bio Früchtettee;Beutel;Verbrauchsmaterial;20;10;20;1;01.03.2019;null;0;null;0;;;;;kleine Getränktethermophore
+Blockspritz Larynx;;MedMat;1;0;1;1;01.12.2020;null;0;null;0;;;;;Rucksack Vito
+Blutdruckmessgerät;;Gerät;1;0;1;1;null;30.06.2015;24;null;0;#6860;;;;Rucksack Vito
+Blutdruckmessgerät;;Gerät;1;0;1;1;null;01.01.2015;24;null;0;#6833;;;;SEG Rucksack Bulli
+Blutdruckmessgeräte;;Gerät;1;0;1;1;null;30.06.2015;24;null;0;#6986;;;;SEG Rucksack Vito Land
+Blutzucker-Messgerät;;Gerät;1;0;1;1;null;30.06.2016;24;null;0;#C6C8779;;;;Rucksack Vito
+Blutzucker-Messgerät;;Gerät;1;0;1;1;null;30.06.2016;24;null;0;#C6C8862;;;;SEG Rucksack Bulli
+Blutzucker-Messgerät;;Gerät;1;0;1;1;null;30.06.2016;24;null;0;#C6C8776;;;;SEG Rucksack Vito Land
+Brause;Tüte;Verbrauchsmaterial;10;5;10;1;01.05.2018;null;0;null;0;;;;;BNN Nr.15
+Brause;Tüte;Verbrauchsmaterial;10;5;10;1;01.07.2018;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Butterkeks;200g;Verbrauchsmaterial;1;0;1;1;01.07.2017;null;0;null;0;;;;;Rucksack 1
+Butterkeks;200g;Verbrauchsmaterial;1;0;1;1;01.07.2017;null;0;null;0;;;;;Rucksack 2
+Butterkeks;200g;Verbrauchsmaterial;1;0;1;1;01.04.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Butterkeks;;Verbrauchsmaterial;2;1;2;1;01.07.2017;null;0;null;0;;;;;Lager
+Butterkekse;200g;Verbrauchsmaterial;1;0;1;1;01.04.2017;null;0;null;0;;;;;BNN Nr.15
+BZ-Teststreifen;;MedMat;25;5;10;1;01.10.2017;null;0;null;0;;;;;Rucksack Vito
 BZ-Teststreifen;;MedMat;8;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-BZ-Teststreifen;;MedMat;10;5;10;1;11/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
+BZ-Teststreifen;;MedMat;10;5;10;1;01.11.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
+Capri-Sonne;200ml;Verbrauchsmaterial;5;2;5;1;16.08.2017;null;0;null;0;;;;;Rucksack 1
+Capri-Sonne;200ml;Verbrauchsmaterial;5;2;5;1;16.08.2017;null;0;null;0;;;;;Rucksack 2
+Capri-Sonne;200ml;Verbrauchsmaterial;5;2;5;1;16.08.2017;null;0;null;0;;;;;BNN Nr.15
+Capri-Sonne;200ml;Verbrauchsmaterial;5;2;5;1;16.08.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Caramelschokoriegel (Mars);400g;Verbrauchsmaterial;1;0;1;1;21.04.2017;null;0;null;0;;;;;Thermophore 3 (links)
 Chirurgische Schere (steril);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Co2-Adapter;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Co2-Adapter;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Bulli
 Co2-Adapter;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Cocos Schokoriegel (Bount);400g;Verbrauchsmaterial;1;0;1;1;04.05.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Corny free Haselnuss;6 Stück;Verbrauchsmaterial;1;0;1;1;06.08.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Corny free Nuss-Nougat;6 Stück;Verbrauchsmaterial;1;0;1;1;27.06.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Corny free Schoko;6 Stück;Verbrauchsmaterial;1;0;1;1;29.06.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Corny free weiße Schoko;6 Stück;Verbrauchsmaterial;1;0;1;1;30.06.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Corny Schoko;Riegel;Verbrauchsmaterial;12;6;12;1;18.12.2016;null;0;null;0;;;;;Lager
+Damenbinden (Wöchnerinnenvorlagen);;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Hygienekiste
+Desinfektionsmittel;100 ml;Verbrauchsmaterial;1;0;1;1;01.10.2019;null;0;null;0;;;;;BNN Nr.15
+Desinfektionsmittel;100 ml;Verbrauchsmaterial;1;0;1;1;01.10.2019;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
 Desinfektionsmittel Dismozor pur (Beutel);;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Dextro Energy;8 Stück;Verbrauchsmaterial;1;0;1;1;01.12.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Dextro Energy;8 Stück;Verbrauchsmaterial;1;0;1;1;01.10.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Dextro Energy;8 Stück;Verbrauchsmaterial;1;0;1;1;01.05.2017;null;0;null;0;;;;;BNN Nr.15
+Dextro Energy ;8 Stück;Verbrauchsmaterial;1;0;1;1;01.05.2017;null;0;null;0;;;;;Rucksack 1
+Dextro Energy ;15 Stück;Verbrauchsmaterial;15;4;8;1;01.12.2017;null;0;null;0;;;;;Rucksack 2
+Dextro Energy ;8 Stück;Verbrauchsmaterial;1;0;1;1;01.05.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
 Discofix (Verlängerung);;MedMat;0;0;2;1;null;null;0;null;0;;;;;Lager
 Dreiecktuch Stoff;;MedMat;2;1;2;1;null;null;0;null;0;;;;;Rucksack Vito
 Dreiecktuch Stoff;;MedMat;2;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
@@ -97,15 +131,21 @@ Dreiecktuch Stoff;;MedMat;2;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Dreiecktuch Vlies;;MedMat;4;2;4;1;null;null;0;null;0;;;;;Rucksack Vito
 Dreiecktuch Vlies;;MedMat;3;2;4;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Dreiecktuch Vlies;;MedMat;4;2;4;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Dreiwegehahn blau;;MedMat;1;0;1;1;9/1/17;null;0;null;0;;;;;Rucksack Vito
+Dreiwegehahn blau;;MedMat;1;0;1;1;01.09.2017;null;0;null;0;;;;;Rucksack Vito
 Dreiwegehahn blau;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Dreiwegehahn blau;;MedMat;1;0;1;1;9/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
-Druckminderer Weinmann;;Gerät;1;0;1;1;null;6/30/16;24;null;0;#1609145;;;;Rucksack Vito
+Dreiwegehahn blau;;MedMat;1;0;1;1;01.09.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
+Druckminderer Weinmann;;Gerät;1;0;1;1;null;30.06.2016;24;null;0;#1609145;;;;Rucksack Vito
 Druckminderer Weinmann;;Gerät;0;0;1;1;null;null;24;null;0;;;;;Sauerstofftasche Bulli
 Druckminderer Weinmann;;Gerät;0;0;1;1;null;null;24;null;0;;;;;Sauerstofftasche Vito Land
+EH-Tasche;;Verbrauchsmaterial;1;0;1;1;01.12.2017;null;0;null;0;;;;;Rucksack 1
 Einmaldecken;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
+Einmalhandtücher (500 Stück);;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Hygienekiste
 Einmallaken;;MedMat;0;5;15;1;null;null;0;null;0;;;;;Lager
 Einmalrasier;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+Einmalteelöffel;100 Stück;Verbrauchsmaterial;2;1;2;1;null;null;0;null;0;;;;;große Getränktethermophore
+Einmalwaschlappen (100 Stück);;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Hygienekiste
+Einwegslips;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Hygienekiste
+Einwegwaschlappen (1 Pack);;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Babykiste
 Ellenbogen & Knieverband;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
 Endotracheltubus Gr. 3;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Endotracheltubus Gr. 4;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
@@ -114,10 +154,16 @@ Endotracheltubus Gr. 6 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;L
 Endotracheltubus Gr. 7 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Endotracheltubus Gr. 8 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Endotracheltubus Gr. 9 mit Führungstab;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Erdnuss Schokoriegel;400g;Verbrauchsmaterial;1;0;1;1;12.05.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Erwachsenenpampers (Paket);;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Hygienekiste
 Faserstift (Wasserfest);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Faserstift (Wasserfest);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Faserstift (Wasserfest);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Fenistil;;MedMat;1;1;1;1;6/1/17;null;0;null;0;;;;P02730A;KTW Diagnostikschublade
+Fencheltee;Beutel;Verbrauchsmaterial;25;12;25;1;12.10.2017;null;0;null;0;;;;;kleine Getränktethermophore
+Fenistil;;MedMat;1;1;1;1;01.06.2017;null;0;null;0;;;;P02730A;KTW Diagnostikschublade
+Feucht-Toilettentücher;1 Paket;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Rucksack 1
+Feucht-Toilettentücher;1 Paket;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Rucksack 2
+Feuchttücher;500 ml;Verbrauchsmaterial;5;2;5;1;null;null;0;null;0;;;;;Hygienekiste
 FFP 2 Maske;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
 FFP 3 Maske;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
 Fieberthermometerhülle;;MedMat;0;10;20;1;null;null;0;null;0;;;;;Lager
@@ -126,53 +172,64 @@ Fingerkuppenverband;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Fingerkuppenverband;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Fingerschiene 18x5 cm;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Fingerstrips (10 Stk.);;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
-Fingertip;;MedMat;1;0;1;1;12/1/18;null;0;null;0;;;;;Rucksack Vito
-Fingertip;;MedMat;1;1;2;1;10/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Fingertip;;MedMat;1;1;2;1;12/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Fingertip;;MedMat;1;0;1;1;10/31/17;null;0;null;0;;;;;Sauerstofftasche Bulli
-Fingertip;;MedMat;1;0;1;1;10/31/17;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Fingertip;;MedMat;1;0;1;1;12/31/18;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Fingertip;;MedMat;2;1;2;1;12/1/18;null;0;null;0;;;;;SEG Rucksack Vito Land
+Fingertip;;MedMat;1;0;1;1;01.12.2018;null;0;null;0;;;;;Rucksack Vito
+Fingertip;;MedMat;1;1;2;1;01.10.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Fingertip;;MedMat;1;1;2;1;01.12.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Fingertip;;MedMat;1;0;1;1;31.10.2017;null;0;null;0;;;;;Sauerstofftasche Bulli
+Fingertip;;MedMat;1;0;1;1;31.10.2017;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Fingertip;;MedMat;1;0;1;1;31.12.2018;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Fingertip;;MedMat;2;1;2;1;01.12.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
 Fingerverbände 2x12cm ca.;;MedMat;10;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
 Fingerverbände 2x12cm ca.;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Fingerverbände 2x12cm ca.;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Flächenschürfverband;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Flaschenbürste;;Verbrauchsmaterial;2;1;2;1;null;null;0;null;0;;;;;Babykiste
+Frottehosen;;Verbrauchsmaterial;2;1;2;1;null;null;0;null;0;;;;;Babykiste
+Frotte-Windeln ;;Verbrauchsmaterial;3;1;3;1;null;null;0;null;0;;;;;Babykiste
+Früchtetee;Beutel;Verbrauchsmaterial;10;10;20;1;01.05.2017;null;0;null;0;;;;;kleine Getränktethermophore
+Früchtetee;Beutel;Verbrauchsmaterial;10;10;20;1;23.09.2019;null;0;null;0;;;;;kleine Getränktethermophore
+Früchtetee (Beutel);;Verbrauchsmaterial;1;0;1;1;21.01.2017;null;0;null;0;;;;;Lager
 Führungsstab Gr. 14;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Führungsstab Gr. 6;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Glucose;;MedMat;4;4;4;1;2/1/19;null;0;null;0;;;;16097012;KTW Ampullarium
+Geschirrtücher;;Verbrauchsmaterial;2;1;2;1;null;null;0;null;0;;;;;Babykiste
+Gesicht&Hände Hipp;10er;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Rucksack 1
+Gesicht&Hände Hipp;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Rucksack 2
+Glucose;;MedMat;4;4;4;1;01.02.2019;null;0;null;0;;;;16097012;KTW Ampullarium
 Guedeltubs Gr. 0;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Guedeltubs Gr. 0;;MedMat;1;0;1;1;10/1/17;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 0;;MedMat;1;0;1;1;01.10.2017;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 0;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Guedeltubs Gr. 00;;MedMat;1;0;1;1;10/1/13;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 00;;MedMat;1;0;1;1;01.10.2013;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 00;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Guedeltubs Gr. 000;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Guedeltubs Gr. 000;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Guedeltubs Gr. 1;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Guedeltubs Gr. 1;;MedMat;1;0;1;1;1/1/18;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 1;;MedMat;1;0;1;1;01.01.2018;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 1;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Guedeltubs Gr. 2;;MedMat;1;0;1;1;6/1/20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 2;;MedMat;1;0;1;1;01.06.2020;null;0;null;0;;;;;Rucksack Vito
 Guedeltubs Gr. 2;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Guedeltubs Gr. 2;;MedMat;1;0;1;1;6/1/20;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 2;;MedMat;1;0;1;1;01.06.2020;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 2;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Guedeltubs Gr. 2;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Guedeltubs Gr. 3;;MedMat;1;0;1;1;4/1/20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 3;;MedMat;1;0;1;1;01.04.2020;null;0;null;0;;;;;Rucksack Vito
 Guedeltubs Gr. 3;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Guedeltubs Gr. 3;;MedMat;1;0;1;1;10/1/13;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 3;;MedMat;1;0;1;1;01.10.2013;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 3;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Guedeltubs Gr. 3;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Guedeltubs Gr. 4;;MedMat;1;0;1;1;4/1/20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 4;;MedMat;1;0;1;1;01.04.2020;null;0;null;0;;;;;Rucksack Vito
 Guedeltubs Gr. 4;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Guedeltubs Gr. 4;;MedMat;1;0;1;1;11/1/13;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 4;;MedMat;1;0;1;1;01.11.2013;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 4;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Guedeltubs Gr. 4;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Guedeltubs Gr. 5;;MedMat;1;0;1;1;4/1/20;null;0;null;0;;;;;Rucksack Vito
+Guedeltubs Gr. 5;;MedMat;1;0;1;1;01.04.2020;null;0;null;0;;;;;Rucksack Vito
 Guedeltubs Gr. 5;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Guedeltubs Gr. 5;;MedMat;1;0;1;1;1/1/18;null;0;null;0;;;;;Sauerstofftasche Bulli
+Guedeltubs Gr. 5;;MedMat;1;0;1;1;01.01.2018;null;0;null;0;;;;;Sauerstofftasche Bulli
 Guedeltubs Gr. 5;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Guedeltubs Gr. 5;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Händedesinfektion 100 ml Sterilium;;MedMat;1;0;1;1;12/1/20;null;0;null;0;;;;;Rucksack Vito
-Händedesinfektion 100 ml Sterilium;;MedMat;1;0;1;1;2/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
-Händedesinfektion 100 ml Virugard;;MedMat;1;0;1;1;9/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
+Gummiunterlagen;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Hygienekiste
+Hagebuttentee;Beutel;Verbrauchsmaterial;20;10;20;1;14.06.2019;null;0;null;0;;;;;kleine Getränktethermophore
+Händedesinfektion 100 ml Sterilium;;MedMat;1;0;1;1;01.12.2020;null;0;null;0;;;;;Rucksack Vito
+Händedesinfektion 100 ml Sterilium;;MedMat;1;0;1;1;01.02.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
+Händedesinfektion 100 ml Virugard;;MedMat;1;0;1;1;01.09.2018;null;0;null;0;;;;;SEG Rucksack Bulli
 Händedesinfektion 500 ml Sterilium;;MedMat;0;1;3;1;null;null;0;null;0;;;;;Lager
 Handschuhe L;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
 Handschuhe M;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
@@ -180,76 +237,116 @@ Handschuhe S;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Handschuhe XL;;MedMat;10;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
 Handschuhe XL;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Handschuhe XL;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
+Handwaschbürsten;;Verbrauchsmaterial;5;2;5;1;null;null;0;null;0;;;;;Hygienekiste
+hanuta minis;220g;Verbrauchsmaterial;1;0;1;1;17.01.2017;null;0;null;0;;;;;Thermophore 3 (links)
 Hautdesinfektion groß 250 ml;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Hautdesinfektion klein 50 ml;;MedMat;1;0;1;1;4/1/20;null;0;null;0;;;;;Rucksack Vito
-Hautdesinfektion klein 50 ml;;MedMat;1;0;1;1;11/1/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Hautdesinfektion klein 50 ml;;MedMat;1;0;1;1;4/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
+Hautdesinfektion klein 50 ml;;MedMat;1;0;1;1;01.04.2020;null;0;null;0;;;;;Rucksack Vito
+Hautdesinfektion klein 50 ml;;MedMat;1;0;1;1;01.11.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Hautdesinfektion klein 50 ml;;MedMat;1;0;1;1;01.04.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
 Heidelberger Verlängerung ;;MedMat;0;0;2;1;null;null;0;null;0;;;;;Lager
+heiße Tasse Lauch;3 Beutel;Verbrauchsmaterial;1;0;1;1;20.07.2017;null;0;null;0;;;;;große Getränktethermophore
+heiße Tasse Rinderbrühe;3 Beutel;Verbrauchsmaterial;1;0;1;1;29.07.2017;null;0;null;0;;;;;große Getränktethermophore
+heiße Tasse Spargelcreme;3 Beutel;Verbrauchsmaterial;1;0;1;1;24.07.2017;null;0;null;0;;;;;große Getränktethermophore
+heiße Tasse Tomate;3 Beutel;Verbrauchsmaterial;1;0;1;1;10.07.2017;null;0;null;0;;;;;große Getränktethermophore
 Holzspatel;;MedMat;0;5;10;1;null;null;0;null;0;;;;;Lager
 Holzspatel;;MedMat;5;2;5;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 How Sit (Toilette);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Hygienetücher ;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
-Ibuprofen 400mg;;MedMat;10;10;10;1;4/1/18;null;0;null;0;;;;DR5437;KTW Ampullarium
-Ibuprofen 400mg;;MedMat;10;10;10;1;4/1/18;null;0;null;0;;;;DR5437;SEG Rucksack KTW
-Ibuprofen 400mg;;MedMat;10;10;10;1;10/1/18;null;0;null;0;;;;R40097;SEG Rucksack Vito Land
-Infusion NaCl;;MedMat;1;0;1;1;12/1/18;null;0;null;0;;;;;Rucksack Vito
+Hühner-Nudeltopf;Dose;Verbrauchsmaterial;1;0;1;1;01.01.2019;null;0;null;0;;;;;Tischdeckenkiste
+Hühner-Nudeltopf;Dose;Verbrauchsmaterial;1;0;1;1;01.01.2018;null;0;null;0;;;;;Tischdeckenkiste
+Hygienetücher;Stück;Verbrauchsmaterial;2;1;2;1;01.03.2018;null;0;null;0;;;;;Hygienekiste
+Hygienetücher;Stück;Verbrauchsmaterial;0;0;0;1;null;null;0;null;0;;;;;Rucksack 1
+Hygienetücher;Stück;Verbrauchsmaterial;0;0;0;1;null;null;0;null;0;;;;;Rucksack 2
+Hygienetücher ;Stück;Verbrauchsmaterial;0;0;0;1;null;null;0;null;0;;;;;Lager
+Hygienetücher ;Stück;Verbrauchsmaterial;10;5;10;1;01.08.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Hygienetücher ;Stück;Verbrauchsmaterial;10;5;10;1;01.08.2017;null;0;null;0;;;;;BNN Nr.15
+Ibuprofen 400mg;;MedMat;10;10;10;1;01.04.2018;null;0;null;0;;;;DR5437;KTW Ampullarium
+Ibuprofen 400mg;;MedMat;10;10;10;1;01.04.2018;null;0;null;0;;;;DR5437;SEG Rucksack KTW
+Ibuprofen 400mg;;MedMat;10;10;10;1;01.10.2018;null;0;null;0;;;;R40097;SEG Rucksack Vito Land
+Infusion NaCl;;MedMat;1;0;1;1;01.12.2018;null;0;null;0;;;;;Rucksack Vito
 Infusion NaCl;;MedMat;0;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Infusion NaCl;;MedMat;0;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Infusion Ringer;;MedMat;1;0;1;1;8/1/18;null;0;null;0;;;;;Rucksack Vito
-Infusion Ringer;;MedMat;1;0;1;1;1/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Infusion Ringer;;MedMat;1;0;1;1;1/1/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Infusion Ringer;;MedMat;2;0;1;1;1/1/19;null;0;null;0;;;;;SEG Rucksack Vito Land
+Infusion Ringer;;MedMat;1;0;1;1;01.08.2018;null;0;null;0;;;;;Rucksack Vito
+Infusion Ringer;;MedMat;1;0;1;1;01.01.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusion Ringer;;MedMat;1;0;1;1;01.01.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusion Ringer;;MedMat;2;0;1;1;01.01.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
 Infusion Sterofundin;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
-Infusionsystem;;MedMat;2;1;2;1;9/1/20;null;0;null;0;;;;;Rucksack Vito
-Infusionsystem;;MedMat;1;1;2;1;7/1/20;null;0;null;0;;;;;SEG Rucksack Bulli
-Infusionsystem;;MedMat;1;1;2;1;9/1/20;null;0;null;0;;;;;SEG Rucksack Bulli
-Infusionsystem;;MedMat;1;1;2;1;1/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
-Infusionsystem;;MedMat;1;1;2;1;9/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
+Infusionsystem;;MedMat;2;1;2;1;01.09.2020;null;0;null;0;;;;;Rucksack Vito
+Infusionsystem;;MedMat;1;1;2;1;01.07.2020;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusionsystem;;MedMat;1;1;2;1;01.09.2020;null;0;null;0;;;;;SEG Rucksack Bulli
+Infusionsystem;;MedMat;1;1;2;1;01.01.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
+Infusionsystem;;MedMat;1;1;2;1;01.09.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
 Iso Guard Filter;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Sauerstofftasche Bulli
-Iso Guard Filter;;MedMat;1;0;1;1;4/1/20;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Kanülen;;MedMat;5;2;5;1;12/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
-Kanülen (gelb);;MedMat;5;2;5;1;12/1/17;null;0;null;0;;;;;Rucksack Vito
-Kanülen (gelb);;MedMat;4;2;5;1;12/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Kanülenfixierpflaster;;MedMat;5;2;5;1;2/28/20;null;0;null;0;;;;;Rucksack Vito
+Iso Guard Filter;;MedMat;1;0;1;1;01.04.2020;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Kaffeeweißer;250g;Verbrauchsmaterial;1;0;1;1;11.02.2017;null;0;null;0;;;;;große Getränktethermophore
+Kaffeeweißer;250g;Verbrauchsmaterial;1;0;1;1;08.01.2018;null;0;null;0;;;;;große Getränktethermophore
+Kanülen;;MedMat;5;2;5;1;01.12.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
+Kanülen (gelb);;MedMat;5;2;5;1;01.12.2017;null;0;null;0;;;;;Rucksack Vito
+Kanülen (gelb);;MedMat;4;2;5;1;01.12.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Kanülenfixierpflaster;;MedMat;5;2;5;1;28.02.2020;null;0;null;0;;;;;Rucksack Vito
 Kanülenfixierpflaster;;MedMat;5;2;5;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Kanülenfixierpflaster;;MedMat;5;2;5;1;2/28/20;null;0;null;0;;;;;SEG Rucksack Vito Land
+Kanülenfixierpflaster;;MedMat;5;2;5;1;28.02.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
+Karokaffee;200g;Verbrauchsmaterial;1;0;1;1;01.05.2018;null;0;null;0;;;;;große Getränktethermophore
+Kaugummistreifen;1 Paket;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;BNN Nr.15
+Kaugummistreifen;1 Paket;Verbrauchsmaterial;1;0;1;1;28.10.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Keksschokoriegel (Twix);400g;Verbrauchsmaterial;1;0;1;1;03.05.2017;null;0;null;0;;;;;Thermophore 3 (links)
+KFZ-Verbandtasche;;Verbrauchsmaterial;1;0;1;1;01.08.2019;null;0;null;0;;;;;BNN Nr.15
+KFZ-Verbandtasche;;Verbrauchsmaterial;1;0;1;1;01.03.2019;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Kinderbecher;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Babykiste
+Kinderlöffel;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Babykiste
+Kinderschokolade;Stück;Verbrauchsmaterial;24;12;24;1;15.01.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Kleenex-Tücher (Packung);;Verbrauchsmaterial;5;2;5;1;null;null;0;null;0;;;;;Babykiste
 Klemmbrett;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Klemmbrett;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Klemmbrett;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Klemme (steril);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Kompressen 10 x 10 cm;;MedMat;5;5;10;1;3/31/21;null;0;null;0;;;;;Rucksack Vito
-Kompressen 10 x 10 cm;;MedMat;5;5;10;1;6/30/21;null;0;null;0;;;;;Rucksack Vito
-Kompressen 10 x 10 cm;;MedMat;1;5;10;1;9/1/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Kompressen 10 x 10 cm;;MedMat;1;5;10;1;6/30/21;null;0;null;0;;;;;SEG Rucksack Bulli
-Kompressen 10 x 10 cm;;MedMat;7;5;10;1;3/31/21;null;0;null;0;;;;;SEG Rucksack Bulli
-Kompressen 10 x 10 cm;;MedMat;2;5;10;1;3/31/21;null;0;null;0;;;;;SEG Rucksack Vito Land
-Kompressen 10 x 10 cm;;MedMat;8;5;10;1;6/1/35;null;0;null;0;;;;;SEG Rucksack Vito Land
+Knusperriegel (Lion);400g;Verbrauchsmaterial;1;0;1;1;01.03.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Kompressen 10 x 10 cm;;MedMat;5;5;10;1;31.03.2021;null;0;null;0;;;;;Rucksack Vito
+Kompressen 10 x 10 cm;;MedMat;5;5;10;1;30.06.2021;null;0;null;0;;;;;Rucksack Vito
+Kompressen 10 x 10 cm;;MedMat;1;5;10;1;01.09.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Kompressen 10 x 10 cm;;MedMat;1;5;10;1;30.06.2021;null;0;null;0;;;;;SEG Rucksack Bulli
+Kompressen 10 x 10 cm;;MedMat;7;5;10;1;31.03.2021;null;0;null;0;;;;;SEG Rucksack Bulli
+Kompressen 10 x 10 cm;;MedMat;2;5;10;1;31.03.2021;null;0;null;0;;;;;SEG Rucksack Vito Land
+Kompressen 10 x 10 cm;;MedMat;8;5;10;1;01.06.2035;null;0;null;0;;;;;SEG Rucksack Vito Land
 Kompressen 7,5 x 7,5 cm;;MedMat;0;0;5;1;null;null;0;null;0;;;;;Lager
 Kugelschreiber;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Kugelschreiber;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Kugelschreiber;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Kühlpack;;MedMat;1;2;4;1;9/1/17;null;0;null;0;;;;;Rucksack Vito
-Kühlpack;;MedMat;3;2;4;1;12/1/17;null;0;null;0;;;;;Rucksack Vito
-Kühlpack;;MedMat;3;2;4;1;10/1/14;null;0;null;0;;;;;SEG Rucksack Bulli
-Kühlpack;;MedMat;1;2;4;1;12/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
+Kühlpack;;MedMat;1;2;4;1;01.09.2017;null;0;null;0;;;;;Rucksack Vito
+Kühlpack;;MedMat;3;2;4;1;01.12.2017;null;0;null;0;;;;;Rucksack Vito
+Kühlpack;;MedMat;3;2;4;1;01.10.2014;null;0;null;0;;;;;SEG Rucksack Bulli
+Kühlpack;;MedMat;1;2;4;1;01.12.2017;null;0;null;0;;;;;SEG Rucksack Bulli
 Kühlpack;;MedMat;4;2;4;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
+Kunststoffhosen;;Verbrauchsmaterial;2;1;2;1;null;null;0;null;0;;;;;Babykiste
 Lanzette;;MedMat;15;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
 Lanzette;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Lanzette;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Larynxtubus gelb;;MedMat;1;0;1;1;7/1/20;null;0;null;0;;;;;Rucksack Vito
-Larynxtubus rot;;MedMat;1;0;1;1;7/1/20;null;0;null;0;;;;;Rucksack Vito
-Larynxtubus violett;;MedMat;1;0;1;1;8/1/20;null;0;null;0;;;;;Rucksack Vito
+Larynxtubus gelb;;MedMat;1;0;1;1;01.07.2020;null;0;null;0;;;;;Rucksack Vito
+Larynxtubus rot;;MedMat;1;0;1;1;01.07.2020;null;0;null;0;;;;;Rucksack Vito
+Larynxtubus violett;;MedMat;1;0;1;1;01.08.2020;null;0;null;0;;;;;Rucksack Vito
 Leukoplast 2,5 cm;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Leukoplast 2,5 cm;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Leukoplast 2,5 cm;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Leukosilk 1,25;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
+löslicher Wohlfühltee (Babytee);23g;Verbrauchsmaterial;1;0;1;1;03.03.2019;null;0;null;0;;;;;kleine Getränktethermophore
+löslicher Zitronentee;400g;Verbrauchsmaterial;1;0;1;1;01.07.2018;null;0;null;0;;;;;kleine Getränktethermophore
+löslicher Kaffee;200g;Verbrauchsmaterial;1;0;1;1;01.05.2017;null;0;null;0;;;;;große Getränktethermophore
+löslicher Kaffee entkof.;100g;Verbrauchsmaterial;1;0;1;1;01.09.2017;null;0;null;0;;;;;große Getränktethermophore
 Magensonde Ch. 06;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Magensonde Ch. 08;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Magensonde Ch. 12;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Magensonde Ch. 14;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Magensonde Ch. 16;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Medizid AF (1 Liter);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Midazolam;;MedMat;1;1;1;1;12/1/18;null;0;null;0;;;;43766;KTW Ampullarium
+Mentos Gum Fruid;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;BNN Nr.15
+Mentos Gum Fruid;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Mentos Gum White;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;BNN Nr.15
+Mentos Gum White;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Midazolam;;MedMat;1;1;1;1;01.12.2018;null;0;null;0;;;;43766;KTW Ampullarium
+MilkyWay;16 Stück;Verbrauchsmaterial;1;0;1;1;28.05.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Minitafel Rittersprot;Stück;Verbrauchsmaterial;10;5;10;1;25.03.2017;null;0;null;0;;;;;Rucksack 1
+Minitafel Rittersprot;Stück;Verbrauchsmaterial;10;5;10;1;25.03.2017;null;0;null;0;;;;;Rucksack 2
+Moltoneinlagen 40 x 40 cm;;Verbrauchsmaterial;3;1;3;1;null;null;0;null;0;;;;;Babykiste
+Moltoneinlagen 80 x 80 cm;;Verbrauchsmaterial;3;1;3;1;null;null;0;null;0;;;;;Babykiste
 Mullbinden 10 cm;;MedMat;0;5;10;1;null;null;0;null;0;;;;;Lager
 Mullbinden 6 cm;;MedMat;2;1;2;1;null;null;0;null;0;;;;;Rucksack Vito
 Mullbinden 6 cm;;MedMat;2;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
@@ -257,30 +354,45 @@ Mullbinden 6 cm;;MedMat;2;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Mullbinden 8 cm;;MedMat;6;3;6;1;null;null;0;null;0;;;;;Rucksack Vito
 Mullbinden 8 cm;;MedMat;6;3;6;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Mullbinden 8 cm;;MedMat;6;3;6;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
+Mullwindeln ;;Verbrauchsmaterial;12;6;12;1;null;null;0;null;0;;;;;Babykiste
+Müsliriegel Corney Big Choco;Stück;Verbrauchsmaterial;0;0;0;1;null;null;0;null;0;;;;;Thermophore 3 (links)
+Müsliriegel Cranberry;8 Stück;Verbrauchsmaterial;2;1;2;1;30.10.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Müsliriegel Haselnuss;8 Stück;Verbrauchsmaterial;2;1;2;1;12.10.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Müsliriegel Schoko;8 Stück;Verbrauchsmaterial;2;1;2;1;13.08.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Müsliriegel Schoko;Stück;Verbrauchsmaterial;6;2;5;1;18.12.2016;null;0;null;0;;;;;Rucksack 1
+Müsliriegel Schoko;Stück;Verbrauchsmaterial;5;2;5;1;01.09.2017;null;0;null;0;;;;;Rucksack 2
+Müsliriegel Schoko;Stück;Verbrauchsmaterial;6;1;2;1;19.09.2017;null;0;null;0;;;;;BNN Nr.15
+Müsliriegel Schoko;Stück;Verbrauchsmaterial;6;1;2;1;16.07.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
 Nabelbinde;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Nasenbrille;;MedMat;2;0;1;1;4/1/19;null;0;null;0;;;;;Rucksack Vito
+Nasenbrille;;MedMat;2;0;1;1;01.04.2019;null;0;null;0;;;;;Rucksack Vito
 Nasenbrille;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
-Nasenbrille;;MedMat;5;2;5;1;1/31/18;null;0;null;0;;;;;Sauerstofftasche Bulli
-Nasenbrille;;MedMat;3;2;5;1;8/1/20;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Nasenbrille;;MedMat;5;2;5;1;31.01.2018;null;0;null;0;;;;;Sauerstofftasche Bulli
+Nasenbrille;;MedMat;3;2;5;1;01.08.2020;null;0;null;0;;;;;Sauerstofftasche Vito Land
 Nasenbrille;;MedMat;0;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Netzschlauch Gr. 3;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Netzverband Gr. 3;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Netzverband Gr. 4;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Nierenschale;;MedMat;0;5;10;1;null;null;0;null;0;;;;;Lager
-Nitrolingual;;MedMat;1;1;1;1;6/1/18;null;0;null;0;;;;246559;KTW Ampullarium
-Nitrolingual-Spray;;MedMat;1;1;1;1;1/1/18;null;0;null;0;;;;244046;SEG Rucksack KTW
-Nitrolingual-Spray;;MedMat;1;1;1;1;6/1/18;null;0;null;0;;;;24559;SEG Rucksack MTF
-Nitrolingual-Spray;;MedMat;1;1;1;1;6/1/18;null;0;null;0;;;;24559;SEG Rucksack Vito Land
-Nitrolingual-Spray;;MedMat;1;1;1;1;6/1/18;null;0;null;0;;;;246559;SEG Rucksack Vito OV
+Nitrolingual;;MedMat;1;1;1;1;01.06.2018;null;0;null;0;;;;246559;KTW Ampullarium
+Nitrolingual-Spray;;MedMat;1;1;1;1;01.01.2018;null;0;null;0;;;;244046;SEG Rucksack KTW
+Nitrolingual-Spray;;MedMat;1;1;1;1;01.06.2018;null;0;null;0;;;;24559;SEG Rucksack MTF
+Nitrolingual-Spray;;MedMat;1;1;1;1;01.06.2018;null;0;null;0;;;;24559;SEG Rucksack Vito Land
+Nitrolingual-Spray;;MedMat;1;1;1;1;01.06.2018;null;0;null;0;;;;246559;SEG Rucksack Vito OV
+Oel;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Babykiste
 OP-Handschuhe Gr. 7;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 OP-Handschuhe Gr. 8;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 OP-Handschuhe Gr. 9;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Papiertücher 250 Stück;;MedMat;0;2;4;1;null;null;0;null;0;;;;;Lager
+Paprika edelsüß;500g;Verbrauchsmaterial;1;0;1;1;01.12.2018;null;0;null;0;;;;;Kochtopf
 Patientenbeutel;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Petersilie geriebelt;100g;Verbrauchsmaterial;1;0;1;1;01.12.2016;null;0;null;0;;;;;Kochtopf
+Pfeffer schwarz gemahlen;600g;Verbrauchsmaterial;1;0;1;1;01.12.2016;null;0;null;0;;;;;Kochtopf
 Pflasterstrips (10 Stk.);;MedMat;10;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
 Pflasterstrips (10 Stk.);;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Pflasterstrips (10 Stk.);;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Pflasterstrips DRK;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
+Pick Up Black&White;Stück;Verbrauchsmaterial;12;6;12;1;01.05.2017;null;0;null;0;;;;;Thermophore 3 (links)
+Pick Up Choco;Stück;Verbrauchsmaterial;12;6;12;1;01.04.2017;null;0;null;0;;;;;Thermophore 3 (links)
 Pinzette (steril);;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Pinzette (unsteril);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Pinzette (unsteril);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
@@ -297,6 +409,7 @@ Rettungsdecke;;MedMat;2;1;2;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Rettungsdienstprotokolle;;MedMat;3;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Rettungsdienstprotokolle;;MedMat;0;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Rettungsdienstprotokolle;;MedMat;3;1;3;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
+Salz;500g;Verbrauchsmaterial;1;0;1;1;28.11.2018;null;0;null;0;;;;;Kochtopf
 Sam Splint 18inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Sam Splint 18inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Sam Splint 18inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
@@ -306,32 +419,39 @@ Sam Splint 36inch;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Sanitätsdienstprotokolle;;MedMat;10;5;10;1;null;null;0;null;0;;;;;Rucksack Vito
 Sanitätsdienstprotokolle;;MedMat;9;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Sanitätsdienstprotokolle;;MedMat;10;5;10;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Sauerstfoffmaske Erw.;;MedMat;1;1;2;1;2/1/19;null;0;null;0;;;;;Rucksack Vito
-Sauerstfoffmaske Erw.;;MedMat;1;1;2;1;1/1/20;null;0;null;0;;;;;Rucksack Vito
-Sauerstfoffmaske Erw.;;MedMat;2;1;2;1;2/1/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Sauerstfoffmaske Erw.;;MedMat;2;2;5;1;2/28/18;null;0;null;0;;;;;Sauerstofftasche Bulli
-Sauerstfoffmaske Erw.;;MedMat;2;2;5;1;1/31/20;null;0;null;0;;;;;Sauerstofftasche Bulli
-Sauerstfoffmaske Erw.;;MedMat;5;2;5;1;8/1/18;null;0;null;0;;;;;Sauerstofftasche Vito Land
-Sauerstfoffmaske Erw.;;MedMat;2;1;2;1;2/1/19;null;0;null;0;;;;;SEG Rucksack Vito Land
+Sauerstfoffmaske Erw.;;MedMat;1;1;2;1;01.02.2019;null;0;null;0;;;;;Rucksack Vito
+Sauerstfoffmaske Erw.;;MedMat;1;1;2;1;01.01.2020;null;0;null;0;;;;;Rucksack Vito
+Sauerstfoffmaske Erw.;;MedMat;2;1;2;1;01.02.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Sauerstfoffmaske Erw.;;MedMat;2;2;5;1;28.02.2018;null;0;null;0;;;;;Sauerstofftasche Bulli
+Sauerstfoffmaske Erw.;;MedMat;2;2;5;1;31.01.2020;null;0;null;0;;;;;Sauerstofftasche Bulli
+Sauerstfoffmaske Erw.;;MedMat;5;2;5;1;01.08.2018;null;0;null;0;;;;;Sauerstofftasche Vito Land
+Sauerstfoffmaske Erw.;;MedMat;2;1;2;1;01.02.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
 Sauerstfoffmaske Kind;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
 Saugkompresse;;MedMat;0;0;5;1;null;null;0;null;0;;;;;Lager
 Schere (Kleider-);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Schere (Kleider-);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Schere (Kleider-);;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Schere (Stumpf/Spitz);;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
+Schinkenbockwurst à 10 Stck.;Dosen;Verbrauchsmaterial;3;1;3;1;01.02.2018;null;0;null;0;;;;;Tischdeckenkiste
 Schleimabsauger Neugeborene;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+schwarzer Tee;1 Paket;Verbrauchsmaterial;1;0;1;1;01.04.2019;null;0;null;0;;;;;kleine Getränktethermophore
+schwarzer Tee entc.;Beutel;Verbrauchsmaterial;20;10;20;1;01.12.2017;null;0;null;0;;;;;kleine Getränktethermophore
+schwarzer Tee feinaromatisch;Beutel;Verbrauchsmaterial;25;12;25;1;22.08.2019;null;0;null;0;;;;;kleine Getränktethermophore
+schwarzer Tee kraftig aromisiert;Beutel;Verbrauchsmaterial;20;10;20;1;27.04.2019;null;0;null;0;;;;;kleine Getränktethermophore
+Seife, flüssig;500ml;Verbrauchsmaterial;5;2;5;1;null;null;0;null;0;;;;;Hygienekiste
+Seifenschale mit Kinderseife;;Verbrauchsmaterial;1;0;1;1;null;null;0;null;0;;;;;Babykiste
 SicSacBrechbeutel;;MedMat;0;5;20;1;null;null;0;null;0;;;;;Lager
-Skalpell;;MedMat;1;0;1;1;3/1/18;null;0;null;0;;;;;Rucksack Vito
-Spritze 10 ml;;MedMat;2;1;2;1;4/1/17;null;0;null;0;;;;;Rucksack Vito
-Spritze 10 ml;;MedMat;2;1;2;1;4/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Spritze 10 ml;;MedMat;2;1;2;1;4/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
+Skalpell;;MedMat;1;0;1;1;01.03.2018;null;0;null;0;;;;;Rucksack Vito
+Spritze 10 ml;;MedMat;2;1;2;1;01.04.2017;null;0;null;0;;;;;Rucksack Vito
+Spritze 10 ml;;MedMat;2;1;2;1;01.04.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Spritze 10 ml;;MedMat;2;1;2;1;01.04.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
 Spritze 20ml;;MedMat;0;5;15;1;null;null;0;null;0;;;;;Lager
-Spritze 2ml;;MedMat;2;1;2;1;1/1/17;null;0;null;0;;;;;Rucksack Vito
-Spritze 2ml;;MedMat;2;1;2;1;1/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Spritze 2ml;;MedMat;2;1;2;1;1/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
-Spritze 5ml;;MedMat;2;1;2;1;5/1/17;null;0;null;0;;;;;Rucksack Vito
-Spritze 5ml;;MedMat;2;1;2;1;5/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Spritze 5ml;;MedMat;2;1;2;1;5/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
+Spritze 2ml;;MedMat;2;1;2;1;01.01.2017;null;0;null;0;;;;;Rucksack Vito
+Spritze 2ml;;MedMat;2;1;2;1;01.01.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Spritze 2ml;;MedMat;2;1;2;1;01.01.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
+Spritze 5ml;;MedMat;2;1;2;1;01.05.2017;null;0;null;0;;;;;Rucksack Vito
+Spritze 5ml;;MedMat;2;1;2;1;01.05.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Spritze 5ml;;MedMat;2;1;2;1;01.05.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
 Stecklacken;;MedMat;0;2;5;1;null;null;0;null;0;;;;;Lager
 Sterilverband 40x53mm;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
 Stetoskop;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
@@ -339,14 +459,16 @@ Stetoskop;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Stetoskop;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
 Stifneck Erwachsenen;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Stifneck Kind;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Stopfen;;MedMat;2;1;2;1;11/1/17;null;0;null;0;;;;;Rucksack Vito
-Stopfen;;MedMat;2;1;2;1;11/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Stopfen;;MedMat;2;1;2;1;11/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
-Sultanol;;MedMat;1;1;1;1;3/1/18;null;0;null;0;;;;257Y;KTW Ampullarium
-Sultanol;;MedMat;1;1;1;1;12/1/17;null;0;null;0;;;;TW70;SEG Rucksack KTW
-Sultanol;;MedMat;1;1;1;1;3/1/18;null;0;null;0;;;;257Y;SEG Rucksack MTF
-Sultanol;;MedMat;1;1;1;1;3/1/18;null;0;null;0;;;;257Y;SEG Rucksack Vito Land
-Sultanol;;MedMat;1;1;1;1;3/1/18;null;0;null;0;;;;257Y;SEG Rucksack Vito OV
+Stopfen;;MedMat;2;1;2;1;01.11.2017;null;0;null;0;;;;;Rucksack Vito
+Stopfen;;MedMat;2;1;2;1;01.11.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Stopfen;;MedMat;2;1;2;1;01.11.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
+Sultanol;;MedMat;1;1;1;1;01.03.2018;null;0;null;0;;;;257Y;KTW Ampullarium
+Sultanol;;MedMat;1;1;1;1;01.12.2017;null;0;null;0;;;;TW70;SEG Rucksack KTW
+Sultanol;;MedMat;1;1;1;1;01.03.2018;null;0;null;0;;;;257Y;SEG Rucksack MTF
+Sultanol;;MedMat;1;1;1;1;01.03.2018;null;0;null;0;;;;257Y;SEG Rucksack Vito Land
+Sultanol;;MedMat;1;1;1;1;01.03.2018;null;0;null;0;;;;257Y;SEG Rucksack Vito OV
+Süßstofftabeletten;1200 St.;Verbrauchsmaterial;1;0;1;1;30.04.2019;null;0;null;0;;;;;große Getränktethermophore
+Teelöffel Metall;;Verbrauchsmaterial;4;2;4;1;null;null;0;null;0;;;;;große Getränktethermophore
 Thomas Holder;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Tupfer;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
 Universalbinde 8cm;;MedMat;2;1;2;1;null;null;0;null;0;;;;;Rucksack Vito
@@ -359,53 +481,54 @@ Vaseline;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Venenstauer;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Venenstauer;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Venenstauer;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
-Venenverweilkanüle blau;;MedMat;2;1;2;1;3/1/20;null;0;null;0;;;;;Rucksack Vito
-Venenverweilkanüle blau;;MedMat;1;1;2;1;1/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanüle blau;;MedMat;1;1;2;1;12/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanüle blau;;MedMat;1;1;2;1;12/1/18;null;0;null;0;;;;;SEG Rucksack Vito Land
-Venenverweilkanüle blau;;MedMat;1;1;2;1;3/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
+Venenverweilkanüle blau;;MedMat;2;1;2;1;01.03.2020;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle blau;;MedMat;1;1;2;1;01.01.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle blau;;MedMat;1;1;2;1;01.12.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle blau;;MedMat;1;1;2;1;01.12.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
+Venenverweilkanüle blau;;MedMat;1;1;2;1;01.03.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
 Venenverweilkanüle gelb;;MedMat;0;3;10;1;null;null;0;null;0;;;;;Lager
 Venenverweilkanüle grün;;MedMat;0;3;10;1;null;null;0;null;0;;;;;Lager
-Venenverweilkanüle rosa;;MedMat;1;1;2;1;1/1/18;null;0;null;0;;;;;Rucksack Vito
-Venenverweilkanüle rosa;;MedMat;1;1;2;1;12/1/18;null;0;null;0;;;;;Rucksack Vito
-Venenverweilkanüle rosa;;MedMat;1;1;2;1;4/1/20;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanüle rosa;;MedMat;1;1;2;1;2/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanüle rosa;;MedMat;1;1;2;1;4/1/20;null;0;null;0;;;;;SEG Rucksack Vito Land
-Venenverweilkanüle weiß;;MedMat;2;1;2;1;9/1/19;null;0;null;0;;;;;Rucksack Vito
-Venenverweilkanüle weiß;;MedMat;1;1;2;1;9/1/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanüle weiß;;MedMat;1;1;2;1;10/1/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanüle weiß;;MedMat;2;1;2;1;9/1/19;null;0;null;0;;;;;SEG Rucksack Vito Land
-Venenverweilkanülen orange;;MedMat;1;1;2;1;1/1/18;null;0;null;0;;;;;Rucksack Vito
-Venenverweilkanülen orange;;MedMat;1;1;2;1;5/1/19;null;0;null;0;;;;;Rucksack Vito
-Venenverweilkanülen orange;;MedMat;2;1;2;1;1/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Venenverweilkanülen orange;;MedMat;2;1;2;1;1/1/18;null;0;null;0;;;;;SEG Rucksack Vito Land
+Venenverweilkanüle rosa;;MedMat;1;1;2;1;01.01.2018;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle rosa;;MedMat;1;1;2;1;01.12.2018;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle rosa;;MedMat;1;1;2;1;01.04.2020;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle rosa;;MedMat;1;1;2;1;01.02.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle rosa;;MedMat;1;1;2;1;01.04.2020;null;0;null;0;;;;;SEG Rucksack Vito Land
+Venenverweilkanüle weiß;;MedMat;2;1;2;1;01.09.2019;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanüle weiß;;MedMat;1;1;2;1;01.09.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle weiß;;MedMat;1;1;2;1;01.10.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanüle weiß;;MedMat;2;1;2;1;01.09.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
+Venenverweilkanülen orange;;MedMat;1;1;2;1;01.01.2018;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanülen orange;;MedMat;1;1;2;1;01.05.2019;null;0;null;0;;;;;Rucksack Vito
+Venenverweilkanülen orange;;MedMat;2;1;2;1;01.01.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Venenverweilkanülen orange;;MedMat;2;1;2;1;01.01.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandmaterial – diveres;1 Tüte;Verbrauchsmaterial;1;0;1;1;01.12.2018;null;0;null;0;;;;;Rucksack 2
 Verbandmull 80 cm x 1m;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
-Verbandpäckchen G;;MedMat;4;2;4;1;8/31/19;null;0;null;0;;;;;Rucksack Vito
-Verbandpäckchen G;;MedMat;1;2;4;1;12/31/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandpäckchen G;;MedMat;3;2;4;1;12/31/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandpäckchen G;;MedMat;4;2;4;1;5/31/19;null;0;null;0;;;;;SEG Rucksack Vito Land
-Verbandpäcken K;;MedMat;1;1;2;1;8/31/19;null;0;null;0;;;;;Rucksack Vito
-Verbandpäcken K;;MedMat;1;1;2;1;5/31/20;null;0;null;0;;;;;Rucksack Vito
-Verbandpäcken K;;MedMat;1;1;2;1;5/31/20;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandpäcken K;;MedMat;1;1;2;1;12/31/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandpäcken K;;MedMat;2;1;2;1;12/31/18;null;0;null;0;;;;;SEG Rucksack Vito Land
-Verbandpäcken M;;MedMat;2;1;2;1;5/31/20;null;0;null;0;;;;;Rucksack Vito
-Verbandpäcken M;;MedMat;1;1;2;1;6/1/35;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandpäcken M;;MedMat;1;1;2;1;5/31/19;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandpäcken M;;MedMat;2;1;2;1;5/31/19;null;0;null;0;;;;;SEG Rucksack Vito Land
-Verbandtuch 40 x 60;;MedMat;1;1;2;1;6/1/30;null;0;null;0;;;;;Rucksack Vito
-Verbandtuch 40 x 60;;MedMat;1;1;2;1;6/1/35;null;0;null;0;;;;;Rucksack Vito
-Verbandtuch 40 x 60;;MedMat;1;1;2;1;12/31/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandtuch 40 x 60;;MedMat;1;1;2;1;6/1/30;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandtuch 40 x 60;;MedMat;2;1;2;1;12/1/35;null;0;null;0;;;;;SEG Rucksack Vito Land
-Verbandtuch 60 x 80;;MedMat;2;1;2;1;12/1/19;null;0;null;0;;;;;Rucksack Vito
-Verbandtuch 60 x 80;;MedMat;2;1;2;1;12/31/17;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandtuch 60 x 80;;MedMat;2;1;2;1;12/1/33;null;0;null;0;;;;;SEG Rucksack Vito Land
-Verbandtuch 80 x 120;;MedMat;2;1;2;1;6/1/36;null;0;null;0;;;;;Rucksack Vito
-Verbandtuch 80 x 120;;MedMat;1;1;2;1;12/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandtuch 80 x 120;;MedMat;1;1;2;1;6/1/29;null;0;null;0;;;;;SEG Rucksack Bulli
-Verbandtuch 80 x 120;;MedMat;1;1;2;1;6/1/36;null;0;null;0;;;;;SEG Rucksack Vito Land
-Verbandtuch 80 x 120;;MedMat;1;1;2;1;6/1/18;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandpäckchen G;;MedMat;4;2;4;1;31.08.2019;null;0;null;0;;;;;Rucksack Vito
+Verbandpäckchen G;;MedMat;1;2;4;1;31.12.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäckchen G;;MedMat;3;2;4;1;31.12.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäckchen G;;MedMat;4;2;4;1;31.05.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandpäcken K;;MedMat;1;1;2;1;31.08.2019;null;0;null;0;;;;;Rucksack Vito
+Verbandpäcken K;;MedMat;1;1;2;1;31.05.2020;null;0;null;0;;;;;Rucksack Vito
+Verbandpäcken K;;MedMat;1;1;2;1;31.05.2020;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäcken K;;MedMat;1;1;2;1;31.12.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäcken K;;MedMat;2;1;2;1;31.12.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandpäcken M;;MedMat;2;1;2;1;31.05.2020;null;0;null;0;;;;;Rucksack Vito
+Verbandpäcken M;;MedMat;1;1;2;1;01.06.2035;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäcken M;;MedMat;1;1;2;1;31.05.2019;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandpäcken M;;MedMat;2;1;2;1;31.05.2019;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandtuch 40 x 60;;MedMat;1;1;2;1;01.06.2030;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 40 x 60;;MedMat;1;1;2;1;01.06.2035;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 40 x 60;;MedMat;1;1;2;1;31.12.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 40 x 60;;MedMat;1;1;2;1;01.06.2030;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 40 x 60;;MedMat;2;1;2;1;01.12.1935;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandtuch 60 x 80;;MedMat;2;1;2;1;01.12.2019;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 60 x 80;;MedMat;2;1;2;1;31.12.2017;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 60 x 80;;MedMat;2;1;2;1;01.12.1933;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandtuch 80 x 120;;MedMat;2;1;2;1;01.06.2036;null;0;null;0;;;;;Rucksack Vito
+Verbandtuch 80 x 120;;MedMat;1;1;2;1;01.12.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 80 x 120;;MedMat;1;1;2;1;01.06.2029;null;0;null;0;;;;;SEG Rucksack Bulli
+Verbandtuch 80 x 120;;MedMat;1;1;2;1;01.06.1936;null;0;null;0;;;;;SEG Rucksack Vito Land
+Verbandtuch 80 x 120;;MedMat;1;1;2;1;01.06.2018;null;0;null;0;;;;;SEG Rucksack Vito Land
 Verbandtuch Metaline 40x60;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Verbandtuch Metaline 60x80;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Verbandtuch Metaline 80x120;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
@@ -413,10 +536,29 @@ Verbandvlies;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
 Verbandzellstoff;;MedMat;0;0;0;1;null;null;0;null;0;;;;;Lager
 Verneblermaske Erw.;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
 Verneblermaske Kind;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
-Wasser still0,5;;MedMat;0;2;4;1;null;null;0;null;0;;;;;Lager
-Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;2/1/19;null;0;null;0;;;;;Rucksack Vito
-Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;7/1/18;null;0;null;0;;;;;SEG Rucksack Bulli
-Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;8/1/17;null;0;null;0;;;;;SEG Rucksack Vito Land
+Vlieseinlagen;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Babykiste
+Wasser classic 0,5;0,5 l;Verbrauchsmaterial;6;3;6;1;25.02.2017;null;0;null;0;;;;;Thermophore 2 (rechts)
+Wasser classic 0,5;0,5 l;Verbrauchsmaterial;6;3;6;1;25.02.2017;null;0;null;0;;;;;Kofferraum
+Wasser classic 0,5;0,5 l;Verbrauchsmaterial;3;1;3;1;25.02.2017;null;0;null;0;;;;;Lager
+Wasser medium 0,5;0,5 l;Verbrauchsmaterial;6;3;6;1;22.02.2017;null;0;null;0;;;;;Thermophore 2 (rechts)
+Wasser medium 0,5;0,5 l;Verbrauchsmaterial;6;3;6;1;22.02.2017;null;0;null;0;;;;;Kofferraum
+Wasser medium 0,5;0,5 l;Verbrauchsmaterial;6;4;6;1;22.02.2017;null;0;null;0;;;;;Lager
+Wasser still;0,5 l;Verbrauchsmaterial;2;1;2;1;12.09.2017;null;0;null;0;;;;;Rucksack 1
+Wasser still;1,5 l;Verbrauchsmaterial;12;6;12;1;10.09.2017;null;0;null;0;;;;;Kofferraum
+Wasser still;0,5 l;Verbrauchsmaterial;4;2;4;1;12.09.2017;null;0;null;0;;;;;Lager
+Wasser still;0,5 l;Verbrauchsmaterial;0;2;4;1;null;null;0;null;0;;;;;Lager
+Wasser still;0,5 l;Verbrauchsmaterial;6;3;6;1;23.06.2017;null;0;null;0;;;;;Thermophore 2 (rechts)
+Wasser still;0,5 l;Verbrauchsmaterial;2;1;2;1;12.09.2017;null;0;null;0;;;;;Rucksack 2
+Wasser still;0,5 l;Verbrauchsmaterial;2;1;2;1;12.09.2017;null;0;null;0;;;;;BNN Nr.15
+Wasser still;0,5 l;Verbrauchsmaterial;2;1;2;1;12.09.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Weingummi kl. Tüte;;Verbrauchsmaterial;10;5;10;1;01.06.2017;null;0;null;0;;;;;Rucksack 1
+Weingummi kl. Tüte;;Verbrauchsmaterial;10;5;10;1;01.06.2017;null;0;null;0;;;;;Rucksack 2
+Weingummi kl. Tüte;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;BNN Nr.15
+Weingummi kl. Tüte;;Verbrauchsmaterial;10;5;10;1;01.06.2017;null;0;null;0;;;;;BNN Nr.16 (Nr. 10)
+Wickelfolien;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Babykiste
+Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;01.02.2019;null;0;null;0;;;;;Rucksack Vito
+Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;01.07.2018;null;0;null;0;;;;;SEG Rucksack Bulli
+Wunddesinfektion Ocentisept 50ml;;MedMat;1;0;1;1;01.08.2017;null;0;null;0;;;;;SEG Rucksack Vito Land
 Wundschnellverband Abschnitte 10x5cm sensitiv;;MedMat;1;0;1;1;null;null;0;null;0;;;;;Rucksack Vito
 Wundschnellverband Abschnitte 10x5cm sensitiv;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Bulli
 Wundschnellverband Abschnitte 10x5cm sensitiv;;MedMat;1;0;1;1;null;null;0;null;0;;;;;SEG Rucksack Vito Land
@@ -428,3 +570,5 @@ Wundschnellverband classic 5mx6cm;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
 Wundschnellverband classic 5mx8cm;;MedMat;0;1;2;1;null;null;0;null;0;;;;;Lager
 Zahnprothesenbeutel;;MedMat;2;1;2;1;null;null;0;null;0;;;;;Rucksack Vito
 Zeckenzange;;MedMat;0;0;1;1;null;null;0;null;0;;;;;Lager
+Zellstoff-Flockenwindeln;;Verbrauchsmaterial;10;5;10;1;null;null;0;null;0;;;;;Babykiste
+Zucker;4g;Verbrauchsmaterial;100;50;100;1;null;null;0;null;0;;;;;große Getränktethermophore
