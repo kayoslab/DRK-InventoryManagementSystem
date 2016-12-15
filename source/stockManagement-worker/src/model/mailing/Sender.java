@@ -225,8 +225,17 @@ public class Sender {
 							date = Sender.sdf.format(medicalMaterialValue.date);
 						}
 
-						int orderQuantity = medicalMaterialValue.quotaStock - medicalMaterialValue.volume;
-						if (orderQuantity < 0) {
+						int orderQuantity = 0;
+						int quotaQuantity = medicalMaterialValue.quotaStock - medicalMaterialValue.volume;
+						int minimumQuantity = medicalMaterialValue.minimumStock - medicalMaterialValue.volume;
+						// Date exceeded
+						if (quotaQuantity <= 0 && minimumQuantity <= 0) {
+							orderQuantity = medicalMaterialValue.quotaStock;
+						} else if (quotaQuantity > 0) {
+							orderQuantity = quotaQuantity;
+						} else if (minimumQuantity > 0) {
+							orderQuantity = quotaQuantity;
+						} else {
 							orderQuantity = 0;
 						}
 						String locationTitle = DatabaseReadManager.getLocation(medicalMaterialValue.locationID).title;
@@ -269,8 +278,17 @@ public class Sender {
 							date = Sender.sdf.format(consumableMaterialValue.date);
 						}
 
-						int orderQuantity = consumableMaterialValue.quotaStock - consumableMaterialValue.volume;
-						if (orderQuantity < 0) {
+						int orderQuantity = 0;
+						int quotaQuantity = consumableMaterialValue.quotaStock - consumableMaterialValue.volume;
+						int minimumQuantity = consumableMaterialValue.minimumStock - consumableMaterialValue.volume;
+						// Date exceeded
+						if (quotaQuantity <= 0 && minimumQuantity <= 0) {
+							orderQuantity = consumableMaterialValue.quotaStock;
+						} else if (quotaQuantity > 0) {
+							orderQuantity = quotaQuantity;
+						} else if (minimumQuantity > 0) {
+							orderQuantity = quotaQuantity;
+						} else {
 							orderQuantity = 0;
 						}
 						String locationTitle = DatabaseReadManager.getLocation(consumableMaterialValue.locationID).title;

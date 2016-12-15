@@ -142,25 +142,37 @@ public class MessageUpdateManager {
 					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check medicalMaterialValue for Message State Changes **/
+
 					if (medicalMaterialValue.date != null) {
-						if ((sqlDate.after(medicalMaterialValue.date) || medicalMaterialValue.volume < medicalMaterialValue.minimumStock)) {
-							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (medicalMaterialValue.date.before(sqlDateThreeMonths) || (medicalMaterialValue.volume < medicalMaterialValue.quotaStock)) {
-							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+						if (sqlDate.after(medicalMaterialValue.date)) {
+							if (medicalMaterialValue.minimumStock > 0) {
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
+							} else if (medicalMaterialValue.quotaStock > 0) {
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
+							} else {
+								// dont warn if a min/quota isnt reached by exiring the storability
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+							}
+						} else if (medicalMaterialValue.date.before(sqlDateThreeMonths)) {
+							if (medicalMaterialValue.minimumStock > 0) {
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+							} else if (medicalMaterialValue.quotaStock > 0) {
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+							} else {
+								// dont warn if a min/quota isnt reached by exiring the storability
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+							}
 						} else {
-							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
-						}
-					} else {
-						if (medicalMaterialValue.volume < medicalMaterialValue.minimumStock) {
-							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (medicalMaterialValue.volume < medicalMaterialValue.quotaStock) {
-							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
-						} else {
-							edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+							if (medicalMaterialValue.volume < medicalMaterialValue.minimumStock) {
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
+							} else if (medicalMaterialValue.volume < medicalMaterialValue.quotaStock) {
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
+							} else {
+								// Everything is fine
+								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
+							}
 						}
 					}
-
-
 				} else if (stockValue instanceof ConsumableMaterialValue) {
 					ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockValue;
 					StockObject stockObject = DatabaseReadManager.getStockObject(stockValue.stockObjectID);
@@ -171,23 +183,35 @@ public class MessageUpdateManager {
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check consumableMaterialValue for Message State Changes **/
 					if (consumableMaterialValue.date != null) {
-						if ((sqlDate.after(consumableMaterialValue.date) || consumableMaterialValue.volume < consumableMaterialValue.minimumStock)) {
-							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (consumableMaterialValue.date.before(sqlDateThreeMonths) || (consumableMaterialValue.volume < consumableMaterialValue.quotaStock)) {
-							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+						if (sqlDate.after(consumableMaterialValue.date)) {
+							if (consumableMaterialValue.minimumStock > 0) {
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
+							} else if (consumableMaterialValue.quotaStock > 0) {
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
+							} else {
+								// dont warn if a min/quota isnt reached by exiring the storability
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+							}
+						} else if (consumableMaterialValue.date.before(sqlDateThreeMonths)) {
+							if (consumableMaterialValue.minimumStock > 0) {
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+							} else if (consumableMaterialValue.quotaStock > 0) {
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+							} else {
+								// dont warn if a min/quota isnt reached by exiring the storability
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+							}
 						} else {
-							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
-						}
-					} else {
-						if (consumableMaterialValue.volume < consumableMaterialValue.minimumStock) {
-							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-						} else if (consumableMaterialValue.volume < consumableMaterialValue.quotaStock) {
-							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
-						} else {
-							edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+							if (consumableMaterialValue.volume < consumableMaterialValue.minimumStock) {
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
+							} else if (consumableMaterialValue.volume < consumableMaterialValue.quotaStock) {
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
+							} else {
+								// Everything is fine
+								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
+							}
 						}
 					}
-
 				}
 				if (edited) {
 					System.out.println("Succesfully edited: id " + stockValue.id);
