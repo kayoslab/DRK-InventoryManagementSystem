@@ -35,6 +35,8 @@ public class StockValuePresenter extends Presenter {
 	private JTextField serialField;
 	private JTextField umdnsField;
 	private JTextField batchField;
+	private JTextField minimumStockField;
+	private JTextField quotaStockField;
 
 	/**
 	 * Create the application.
@@ -145,7 +147,6 @@ public class StockValuePresenter extends Presenter {
 				umdnsLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*7, leftSideMenuWidth, lineHeight);
 				this.frame.getContentPane().add(umdnsLabel);
 
-
 				UtilDateModel model1 = new UtilDateModel();
 				Properties p1 = new Properties();
 				p1.put("text.today", "Heute");
@@ -225,9 +226,18 @@ public class StockValuePresenter extends Presenter {
 				dateFieldLabel1.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*3, leftSideMenuWidth, lineHeight);
 				this.frame.getContentPane().add(dateFieldLabel1);
 
+
 				JLabel dateFieldLabel2 = new JLabel("Chargennummer:");
 				dateFieldLabel2.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*4, leftSideMenuWidth, lineHeight);
 				this.frame.getContentPane().add(dateFieldLabel2);
+
+				JLabel minimumValueLabel = new JLabel("Mindestbestand:");
+				minimumValueLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*5, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(minimumValueLabel);
+
+				JLabel quotaStockLabel = new JLabel("Sollbestand:");
+				quotaStockLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*6, leftSideMenuWidth, lineHeight);
+				this.frame.getContentPane().add(quotaStockLabel);
 
 				/** Data **/
 				UtilDateModel model = new UtilDateModel();
@@ -253,14 +263,29 @@ public class StockValuePresenter extends Presenter {
 				this.batchField.setColumns(10);
 				this.batchField.addActionListener(this);
 
+				this.minimumStockField = new JTextField();
+				this.minimumStockField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*5, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				frame.getContentPane().add(this.minimumStockField);
+				this.minimumStockField.setColumns(10);
+				this.minimumStockField.addActionListener(this);
+
+				this.quotaStockField = new JTextField();
+				this.quotaStockField.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*6, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
+				frame.getContentPane().add(this.quotaStockField);
+				this.quotaStockField.setColumns(10);
+				this.quotaStockField.addActionListener(this);
+
 				if (this.stockObjectValue != null) {
 					if (this.stockObjectValue instanceof MaterialValue) {
 						MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
 						this.batchField.setText(materialValue.batchNumber);
+						this.minimumStockField.setText("" + materialValue.minimumStock);
+						this.quotaStockField.setText("" + materialValue.quotaStock);
 					}
 				}
 			} else {
 				// Should not be reached - only Vehicles
+
 			}
 		}
 
@@ -300,6 +325,24 @@ public class StockValuePresenter extends Presenter {
 					MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
 					materialValue.date = (Date)this.dateField1.getModel().getValue();
 					materialValue.batchNumber = this.batchField.getText();
+
+					DecimalFormat decimalFormat = new DecimalFormat("#");
+					int minimumStock = 0;
+					int quotaStock = 0;
+					try {
+						minimumStock = decimalFormat.parse(this.minimumStockField.getText()).intValue();
+					} catch (ParseException parseException) {
+						// Cant parse Textfields to int
+					}
+					try {
+						quotaStock = decimalFormat.parse(this.quotaStockField.getText()).intValue();
+					} catch (ParseException parseException) {
+						// Cant parse Textfields to int
+					}
+
+					materialValue.minimumStock = minimumStock;
+					materialValue.quotaStock = quotaStock;
+
 					if (materialValue.editObject()) {
 						System.out.println("Saved");
 						this.showPreviousPresenter();
@@ -321,20 +364,35 @@ public class StockValuePresenter extends Presenter {
 							String serialNumber = this.serialField.getText();
 							String inventoryNumber = this.inventoryField.getText();
 							String umdns = this.umdnsField.getText();
-							DeviceValue deviceValue = new DeviceValue(0, volume, mtkDate, stkDate, this.stockObject.id, locationID, 1, serialNumber, inventoryNumber, umdns);
+
+							// (int id, int volume, Boolean silencedWarnings, Date mtkDate, Date stkDate,
+							// int stockObjectID, int locationID, int messageID, String serialNumber,
+							// String inventoryNumber, String umdns)
+							DeviceValue deviceValue = new DeviceValue(0, volume, false, mtkDate,
+									stkDate, this.stockObject.id, locationID, 1, serialNumber,
+									inventoryNumber, umdns);
 							if (deviceValue.createObject()) {
 								this.showPreviousPresenter();
 							}
 						} else if (this.stockObject instanceof Material) {
 							Date date = (Date)this.dateField1.getModel().getValue();
 							String batchNumber = this.batchField.getText();
+							int minimumStock = 0;
+							int quotaStock = 0;
+
 							if (this.stockObject instanceof MedicalMaterial) {
-								MedicalMaterialValue medicalMaterialValue = new MedicalMaterialValue(0, volume, this.stockObject.id, locationID, 1, batchNumber, date);
+								// (int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID, String batchNumber, Date date, int minimumStock, int quotaStock)
+								MedicalMaterialValue medicalMaterialValue = new MedicalMaterialValue(0, volume,
+										false, this.stockObject.id, locationID, 1,
+										batchNumber, date, minimumStock, quotaStock);
 								if (medicalMaterialValue.createObject()) {
 									this.showPreviousPresenter();
 								}
 							} else if (this.stockObject instanceof ConsumableMaterial) {
-								ConsumableMaterialValue consumableMaterialValue = new ConsumableMaterialValue(0, volume, this.stockObject.id, locationID, 1, batchNumber, date);
+								// (int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID, String batchNumber, Date date, int minimumStock, int quotaStock)
+								ConsumableMaterialValue consumableMaterialValue = new ConsumableMaterialValue(0,
+										volume, false, this.stockObject.id, locationID, 1,
+										batchNumber, date, minimumStock, quotaStock);
 								if (consumableMaterialValue.createObject()) {
 									this.showPreviousPresenter();
 								}

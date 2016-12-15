@@ -196,6 +196,7 @@ public class Sender {
 						"<th align=\"center\">Titel</th>" +
 						"<th align=\"center\">Lagerort</th>" +
 						"<th align=\"center\">Lagerbestand</th>" +
+						"<th align=\"center\">Sollbestand</th>" +
 						"<th align=\"center\">Bestellmenge</th>" +
 						"<th align=\"center\">Ablaufdatum</th>" +
 						"</tr>";
@@ -209,11 +210,12 @@ public class Sender {
 							date = Sender.sdf.format(medicalMaterialValue.date);
 						}
 
-						int orderQuantity = medicalMaterial.quotaStock - medicalMaterial.totalVolume;
+						int orderQuantity = medicalMaterialValue.quotaStock - medicalMaterialValue.volume;
 						String locationTitle = DatabaseReadManager.getLocation(medicalMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + medicalMaterial.title + ", " +
 								"Lagerort: " + locationTitle + ", "+
 								"Lagerbestand: " + medicalMaterialValue.volume + ", "+
+								"Sollbestand: " + medicalMaterialValue.quotaStock + ", "+
 								"Bestellmenge: " + orderQuantity + ", "+
 								"Ablaufdatum: " + date +
 								" \n\n";
@@ -221,6 +223,7 @@ public class Sender {
 								"<td align=\"center\">" + medicalMaterial.title + "</td>" +
 								"<td align=\"center\">" + locationTitle + "</td>" +
 								"<td align=\"center\">" + medicalMaterialValue.volume + "</td>" +
+								"<td align=\"center\">" + medicalMaterialValue.quotaStock + "</td>" +
 								"<td align=\"center\">" + orderQuantity + "</td>" +
 								"<td align=\"center\">" + date + "</td>" +
 								"</tr>";
@@ -234,6 +237,7 @@ public class Sender {
 						"<th align=\"center\">Titel</th>" +
 						"<th align=\"center\">Lagerort</th>" +
 						"<th align=\"center\">Lagerbestand</th>" +
+						"<th align=\"center\">Sollbestand</th>" +
 						"<th align=\"center\">Bestellmenge</th>" +
 						"<th align=\"center\">Ablaufdatum</th>" +
 						"</tr>";
@@ -247,11 +251,12 @@ public class Sender {
 							date = Sender.sdf.format(consumableMaterialValue.date);
 						}
 
-						int orderQuantity = consumableMaterial.quotaStock - consumableMaterial.totalVolume;
+						int orderQuantity = consumableMaterialValue.quotaStock - consumableMaterialValue.volume;
 						String locationTitle = DatabaseReadManager.getLocation(consumableMaterialValue.locationID).title;
 						plainMessageString += "Titel: " + consumableMaterial.title + ", " +
 								"Lagerort: " + locationTitle + ", "+
 								"Lagerbestand: " + consumableMaterialValue.volume + ", "+
+								"Sollbestand: " + consumableMaterialValue.quotaStock + ", "+
 								"Bestellmenge: " + orderQuantity + ", "+
 								"Ablaufdatum: " + date +
 								" \n\n";
@@ -259,6 +264,7 @@ public class Sender {
 								"<td align=\"center\">" + consumableMaterial.title + "</td>" +
 								"<td align=\"center\">" + locationTitle + "</td>" +
 								"<td align=\"center\">" + consumableMaterialValue.volume + "</td>" +
+								"<td align=\"center\">" + consumableMaterialValue.quotaStock + "</td>" +
 								"<td align=\"center\">" + orderQuantity + "</td>" +
 								"<td align=\"center\">" + date + "</td>" +
 								"</tr>";

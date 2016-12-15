@@ -37,14 +37,6 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	private JMenuItem editGroupMenuItem;
 
 	/**
-	 * Create the application.
-	 */
-	public MenuPresenter() {
-		this.previousPresenter = previousPresenter;
-		initialize();
-	}
-
-	/**
 	 * @param previousPresenter Presenter
 	 *
 	 * Create the application.

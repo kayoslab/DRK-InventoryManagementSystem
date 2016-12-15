@@ -19,7 +19,6 @@ public class SetupPresenter extends Presenter {
 	 * Create the application.
 	 */
 	public SetupPresenter() {
-		this.previousPresenter = previousPresenter;
 		initialize();
 	}
 

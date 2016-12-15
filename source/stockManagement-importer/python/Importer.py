@@ -53,7 +53,6 @@ class Importer:
         for row in self.readData:
             # Location
             locations.add(row['Lagerort'])
-
             # StockObject
             stockObjectConstainsNewStockObject = False
             stockObjectForIndex = 0
@@ -73,8 +72,9 @@ class Importer:
                     stockObjects[stockObjectForIndex]["totalVolume"] = str(oldTotalVolume + addingRowVolume)
                     break
                 stockObjectForIndex += 1
+
             if stockObjectConstainsNewStockObject == False:
-                stockObject = {"title":row['Titel'], "description":row['Beschreibung'], "type":row['Art'], "minimumStock":row["Mindestbestand"], "quotaStock":row["Sollbestand"], "batchSize":row["Losgröße"], "totalVolume":row["Bestand"], "mtkIntervall":row["MTK Intervall"], "stkIntervall":row["STK Intervall"], "location":row["Lagerort"]}
+                stockObject = {"title":row['Titel'], "description":row['Beschreibung'], "type":row['Art'], "batchSize":row["Losgröße"], "totalVolume":row["Bestand"], "mtkIntervall":row["MTK Intervall"], "stkIntervall":row["STK Intervall"]}
                 stockObjects.append(stockObject)
 
             # StockValue
@@ -97,7 +97,7 @@ class Importer:
                     break
                 stockValueForIndex += 1
             if stockValueConstainsNewStockObject == False:
-                stockValue = {"volume":row['Bestand'], "date":row['Datum'], "mtkDate":row['Letzte MTK'], "stkDate":row['Letzte STK'], "inventoryNumber":row['Inventarnummer'], "serialNumber":row['Seriennummer'], "umdns":row['UMDNS'], "batchNumber":row['Chargennummer'], "title":row['Titel'], "location":row['Lagerort'] }
+                stockValue = {"volume":row['Bestand'], "date":row['Datum'], "mtkDate":row['Letzte MTK'], "stkDate":row['Letzte STK'], "inventoryNumber":row['Inventarnummer'], "serialNumber":row['Seriennummer'], "umdns":row['UMDNS'], "batchNumber":row['Chargennummer'], "title":row['Titel'], "location":row['Lagerort'], "minimumStock":row["Mindestbestand"], "quotaStock":row["Sollbestand"], "location":row['Lagerort'] }
                 stockValues.append(stockValue)
         if len(locations) > 0:
             locationsString = self.generateLocationSQL(locations)
@@ -127,32 +127,24 @@ class Importer:
         return locationSqlString
 
     def generateStockObjectSQL(self, stockObjects):
-        stockObjectSqlString = "INSERT IGNORE INTO " + str(self.dbo.stockObjectTable["table"]) + "\n(" + str(self.dbo.stockObjectTable["title"]) + ",\n " + str(self.dbo.stockObjectTable["description"]) + ",\n " + str(self.dbo.stockObjectTable["minimumStock"]) + ",\n " + str(self.dbo.stockObjectTable["quotaStock"]) + ",\n " + str(self.dbo.stockObjectTable["batchSize"]) + ",\n " + str(self.dbo.stockObjectTable["totalVolume"]) + ",\n " + str(self.dbo.stockObjectTable["mtkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["stkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["silencedWarnings"]) + ",\n " + str(self.dbo.stockObjectTable["typeId"]) + ")\nVALUES\n"
+        stockObjectSqlString = "INSERT IGNORE INTO " + str(self.dbo.stockObjectTable["table"]) + "\n(" + str(self.dbo.stockObjectTable["title"]) + ",\n " + str(self.dbo.stockObjectTable["description"]) + ",\n " +  str(self.dbo.stockObjectTable["batchSize"]) + ",\n " + str(self.dbo.stockObjectTable["totalVolume"]) + ",\n " + str(self.dbo.stockObjectTable["mtkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["stkIntervall"]) + ",\n " + str(self.dbo.stockObjectTable["creation"]) + ",\n " + str(self.dbo.stockObjectTable["typeId"]) + ")\nVALUES\n"
         for stockObject in stockObjects:
-            minimumStock = "0"
-            quotaStock = "0"
             batchSize = "0"
             totalVolume = "0"
             mtkIntervall = "0"
             stkIntervall = "0"
-            silencedWarnings = "false"
+            creation = time.strftime(self.timeFormat)
             typeId = str(self.getTypeIdSelect(stockObject["type"]))
-
-            if stockObject["minimumStock"] != None and stockObject["minimumStock"].isdigit():
-                minimumStock = str(stockObject["minimumStock"])
-            if stockObject["quotaStock"] != None and stockObject["quotaStock"].isdigit():
-                quotaStock = str(stockObject["quotaStock"])
             if stockObject["batchSize"] != None and stockObject["batchSize"].isdigit():
                 batchSize = str(stockObject["batchSize"])
-            # workaround for totalVolume only when location == "Lager"
-            if stockObject["totalVolume"] != None and stockObject["totalVolume"].isdigit() and stockObject["location"] == "Lager":
+            if stockObject["totalVolume"] != None and stockObject["totalVolume"].isdigit():
                 totalVolume = str(stockObject["totalVolume"])
             if stockObject["mtkIntervall"] != None and stockObject["mtkIntervall"].isdigit():
                 mtkIntervall = str(stockObject["mtkIntervall"])
             if stockObject["stkIntervall"] != None and stockObject["stkIntervall"].isdigit():
                 stkIntervall = str(stockObject["stkIntervall"])
             # appending Strings
-            stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + minimumStock + ", " + quotaStock + ", " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + silencedWarnings + ", " + typeId + "),\n"
+            stockObjectSqlString += "('" + stockObject["title"] + "', '" + stockObject["description"] + "', " + batchSize + ", " + totalVolume + ", " + mtkIntervall + ", " + stkIntervall + ", " + creation + ", " + typeId + "),\n"
 
         # Stripping last \n and ,
         stockObjectSqlString = stockObjectSqlString[:-2]
@@ -161,7 +153,7 @@ class Importer:
         return stockObjectSqlString
 
     def generateStockValueSQL(self, stockValues):
-        stockValueSqlString = "INSERT IGNORE INTO " + str(self.dbo.stockValueTable["table"]) + "\n(" + str(self.dbo.stockValueTable["volume"]) + ", " + str(self.dbo.stockValueTable["date"]) + ", " + str(self.dbo.stockValueTable["mtkDate"]) + ", " + str(self.dbo.stockValueTable["stkDate"]) + ", " + str(self.dbo.stockValueTable["inventoryNumber"]) + ", " + str(self.dbo.stockValueTable["serialNumber"]) + ", " + str(self.dbo.stockValueTable["umdns"]) + ", " + str(self.dbo.stockValueTable["batchNumber"]) + ", " + str(self.dbo.stockValueTable["creation"]) + ", " + str(self.dbo.stockValueTable["escalationAck"]) + ", " + str(self.dbo.stockValueTable["stockObjectId"]) + ", " + str(self.dbo.stockValueTable["locationId"]) + ", " + str(self.dbo.stockValueTable["messageId"]) + ")\nVALUES\n"
+        stockValueSqlString = "INSERT IGNORE INTO " + str(self.dbo.stockValueTable["table"]) + "\n(" + str(self.dbo.stockValueTable["volume"]) + ", " + str(self.dbo.stockValueTable["date"]) + ", " + str(self.dbo.stockValueTable["mtkDate"]) + ", " + str(self.dbo.stockValueTable["stkDate"]) + ", " + str(self.dbo.stockValueTable["inventoryNumber"]) + ", " + str(self.dbo.stockValueTable["serialNumber"]) + ", " + str(self.dbo.stockValueTable["umdns"]) + ", " + str(self.dbo.stockValueTable["batchNumber"]) + ", " + str(self.dbo.stockValueTable["minimumStock"]) + ", " + str(self.dbo.stockValueTable["quotaStock"]) + ", " + str(self.dbo.stockValueTable["silencedWarnings"]) + ", " + str(self.dbo.stockValueTable["creation"]) + ", " + str(self.dbo.stockValueTable["stockObjectId"]) + ", " + str(self.dbo.stockValueTable["locationId"]) + ", " + str(self.dbo.stockValueTable["messageId"]) + ")\nVALUES\n"
 
         for stockValue in stockValues:
             volume = "0"
@@ -172,8 +164,10 @@ class Importer:
             serialNumber = "null"
             umdns = "null"
             batchNumber = "null"
+            minimumStock = "0"
+            quotaStock = "0"
+            silencedWarnings = "False"
             creation = time.strftime(self.timeFormat)
-            escalationAck = "0"
             stockObjectId = "0"
             locationId = "0"
             messageId = "1"
@@ -193,16 +187,17 @@ class Importer:
                 umdns = str(stockValue["umdns"])
             if stockValue["batchNumber"] != None:
                 batchNumber = str(stockValue["batchNumber"])
+            if stockValue["minimumStock"] != None and stockValue["minimumStock"].isdigit():
+                minimumStock = str(stockValue["minimumStock"])
+            if stockValue["quotaStock"] != None and stockValue["quotaStock"].isdigit():
+                quotaStock = str(stockValue["quotaStock"])
             if stockValue["title"] != None:
                 stockObjectId = self.getStockObjectSelectStatement(stockValue["title"])
             if stockValue["location"] != None:
                 locationId = self.getLocationSelectStatement(stockValue["location"])
-
             if stockValue["volume"] != None and stockValue["title"] != None and stockValue["location"] != None:
                 # appending Strings
-                if volume != "0":
-                    stockValueSqlString += "(" + volume + ", " + date + ", " + mtkDate + ", " + stkDate + ", '" + inventoryNumber + "', '" + serialNumber + "', '" + umdns + "', '" + batchNumber + "', " + creation + ", " + escalationAck + ", " + stockObjectId + ", " + locationId + ", " + messageId + "),\n"
-
+                stockValueSqlString += "(" + volume + ", " + date + ", " + mtkDate + ", " + stkDate + ", '" + inventoryNumber + "', '" + serialNumber + "', '" + umdns + "', '" + batchNumber + "', " + minimumStock + ", " + quotaStock + ", " + silencedWarnings + ", " + creation + ", " + stockObjectId + ", " + locationId + ", " + messageId + "),\n"
         if len(stockValueSqlString) == 0:
             return None
         # Stripping last \n and ,

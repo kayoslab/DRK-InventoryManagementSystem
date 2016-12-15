@@ -35,13 +35,6 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		initialize();
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public DetailPresenter(StockObject stockObject) {
-		this.stockObject = stockObject;
-		initialize();
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -108,7 +101,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		this.stockObjectValues = DatabaseReadManager.getStockObjectValues(this.stockObject);
 		if (this.stockObjectValues != null) {
 			if (this.stockObject instanceof Device) {
-				Object columnNames[] = { "Lagerbestand", "Lagerort", "MTK", "STK"};
+				Object columnNames[] = { "Lagerort", "Lagerbestand", "MTK", "STK" };
 				DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 				for (StockObjectValue stockObjectValue : this.stockObjectValues) {
@@ -122,15 +115,16 @@ public class DetailPresenter extends Presenter implements MouseListener {
 						if (deviceValue.stkDate != null) {
 							stkDate = this.sdf.format(deviceValue.stkDate);
 						}
-						Object row[] = { deviceValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title,
-								mtkDate, stkDate};
+						Object row[] = { DatabaseReadManager.getLocation(stockObjectValue.locationID).title,
+								deviceValue.volume, mtkDate, stkDate,
+						};
 						model.addRow(row);
 					}
 				}
 				table.setModel(model);
 			} else if (this.stockObject instanceof Material) {
 				if (this.stockObject instanceof MedicalMaterial) {
-					Object columnNames[] = { "Lagerbestand", "Lagerort", "Haltbar bis"};
+					Object columnNames[] = { "Lagerort", "Lagerbestand", "Mindestbestand", "Sollbestand", "Haltbar bis" };
 					DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
@@ -140,13 +134,16 @@ public class DetailPresenter extends Presenter implements MouseListener {
 							if (medicalMaterialValue.date != null) {
 								date = this.sdf.format(medicalMaterialValue.date);
 							}
-							Object row[] = { medicalMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, date};
+							Object row[] = { DatabaseReadManager.getLocation(stockObjectValue.locationID).title,
+									medicalMaterialValue.volume, medicalMaterialValue.minimumStock,
+									medicalMaterialValue.quotaStock, date
+									 };
 							model.addRow(row);
 						}
 					}
 					table.setModel(model);
 				} else if (this.stockObject instanceof ConsumableMaterial) {
-					Object columnNames[] = { "Lagerbestand", "Lagerort", "Haltbar bis"};
+					Object columnNames[] = { "Lagerort", "Lagerbestand", "Mindestbestand", "Sollbestand", "Haltbar bis"};
 					DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
 					for (StockObjectValue stockObjectValue : this.stockObjectValues) {
@@ -156,7 +153,10 @@ public class DetailPresenter extends Presenter implements MouseListener {
 							if (consumableMaterialValue.date != null) {
 								date = this.sdf.format(consumableMaterialValue.date);
 							}
-							Object row[] = { consumableMaterialValue.volume, DatabaseReadManager.getLocation(stockObjectValue.locationID).title, date};
+							Object row[] = { DatabaseReadManager.getLocation(stockObjectValue.locationID).title ,
+									consumableMaterialValue.volume, consumableMaterialValue.minimumStock,
+									consumableMaterialValue.quotaStock, date
+									};
 							model.addRow(row);
 						}
 					}

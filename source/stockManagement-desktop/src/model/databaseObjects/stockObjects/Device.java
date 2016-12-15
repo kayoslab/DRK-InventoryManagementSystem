@@ -10,9 +10,9 @@ public class Device extends StockObject {
 	public int mtkIntervall;
 	public int stkIntervall;
 		
-	public Device(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume,
+	public Device(int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume,
 				  int mtkIntervall, int stkIntervall) { 
-		super(id, title, description, silencedWarnings, type, totalVolume);
+		super(id, title, description, type, totalVolume);
 		
 		this.mtkIntervall = mtkIntervall;
 		this.stkIntervall = stkIntervall;

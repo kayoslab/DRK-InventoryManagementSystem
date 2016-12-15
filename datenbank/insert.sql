@@ -155,13 +155,13 @@ VALUES
 
 INSERT INTO `Type`
 VALUES
-    (0,'device'),
-    (0,'medicalMaterial'),
-    (0,'consumableMaterial'),
-    (0,'vehicle');
+    (0,'Gerät'),
+    (0,'Medizinisches Material'),
+    (0,'Versorgungsmaterial'),
+    (0,'Fahrzeug');
 
 INSERT INTO `Message`
 VALUES
-    (0,'green',1),
-    (0,'yellow',2),
-    (0,'red',3);
+    (0,'green'),
+    (0,'yellow'),
+    (0,'red');

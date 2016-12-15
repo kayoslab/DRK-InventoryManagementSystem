@@ -6,8 +6,8 @@ import model.databaseObjects.DatabaseObject;
  */
 public class MedicalMaterial extends Material {
 	
-	public MedicalMaterial(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume, int batchSize, int minimumStock, int quotaStock) {
-		super(id, title, description, silencedWarnings, type, totalVolume, batchSize, minimumStock, quotaStock);
+	public MedicalMaterial( int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize ) {
+		super(id, title, description, type, totalVolume, batchSize);
 	}
 
 }

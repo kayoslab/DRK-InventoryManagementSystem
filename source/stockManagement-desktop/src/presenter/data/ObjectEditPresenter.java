@@ -129,10 +129,10 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 				columnNames = new Object[]{ "Titel", "MTK Intervall", "STK Intervall"};
 				break;
 			case medicalMaterialMenuItem:
-				columnNames = new Object[]{ "Titel", "Mindestbestand", "Sollbestand"};
+				columnNames = new Object[]{ "Titel", "" };
 				break;
 			case consumableMaterialMenuItem:
-				columnNames = new Object[]{ "Titel", "Mindestbestand", "Sollbestand"};
+				columnNames = new Object[]{ "Titel"};
 				break;
 			case locationMenuItem:
 				columnNames = new Object[]{ "Titel"};
@@ -160,14 +160,14 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 					case medicalMaterialMenuItem:
 						if (databaseObject instanceof MedicalMaterial) {
 							MedicalMaterial medicalMaterial = (MedicalMaterial) databaseObject;
-							Object row[] = {medicalMaterial.title, medicalMaterial.minimumStock, medicalMaterial.quotaStock};
+							Object row[] = {medicalMaterial.title };
 							model.addRow(row);
 						}
 						break;
 					case consumableMaterialMenuItem:
 						if (databaseObject instanceof ConsumableMaterial) {
 							ConsumableMaterial consumableMaterial = (ConsumableMaterial) databaseObject;
-							Object row[] = {consumableMaterial.title, consumableMaterial.minimumStock, consumableMaterial.quotaStock};
+							Object row[] = {consumableMaterial.title };
 							model.addRow(row);
 						}
 						break;

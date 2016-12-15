@@ -6,14 +6,14 @@ import model.databaseObjects.DatabaseObject;
  * Extends Abstract Class StockObject
  */
 public class Device extends StockObject {
-	
+
 	public int mtkIntervall;
 	public int stkIntervall;
-		
-	public Device(int id, String title, String description, Boolean silencedWarnings, DatabaseObject.StockObjectType type, int totalVolume,
-				  int mtkIntervall, int stkIntervall) { 
-		super(id, title, description, silencedWarnings, type, totalVolume);
-		
+
+	public Device(int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume,
+	              int mtkIntervall, int stkIntervall) {
+		super(id, title, description, type, totalVolume);
+
 		this.mtkIntervall = mtkIntervall;
 		this.stkIntervall = stkIntervall;
 	}

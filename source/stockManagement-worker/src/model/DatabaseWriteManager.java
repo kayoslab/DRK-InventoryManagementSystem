@@ -341,30 +341,49 @@ public final class DatabaseWriteManager {
 		if (stockObject instanceof Device) {
 			Device device = (Device) stockObject;
 			//Type ID 1 = Device
-			sqlStatement = "INSERT INTO `StockObject` VALUES(0,'"
-					+ device.title + "','" + device.description + "', NULL, NULL, NULL, 0,"
-					+ device.mtkIntervall + ", " + device.stkIntervall
-					+ ", '" + DatabaseWriteManager.sdf.format(timestamp) + "', " + device.silencedWarnings + ", "
-					+ DatabaseObject.StockObjectType.device.ordinal() + ");";
+			sqlStatement = "INSERT INTO `StockObject` " +
+					"VALUES(" +
+					"0" + // id
+					",'" + device.title + "'" + // titel
+					"," + "'" + device.description + "'" + // description
+					", 1" + // batchSize
+					", 0" + // totalVolume
+					"," + device.mtkIntervall + // mtkIntervall
+					", " + device.stkIntervall + // stkIntervall
+					", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+					", " + DatabaseObject.StockObjectType.device.ordinal() + // typeID
+					");";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
 				MedicalMaterial medmat = (MedicalMaterial) stockObject;
 				//Type ID 2 = MedicalMaterial
-				sqlStatement = "INSERT INTO `StockObject` VALUES(0,'"
-						+ medmat.title + "','" + medmat.description + "', "
-						+ medmat.minimumStock + ", " + medmat.quotaStock + ", "
-						+ medmat.batchSize + ", 0, NULL, NULL, '"
-						+ DatabaseWriteManager.sdf.format(timestamp) + "', " + medmat.silencedWarnings + ", "
-						+ DatabaseObject.StockObjectType.medicalMaterial.ordinal() + ");";
+				sqlStatement = "INSERT INTO `StockObject` " +
+						"VALUES(" +
+						"0" + // id
+						", " + "'" + medmat.title + "'" + // titel
+						", " + "'" + medmat.description + "'" + // description
+						", " + medmat.batchSize + // batchSize
+						", 0" + // totalVolume
+						", NULL" + // mtkIntervall
+						", NULL" + // stkIntervall
+						"," + "'" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
+						", " + DatabaseObject.StockObjectType.medicalMaterial.ordinal() + // typeID
+						");";
 			} else if (stockObject instanceof ConsumableMaterial) {
 				ConsumableMaterial consmat = (ConsumableMaterial) stockObject;
 				//Type ID 3 = ConsumableMaterial
-				sqlStatement = "INSERT INTO `StockObject` VALUES(0,'"
-						+ consmat.title + "','" + consmat.description + "', "
-						+ consmat.minimumStock + ", " + consmat.quotaStock + ", "
-						+ consmat.batchSize + ", 0, NULL, NULL, '"
-						+ DatabaseWriteManager.sdf.format(timestamp) + "', " + consmat.silencedWarnings + ", "
-						+ DatabaseObject.StockObjectType.consumableMaterial.ordinal() + ");";
+				sqlStatement = "INSERT INTO `StockObject` " +
+						"VALUES(" +
+						"0" + // id
+						", " + "'" + consmat.title + "'" + // titel
+						", " + "'" + consmat.description + "'" + // description
+						", " + consmat.batchSize + // batchSize
+						", 0" + // totalVolume
+						", NULL" + // mtkIntervall
+						", NULL" + // stkIntervall
+						", " + "'" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
+						", " + DatabaseObject.StockObjectType.consumableMaterial.ordinal() + // typeID
+						");";
 			} else {
 				return false;
 			}
@@ -387,15 +406,17 @@ public final class DatabaseWriteManager {
 		String sqlStatement;
 		// Switch between different extended StockObject Types
 		if (stockObject instanceof Device) {
-			sqlStatement = "DELETE FROM `StockObject` WHERE `id` = "
-					+ stockObject.id + ";";
+			sqlStatement = "DELETE FROM `StockObject` " +
+					"WHERE `id` = " + stockObject.id +
+					";";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
-				sqlStatement = "DELETE FROM `StockObject` WHERE `id` = "
-						+ stockObject.id + ";";
+				sqlStatement = "DELETE FROM `StockObject` " +
+						"WHERE `id` = " + stockObject.id +
+						";";
 			} else if (stockObject instanceof ConsumableMaterial) {
-				sqlStatement = "DELETE FROM `StockObject` WHERE `id` = "
-						+ stockObject.id + ";";
+				sqlStatement = "DELETE FROM `StockObject` " +
+						"WHERE `id` = " + stockObject.id + ";";
 			} else {
 				return false;
 			}
@@ -421,32 +442,31 @@ public final class DatabaseWriteManager {
 		if (stockObject instanceof Device) {
 			Device device = (Device) stockObject;
 			//Type ID 1 = Device
-			sqlStatement = "UPDATE `StockObject` SET `title` = '" + device.title
-					+ "', `description` = '" + device.description + "', `mtkIntervall` = "
-					+ device.mtkIntervall + ", `stkIntervall` = " + device.stkIntervall
-					+ ", silencedWarnings = "	+ device.silencedWarnings + " WHERE `id` = "
-					+ stockObject.id + ";";
+			sqlStatement = "UPDATE `StockObject` " +
+					"SET `title` = '" + device.title
+					+ "', `description` = '" + device.description +
+					"', `mtkIntervall` = " + device.mtkIntervall +
+					", `stkIntervall` = " + device.stkIntervall
+					+ " WHERE `id` = " + stockObject.id + ";";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
 				MedicalMaterial medmat = (MedicalMaterial) stockObject;
 				//Type ID 2 = MedicalMaterial
-				sqlStatement = "UPDATE `StockObject` SET `title` = '" + medmat.title
-						+ "', `description` = '" + medmat.description + "', `minimumStock` = "
-						+ medmat.minimumStock + ", `quotaStock` = " + medmat.quotaStock
-						+ ", `batchSize` = " + medmat.batchSize
-						+ ", `totalVolume` = " + medmat.totalVolume
-						+ ", silencedWarnings = "	+ medmat.silencedWarnings + " WHERE `id` = "
-						+ stockObject.id + ";";
+				sqlStatement = "UPDATE `StockObject` " +
+						"SET `title` = '" + medmat.title
+						+ "', `description` = '" + medmat.description +
+						"', `batchSize` = " + medmat.batchSize +
+						", `totalVolume` = " + medmat.totalVolume
+						+ " WHERE `id` = " + stockObject.id + ";";
 			} else if (stockObject instanceof ConsumableMaterial) {
 				ConsumableMaterial consmat = (ConsumableMaterial) stockObject;
 				//Type ID 3 = ConsumableMaterial
-				sqlStatement = "UPDATE `StockObject` SET `title` = '" + consmat.title
-						+ "', `description` = '" + consmat.description + "', `minimumStock` = "
-						+ consmat.minimumStock + ", `quotaStock` = " + consmat.quotaStock
-						+ ", `batchSize` = " + consmat.batchSize
-						+ ", `totalVolume` = " + consmat.totalVolume
-						+ ", silencedWarnings = "	+ consmat.silencedWarnings + " WHERE `id` = "
-						+ stockObject.id + ";";
+				sqlStatement = "UPDATE `StockObject` " +
+						"SET `title` = '" + consmat.title
+						+ "', `description` = '" + consmat.description +
+						"',  `batchSize` = " + consmat.batchSize
+						+ ", `totalVolume` = " + consmat.totalVolume +
+						" WHERE `id` = " + stockObject.id + ";";
 			} else {
 				return false;
 			}
@@ -491,12 +511,26 @@ public final class DatabaseWriteManager {
 					if (deviceValue.stkDate != null) {
 						stkDate = "'" + DatabaseWriteManager.sdf.format(deviceValue.stkDate) + "'";
 					}
-					sqlStatement = "INSERT INTO `StockValue` VALUES(0,"
-							+ stockObjectValue.volume + ", NULL, " + mtkDate
-							+ ", " + stkDate + ", '" + deviceValue.inventoryNumber
-							+ "', '" + deviceValue.serialNumber + "', '" + deviceValue.umdns + "', NULL, '"
-							+ DatabaseWriteManager.sdf.format(timestamp) + "', 0, " + stockObjectValue.stockObjectID + ", "
-							+ stockObjectValue.locationID + ", " + stockObjectValue.messageID + ");";
+
+					sqlStatement = "INSERT INTO `StockValue` " +
+							"VALUES(" +
+							"0" + // id
+							", " + stockObjectValue.volume + // volume
+							", NULL" + // date
+							", " + mtkDate + // mtkdate
+							", " + stkDate + // stkdate
+							", '" + deviceValue.inventoryNumber + // inventory
+							"', '" + deviceValue.serialNumber + // serialNummer
+							"', '" + deviceValue.umdns + // umdns
+							"', NULL" + // batchNumber
+							", 0" + // minimumStock
+							", 0 " + // quotaStock
+							", " + deviceValue.silencedWarnings + // silencedWarnings
+							", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+							", " + stockObjectValue.stockObjectID +
+							", " + stockObjectValue.locationID +
+							", " + stockObjectValue.messageID +
+							");";
 				} else if (stockObjectValue instanceof MaterialValue) {
 					if (stockObjectValue instanceof MedicalMaterialValue) {
 						MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
@@ -504,28 +538,50 @@ public final class DatabaseWriteManager {
 						if (medicalValue.date != null) {
 							date =  "'" + DatabaseWriteManager.sdf.format(medicalValue.date) + "'";
 						}
-						sqlStatement = "INSERT INTO `StockValue` VALUES(0,"
-								+ stockObjectValue.volume + ", "
-								+ date + ", NULL, NULL, NULL, NULL, NULL, '"
-								+ medicalValue.batchNumber + "', '"
-								+ DatabaseWriteManager.sdf.format(timestamp) + "', 0, "
-								+ stockObjectValue.stockObjectID + ", "
-								+ stockObjectValue.locationID + ", "
-								+ stockObjectValue.messageID + ");";
+						sqlStatement = "INSERT INTO `StockValue` " +
+								"VALUES(" +
+								"0" + // id
+								", " + stockObjectValue.volume + // volume
+								", " + date + // date
+								", NULL" + // mtkdate
+								", NULL" + // stkdate
+								", NULL" + // inventory
+								", NULL" + // serialNumber
+								", NULL" + // umdns
+								", '" + medicalValue.batchNumber + // batchNumber
+								"', "  + medicalValue.minimumStock+ // minimumStock
+								",  " + medicalValue.quotaStock + // quotaStock
+								", " + medicalValue.silencedWarnings + // silencedWarnings
+								", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+								", " + stockObjectValue.stockObjectID +
+								", " + stockObjectValue.locationID +
+								", " + stockObjectValue.messageID +
+								");";
 					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 						ConsumableMaterialValue consumableValue = (ConsumableMaterialValue) stockObjectValue;
 						String date = "null";
 						if (consumableValue.date != null) {
 							date = "'" + DatabaseWriteManager.sdf.format(consumableValue.date) + "'";
 						}
-						sqlStatement = "INSERT INTO `StockValue` VALUES(0,"
-								+ stockObjectValue.volume + ", "
-								+ date + ", NULL, NULL, NULL, NULL, NULL, '"
-								+ consumableValue.batchNumber + "', '"
-								+ DatabaseWriteManager.sdf.format(timestamp) + "', 0, "
-								+ stockObjectValue.stockObjectID + ", "
-								+ stockObjectValue.locationID + ", "
-								+ stockObjectValue.messageID + ");";
+						sqlStatement = "INSERT INTO `StockValue` " +
+								"VALUES(" +
+								"0" + // id
+								", " + stockObjectValue.volume + // volume
+								", " + date + // date
+								", NULL" + // mtkdate
+								", NULL" + // stkdate
+								", NULL" + // inventory
+								", NULL" + // serialNumber
+								", NULL" + // umdns
+								", '" + consumableValue.batchNumber + // batchNumber
+								"', "  + consumableValue.minimumStock+ // minimumStock
+								",  " + consumableValue.quotaStock + // quotaStock
+								", " + consumableValue.silencedWarnings + // silencedWarnings
+								", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+								", " + stockObjectValue.stockObjectID +
+								", " + stockObjectValue.locationID +
+								", " + stockObjectValue.messageID +
+								");";
 					} else {
 						return false;
 					}
@@ -533,13 +589,12 @@ public final class DatabaseWriteManager {
 					return false;
 				}
 				if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
-					if (DatabaseReadManager.getLocation(stockObjectValue.locationID).title ==  "Lager") {
-						sqlStatement = "UPDATE `StockObject` SET `totalVolume` = `totalVolume` + "
-								+ stockObjectValue.volume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
-						return DatabaseWriteManager.executeUpdate(sqlStatement);
-					} else {
-						return true;
-					}
+					sqlStatement = "UPDATE `StockObject` " +
+							"SET " +
+							"`totalVolume` = `totalVolume` + " + stockObjectValue.volume +
+							" WHERE `id` = " + stockObjectValue.stockObjectID +
+							";";
+					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
 				break;
 			case 1:
@@ -608,12 +663,18 @@ public final class DatabaseWriteManager {
 		String sqlStatement;
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
-			sqlStatement = "DELETE FROM `StockValue` WHERE `id` = " + stockObjectValue.id + ";";
+			sqlStatement = "DELETE FROM `StockValue` " +
+					"WHERE `id` = " + stockObjectValue.id +
+					";";
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
-				sqlStatement = "DELETE FROM `StockValue` WHERE `id` = " + stockObjectValue.id + ";";
+				sqlStatement = "DELETE FROM `StockValue` " +
+						"WHERE `id` = " + stockObjectValue.id +
+						";";
 			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
-				sqlStatement = "DELETE FROM `StockValue` WHERE `id` = " + stockObjectValue.id + ";";
+				sqlStatement = "DELETE FROM `StockValue` " +
+						"WHERE `id` = " + stockObjectValue.id +
+						";";
 			} else {
 				return false;
 			}
@@ -627,8 +688,7 @@ public final class DatabaseWriteManager {
 							totalVolume += iteratedStockObjectValue.volume;
 						}
 					}
-					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
-							+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
+					sqlStatement = "UPDATE `StockObject` SET `totalVolume` = " + totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
 					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
 			}
@@ -660,15 +720,17 @@ public final class DatabaseWriteManager {
 			if (mergedDeviceValue.stkDate != null) {
 				stkDate = "'" + DatabaseWriteManager.sdf.format(mergedDeviceValue.stkDate) + "'";
 			}
-			sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-					+ ", `mtkDate` = " + mtkDate
-					+ ", `stkDate` = " + stkDate
-					+ ", `inventoryNumber` = '" + mergedDeviceValue.inventoryNumber
-					+ "', `serialNumber` = '" + mergedDeviceValue.serialNumber
-					+ "', `umdns` = '" + mergedDeviceValue.umdns
-					+ "',`locationId` = " + stockObjectValue.locationID
-					+ ",`messageId` = " + stockObjectValue.messageID
-					+ " WHERE `id` = " + stockObjectValue.id + ";";
+			sqlStatement = "UPDATE `StockValue` " +
+					"SET " +
+					"`volume` = " + stockObjectValue.volume +
+					", " + "`mtkDate` = " + mtkDate +
+					", " + "`stkDate` = " + stkDate +
+					", " + "`inventoryNumber` = '" + mergedDeviceValue.inventoryNumber + "'" +
+					", " + "`serialNumber` = '" + mergedDeviceValue.serialNumber + "'" +
+					", " + "`umdns` = '" + mergedDeviceValue.umdns + "'" +
+					", " + "`locationId` = " + stockObjectValue.locationID +
+					", " + "`messageId` = " + stockObjectValue.messageID +
+					" WHERE `id` = " + stockObjectValue.id + ";";
 			return DatabaseWriteManager.executeUpdate(sqlStatement);
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
@@ -677,24 +739,33 @@ public final class DatabaseWriteManager {
 				if (mergedMedicalValue.date != null) {
 					date =  "'" + DatabaseWriteManager.sdf.format(mergedMedicalValue.date) + "'";
 				}
-				sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-						+ ", `date` = " + date
-						+ ", `batchNumber` = '" + mergedMedicalValue.batchNumber
-						+ "',`locationId` = " + stockObjectValue.locationID
-						+ ",`messageId` = " + stockObjectValue.messageID
-						+ " WHERE `id` = " + stockObjectValue.id + ";";
+				sqlStatement = "UPDATE `StockValue` " +
+						"SET " +
+						"`volume` = " + stockObjectValue.volume +
+						", " + "`date` = " + date +
+						", " + "`batchNumber` = '" + mergedMedicalValue.batchNumber + "'" +
+						", " + "`minimumStock` = " + mergedMedicalValue.minimumStock +
+						", " + "`quotaStock` = " + mergedMedicalValue.quotaStock +
+						", " + "`locationId` = " + stockObjectValue.locationID +
+						", " + "`messageId` = " + stockObjectValue.messageID +
+						" WHERE `id` = " + stockObjectValue.id +
+						";";
 			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 				ConsumableMaterialValue mergedConsumableValue = (ConsumableMaterialValue) stockObjectValue;
 				String date = "null";
 				if (mergedConsumableValue.date != null) {
 					date = "'" + DatabaseWriteManager.sdf.format(mergedConsumableValue.date) + "'";
 				}
-				sqlStatement = "UPDATE `StockValue` SET `volume` = " + stockObjectValue.volume
-						+ ", `date` = " + date
-						+ ", `batchNumber` = '" + mergedConsumableValue.batchNumber
-						+ "',`locationId` = " + stockObjectValue.locationID
-						+ ",`messageId` = " + stockObjectValue.messageID
-						+ " WHERE `id` = " + stockObjectValue.id + ";";
+				sqlStatement = "UPDATE `StockValue` SET " +
+						"`volume` = " + stockObjectValue.volume +
+						", " + "`date` = " + date +
+						", " + "`batchNumber` = '" + mergedConsumableValue.batchNumber +
+						", " + "`minimumStock` = " + mergedConsumableValue.minimumStock +
+						", " + "`quotaStock` = " + mergedConsumableValue.quotaStock +
+						"', " + "`locationId` = " + stockObjectValue.locationID +
+						", " + "`messageId` = " + stockObjectValue.messageID +
+						" WHERE `id` = " + stockObjectValue.id +
+						";";
 			} else {
 				return false;
 			}
@@ -702,21 +773,17 @@ public final class DatabaseWriteManager {
 				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
 				if (stockObject != null) {
 					StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
-
-					if (DatabaseReadManager.getLocation(stockObjectValue.locationID).title ==  "Lager") {
-						int totalVolume = 0;
-						if (stockObjectValues != null) {
-							for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
-								totalVolume += iteratedStockObjectValue.volume;
-							}
+					int totalVolume = 0;
+					if (stockObjectValues != null) {
+						for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
+							totalVolume += iteratedStockObjectValue.volume;
 						}
-
-						sqlStatement = "UPDATE `StockObject` SET `totalVolume` = "
-								+ totalVolume + " WHERE `id` = " + stockObjectValue.stockObjectID + ";";
-						return DatabaseWriteManager.executeUpdate(sqlStatement);
-					} else {
-						return true;
 					}
+					sqlStatement = "UPDATE `StockObject` SET " +
+							"`totalVolume` = " + totalVolume +
+							" WHERE `id` = " + stockObjectValue.stockObjectID +
+							";";
+					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
 			}
 		}

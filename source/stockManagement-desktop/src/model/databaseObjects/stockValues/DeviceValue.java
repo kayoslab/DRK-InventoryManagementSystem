@@ -10,9 +10,9 @@ public class DeviceValue extends StockObjectValue {
 	public String inventoryNumber;
 	public String umdns;
 	
-	public DeviceValue(int id, int volume, Date mtkDate, Date stkDate, int stockObjectID, int locationID, int messageID,
+	public DeviceValue(int id, int volume, Boolean silencedWarnings, Date mtkDate, Date stkDate, int stockObjectID, int locationID, int messageID,
 			String serialNumber, String inventoryNumber, String umdns) {
-		super(id, volume, stockObjectID, locationID, messageID);
+		super(id, volume, silencedWarnings, stockObjectID, locationID, messageID);
 		this.mtkDate = mtkDate;
 		this.stkDate = stkDate;
 		this.serialNumber = serialNumber;
