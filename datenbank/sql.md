@@ -108,45 +108,37 @@ CREATE TABLE `StockObject` (
    `creation` datetime NOT NULL,
    `typeId` int(10) unsigned NOT NULL ,
    CONSTRAINT `Constr_Stock_Type`
-       FOREIGN KEY `type_fk` (`typeId`) REFERENCES `Type` (`id`)
-       ON DELETE CASCADE ON UPDATE CASCADE
-) COLLATE 'latin1_german2_ci';
-
-CREATE TABLE `StockValue` (
-   `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `volume` int(10) unsigned NOT NULL,
-   `date` DATETIME NULL,
-   `mtkDate` DATETIME NULL,
-   `stkDate` DATETIME NULL,
-   `inventoryNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `serialNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `batchNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
-   `creation` datetime NOT NULL,
-   `stockObjectId` int(10) unsigned NOT NULL,
-   `messageId` int(10) unsigned NOT NULL,
-   CONSTRAINT `Constr_StockValue_StockObject`
-       FOREIGN KEY `stockObject_fk` (`stockObjectId`) REFERENCES `StockObject` (`id`)
-       ON DELETE CASCADE ON UPDATE CASCADE,
-   CONSTRAINT `Constr_StockValue_Message`
-       FOREIGN KEY `message_fk` (`messageId`) REFERENCES `Message` (`id`)
-       ON DELETE CASCADE ON UPDATE CASCADE
-) COLLATE 'latin1_german2_ci';
-
-CREATE TABLE `LocationForStockValue` (
-    `stockValue` int(10) unsigned NOT NULL,
-    `location` int(10) unsigned NOT NULL,
-    `minimumStock` int(10) unsigned NULL,
-    `quotaStock` int(10) unsigned NULL,
-    `silencedWarnings` tinyint(1) unsigned NOT NULL,
-    CONSTRAINT `Constr_LocationHasStockValue`
-        FOREIGN KEY `stockValue_fk` (`stockValue`) REFERENCES `StockValue` (`id`)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `Constr_StockValueHasLocation`
-        FOREIGN KEY `location_fk` (`location`) REFERENCES `Location` (`id`)
+        FOREIGN KEY `type_fk` (`typeId`) REFERENCES `Type` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE
 ) COLLATE 'latin1_german2_ci';
 
+CREATE TABLE `StockValue` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `volume` int(10) unsigned NOT NULL,
+    `date` DATETIME NULL,
+    `mtkDate` DATETIME NULL,
+    `stkDate` DATETIME NULL,
+    `inventoryNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+    `serialNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+    `umdns` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+    `batchNumber` varchar(128) COLLATE 'latin1_german2_ci' NULL,
+    `minimumStock` int(10) unsigned NULL,
+    `quotaStock` int(10) unsigned NULL,
+    `silencedWarnings` tinyint(1) unsigned NOT NULL,
+    `creation` datetime NOT NULL,
+    `stockObjectId` int(10) unsigned NOT NULL,
+    `locationId` int(10) unsigned NOT NULL,
+    `messageId` int(10) unsigned NOT NULL,
+    CONSTRAINT `Constr_StockValue_StockObject`
+         FOREIGN KEY `stockObject_fk` (`stockObjectId`) REFERENCES `StockObject` (`id`)
+         ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `Constr_StockValue_Location`
+         FOREIGN KEY `location_fk` (`locationId`) REFERENCES `Location` (`id`)
+         ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `Constr_StockValue_Message`
+         FOREIGN KEY `message_fk` (`messageId`) REFERENCES `Message` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) COLLATE 'latin1_german2_ci';
 ```
 
 ## Logbook
