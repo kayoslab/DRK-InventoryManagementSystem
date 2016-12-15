@@ -286,4 +286,4 @@ class Importer:
 
 # also for testing, gets current directory of Importer.py
 dir_path = os.path.dirname(os.path.realpath(__file__))
-i = Importer(dir_path + "/data.csv", dir_path + "/data.sql")
+i = Importer(dir_path + "/../../../datenbank/data.csv", dir_path + "/../../../datenbank/data.sql")
