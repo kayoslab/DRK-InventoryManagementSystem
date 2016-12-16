@@ -146,15 +146,6 @@ public class SetupPresenter extends Presenter {
 				}
 				this.frame.dispose();
 			}
-
-
-			/******** *******/
-			if (this.previousPresenter != null) {
-				this.loginManager = new DatabaseLoginManager(this.usernameTextField.getText(),  String.valueOf(this.passwordTextField.getPassword()), this.urlTextField.getText());
-
-			} else {
-
-			}
 		}
 	}
 
