@@ -118,7 +118,7 @@ public class DatabaseLoginManager {
 		if (this.databaseUsername != null && this.databasePassword != null && this.databaseURL != null) {
 			try {
 				// Low Timeout for not blocking the UserInterface while testing the DB Connection
-				DriverManager.setLoginTimeout(5);
+				DriverManager.setLoginTimeout(4);
 				Connection connection = DriverManager.getConnection(this.databaseURL, this.databaseUsername, this.databasePassword);
 				if(!connection.isClosed() && connection != null){
 		            return true;

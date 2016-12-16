@@ -16,6 +16,7 @@
  */
 
 package presenter.onboarding;
+import model.Session;
 import model.databaseCommunication.DatabaseLoginManager;
 import presenter.Presenter;
 import java.awt.event.ActionEvent;
@@ -122,17 +123,37 @@ public class SetupPresenter extends Presenter {
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		if (e.getSource() == this.btnSpeichern){
-			if (this.previousPresenter != null) {
-				this.loginManager = new DatabaseLoginManager(this.usernameTextField.getText(),  String.valueOf(this.passwordTextField.getPassword()), this.urlTextField.getText());
-				this.showPreviousPresenter();
-			} else {
-				if (loginManager.testDatabaseConnection()) {
+			this.loginManager = new DatabaseLoginManager(this.usernameTextField.getText(),  String.valueOf(this.passwordTextField.getPassword()), this.urlTextField.getText());
+			if (this.previousPresenter == null) {
+				if (this.loginManager.testDatabaseConnection()) {
 					System.out.println("Database Connection established.");
 					LoginPresenter loginPresenter = new LoginPresenter(this);
 					loginPresenter.newScreen();
 				} else {
 					this.shakeButton();
 				}
+			} else {
+				Session.getSharedInstance().invalidateSession();
+				DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
+				if (dbloginManager.testDatabaseConnection()) {
+					System.out.println("Database Connection established.");
+					LoginPresenter loginPresenter = new LoginPresenter();
+					loginPresenter.newScreen();
+				} else {
+					System.out.println("Can't connect to database using the given credentials.");
+					SetupPresenter setupPresenter = new SetupPresenter();
+					setupPresenter.newScreen();
+				}
+				this.frame.dispose();
+			}
+
+
+			/******** *******/
+			if (this.previousPresenter != null) {
+				this.loginManager = new DatabaseLoginManager(this.usernameTextField.getText(),  String.valueOf(this.passwordTextField.getPassword()), this.urlTextField.getText());
+
+			} else {
+
 			}
 		}
 	}
