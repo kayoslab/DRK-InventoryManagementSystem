@@ -7,13 +7,13 @@ Vorläufiger Entwurf des ER-Models, **request-for-comments**.
 
 Zunächst wird für das Projekt die Collation `latin1_german2_ci` verwendet, da diese am ehesten der "Telefonbuchsortierung" im deutschen entspricht. Alternativ wäre es auch denkbar gewesen `utf8_general_ci` zu verwenden, diese kann jedoch zu unerwarteten Sortierungen beim Aufkommen von Umlauten führen.
 
-Für die Implementierung der `BOOLEAN` Werte wie passwordChanged und silenceWarning wird auf den Datentyp `TINYINT(1)` zurückgegriffen. Zum Thema BOOLEAN sagt die Dokumentation von MySQL folgendes:
+Für die Implementierung der *BOOLEAN* Werte wie `passwordChanged` und `silencedWarnings` wird auf den Datentyp *TINYINT(1)* zurückgegriffen. Zum Thema *BOOLEAN* sagt die MySQL Dokumentation folgendes:
 
 - Bool, Boolean: These types are synonyms for TINYINT(1). A value of zero is considered false. Non-zero values are considered true.
 - As of MySQL 5.0.3, the BIT data type is used to store bit-field values. A type of BIT(M) enables storage of M-bit values. M can range from 1 to 64.
 - We intend to implement full boolean type handling, in accordance with standard SQL, in a future MySQL release.
 
-Die Constraints der Tabellen `GroupHasRights` und `UserIsMemberOfGroup` müssen bezüglich ihrer `ON DELETE` und `ON UPDATE` Funktionen geprüft und besprochen werden. CASCADE gilt daher nur als Platzhalter für ein sinnvolles Verhalten, welches in den Anforderungen festgehalten werden sollte.
+Die Constraints der Tabellen `GroupHasRights` und `UserIsMemberOfGroup` nutzen als *ON DELETE* und *ON UPDATE* Verhalten die Einstellung *CASCADE*. Diese sorgt dafür, dass beim löschen von Nutzern respektive von Gruppen die dazugehörigen Fremdschlüssel-Beziehungen ebenfalls entfernt werden und wir uns im Laufe der Softwareentwicklung keine Sorgen um das Pflegen von nicht länger relevanten Daten (sog. Datenleichen) machen müssen.
 
 # EER-Model
 
@@ -24,7 +24,7 @@ Vorläufiger Entwurf des EER-Models, **request-for-comments**.
 
 ## Group has Rights
 
-Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `Group` und `GroupRight`.
+Die Tabelle `GroupRights` beinhaltet einen festen Datensatz von zu vergebenden Gruppenrechten, welche vom Datenbankadministrator (respektive vom Entwickler) vorgegeben werden müssen und im Programmcode fest verdrahtet sind. Diese wird durch ein Insert Skript für die Auslieferung an den Kunden vorausgefüllt. Die Tabelle `Group` beinhaltet eine vorgegebene Auswahl von Gruppen, welche für den üblichen Betrieb ausreichen sollten. Sie kann jedoch von einem Gruppenadministrator weiter gefüllt werden. Über eine *Many-To-Many Relationship* werden jeder Gruppe mehre Rechte zugeordnet.
 
 ```sql
 CREATE TABLE `GroupRight` (
@@ -51,7 +51,7 @@ CREATE TABLE `GroupHasRights` (
 ```
 ## User is Member of Group
 
-Es handelt sich um eine **Many-To-Many Relationship** zwischen den Tabellen `User` und `Group`.
+Die Gruppe der User wird zwar im direkten Anwendungsfall mit Daten vorausgefüllt, bis auf den Administrator ist dies jedoch an sich nicht notwendig. Alle weiteren Nutzer können auch über das Userinterface angelegt und gepflegt werden. Zwischen `User` und `Group` besteht eine *Many-To-Many Relationship*.
 
 ```sql
 CREATE TABLE `User` (
@@ -77,25 +77,23 @@ CREATE TABLE `UserIsMemberOfGroup` (
 ) COLLATE 'latin1_german2_ci';
 ```
 
-## Material
+## Lagerobjekt
 
-Beinhaltet verschiedene **To-One Relationships** zwischen der `Material` Tabelle und den `Location`, `Message` und `Type` Tabellen.
+Die Datenbank-Tabelle `Type` beinhaltet eine feste Anzahl von möglichen Typen zwischen denen unterschieden werden kann. Zum jetzigen Zeitpunkt umfasst diese Tabelle die Typen *Gerät*, *Medizinisches Material* und *Betreuungsmaterial*. In der Zukunft soll die Software um den Typ *Fahrzeug* erweitert werden. Die Tabelle `Location` beinhaltet alle möglichen Lagerorte, welche ebenfalls über das Userinterface gepflegt werden können.
+
+Die Tatsächlichen zu lagernden Objekte werden durch einen Eintrag in der Tabelle `StockObject` repräsentiert. Diese können von den entsprechenden Geräte-, Material-, Betreuungs- Verantwortlichen angelegt werden, sollten diese in der Entsprechenden `Group` mit dem jeweiligen Recht eingetragen sein.
 
 ```sql
+CREATE TABLE `Type` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
+) COLLATE 'latin1_german2_ci';
+
 CREATE TABLE `Location` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
-CREATE TABLE `Message` (
-    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
-) COLLATE 'latin1_german2_ci';
-
-CREATE TABLE `Type` (
-    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
-) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `StockObject` (
    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -110,6 +108,17 @@ CREATE TABLE `StockObject` (
    CONSTRAINT `Constr_Stock_Type`
         FOREIGN KEY `type_fk` (`typeId`) REFERENCES `Type` (`id`)
         ON DELETE CASCADE ON UPDATE CASCADE
+) COLLATE 'latin1_german2_ci';
+```
+
+## Lagerbestand
+
+Die Representation eines Lagerbestands wird wiederum durch einen Eintrag in der `StockValue` Tabelle dargestellt. Dieser beinhaltet eine Referenz zu einem Lagerobjekt (_StockObject_) so wie Referenzen auf `Location` und `Message`. Durch das gesonderte Speichern von Mindest- und Soll-Beständen pro Verbindung zwischen `StockObject` und `Location` kann für jedes Lager ein gesonderter Mindestbestand an Objekten festgelegt und explizit für diesen gewarnt werden.
+
+``` sql
+CREATE TABLE `Message` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE
 ) COLLATE 'latin1_german2_ci';
 
 CREATE TABLE `StockValue` (
@@ -143,7 +152,7 @@ CREATE TABLE `StockValue` (
 
 ## Logbook
 
-Beinhaltet verschiedene **To-One Relationships** zwischen der `Logbook` Tabelle und den `Material` und `Operation` Tabellen.
+Die `Operation` Tabelle wird mit einem Datensatz möglicher vom User durchzuführender Operationen gefüllt und über eine *To-One Relationships* mit einem automatisch generierten Eintrag in der `Logbook` Tabelle in Verbindung gesetzt. Auf diesem Weg bietet unser Softwaresystem die Möglichkeit, sollte dies gänzlich ausgereizt werden wollen, jede Bestandsveränderung pro Nutzer festzuhalten und so die Ursache für Fehlbestände oder Fehlbuchungen auszumachen. Zum derzeitigen Standpunkt sollen nach Rücksprache jedoch nur rudimentäre Log-Funktionen verwendet werden.
 
 ```sql
 CREATE TABLE `Operation` (

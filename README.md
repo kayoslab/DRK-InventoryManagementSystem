@@ -62,15 +62,15 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 ## 4.2 Hintergrund
 - [Anforderungen](./modellierung/requirements.md) **(ACK)**
 - [Use-Case-Beschreibung](./modellierung/usecases.md) **(DOING)**
-- Use-Case-Diagramme
-- [Sequenzdiagramme](./modellierung/UML/Sequenz) **(RFC)**
+- Use-Case-Diagramme **(TODO)**
+- [Sequenzdiagramme](./modellierung/UML/Sequenz) **(ACK)**
 
 ## 4.3 Softwarearchitektur
 - [SQL-Aufruf](./datenbank/sql.md) **(ACK)**
 - [ER-Model](./modellierung/UML/ER/ER-Model.jpg) **(ACK)**
 - [Architekturmuster](./modellierung/architecture.md) **(ACK)**
-- [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(DOING)**
+- [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(ACK)**
 
 ## 4.4 User Interface
-- [UI Mockups](./modellierung/Mockups) **(DOING)**
-- [UI Screenshots](./screenshots) **(DOING)**
+- [UI Mockups](./modellierung/Mockups) **(ACK)**
+- [UI Screenshots](./screenshots) **(ACK)**
