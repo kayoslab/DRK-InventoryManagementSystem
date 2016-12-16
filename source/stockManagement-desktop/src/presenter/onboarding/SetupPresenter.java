@@ -21,6 +21,7 @@ import model.databaseCommunication.DatabaseLoginManager;
 import presenter.Presenter;
 import java.awt.event.ActionEvent;
 import java.awt.*;
+import java.io.IOException;
 import javax.swing.*;
 
 
@@ -145,6 +146,16 @@ public class SetupPresenter extends Presenter {
 					setupPresenter.newScreen();
 				}
 				this.frame.dispose();
+			}
+		}
+		if (this.previousPresenter == null) {
+			if (e.getSource() == this.logo) {
+				String urlString = "http://drk-sennestadt.de/";
+				try {
+					java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
+				} catch (IOException openException) {
+					System.out.println("Cant open");
+				}
 			}
 		}
 	}
