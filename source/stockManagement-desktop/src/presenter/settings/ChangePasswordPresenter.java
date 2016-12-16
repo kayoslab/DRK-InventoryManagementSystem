@@ -1,4 +1,5 @@
 package presenter.settings;
+import model.Session;
 import presenter.Presenter;
 import model.UserManager;
 import java.awt.*;
@@ -66,14 +67,56 @@ public class ChangePasswordPresenter extends Presenter {
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		if (e.getSource() == this.saveButton){
-			if (passwordTextField.getPassword().equals(newPasswordTextField.getPassword())) {
-				if (this.userManager.setNewPassword(this.session.currentUser.username, String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
-					// Password changed.
-					this.showPreviousPresenter();
+			if (String.valueOf(this.passwordTextField.getPassword()).equals(String.valueOf(this.newPasswordTextField.getPassword()))) {
+				String currentPasswordToTest = String.valueOf(this.currentPasswordTextField.getPassword());
+				if (this.userManager.tryLogin(Session.getSharedInstance().currentUser.username, String.valueOf(this.currentPasswordTextField.getPassword()))) {
+					if (this.userManager.setNewPassword(this.session.currentUser.username, String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
+						// Password changed.
+						this.showPreviousPresenter();
+					} else {
+						shakeButton();
+					}
 				} else {
-					// Can't change Password.
+					shakeButton();
 				}
+			} else {
+				shakeButton();
 			}
 		}
+	}
+
+	/**
+	 * Make the Button Shake
+	 */
+	private void shakeButton() {
+		final Point point = this.saveButton.getLocation();
+		final int delay = 50;
+		Runnable r = () -> {
+			for (int i = 0; i < 2; i++) {
+				try {
+					moveButton(new Point(point.x + 5, point.y));
+					Thread.sleep(delay);
+					moveButton(point);
+					Thread.sleep(delay);
+					moveButton(new Point(point.x - 5, point.y));
+					Thread.sleep(delay);
+					moveButton(point);
+					Thread.sleep(delay);
+				} catch (InterruptedException ex) {
+					ex.printStackTrace();
+				}
+			}
+		};
+		Thread t = new Thread(r);
+		t.start();
+	}
+
+	private void moveButton(final Point p) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				saveButton.setLocation(p);
+			}
+		});
 	}
 }

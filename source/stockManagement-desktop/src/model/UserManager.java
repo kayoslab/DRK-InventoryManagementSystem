@@ -64,6 +64,7 @@ public class UserManager {
 					String newPasswordHash = this.generatePasswordHash(newPassword);
 					User user = DatabaseReadManager.getUser(username);
 					user.passwordHash = newPasswordHash;
+					user.passwordChanged = true;
 					// Store this newPasswordHash into the database
 					// if completed proceed.
 					Boolean passwordSuccesfullyChanged = DatabaseWriteManager.setPassword(user);
