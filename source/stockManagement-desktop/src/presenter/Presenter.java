@@ -16,13 +16,19 @@
 
 package presenter;
 import model.Session;
+import model.databaseCommunication.DatabaseLoginManager;
 import presenter.onboarding.LoginPresenter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static javax.swing.JFrame.DISPOSE_ON_CLOSE;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public abstract class Presenter implements ActionListener {
 	public Session session = Session.getSharedInstance();
@@ -145,13 +151,29 @@ public abstract class Presenter implements ActionListener {
 		} else if (e.getSource() == this.back){
 			this.showPreviousPresenter();
 		} else if (e.getSource() == this.help){
-			// TODO: Show HELP Message
+			/***** Refferences the help document as a document on the server *****/
+			DatabaseLoginManager databaseLoginManager = new DatabaseLoginManager();
+			try {
+				URL url = new URL(databaseLoginManager.getURL());
+				String hostAddress = url.getHost();
+				System.out.println(hostAddress);
+				String urlString = "http://" + hostAddress + "/help/";
+
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
+			} catch (MalformedURLException e1) {
+				// not really important
+				System.out.println("Malformed URL");
+			} catch (IOException openException) {
+				// not really important
+				System.out.println("Cant open");
+			}
+
 		} else if (e.getSource() == this.logo) {
 			String urlString = "http://drk-sennestadt.de/";
 			try {
 				java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
-			} catch (Exception openException) {
-
+			} catch (IOException openException) {
+				System.out.println("Cant open");
 			}
 		}
 	}
@@ -216,6 +238,9 @@ public abstract class Presenter implements ActionListener {
 	public int firstRowPlacing = firstButtonPlacing;
 	public int secondRowPlacing = firstRowPlacing + setupLabelHeight + spacing;
 	public int thirdRowPlacing = secondRowPlacing + setupLabelHeight + spacing;
-	/* *************** */
+
+	/*************************************************************************/
+
+
 }
 

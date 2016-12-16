@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/Presenter.java" afterPath="$PROJECT_DIR$/src/presenter/Presenter.java" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,20 +47,32 @@
       <file leaf-file-name="Presenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="12" selection-end-line="141" selection-end-column="33" />
+            <state relative-caret-position="182">
+              <caret line="156" column="65" lean-forward="true" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="751" column="40" lean-forward="false" selection-start-line="751" selection-start-column="40" selection-end-line="751" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SetupPresenter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java">
+      <file leaf-file-name="DatabaseConnectionManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="147" column="13" lean-forward="false" selection-start-line="147" selection-start-column="13" selection-end-line="147" selection-end-column="13" />
+            <state relative-caret-position="827">
+              <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#3562#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,8 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>btnPasswortndern</find>
-      <find>textField_2</find>
       <find>sdf</find>
       <find>sort</find>
       <find>silenceWarning</find>
@@ -106,6 +117,8 @@
       <find>getParent</find>
       <find>Session</find>
       <find>hideAllPopups</find>
+      <find>timestamp</find>
+      <find>mtkDate</find>
     </findStrings>
     <replaceStrings>
       <replace>this.radioButtonAll</replace>
@@ -145,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/presenter/data/ModificationPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/data/AddObjectPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/data/EditPresenter.java" />
-        <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
         <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/presenter/MessagePresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
@@ -177,13 +189,14 @@
         <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" />
         <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" />
         <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" />
         <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" />
-        <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java" />
         <option value="$PROJECT_DIR$/src/model/UserManager.java" />
         <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" />
+        <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
+        <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
       </list>
     </option>
   </component>
@@ -1001,12 +1014,12 @@
       <workItem from="1481810541807" duration="573000" />
       <workItem from="1481812739104" duration="367000" />
       <workItem from="1481813212776" duration="1166000" />
-      <workItem from="1481904086574" duration="2683000" />
+      <workItem from="1481904086574" duration="5284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185040000" />
+    <option name="totallyTimeSpent" value="187641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1022,15 +1035,15 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1159292" sideWeight="0.55910546" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1159292" sideWeight="0.56123537" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23097345" sideWeight="0.4547391" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23097345" sideWeight="0.45260915" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10619469" sideWeight="0.55058575" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1159292" sideWeight="0.44089457" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1159292" sideWeight="0.43876463" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.077876106" sideWeight="0.4978701" order="10" side_tool="false" content_ui="tabs" />
@@ -1108,27 +1121,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/jdatepicker-1.3.4.jar!/org/jdatepicker/impl/JDatePanelImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="63" column="56" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/awt/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="1580" column="16" lean-forward="false" selection-start-line="1580" selection-start-column="16" selection-end-line="1580" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1140,13 +1132,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/sql/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-273">
-          <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1355,13 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1448,14 +1426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="781" column="76" lean-forward="false" selection-start-line="781" selection-start-column="76" selection-end-line="781" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -1499,14 +1469,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="12" selection-end-line="141" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1514,6 +1476,66 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/sql/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4012">
+          <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/pdfbox-app-2.0.3.jar!/org/bouncycastle/util/Strings.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="232" column="27" lean-forward="false" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/awt/Desktop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="372" column="50" lean-forward="false" selection-start-line="372" selection-start-column="39" selection-end-line="372" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/net/URL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="139" column="54" lean-forward="true" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="156" column="65" lean-forward="true" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="827">
+          <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#3562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="751" column="40" lean-forward="false" selection-start-line="751" selection-start-column="40" selection-end-line="751" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
