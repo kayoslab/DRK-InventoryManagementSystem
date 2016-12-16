@@ -75,3 +75,10 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 ## 4.4 User Interface
 - [UI Mockups](./modellierung/Mockups/) **(ACK)**
 - [UI Screenshots](./screenshots/) **(ACK)**
+
+# 5. Implementierung
+- [Übersicht](./source/)
+- [Desktop Applikation](./source/stockManagement-desktop/)
+- [Worker](./source/stockManagement-worker/)
+- [Web Applikation](./source/stockManagement-online/)
+- [CSV Parser](./source/stockManagement-importer/python/)
