@@ -718,9 +718,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				if (this.textField1.getText().length() > 0
 						&& this.textField2.getText().length() > 0
 						&& this.textField3.getText().length() > 0
-						&& this.textField4.getText().length() > 0
-						&& this.textField5.getText().length() > 0) {
-					if (this.databaseObject == null) {
+						&& this.textField4.getText().length() > 0) {
+					// password textfield only required if user is null
+					if (this.databaseObject == null && this.textField5.getText().length() > 0) {
 						UserManager userManager = new UserManager();
 						try {
 							String passwordHash = userManager.generatePasswordHash(textField5.getText());
@@ -789,7 +789,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.textField2.setBorder(border);
 					this.textField3.setBorder(border);
 					this.textField4.setBorder(border);
-					this.textField5.setBorder(border);
+					if (this.databaseObject == null) {
+						this.textField5.setBorder(border);
+					}
 				}
 				return false;
 			case groupMenuItem:
