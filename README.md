@@ -50,7 +50,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 # 4. Entwurf
 
 ## 4.1 Logbuch
-- [Zeitplan](./logbook/schedule.md)
+- [Zeitplan](./logbook/)
 - [13.10.2016](./logbook/01-meeting-13-10-2016.md)
 - [20.10.2016](./logbook/02-meeting-20-10-2016.md)
 - [25.10.2016](./logbook/03-meeting-25-10-2016.md) **(Kick-Off Meeting)**
@@ -60,17 +60,18 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 - 20.12.2016 **(3. Meilenstein Meeting)**
 
 ## 4.2 Hintergrund
-- [Anforderungen](./modellierung/requirements.md) **(ACK)**
-- [Use-Case-Beschreibung](./modellierung/usecases.md) **(DOING)**
+- [Anforderungen](./modellierung/Requirements/) **(ACK)**
+- [Use-Case-Beschreibung](./modellierung/UseCases/) **(DOING)**
 - Use-Case-Diagramme **(TODO)**
-- [Sequenzdiagramme](./modellierung/UML/Sequenz) **(ACK)**
+- [Sequenzdiagramme](./modellierung/UML/Sequenz/) **(ACK)**
 
 ## 4.3 Softwarearchitektur
 - [SQL-Aufruf](./datenbank/) **(ACK)**
 - [ER-Model](./modellierung/UML/ER/ER-Model.jpg) **(ACK)**
-- [Architekturmuster](./modellierung/architecture.md) **(ACK)**
+- [EER-Model](./modellierung/UML/EER/EER-Model.jpg) **(ACK)**
+- [Architekturmuster](./modellierung/Architecture/) **(ACK)**
 - [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(ACK)**
 
 ## 4.4 User Interface
-- [UI Mockups](./modellierung/Mockups) **(ACK)**
-- [UI Screenshots](./screenshots) **(ACK)**
+- [UI Mockups](./modellierung/Mockups/) **(ACK)**
+- [UI Screenshots](./screenshots/) **(ACK)**

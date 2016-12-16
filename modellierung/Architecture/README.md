@@ -1,5 +1,5 @@
 ![Klassendiagramm](./UML/Class/Class-Model.png)
-Vorläufiger Entwurf des Klassendiagramms, **request-for-comments**.
+Entwurf des Klassendiagramms.
 
 # Architekturmuster
 
