@@ -1,4 +1,4 @@
-![Klassendiagramm](./UML/Class/Class-Model.png)
+![Klassendiagramm](./../UML/Class/Class-Model.png)
 Entwurf des Klassendiagramms.
 
 # Architekturmuster

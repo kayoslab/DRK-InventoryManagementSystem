@@ -1,7 +1,7 @@
 # ER-Model
 
 ![ER-Model](./../modellierung/UML/ER/ER-Model.png)
-Vorläufiger Entwurf des ER-Models, **request-for-comments**.
+Finales ER-Models.
 
 # Allgemein
 
@@ -18,7 +18,7 @@ Die Constraints der Tabellen `GroupHasRights` und `UserIsMemberOfGroup` nutzen a
 # EER-Model
 
 ![EER-Model](./../modellierung/UML/EER/EER-Model.png)
-Vorläufiger Entwurf des EER-Models, **request-for-comments**.
+Finales EER-Models.
 
 # SQL-Aufruf
 
