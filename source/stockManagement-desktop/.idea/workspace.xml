@@ -4,8 +4,6 @@
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/UserManager.java" afterPath="$PROJECT_DIR$/src/model/UserManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,15 +65,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChangePasswordPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java">
+      <file leaf-file-name="LoginPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
-              <folding>
-                <element signature="e#4604#4605#0" expanded="true" />
-                <element signature="e#4640#4641#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="296">
+              <caret line="94" column="40" lean-forward="true" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,18 +78,8 @@
       <file leaf-file-name="UserManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/UserManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="66" column="48" lean-forward="false" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="911">
-              <caret line="137" column="5" lean-forward="true" selection-start-line="104" selection-start-column="4" selection-end-line="137" selection-end-column="5" />
+            <state relative-caret-position="518">
+              <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -1036,12 +1021,12 @@
       <workItem from="1481810541807" duration="573000" />
       <workItem from="1481812739104" duration="367000" />
       <workItem from="1481813212776" duration="1166000" />
-      <workItem from="1481904086574" duration="1329000" />
+      <workItem from="1481904086574" duration="1500000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183686000" />
+    <option name="totallyTimeSpent" value="183857000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1134,7 +1119,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1520,6 +1505,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+          <folding>
+            <element signature="e#4604#4605#0" expanded="true" />
+            <element signature="e#4640#4641#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1532,27 +1528,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="911">
-          <caret line="137" column="5" lean-forward="true" selection-start-line="104" selection-start-column="4" selection-end-line="137" selection-end-column="5" />
+        <state relative-caret-position="296">
+          <caret line="94" column="40" lean-forward="true" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="72" column="48" lean-forward="false" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
-          <folding>
-            <element signature="e#4604#4605#0" expanded="true" />
-            <element signature="e#4640#4641#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/UserManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="66" column="48" lean-forward="false" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
+        <state relative-caret-position="518">
+          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
           <folding />
         </state>
       </provider>

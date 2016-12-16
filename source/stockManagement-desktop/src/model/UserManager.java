@@ -38,15 +38,18 @@ public class UserManager {
 	 * @return Boolean
 	 */
 	public Boolean tryLogin(String username, String password) {
-		String databasePasswordHash = DatabaseReadManager.getUser(username).passwordHash;
-		try {
-			if (this.generatePasswordHash(password).equals(databasePasswordHash)) {
-				return true;
+		User user = DatabaseReadManager.getUser(username);
+		if (user != null) {
+			String databasePasswordHash = user.passwordHash;
+			try {
+				if (this.generatePasswordHash(password).equals(databasePasswordHash)) {
+					return true;
+				}
+			} catch (NoSuchAlgorithmException exception) {
+				// maybe do anything with the exception for missing md5 hash function
+				// on the current Operating System.
+				return false;
 			}
-		} catch (NoSuchAlgorithmException exception) {
-			// maybe do anything with the exception for missing md5 hash function
-			// on the current Operating System.
-			return false;
 		}
 		return false;
 	}
