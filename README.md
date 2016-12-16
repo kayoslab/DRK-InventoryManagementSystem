@@ -66,7 +66,7 @@ Allgemeiner Hinweis: In Ihrer Dokumentation muss immer erkennbar sein, welcher A
 - [Sequenzdiagramme](./modellierung/UML/Sequenz) **(ACK)**
 
 ## 4.3 Softwarearchitektur
-- [SQL-Aufruf](./datenbank/sql.md) **(ACK)**
+- [SQL-Aufruf](./datenbank/) **(ACK)**
 - [ER-Model](./modellierung/UML/ER/ER-Model.jpg) **(ACK)**
 - [Architekturmuster](./modellierung/architecture.md) **(ACK)**
 - [Klassendiagramm](./modellierung/UML/Class/Class-Model.jpg) **(ACK)**
