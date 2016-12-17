@@ -153,7 +153,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			}
 			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createConsumableMaterial)
 					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
-				this.addConsumableMaterialMenuItem = new JMenuItem("Betreuungsmaterial hinzuf\u00fcgen");
+				this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzuf\u00fcgen");
 				this.addConsumableMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addConsumableMaterialMenuItem);
 			}
@@ -203,7 +203,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			}
 			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)
 					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteConsumableMaterial)) {
-				this.editConsumableMaterialMenuItem = new JMenuItem("Betreuungsmaterial bearbeiten");
+				this.editConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial bearbeiten");
 				this.editConsumableMaterialMenuItem.addActionListener(this);
 				this.editPopup.add(editConsumableMaterialMenuItem);
 			}

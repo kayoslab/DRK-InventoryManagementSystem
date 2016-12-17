@@ -69,7 +69,7 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 				title = new JLabel("Medizinisches Material bearbeiten:");
 				break;
 			case consumableMaterialMenuItem:
-				title = new JLabel("Betreuungsmaterial bearbeiten:");
+				title = new JLabel("Verbrauchsmaterial bearbeiten:");
 				break;
 			case locationMenuItem:
 				title = new JLabel("Lagerort bearbeiten:");
