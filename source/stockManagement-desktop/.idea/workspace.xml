@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseReadManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseReadManager.java" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="73" />
+              <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -147,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/model/PDFtest.java" />
         <option value="$PROJECT_DIR$/src/model/PdfGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/LogManager.java" />
-        <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
         <option value="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" />
         <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" />
         <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
@@ -172,6 +174,7 @@
         <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
+        <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
       </list>
     </option>
   </component>
@@ -989,12 +992,12 @@
       <workItem from="1481810541807" duration="573000" />
       <workItem from="1481812739104" duration="367000" />
       <workItem from="1481813212776" duration="1166000" />
-      <workItem from="1481904086574" duration="9085000" />
+      <workItem from="1481904086574" duration="9769000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191442000" />
+    <option name="totallyTimeSpent" value="192126000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1481,18 +1484,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java">
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="829" column="25" lean-forward="false" selection-start-line="829" selection-start-column="25" selection-end-line="829" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="428">
+          <caret line="954" column="5" lean-forward="true" selection-start-line="954" selection-start-column="5" selection-end-line="954" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#43740#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1326#1327#0" expanded="false" />
+            <element signature="e#1366#1367#0" expanded="false" />
+            <element signature="e#38390#38408#0" expanded="false" />
+            <element signature="e#41453#41466#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="960" column="37" lean-forward="false" selection-start-line="960" selection-start-column="37" selection-end-line="960" selection-end-column="37" />
+        <state relative-caret-position="467">
+          <caret line="929" column="96" lean-forward="false" selection-start-line="929" selection-start-column="96" selection-end-line="929" selection-end-column="96" />
           <folding />
         </state>
       </provider>
@@ -1500,7 +1510,7 @@
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="73" />
+          <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="73" />
           <folding />
         </state>
       </provider>

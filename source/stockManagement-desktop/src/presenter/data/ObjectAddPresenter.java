@@ -906,8 +906,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 							if (stockObjectValues != null) {
 								length = stockObjectValues.length;
 							}
-							selection = this.okcancel("Es befinden sich noch " +
-									DatabaseReadManager.getStockObjectValues(medicalMaterial).length +
+							selection = this.okcancel("Es befinden sich noch " + length +
 									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
 									" Möchten Sie diesen Artikel wirklich löschen?");
 						}

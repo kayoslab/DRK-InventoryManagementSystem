@@ -959,10 +959,25 @@ public final class DatabaseReadManager {
 	 * @return StockObjectValue[]
 	 */
 	public static StockObjectValue[] getStockObjectValues(Location location) {
-		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
-				+ "`umdns`,`batchNumber`,`creation`,`minimumStock`,`quotaStock`,`silencedWarnings`" +
-				",`stockObjectId`,`locationId`,messageId"
-				+ "FROM `StockValue` WHERE `locationId` = " + location + " ORDER BY `id` ASC;";
+		String sqlStatement = "SELECT " +
+				"`id`" +
+				", " + "`volume`" +
+				", " + "`date`" +
+				", " + "`mtkDate`" +
+				", " + "`stkDate`" +
+				", " + "`inventoryNumber`" +
+				", " + "`serialNumber`" +
+				", " + "`umdns`" +
+				", " + "`batchNumber`" +
+				", " + "`creation`" +
+				", " + "`minimumStock`" +
+				", " + "`quotaStock`" +
+				", " + "`silencedWarnings`" +
+				", " + "`stockObjectId`" +
+				", " + "`locationId`" +
+				", " + "messageId" +
+				" FROM `StockValue`" +
+				" WHERE `locationId` = " + location.id + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
 			// get Data from Database
