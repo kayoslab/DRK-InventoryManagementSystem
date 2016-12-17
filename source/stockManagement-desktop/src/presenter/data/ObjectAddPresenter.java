@@ -92,7 +92,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		/******** Buttons ********/
 		if (this.databaseObject != null) {
 			this.saveButton = new JButton("aktualisieren");
-			this.deleteButton = new JButton("löschen");
+			this.deleteButton = new JButton("l\u00f6schen");
 			this.deleteButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*2) - smallSpacing, leftSideMenuWidth, buttonHeight);
 			this.deleteButton.addActionListener(this);
 			this.deleteButton.setEnabled(false);
@@ -142,9 +142,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				break;
 			case consumableMaterialMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Verbrauchsmaterial hinzuf\u00fcgen:");
+					title = new JLabel("Betreuungsmaterial hinzuf\u00fcgen:");
 				} else {
-					title = new JLabel("Verbrauchsmaterial bearbeiten:");
+					title = new JLabel("Betreuungsmaterial bearbeiten:");
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)) {
 					this.saveButton.setEnabled(true);
@@ -915,7 +915,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 	}
 
 	public static int okcancel(String theMessage) {
-		int result = JOptionPane.showConfirmDialog((Component) null, theMessage, "Löschen", JOptionPane.OK_CANCEL_OPTION);
+		int result = JOptionPane.showConfirmDialog((Component) null, theMessage, "L\u00f6schen", JOptionPane.OK_CANCEL_OPTION);
 		return result;
 	}
 
@@ -941,8 +941,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 								length = stockObjectValues.length;
 							}
 							selection = this.okcancel("Es befinden sich noch " + length +
-									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
-									" Möchten Sie diesen Artikel wirklich löschen?");
+									" Objekte in Ihrem Bestand. Diese werden ebenfalls gel\u00f6scht." +
+									" M\u00f6chten Sie diesen Artikel wirklich l\u00f6schen?");
 						}
 						break;
 					case medicalMaterialMenuItem:
@@ -954,8 +954,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 								length = stockObjectValues.length;
 							}
 							selection = this.okcancel("Es befinden sich noch " + length +
-									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
-									" Möchten Sie diesen Artikel wirklich löschen?");
+									" Objekte in Ihrem Bestand. Diese werden ebenfalls gel\u00f6scht." +
+									" M\u00f6chten Sie diesen Artikel wirklich l\u00f6schen?");
 						}
 						break;
 					case consumableMaterialMenuItem:
@@ -967,8 +967,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 								length = stockObjectValues.length;
 							}
 							selection = this.okcancel("Es befinden sich noch " + length +
-									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
-									" Möchten Sie diesen Artikel wirklich löschen?");
+									" Objekte in Ihrem Bestand. Diese werden ebenfalls gel\u00f6scht." +
+									" M\u00f6chten Sie diesen Artikel wirklich l\u00f6schen?");
 						}
 						break;
 					case locationMenuItem:
@@ -980,13 +980,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 								length = stockObjectValues.length;
 							}
 							selection = this.okcancel("Es befinden sich noch " + length +
-									" Objekte in diesem Lager. Diese werden ebenfalls gelöscht." +
-									" Möchten Sie dieses Lager wirklich löschen?");
+									" Objekte in diesem Lager. Diese werden ebenfalls gel\u00f6scht." +
+									" M\u00f6chten Sie dieses Lager wirklich l\u00f6schen?");
 						}
 
 						break;
 					case userMenuItem:
-						selection = this.okcancel("Möchten Sie diesen Benutzer wirklich löschen?");
+						selection = this.okcancel("M\u00f6chten Sie diesen Benutzer wirklich l\u00f6schen?");
 						break;
 					case groupMenuItem:
 						if (this.databaseObject instanceof Group) {
@@ -997,7 +997,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 								length = users.length;
 							}
 							selection = this.okcancel("Es befinden sich " + length +
-									" Nutzer in dieser Gruppe. Möchten Sie diese Gruppe wirklich löschen?");
+									" Nutzer in dieser Gruppe. M\u00f6chten Sie diese Gruppe wirklich l\u00f6schen?");
 						}
 						break;
 				}
