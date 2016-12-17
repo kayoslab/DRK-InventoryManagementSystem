@@ -14,12 +14,9 @@
  *
  */
 
-import model.PdfGenerator;
 import model.databaseCommunication.DatabaseLoginManager;
 import presenter.onboarding.LoginPresenter;
 import presenter.onboarding.SetupPresenter;
-
-import java.io.IOException;
 
 public class main {
 
@@ -32,13 +29,6 @@ public class main {
 	public static void main(String[] args) {
 		DatabaseLoginManager dbloginManager = new DatabaseLoginManager();
 		if (dbloginManager.testDatabaseConnection()) {
-			PdfGenerator pdfGenerator = new PdfGenerator();
-			try {
-				pdfGenerator.generatePDF();
-			} catch (IOException e) {
-				System.out.println(e.getMessage());
-			}
-
 			System.out.println("Database Connection established.");
 			LoginPresenter loginPresenter = new LoginPresenter();
 			loginPresenter.newScreen();

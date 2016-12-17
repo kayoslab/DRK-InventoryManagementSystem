@@ -17,11 +17,13 @@
 
 package presenter;
 import model.DatabaseReadManager;
+import model.PdfGenerator;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.*;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
@@ -30,14 +32,11 @@ import javax.swing.*;
 public class InventoryPresenter extends Presenter {
 	private JTable table;
 	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
-//	private JRadioButton radioButtonAll;
-//	private JRadioButton radioButtonMinimumStockOnly;
-//	private JRadioButton radioButtonquotaStockOnly;
 	private JCheckBox checkBoxDevices;
 	private JCheckBox checkBoxMedicalMaterials;
 	private JCheckBox checkBoxConsumableMaterial;
 	private JComboBox filterComboBox = new JComboBox();
-
+	private JButton generateInventoryButton;
 	/**
 	 * Create the application.
 	 */
@@ -93,6 +92,11 @@ public class InventoryPresenter extends Presenter {
 		};
 		scrollPane.setViewportView(this.table);
 
+		/******** Buttons ********/
+		this.generateInventoryButton = new JButton("PDF erzeugen");
+		this.generateInventoryButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		this.generateInventoryButton.addActionListener(this);
+		frame.getContentPane().add(this.generateInventoryButton);
 	}
 
 	@Override
@@ -218,6 +222,13 @@ public class InventoryPresenter extends Presenter {
 			this.refreshTableData();
 		} else if (e.getSource() == this.filterComboBox) {
 			this.refreshTableData();
+		} else if (e.getSource() == this.generateInventoryButton) {
+			PdfGenerator pdfGenerator = new PdfGenerator();
+			try {
+				pdfGenerator.generatePDF();
+			} catch (IOException ioe) {
+				System.out.println(ioe.getMessage());
+			}
 		}
 	}
 
