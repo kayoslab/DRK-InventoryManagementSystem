@@ -28,6 +28,7 @@ import model.databaseObjects.stockObjects.ConsumableMaterial;
 import model.databaseObjects.stockObjects.Device;
 import model.databaseObjects.stockObjects.MedicalMaterial;
 import model.databaseObjects.stockObjects.StockObject;
+import model.databaseObjects.stockValues.StockObjectValue;
 import presenter.Presenter;
 
 import javax.swing.*;
@@ -59,6 +60,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 	private JComboBox booleanCombobox;
 	/** Buttons **/
 	private JButton saveButton;
+	private JButton deleteButton;
 
 	/**
 	 * Create the application.
@@ -85,6 +87,24 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();
+
+		/******** Buttons ********/
+		if (this.databaseObject != null) {
+			this.saveButton = new JButton("aktualisieren");
+
+
+			this.deleteButton = new JButton("löschen");
+			this.deleteButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*2) - smallSpacing, leftSideMenuWidth, buttonHeight);
+			this.deleteButton.addActionListener(this);
+			frame.getContentPane().add(this.deleteButton);
+
+		} else {
+			this.saveButton = new JButton("speichern");
+		}
+
+		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
+		this.saveButton.addActionListener(this);
+		frame.getContentPane().add(this.saveButton);
 
 		JLabel title = new JLabel();
 		switch (this.modificationType) {
@@ -213,16 +233,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				this.textField3.setText("" + device.stkIntervall);
 				this.textArea.setText(device.description);
 			}
-			/******** Buttons ********/
-			this.saveButton = new JButton("aktualisieren");
-		} else {
-			/******** Buttons ********/
-			this.saveButton = new JButton("speichern");
 		}
-
-		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		this.saveButton.addActionListener(this);
-		frame.getContentPane().add(this.saveButton);
 	}
 
 	private void setupMedicalMaterialMenuItem() {
@@ -277,12 +288,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				}
 			}
 		});
-
-		/******** Buttons ********/
-		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		this.saveButton.addActionListener(this);
-		frame.getContentPane().add(this.saveButton);
 
 		if (this.databaseObject != null) {
 			if (this.databaseObject instanceof MedicalMaterial) {
@@ -347,19 +352,11 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 			}
 		});
 
-		/******** Buttons ********/
-		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		this.saveButton.addActionListener(this);
-		frame.getContentPane().add(this.saveButton);
-
 		if (this.databaseObject != null) {
 			if (this.databaseObject instanceof ConsumableMaterial) {
 				ConsumableMaterial consumableMaterial = (ConsumableMaterial) this.databaseObject;
 				this.textField1.setText(consumableMaterial.title);
 				this.textField2.setText("" + consumableMaterial.batchSize);
-				// this.textField3.setText("" + consumableMaterial.minimumStock);
-				// this.textField4.setText("" + consumableMaterial.quotaStock);
 				this.textArea.setText(consumableMaterial.description);
 			}
 		}
@@ -376,12 +373,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		this.textField1.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY+(lineHeight+smallSpacing)*0, displayAreaWidth-(leftSideMenuWidth+spacing),lineHeight);
 		frame.getContentPane().add(this.textField1);
 		this.textField1.setColumns(10);
-
-		/******** Buttons ********/
-		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		frame.getContentPane().add(this.saveButton);
-		this.saveButton.addActionListener(this);
 
 		if (this.databaseObject != null) {
 			if (this.databaseObject instanceof Location) {
@@ -494,12 +485,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(this.table);
 
-		/******** Buttons ********/
-		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		frame.getContentPane().add(this.saveButton);
-		this.saveButton.addActionListener(this);
-
 		if (this.databaseObject != null) {
 			if (this.databaseObject instanceof User) {
 				User user = (User) this.databaseObject;
@@ -509,7 +494,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				this.textField4.setText("" + user.mail);
 				this.textField5.setText("");
 				passwordLabel.setText("Passwort (ausgeblendet):");
-				// TODO: UserRights
+
+				if (user.id <= 1) {
+					this.deleteButton.setEnabled(false);
+				}
 			}
 		}
 	}
@@ -583,12 +571,6 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		this.table.addMouseListener(this);
 		scrollPane.setViewportView(this.table);
 
-		/******** Buttons ********/
-		this.saveButton = new JButton("speichern");
-		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
-		this.saveButton.addActionListener(this);
-		frame.getContentPane().add(this.saveButton);
-
 		if (this.databaseObject != null) {
 			if (this.databaseObject instanceof Group) {
 				Group group = (Group) this.databaseObject;
@@ -599,7 +581,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.booleanCombobox.setSelectedIndex(1);
 				}
 
-				// TODO: GroupRights
+				if (group.id <= 5) {
+					this.deleteButton.setEnabled(false);
+				}
 			}
 		}
 	}
@@ -624,7 +608,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					if (this.databaseObject == null) {
 						/** Create new Device **/
 						this.databaseObject = new Device(0,this.textField1.getText(), this.textArea.getText(), StockObject.StockObjectType.device,0, mtkIntervall ,stkIntervall);
-						return DatabaseWriteManager.createObject(this.databaseObject);
+						if (DatabaseWriteManager.createObject(this.databaseObject)) {
+							return true;
+						}  else {
+							this.databaseObject = null;
+							return false;
+						}
 					} else {
 						/** Update existing Device **/
 						((Device)this.databaseObject).title = this.textField1.getText();
@@ -655,7 +644,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 						// new StockObject
 						// (int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize)
 						this.databaseObject = new MedicalMaterial(0,this.textField1.getText(), this.textArea.getText(), StockObject.StockObjectType.medicalMaterial, 0, batchSize);
-						return DatabaseWriteManager.createObject(this.databaseObject);
+						if (DatabaseWriteManager.createObject(this.databaseObject)) {
+							return true;
+						}  else {
+							this.databaseObject = null;
+							return false;
+						}
 					} else {
 						/** update existing MedicalMaterial **/
 						((MedicalMaterial)this.databaseObject).title = this.textField1.getText();
@@ -684,7 +678,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 						// new StockObject
 						// (int id, String title, String description, DatabaseObject.StockObjectType type, int totalVolume, int batchSize)
 						this.databaseObject = new ConsumableMaterial(0, this.textField1.getText(), this.textArea.getText(), StockObject.StockObjectType.medicalMaterial, 0, batchSize );
-						return DatabaseWriteManager.createObject(this.databaseObject);
+						if (DatabaseWriteManager.createObject(this.databaseObject)) {
+							return true;
+						}  else {
+							this.databaseObject = null;
+							return false;
+						}
 					} else {
 						/** update existing ConsumableMaterial **/
 						((ConsumableMaterial)this.databaseObject).title = this.textField1.getText();
@@ -702,7 +701,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				if (this.textField1.getText().length() > 0) {
 					if (this.databaseObject == null) {
 						this.databaseObject = new Location(0, this.textField1.getText());
-						return DatabaseWriteManager.createObject(this.databaseObject);
+						if (DatabaseWriteManager.createObject(this.databaseObject)) {
+							return true;
+						}  else {
+							this.databaseObject = null;
+							return false;
+						}
 					} else {
 						((Location)this.databaseObject).title = this.textField1.getText();
 						return DatabaseWriteManager.editObject(this.databaseObject);
@@ -743,6 +747,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 									Group[] groupsArray = groups.toArray(new Group[groups.size()]);
 									return DatabaseWriteManager.setGroupsForUser((User)this.databaseObject, groupsArray);
 								}
+							} else {
+								this.databaseObject = null;
+								return false;
 							}
 						} catch (NoSuchAlgorithmException exception) {
 							return false;
@@ -820,6 +827,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 								GroupRight[] groupRightsArray = groupRights.toArray(new GroupRight[groupRights.size()]);
 								return DatabaseWriteManager.setGroupRights((Group) this.databaseObject, groupRightsArray);
 							}
+						} else {
+							this.databaseObject = null;
+							return false;
 						}
 					} else {
 						/** Update existing Group **/
@@ -857,6 +867,11 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		return false;
 	}
 
+	public static int okcancel(String theMessage) {
+		int result = JOptionPane.showConfirmDialog((Component) null, theMessage, "Löschen", JOptionPane.OK_CANCEL_OPTION);
+		return result;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
@@ -865,6 +880,88 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				this.showPreviousPresenter();
 			} else {
 				// Can't be saved, unique field with same value or db connection error.
+			}
+		} else  if (e.getSource() == this.deleteButton) {
+			if (this.databaseObject != null) {
+				int selection = -1;
+				switch (this.modificationType) {
+					case deviceMenuItem:
+						if (this.databaseObject instanceof Device) {
+							Device device = (Device) this.databaseObject;
+							StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(device);
+							int length = 0;
+							if (stockObjectValues != null) {
+								length = stockObjectValues.length;
+							}
+							selection = this.okcancel("Es befinden sich noch " + length +
+									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
+									" Möchten Sie diesen Artikel wirklich löschen?");
+						}
+						break;
+					case medicalMaterialMenuItem:
+						if (this.databaseObject instanceof MedicalMaterial) {
+							MedicalMaterial medicalMaterial = (MedicalMaterial) this.databaseObject;
+							StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(medicalMaterial);
+							int length = 0;
+							if (stockObjectValues != null) {
+								length = stockObjectValues.length;
+							}
+							selection = this.okcancel("Es befinden sich noch " +
+									DatabaseReadManager.getStockObjectValues(medicalMaterial).length +
+									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
+									" Möchten Sie diesen Artikel wirklich löschen?");
+						}
+						break;
+					case consumableMaterialMenuItem:
+						if (this.databaseObject instanceof ConsumableMaterial) {
+							ConsumableMaterial consumableMaterial = (ConsumableMaterial) this.databaseObject;
+							StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(consumableMaterial);
+							int length = 0;
+							if (stockObjectValues != null) {
+								length = stockObjectValues.length;
+							}
+							selection = this.okcancel("Es befinden sich noch " + length +
+									" Objekte in Ihrem Bestand. Diese werden ebenfalls gelöscht." +
+									" Möchten Sie diesen Artikel wirklich löschen?");
+						}
+						break;
+					case locationMenuItem:
+						if (this.databaseObject instanceof Location) {
+							Location location = (Location) this.databaseObject;
+							StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(location);
+							int length = 0;
+							if (stockObjectValues != null) {
+								length = stockObjectValues.length;
+							}
+							selection = this.okcancel("Es befinden sich noch " + length +
+									" Objekte in diesem Lager. Diese werden ebenfalls gelöscht." +
+									" Möchten Sie dieses Lager wirklich löschen?");
+						}
+
+						break;
+					case userMenuItem:
+						selection = this.okcancel("Möchten Sie diesen Benutzer wirklich löschen?");
+						break;
+					case groupMenuItem:
+						if (this.databaseObject instanceof Group) {
+							Group group = (Group) this.databaseObject;
+							User[] users = DatabaseReadManager.getUsers(group);
+							int length = 0;
+							if (users != null) {
+								length = users.length;
+							}
+							selection = this.okcancel("Es befinden sich " + length +
+									" Nutzer in dieser Gruppe. Möchten Sie diese Gruppe wirklich löschen?");
+						}
+						break;
+				}
+
+
+				if (selection == 0) {
+					if (this.databaseObject.deleteObject()) {
+						this.showPreviousPresenter();
+					}
+				}
 			}
 		}
 	}
