@@ -92,14 +92,11 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		/******** Buttons ********/
 		if (this.databaseObject != null) {
 			this.saveButton = new JButton("aktualisieren");
-
-
 			this.deleteButton = new JButton("löschen");
 			this.deleteButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*2) - smallSpacing, leftSideMenuWidth, buttonHeight);
 			this.deleteButton.addActionListener(this);
 			this.deleteButton.setEnabled(false);
 			frame.getContentPane().add(this.deleteButton);
-
 		} else {
 			this.saveButton = new JButton("speichern");
 		}
@@ -121,7 +118,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteDevice)) {
-					this.deleteButton.setEnabled(true);
+					if (this.deleteButton != null) {
+						this.deleteButton.setEnabled(true);
+					}
 				}
 				this.setupDeviceMenuItem();
 				break;
@@ -135,7 +134,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)) {
-					this.deleteButton.setEnabled(true);
+					if (this.deleteButton != null) {
+						this.deleteButton.setEnabled(true);
+					}
 				}
 				this.setupMedicalMaterialMenuItem();
 				break;
@@ -149,7 +150,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteConsumableMaterial)) {
-					this.deleteButton.setEnabled(true);
+					if (this.deleteButton != null) {
+						this.deleteButton.setEnabled(true);
+					}
 				}
 				this.setupConsumableMaterialMenuItem();
 				break;
@@ -163,7 +166,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteLocation)) {
-					this.deleteButton.setEnabled(true);
+					if (this.deleteButton != null) {
+						this.deleteButton.setEnabled(true);
+					}
 				}
 				this.setupLocationMenuItem();
 				break;
@@ -177,7 +182,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteUser)) {
-					this.deleteButton.setEnabled(true);
+					if (this.deleteButton != null) {
+						this.deleteButton.setEnabled(true);
+					}
 				}
 				this.setupUserMenuItem();
 				break;
@@ -191,7 +198,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteGroup)) {
-					this.deleteButton.setEnabled(true);
+					if (this.deleteButton != null) {
+						this.deleteButton.setEnabled(true);
+					}
 				}
 				this.setupGroupMenuItem();
 				break;
