@@ -96,6 +96,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 			this.deleteButton = new JButton("löschen");
 			this.deleteButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*2) - smallSpacing, leftSideMenuWidth, buttonHeight);
 			this.deleteButton.addActionListener(this);
+			this.deleteButton.setEnabled(false);
 			frame.getContentPane().add(this.deleteButton);
 
 		} else {
@@ -104,6 +105,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 
 		this.saveButton.setBounds(leftPadding, displayAreaHeight-(buttonHeight*1), leftSideMenuWidth, buttonHeight);
 		this.saveButton.addActionListener(this);
+		this.saveButton.setEnabled(false);
 		frame.getContentPane().add(this.saveButton);
 
 		JLabel title = new JLabel();
@@ -115,6 +117,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Ger\u00e4t bearbeiten:");
 				}
 				this.setupDeviceMenuItem();
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)) {
+					this.saveButton.setEnabled(true);
+				}
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteDevice)) {
+					this.deleteButton.setEnabled(true);
+				}
 				break;
 			case medicalMaterialMenuItem:
 				if (this.databaseObject == null) {
@@ -123,6 +131,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Medizinisches Material bearbeiten:");
 				}
 				this.setupMedicalMaterialMenuItem();
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)) {
+					this.saveButton.setEnabled(true);
+				}
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteMedicalMaterial)) {
+					this.deleteButton.setEnabled(true);
+				}
 				break;
 			case consumableMaterialMenuItem:
 				if (this.databaseObject == null) {
@@ -131,6 +145,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Verbrauchsmaterial bearbeiten:");
 				}
 				this.setupConsumableMaterialMenuItem();
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)) {
+					this.saveButton.setEnabled(true);
+				}
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteConsumableMaterial)) {
+					this.deleteButton.setEnabled(true);
+				}
 				break;
 			case locationMenuItem:
 				if (this.databaseObject == null) {
@@ -139,6 +159,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Lagerort bearbeiten:");
 				}
 				this.setupLocationMenuItem();
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)) {
+					this.saveButton.setEnabled(true);
+				}
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteLocation)) {
+					this.deleteButton.setEnabled(true);
+				}
 				break;
 			case userMenuItem:
 				if (this.databaseObject == null) {
@@ -147,6 +173,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Benutzer bearbeiten:");
 				}
 				this.setupUserMenuItem();
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser)) {
+					this.saveButton.setEnabled(true);
+				}
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteUser)) {
+					this.deleteButton.setEnabled(true);
+				}
 				break;
 			case groupMenuItem:
 				if (this.databaseObject == null) {
@@ -155,6 +187,12 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Gruppe bearbeiten:");
 				}
 				this.setupGroupMenuItem();
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)) {
+					this.saveButton.setEnabled(true);
+				}
+				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteGroup)) {
+					this.deleteButton.setEnabled(true);
+				}
 				break;
 		}
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));

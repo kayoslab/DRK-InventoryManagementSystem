@@ -62,16 +62,19 @@ public class InventoryPresenter extends Presenter {
 		this.checkBoxDevices = new JCheckBox("Ger\u00e4te");
 		this.checkBoxDevices.setBounds(leftPadding, contentY+lineHeight*0, leftSideMenuWidth, 24);
 		this.checkBoxDevices.setSelected(true);
+		this.checkBoxDevices.setEnabled(false);
 		this.checkBoxDevices.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxDevices);
 		this.checkBoxMedicalMaterials = new JCheckBox("MedMaterialien");
 		this.checkBoxMedicalMaterials.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
 		this.checkBoxMedicalMaterials.setSelected(true);
+		this.checkBoxMedicalMaterials.setEnabled(false);
 		this.checkBoxMedicalMaterials.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxMedicalMaterials);
 		this.checkBoxConsumableMaterial = new JCheckBox("Betreuungsmaterialien");
 		this.checkBoxConsumableMaterial.setBounds(leftPadding, contentY+lineHeight*2, leftSideMenuWidth, 24);
 		this.checkBoxConsumableMaterial.setSelected(true);
+		this.checkBoxConsumableMaterial.setEnabled(false);
 		this.checkBoxConsumableMaterial.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxConsumableMaterial);
 
@@ -108,19 +111,24 @@ public class InventoryPresenter extends Presenter {
 	}
 
 	private void loadTableData() {
-		// TODO: Check if a user has the right to see all these objects.
-		// Maybe you also want to disable the checkbox
-		this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
-		this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
-		this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
+		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+			this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
+			this.checkBoxDevices.setEnabled(true);
+		}
+		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+			this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
+			this.checkBoxMedicalMaterials.setEnabled(true);
+		}
+		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+			this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
+			this.checkBoxConsumableMaterial.setEnabled(true);
+		}
 	}
 
 	private void refreshTableData() {
 		DefaultTableModel model;
 		Object columnNames[] = { "Titel", "Menge", "Typ"};
 		model = new DefaultTableModel(columnNames, 0);
-
-
 
 		/**
 		 *
@@ -150,9 +158,15 @@ public class InventoryPresenter extends Presenter {
 			case 0:
 				// Lambda sort alphabetically after adding to stockObjects
 				// Outcome: Sorted Alphabetically
-				sortedData.addAll(Arrays.asList(unsortedDevices));
-				sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
-				sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
+				if (unsortedDevices != null) {
+					sortedData.addAll(Arrays.asList(unsortedDevices));
+				}
+				if (unsortedmedicalMaterials != null) {
+					sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
+				}
+				if (unsortedconsumableMaterials != null) {
+					sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
+				}
 
 				stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
 				Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
@@ -196,7 +210,7 @@ public class InventoryPresenter extends Presenter {
 						if (this.checkBoxConsumableMaterial.isSelected()) {
 							ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
 							// show all objects
-							Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
+							Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Betreuungsmaterial"};
 							model.addRow(row);
 						}
 					} else {

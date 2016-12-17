@@ -157,7 +157,7 @@ INSERT INTO `Type`
 VALUES
     (0,'Gerät'),
     (0,'Medizinisches Material'),
-    (0,'Versorgungsmaterial'),
+    (0,'Betreuungsmaterial'),
     (0,'Fahrzeug');
 
 INSERT INTO `Message`

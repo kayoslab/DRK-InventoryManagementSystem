@@ -93,8 +93,16 @@ public class MessagePresenter extends Presenter {
 		if (yellowObjectValues != null) {
 			for (StockObjectValue stockObjectValue : yellowObjectValues) {
 				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
-				Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
-				model.addRow(row);
+				if (stockObject.type.ordinal() == 1 && this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+					model.addRow(row);
+				} else if (stockObject.type.ordinal() == 2 && this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+					model.addRow(row);
+				} else if (stockObject.type.ordinal() == 3 && this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+					model.addRow(row);
+				}
 			}
 		}
 

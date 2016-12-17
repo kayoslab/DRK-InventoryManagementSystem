@@ -107,9 +107,15 @@ public class DataPresenter extends Presenter implements MouseListener {
 
 	private void loadTableData() {
 		/** Get unsorted Data **/
-		this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
-		this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
-		this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
+		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+			this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
+		}
+		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+			this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
+		}
+		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+			this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
+		}
 
 		StockObject[] unsortedDevices = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
 		StockObject[] unsortedmedicalMaterials = this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()];
@@ -117,9 +123,15 @@ public class DataPresenter extends Presenter implements MouseListener {
 		/** Sort the Data **/
 		ArrayList<StockObject> sortedData = new ArrayList<StockObject>();
 
-		sortedData.addAll(Arrays.asList(unsortedDevices));
-		sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
-		sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
+		if (unsortedDevices != null) {
+			sortedData.addAll(Arrays.asList(unsortedDevices));
+		}
+		if (unsortedmedicalMaterials != null) {
+			sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
+		}
+		if (unsortedconsumableMaterials != null) {
+			sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
+		}
 
 		stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
 		Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
@@ -181,7 +193,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 						model.addRow(row);
 					} else if (stockObject instanceof ConsumableMaterial) {
 						ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
-						Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Verbrauchsmaterial"};
+						Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Betreuungsmaterial"};
 						model.addRow(row);
 					} else {
 						// Do nothing with this object, its not a usable material

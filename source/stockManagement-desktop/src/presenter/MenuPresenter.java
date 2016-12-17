@@ -138,32 +138,38 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			this.addPopup = new JPopupMenu();
 			this.frame.getContentPane().add(this.addPopup);
 
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createDevice)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createDevice)
+					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
 				this.addDeviceMenuItem = new JMenuItem("Ger\u00e4t hinzuf\u00fcgen");
 				this.addDeviceMenuItem.addActionListener(this);
 				this.addPopup.add(addDeviceMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createMedicalMaterial)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createMedicalMaterial)
+					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
 				this.addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzuf\u00fcgen");
 				this.addMedicalMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addMedicalMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createConsumableMaterial)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createConsumableMaterial)
+					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
 				this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzuf\u00fcgen");
 				this.addConsumableMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addConsumableMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createLocation)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createLocation)
+					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewLocations)) {
 				this.addLocationMenuItem = new JMenuItem("Lagerort hinzuf\u00fcgen");
 				this.addLocationMenuItem.addActionListener(this);
 				this.addPopup.add(addLocationMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createUser)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createUser)
+					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewUsers)) {
 				this.addUserMenuItem = new JMenuItem("Benutzer hinzuf\u00fcgen");
 				this.addUserMenuItem.addActionListener(this);
 				this.addPopup.add(addUserMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createGroup)) {
+			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createGroup)
+					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewGroups)) {
 				this.addGroupMenuItem = new JMenuItem("Gruppe hinzuf\u00fcgen");
 				this.addGroupMenuItem.addActionListener(this);
 				this.addPopup.add(addGroupMenuItem);
