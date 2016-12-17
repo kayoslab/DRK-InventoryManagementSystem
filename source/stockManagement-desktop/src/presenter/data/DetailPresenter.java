@@ -18,6 +18,7 @@
 package presenter.data;
 import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
+import model.Session;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.*;
@@ -188,8 +189,24 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	}
 
 	private void activateButtons() {
-		this.editButton.setEnabled(true);
-		this.shiftButton.setEnabled(true);
+		if (this.stockObject instanceof Device) {
+			if (this.session.currentUserCanChangeDeviceStock()) {
+				this.editButton.setEnabled(true);
+				this.shiftButton.setEnabled(true);
+			}
+		} else if (this.stockObject instanceof Material) {
+			if (this.stockObject instanceof MedicalMaterial) {
+				if (this.session.currentUserCanChangeMedicalMaterialStock()) {
+					this.editButton.setEnabled(true);
+					this.shiftButton.setEnabled(true);
+				}
+			} else if (this.stockObject instanceof ConsumableMaterial) {
+				if (this.session.currentUserCanChangeConsumableMaterialStock()) {
+					this.editButton.setEnabled(true);
+					this.shiftButton.setEnabled(true);
+				}
+			}
+		}
 	}
 
 	@Override

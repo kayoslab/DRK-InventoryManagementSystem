@@ -145,4 +145,35 @@ public class Session {
 		}
 		return false;
 	}
+
+	public static Boolean currentUserCanChangeDeviceStock() {
+		Session instance = Session.getSharedInstance();
+		if (instance.currentUserCanHandleGroupRight(PossibleGroupRight.deviceIncrease)
+				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.deviceDecrease)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)
+				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.deviceCorrection) ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static Boolean currentUserCanChangeMedicalMaterialStock() {
+		Session instance = Session.getSharedInstance();
+		if (instance.currentUserCanHandleGroupRight(PossibleGroupRight.medicalMaterialIncrease)
+				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.medicalMaterialDecrease)
+				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.medicalMaterialCorrection) ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static Boolean currentUserCanChangeConsumableMaterialStock() {
+		Session instance = Session.getSharedInstance();
+		if (instance.currentUserCanHandleGroupRight(PossibleGroupRight.consumableMaterialIncrease)
+				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.consumableMaterialDecrease)
+				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.consumableMaterialCorrection) ) {
+			return true;
+		}
+		return false;
+	}
 }
