@@ -32,16 +32,15 @@ import java.sql.SQLException;
 
 public class PdfGenerator {
 
-	public void generatePDF() throws IOException {
+	public void generatePDF(String url) throws IOException {
 
 		BufferedReader br = null;
 		FileReader fr = null;
 		int zahl = 700;
 		
 		try {
-
-			System.out.println("Creating PDF");
-			String file =  System.getProperty("user.home") + File.separator + "Desktop" + File.separator + "Inventory.pdf";
+			// System.out.println("Creating PDF");
+			// String file =  System.getProperty("user.home") + File.separator + "Desktop" + File.separator + "Inventory.pdf";
 
 			PDDocument doc = new PDDocument();
 			PDPage page = new PDPage();
@@ -106,7 +105,7 @@ public class PdfGenerator {
 
 			
 			content.close();
-			doc.save(file);
+			doc.save(url);
 			doc.close();
 
 		} catch (IOException e) {

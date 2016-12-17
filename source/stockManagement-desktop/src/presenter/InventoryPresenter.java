@@ -23,6 +23,7 @@ import model.databaseObjects.stockObjects.*;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -223,12 +224,27 @@ public class InventoryPresenter extends Presenter {
 		} else if (e.getSource() == this.filterComboBox) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.generateInventoryButton) {
-			PdfGenerator pdfGenerator = new PdfGenerator();
-			try {
-				pdfGenerator.generatePDF();
-			} catch (IOException ioe) {
-				System.out.println(ioe.getMessage());
+			// parent component of the dialog
+			JFrame parentFrame = new JFrame();
+
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Speichern unter");
+			fileChooser.setSelectedFile(new File(System.getProperty("user.home") + File.separator +  "Inventory.pdf"));
+			int userSelection = fileChooser.showSaveDialog(parentFrame);
+
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+				File fileToSave = fileChooser.getSelectedFile();
+				// System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+
+				PdfGenerator pdfGenerator = new PdfGenerator();
+				try {
+					pdfGenerator.generatePDF(fileToSave.getAbsolutePath());
+				} catch (IOException ioe) {
+					System.out.println(ioe.getMessage());
+				}
 			}
+
+
 		}
 	}
 
