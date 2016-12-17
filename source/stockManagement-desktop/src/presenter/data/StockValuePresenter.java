@@ -390,6 +390,8 @@ public class StockValuePresenter extends Presenter {
 									inventoryNumber, umdns);
 							if (deviceValue.createObject()) {
 								this.showPreviousPresenter();
+							}  else {
+								this.stockObjectValue = null;
 							}
 						} else if (this.stockObject instanceof Material) {
 							Date date = (Date)this.dateField1.getModel().getValue();
@@ -404,6 +406,8 @@ public class StockValuePresenter extends Presenter {
 										batchNumber, date, minimumStock, quotaStock);
 								if (medicalMaterialValue.createObject()) {
 									this.showPreviousPresenter();
+								} else {
+									this.stockObjectValue = null;
 								}
 							} else if (this.stockObject instanceof ConsumableMaterial) {
 								// (int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID, String batchNumber, Date date, int minimumStock, int quotaStock)
@@ -412,6 +416,8 @@ public class StockValuePresenter extends Presenter {
 										batchNumber, date, minimumStock, quotaStock);
 								if (consumableMaterialValue.createObject()) {
 									this.showPreviousPresenter();
+								} else {
+									this.stockObjectValue = null;
 								}
 							}
 

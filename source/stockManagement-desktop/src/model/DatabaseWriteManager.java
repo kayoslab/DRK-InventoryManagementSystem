@@ -543,8 +543,8 @@ public final class DatabaseWriteManager {
 								"0" + // id
 								", " + stockObjectValue.volume + // volume
 								", NULL" + // date
-								", " + mtkDate + "'" + // mtkdate
-								", " + stkDate + "'" + // stkdate
+								", " + mtkDate + // mtkdate
+								", " + stkDate + // stkdate
 								", '" + deviceValue.inventoryNumber + // inventory
 								"', '" + deviceValue.serialNumber + // serialNummer
 								"', '" + deviceValue.umdns + // umdns
