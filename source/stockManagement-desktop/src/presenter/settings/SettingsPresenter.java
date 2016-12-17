@@ -1,4 +1,5 @@
 package presenter.settings;
+import model.Session;
 import model.UserManager;
 import presenter.Presenter;
 import presenter.onboarding.SetupPresenter;
@@ -40,6 +41,11 @@ public class SettingsPresenter extends Presenter {
 		this.changePasswordButton.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.frame.getContentPane().add(changePasswordButton);
 		this.changePasswordButton.addActionListener(this);
+		this.changePasswordButton.setEnabled(false);
+
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editSelf)) {
+			this.changePasswordButton.setEnabled(true);
+		}
 	}
 
 	@Override

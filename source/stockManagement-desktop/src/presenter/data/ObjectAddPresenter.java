@@ -117,13 +117,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					title = new JLabel("Ger\u00e4t bearbeiten:");
 				}
-				this.setupDeviceMenuItem();
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editDevice)) {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteDevice)) {
 					this.deleteButton.setEnabled(true);
 				}
+				this.setupDeviceMenuItem();
 				break;
 			case medicalMaterialMenuItem:
 				if (this.databaseObject == null) {
@@ -131,13 +131,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					title = new JLabel("Medizinisches Material bearbeiten:");
 				}
-				this.setupMedicalMaterialMenuItem();
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editMedicalMaterial)) {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)) {
 					this.deleteButton.setEnabled(true);
 				}
+				this.setupMedicalMaterialMenuItem();
 				break;
 			case consumableMaterialMenuItem:
 				if (this.databaseObject == null) {
@@ -145,13 +145,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					title = new JLabel("Verbrauchsmaterial bearbeiten:");
 				}
-				this.setupConsumableMaterialMenuItem();
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)) {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteConsumableMaterial)) {
 					this.deleteButton.setEnabled(true);
 				}
+				this.setupConsumableMaterialMenuItem();
 				break;
 			case locationMenuItem:
 				if (this.databaseObject == null) {
@@ -159,13 +159,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					title = new JLabel("Lagerort bearbeiten:");
 				}
-				this.setupLocationMenuItem();
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editLocation)) {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteLocation)) {
 					this.deleteButton.setEnabled(true);
 				}
+				this.setupLocationMenuItem();
 				break;
 			case userMenuItem:
 				if (this.databaseObject == null) {
@@ -173,13 +173,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					title = new JLabel("Benutzer bearbeiten:");
 				}
-				this.setupUserMenuItem();
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editUser)) {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteUser)) {
 					this.deleteButton.setEnabled(true);
 				}
+				this.setupUserMenuItem();
 				break;
 			case groupMenuItem:
 				if (this.databaseObject == null) {
@@ -187,13 +187,13 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					title = new JLabel("Gruppe bearbeiten:");
 				}
-				this.setupGroupMenuItem();
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editGroup)) {
 					this.saveButton.setEnabled(true);
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteGroup)) {
 					this.deleteButton.setEnabled(true);
 				}
+				this.setupGroupMenuItem();
 				break;
 		}
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -619,8 +619,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				} else {
 					this.booleanCombobox.setSelectedIndex(1);
 				}
-
-				if (group.id <= 5) {
+				if (this.databaseObject.id <= 5) {
 					this.deleteButton.setEnabled(false);
 				}
 			}

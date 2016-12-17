@@ -16,6 +16,7 @@
  */
 
 package presenter.onboarding;
+import model.Session;
 import model.UserManager;
 import presenter.MenuPresenter;
 import presenter.Presenter;
@@ -94,8 +95,12 @@ public class LoginPresenter extends Presenter {
 		if (e.getSource() == this.loginButton) {
 			if (this.userManager.tryLogin(this.userNameTextField.getText(), String.valueOf(this.passwordField.getPassword()))) {
 				this.userManager.loginProceeded(this.userNameTextField.getText());
-				MenuPresenter menuPresenter = new MenuPresenter(this);
-				menuPresenter.newScreen();
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.login)) {
+					MenuPresenter menuPresenter = new MenuPresenter(this);
+					menuPresenter.newScreen();
+				} else {
+					shakeButton();
+				}
 			} else {
 				shakeButton();
 			}
