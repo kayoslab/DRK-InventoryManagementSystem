@@ -17,6 +17,7 @@
 
 package presenter;
 import model.DatabaseReadManager;
+import model.Session;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.StockObject;
 import model.databaseObjects.stockValues.StockObjectValue;
@@ -93,13 +94,13 @@ public class MessagePresenter extends Presenter {
 		if (yellowObjectValues != null) {
 			for (StockObjectValue stockObjectValue : yellowObjectValues) {
 				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
-				if (stockObject.type.ordinal() == 1 && this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+				if (stockObject.type.ordinal() == 1 && this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)) {
 					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
 					model.addRow(row);
-				} else if (stockObject.type.ordinal() == 2 && this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+				} else if (stockObject.type.ordinal() == 2 && this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
 					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
 					model.addRow(row);
-				} else if (stockObject.type.ordinal() == 3 && this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+				} else if (stockObject.type.ordinal() == 3 && this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
 					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
 					model.addRow(row);
 				}

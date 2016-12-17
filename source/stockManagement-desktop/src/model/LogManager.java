@@ -20,19 +20,54 @@ import model.databaseCommunication.DatabaseValueManager;
 import java.sql.SQLException;
 
 public final class LogManager {
-	
-	private LogManager() {
-		// Do nothing here -> Static implementation
-	}
 
 	private static DatabaseValueManager getValueManager() {
 		return new DatabaseValueManager();
 	}
-
+	public enum Operation {
+		empty,
+		login,
+		editSelf,
+		createUser,
+		deleteUser,
+		editUser,
+		viewUsers,
+		createGroup,
+		deleteGroup,
+		editGroup,
+		viewGroups,
+		createDevice,
+		deleteDevice,
+		editDevice,
+		viewDevices,
+		deviceIncrease,
+		deviceDecrease,
+		deviceCorrection,
+		createMedicalMaterial,
+		deleteMedicalMaterial,
+		editMedicalMaterial,
+		viewMedicalMaterials,
+		medicalMaterialIncrease,
+		medicalMaterialDecrease,
+		medicalMaterialCorrection,
+		createConsumableMaterial,
+		deleteConsumableMaterial,
+		editConsumableMaterial,
+		viewConsumableMaterials,
+		consumableMaterialIncrease,
+		consumableMaterialDecrease,
+		consumableMaterialCorrection,
+		createLocation,
+		deleteLocation,
+		editLocation,
+		viewLocations
+	}
 
 	/** ******************************************* **/
 
-
+	private LogManager() {
+		// Do nothing here -> Static implementation
+	}
 
 
 

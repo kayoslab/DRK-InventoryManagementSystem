@@ -16,6 +16,7 @@
  */
 
 package presenter;
+import model.Session;
 import model.databaseObjects.DatabaseObject;
 import presenter.data.ObjectAddPresenter;
 import presenter.data.DataPresenter;
@@ -138,38 +139,38 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			this.addPopup = new JPopupMenu();
 			this.frame.getContentPane().add(this.addPopup);
 
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createDevice)
-					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createDevice)
+					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)) {
 				this.addDeviceMenuItem = new JMenuItem("Ger\u00e4t hinzuf\u00fcgen");
 				this.addDeviceMenuItem.addActionListener(this);
 				this.addPopup.add(addDeviceMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createMedicalMaterial)
-					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createMedicalMaterial)
+					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
 				this.addMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material hinzuf\u00fcgen");
 				this.addMedicalMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addMedicalMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createConsumableMaterial)
-					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createConsumableMaterial)
+					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
 				this.addConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial hinzuf\u00fcgen");
 				this.addConsumableMaterialMenuItem.addActionListener(this);
 				this.addPopup.add(addConsumableMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createLocation)
-					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewLocations)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createLocation)
+					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewLocations)) {
 				this.addLocationMenuItem = new JMenuItem("Lagerort hinzuf\u00fcgen");
 				this.addLocationMenuItem.addActionListener(this);
 				this.addPopup.add(addLocationMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createUser)
-					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewUsers)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createUser)
+					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewUsers)) {
 				this.addUserMenuItem = new JMenuItem("Benutzer hinzuf\u00fcgen");
 				this.addUserMenuItem.addActionListener(this);
 				this.addPopup.add(addUserMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createGroup)
-					&& this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewGroups)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createGroup)
+					&& this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewGroups)) {
 				this.addGroupMenuItem = new JMenuItem("Gruppe hinzuf\u00fcgen");
 				this.addGroupMenuItem.addActionListener(this);
 				this.addPopup.add(addGroupMenuItem);
@@ -188,38 +189,38 @@ public class MenuPresenter extends Presenter implements MouseListener {
 			this.editPopup = new JPopupMenu();
 			this.frame.getContentPane().add(this.editPopup);
 
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)
-					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteDevice)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editDevice)
+					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteDevice)) {
 				this.editDeviceMenuItem = new JMenuItem("Ger\u00e4t bearbeiten");
 				this.editDeviceMenuItem.addActionListener(this);
 				this.editPopup.add(editDeviceMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)
-					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteMedicalMaterial)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editMedicalMaterial)
+					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)) {
 				this.editMedicalMaterialMenuItem = new JMenuItem("Medizinisches Material bearbeiten");
 				this.editMedicalMaterialMenuItem.addActionListener(this);
 				this.editPopup.add(editMedicalMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)
-					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteConsumableMaterial)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)
+					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteConsumableMaterial)) {
 				this.editConsumableMaterialMenuItem = new JMenuItem("Verbrauchsmaterial bearbeiten");
 				this.editConsumableMaterialMenuItem.addActionListener(this);
 				this.editPopup.add(editConsumableMaterialMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)
-					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteLocation)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editLocation)
+					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteLocation)) {
 				this.editLocationMenuItem = new JMenuItem("Lagerort bearbeiten");
 				this.editLocationMenuItem.addActionListener(this);
 				this.editPopup.add(editLocationMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser)
-					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteUser)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editUser)
+					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteUser)) {
 				this.editUserMenuItem = new JMenuItem("Benutzer bearbeiten");
 				this.editUserMenuItem.addActionListener(this);
 				this.editPopup.add(editUserMenuItem);
 			}
-			if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)
-					|| this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteGroup)) {
+			if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editGroup)
+					|| this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteGroup)) {
 				this.editGroupMenuItem = new JMenuItem("Gruppe bearbeiten");
 				this.editGroupMenuItem.addActionListener(this);
 				this.editPopup.add(editGroupMenuItem);

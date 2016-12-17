@@ -18,6 +18,7 @@
 package presenter;
 import model.DatabaseReadManager;
 import model.PdfGenerator;
+import model.Session;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.*;
 
@@ -111,15 +112,15 @@ public class InventoryPresenter extends Presenter {
 	}
 
 	private void loadTableData() {
-		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)) {
 			this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
 			this.checkBoxDevices.setEnabled(true);
 		}
-		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
 			this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
 			this.checkBoxMedicalMaterials.setEnabled(true);
 		}
-		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
 			this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
 			this.checkBoxConsumableMaterial.setEnabled(true);
 		}

@@ -22,7 +22,47 @@ import model.databaseObjects.accessControl.User;
 public class Session {
 	private static Session sharedInstance;
 	public static User currentUser;
-	public static GroupRight[] currentRights;
+	public static model.databaseObjects.accessControl.GroupRight[] currentRights;
+
+	public enum PossibleGroupRight {
+		empty,
+		login,
+		editSelf,
+		createUser,
+		deleteUser,
+		editUser,
+		viewUsers,
+		createGroup,
+		deleteGroup,
+		editGroup,
+		viewGroups,
+		createDevice,
+		deleteDevice,
+		editDevice,
+		viewDevices,
+		deviceIncrease,
+		deviceDecrease,
+		deviceCorrection,
+		createMedicalMaterial,
+		deleteMedicalMaterial,
+		editMedicalMaterial,
+		viewMedicalMaterials,
+		medicalMaterialIncrease,
+		medicalMaterialDecrease,
+		medicalMaterialCorrection,
+		createConsumableMaterial,
+		deleteConsumableMaterial,
+		editConsumableMaterial,
+		viewConsumableMaterials,
+		consumableMaterialIncrease,
+		consumableMaterialDecrease,
+		consumableMaterialCorrection,
+		createLocation,
+		deleteLocation,
+		editLocation,
+		viewLocations
+	}
+
 	private Session() {
 
 	}
@@ -42,13 +82,13 @@ public class Session {
 
 	/**
 	 *
-	 * @param groupRight DatabaseObject.GroupRight
+	 * @param possibleGroupRight PossibleGroupRight
 	 * @return Boolean
 	 *
 	 * Check if the current user has the right to acces a given GroupRight
 	 */
-	public static Boolean currentUserCanHandleGroupRight(DatabaseObject.GroupRight groupRight) {
-		int groupRightID = groupRight.ordinal();
+	public static Boolean currentUserCanHandleGroupRight(Session.PossibleGroupRight possibleGroupRight) {
+		int groupRightID = possibleGroupRight.ordinal();
 		for (GroupRight right : Session.getSharedInstance().currentRights) {
 			if (right.id == groupRightID) {
 				return true;
@@ -59,9 +99,9 @@ public class Session {
 
 	public static Boolean currentUserCanAccessInventory() {
 		Session instance = Session.getSharedInstance();
-		if (instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+		if (instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
 			return true;
 		}
 		return false;
@@ -69,12 +109,12 @@ public class Session {
 
 	public static Boolean currentUserCanAddData() {
 		Session instance = Session.getSharedInstance();
-		if (instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createDevice)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createConsumableMaterial)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createMedicalMaterial)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createLocation)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createGroup)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.createUser) ) {
+		if (instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createDevice)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createConsumableMaterial)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createMedicalMaterial)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createLocation)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createGroup)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.createUser) ) {
 			return true;
 		}
 		return false;
@@ -82,12 +122,12 @@ public class Session {
 
 	public static Boolean currentUserCanEditData() {
 		Session instance = Session.getSharedInstance();
-		if (instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser) ) {
+		if (instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editDevice)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editMedicalMaterial)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editLocation)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editGroup)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editUser) ) {
 			return true;
 		}
 		return false;
@@ -95,12 +135,12 @@ public class Session {
 
 	public static Boolean currentUserCanDeleteData() {
 		Session instance = Session.getSharedInstance();
-		if (instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteDevice)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteConsumableMaterial)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteMedicalMaterial)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteLocation)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteGroup)
-				|| instance.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteUser) ) {
+		if (instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteDevice)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteConsumableMaterial)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteLocation)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteGroup)
+				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteUser) ) {
 			return true;
 		}
 		return false;

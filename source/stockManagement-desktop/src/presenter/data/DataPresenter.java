@@ -17,6 +17,7 @@
 
 package presenter.data;
 import model.DatabaseReadManager;
+import model.Session;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.stockObjects.*;
 import presenter.Presenter;
@@ -107,13 +108,13 @@ public class DataPresenter extends Presenter implements MouseListener {
 
 	private void loadTableData() {
 		/** Get unsorted Data **/
-		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewDevices)) {
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)) {
 			this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
 		}
-		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewMedicalMaterials)) {
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
 			this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
 		}
-		if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.viewConsumableMaterials)) {
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
 			this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
 		}
 

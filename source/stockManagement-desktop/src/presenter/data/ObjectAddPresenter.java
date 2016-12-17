@@ -18,6 +18,7 @@
 package presenter.data;
 import model.DatabaseReadManager;
 import model.DatabaseWriteManager;
+import model.Session;
 import model.UserManager;
 import model.databaseObjects.DatabaseObject;
 import model.databaseObjects.accessControl.Group;
@@ -117,10 +118,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Ger\u00e4t bearbeiten:");
 				}
 				this.setupDeviceMenuItem();
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editDevice)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editDevice)) {
 					this.saveButton.setEnabled(true);
 				}
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteDevice)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteDevice)) {
 					this.deleteButton.setEnabled(true);
 				}
 				break;
@@ -131,10 +132,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Medizinisches Material bearbeiten:");
 				}
 				this.setupMedicalMaterialMenuItem();
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editMedicalMaterial)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editMedicalMaterial)) {
 					this.saveButton.setEnabled(true);
 				}
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteMedicalMaterial)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)) {
 					this.deleteButton.setEnabled(true);
 				}
 				break;
@@ -145,10 +146,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Verbrauchsmaterial bearbeiten:");
 				}
 				this.setupConsumableMaterialMenuItem();
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editConsumableMaterial)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)) {
 					this.saveButton.setEnabled(true);
 				}
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteConsumableMaterial)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteConsumableMaterial)) {
 					this.deleteButton.setEnabled(true);
 				}
 				break;
@@ -159,10 +160,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Lagerort bearbeiten:");
 				}
 				this.setupLocationMenuItem();
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editLocation)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editLocation)) {
 					this.saveButton.setEnabled(true);
 				}
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteLocation)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteLocation)) {
 					this.deleteButton.setEnabled(true);
 				}
 				break;
@@ -173,10 +174,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Benutzer bearbeiten:");
 				}
 				this.setupUserMenuItem();
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editUser)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editUser)) {
 					this.saveButton.setEnabled(true);
 				}
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteUser)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteUser)) {
 					this.deleteButton.setEnabled(true);
 				}
 				break;
@@ -187,10 +188,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 					title = new JLabel("Gruppe bearbeiten:");
 				}
 				this.setupGroupMenuItem();
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.editGroup)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editGroup)) {
 					this.saveButton.setEnabled(true);
 				}
-				if (this.session.currentUserCanHandleGroupRight(DatabaseObject.GroupRight.deleteGroup)) {
+				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteGroup)) {
 					this.deleteButton.setEnabled(true);
 				}
 				break;
