@@ -9,7 +9,7 @@
     <list default="true" id="de8acc9d-7ae1-4205-af6b-f46cf5c7d65c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-desktop/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/DatabaseWriteManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,8 +59,8 @@
       <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="877">
-              <caret line="849" column="1" lean-forward="false" selection-start-line="849" selection-start-column="1" selection-end-line="849" selection-end-column="1" />
+            <state relative-caret-position="914">
+              <caret line="853" column="1" lean-forward="false" selection-start-line="853" selection-start-column="1" selection-end-line="853" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -757,12 +757,12 @@
       <workItem from="1482021662160" duration="690000" />
       <workItem from="1482077160370" duration="720000" />
       <workItem from="1482078490303" duration="2000" />
-      <workItem from="1482079500956" duration="110000" />
+      <workItem from="1482079500956" duration="291000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48694000" />
+    <option name="totallyTimeSpent" value="48875000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1185,8 +1185,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="877">
-          <caret line="849" column="1" lean-forward="false" selection-start-line="849" selection-start-column="1" selection-end-line="849" selection-end-column="1" />
+        <state relative-caret-position="914">
+          <caret line="853" column="1" lean-forward="false" selection-start-line="853" selection-start-column="1" selection-end-line="853" selection-end-column="1" />
           <folding />
         </state>
       </provider>
