@@ -107,7 +107,6 @@ CREATE TABLE `Operation` (
 
 CREATE TABLE `Logbook` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
     `date` TIMESTAMP NOT NULL,
     `userId` int(10) unsigned NOT NULL,
     `stockObjectId` int(10) unsigned NULL,
