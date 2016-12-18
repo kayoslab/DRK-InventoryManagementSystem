@@ -100,6 +100,7 @@ public class LoginPresenter extends Presenter {
 					menuPresenter.newScreen();
 				} else {
 					shakeButton();
+					this.session.invalidateSession();
 				}
 			} else {
 				shakeButton();

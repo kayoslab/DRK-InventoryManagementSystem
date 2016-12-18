@@ -41,8 +41,7 @@ public abstract class Presenter implements ActionListener {
 	private JButton back;
 
 	public void Presenter() {
-		// General Constructor
-		this.newScreen();
+
 	}
 
 	public void Presenter(Presenter previousPresenter) {

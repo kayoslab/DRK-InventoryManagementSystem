@@ -142,9 +142,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				break;
 			case consumableMaterialMenuItem:
 				if (this.databaseObject == null) {
-					title = new JLabel("Verbrauchsmaterial hinzuf\u00fcgen:");
+					title = new JLabel("Betreuungsmaterial hinzuf\u00fcgen:");
 				} else {
-					title = new JLabel("Verbrauchsmaterial bearbeiten:");
+					title = new JLabel("Betreuungsmaterial bearbeiten:");
 				}
 				if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editConsumableMaterial)) {
 					this.saveButton.setEnabled(true);

@@ -150,7 +150,6 @@ public class Session {
 		Session instance = Session.getSharedInstance();
 		if (instance.currentUserCanHandleGroupRight(PossibleGroupRight.deviceIncrease)
 				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.deviceDecrease)
-				|| instance.currentUserCanHandleGroupRight(Session.PossibleGroupRight.deleteMedicalMaterial)
 				|| instance.currentUserCanHandleGroupRight(PossibleGroupRight.deviceCorrection) ) {
 			return true;
 		}
