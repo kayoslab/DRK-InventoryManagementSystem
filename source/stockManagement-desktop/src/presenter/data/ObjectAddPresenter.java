@@ -521,6 +521,10 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 							Object row[] = { group.title,  selectedGroup };
 							model.addRow(row);
 						}
+					} else {
+						Boolean selectedGroup = false;
+						Object row[] = { group.title,  selectedGroup };
+						model.addRow(row);
 					}
 				}
 			}

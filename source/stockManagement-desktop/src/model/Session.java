@@ -10,7 +10,7 @@
  * are protected by trade secret or copyright law. Dissemination of this information or reproduction of this
  * material is strictly forbidden unless prior written permission is obtained by the owner.
  *
- * @author
+ * @author Simon
  *
  */
 
@@ -89,9 +89,11 @@ public class Session {
 	 */
 	public static Boolean currentUserCanHandleGroupRight(Session.PossibleGroupRight possibleGroupRight) {
 		int groupRightID = possibleGroupRight.ordinal();
-		for (GroupRight right : Session.getSharedInstance().currentRights) {
-			if (right.id == groupRightID) {
-				return true;
+		if (Session.getSharedInstance().currentRights != null) {
+			for (GroupRight right : Session.getSharedInstance().currentRights) {
+				if (right.id == groupRightID) {
+					return true;
+				}
 			}
 		}
 		return false;
