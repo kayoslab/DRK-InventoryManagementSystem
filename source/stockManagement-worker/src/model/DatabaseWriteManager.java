@@ -125,9 +125,16 @@ public final class DatabaseWriteManager {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 		String sqlStatement = "INSERT INTO `User`"
-				+ " VALUES(0, '" + user.username + "', '"
-				+ user.firstName +"', '" + user.name + "', '" + user.mail + "', '" + DatabaseWriteManager.sdf.format(timestamp)
-				+ "', '"	+ user.passwordHash + "',false);";
+				+ " VALUES(" +
+				"0" +
+				", " + "'" + user.username + "'" +
+				", " + "'" + user.firstName +"'" +
+				", " + "'" + user.name + "'" +
+				", " + "'" + user.mail + "'" +
+				", " + "'" + DatabaseWriteManager.sdf.format(timestamp) + "'" +
+				", " + "'"	+ user.passwordHash + "'" +
+				"," + " false" +
+				");";
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 
@@ -154,12 +161,14 @@ public final class DatabaseWriteManager {
 	 *
 	 */
 	private static Boolean editUser(User user) {
-		String sqlStatement = "UPDATE `User` SET `username` = '"
-				+ user.username + "', `firstname` = '" + user.firstName
-				+"', name = '" + user.name +"', mail = '" + user.mail
-				+ "', `password` = '" + user.passwordHash
-				+ "', `passwordChanged` = " + user.passwordChanged
-				+ " WHERE `id` = " + user.id +";";
+		String sqlStatement = "UPDATE `User` SET " +
+				"`username` = " + "'" + user.username + "'" +
+				", " + "`firstname` = " + "'" + user.firstName + "'" +
+				", " + "name = " + "'" + user.name +"'" +
+				", " + "mail = " + "'" + user.mail + "'" +
+				", " + "`password` = " + "'" + user.passwordHash + "'" +
+				", " + "`passwordChanged` = " + user.passwordChanged +
+				" WHERE `id` = " + user.id +";";
 
 		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
@@ -195,7 +204,6 @@ public final class DatabaseWriteManager {
 	public static Boolean setGroupsForUser(User user, Group[] groups) {
 		String sqlDelete = "DELETE FROM `UserIsMemberOfGroup` WHERE `user` = " + user.id + ";";
 		DatabaseWriteManager.executeUpdate(sqlDelete);
-
 		if (groups != null && user != null) {
 			System.out.println("Deletion true");
 			String sqlStatement = "INSERT INTO `UserIsMemberOfGroup` VALUES";
@@ -280,15 +288,19 @@ public final class DatabaseWriteManager {
 		String sqlDelete = "DELETE FROM `GroupHasRights` WHERE `group` = "
 				+ group.id + ";";
 		DatabaseWriteManager.executeUpdate(sqlDelete);
-		String sqlStatement = "INSERT INTO `GroupHasRights` VALUES";
-		for(GroupRight groupRight:groupRights){
-			sqlStatement += "(" + group.id + "," + groupRight.id + "),";
+		if (groupRights.length > 0) {
+			String sqlStatement = "INSERT INTO `GroupHasRights` VALUES";
+			for(GroupRight groupRight:groupRights){
+				sqlStatement += "(" + group.id + "," + groupRight.id + "),";
+			}
+			if (sqlStatement.charAt(sqlStatement.length()-1) == ',' ){
+				sqlStatement = sqlStatement.substring(0, sqlStatement.length()-1);
+			}
+			sqlStatement += ";";
+			return DatabaseWriteManager.executeUpdate(sqlStatement);
+		} else {
+			return true;
 		}
-		if (sqlStatement.charAt(sqlStatement.length()-1) == ',' ){
-			sqlStatement = sqlStatement.substring(0, sqlStatement.length()-1);
-		}
-		sqlStatement += ";";
-		return DatabaseWriteManager.executeUpdate(sqlStatement);
 	}
 
 	//================================================================================
@@ -367,7 +379,7 @@ public final class DatabaseWriteManager {
 					", 0" + // totalVolume
 					"," + device.mtkIntervall + // mtkIntervall
 					", " + device.stkIntervall + // stkIntervall
-					", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+					", " + "'" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
 					", " + DatabaseObject.StockObjectType.device.ordinal() + // typeID
 					");";
 		} else if (stockObject instanceof Material) {
@@ -460,29 +472,29 @@ public final class DatabaseWriteManager {
 			Device device = (Device) stockObject;
 			//Type ID 1 = Device
 			sqlStatement = "UPDATE `StockObject` " +
-					"SET `title` = '" + device.title
-					+ "', `description` = '" + device.description +
-					"', `mtkIntervall` = " + device.mtkIntervall +
-					", `stkIntervall` = " + device.stkIntervall
-					+ " WHERE `id` = " + stockObject.id + ";";
+					"SET `title` = " + "'" + device.title + "'" +
+					", `description` = " + "'" + device.description + "'" +
+					", `mtkIntervall` = " + device.mtkIntervall +
+					", `stkIntervall` = " + device.stkIntervall +
+					" WHERE `id` = " + stockObject.id + ";";
 		} else if (stockObject instanceof Material) {
 			if (stockObject instanceof MedicalMaterial) {
 				MedicalMaterial medmat = (MedicalMaterial) stockObject;
 				//Type ID 2 = MedicalMaterial
 				sqlStatement = "UPDATE `StockObject` " +
-						"SET `title` = '" + medmat.title
-						+ "', `description` = '" + medmat.description +
-						"', `batchSize` = " + medmat.batchSize +
+						"SET `title` = " + "'" + medmat.title + "'" +
+						", `description` = " + "'" + medmat.description + "'" +
+						", `batchSize` = " + medmat.batchSize +
 						", `totalVolume` = " + medmat.totalVolume
 						+ " WHERE `id` = " + stockObject.id + ";";
 			} else if (stockObject instanceof ConsumableMaterial) {
 				ConsumableMaterial consmat = (ConsumableMaterial) stockObject;
 				//Type ID 3 = ConsumableMaterial
 				sqlStatement = "UPDATE `StockObject` " +
-						"SET `title` = '" + consmat.title
-						+ "', `description` = '" + consmat.description +
-						"',  `batchSize` = " + consmat.batchSize
-						+ ", `totalVolume` = " + consmat.totalVolume +
+						"SET `title` = " + "'" + consmat.title + "'" +
+						", `description` = " + "'" + consmat.description + "'" +
+						",  `batchSize` = " + consmat.batchSize +
+						", `totalVolume` = " + consmat.totalVolume +
 						" WHERE `id` = " + stockObject.id + ";";
 			} else {
 				return false;
@@ -543,7 +555,7 @@ public final class DatabaseWriteManager {
 							", 0" + // minimumStock
 							", 0 " + // quotaStock
 							", " + deviceValue.silencedWarnings + // silencedWarnings
-							", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+							", '" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
 							", " + stockObjectValue.stockObjectID +
 							", " + stockObjectValue.locationID +
 							", " + stockObjectValue.messageID +
@@ -569,7 +581,7 @@ public final class DatabaseWriteManager {
 								"', "  + medicalValue.minimumStock+ // minimumStock
 								",  " + medicalValue.quotaStock + // quotaStock
 								", " + medicalValue.silencedWarnings + // silencedWarnings
-								", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+								", '" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
 								", " + stockObjectValue.stockObjectID +
 								", " + stockObjectValue.locationID +
 								", " + stockObjectValue.messageID +
@@ -594,7 +606,7 @@ public final class DatabaseWriteManager {
 								"', "  + consumableValue.minimumStock+ // minimumStock
 								",  " + consumableValue.quotaStock + // quotaStock
 								", " + consumableValue.silencedWarnings + // silencedWarnings
-								", '" + DatabaseWriteManager.sdf.format(timestamp) + // creation
+								", '" + DatabaseWriteManager.sdf.format(timestamp) + "'" +  // creation
 								", " + stockObjectValue.stockObjectID +
 								", " + stockObjectValue.locationID +
 								", " + stockObjectValue.messageID +

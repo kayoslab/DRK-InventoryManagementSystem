@@ -1111,10 +1111,18 @@ public final class DatabaseReadManager {
 		// Switch between different extended StockObjectValue Types
 		if (stockObjectValue instanceof DeviceValue) {
 			DeviceValue deviceValue = (DeviceValue) stockObjectValue;
-			sqlStatement += " AND `inventoryNumber` = '" + deviceValue.inventoryNumber
-					+ "' AND `serialNumber` = '" + deviceValue.serialNumber
-					+ "' AND `mtkDate` = '" + DatabaseReadManager.sdf.format(deviceValue.mtkDate)
-					+ "' AND `stkDate` = '" + DatabaseReadManager.sdf.format(deviceValue.stkDate) + "'";
+			String mtkDate = "null";
+			String stkDate = "null";
+			if (deviceValue.mtkDate != null) {
+				mtkDate = "'" +  DatabaseReadManager.sdf.format(deviceValue.mtkDate) + "'";
+			}
+			if (deviceValue.stkDate != null) {
+				stkDate = "'" + DatabaseReadManager.sdf.format(deviceValue.stkDate) + "'";
+			}
+			sqlStatement += " AND `inventoryNumber` = " + "'" + deviceValue.inventoryNumber + "'" +
+					" AND `serialNumber` = " + "'" + deviceValue.serialNumber + "'" +
+					" AND `mtkDate` = " + mtkDate
+					+ " AND `stkDate` = " + stkDate;
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
 				MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
