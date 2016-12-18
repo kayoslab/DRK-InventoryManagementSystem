@@ -100,8 +100,25 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		this.editButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*2+buttonWidth*1, buttonY, buttonWidth, buttonHeight);
 		this.shiftButton.setBounds(leftPadding+leftSideMenuWidth+smallSpacing*3+buttonWidth*2, buttonY, buttonWidth, buttonHeight);
 
+		this.addButton.setEnabled(false);
 		this.editButton.setEnabled(false);
 		this.shiftButton.setEnabled(false);
+
+		if (this.stockObject instanceof Device) {
+			if (this.session.currentUserCanChangeDeviceStock()) {
+				this.addButton.setEnabled(true);
+			}
+		} else if (this.stockObject instanceof Material) {
+			if (this.stockObject instanceof MedicalMaterial) {
+				if (this.session.currentUserCanChangeMedicalMaterialStock()) {
+					this.addButton.setEnabled(true);
+				}
+			} else if (this.stockObject instanceof ConsumableMaterial) {
+				if (this.session.currentUserCanChangeConsumableMaterialStock()) {
+					this.addButton.setEnabled(true);
+				}
+			}
+		}
 
 		for (JButton button : buttons) {
 			button.addActionListener(this);

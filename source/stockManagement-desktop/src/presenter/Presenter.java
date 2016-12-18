@@ -24,9 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
+import java.net.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -153,20 +151,17 @@ public abstract class Presenter implements ActionListener {
 			/***** Refferences the help document as a document on the server *****/
 			DatabaseLoginManager databaseLoginManager = new DatabaseLoginManager();
 			try {
-				URL url = new URL(databaseLoginManager.getURL());
-				String hostAddress = url.getHost();
-				System.out.println(hostAddress);
-				String urlString = "http://" + hostAddress + "/help/";
-
+				URI uri = new URI(databaseLoginManager.getURL());
+				String path = uri.getPath();
+				System.out.println(path);
+				String urlString = "http://" + path + "/help/";
 				java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
-			} catch (MalformedURLException e1) {
-				// not really important
-				System.out.println("Malformed URL");
-			} catch (IOException openException) {
+			} catch (URISyntaxException e1) {
+				e1.printStackTrace();
+			}  catch (IOException openException) {
 				// not really important
 				System.out.println("Cant open");
 			}
-
 		} else if (e.getSource() == this.logo) {
 			String urlString = "http://drk-sennestadt.de/";
 			try {

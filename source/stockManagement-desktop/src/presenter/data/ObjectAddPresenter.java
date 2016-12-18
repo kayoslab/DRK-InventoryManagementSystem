@@ -865,11 +865,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 									}
 								}
 								Group[] groupsArray = groups.toArray(new Group[groups.size()]);
-								if (groupsArray.length > 0) {
-									return DatabaseWriteManager.setGroupsForUser((User)this.databaseObject, groupsArray);
-								} else {
-									return true;
-								}
+								return DatabaseWriteManager.setGroupsForUser((User)this.databaseObject, groupsArray);
 							}
 						} catch (NoSuchAlgorithmException exception) {
 							return false;
