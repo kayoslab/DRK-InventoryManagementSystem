@@ -8,7 +8,43 @@
   <component name="ChangeListManager">
     <list default="true" id="de8acc9d-7ae1-4205-af6b-f46cf5c7d65c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-desktop/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/main.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/DatabaseObject.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/DatabaseObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/accessControl/Group.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/accessControl/Group.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/accessControl/GroupRight.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/accessControl/GroupRight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/accessControl/User.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/accessControl/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/environment/Location.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/environment/Location.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/Device.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/Device.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/Material.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/Material.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/MedicalMaterial.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/MedicalMaterial.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/StockObject.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockObjects/StockObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/DeviceValue.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/DeviceValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/MaterialValue.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/MaterialValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/StockObjectValue.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/model/databaseObjects/stockValues/StockObjectValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/presenter/settings/ChangePasswordPresenter.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/presenter/settings/ChangePasswordPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/src/presenter/settings/SettingsPresenter.java" afterPath="$PROJECT_DIR$/../stockManagement-desktop/src/presenter/settings/SettingsPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.java" afterPath="$PROJECT_DIR$/src/main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" afterPath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" afterPath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" afterPath="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" afterPath="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,18 +80,7 @@
     <favorites_list name="stockManagement-db-worker" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="30" column="1" lean-forward="false" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -99,29 +124,29 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
-        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" />
         <option value="$PROJECT_DIR$/src/model/MessageUpdateManager.java" />
         <option value="$PROJECT_DIR$/src/model/mailing/Sender.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java" />
+        <option value="$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java" />
       </list>
     </option>
   </component>
@@ -151,9 +176,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,8 +222,197 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockValues" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="environment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accessControl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="databaseCommunication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stockManagement-worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -747,11 +960,12 @@
       <workItem from="1482077160370" duration="720000" />
       <workItem from="1482078490303" duration="2000" />
       <workItem from="1482079500956" duration="332000" />
+      <workItem from="1482080627250" duration="190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48916000" />
+    <option name="totallyTimeSpent" value="49106000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -764,12 +978,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -781,7 +994,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12477876" sideWeight="0.42651758" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17412141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17571884" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17039403" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.056194127" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -793,6 +1006,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -804,7 +1018,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -816,7 +1032,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#14033#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -838,7 +1056,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="21" column="68" lean-forward="false" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="e#0#14033#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -846,7 +1066,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#43964#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -861,7 +1083,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="21" column="68" lean-forward="false" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="e#0#14033#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -869,7 +1093,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#43964#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -898,7 +1124,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10215">
           <caret line="681" column="46" lean-forward="false" selection-start-line="681" selection-start-column="44" selection-end-line="681" selection-end-column="46" />
-          <folding />
+          <folding>
+            <element signature="e#0#43964#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -906,7 +1134,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#31745#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,132 +1238,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="3" lean-forward="false" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1141,42 +1245,203 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/MessageUpdateManager.java">
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="200" column="55" lean-forward="false" selection-start-line="200" selection-start-column="55" selection-end-line="200" selection-end-column="55" />
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/mailing/Sender.java">
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/StockObjectValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="285" column="67" lean-forward="false" selection-start-line="285" selection-start-column="67" selection-end-line="285" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
-          <caret line="1282" column="1" lean-forward="false" selection-start-line="1282" selection-start-column="1" selection-end-line="1282" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/MedicalMaterialValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="914">
-          <caret line="853" column="1" lean-forward="false" selection-start-line="853" selection-start-column="1" selection-end-line="853" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/MaterialValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/DatabaseObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#3229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/ConsumableMaterial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Device.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/Material.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/MedicalMaterial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockObjects/StockObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/environment/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="30" column="1" lean-forward="false" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        <state relative-caret-position="435">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#1158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseLoginManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseCommunication/DatabaseValueManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/stockValues/DeviceValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#1387#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/GroupRight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/databaseObjects/accessControl/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#1283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/mailing/Sender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3690">
+          <caret line="285" column="67" lean-forward="false" selection-start-line="285" selection-start-column="67" selection-end-line="285" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#13639#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19065">
+          <caret line="1282" column="1" lean-forward="false" selection-start-line="1282" selection-start-column="1" selection-end-line="1282" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#43964#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#31745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/MessageUpdateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2850">
+          <caret line="200" column="55" lean-forward="false" selection-start-line="200" selection-start-column="55" selection-end-line="200" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#14033#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
