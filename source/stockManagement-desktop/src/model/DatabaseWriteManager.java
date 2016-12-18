@@ -217,8 +217,9 @@ public final class DatabaseWriteManager {
 				sqlStatement += ";";
 				return DatabaseWriteManager.executeUpdate(sqlStatement);
 			}
+		} else {
+			return true;
 		}
-		return false;
 	}
 
 	//================================================================================

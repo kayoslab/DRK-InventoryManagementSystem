@@ -4,11 +4,7 @@
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/Presenter.java" afterPath="$PROJECT_DIR$/src/presenter/Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,16 +64,8 @@
             <state relative-caret-position="440">
               <caret line="867" column="74" lean-forward="false" selection-start-line="867" selection-start-column="74" selection-end-line="867" selection-end-column="74" />
               <folding>
-                <element signature="e#9905#10180#0" expanded="false" />
-                <element signature="e#10179#10180#0" expanded="false" />
-                <element signature="e#12539#12814#0" expanded="false" />
-                <element signature="e#12813#12814#0" expanded="false" />
-                <element signature="e#15181#15456#0" expanded="false" />
-                <element signature="e#15455#15456#0" expanded="false" />
-                <element signature="e#19710#19808#0" expanded="false" />
-                <element signature="e#19807#19808#0" expanded="false" />
-                <element signature="e#23482#23580#0" expanded="false" />
-                <element signature="e#23579#23580#0" expanded="false" />
+                <element signature="e#0#43593#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,14 +74,9 @@
       <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="202" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="849" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#31778#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#1288#1289#0" expanded="false" />
-                <element signature="e#1328#1329#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="774">
+              <caret line="221" column="9" lean-forward="false" selection-start-line="221" selection-start-column="9" selection-end-line="221" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1055,12 +1038,12 @@
       <workItem from="1481994508640" duration="3670000" />
       <workItem from="1482066059729" duration="82000" />
       <workItem from="1482070678692" duration="5526000" />
-      <workItem from="1482078489099" duration="870000" />
+      <workItem from="1482078489099" duration="975000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208806000" />
+    <option name="totallyTimeSpent" value="208911000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1567,30 +1550,17 @@
         <state relative-caret-position="440">
           <caret line="867" column="74" lean-forward="false" selection-start-line="867" selection-start-column="74" selection-end-line="867" selection-end-column="74" />
           <folding>
-            <element signature="e#9905#10180#0" expanded="false" />
-            <element signature="e#10179#10180#0" expanded="false" />
-            <element signature="e#12539#12814#0" expanded="false" />
-            <element signature="e#12813#12814#0" expanded="false" />
-            <element signature="e#15181#15456#0" expanded="false" />
-            <element signature="e#15455#15456#0" expanded="false" />
-            <element signature="e#19710#19808#0" expanded="false" />
-            <element signature="e#19807#19808#0" expanded="false" />
-            <element signature="e#23482#23580#0" expanded="false" />
-            <element signature="e#23579#23580#0" expanded="false" />
+            <element signature="e#0#43593#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="202" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="849" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#31778#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1288#1289#0" expanded="false" />
-            <element signature="e#1328#1329#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="774">
+          <caret line="221" column="9" lean-forward="false" selection-start-line="221" selection-start-column="9" selection-end-line="221" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
