@@ -110,13 +110,10 @@ CREATE TABLE `Logbook` (
     `title` varchar(128) COLLATE 'latin1_german2_ci' NOT NULL UNIQUE,
     `date` TIMESTAMP NOT NULL,
     `userId` int(10) unsigned NOT NULL,
-    `stockObjectId` int(10) unsigned NOT NULL,
-    `operationId` int(10) unsigned NULL,
+    `stockObjectId` int(10) unsigned NULL,
+    `operationId` int(10) unsigned NOT NULL,
     CONSTRAINT `Constr_Logbook_User`
          FOREIGN KEY `user_fk` (`userId`) REFERENCES `User` (`id`)
-         ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `Constr_Logbook_StockObject`
-         FOREIGN KEY `stockObject_fk` (`stockObjectId`) REFERENCES `StockObject` (`id`)
          ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT `Constr_Logbook_Operation`
          FOREIGN KEY `operation_fk` (`operationId`) REFERENCES `Operation` (`id`)

@@ -16,6 +16,10 @@
  */
 
 package presenter.data;
+import model.LogManager;
+import model.databaseObjects.stockObjects.ConsumableMaterial;
+import model.databaseObjects.stockObjects.Device;
+import model.databaseObjects.stockObjects.MedicalMaterial;
 import model.databaseObjects.stockObjects.StockObject;
 import model.databaseObjects.stockValues.StockObjectValue;
 import presenter.Presenter;
@@ -134,8 +138,29 @@ public class StockModificationPresenter extends Presenter implements DocumentLis
 			}
 
 			this.stockObjectValue.volume = newVolume;
-			this.stockObjectValue.editObject();
-			this.showPreviousPresenter();
+			if (this.stockObjectValue.editObject()) {
+				if (this.stockObject instanceof Device) {
+					if (this.operationComboBox.getSelectedIndex() == 0) {
+						LogManager.writeLogMessage(LogManager.Operation.deviceIncrease, this.stockObject);
+					} else {
+						LogManager.writeLogMessage(LogManager.Operation.deviceDecrease, this.stockObject);
+					}
+				} else if (this.stockObject instanceof MedicalMaterial) {
+					if (this.operationComboBox.getSelectedIndex() == 0) {
+						LogManager.writeLogMessage(LogManager.Operation.medicalMaterialIncrease, this.stockObject);
+					} else {
+						LogManager.writeLogMessage(LogManager.Operation.medicalMaterialDecrease, this.stockObject);
+					}
+				} else if (this.stockObject instanceof ConsumableMaterial) {
+					if (this.operationComboBox.getSelectedIndex() == 0) {
+						LogManager.writeLogMessage(LogManager.Operation.consumableMaterialIncrease, this.stockObject);
+					} else {
+						LogManager.writeLogMessage(LogManager.Operation.consumableMaterialDecrease, this.stockObject);
+					}
+				}
+				this.showPreviousPresenter();
+			}
+			
 		}
 	}
 
