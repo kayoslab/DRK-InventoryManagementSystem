@@ -60,7 +60,8 @@ public class Session {
 		createLocation,
 		deleteLocation,
 		editLocation,
-		viewLocations
+		viewLocations,
+		databaseAdministration
 	}
 
 	private Session() {

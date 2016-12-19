@@ -53,6 +53,7 @@ public class SettingsPresenter extends Presenter {
 		this.changeDatabaseLoginButton.setBounds(menuButtonX, firstButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.frame.getContentPane().add(this.changeDatabaseLoginButton);
 		this.changeDatabaseLoginButton.addActionListener(this);
+		this.changeDatabaseLoginButton.setEnabled(false);
 
 		this.changePasswordButton.setBounds(menuButtonX, secondButtonPlacing, menuButtonWidth, menuButtonHeight);
 		this.frame.getContentPane().add(changePasswordButton);
@@ -62,6 +63,10 @@ public class SettingsPresenter extends Presenter {
 		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.editSelf)) {
 			this.changePasswordButton.setEnabled(true);
 		}
+		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.databaseAdministration)) {
+			this.changeDatabaseLoginButton.setEnabled(true);
+		}
+
 	}
 
 	@Override

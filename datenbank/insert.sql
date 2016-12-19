@@ -34,7 +34,8 @@ VALUES
     ('createLocation'),
     ('deleteLocation'),
     ('editLocation'),
-    ('viewLocations');
+    ('viewLocations'),
+    ('databaseAdministration');
 
 INSERT INTO `GroupRight` (title)
 VALUES
@@ -72,7 +73,8 @@ VALUES
     ('createLocation'),
     ('deleteLocation'),
     ('editLocation'),
-    ('viewLocations');
+    ('viewLocations'),
+    ('databaseAdministration');
 
 INSERT INTO `Group`
 VALUES
@@ -120,6 +122,7 @@ VALUES
     (2,32),
     (2,33),
     (2,34),
+    (2,36),
     (3,15),
     (3,16),
 	(3,17),
