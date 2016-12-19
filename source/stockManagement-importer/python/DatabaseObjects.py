@@ -115,7 +115,6 @@ class DatabaseObjects:
     logbookTable = {
     "table":"`Logbook`",
     "id":"`Logbook`.`id`",
-    "title":"`Logbook`.`title`",
     "date":"`Logbook`.`id`",
     "userId":"`Logbook`.`title`",
     "stockObjectId":"`Logbook`.`id`",
