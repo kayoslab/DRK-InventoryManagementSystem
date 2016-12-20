@@ -227,16 +227,26 @@ public class InventoryPresenter extends Presenter {
 		this.table.setModel(model);
 	}
 
+	private void setInventorButtonEnabled() {
+		if (this.checkBoxDevices.isSelected() || this.checkBoxMedicalMaterials.isSelected() || this.checkBoxConsumableMaterial.isSelected()) {
+			this.generateInventoryButton.setEnabled(true);
+		} else {
+			this.generateInventoryButton.setEnabled(false);
+		}
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
 		if (e.getSource() == this.checkBoxDevices) {
 			this.refreshTableData();
+			this.setInventorButtonEnabled();
 		} else if (e.getSource() == this.checkBoxMedicalMaterials) {
 			this.refreshTableData();
+			this.setInventorButtonEnabled();
 		} else if (e.getSource() == this.checkBoxConsumableMaterial) {
 			this.refreshTableData();
+			this.setInventorButtonEnabled();
 		} else if (e.getSource() == this.filterComboBox) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.generateInventoryButton) {
