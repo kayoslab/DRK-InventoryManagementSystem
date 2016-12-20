@@ -649,6 +649,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		switch (this.modificationType) {
 			case deviceMenuItem:
 				if (this.textField1.getText().length() > 0) {
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.textField1.setBorder(border);
+
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					int mtkIntervall = 0;
 					int stkIntervall = 0;
@@ -694,6 +697,9 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				return false;
 			case medicalMaterialMenuItem:
 				if (this.textField1.getText().length() > 0) {
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.textField1.setBorder(border);
+
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					int batchSize = 0;
 					// int minimumSize = 0;
@@ -734,6 +740,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				return false;
 			case consumableMaterialMenuItem:
 				if (this.textField1.getText().length() > 0) {
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.textField1.setBorder(border);
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					int batchSize = 0;
 					// int minimumSize = 0;
@@ -774,6 +782,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				return false;
 			case locationMenuItem:
 				if (this.textField1.getText().length() > 0) {
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.textField1.setBorder(border);
 					if (this.databaseObject == null) {
 						this.databaseObject = new Location(0, this.textField1.getText());
 						if (DatabaseWriteManager.createObject(this.databaseObject)) {
@@ -804,6 +814,11 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 						&& this.textField2.getText().length() > 0
 						&& this.textField3.getText().length() > 0
 						&& this.textField4.getText().length() > 0) {
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.textField1.setBorder(border);
+					this.textField2.setBorder(border);
+					this.textField3.setBorder(border);
+					this.textField4.setBorder(border);
 					// password textfield only required if user is null
 					if (this.databaseObject == null && this.textField5.getText().length() > 0) {
 						UserManager userManager = new UserManager();
@@ -841,6 +856,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 							return false;
 						}
 					} else {
+						this.textField5.setBorder(border);
 						/** Update existing User */
 						UserManager userManager = new UserManager();
 						try {
@@ -891,6 +907,8 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 				return false;
 			case groupMenuItem:
 				if (this.textField1.getText().length() > 0) {
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.textField1.setBorder(border);
 					if (this.databaseObject == null) {
 						Boolean comboboxState = true;
 						if (this.booleanCombobox.getSelectedIndex() == 1) {

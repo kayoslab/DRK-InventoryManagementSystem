@@ -26,6 +26,7 @@ import org.jdatepicker.impl.UtilDateModel;
 import presenter.Presenter;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
@@ -326,7 +327,6 @@ public class StockValuePresenter extends Presenter {
 		super.actionPerformed(e);
 		if (e.getSource() == this.saveButton) {
 			if (this.stockObjectValue != null) {
-				System.out.println("Edit");
 				this.stockObjectValue.locationID = this.locations[this.locationComboBox.getSelectedIndex()].id;
 				if (this.stockObjectValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
@@ -339,7 +339,6 @@ public class StockValuePresenter extends Presenter {
 						this.showPreviousPresenter();
 					}
 				} else if (this.stockObjectValue instanceof MaterialValue) {
-					System.out.println("Material");
 					MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
 					materialValue.date = (Date)this.dateField1.getModel().getValue();
 					materialValue.batchNumber = this.batchField.getText();
@@ -347,25 +346,36 @@ public class StockValuePresenter extends Presenter {
 					DecimalFormat decimalFormat = new DecimalFormat("#");
 					int minimumStock = 0;
 					int quotaStock = 0;
+					Boolean exceptionThrowed = false;
 					try {
 						minimumStock = decimalFormat.parse(this.minimumStockField.getText()).intValue();
+						materialValue.minimumStock = minimumStock;
+						Border border = BorderFactory.createLineBorder(Color.black);
+						this.minimumStockField.setBorder(border);
 					} catch (ParseException parseException) {
 						// Cant parse Textfields to int
+						Border border = BorderFactory.createLineBorder(Color.red);
+						this.minimumStockField.setBorder(border);
+						exceptionThrowed = true;
 					}
 					try {
 						quotaStock = decimalFormat.parse(this.quotaStockField.getText()).intValue();
+						materialValue.quotaStock = quotaStock;
+						Border border = BorderFactory.createLineBorder(Color.black);
+						this.quotaStockField.setBorder(border);
 					} catch (ParseException parseException) {
 						// Cant parse Textfields to int
+						Border border = BorderFactory.createLineBorder(Color.red);
+						this.quotaStockField.setBorder(border);
+						exceptionThrowed = true;
 					}
-
-					materialValue.minimumStock = minimumStock;
-					materialValue.quotaStock = quotaStock;
-
-					if (materialValue.editObject()) {
-						System.out.println("Saved");
-						this.showPreviousPresenter();
-					} else {
-						System.out.println("Not");
+					if (! exceptionThrowed) {
+						if (materialValue.editObject()) {
+							System.out.println("Saved");
+							this.showPreviousPresenter();
+						} else {
+							System.out.println("Not");
+						}
 					}
 				}
 			} else {
@@ -426,8 +436,12 @@ public class StockValuePresenter extends Presenter {
 					} else {
 
 					}
+					Border border = BorderFactory.createLineBorder(Color.black);
+					this.volumeTextField.setBorder(border);
 				} catch (ParseException exception) {
-
+					// required Textfields are empty
+					Border border = BorderFactory.createLineBorder(Color.red);
+					this.volumeTextField.setBorder(border);
 				}
 			}
 
