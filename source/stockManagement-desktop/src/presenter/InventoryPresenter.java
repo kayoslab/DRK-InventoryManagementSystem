@@ -54,6 +54,7 @@ public class InventoryPresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
+		this.presenterHelpId = 6;
 		JLabel Inventarliste = new JLabel("Inventarliste");
 		Inventarliste.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Inventarliste.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);

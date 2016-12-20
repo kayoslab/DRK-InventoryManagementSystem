@@ -58,6 +58,7 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();
+		this.presenterHelpId = 4;
 
 		/******** Labels ********/
 		JLabel title = new JLabel();

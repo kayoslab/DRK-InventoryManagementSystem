@@ -63,7 +63,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 		super.setupTopLayout();
 
 		int decentContentHeight = 350;
-
+		this.presenterHelpId = 7;
 		JLabel titleLabel = this.stockObject != null ? new JLabel(this.stockObject.title) : new JLabel("Titels");
 		titleLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		titleLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);

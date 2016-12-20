@@ -33,6 +33,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <ul class="nav navbar-nav">
+            <li role="presentation"><a href="./index.php">Home</a></li>
             <li role="presentation"><a href="./index.php?id=1">Einrichtung</a></li>
             <li role="presentation"><a href="./index.php?id=2">Login</a></li>
             <li role="presentation"><a href="./index.php?id=3">Hauptmenü</a></li>
@@ -50,6 +51,9 @@
     <?php
         if (isset($_GET['id'])) {
             switch ($_GET['id']) {
+                case 0:
+                include '0.php';
+                break;
                 case 1:
                 include '1.php';
                 break;

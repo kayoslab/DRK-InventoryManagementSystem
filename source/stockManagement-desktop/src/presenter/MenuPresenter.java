@@ -70,6 +70,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	public void initialize() {
 		super.initialize();
 
+		this.presenterHelpId = 3;
 		/******************* Header Layout ************************/
 		this.frame.addMouseListener(this);
 		this.logo = new JButton("");

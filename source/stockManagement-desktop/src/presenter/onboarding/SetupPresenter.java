@@ -56,12 +56,13 @@ public class SetupPresenter extends Presenter {
 		if (this.previousPresenter != null) {
 			// Show total TopLayout with backButton if this Presenter is defined by SettingsPresenter.
 			super.setupTopLayout();
-
+			this.presenterHelpId = 7;
 			JLabel databaseLabel = new JLabel("Datenbankzugangsdaten \u00e4ndern");
 			databaseLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 			databaseLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
 			this.frame.getContentPane().add(databaseLabel);
 		} else {
+			this.presenterHelpId = 1;
 			// If this is the inital Presenter don't display any Buttons.
 			this.logo = new JButton("");
 			Image img = new ImageIcon (this.getClass().getResource("/img/DRK-LogoMini.jpg")).getImage();

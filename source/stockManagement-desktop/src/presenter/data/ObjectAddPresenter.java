@@ -86,6 +86,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		super.initialize();
 		super.setupTopLayout();
 
+		this.presenterHelpId = 5;
 		/******** Buttons ********/
 		if (this.databaseObject != null) {
 			this.saveButton = new JButton("aktualisieren");

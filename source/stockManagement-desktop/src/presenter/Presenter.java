@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
+import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public abstract class Presenter implements ActionListener {
 	public Session session = Session.getSharedInstance();
 	public Presenter previousPresenter;
 	public JFrame frame;
+	public int presenterHelpId = 0;
 	public JButton logo;
 	public JButton btnLogout;
 	public JButton help;
@@ -151,14 +153,10 @@ public abstract class Presenter implements ActionListener {
 			/***** Refferences the help document as a document on the server *****/
 			DatabaseLoginManager databaseLoginManager = new DatabaseLoginManager();
 			try {
-				URI uri = new URI(databaseLoginManager.getURL());
-				String path = uri.getPath();
-				System.out.println(path);
-				String urlString = "http://" + path + "/help/";
+				String ipAddress = "192.168.178.37";
+				String urlString = "http://" + ipAddress + "/help/index.php?id=" + this.presenterHelpId;
 				java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
-			} catch (URISyntaxException e1) {
-				e1.printStackTrace();
-			}  catch (IOException openException) {
+			} catch (IOException openException) {
 				// not really important
 				System.out.println("Cant open");
 			}

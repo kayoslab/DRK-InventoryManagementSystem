@@ -44,7 +44,7 @@ public class ChangePasswordPresenter extends Presenter {
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();
-
+		this.presenterHelpId = 7;
 		JLabel changePasswordLabel = new JLabel("Passwort \u00c4ndern");
 		changePasswordLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		changePasswordLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);
@@ -86,8 +86,9 @@ public class ChangePasswordPresenter extends Presenter {
 		if (e.getSource() == this.saveButton){
 			if (String.valueOf(this.passwordTextField.getPassword()).equals(String.valueOf(this.newPasswordTextField.getPassword()))) {
 				String currentPasswordToTest = String.valueOf(this.currentPasswordTextField.getPassword());
-				if (this.userManager.tryLogin(Session.getSharedInstance().currentUser.username, String.valueOf(this.currentPasswordTextField.getPassword()))) {
-					if (this.userManager.setNewPassword(this.session.currentUser.username, String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
+				if (this.userManager.tryLogin(Session.getSharedInstance().currentUser.username, currentPasswordToTest)) {
+					if (this.userManager.setNewPassword(this.session.currentUser.username,
+							String.valueOf(currentPasswordTextField.getPassword()), String.valueOf(passwordTextField.getPassword()))) {
 						// Password changed.
 						this.showPreviousPresenter();
 					} else {

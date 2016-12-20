@@ -56,6 +56,7 @@ public class DataPresenter extends Presenter implements MouseListener {
 		super.initialize();
 		super.setupTopLayout();
 
+		this.presenterHelpId = 4;
 		JLabel MaterialUndGeraeteDaten = new JLabel("Material- und Ger\u00e4te Daten");
 		MaterialUndGeraeteDaten.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		MaterialUndGeraeteDaten.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);

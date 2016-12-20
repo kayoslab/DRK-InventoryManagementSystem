@@ -48,7 +48,7 @@ public class MessagePresenter extends Presenter {
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();
-
+		this.presenterHelpId = 8;
 		JLabel messageLabel = new JLabel("Meldungen");
 		messageLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		messageLabel.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);

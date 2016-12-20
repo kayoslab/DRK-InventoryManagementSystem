@@ -52,7 +52,7 @@ public class LoginPresenter extends Presenter {
 	 */
 	public void initialize() {
 		super.initialize();
-
+		this.presenterHelpId = 2;
 		this.loginButton.addActionListener(this);
 		this.loginButton.setBounds(356, 477, 117, 29);
 		this.frame.getContentPane().add(this.loginButton);

@@ -45,6 +45,7 @@ public class SettingsPresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
+		this.presenterHelpId = 7;
 		JLabel settings = new JLabel("Einstellungen");
 		settings.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		settings.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);

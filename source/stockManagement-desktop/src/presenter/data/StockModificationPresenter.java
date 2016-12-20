@@ -60,6 +60,7 @@ public class StockModificationPresenter extends Presenter implements DocumentLis
 		super.initialize();
 		super.setupTopLayout();
 
+		this.presenterHelpId = 5;
 		JLabel title = new JLabel("Bestands\u00e4nderung:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		title.setBounds(leftPadding, headlineY, displayAreaWidth, lineHeight);

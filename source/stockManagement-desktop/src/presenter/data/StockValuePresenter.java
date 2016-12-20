@@ -91,6 +91,7 @@ public class StockValuePresenter extends Presenter {
 		super.initialize();
 		super.setupTopLayout();
 
+		this.presenterHelpId = 5;
 		/******** Labels ********/
 		JLabel titleLabel = new JLabel("Titel:");
 		titleLabel.setBounds(leftPadding, contentY+(lineHeight+smallSpacing)*0, leftSideMenuWidth,lineHeight);
