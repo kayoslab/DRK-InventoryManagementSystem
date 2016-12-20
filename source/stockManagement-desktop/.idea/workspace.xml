@@ -3,8 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/0.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/0.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/1.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/1.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/2.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/3.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/3.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/4.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/5.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/5.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/6.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/6.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/7.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/7.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/8.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/8.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/help/index.php" afterPath="$PROJECT_DIR$/../stockManagement-online/help/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/inventoryData.php" afterPath="$PROJECT_DIR$/../stockManagement-online/inventoryData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/login.php" afterPath="$PROJECT_DIR$/../stockManagement-online/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/news.php" afterPath="$PROJECT_DIR$/../stockManagement-online/news.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/objectConsMat.php" afterPath="$PROJECT_DIR$/../stockManagement-online/objectConsMat.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/objectDevice.php" afterPath="$PROJECT_DIR$/../stockManagement-online/objectDevice.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/objectMedMat.php" afterPath="$PROJECT_DIR$/../stockManagement-online/objectMedMat.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-online/stock.php" afterPath="$PROJECT_DIR$/../stockManagement-online/stock.php" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,22 +59,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ObjectAddPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java">
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-780">
-              <caret line="910" column="54" lean-forward="false" selection-start-line="910" selection-start-column="54" selection-end-line="910" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StockValuePresenter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="350" column="79" lean-forward="false" selection-start-line="350" selection-start-column="79" selection-end-line="350" selection-end-column="79" />
-              <folding />
+            <state relative-caret-position="300">
+              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#1385#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -259,46 +267,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stockManagement-desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stockManagement-desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stockManagement-desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stockManagement-desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -940,12 +908,12 @@
       <workItem from="1482078489099" duration="2280000" />
       <workItem from="1482160259112" duration="512000" />
       <workItem from="1482161352689" duration="1241000" />
-      <workItem from="1482231109595" duration="2442000" />
+      <workItem from="1482231109595" duration="2838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214411000" />
+    <option name="totallyTimeSpent" value="214807000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1280,17 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#1385#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Session.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1425,6 +1382,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="350" column="79" lean-forward="false" selection-start-line="350" selection-start-column="79" selection-end-line="350" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-780">
@@ -1433,11 +1398,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java">
+    <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="350" column="79" lean-forward="false" selection-start-line="350" selection-start-column="79" selection-end-line="350" selection-end-column="79" />
-          <folding />
+        <state relative-caret-position="300">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#1385#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

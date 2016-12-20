@@ -1,4 +1,5 @@
 <h1>Meldungen</h1>
+<img src="./images/image20.png"></img></br></br></br>
 <p>In diesem Fenster werden verschiedene Meldungen angezeigt, wie:
 <ul>
     <li>Unterschreitung von Mindestbeständen</li>
