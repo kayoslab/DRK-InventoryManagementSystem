@@ -409,7 +409,8 @@ public class StockValuePresenter extends Presenter {
 							String batchNumber = this.batchField.getText();
 							int minimumStock = 0;
 							int quotaStock = 0;
-
+							minimumStock = decimalFormat.parse(this.minimumStockField.getText()).intValue();
+							quotaStock = decimalFormat.parse(this.quotaStockField.getText()).intValue();
 							if (this.stockObject instanceof MedicalMaterial) {
 								// (int id, int volume, Boolean silencedWarnings, int stockObjectID, int locationID, int messageID, String batchNumber, Date date, int minimumStock, int quotaStock)
 								MedicalMaterialValue medicalMaterialValue = new MedicalMaterialValue(0, volume,
