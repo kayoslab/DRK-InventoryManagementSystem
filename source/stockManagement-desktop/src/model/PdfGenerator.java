@@ -17,6 +17,7 @@
 package model;
 
 import model.databaseCommunication.DatabaseValueManager;
+import model.databaseObjects.stockObjects.StockObject;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -32,7 +33,7 @@ import java.sql.SQLException;
 
 public class PdfGenerator {
 
-	public void generatePDF(String url) throws IOException {
+	public void generatePDF(StockObject[] stockObjects, String url) throws IOException {
 
 		BufferedReader br = null;
 		FileReader fr = null;

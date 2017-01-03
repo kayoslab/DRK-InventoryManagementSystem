@@ -202,6 +202,12 @@ public class DetailPresenter extends Presenter implements MouseListener {
 			} else {
 				// Do nothing, maybe its a vehicle
 			}
+		} else {
+			Object columnNames[] = { "Lagerort", "Lagerbestand"};
+			DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+			Object row[] = {"",""};
+			model.addRow(row);
+			table.setModel(model);
 		}
 	}
 

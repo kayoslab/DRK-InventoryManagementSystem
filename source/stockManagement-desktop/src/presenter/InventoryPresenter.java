@@ -39,6 +39,7 @@ public class InventoryPresenter extends Presenter {
 	private JCheckBox checkBoxConsumableMaterial;
 	private JComboBox filterComboBox = new JComboBox();
 	private JButton generateInventoryButton;
+	private StockObject[] stockObjects = new StockObject[0];
 	/**
 	 * Create the application.
 	 */
@@ -154,8 +155,6 @@ public class InventoryPresenter extends Presenter {
 		StockObject[] sortedmedicalMaterials = unsortedmedicalMaterials;
 		StockObject[] sortedconsumableMaterials = unsortedconsumableMaterials;
 
-		StockObject[] stockObjects = new StockObject[0];
-
 		switch (this.filterComboBox.getSelectedIndex()) {
 			case 0:
 				// Lambda sort alphabetically after adding to stockObjects
@@ -170,8 +169,8 @@ public class InventoryPresenter extends Presenter {
 					sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
 				}
 
-				stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
-				Arrays.sort(stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
+				this.stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
+				Arrays.sort(this.stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
 
 				break;
 			case 1:
@@ -185,11 +184,11 @@ public class InventoryPresenter extends Presenter {
 				sortedData.addAll(Arrays.asList(sortedmedicalMaterials));
 				sortedData.addAll(Arrays.asList(sortedconsumableMaterials));
 
-				stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
+				this.stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
 				break;
 		}
 
-		if (stockObjects != null) {
+		if (this.stockObjects != null) {
 			// iterate over existing objects in sortedData
 			for (StockObject stockObject : stockObjects) {
 				// Switch between instanceTypes
@@ -264,7 +263,7 @@ public class InventoryPresenter extends Presenter {
 
 				PdfGenerator pdfGenerator = new PdfGenerator();
 				try {
-					pdfGenerator.generatePDF(fileToSave.getAbsolutePath());
+					pdfGenerator.generatePDF(this.stockObjects, fileToSave.getAbsolutePath());
 				} catch (IOException ioe) {
 					System.out.println(ioe.getMessage());
 				}

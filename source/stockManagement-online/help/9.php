@@ -1,5 +1,6 @@
 <h1>Hinzufügen/Bearbeiten</h1>
 <h2>Gerät hinzufügen</h2>
+<img src="./images/image24.png"></img></br></br></br>
 <p>In diesem Fenster können Sie ein neues Gerät anlegen. Der Name des Gerätes ist ein Pflichtfeld und muss einzigartig sein. MTK- und STK-Intervalle, sowie die Beschreibung des Geräts sind optional. Mit dem Button 'speichern' wird das Gerät angelegt und dessen Bestand kann gepflegt werden.</p>
 
 <h2>Medizinisches-/Betreuungsmaterial hinzufügen</h2>

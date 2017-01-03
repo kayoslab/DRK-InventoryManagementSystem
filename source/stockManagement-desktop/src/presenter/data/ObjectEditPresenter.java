@@ -32,6 +32,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 
 public class ObjectEditPresenter extends Presenter implements MouseListener {
 	/** Reusable ObjectAddPresenter modType **/
@@ -130,6 +131,13 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 				break;
 			case locationMenuItem:
 				this.databaseObjects = DatabaseReadManager.getLocations();
+				if (this.databaseObjects != null) {
+					if (this.databaseObjects instanceof Location[]) {
+						Location[] locations = (Location[]) this.databaseObjects;
+						Arrays.sort(locations, (a, b) -> a.title.compareToIgnoreCase(b.title));
+						this.databaseObjects = locations;
+					}
+				}
 				break;
 			case userMenuItem:
 				this.databaseObjects = DatabaseReadManager.getUsers();
