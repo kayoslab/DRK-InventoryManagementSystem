@@ -20,26 +20,31 @@ import model.DatabaseReadManager;
 import model.PdfGenerator;
 import model.Session;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.*;
+import model.databaseObjects.stockValues.*;
 
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.StringJoiner;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
 public class InventoryPresenter extends Presenter {
 	private JTable table;
-	private StockObject[][] tableData = new StockObject[DatabaseObject.StockObjectType.values().length][];
+	private StockObjectValue[][] tableData = new StockObjectValue[DatabaseObject.StockObjectType.values().length][];
 	private JCheckBox checkBoxDevices;
 	private JCheckBox checkBoxMedicalMaterials;
 	private JCheckBox checkBoxConsumableMaterial;
-	private JComboBox filterComboBox = new JComboBox();
+	// private JComboBox filterComboBox = new JComboBox();
+	private JComboBox locationComboBox = new JComboBox();
 	private JButton generateInventoryButton;
-	private StockObject[] stockObjects = new StockObject[0];
+	private StockObjectValue[] stockObjectValues = new StockObjectValue[0];
 	/**
 	 * Create the application.
 	 */
@@ -68,7 +73,7 @@ public class InventoryPresenter extends Presenter {
 		this.checkBoxDevices.setEnabled(false);
 		this.checkBoxDevices.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxDevices);
-		this.checkBoxMedicalMaterials = new JCheckBox("MedMaterialien");
+		this.checkBoxMedicalMaterials = new JCheckBox("Medizinische Materialien");
 		this.checkBoxMedicalMaterials.setBounds(leftPadding, contentY+lineHeight*1, leftSideMenuWidth, 24);
 		this.checkBoxMedicalMaterials.setSelected(true);
 		this.checkBoxMedicalMaterials.setEnabled(false);
@@ -81,13 +86,26 @@ public class InventoryPresenter extends Presenter {
 		this.checkBoxConsumableMaterial.addActionListener(this);
 		this.frame.getContentPane().add(this.checkBoxConsumableMaterial);
 
-		// Combobox
-		this.filterComboBox.setBounds(leftPadding, contentY+lineHeight*3, leftSideMenuWidth, 24);
-		this.filterComboBox.addItem("Alphabetisch");
-		this.filterComboBox.addItem("Typ");
-		this.frame.getContentPane().add(filterComboBox);
-		// needs to be called after adding the Items
-		this.filterComboBox.addActionListener(this);
+//		// Combobox
+//		this.filterComboBox.setBounds(leftPadding, contentY+lineHeight*3, leftSideMenuWidth, 24);
+//		this.filterComboBox.addItem("Alphabetisch");
+//		this.filterComboBox.addItem("Typ");
+//		this.frame.getContentPane().add(filterComboBox);
+//		// needs to be called after adding the Items
+//		this.filterComboBox.addActionListener(this);
+
+		this.locationComboBox.setBounds(leftPadding, contentY+lineHeight*3, leftSideMenuWidth, 24);
+		this.locationComboBox.addItem("Alle");
+		Location[] locations = DatabaseReadManager.getLocations();
+		if (locations != null) {
+			for (Location location : locations) {
+				this.locationComboBox.addItem(location.title);
+			}
+		} else {
+		}
+		this.frame.getContentPane().add(locationComboBox);
+		// needs to locationComboBox called after adding the Items
+		this.locationComboBox.addActionListener(this);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(leftPadding+leftSideMenuWidth+spacing, contentY, displayAreaWidth-(leftSideMenuWidth+spacing), displayAreaHeight-contentY);
@@ -129,8 +147,9 @@ public class InventoryPresenter extends Presenter {
 	}
 
 	private void refreshTableData() {
+		this.frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		DefaultTableModel model;
-		Object columnNames[] = { "Titel", "Menge", "Typ"};
+		Object columnNames[] = { "Titel", "Menge", "Lagerort", "Typ"};
 		model = new DefaultTableModel(columnNames, 0);
 
 		/**
@@ -145,74 +164,94 @@ public class InventoryPresenter extends Presenter {
 		 *
 		 */
 
-		StockObject[] unsortedDevices = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
-		StockObject[] unsortedmedicalMaterials = this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()];
-		StockObject[] unsortedconsumableMaterials = this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()];
+		StockObjectValue[] unfilteredDeviceValues = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
+		StockObjectValue[] unfilteredmedicalMaterialValues = this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()];
+		StockObjectValue[] unfilteredconsumableMaterialValues = this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()];
 
-		ArrayList<StockObject> sortedData = new ArrayList<StockObject>();
+		ArrayList<StockObjectValue> sortedData = new ArrayList<StockObjectValue>();
 
-		StockObject[] sortedDevices = unsortedDevices;
-		StockObject[] sortedmedicalMaterials = unsortedmedicalMaterials;
-		StockObject[] sortedconsumableMaterials = unsortedconsumableMaterials;
+		StockObjectValue[] filteredDeviceValues = null;
+		StockObjectValue[] filteredmedicalMaterialValues = null;
+		StockObjectValue[] filteredconsumableMaterialValues = null;
 
-		switch (this.filterComboBox.getSelectedIndex()) {
-			case 0:
-				// Lambda sort alphabetically after adding to stockObjects
-				// Outcome: Sorted Alphabetically
-				if (unsortedDevices != null) {
-					sortedData.addAll(Arrays.asList(unsortedDevices));
+		if (this.locationComboBox.getSelectedIndex() != 0) {
+			Object object = this.locationComboBox.getSelectedItem();
+			if (object != null) {
+				if (object instanceof String) {
+					Location location = DatabaseReadManager.getLocation((String)object);
+					if (location != null) {
+						filteredDeviceValues =  Arrays.stream(unfilteredDeviceValues).filter(x -> x.locationID == location.id).toArray(StockObjectValue[]::new);
+						filteredmedicalMaterialValues =  Arrays.stream(unfilteredmedicalMaterialValues).filter(x -> x.locationID == location.id).toArray(StockObjectValue[]::new);
+						filteredconsumableMaterialValues =  Arrays.stream(unfilteredconsumableMaterialValues).filter(x -> x.locationID == location.id).toArray(StockObjectValue[]::new);
+					}
 				}
-				if (unsortedmedicalMaterials != null) {
-					sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
-				}
-				if (unsortedconsumableMaterials != null) {
-					sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
-				}
+			}
 
-				this.stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
-				Arrays.sort(this.stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
-
-				break;
-			case 1:
-				// Lambda sort alphabetically before adding to stockObjects
-				// Outcome: Sorted by Type
-				Arrays.sort(sortedDevices, (a, b) -> a.title.compareToIgnoreCase(b.title));
-				Arrays.sort(sortedmedicalMaterials, (a, b) -> a.title.compareToIgnoreCase(b.title));
-				Arrays.sort(sortedconsumableMaterials, (a, b) -> a.title.compareToIgnoreCase(b.title));
-
-				sortedData.addAll(Arrays.asList(sortedDevices));
-				sortedData.addAll(Arrays.asList(sortedmedicalMaterials));
-				sortedData.addAll(Arrays.asList(sortedconsumableMaterials));
-
-				this.stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
-				break;
+		} else {
+			filteredDeviceValues = unfilteredDeviceValues;
+			filteredmedicalMaterialValues = unfilteredmedicalMaterialValues;
+			filteredconsumableMaterialValues = unfilteredconsumableMaterialValues;
 		}
 
-		if (this.stockObjects != null) {
-			// iterate over existing objects in sortedData
-			for (StockObject stockObject : stockObjects) {
+		if (this.checkBoxDevices.isSelected() == true) {
+			if (filteredDeviceValues != null) {
+				sortedData.addAll(Arrays.asList(filteredDeviceValues));
+			}
+		}
+		if (this.checkBoxMedicalMaterials.isSelected() == true) {
+			if (filteredmedicalMaterialValues != null) {
+				sortedData.addAll(Arrays.asList(filteredmedicalMaterialValues));
+			}
+		}
+		if (this.checkBoxConsumableMaterial.isSelected() == true) {
+			if (filteredconsumableMaterialValues != null) {
+				sortedData.addAll(Arrays.asList(filteredconsumableMaterialValues));
+			}
+		}
+		this.stockObjectValues = sortedData.toArray(new StockObjectValue[sortedData.size()]);
+
+		if (this.stockObjectValues != null) {
+			for (StockObjectValue stockObjectValue : this.stockObjectValues) {
 				// Switch between instanceTypes
-				if (stockObject instanceof Device) {
+				if (stockObjectValue instanceof DeviceValue) {
 					if (this.checkBoxDevices.isSelected()) {
-						Device device = (Device) stockObject;
+						DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+						StockObject stockObject = DatabaseReadManager.getStockObject(deviceValue.stockObjectID);
 						// show all objects
-						Object row[] = { device.title, device.totalVolume , "Ger\u00e4t"};
-						model.addRow(row);
-					}
-				} else if (stockObject instanceof Material) {
-					if (stockObject instanceof MedicalMaterial) {
-						if (this.checkBoxMedicalMaterials.isSelected()) {
-							MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
-							// show all objects
-							Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume,  "Medizinisches Material"};
-							model.addRow(row);
+						if (stockObject != null) {
+							Location location = DatabaseReadManager.getLocation(stockObjectValue.locationID);
+							if (location != null) {
+								Object row[] = { stockObject.title, deviceValue.volume, location.title, "Ger\u00e4t"};
+								model.addRow(row);
+							}
 						}
-					} else if (stockObject instanceof ConsumableMaterial) {
-						if (this.checkBoxConsumableMaterial.isSelected()) {
-							ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
+					}
+				} else if (stockObjectValue instanceof MaterialValue) {
+					if (stockObjectValue instanceof MedicalMaterialValue) {
+						if (this.checkBoxMedicalMaterials.isSelected()) {
+							MedicalMaterialValue medicalMaterialValue = (MedicalMaterialValue) stockObjectValue;
+							StockObject stockObject = DatabaseReadManager.getStockObject(medicalMaterialValue.stockObjectID);
 							// show all objects
-							Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Betreuungsmaterial"};
-							model.addRow(row);
+							if (stockObject != null) {
+								Location location = DatabaseReadManager.getLocation(stockObjectValue.locationID);
+								if (location != null) {
+									Object row[] = { stockObject.title, medicalMaterialValue.volume, location.title, "Medizinisches Material"};
+									model.addRow(row);
+								}
+							}
+						}
+					} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+						if (this.checkBoxConsumableMaterial.isSelected()) {
+							ConsumableMaterialValue consumableMaterialValue = (ConsumableMaterialValue) stockObjectValue;
+							StockObject stockObject = DatabaseReadManager.getStockObject(consumableMaterialValue.stockObjectID);
+							// show all objects
+							if (stockObject != null) {
+								Location location = DatabaseReadManager.getLocation(stockObjectValue.locationID);
+								if (location != null) {
+									Object row[] = { stockObject.title, consumableMaterialValue.volume, location.title, "Betreuungsmaterial"};
+									model.addRow(row);
+								}
+							}
 						}
 					} else {
 						// Do nothing with this object, its not a usable material
@@ -221,9 +260,94 @@ public class InventoryPresenter extends Presenter {
 					// Do nothing, maybe its a vehicle
 				}
 			}
+			this.table.setModel(model);
+		} else {
+			Object row[] = { "", "",  ""};
+			model.addRow(row);
+			this.table.setModel(model);
 		}
+		this.frame.setCursor(Cursor.getDefaultCursor());
 
-		this.table.setModel(model);
+
+//		StockObject[] unsortedDevices = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
+//		StockObject[] unsortedmedicalMaterials = this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()];
+//		StockObject[] unsortedconsumableMaterials = this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()];
+//
+//		ArrayList<StockObject> sortedData = new ArrayList<StockObject>();
+//
+//		StockObject[] sortedDevices = unsortedDevices;
+//		StockObject[] sortedmedicalMaterials = unsortedmedicalMaterials;
+//		StockObject[] sortedconsumableMaterials = unsortedconsumableMaterials;
+//
+//		switch (this.filterComboBox.getSelectedIndex()) {
+//			case 0:
+//				// Lambda sort alphabetically after adding to stockObjects
+//				// Outcome: Sorted Alphabetically
+//				if (unsortedDevices != null) {
+//					sortedData.addAll(Arrays.asList(unsortedDevices));
+//				}
+//				if (unsortedmedicalMaterials != null) {
+//					sortedData.addAll(Arrays.asList(unsortedmedicalMaterials));
+//				}
+//				if (unsortedconsumableMaterials != null) {
+//					sortedData.addAll(Arrays.asList(unsortedconsumableMaterials));
+//				}
+//
+//				this.stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
+//				Arrays.sort(this.stockObjects, (a, b) -> a.title.compareToIgnoreCase(b.title));
+//
+//				break;
+//			case 1:
+//				// Lambda sort alphabetically before adding to stockObjects
+//				// Outcome: Sorted by Type
+//				Arrays.sort(sortedDevices, (a, b) -> a.title.compareToIgnoreCase(b.title));
+//				Arrays.sort(sortedmedicalMaterials, (a, b) -> a.title.compareToIgnoreCase(b.title));
+//				Arrays.sort(sortedconsumableMaterials, (a, b) -> a.title.compareToIgnoreCase(b.title));
+//
+//				sortedData.addAll(Arrays.asList(sortedDevices));
+//				sortedData.addAll(Arrays.asList(sortedmedicalMaterials));
+//				sortedData.addAll(Arrays.asList(sortedconsumableMaterials));
+//
+//				this.stockObjects = sortedData.toArray(new StockObject[sortedData.size()]);
+//				break;
+//		}
+//
+//		if (this.stockObjects != null) {
+//			// iterate over existing objects in sortedData
+//			for (StockObject stockObject : stockObjects) {
+//				// Switch between instanceTypes
+//				if (stockObject instanceof Device) {
+//					if (this.checkBoxDevices.isSelected()) {
+//						Device device = (Device) stockObject;
+//						// show all objects
+//						Object row[] = { device.title, device.totalVolume , "Ger\u00e4t"};
+//						model.addRow(row);
+//					}
+//				} else if (stockObject instanceof Material) {
+//					if (stockObject instanceof MedicalMaterial) {
+//						if (this.checkBoxMedicalMaterials.isSelected()) {
+//							MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
+//							// show all objects
+//							Object row[] = { medicalMaterial.title, medicalMaterial.totalVolume,  "Medizinisches Material"};
+//							model.addRow(row);
+//						}
+//					} else if (stockObject instanceof ConsumableMaterial) {
+//						if (this.checkBoxConsumableMaterial.isSelected()) {
+//							ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
+//							// show all objects
+//							Object row[] = { consumableMaterial.title, consumableMaterial.totalVolume, "Betreuungsmaterial"};
+//							model.addRow(row);
+//						}
+//					} else {
+//						// Do nothing with this object, its not a usable material
+//					}
+//				} else {
+//					// Do nothing, maybe its a vehicle
+//				}
+//			}
+//		}
+//
+//		this.table.setModel(model);
 	}
 
 	private void setInventorButtonEnabled() {
@@ -246,7 +370,7 @@ public class InventoryPresenter extends Presenter {
 		} else if (e.getSource() == this.checkBoxConsumableMaterial) {
 			this.refreshTableData();
 			this.setInventorButtonEnabled();
-		} else if (e.getSource() == this.filterComboBox) {
+		} else if (e.getSource() == this.locationComboBox) {
 			this.refreshTableData();
 		} else if (e.getSource() == this.generateInventoryButton) {
 			// parent component of the dialog
@@ -263,7 +387,7 @@ public class InventoryPresenter extends Presenter {
 
 				PdfGenerator pdfGenerator = new PdfGenerator();
 				try {
-					pdfGenerator.generatePDF(this.stockObjects, fileToSave.getAbsolutePath());
+					pdfGenerator.generatePDF(this.stockObjectValues, fileToSave.getAbsolutePath());
 				} catch (IOException ioe) {
 					System.out.println(ioe.getMessage());
 				}

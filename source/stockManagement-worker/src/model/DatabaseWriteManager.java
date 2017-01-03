@@ -762,7 +762,6 @@ public final class DatabaseWriteManager {
 					", " + "`locationId` = " + stockObjectValue.locationID +
 					", " + "`messageId` = " + stockObjectValue.messageID +
 					" WHERE `id` = " + stockObjectValue.id + ";";
-			return DatabaseWriteManager.executeUpdate(sqlStatement);
 		} else if (stockObjectValue instanceof MaterialValue) {
 			if (stockObjectValue instanceof MedicalMaterialValue) {
 				MedicalMaterialValue mergedMedicalValue = (MedicalMaterialValue) stockObjectValue;
@@ -800,22 +799,22 @@ public final class DatabaseWriteManager {
 			} else {
 				return false;
 			}
-			if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
-				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
-				if (stockObject != null) {
-					StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
-					int totalVolume = 0;
-					if (stockObjectValues != null) {
-						for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
-							totalVolume += iteratedStockObjectValue.volume;
-						}
+		}
+		if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
+			StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
+			if (stockObject != null) {
+				StockObjectValue[] stockObjectValues = DatabaseReadManager.getStockObjectValues(stockObject);
+				int totalVolume = 0;
+				if (stockObjectValues != null) {
+					for (StockObjectValue iteratedStockObjectValue : stockObjectValues) {
+						totalVolume += iteratedStockObjectValue.volume;
 					}
-					sqlStatement = "UPDATE `StockObject` SET " +
-							"`totalVolume` = " + totalVolume +
-							" WHERE `id` = " + stockObjectValue.stockObjectID +
-							";";
-					return DatabaseWriteManager.executeUpdate(sqlStatement);
 				}
+				sqlStatement = "UPDATE `StockObject` SET " +
+						"`totalVolume` = " + totalVolume +
+						" WHERE `id` = " + stockObjectValue.stockObjectID +
+						";";
+				return DatabaseWriteManager.executeUpdate(sqlStatement);
 			}
 		}
 		return false;

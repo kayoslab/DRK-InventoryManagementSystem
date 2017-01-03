@@ -643,6 +643,37 @@ public final class DatabaseReadManager {
 		}
 	}
 
+	/**
+	 * @param  locationTitle String
+	 * @return Location[]
+	 */
+	public static Location getLocation(String locationTitle) {
+		String sqlStatement = "SELECT `id`,`title` FROM `Location` WHERE `title` = '" + locationTitle + "';";
+		ResultSet rs = null;
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			if (rs.first()) {
+				Location location = new Location(rs.getInt("id"), rs.getString("title"));
+				DatabaseReadManager.close(rs);
+				return location;
+			}
+			DatabaseReadManager.close(rs);
+			return null;
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println(e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return null;
+			}
+			return null;
+		}
+	}
+
 	//================================================================================
 	// endregion Location
 	// region StockObject
@@ -1200,7 +1231,98 @@ public final class DatabaseReadManager {
 	 *
 	 * Generates Inventorylist for a given StockObjectType
 	 */
-	public static StockObject[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
+	public static StockObjectValue[] generateInventory(DatabaseObject.StockObjectType stockObjectType) {
+		// get Inventory as Array
+		String sqlStatement = "SELECT `StockValue`.`id`, " +
+				"`StockValue`.`volume`, " +
+				"`StockValue`.`date`, " +
+				"`StockValue`.`mtkDate`, " +
+				"`StockValue`.`stkDate`, " +
+				"`StockValue`.`inventoryNumber`, " +
+				"`StockValue`.`serialNumber`, " +
+				"`StockValue`.`umdns`, " +
+				"`StockValue`.`batchNumber`, " +
+				"`StockValue`.`creation`, " +
+				"`StockValue`.`minimumStock`, " +
+				"`StockValue`.`quotaStock`, " +
+				"`StockValue`.`silencedWarnings`, " +
+				"`StockValue`.`stockObjectId`, " +
+				"`StockValue`.`locationId`, " +
+				"`StockValue`.`messageId` " +
+				"FROM `StockValue`, `StockObject` " +
+				"WHERE `StockValue`.`stockObjectId` = `StockObject`.`id` " +
+				"AND `StockObject`.`typeId` = " + stockObjectType.ordinal() +
+				" ORDER BY `id` ASC;";
+		// get Data from Database
+		ResultSet rs = null;
+		// Execute the processed SQL Statement and return an Array of Objects
+		try {
+			// get Data from Database
+			rs = DatabaseReadManager.executeQuery(sqlStatement);
+			ArrayList<StockObjectValue> inventoryList = new ArrayList<StockObjectValue>();
+			while (rs.next()) {
+				// fill the ArrayList with reasonable Data
+				switch (stockObjectType) {
+					case empty:
+						//empty space
+						break;
+					case device:
+						inventoryList.add(
+								new DeviceValue(rs.getInt("id"),
+										rs.getInt("volume"), rs.getBoolean("silencedWarnings"),
+										rs.getDate("mtkDate"), rs.getDate("stkDate"),
+										rs.getInt("stockObjectId"), rs.getInt("locationId"),
+										rs.getInt("messageId"), rs.getString("serialNumber"),
+										rs.getString("inventoryNumber"), rs.getString("umdns"))
+						);
+						break;
+					case medicalMaterial:
+						inventoryList.add(
+								new MedicalMaterialValue(rs.getInt("id"),
+										rs.getInt("volume"),rs.getBoolean("silencedWarnings"),
+										rs.getInt("stockObjectId"), rs.getInt("locationId"),
+										rs.getInt("messageId"), rs.getString("batchNumber"),
+										rs.getDate("date"), rs.getInt("minimumStock"),
+										rs.getInt("quotaStock"))
+						);
+						break;
+					case consumableMaterial:
+						inventoryList.add(
+								new ConsumableMaterialValue(rs.getInt("id"),
+										rs.getInt("volume"),rs.getBoolean("silencedWarnings"),
+										rs.getInt("stockObjectId"), rs.getInt("locationId"),
+										rs.getInt("messageId"), rs.getString("batchNumber"),
+										rs.getDate("date"), rs.getInt("minimumStock"),
+										rs.getInt("quotaStock"))
+						);
+						break;
+					case vehicle:
+						break;
+				}
+			}
+			DatabaseReadManager.close(rs);
+			return inventoryList.toArray(new StockObjectValue[inventoryList.size()]);
+		} catch (SQLException e) {
+			// rs isNull or one or more attributes are missing
+			// uncomment for debugging SQL-Statements
+			System.out.println("Read Error - generateInventory: " + e.getMessage());
+			try {
+				DatabaseReadManager.close(rs);
+			} catch (SQLException e1) {
+				// nothing to do here, return not necessary
+				return new StockObjectValue[0];
+			}
+			return new StockObjectValue[0];
+		}
+	}
+
+	/**
+	 * @param stockObjectType DatabaseObject.StockObjectType
+	 * @return StockObject[]
+	 *
+	 * Generates DataTable for a given StockObjectType
+	 */
+	public static StockObject[] generateDataTable(DatabaseObject.StockObjectType stockObjectType) {
 		// get Inventory as Array
 		String sqlStatement = "SELECT `id`, `title`, `description`, `batchSize`, `totalVolume`, `mtkIntervall`," +
 				" `stkIntervall`, `typeId` FROM `StockObject` " +

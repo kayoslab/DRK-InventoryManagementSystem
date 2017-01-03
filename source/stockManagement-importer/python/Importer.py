@@ -92,7 +92,7 @@ class Importer:
             stockValueConstainsNewStockObject = False
             stockValueForIndex = 0
             for stockValue in stockValues:
-                if stockValue["title"] == row['Titel'] and stockValue["location"] == row['Lagerort'] and stockValue["inventoryNumber"] == row['Inventarnummer'] and stockValue["serialNumber"] == row['Seriennummer'] and stockValue["umdns"] == row['UMDNS'] and stockValue["batchNumber"] == row['Chargennummer']:
+                if stockValue["title"] == row['Titel'] and stockValue["location"] == row['Lagerort'] and stockValue["inventoryNumber"] == row['Inventarnummer'] and stockValue["serialNumber"] == row['Seriennummer'] and stockValue["umdns"] == row['UMDNS'] and stockValue["batchNumber"] == row['Chargennummer'] and stockValue["date"] == row['Datum']:
                     stockValueConstainsNewStockObject = True
                     oldTotalVolume = 0
                     addingRowVolume = 0

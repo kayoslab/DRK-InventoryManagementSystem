@@ -110,13 +110,13 @@ public class DataPresenter extends Presenter implements MouseListener {
 	private void loadTableData() {
 		/** Get unsorted Data **/
 		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)) {
-			this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.device);
+			this.tableData[DatabaseObject.StockObjectType.device.ordinal()] = DatabaseReadManager.generateDataTable(DatabaseObject.StockObjectType.device);
 		}
 		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
-			this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.medicalMaterial);
+			this.tableData[DatabaseObject.StockObjectType.medicalMaterial.ordinal()] = DatabaseReadManager.generateDataTable(DatabaseObject.StockObjectType.medicalMaterial);
 		}
 		if (this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
-			this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateInventory(DatabaseObject.StockObjectType.consumableMaterial);
+			this.tableData[DatabaseObject.StockObjectType.consumableMaterial.ordinal()] = DatabaseReadManager.generateDataTable(DatabaseObject.StockObjectType.consumableMaterial);
 		}
 
 		StockObject[] unsortedDevices = this.tableData[DatabaseObject.StockObjectType.device.ordinal()];
