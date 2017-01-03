@@ -567,6 +567,7 @@ public final class DatabaseWriteManager {
 						MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
 						String date = "null";
 						if (medicalValue.date != null) {
+
 							date =  "'" + DatabaseWriteManager.sdf.format(medicalValue.date) + "'";
 						}
 						sqlStatement = "INSERT INTO `StockValue` " +
@@ -767,6 +768,7 @@ public final class DatabaseWriteManager {
 				MedicalMaterialValue mergedMedicalValue = (MedicalMaterialValue) stockObjectValue;
 				String date = "null";
 				if (mergedMedicalValue.date != null) {
+
 					date =  "'" + DatabaseWriteManager.sdf.format(mergedMedicalValue.date) + "'";
 				}
 				sqlStatement = "UPDATE `StockValue` " +

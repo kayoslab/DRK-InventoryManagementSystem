@@ -28,6 +28,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -209,6 +210,7 @@ public class InventoryPresenter extends Presenter {
 			}
 		}
 		this.stockObjectValues = sortedData.toArray(new StockObjectValue[sortedData.size()]);
+		Arrays.sort(this.stockObjectValues, (a,b) -> a.locationID-b.locationID);
 
 		if (this.stockObjectValues != null) {
 			for (StockObjectValue stockObjectValue : this.stockObjectValues) {

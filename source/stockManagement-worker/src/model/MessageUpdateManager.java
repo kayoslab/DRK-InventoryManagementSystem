@@ -28,7 +28,9 @@ import java.util.Calendar;
 import java.sql.Date;
 
 public class MessageUpdateManager {
-	private int warningIntervallMonths = 3;
+	private int warningIntervallDevice = 3;
+	private int warningIntervallMedMat = 3;
+	private int warningIntervallConsMat = 1;
 
 
 	private ArrayList<StockObjectValue> deviceUpdateMailingList = new ArrayList<StockObjectValue>();
@@ -74,12 +76,12 @@ public class MessageUpdateManager {
 						/** Dynamic Time Intervalls for Devices minus fixed number of months **/
 						Calendar mtkSoftIntervallTime = Calendar.getInstance();
 						mtkSoftIntervallTime.setTime(deviceValue.stkDate);
-						mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
+						mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallDevice) );
 						Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
 
 						Calendar stkSoftIntervallTime = Calendar.getInstance();
 						stkSoftIntervallTime.setTime(deviceValue.stkDate);
-						stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
+						stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallDevice));
 						Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
 
 						if (sqlDate.after(nextMtkDate) || sqlDate.after(nextStkDate)) {
@@ -100,7 +102,7 @@ public class MessageUpdateManager {
 							/** Dynamic Time Intervalls for Devices minus fixed number of months **/
 							Calendar stkSoftIntervallTime = Calendar.getInstance();
 							stkSoftIntervallTime.setTime(deviceValue.stkDate);
-							stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallMonths));
+							stkSoftIntervallTime.add(Calendar.MONTH, (device.stkIntervall - warningIntervallDevice));
 							Date nextSoftStkDate = new Date((stkSoftIntervallTime.getTime()).getTime());
 
 							if (sqlDate.after(nextStkDate)) {
@@ -120,7 +122,7 @@ public class MessageUpdateManager {
 							/** Dynamic Time Intervalls for Devices minus fixed number of months **/
 							Calendar mtkSoftIntervallTime = Calendar.getInstance();
 							mtkSoftIntervallTime.setTime(deviceValue.mtkDate);
-							mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallMonths) );
+							mtkSoftIntervallTime.add(Calendar.MONTH, (device.mtkIntervall - warningIntervallDevice) );
 							Date nextSoftMtkDate = new Date((mtkSoftIntervallTime.getTime()).getTime());
 
 							if (sqlDate.after(nextMtkDate)) {
@@ -139,7 +141,7 @@ public class MessageUpdateManager {
 					MedicalMaterial medicalMaterial = (MedicalMaterial) stockObject;
 					/** Fixed number of Months Time Intervall **/
 					Calendar currenttimeThreeMonths = Calendar.getInstance();
-					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
+					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMedMat);
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check medicalMaterialValue for Message State Changes **/
 
@@ -163,6 +165,19 @@ public class MessageUpdateManager {
 								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.green);
 							}
 						} else {
+							int consolidatedVolumeForStockObject = 0;
+							StockObjectValue[] consolidatedStockObjectValues = DatabaseReadManager.getStockObjectValues(medicalMaterialValue.stockObjectID);
+							if (consolidatedStockObjectValues != null) {
+								for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
+									if (consolidatedStockObjectValue instanceof MedicalMaterialValue) {
+										MedicalMaterialValue consolidatedMedicalMaterialValue = (MedicalMaterialValue) consolidatedStockObjectValue;
+										if (consolidatedMedicalMaterialValue.locationID == medicalMaterialValue.locationID
+												&& consolidatedMedicalMaterialValue.date == medicalMaterialValue.date) {
+											consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
+										}
+									}
+								}
+							}
 							if (medicalMaterialValue.volume < medicalMaterialValue.minimumStock) {
 								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
 							} else if (medicalMaterialValue.volume < medicalMaterialValue.quotaStock) {
@@ -179,7 +194,7 @@ public class MessageUpdateManager {
 					ConsumableMaterial consumableMaterial = (ConsumableMaterial) stockObject;
 					/** Fixed 3 Months Time Intervall **/
 					Calendar currenttimeThreeMonths = Calendar.getInstance();
-					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallMonths);
+					currenttimeThreeMonths.add(Calendar.MONTH, warningIntervallConsMat);
 					Date sqlDateThreeMonths = new Date((currenttimeThreeMonths.getTime()).getTime());
 					/** Check consumableMaterialValue for Message State Changes **/
 					if (consumableMaterialValue.date != null) {
@@ -202,6 +217,19 @@ public class MessageUpdateManager {
 								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.green);
 							}
 						} else {
+							int consolidatedVolumeForStockObject = 0;
+							StockObjectValue[] consolidatedStockObjectValues = DatabaseReadManager.getStockObjectValues(consumableMaterialValue.stockObjectID);
+							if (consolidatedStockObjectValues != null) {
+								for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
+									if (consolidatedStockObjectValue instanceof ConsumableMaterialValue) {
+										ConsumableMaterialValue consolidatedConsumableMaterialValue = (ConsumableMaterialValue) consolidatedStockObjectValue;
+										if (consolidatedConsumableMaterialValue.locationID == consumableMaterialValue.locationID
+												&& consolidatedConsumableMaterialValue.date == consumableMaterialValue.date) {
+											consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
+										}
+									}
+								}
+							}
 							if (consumableMaterialValue.volume < consumableMaterialValue.minimumStock) {
 								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
 							} else if (consumableMaterialValue.volume < consumableMaterialValue.quotaStock) {
