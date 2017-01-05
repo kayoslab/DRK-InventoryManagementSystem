@@ -6,19 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de8acc9d-7ae1-4205-af6b-f46cf5c7d65c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../stockManagement-desktop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../stockManagement-desktop/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/worker.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/worker.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/MessageUpdateManager.java" afterPath="$PROJECT_DIR$/src/model/MessageUpdateManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/mailing/Sender.java" afterPath="$PROJECT_DIR$/src/model/mailing/Sender.java" />
-    </list>
+    <list default="true" id="de8acc9d-7ae1-4205-af6b-f46cf5c7d65c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -832,12 +820,12 @@
       <workItem from="1483527028665" duration="189000" />
       <workItem from="1483527245658" duration="971000" />
       <workItem from="1483646049970" duration="885000" />
-      <workItem from="1483647158214" duration="316000" />
+      <workItem from="1483647158214" duration="502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56777000" />
+    <option name="totallyTimeSpent" value="56963000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

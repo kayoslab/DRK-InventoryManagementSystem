@@ -19,8 +19,10 @@ package presenter;
 import model.DatabaseReadManager;
 import model.Session;
 import model.databaseObjects.DatabaseObject;
+import model.databaseObjects.environment.Location;
 import model.databaseObjects.stockObjects.StockObject;
 import model.databaseObjects.stockValues.StockObjectValue;
+import org.bouncycastle.asn1.dvcs.Data;
 
 import java.awt.event.ActionEvent;
 import java.awt.*;
@@ -88,21 +90,22 @@ public class MessagePresenter extends Presenter {
 	}
 
 	private void showMessagesStockValuesData() {
-		Object columnNames[] = { "Titel" , "Typ", "Meldung" };
+		Object columnNames[] = { "Titel" , "Typ", "Lagerort" };
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		StockObjectValue[] yellowObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.yellow);
 
 		if (yellowObjectValues != null) {
 			for (StockObjectValue stockObjectValue : yellowObjectValues) {
 				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
+				Location location = DatabaseReadManager.getLocation(stockObjectValue.locationID);
 				if (stockObject.type.ordinal() == 1 && this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewDevices)) {
-					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()], location.title};
 					model.addRow(row);
 				} else if (stockObject.type.ordinal() == 2 && this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewMedicalMaterials)) {
-					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()], location.title};
 					model.addRow(row);
 				} else if (stockObject.type.ordinal() == 3 && this.session.currentUserCanHandleGroupRight(Session.PossibleGroupRight.viewConsumableMaterials)) {
-					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+					Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()], location.title};
 					model.addRow(row);
 				}
 			}
@@ -112,14 +115,15 @@ public class MessagePresenter extends Presenter {
 	}
 
 	private void showWarningsStockValuesData() {
-		Object columnNames[] = { "Titel", "Typ", "Meldung" };
+		Object columnNames[] = { "Titel", "Typ", "Lagerort" };
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 		StockObjectValue[] redObjectValues = DatabaseReadManager.getStockObjectValues(DatabaseObject.StockValueMessage.red);
 
 		if (redObjectValues != null) {
 			for (StockObjectValue stockObjectValue : redObjectValues) {
 				StockObject stockObject = DatabaseReadManager.getStockObject(stockObjectValue.stockObjectID);
-				Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()]};
+				Location location = DatabaseReadManager.getLocation(stockObjectValue.locationID);
+				Object row[] = { stockObject.title, DatabaseObject.StockObjectTypeStrings[stockObject.type.ordinal()], location.title};
 				model.addRow(row);
 			}
 		}
