@@ -37,7 +37,7 @@ public class SetupPresenter extends Presenter {
 	 * Create the application.
 	 */
 	public SetupPresenter() {
-		initialize();
+		this.initialize();
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class SetupPresenter extends Presenter {
 	 */
 	public SetupPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

@@ -35,7 +35,7 @@ public class ChangePasswordPresenter extends Presenter {
 	 */
 	public ChangePasswordPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

@@ -61,7 +61,7 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	 */
 	public MenuPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

@@ -526,7 +526,147 @@ public final class DatabaseWriteManager {
 		StockObjectValue[] existingStock = DatabaseReadManager.existingStockObjectValueFor(stockObjectValue);
 		// switch over the number of objects with the same identifier.
 		assert existingStock != null : false;
-		switch (existingStock.length) {
+		if (existingStock.length > 0) {
+			System.out.println("Already existing");
+			if (stockObjectValue instanceof DeviceValue) {
+				DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+				DeviceValue existingDeviceValue = (DeviceValue) existingStock[0];
+				if (deviceValue.serialNumber.equals(existingDeviceValue.serialNumber)
+						&& deviceValue.inventoryNumber.equals(existingDeviceValue.inventoryNumber)
+						&& deviceValue.mtkDate.equals(existingDeviceValue.mtkDate)
+						&& deviceValue.stkDate.equals(existingDeviceValue.stkDate)
+						&& deviceValue.locationID == existingDeviceValue.locationID) {
+					StockObjectValue mergedStockObject = DatabaseWriteManager.mergeStockObjectValues(existingStock[0], stockObjectValue);
+					return DatabaseWriteManager.editStockObjectValue(mergedStockObject);
+				}
+			} else if (stockObjectValue instanceof MaterialValue && existingStock[0] instanceof MaterialValue) {
+				MaterialValue materialValue = (MaterialValue) stockObjectValue;
+				MaterialValue existingMaterialValue = (MaterialValue) existingStock[0];
+				System.out.println("Material existing");
+				System.out.println(DatabaseWriteManager.sdf.format(materialValue.date));
+				System.out.println(DatabaseWriteManager.sdf.format(existingMaterialValue.date));
+				if (materialValue.date.equals(existingMaterialValue.date)
+						&& materialValue.locationID == existingMaterialValue.locationID
+						&& materialValue.batchNumber.equals(existingMaterialValue.batchNumber)) {
+					System.out.println("Equal Object");
+					StockObjectValue mergedStockObject = DatabaseWriteManager.mergeStockObjectValues(existingStock[0], stockObjectValue);
+					return DatabaseWriteManager.editStockObjectValue(mergedStockObject);
+				}
+			} else {
+				StockObjectValue mergedStockObject = DatabaseWriteManager.mergeStockObjectValues(existingStock[0], stockObjectValue);
+				return DatabaseWriteManager.editStockObjectValue(mergedStockObject);
+			}
+		}
+		System.out.println("Nothing to see here.");
+		// Default case for creation, there is no existing entry.
+		String sqlStatement;
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		// Switch between different extended StockObjectValue Types
+		if (stockObjectValue instanceof DeviceValue) {
+			DeviceValue deviceValue = (DeviceValue) stockObjectValue;
+			String mtkDate = "null";
+			String stkDate = "null";
+			if (deviceValue.mtkDate != null) {
+				mtkDate = "'" +  DatabaseWriteManager.sdf.format(deviceValue.mtkDate) + "'";
+			}
+			if (deviceValue.stkDate != null) {
+				stkDate = "'" + DatabaseWriteManager.sdf.format(deviceValue.stkDate) + "'";
+			}
+
+			sqlStatement = "INSERT INTO `StockValue` " +
+					"VALUES(" +
+					"0" + // id
+					", " + stockObjectValue.volume + // volume
+					", NULL" + // date
+					", " + mtkDate + // mtkdate
+					", " + stkDate + // stkdate
+					", '" + deviceValue.inventoryNumber + // inventory
+					"', '" + deviceValue.serialNumber + // serialNummer
+					"', '" + deviceValue.umdns + // umdns
+					"', NULL" + // batchNumber
+					", 0" + // minimumStock
+					", 0 " + // quotaStock
+					", " + deviceValue.silencedWarnings + // silencedWarnings
+					", '" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
+					", " + stockObjectValue.stockObjectID +
+					", " + stockObjectValue.locationID +
+					", " + stockObjectValue.messageID +
+					");";
+		} else if (stockObjectValue instanceof MaterialValue) {
+			if (stockObjectValue instanceof MedicalMaterialValue) {
+				MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
+				String date = "null";
+				if (medicalValue.date != null) {
+					date =  "'" + DatabaseWriteManager.sdf.format(medicalValue.date) + "'";
+				}
+				sqlStatement = "INSERT INTO `StockValue` " +
+						"VALUES(" +
+						"0" + // id
+						", " + stockObjectValue.volume + // volume
+						", " + date + // date
+						", NULL" + // mtkdate
+						", NULL" + // stkdate
+						", NULL" + // inventory
+						", NULL" + // serialNumber
+						", NULL" + // umdns
+						", '" + medicalValue.batchNumber + // batchNumber
+						"', "  + medicalValue.minimumStock+ // minimumStock
+						",  " + medicalValue.quotaStock + // quotaStock
+						", " + medicalValue.silencedWarnings + // silencedWarnings
+						", '" + DatabaseWriteManager.sdf.format(timestamp) + "'" + // creation
+						", " + stockObjectValue.stockObjectID +
+						", " + stockObjectValue.locationID +
+						", " + stockObjectValue.messageID +
+						");";
+			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
+				ConsumableMaterialValue consumableValue = (ConsumableMaterialValue) stockObjectValue;
+				String date = "null";
+				if (consumableValue.date != null) {
+					date = "'" + DatabaseWriteManager.sdf.format(consumableValue.date) + "'";
+				}
+				sqlStatement = "INSERT INTO `StockValue` " +
+						"VALUES(" +
+						"0" + // id
+						", " + stockObjectValue.volume + // volume
+						", " + date + // date
+						", NULL" + // mtkdate
+						", NULL" + // stkdate
+						", NULL" + // inventory
+						", NULL" + // serialNumber
+						", NULL" + // umdns
+						", '" + consumableValue.batchNumber + // batchNumber
+						"', "  + consumableValue.minimumStock+ // minimumStock
+						",  " + consumableValue.quotaStock + // quotaStock
+						", " + consumableValue.silencedWarnings + // silencedWarnings
+						", '" + DatabaseWriteManager.sdf.format(timestamp) + "'" +  // creation
+						", " + stockObjectValue.stockObjectID +
+						", " + stockObjectValue.locationID +
+						", " + stockObjectValue.messageID +
+						");";
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		if (DatabaseWriteManager.executeUpdate(sqlStatement)) {
+			sqlStatement = "UPDATE `StockObject` " +
+					"SET " +
+					"`totalVolume` = `totalVolume` + " + stockObjectValue.volume +
+					" WHERE `id` = " + stockObjectValue.stockObjectID +
+					";";
+			return DatabaseWriteManager.executeUpdate(sqlStatement);
+		}
+
+
+		return false;
+
+
+
+
+
+		/******** ********/
+		/*switch (existingStock.length) {
 			case 0:
 				// Default case for creation, there is no existing entry.
 				String sqlStatement;
@@ -567,7 +707,6 @@ public final class DatabaseWriteManager {
 						MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
 						String date = "null";
 						if (medicalValue.date != null) {
-
 							date =  "'" + DatabaseWriteManager.sdf.format(medicalValue.date) + "'";
 						}
 						sqlStatement = "INSERT INTO `StockValue` " +
@@ -637,7 +776,7 @@ public final class DatabaseWriteManager {
 				// The only way this could happen if a user is manually adding StockObjectValues to the db.
 				break;
 		}
-		return false;
+		return false;*/
 	}
 
 	/**

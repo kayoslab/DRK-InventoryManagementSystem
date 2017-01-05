@@ -51,7 +51,7 @@ public class InventoryPresenter extends Presenter {
 	 */
 	public InventoryPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

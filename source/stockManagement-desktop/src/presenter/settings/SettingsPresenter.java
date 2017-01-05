@@ -35,7 +35,7 @@ public class SettingsPresenter extends Presenter {
 	 */
 	public SettingsPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

@@ -41,14 +41,12 @@ public abstract class Presenter implements ActionListener {
 	private JButton back;
 	private String ipAddress = "192.168.2.200";
 
-	public void Presenter() {
+	public Presenter() {
 
 	}
 
-	public void Presenter(Presenter previousPresenter) {
-		this.Presenter();
+	public Presenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		this.initialize();
 	}
 
 	public void newScreen() {

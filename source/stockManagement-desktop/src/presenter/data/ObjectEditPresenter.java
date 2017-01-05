@@ -50,7 +50,7 @@ public class ObjectEditPresenter extends Presenter implements MouseListener {
 	public ObjectEditPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

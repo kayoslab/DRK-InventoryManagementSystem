@@ -39,7 +39,7 @@ public class MessagePresenter extends Presenter {
 	 */
 	public MessagePresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

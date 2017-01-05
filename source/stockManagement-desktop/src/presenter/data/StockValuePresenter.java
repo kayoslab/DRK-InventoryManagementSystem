@@ -62,7 +62,7 @@ public class StockValuePresenter extends Presenter {
 	public StockValuePresenter(Presenter previousPresenter, StockObject stockObject) {
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
-		// this.initialize();
+		this.initialize();
 
 		JLabel title = new JLabel("Hinzuf\u00fcgen:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -77,7 +77,7 @@ public class StockValuePresenter extends Presenter {
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
 		this.stockObjectValue = stockObjectValue;
-		// this.initialize();
+		this.initialize();
 
 		JLabel title = new JLabel("Bearbeiten:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -331,8 +331,8 @@ public class StockValuePresenter extends Presenter {
 				this.stockObjectValue.locationID = this.locations[this.locationComboBox.getSelectedIndex()].id;
 				if (this.stockObjectValue instanceof DeviceValue) {
 					DeviceValue deviceValue = (DeviceValue) this.stockObjectValue;
-					deviceValue.mtkDate = (Date)this.dateField1.getModel().getValue();
-					deviceValue.stkDate = (Date)this.dateField2.getModel().getValue();
+					deviceValue.mtkDate = StockValuePresenter.removeTime((Date)this.dateField1.getModel().getValue());
+					deviceValue.stkDate = StockValuePresenter.removeTime((Date)this.dateField2.getModel().getValue());
 					deviceValue.serialNumber = this.serialField.getText();
 					deviceValue.inventoryNumber = this.inventoryField.getText();
 					deviceValue.umdns = this.umdnsField.getText();
@@ -341,7 +341,7 @@ public class StockValuePresenter extends Presenter {
 					}
 				} else if (this.stockObjectValue instanceof MaterialValue) {
 					MaterialValue materialValue = (MaterialValue) this.stockObjectValue;
-					materialValue.date = (Date)this.dateField1.getModel().getValue();
+					materialValue.date = StockValuePresenter.removeTime((Date)this.dateField1.getModel().getValue());
 					materialValue.batchNumber = this.batchField.getText();
 
 					DecimalFormat decimalFormat = new DecimalFormat("#");
@@ -388,8 +388,9 @@ public class StockValuePresenter extends Presenter {
 					if (volume > 0){
 						/** Reasonable Data **/
 						if (this.stockObject instanceof Device) {
-							Date mtkDate = (Date)this.dateField1.getModel().getValue();
-							Date stkDate = (Date)this.dateField2.getModel().getValue();
+							Date mtkDate = StockValuePresenter.removeTime((Date)this.dateField1.getModel().getValue());
+							Date stkDate = StockValuePresenter.removeTime((Date)this.dateField2.getModel().getValue());
+
 							String serialNumber = this.serialField.getText();
 							String inventoryNumber = this.inventoryField.getText();
 							String umdns = this.umdnsField.getText();
@@ -406,7 +407,7 @@ public class StockValuePresenter extends Presenter {
 								this.stockObjectValue = null;
 							}
 						} else if (this.stockObject instanceof Material) {
-							Date date = (Date)this.dateField1.getModel().getValue();
+							Date date = StockValuePresenter.removeTime((Date)this.dateField1.getModel().getValue());
 							String batchNumber = this.batchField.getText();
 							int minimumStock = 0;
 							int quotaStock = 0;
@@ -453,6 +454,16 @@ public class StockValuePresenter extends Presenter {
 				this.showPreviousPresenter();
 			}
 		}
+	}
+
+	public static Date removeTime(Date date) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		return cal.getTime();
 	}
 
 	public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {

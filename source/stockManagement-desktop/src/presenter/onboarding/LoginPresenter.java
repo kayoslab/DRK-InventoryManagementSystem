@@ -36,7 +36,7 @@ public class LoginPresenter extends Presenter {
 	 * Create the application.
 	 */
 	public LoginPresenter() {
-		initialize();
+		this.initialize();
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class LoginPresenter extends Presenter {
 	 */
 	public LoginPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		// initialize();
+		this.initialize();
 	}
 
 	/**

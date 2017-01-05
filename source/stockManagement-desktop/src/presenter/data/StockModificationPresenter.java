@@ -50,7 +50,7 @@ public class StockModificationPresenter extends Presenter implements DocumentLis
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
 		this.stockObjectValue = stockObjectValue;
-		// this.initialize();
+		this.initialize();
 	}
 
 	/**

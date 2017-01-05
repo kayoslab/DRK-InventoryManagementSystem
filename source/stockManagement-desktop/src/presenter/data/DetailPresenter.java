@@ -50,7 +50,7 @@ public class DetailPresenter extends Presenter implements MouseListener {
 	public DetailPresenter(Presenter previousPresenter, StockObject stockObject) {
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
-		// initialize();
+		this.initialize();
 	}
 
 

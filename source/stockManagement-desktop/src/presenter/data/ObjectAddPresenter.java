@@ -66,7 +66,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 	public ObjectAddPresenter(Presenter previousPresenter, DatabaseObject.ModificationType modificationType) {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
-		// this.initialize();
+		this.initialize();
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class ObjectAddPresenter extends Presenter implements MouseListener {
 		this.previousPresenter = previousPresenter;
 		this.modificationType = modificationType;
 		this.databaseObject = preparedData;
-		//this.initialize();
+		this.initialize();
 	}
 
 	/**
