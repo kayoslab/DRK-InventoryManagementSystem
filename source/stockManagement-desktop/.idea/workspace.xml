@@ -2,23 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6047b5e-18c0-4451-bbcf-b4772a6f598c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.classpath" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/artifacts/worker.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/dataSources.local.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/dataSources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/dataSources/1470d74e-f02a-40c6-ad9e-0325520bf7a5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/dataSources/1470d74e-f02a-40c6-ad9e-0325520bf7a5/storage.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/dataSources/85020468-16c3-4000-aea0-80038f0fa579/storage.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/libraries/javax_mail_1_5_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/libraries/mysql_connector_java_5_1_40_bin.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.project" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/bin/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/lib/javax.mail-1.5.6.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/lib/mysql-connector-java-5.1.40-bin.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseReadManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/DatabaseWriteManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/MessageUpdateManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseConnectionManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseLoginManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseCommunication/DatabaseValueManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/DatabaseObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/Group.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/GroupRight.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/accessControl/User.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/environment/Location.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/ConsumableMaterial.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/Device.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/Material.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/MedicalMaterial.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockObjects/StockObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/ConsumableMaterialValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/DeviceValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/MaterialValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/MedicalMaterialValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/databaseObjects/stockValues/StockObjectValue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/src/model/mailing/Sender.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../stockManagement-worker/stockManagement-worker.iml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" afterPath="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/InventoryPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/InventoryPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/MenuPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/MenuPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/MessagePresenter.java" afterPath="$PROJECT_DIR$/src/presenter/MessagePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/Presenter.java" afterPath="$PROJECT_DIR$/src/presenter/Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/DataPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/DataPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/DetailPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectAddPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/ObjectEditPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/ObjectEditPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/StockModificationPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" afterPath="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/settings/ChangePasswordPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presenter/settings/SettingsPresenter.java" afterPath="$PROJECT_DIR$/src/presenter/settings/SettingsPresenter.java" />
     </list>
     <ignored path="eclipse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,13 +86,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseReadManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15585">
+              <caret line="1404" column="1" lean-forward="false" selection-start-line="1404" selection-start-column="1" selection-end-line="1404" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#48185#0" expanded="true" />
+                <element signature="e#39511#39529#0" expanded="true" />
+                <element signature="e#43133#43151#0" expanded="true" />
+                <element signature="e#45898#45911#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseWriteManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="548" column="87" lean-forward="true" selection-start-line="548" selection-start-column="87" selection-end-line="548" selection-end-column="87" />
+            <state relative-caret-position="150">
+              <caret line="545" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="993" selection-end-column="1" />
               <folding>
-                <element signature="e#0#37720#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1288#1289#0" expanded="false" />
+                <element signature="e#1328#1329#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -186,10 +231,10 @@
         <option value="$PROJECT_DIR$/src/presenter/MessagePresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/onboarding/SetupPresenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/onboarding/LoginPresenter.java" />
-        <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
         <option value="$PROJECT_DIR$/src/presenter/Presenter.java" />
         <option value="$PROJECT_DIR$/src/presenter/data/StockValuePresenter.java" />
         <option value="$PROJECT_DIR$/src/model/DatabaseWriteManager.java" />
+        <option value="$PROJECT_DIR$/src/model/DatabaseReadManager.java" />
       </list>
     </option>
   </component>
@@ -1001,12 +1046,12 @@
       <workItem from="1483528717818" duration="281000" />
       <workItem from="1483621941092" duration="177000" />
       <workItem from="1483639325950" duration="15000" />
-      <workItem from="1483639391207" duration="4100000" />
+      <workItem from="1483639391207" duration="5010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232908000" />
+    <option name="totallyTimeSpent" value="233818000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1019,7 +1064,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41230768" sideWeight="0.6066236" order="7" side_tool="true" content_ui="tabs" />
@@ -1337,7 +1382,7 @@
         <state relative-caret-position="810">
           <caret line="68" column="64" lean-forward="false" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1347,8 +1392,8 @@
         <state relative-caret-position="480">
           <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
           <folding>
-            <element signature="e#0#1385#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#1385#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1456,21 +1501,8 @@
         <state relative-caret-position="233">
           <caret line="804" column="69" lean-forward="false" selection-start-line="804" selection-start-column="38" selection-end-line="804" selection-end-column="69" />
           <folding>
-            <element signature="e#34885#34886#0" expanded="true" />
-            <element signature="e#34934#34935#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="30" column="92" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#48449#0" expanded="true" />
-            <element signature="e#39775#39793#0" expanded="true" />
-            <element signature="e#43397#43415#0" expanded="true" />
-            <element signature="e#46162#46175#0" expanded="true" />
+            <element signature="e#34885#34886#0" expanded="false" />
+            <element signature="e#34934#34935#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1501,10 +1533,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/DatabaseWriteManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="548" column="87" lean-forward="true" selection-start-line="548" selection-start-column="87" selection-end-line="548" selection-end-column="87" />
+        <state relative-caret-position="150">
+          <caret line="545" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="993" selection-end-column="1" />
           <folding>
-            <element signature="e#0#37720#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1288#1289#0" expanded="false" />
+            <element signature="e#1328#1329#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DatabaseReadManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15585">
+          <caret line="1404" column="1" lean-forward="false" selection-start-line="1404" selection-start-column="1" selection-end-line="1404" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#48185#0" expanded="true" />
+            <element signature="e#39511#39529#0" expanded="true" />
+            <element signature="e#43133#43151#0" expanded="true" />
+            <element signature="e#45898#45911#0" expanded="true" />
           </folding>
         </state>
       </provider>

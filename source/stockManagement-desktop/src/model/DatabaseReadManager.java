@@ -929,7 +929,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(int id) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
 				+ "`umdns`,`batchNumber`,`creation`,`minimumStock`,`quotaStock`,`silencedWarnings`" +
-				",`stockObjectId`,`locationId`,messageId"
+				",`stockObjectId`, `locationId`, `messageId` "
 				+ "FROM `StockValue` WHERE `stockObjectId` = " + id + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
@@ -1155,18 +1155,11 @@ public final class DatabaseReadManager {
 					" AND `mtkDate` = " + mtkDate
 					+ " AND `stkDate` = " + stkDate;
 		} else if (stockObjectValue instanceof MaterialValue) {
-			String date = "null";
 			if (stockObjectValue instanceof MedicalMaterialValue) {
 				MedicalMaterialValue medicalValue = (MedicalMaterialValue) stockObjectValue;
-				if (medicalValue.date != null) {
-					date = "'" +  DatabaseReadManager.sdf.format(medicalValue.date) + "'";
-				}
 				sqlStatement += " AND `batchNumber` = '" + medicalValue.batchNumber + "'";
 			} else if (stockObjectValue instanceof ConsumableMaterialValue) {
 				ConsumableMaterialValue consumableValue = (ConsumableMaterialValue) stockObjectValue;
-				if (consumableValue.date != null) {
-					date = "'" +  DatabaseReadManager.sdf.format(consumableValue.date) + "'";
-				}
 				sqlStatement += " AND `batchNumber` = '" + consumableValue.batchNumber + "'";
 			} else {
 				return new StockObjectValue[0];
