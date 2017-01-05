@@ -171,15 +171,17 @@ public class MessageUpdateManager {
 								for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
 									if (consolidatedStockObjectValue instanceof MedicalMaterialValue) {
 										MedicalMaterialValue consolidatedMedicalMaterialValue = (MedicalMaterialValue) consolidatedStockObjectValue;
-										if (consolidatedMedicalMaterialValue.locationID == medicalMaterialValue.locationID ) {
+										if (consolidatedMedicalMaterialValue.locationID == medicalMaterialValue.locationID
+												&& consolidatedMedicalMaterialValue.minimumStock == medicalMaterialValue.minimumStock
+												&& consolidatedMedicalMaterialValue.quotaStock == medicalMaterialValue.quotaStock ) {
 											consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
 										}
 									}
 								}
 							}
-							if (medicalMaterialValue.volume < medicalMaterialValue.minimumStock) {
+							if (consolidatedVolumeForStockObject < medicalMaterialValue.minimumStock) {
 								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.red);
-							} else if (medicalMaterialValue.volume < medicalMaterialValue.quotaStock) {
+							} else if (consolidatedVolumeForStockObject < medicalMaterialValue.quotaStock) {
 								edited = this.setStockObjectValueMessage(medicalMaterialValue, DatabaseObject.StockValueMessage.yellow);
 							} else {
 								// Everything is fine
@@ -222,15 +224,17 @@ public class MessageUpdateManager {
 								for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
 									if (consolidatedStockObjectValue instanceof ConsumableMaterialValue) {
 										ConsumableMaterialValue consolidatedConsumableMaterialValue = (ConsumableMaterialValue) consolidatedStockObjectValue;
-										if (consolidatedConsumableMaterialValue.locationID == consumableMaterialValue.locationID) {
+										if (consolidatedConsumableMaterialValue.locationID == consumableMaterialValue.locationID
+												&& consolidatedConsumableMaterialValue.minimumStock == consumableMaterialValue.minimumStock
+												&& consolidatedConsumableMaterialValue.quotaStock == consumableMaterialValue.quotaStock) {
 											consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
 										}
 									}
 								}
 							}
-							if (consumableMaterialValue.volume < consumableMaterialValue.minimumStock) {
+							if (consolidatedVolumeForStockObject < consumableMaterialValue.minimumStock) {
 								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.red);
-							} else if (consumableMaterialValue.volume < consumableMaterialValue.quotaStock) {
+							} else if (consolidatedVolumeForStockObject < consumableMaterialValue.quotaStock) {
 								edited = this.setStockObjectValueMessage(consumableMaterialValue, DatabaseObject.StockValueMessage.yellow);
 							} else {
 								// Everything is fine

@@ -225,9 +225,23 @@ public class Sender {
 							date = Sender.sdf.format(medicalMaterialValue.date);
 						}
 
+						int consolidatedVolumeForStockObject = 0;
+						StockObjectValue[] consolidatedStockObjectValues = DatabaseReadManager.getStockObjectValues(medicalMaterialValue.stockObjectID);
+						if (consolidatedStockObjectValues != null) {
+							for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
+								if (consolidatedStockObjectValue instanceof MedicalMaterialValue) {
+									MedicalMaterialValue consolidatedMedicalMaterialValue = (MedicalMaterialValue) consolidatedStockObjectValue;
+									if (consolidatedMedicalMaterialValue.locationID == medicalMaterialValue.locationID
+											&& consolidatedMedicalMaterialValue.minimumStock == medicalMaterialValue.minimumStock
+											&& consolidatedMedicalMaterialValue.quotaStock == medicalMaterialValue.quotaStock) {
+										consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
+									}
+								}
+							}
+						}
 						int orderQuantity = 0;
-						int quotaQuantity = medicalMaterialValue.quotaStock - medicalMaterialValue.volume;
-						int minimumQuantity = medicalMaterialValue.minimumStock - medicalMaterialValue.volume;
+						int quotaQuantity = medicalMaterialValue.quotaStock - consolidatedVolumeForStockObject;
+						int minimumQuantity = medicalMaterialValue.minimumStock - consolidatedVolumeForStockObject;
 						// Date exceeded
 						if (quotaQuantity <= 0 && minimumQuantity <= 0) {
 							orderQuantity = medicalMaterialValue.quotaStock;
@@ -278,9 +292,24 @@ public class Sender {
 							date = Sender.sdf.format(consumableMaterialValue.date);
 						}
 
+
+						int consolidatedVolumeForStockObject = 0;
+						StockObjectValue[] consolidatedStockObjectValues = DatabaseReadManager.getStockObjectValues(consumableMaterialValue.stockObjectID);
+						if (consolidatedStockObjectValues != null) {
+							for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
+								if (consolidatedStockObjectValue instanceof ConsumableMaterialValue) {
+									ConsumableMaterialValue consolidatedConsumableMaterialValue = (ConsumableMaterialValue) consolidatedStockObjectValue;
+									if (consolidatedConsumableMaterialValue.locationID == consumableMaterialValue.locationID
+											&& consolidatedConsumableMaterialValue.minimumStock == consumableMaterialValue.minimumStock
+											&& consolidatedConsumableMaterialValue.quotaStock == consumableMaterialValue.quotaStock) {
+										consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
+									}
+								}
+							}
+						}
 						int orderQuantity = 0;
-						int quotaQuantity = consumableMaterialValue.quotaStock - consumableMaterialValue.volume;
-						int minimumQuantity = consumableMaterialValue.minimumStock - consumableMaterialValue.volume;
+						int quotaQuantity = consumableMaterialValue.quotaStock - consolidatedVolumeForStockObject;
+						int minimumQuantity = consumableMaterialValue.minimumStock - consolidatedVolumeForStockObject;
 						// Date exceeded
 						if (quotaQuantity <= 0 && minimumQuantity <= 0) {
 							orderQuantity = consumableMaterialValue.quotaStock;

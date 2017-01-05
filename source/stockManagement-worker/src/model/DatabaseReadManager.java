@@ -929,7 +929,7 @@ public final class DatabaseReadManager {
 	public static StockObjectValue[] getStockObjectValues(int id) {
 		String sqlStatement = "SELECT `id`, `volume`, `date`, `mtkDate`,`stkDate`,`inventoryNumber`,`serialNumber`,"
 				+ "`umdns`,`batchNumber`,`creation`,`minimumStock`,`quotaStock`,`silencedWarnings`" +
-				",`stockObjectId`, `locationId`, messageId "
+				",`stockObjectId`, `locationId`, `messageId` "
 				+ "FROM `StockValue` WHERE `stockObjectId` = " + id + " ORDER BY `id` ASC;";
 		ResultSet rs = null;
 		try {
