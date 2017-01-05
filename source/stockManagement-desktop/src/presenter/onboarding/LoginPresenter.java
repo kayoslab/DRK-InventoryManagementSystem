@@ -44,12 +44,13 @@ public class LoginPresenter extends Presenter {
 	 */
 	public LoginPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		initialize();
+		// initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		this.presenterHelpId = 2;

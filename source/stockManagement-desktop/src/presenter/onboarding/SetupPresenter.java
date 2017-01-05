@@ -45,12 +45,13 @@ public class SetupPresenter extends Presenter {
 	 */
 	public SetupPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		initialize();
+		// initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		if (this.previousPresenter != null) {

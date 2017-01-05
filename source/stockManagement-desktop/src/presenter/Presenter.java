@@ -39,6 +39,7 @@ public abstract class Presenter implements ActionListener {
 	public JButton help;
 	public JSeparator separator;
 	private JButton back;
+	private String ipAddress = "192.168.2.200";
 
 	public void Presenter() {
 
@@ -47,6 +48,7 @@ public abstract class Presenter implements ActionListener {
 	public void Presenter(Presenter previousPresenter) {
 		this.Presenter();
 		this.previousPresenter = previousPresenter;
+		this.initialize();
 	}
 
 	public void newScreen() {
@@ -81,7 +83,6 @@ public abstract class Presenter implements ActionListener {
 		frame.setMinimumSize(new Dimension(width,height));
 		frame.setMaximumSize(new Dimension(width,height));
 		frame.setPreferredSize(new Dimension(width,height));
-
 	}
 
 	/**
@@ -153,8 +154,7 @@ public abstract class Presenter implements ActionListener {
 			/***** Refferences the help document as a document on the server *****/
 			DatabaseLoginManager databaseLoginManager = new DatabaseLoginManager();
 			try {
-				String ipAddress = "192.168.178.37";
-				String urlString = "http://" + ipAddress + "/help/index.php?id=" + this.presenterHelpId;
+				String urlString = "http://" + this.ipAddress + "/help/index.php?id=" + this.presenterHelpId;
 				java.awt.Desktop.getDesktop().browse(java.net.URI.create(urlString));
 			} catch (IOException openException) {
 				// not really important

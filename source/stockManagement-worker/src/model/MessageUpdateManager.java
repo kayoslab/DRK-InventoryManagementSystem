@@ -171,8 +171,7 @@ public class MessageUpdateManager {
 								for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
 									if (consolidatedStockObjectValue instanceof MedicalMaterialValue) {
 										MedicalMaterialValue consolidatedMedicalMaterialValue = (MedicalMaterialValue) consolidatedStockObjectValue;
-										if (consolidatedMedicalMaterialValue.locationID == medicalMaterialValue.locationID
-												&& consolidatedMedicalMaterialValue.date == medicalMaterialValue.date) {
+										if (consolidatedMedicalMaterialValue.locationID == medicalMaterialValue.locationID ) {
 											consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
 										}
 									}
@@ -223,8 +222,7 @@ public class MessageUpdateManager {
 								for (StockObjectValue consolidatedStockObjectValue : consolidatedStockObjectValues) {
 									if (consolidatedStockObjectValue instanceof ConsumableMaterialValue) {
 										ConsumableMaterialValue consolidatedConsumableMaterialValue = (ConsumableMaterialValue) consolidatedStockObjectValue;
-										if (consolidatedConsumableMaterialValue.locationID == consumableMaterialValue.locationID
-												&& consolidatedConsumableMaterialValue.date == consumableMaterialValue.date) {
+										if (consolidatedConsumableMaterialValue.locationID == consumableMaterialValue.locationID) {
 											consolidatedVolumeForStockObject += consolidatedStockObjectValue.volume;
 										}
 									}

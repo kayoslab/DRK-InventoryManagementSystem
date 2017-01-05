@@ -62,7 +62,7 @@ public class StockValuePresenter extends Presenter {
 	public StockValuePresenter(Presenter previousPresenter, StockObject stockObject) {
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
-		this.initialize();
+		// this.initialize();
 
 		JLabel title = new JLabel("Hinzuf\u00fcgen:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -77,7 +77,7 @@ public class StockValuePresenter extends Presenter {
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
 		this.stockObjectValue = stockObjectValue;
-		this.initialize();
+		// this.initialize();
 
 		JLabel title = new JLabel("Bearbeiten:");
 		title.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -88,6 +88,7 @@ public class StockValuePresenter extends Presenter {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();

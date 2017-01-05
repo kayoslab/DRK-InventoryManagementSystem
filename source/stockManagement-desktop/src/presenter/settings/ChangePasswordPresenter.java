@@ -35,12 +35,13 @@ public class ChangePasswordPresenter extends Presenter {
 	 */
 	public ChangePasswordPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		initialize();
+		// initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();

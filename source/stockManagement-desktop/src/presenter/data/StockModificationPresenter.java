@@ -50,12 +50,13 @@ public class StockModificationPresenter extends Presenter implements DocumentLis
 		this.previousPresenter = previousPresenter;
 		this.stockObject = stockObject;
 		this.stockObjectValue = stockObjectValue;
-		this.initialize();
+		// this.initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();

@@ -61,12 +61,13 @@ public class MenuPresenter extends Presenter implements MouseListener {
 	 */
 	public MenuPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		initialize();
+		// initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 

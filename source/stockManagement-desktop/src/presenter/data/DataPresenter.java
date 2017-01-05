@@ -46,12 +46,13 @@ public class DataPresenter extends Presenter implements MouseListener {
 	 */
 	public DataPresenter(Presenter previousPresenter) {
 		this.previousPresenter = previousPresenter;
-		initialize();
+		// initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@Override
 	public void initialize() {
 		super.initialize();
 		super.setupTopLayout();
